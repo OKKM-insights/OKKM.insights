@@ -2,9 +2,9 @@
 
 Developer Names: Kartik Chaudhari, Oleg Glotov, Kyle McMaster, Mathew Petronilho
 
-Date of project start:
+Date of project start: 3rd September 2024
 
-This project is ...
+This project is a Distributed platform for labeling and gathering intelligence from satellite imagery.
 
 The folders and files for this project are as follows:
 
