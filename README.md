@@ -1,6 +1,6 @@
 # Project Name
 
-Developer Names:
+Developer Names: Kartik Chaudhari, Oleg Glotov, Kyle McMaster, Mathew Petronilho
 
 Date of project start:
 
