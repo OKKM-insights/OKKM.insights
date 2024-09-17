@@ -20,6 +20,5 @@ jobs:
       uses: xu-cheng/latex-action@v2
       with:
         root_file: |
-          /docs/*/*.tex
-          /docs/*.tex
+          *.tex
       
