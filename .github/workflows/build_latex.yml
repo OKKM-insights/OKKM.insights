@@ -14,17 +14,14 @@ on:
 jobs:
   build_latex:
     runs-on: ubuntu-latest
+    container:
+      image: blang/latex:ubuntu
     steps:
     - name: checkout repo
       uses: actions/checkout@v3
 
-    - name: Install dependencies
+    - name: Compile LaTeX files
       run: |
-        apt-get update && apt-get install -y texlive-full
-
-    - name: Compile all LaTeX files
-      run: |
-        # Find all .tex files in the docs directory
         find ./docs -name "*.tex" | while read file; do
           echo "Compiling $file"
           latexmk -pdf -cd "$file"
@@ -35,6 +32,7 @@ jobs:
       with:
         name: pdfs
         path: docs/**/*.pdf
+
 
 
 
