@@ -13,12 +13,12 @@ on:
 jobs:
   build_latex:
     runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/moderncv/debian-texlive-docker:main
     steps:
     - name: checkout repo
       uses: actions/checkout@v3
     - name: build pdfs
-      uses: xu-cheng/latex-action@v2
-      with:
-        root_file: |
-          *.tex
+      run: latexmk ./docs/HazardAnalysis/HazardAnalysis.tex
+
       
