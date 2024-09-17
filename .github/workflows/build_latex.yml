@@ -6,37 +6,30 @@ on:
     paths:
     - 'docs/**'
   pull_request:
-    branches: [ main ]
+    branches:
+    - main
     paths:
     - 'docs/**'
 
 jobs:
- build_latex:
+  build_latex:
     runs-on: ubuntu-latest
-    container:
-      image: ghcr.io/moderncv/debian-texlive-docker:main
     steps:
     - name: checkout repo
       uses: actions/checkout@v3
       with:
-        fetch-depth: 2  # Fetch enough history to compare with the previous commit
-    - name: install git
-      run: |
-        apt-get update && apt-get install -y git
-    - name: build updated pdfs
-      run: |
-        # Find all changed .tex files in the docs folder
-        changed_tex_files=$(git diff --name-only HEAD~1 HEAD -- 'docs/**/*.tex')
+        fetch-depth: 2
 
-        # Compile only the changed .tex files
-        for file in $changed_tex_files; do
-          echo "Compiling $file..."
-          (cd "$(dirname "$file")" && latexmk "$(basename "$file")")
-        done
+    - name: Compile LaTeX files
+      uses: xu-cheng/latex-action@v2
+      with:
+        root_file: docs/**/*.tex  # Compiles all .tex files
+
     - name: upload pdfs
       uses: actions/upload-artifact@v3
       with:
-        name: updated-pdfs
-        path: ./docs/**/*.pdf
+        name: pdfs
+        path: docs/**/*.pdf
+
 
       
