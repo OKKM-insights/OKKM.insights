@@ -17,4 +17,9 @@ jobs:
     - name: checkout repo
       uses: actions/checkout@v3
     - name: build pdfs
-      run: (cd ./docs/HazardAnalysis && make)
+      uses: xu-cheng/latex-action@v2
+      with:
+        root_file: |
+          ./docs/**/*.tex
+          ./docs/*.tex
+      
