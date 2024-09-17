@@ -17,4 +17,4 @@ jobs:
     - name: checkout repo
       uses: actions/checkout@v3
     - name: build pdfs
-      run: docs/HazardAnalysis/make build
+      run: (cd /docs/HazardAnalysis && make)
