@@ -14,18 +14,14 @@ on:
 jobs:
   build_latex:
     runs-on: ubuntu-latest
-    container:
-      image: blang/latex:ubuntu
     steps:
     - name: checkout repo
       uses: actions/checkout@v3
 
     - name: Compile LaTeX files
-      run: |
-        find ./docs -name "*.tex" | while read file; do
-          echo "Compiling $file"
-          latexmk -pdf -cd "$file"
-        done
+      uses: xu-cheng/latex-action@v2
+      with:
+        root_file: docs/HazardAnalysis/HazardAnalysis.tex  # Specify your main .tex file
 
     - name: upload pdfs
       uses: actions/upload-artifact@v3
