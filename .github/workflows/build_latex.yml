@@ -4,25 +4,22 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'docs/**'
+    - 'docs/**'
   pull_request:
-    branches:
-      - main
+    branches: [ main ]
     paths:
-      - 'docs/**'
+    - 'docs/**'
 
 jobs:
   build_latex:
     runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/moderncv/debian-texlive-docker:main
     steps:
     - name: checkout repo
       uses: actions/checkout@v3
-
-    - name: Compile LaTeX files
-      uses: xu-cheng/latex-action@v2
-      with:
-        root_file: docs/HazardAnalysis/HazardAnalysis.tex  # Specify your main .tex file
-
+    - name: build pdfs
+      run: (cd ./docs/HazardAnalysis && latexmk HazardAnalysis.tex)
     - name: upload pdfs
       uses: actions/upload-artifact@v3
       with:
