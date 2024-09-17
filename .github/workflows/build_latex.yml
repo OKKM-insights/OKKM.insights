@@ -18,7 +18,22 @@ jobs:
     steps:
     - name: checkout repo
       uses: actions/checkout@v3
-    - name: build pdfs
-      run: (cd ./docs/HazardAnalysis && latexmk HazardAnalysis.tex)
+      with:
+        fetch-depth: 2  # Fetch enough history to compare with the previous commit
+    - name: build updated pdfs
+      run: |
+        # Find all changed .tex files in the docs folder
+        changed_tex_files=$(git diff --name-only HEAD~1 HEAD -- 'docs/**/*.tex')
+
+        # Compile only the changed .tex files
+        for file in $changed_tex_files; do
+          echo "Compiling $file..."
+          (cd "$(dirname "$file")" && latexmk "$(basename "$file")")
+        done
+    - name: upload pdfs
+      uses: actions/upload-artifact@v3
+      with:
+        name: updated-pdfs
+        path: ./docs/**/*.pdf
 
       
