@@ -19,6 +19,6 @@ jobs:
     - name: checkout repo
       uses: actions/checkout@v3
     - name: build pdfs
-      run: (cd /docs/HazardAnalysis && latexmk HazardAnalysis.tex)
+      run: (cd ./docs/HazardAnalysis && latexmk HazardAnalysis.tex)
 
       
