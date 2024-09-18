@@ -25,11 +25,11 @@ jobs:
     - name: List files in docs directory
       run: ls -R docs
 
-    - name: Check Git status
-      run: git status
-
     - name: Mark repository as safe
       run: git config --global --add safe.directory /__w/OKKM.insights/OKKM.insights
+
+    - name: Check Git status
+      run: git status
 
     - name: Add and commit updated PDFs
       uses: EndBug/add-and-commit@v9
