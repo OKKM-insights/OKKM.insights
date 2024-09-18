@@ -36,7 +36,7 @@ jobs:
         git config --global --add safe.directory /__w/OKKM.insights/OKKM.insights
         
         # Add the generated PDFs to the repo
-        git add ./docs/*/*.pdf
+        git add -A
         
         # Commit changes
         git commit -m "Update generated PDFs"
