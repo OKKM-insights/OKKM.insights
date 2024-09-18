@@ -12,6 +12,8 @@ on:
 
 jobs:
   build_latex:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     container:
       image: texlive/texlive:latest
