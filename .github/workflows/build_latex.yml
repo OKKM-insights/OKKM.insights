@@ -16,14 +16,17 @@ jobs:
     container:
       image: texlive/texlive:latest
     steps:
-    - name: checkout repo
+    - name: Checkout repo
       uses: actions/checkout@v3
       
-    - name: build pdfs
+    - name: Build PDFs
       run: (cd ./docs/HazardAnalysis && latexmk HazardAnalysis.tex)
       
+    - name: List files in HazardAnalysis directory
+      run: ls -R docs/HazardAnalysis
+
     - name: List files in docs directory
-      run: ls -R docs
+      run: ls ./docs/*/*.pdf
 
     - name: Mark repository as safe
       run: git config --global --add safe.directory /__w/OKKM.insights/OKKM.insights
@@ -32,16 +35,7 @@ jobs:
       run: git status
 
     - name: Add and commit updated PDFs
-      uses: EndBug/add-and-commit@v9
-      with:
-        author_name: 'Your Name'
-        author_email: 'your-email@example.com'
-        message: 'Update generated PDFs'
-        add: './docs/*/*.pdf'
-        push: true
-
-
-
-
-
-      
+      run: |
+        git add ./docs/*/*.pdf
+        git commit -m "Update generated PDFs" || echo "No changes to commit"
+        git push
