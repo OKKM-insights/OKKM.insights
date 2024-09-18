@@ -20,13 +20,24 @@ jobs:
       uses: actions/checkout@v3
       
     - name: Build PDFs
-      run: (cd ./docs/HazardAnalysis && latexmk HazardAnalysis.tex)
-      
+      run: (cd ./docs/HazardAnalysis && latexmk -pdf HazardAnalysis.tex)
+
     - name: List files in HazardAnalysis directory
       run: ls -R docs/HazardAnalysis
 
     - name: List files in docs directory
-      run: ls ./docs/*/*.pdf
+      run: ls -R docs
+
+    - name: Check Git status
+      run: git status
+
+    - name: List tracked files
+      run: git ls-files
+
+    - name: Force add PDFs
+      run: |
+        git add -f ./docs/*/*.pdf
+        git status
 
     - name: Set Git user info
       run: |
@@ -36,16 +47,7 @@ jobs:
     - name: Mark repository as safe
       run: git config --global --add safe.directory /__w/OKKM.insights/OKKM.insights
 
-    - name: Check Git status
-      run: git status
-
-    - name: Add and commit updated PDFs
+    - name: Commit and push updated PDFs
       run: |
-        git add ./docs/*/*.pdf
         git commit -m "Update generated PDFs" || echo "No changes to commit"
-        
-    - name: Push changes
-      env:
-        GH_TOKEN: ${{ secrets.GH_TOKEN }}
-      run: |
-        git push https://x-access-token:${GH_TOKEN}@github.com/OlegGlo/OKKM.insights.git
+        git push https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/OlegGlo/OKKM.insights.git
