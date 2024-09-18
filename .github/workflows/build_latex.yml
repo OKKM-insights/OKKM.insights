@@ -22,10 +22,10 @@ jobs:
       uses: actions/checkout@v3
       
     - name: Build PDFs
-      run: (cd ./docs/HazardAnalysis && latexmk -pdf HazardAnalysis.tex)
-
-    - name: List files in HazardAnalysis directory
-      run: ls -R docs/HazardAnalysis
+      run: |
+        (cd ./docs/HazardAnalysis && latexmk -pdf HazardAnalysis.tex)
+        (cd ./docs/DevelopmentPlan && latexmk -pdf DevelopmentPlan.tex)
+        (cd ./docs/ProblemStatementAndGoals && latexmk -pdf ProblemStatementAndGoals.tex)
 
     - name: List files in docs directory
       run: ls -R docs
