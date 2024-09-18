@@ -14,7 +14,7 @@ jobs:
   build_latex:
     runs-on: ubuntu-latest
     container:
-      image: texlive/texlive-full
+      image: texlive/texlive:latest
     steps:
     - name: checkout repo
       uses: actions/checkout@v3
