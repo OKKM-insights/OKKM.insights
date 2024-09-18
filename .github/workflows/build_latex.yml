@@ -28,6 +28,14 @@ jobs:
     - name: List files in docs directory
       run: ls -R docs
 
+    - name: Mark repository as safe
+      run: git config --global --add safe.directory /__w/OKKM.insights/OKKM.insights
+
+    - name: Set Git user info
+      run: |
+        git config --global user.email "your-email@example.com"
+        git config --global user.name "Your Name"
+
     - name: Check Git status
       run: git status
 
@@ -38,14 +46,6 @@ jobs:
       run: |
         git add -f ./docs/*/*.pdf
         git status
-
-    - name: Set Git user info
-      run: |
-        git config --global user.email "your-email@example.com"
-        git config --global user.name "Your Name"
-
-    - name: Mark repository as safe
-      run: git config --global --add safe.directory /__w/OKKM.insights/OKKM.insights
 
     - name: Commit and push updated PDFs
       run: |
