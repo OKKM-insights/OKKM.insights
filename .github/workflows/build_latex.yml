@@ -22,7 +22,7 @@ jobs:
     - name: build pdfs
       run: (cd ./docs/HazardAnalysis && latexmk HazardAnalysis.tex)
       
-   - name: List files in docs directory
+    - name: List files in docs directory
       run: ls -R docs
 
     - name: Check Git status
