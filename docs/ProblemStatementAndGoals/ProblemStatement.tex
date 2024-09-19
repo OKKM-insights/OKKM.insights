@@ -53,24 +53,39 @@ Use abstraction so that you can avoid details.}
 
 \section{Goals}
 \subsection{High Data Accuracy}
-\textbf{Description: }The system should have high classification accuracy for the objects found in the images provided to it. \\\\
+\textbf{Description: }The system should have high classification accuracy for objects reported in the images. \\\\
 \textbf{Rationale: }The core problem this system must solve is extracting useful information from the provided images.
  One key metric to determine the utility of the information found, is the classification accuracy of objects identified in the images. If the system is 
  not able to determine what is contained in an image, it will not be useful to stakeholders.
 \subsection{Ease of use}
 \textbf{Description: }The system should be very easy for stakeholders to use. There should be very low friction for users to classify images and objects found
-in images, even with minimal training. \\\\
+within images, with minimal training. It should also be simple for users to upload images to be analyzed.\\\\
 \textbf{Rationale: }To maximize the information gained from users who are contributing to classification efforts, the system must ensure it is simple for users to 
 get started with, and continue using the system. This is necessary to build a large enough user base, which will make it more likely to get insights in an acceptable 
 amount of time.
-\subsection{Ease of use}
-\textbf{Description: }The system should be very easy for stakeholders to use. There should be very low friction for users to classify images and objects found
-in images, even with minimal training. \\\\
-\textbf{Rationale: }To maximize the information gained from users who are contributing to classification efforts, the system must ensure it is simple for users to 
-get started with, and continue using the system. This is necessary to build a large enough user base, which will make it more likely to get insights in an acceptable 
-amount of time.
+\subsection{Minimizing Cost to Analyze Images}
+\textbf{Description: }The system should minimize the cost for users who upload images. This could be implemented through intelligent algorithms for task delegation. \\\\
+\textbf{Rationale: }Users of the system are interested in getting an appropriate return for their investment. If the cost to analyze is too high, the platform will not
+retain a sufficiently large user base of purchasers.
+\subsection{Results Returned Within Appropriate Timeframe}
+\textbf{Description: }The system should ensure the time it takes to obtain information from images is within a specified limit. \\\\
+\textbf{Rationale: }Purchasers will have some time limit they require the system to process images within. To ensure timing needs are met, the system should provide realistic timelines and stick to them.
+\subsection{High System Reliability and Accessibility}
+\textbf{Description: }The system should be useable remotely for purchasers and labellers, and have minimal downtime. \\\\
+\textbf{Rationale: }The system should allow purchasers to upload images without being physically located where the system is hosted to ensure flexibility. The same should also be true for labellers, as they 
+should be able to perform their tasks at home. In both cases, the system should have low down time as to not introduce additional friction into the completion of tasks.
 
 \section{Stretch Goals}
+\subsection{Automatic Data Labelling}
+\textbf{Description: }The system should be able to use our extensive data set to automatically label new images. \\\\
+\textbf{Rationale: }The introduction of automatic data labelling will improve the speed and reduce the cost to label images. This will allow the system to provide more value to 
+purchasers, and allow the labellers to focus on harder to label images.
+\subsection{Multi-Source Integration}
+\textbf{Description: }The system should combine additional geo-spatial datasets, such as weather or census data, to obtain additional information from satelite imagery. \\\\
+\textbf{Rationale: }Additional data sources will improve the value of data collected for purchasers. This is especially true for those interested in predicting future trends from the 
+data found in their satelite images.
+
+
 
 \section{Challenge Level and Extras}
 
