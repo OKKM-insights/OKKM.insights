@@ -2,6 +2,9 @@
 
 \usepackage{booktabs}
 \usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{multirow}
+\usepackage{float}
 
 \title{Development Plan\\\progname}
 
@@ -22,7 +25,7 @@
 \toprule
 \textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
 \midrule
-Date1 & Name(s) & Description of changes\\
+9/18/2024 & Mathew Petronilho & Added Member Roles and Coding Standards\\
 Date2 & Name(s) & Description of changes\\
 ... & ... & ...\\
 \bottomrule
@@ -76,7 +79,46 @@ in-person.}
 \wss{Issues on GitHub should be part of your communication plan.}
 
 \section{Team Member Roles}
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|p{3cm}|p{6cm}|p{3cm}|}
+    \hline
+    \textbf{Member Name} & \multicolumn{2}{c|}{\textbf{Roles}} \\
+    \hline
+    Mathew Petronilho  & Document Manager, Front-End Development Expert & \multirow{4}{*}{\parbox{3cm}{Developer, Tester, PR Reviewer, Issue Creator, Meeting Participant, and Note Taker.}}\\
+    \cline{1-2} 
+    Oleg Glotov & Team Lead, Project Manager & \\
+    \cline{1-2} 
+    Kyle McMaster & Meeting Chair, Back-End Development Expert  & \\
+    \cline{1-2}
+    Kartik Chaudhari & Customer Relations Manager, Git Expert & \\
+    \hline
+  \end{tabular}
+  \caption{Team Roles}
+\end{table}
 
+\begin{itemize}
+	\item \textbf{All Team Members:} Every team member is responsible for developing code and creating tests for the code. Everyone is also responsible for reviewing open 
+  pull requests and providing feedback if necessary. Additionally, all members will be tasked with creating issues using the appropriate templates, tracking issue status, 
+  and updating issues assigned to them with relevant information. Each member is expected to attend meetings punctually and contribute ideas to discussions, while 
+  maintaining respectful and concise communication. The role of meeting note taker will rotate among members in each meeting. The note taker should keep track of meeting attendance,
+   issues discussed, decisions made, and action items. These notes should be well-maintained and easily accessible to all team members.
+    \\ If we encounter challenges, we may consider switching roles to maintain progress and improve team performance. More specific roles can be assigned as the project evolves 
+    and implementation details become clearer.
+    \item \textbf{Mathew Petronilho:}
+    Responsible for ensuring that all documents are formatted consistently, that all necessary components are included, and that there are no grammatical or spelling errors. 
+    Also responsible for assisting team members with the front-end and taking the lead in implementing this component of the project.
+
+    \item \textbf{Oleg Glotov:} Responsible for liaising with the supervisor, teaching assistant, and professor. 
+    Coordinates project tasks among team members, organizes meetings, ensures equitable distribution of work, and monitors deadlines to ensure they are met.
+    
+    \item \textbf{Kyle McMaster:} Responsible for creating meeting agendas, guiding discussions, managing meeting time, and resolving conflicts. 
+    Also responsible for assisting team members with the application's back-end logic and deploying services.
+    
+    \item \textbf{Kartik Chaudhari:} Responsible for contacting potential customers and managing customer relationships. 
+    Oversees the GitHub repository by organizing files and ensuring it is updated to reflect project progress. Provides guidance to team members on resolving issues related to Git.
+    
+\end{itemize}
 \wss{You should identify the types of roles you anticipate, like notetaker,
 leader, meeting chair, reviewer.  Assigning specific people to those roles is
 not necessary at this stage.  In a student team the role of the individuals will
@@ -143,7 +185,8 @@ Topics to discuss include the following:
 \wss{git, GitHub and GitHub projects should be part of your technology.}
 
 \section{Coding Standard}
-
+Our back-end code, written in Python, will adhere to PEP 8 for code formatting and PEP 484 for type annotations. 
+For our front-end code, written in JavaScript, we will follow the JavaScript Standard Style.
 \wss{What coding standard will you adopt?}
 
 \newpage{}
