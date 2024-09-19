@@ -36,7 +36,7 @@ jobs:
     - name: Set Git user info
       run: |
         git config --global user.email "your-email@example.com"
-        git config --global user.name "Your Name"
+        git config --global user.name "PDF BUILDER"
 
     - name: Check Git status
       run: git status
