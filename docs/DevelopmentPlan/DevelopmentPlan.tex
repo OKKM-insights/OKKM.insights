@@ -126,6 +126,17 @@ likely change throughout the year.}
   \item Use of CI/CD
 \end{itemize}
 
+\subsection{Git Workflow}
+
+\subsection{Issue Management}
+
+\subsection{Usage of CI/CD}
+
+\subsubsection{Tex files}
+To ensure the PDFs found in our repository are consistent with the tex files they are generated from, we have developed a CI workflow in GitHub actions.
+ This workflow detects when a push has been made to the \textit{docs} folder in the \textit{main} branch. When this happens, it automatically regenerates
+ the relevant documents and pushes the new PDFs to the repository. This will ensure that our PDFs are always the most recent version.
+
 \section{Project Decomposition and Scheduling}
 
 \begin{itemize}
