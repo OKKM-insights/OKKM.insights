@@ -134,20 +134,21 @@ likely change throughout the year.}
 
 \subsubsection{Tex Files}
 To ensure the PDFs found in our repository are consistent with the tex files they are generated from, we have developed a CI workflow in GitHub actions.
- This workflow detects when a push has been made to the \textit{docs} folder in the \textit{main} branch. When this happens, it automatically regenerates
+ This workflow detects when a push has been made to the \textit{docs} folder in the \textit{main} branch. When this happens, the workflow automatically regenerates
  the relevant documents and pushes the new PDFs to the repository. This will ensure that our PDFs are always the most recent version.
 
-\subsubsection{Linting & Static Checks}
-As discussed in sections 10 and 11, we expect we will use Python to develop the backend component of our software. To improve the clarity of our code and our ability
- to collaborate, we have decided to use static type checking in Python. This is possible with a package called 
- \href{https://mypy-lang.org/}{mypy}. We will integrate static type checking as part of our CI/CD workflow.\\\\
+\subsubsection{Linting \& Static Checks}
+As discussed in sections 10 and 11, we expect we will use Python to develop the backend components of our software. To improve the clarity of our code, especially
+when collaborating, we have decided to use type hinting. To enfore this requirement and reap further benefits of type hinting, we will use a static
+type checker as part of our CI/CD workflow. This is possible with a package called 
+ \href{https://mypy-lang.org/}{mypy}.\\\\
 
- For both the front and back ends of the project, we have selected coding standards, as described in section 11. To ensure these standards are met, we will include
+ For both the front and back ends of the project, we have selected coding standards as described in section 11. To ensure these standards are met, we will include
  a linting step before pull requests can be merged into the main branch.
 
 \subsubsection{Deployment}
 Depending on how we decided to host our server, we will also investigate if it would be beneficial to develop a continuous deployment workflow when changes are 
-pushed to the main branch. This will be explored in the future when our requirements are more clear.
+pushed to the main branch. This will be determined in the future when our requirements are more clear.
 \section{Project Decomposition and Scheduling}
 
 \begin{itemize}
