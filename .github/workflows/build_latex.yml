@@ -5,10 +5,10 @@ on:
     branches: [ main ]
     paths:
     - 'docs/**'
-  pull_request:
-    branches: [ main ]
-    paths:
-    - 'docs/**'
+  # pull_request:
+  #   branches: [ main ]
+  #   paths:
+  #   - 'docs/**'
 
 jobs:
   build_latex:
