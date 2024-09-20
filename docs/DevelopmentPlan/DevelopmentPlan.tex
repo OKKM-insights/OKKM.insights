@@ -146,6 +146,10 @@ type checker as part of our CI/CD workflow. This is possible with a package call
  For both the front and back ends of the project, we have selected coding standards as described in section 11. To ensure these standards are met, we will include
  a linting step before pull requests can be merged into the main branch.
 
+\subsubsection{Testing}
+We will use suite of tests to ensure our code base continues to satisfy our requirements before integrating changes into the code base. These tests
+will be run when a new pull request is created, before a code review is conducted.
+
 \subsubsection{Deployment}
 Depending on how we decided to host our server, we will also investigate if it would be beneficial to develop a continuous deployment workflow when changes are 
 pushed to the main branch. This will be determined in the future when our requirements are more clear.
