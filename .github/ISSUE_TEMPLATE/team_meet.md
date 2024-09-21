@@ -6,17 +6,24 @@ labels: 'meeting'
 assignees: ''
 
 ---
+September 23rd, 11:30 - 13:30
 
-**Date and Time**
+Location: Virtual
 
 **Attendance**
 
-- [ ] team member1
-- [ ] team member2
-- [ ] team member3
-- [ ] team member4
-- [ ] team member5
+- [ ] Kyle
+- [ ] Oleg
+- [ ] Kartik
+- [ ] Mathew
 
 **Agenda**
+- 
+**Action Items**
+
+**Kyle:**
+**Oleg:**
+**Kartik:**
+**Mathew:**
 
 - 
