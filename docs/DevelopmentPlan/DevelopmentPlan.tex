@@ -82,7 +82,7 @@ organize a meeting location, and provide an agenda. Following all meetings, the 
     \cline{1-2} 
     Oleg Glotov & Team Lead, Project Manager & \\
     \cline{1-2} 
-    Kyle McMaster & Meeting Chair, Back-End Development Expert  & \\
+    Kyle McMaster & Meeting Chair, Back-End Development \& AI Expert  & \\
     \cline{1-2}
     Kartik Chaudhari & Customer Relations Manager, Git Expert & \\
     \hline
@@ -106,7 +106,8 @@ organize a meeting location, and provide an agenda. Following all meetings, the 
     Coordinates project tasks among team members, organizes meetings, ensures equitable distribution of work, and monitors deadlines to ensure they are met.
     
     \item \textbf{Kyle McMaster:} Responsible for creating meeting agendas, guiding discussions, managing meeting time, and resolving conflicts. 
-    Also responsible for assisting team members with the application's back-end logic and deploying services.
+    Also responsible for assisting team members with the application's back-end logic, deploying services, and contributing expertise in machine learning and artificial intelligence 
+    to integrate advanced data processing, and intelligent system functionalities.
     
     \item \textbf{Kartik Chaudhari:} Responsible for contacting potential customers and managing customer relationships. 
     Oversees the GitHub repository by organizing files and ensuring it is updated to reflect project progress. Provides guidance to team members on resolving issues related to Git.
@@ -213,91 +214,181 @@ For our front-end code, written in JavaScript, we will follow the JavaScript Sta
 
 \section*{Appendix --- Reflection}
 
-\wss{Not required for CAS 741}
+% \wss{Not required for CAS 741}
 
-\input{../Reflection.tex}
+% \input{../Reflection.tex}
 
 \begin{enumerate}
     \item Why is it important to create a development plan prior to starting the
-    project?
+    project?\\\\
+    Starting with a development plan was useful for our team for two reasons. First, it helped us develop a clearer picture of what our project will look
+    like. In order to make development plan decisions, we had to discuss the actual project itself. This gave us a chance to clear up misconceptions
+    we were having, and discuss what our overall mission is. More importantly though, working on this document (and problem statement/goals)
+    was a dry run for future deliverables. As we worked on this doc, we were able to put our plans of how we thought we would work together to the test. We found 
+    that our git workflow needed a couple of refinements and clarifications. For example, we needed to create more descriptive pull request titles and descriptions
+    so that reviewers know what they are looking to review before approving. Otherwise, it was very hard to get feedback on the \textit{Team Charter} section if the 
+    pull review was called `8-expectations'.
+  
     \item In your opinion, what are the advantages and disadvantages of using
-    CI/CD?
+    CI/CD?\\\\
+    We are already feeling the benefits of CI/CD in our workflows. Kyle built a tex workflow to compile our latex documents every time there is a push to the
+    main branch. This makes sure that the .tex file and its associated PDF never become out of sync. In the past, we have all experienced challenges working on
+    text files in git, as it is very easy to upload a code change and much harder to upload a pdf (usually requires fixing a merge conflict). This means that
+    we probably just would do one big compile and upload when the document is `finished'. The problem with that becomes when you are creating living documents
+    and it never really gets finished and the PDF then becomes hard to trust as a source of truth.
+
+    This workflow also exposed us to a disadvantage of CI/CD. It is very easy to spend a lot of time on it. Kyle spent close to 3 hours just getting the git workflow to work
+    and that is not even a very complicated deployment. It is exciting to have such a hands on and interactive part of the code base, where changes are easy
+    to see in real time. This makes it risky that we dedicate a lot of time to CI/CD, when it's not really necessary. We also intend to use CI/CD for regression testing.
+    We have to be careful that we don't let the lovely green check mark showing that a PR passes all the tests, replace thorough code review. When people are pressed for time, it's
+    easy to be tempted to skip reading the code if the tests pass. Although we will try to make a comprehensive test suite, there is always value to reading the code too.
+
     \item What disagreements did your group have in this deliverable, if any,
-    and how did you resolve them?
+    and how did you resolve them?\\\\
+    We only really had one disagreement for this deliverable and it had to do with our collaboration style on documentation. Some members of the team would prefer to 
+    first write sections in a shared google doc, and then upload all of the changes at once when complete and reviewed. This would make it easier to contribute to 
+    other sections, not bog us down with pull requests, and allow others to read the document in its entirety. The other members prefer using git issues and pull requests
+    to improve the traceability of contributions to the project. We have had a few discussions regarding this and in general they have been productive. We conduct
+    brainstorming and task allocation in a shared google doc, so that everyone has access to the task delineation. Before discussing the issue further as a group,
+    we decided to confirm with Dr. Smith whether the first option is even permissible. Following this response, we will meet again to finalize our approach. For now, 
+    we are using the git issues and pull requests to ensure traceability, as a small sacrifice to the ease of collaboration.
 \end{enumerate}
+
+
 
 \newpage{}
 
 \section*{Appendix --- Team Charter}
 
-\wss{borrows from
-\href{https://engineering.up.edu/industry_partnerships/files/team-charter.pdf}
-{University of Portland Team Charter}}
+% \wss{borrows from
+% \href{https://engineering.up.edu/industry_partnerships/files/team-charter.pdf}
+% {University of Portland Team Charter}}
 
 \subsection*{External Goals}
 
-\wss{What are your team's external goals for this project? These are not the
-goals related to the functionality or quality fo the project.  These are the
-goals on what the team wishes to achieve with the project.  Potential goals are
-to win a prize at the Capstone EXPO, or to have something to talk about in
-interviews, or to get an A+, etc.}
+As a team, we all see this project as an opportunity to demonstrate the extent of our skills and knowledge after several years of training.
+As such, our main goal is to develop a project we can talk with excitement to future recruiters and for some of us, graduate school admissions committees.
+We intend to work hard to make a project we are very proud of. We all expect this effort will translate into an A+ in the course, although that is somewhat
+secondary. Our effort will not be limited by the expectations of the capstone course, and instead by the limits of our abilities.
 
 \subsection*{Attendance}
 
 \subsubsection*{Expectations}
+\begin{itemize}
+\item Team members are expected to attend every meeting in person. If attendance in person is not possible, they will notify the team at least 24 hours 
+in advance so the team may discuss mkaing the meeting virtual or rescheduling.
+\item If attendance is not possible in person or virtually, they will notify the team at least 24 hours in advance. Each team member will be permitted to have 2 absences per semester 
+without penalty. Additional absences, or absences without proper warning, will have the following diciplinary action:
 
-\wss{What are your team's expectations regarding meeting attendance (being on
-time, leaving early, missing meetings, etc.)?}
+\begin{itemize}
+  \item[] \textbf{1-2} Bring snacks to following meeting.
+  \item[] \textbf{3-4} Bring snacks to following meeting \& a message will be sent to TA.
+  \item[] \textbf{5+} Message is sent to course instructor. Meeting is scheduled with team to discuss absences. If meeting is not attended, student receives 2.5\% deduction in final course grade per offence.
+\end{itemize}
+\end{itemize}
 
 \subsubsection*{Acceptable Excuse}
 
-\wss{What constitutes an acceptable excuse for missing a meeting or a deadline?
-What types of excuses will not be considered acceptable?}
+\begin{itemize}
+\item Acceptable excuses are typically limited to exceptional circumstances that are urgent and could not have been foreseen. Examples of such events are medical emergencies of oneself or of family members, 
+severe weather, or other risks for personal safety.
+\item Unacceptable excuses can be reasonably foreseen or expected by the member of the group. Examples of unacceptable excuses are getting busy with other courses, missing the bus, or over sleeping.
+\item If a team member is unable to meet a deadline due to other responsibilities, they are to alert the group with at least 7 days of notice. Each team member will
+be permitted to request 1 reduction of work per semester, provided other team members are able to take over the task and 7 days of notice is provided.
+\item Excuses are to be judged by group consensus on a case by case basis. If an excuse for absence is deemed unacceptable, penalties described above will be applied.
+\item Missing a deadline with an unacceptable excuse will be met with an immediate penalty of a message sent to the TA describing the situation for the first offence. 
+All other missed deadlines will result in a message sent to the instructor and a 2.5\% penalty on course grade.
+\end{itemize}
+% \wss{What constitutes an acceptable excuse for missing a meeting or a deadline?
+% What types of excuses will not be considered acceptable?}
 
 \subsubsection*{In Case of Emergency}
-
-\wss{What process will team members follow if they have an emergency and cannot
-attend a team meeting or complete their individual work promised for a team
-deliverable?}
+\begin{itemize}
+  \item In the event of an emergency, team members must contact group as soon as reasonably possible if a meeting or deadline might be missed. Team members should avoid
+  completing work at the last minute to lessen the effect of emergencies on the group.
+  \end{itemize}
+% \wss{What process will team members follow if they have an emergency and cannot
+% attend a team meeting or complete their individual work promised for a team
+% deliverable?}
 
 \subsection*{Accountability and Teamwork}
 
 \subsubsection*{Quality} 
-
-\wss{What are your team's expectations regarding the quality
-of team members' preparation for team meetings and the quality of the
-deliverables that members bring to the team?}
+Based on our expectations for the project, the team is required to meet a very high standard of quality.
+Each addition to the project should be crafted with high attention to detail, and reviewed thoroughly by the creator.
+We will expect that every pull request is adding code or text that is ready to be submitted to the best of our abilities.
+To help each other ensure we meet this standard, we will require every addition to be reviewed by at least one other team member.
+This reviewer will approach the review as if they are the last line of defense for the quality of our codebase.\\\\
+Every team member will complete expected action items and review the provided agenda before each meeting. They will provide additional agenda items when necessary.
+% \wss{What are your team's expectations regarding the quality
+% of team members' preparation for team meetings and the quality of the
+% deliverables that members bring to the team?}
 
 \subsubsection*{Attitude}
 
-\wss{What are your team's expectations regarding team members' ideas,
-interactions with the team, cooperation, attitudes, and anything else regarding
-team member contributions?  Do you want to introduce a code of conduct?  Do you
-want a conflict resolution plan?  Can adopt existing codes of conduct.}
+\begin{itemize}
+\item Team members will treat other with respect at all times
+\item Team members will be friendly and collaborative
+\item Team members will remember that we are all working towards a common goal, to develop a high quality product
+\item Team members will not act hostily towards eachother. Offenders to this will face diciplinary action as outlined in the absence penalty structure
+\item Team members will openly communicate
+\item Team members will be open to team member ideas. If they do not agree, they are welcome to provide reasons as to why not. It is not permitted to decline an idea because it is `not the way we do things'
+\item Team members will try to work together to make work load equitable
+\item Team members will try to accommodate external responsibilities, but understand it might not always be possible around large deadlines
+\item Team members will answer questions and provide additional information to team members who are interested in developing skills others are proficient in
+\item \textbf{We will be kind}
+\end{itemize}
+% \wss{What are your team's expectations regarding team members' ideas,
+% interactions with the team, cooperation, attitudes, and anything else regarding
+% team member contributions?  Do you want to introduce a code of conduct?  Do you
+% want a conflict resolution plan?  Can adopt existing codes of conduct.}
 
 \subsubsection*{Stay on Track}
 
-\wss{What methods will be used to keep the team on track? How will your team
-ensure that members contribute as expected to the team and that the team
-performs as expected? How will your team reward members who do well and manage
-members whose performance is below expectations?  What are the consequences for
-someone not contributing their fair share?}
+The team will work well in advance to assign work to team members. The team will schedule time in weekly meeting to have a `stand up' meeting, where they
+discuss progress and blockers. This will ensure there are no surprises when a deadline is approaching. We will also define earlier internal deadlines to provide enough
+time for someone to cover in the unlikely event that a team member is not able to meet a deadline.\\
 
-\wss{You may wish to use the project management metrics collected for the TA and
-instructor for this.}
+We will track team member progress by the amount of deliverables they complete in each milestone. Typlically, one deliverable will correspond to one or two 
+GitHub issues. We believe this metric will be more useful than lines of code or commits, both of which can be manipulated and do not always capture the 
+amount of value contributed. If planned correctly, each issue should contain roughly the same amount of effort to complete (although this won't always be the case).\\
 
-\wss{You can set target metrics for attendance, commits, etc.  What are the
-consequences if someone doesn't hit their targets?  Do they need to bring the
-coffee to the next team meeting?  Does the team need to make an appointment with
-their TA, or the instructor?  Are there incentives for reaching targets early?}
+We will also track attendance at meetings and lecture. Attendance at meetings is very important and penalties for absence are discussed above. Attending lecture is
+also important to the team, but less so. As long as we are able to find one person to attend, we will not worry much about lecture attendance. We will 
+track lecture attendance so if we need to force someone to attend, we can choose the person with worst attendance.
+
+% \wss{What methods will be used to keep the team on track? How will your team
+% ensure that members contribute as expected to the team and that the team
+% performs as expected? How will your team reward members who do well and manage
+% members whose performance is below expectations?  What are the consequences for
+% someone not contributing their fair share?}
+
+% \wss{You may wish to use the project management metrics collected for the TA and
+% instructor for this.}
+
+% \wss{You can set target metrics for attendance, commits, etc.  What are the
+% consequences if someone doesn't hit their targets?  Do they need to bring the
+% coffee to the next team meeting?  Does the team need to make an appointment with
+% their TA, or the instructor?  Are there incentives for reaching targets early?}
 
 \subsubsection*{Team Building}
 
-\wss{How will you build team cohesion (fun time, group rituals, etc.)? }
+We already have a strong start with building rapport within the team. 
+Everyone is very friendly towards each other and is aligned to the mission. We tend to sit together in lecture and are active in our group chats. 
+After a large deliverable, the team has agreed to celebrate at a location of their choosing. Kyle might even host a party if there is interest within the team.
+
+% \wss{How will you build team cohesion (fun time, group rituals, etc.)? }
 
 \subsubsection*{Decision Making} 
 
-\wss{How will you make decisions in your group? Consensus?  Vote? How will you
-handle disagreements? }
+In general, we will strive for team consensus. If it is not possible, opposing parties will prepare arguments for their proposal.
+Other members of the team can then ask further questions, or announce their preference. To make a change to the current path, a majority is needed. Ties will
+result in the status quo. If at any time a group member has \textit{new} arguments, they may bring the issue up again. It is important that team members are
+poilte and rational, but also provide a realistic indication of how deeply they feel about their arguments. If someone could go either way on an issue, and 
+we are stuck in a stalemate, learning that they do not have a deep stake might be enough to help the group move forward.\\\\
+Regardless of how passionate team members are about certain issues, they will follow our code of conduct and continue to be kind.
+
+% \wss{How will you make decisions in your group? Consensus?  Vote? How will you
+% handle disagreements? }
 
 \end{document}
