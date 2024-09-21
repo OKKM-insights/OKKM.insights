@@ -187,18 +187,47 @@ For our front-end code, written in JavaScript, we will follow the JavaScript Sta
 
 \section*{Appendix --- Reflection}
 
-\wss{Not required for CAS 741}
+% \wss{Not required for CAS 741}
 
-\input{../Reflection.tex}
+% \input{../Reflection.tex}
 
 \begin{enumerate}
     \item Why is it important to create a development plan prior to starting the
-    project?
+    project?\\\\
+    Starting with a development plan was useful for our team for two reasons. First, it helped us develop a clearer picture of what our project will look
+    like. In order to make development plan decisions, we had to discuss the actual project itself. This gave us a chance to clear up misconceptions
+    we were having, and discuss what our overall mission is. More importantly though, working on this document (and problem statement/goals)
+    was a dry run for future deliverables. As we worked on this doc, we were able to put our plans of how we thought we would work together to the test. We found 
+    that our git workflow needed a couple of refinements and clarifications. For example, we needed to create more descriptive pull request titles and descriptions
+    so that reviewers know what they are looking to review before approving. Otherwise, it was very hard to get feedback on the \textit{Team Charter} section if the 
+    pull review was called `8-expectations'.
+  
     \item In your opinion, what are the advantages and disadvantages of using
-    CI/CD?
+    CI/CD?\\\\
+    We are already feeling the benefits of CI/CD in our workflows. Kyle built a tex workflow to compile our latex documents every time there is a push to the
+    main branch. This makes sure that the .tex file and its associated PDF never become out of sync. In the past, we have all experienced challenges working on
+    text files in git, as it is very easy to upload a code change and much harder to upload a pdf (usually requires fixing a merge conflict). This means that
+    we probably just would do one big compile and upload when the document is `finished'. The problem with that becomes when you are creating living documents
+    and it never really gets finished and the PDF then becomes hard to trust as a source of truth.
+
+    This workflow also exposed us to a disadvantage of CI/CD. It is very easy to spend a lot of time on it. Kyle spent close to 3 hours just getting the git workflow to work
+    and that is not even a very complicated deployment. It is exciting to have such a hands on and interactive part of the code base, where changes are easy
+    to see in real time. This makes it risky that we dedicate a lot of time to CI/CD, when it's not really necessary. We also intend to use CI/CD for regression testing.
+    We have to be careful that we don't let the lovely green check mark showing that a PR passes all the tests, replace thorough code review. When people are pressed for time, it's
+    easy to be tempted to skip reading the code if the tests pass. Although we will try to make a comprehensive test suite, there is always value to reading the code too.
+
     \item What disagreements did your group have in this deliverable, if any,
-    and how did you resolve them?
+    and how did you resolve them?\\\\
+    We only really had one disagreement for this deliverable and it had to do with our collaboration style on documentation. Some members of the team would prefer to 
+    first write sections in a shared google doc, and then upload all of the changes at once when complete and reviewed. This would make it easier to contribute to 
+    other sections, not bog us down with pull requests, and allow others to read the document in its entirety. The other members prefer using git issues and pull requests
+    to improve the traceability of contributions to the project. We have had a few discussions regarding this and in general they have been productive. We conduct
+    brainstorming and task allocation in a shared google doc, so that everyone has access to the task delineation. Before discussing the issue further as a group,
+    we decided to confirm with Dr. Smith whether the first option is even permissible. Following this response, we will meet again to finalize our approach. For now, 
+    we are using the git issues and pull requests to ensure traceability, as a small sacrifice to the ease of collaboration.
 \end{enumerate}
+
+
 
 \newpage{}
 
