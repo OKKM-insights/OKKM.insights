@@ -100,7 +100,8 @@ We anticipate this project to be advanced due to our limited domain knowledge of
 To begin, we will be developing a web application from scratch, which poses a challenge as most team members lack experience in front-end development. 
 Additionally, we need to figure out how to seamlessly and automatically acquire paid satellite images for labeling from third-party providers upon customer request. 
 We also need to consider how to break down and distribute image-labeling tasks. This may involve algorithms for splitting larger images into smaller pieces for analysis,
- identifying images with relevant objects, and determining which users are best suited to label specific images. We will also need to design a consensus algorithm to ensure accurate 
+ identifying images with relevant objects, and determining which users are best suited to label specific images. Complicating matters further, our aim is for users to be able to label the 
+ same images in parallel, which will require designing systems to manage simultaneous contributions and prevent conflicts or inconsistencies. We will also need to design a consensus algorithm to ensure accurate 
  labeling, likely incorporating a user accuracy system and a statistical model—both of which will require research to understand and implement effectively. 
  Once a dataset is validated, we will face additional challenges in the realm of computer vision models. Our team has minimal experience in this area, so selecting, tweaking, 
  training, and testing the appropriate model for optimal accuracy across diverse datasets will require significant effort. Moreover, we aim to automate the training of the model 
