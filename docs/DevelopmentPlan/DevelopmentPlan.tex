@@ -6,6 +6,17 @@
 \usepackage{multirow}
 \usepackage{float}
 
+\usepackage[utf8]{inputenc}
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{adjustbox}
+
+\definecolor{lightgray}{gray}{0.9}
+\definecolor{headerblue}{rgb}{0.2,0.4,0.6}
+\definecolor{rowblue}{rgb}{0.8,0.9,1}
+
+
 \title{Development Plan\\\progname}
 
 \author{\authname}
@@ -42,6 +53,9 @@ what is contained in the report.}
 % \href{https://gitlab.cas.mcmaster.ca/courses/capstone/-/blob/main/Lectures/L02b_POCAndDevPlan/POCAndDevPlan.pdf?ref_type=heads}
 % {lecture slides}.}
 
+\section(Stakeholders)
+\\
+
 1.	Air Rescue Services: These organizations rely on satellite imagery to assist in critical missions like search and rescue. High-quality datasets can enhance their ability to assess disaster zones or monitor large areas efficiently, making response times quicker and saving lives. Satellite images tailored to disaster management, including flood zones or forest fires, are of particular importance to them. \\
 \\
 
@@ -59,6 +73,27 @@ what is contained in the report.}
 
 
 Other Stakeholders: Beyond the primary stakeholders, other key groups that benefit from high-quality satellite imagery datasets include defense agencies, which rely on tailored data for surveillance, intelligence, and threat detection to enhance national security. Environmental agencies use satellite data to monitor ecosystems, track deforestation, and respond to climate change. Similarly, urban planners leverage this data to manage land use, plan infrastructure development, and promote sustainable growth in cities. Additionally, disaster relief organizations depend on satellite imagery to assess damage in real-time and prioritize aid during crisis situations, making these datasets crucial for effective disaster response. Another important group includes the image labeling teams, who manually classify and annotate satellite images. Their work is crucial for building accurate datasets, and they benefit from improved tools and clearer guidelines to make the labeling process more efficient.
+
+
+\section{Environment}
+
+The primary environment for this project will be a web-based application, ensuring accessibility across a wide range of devices, including laptops, desktops, and potentially mobile devices. The web app will be accessible via any modern browser, making it cross-platform compatible and usable on Windows, Linux, and macOS.
+
+The development and deployment will prioritize portability to maximize usability across different platforms. Key points regarding the environment include:
+
+\begin{itemize}
+    \item Web-Based: The software will be a web app, meaning it will run within web browsers, such as Google Chrome, Mozilla Firefox, and Safari. This will allow users to access the application regardless of their operating system, making it highly portable.
+    
+    \item Cross-Platform Compatibility: While primarily targeted for laptops and desktops, the web app will also be responsive to work on mobile devices. The development will aim to make the app usable across all major operating systems (Windows, Linux, macOS).
+
+    \item Hosting and Backend: The backend services and APIs will be hosted on AWS/Azure, ensuring high scalability, performance, and availability. Users will not need to install any specific software or dependencies, as all services will be accessible through the web.
+
+    \item Development Environment: The development will be done primarily on Linux for server-side services, but the tools and frameworks used (Node.js, Flask, Python) are cross-compatible, meaning that development and testing can also occur on Windows and macOS environments.
+
+    \item Portability: Due to its web-based nature, the application will not be tied to any specific hardware and can be accessed from any device with internet connectivity, further enhancing its portability and ease of use.
+\end{itemize}
+
+
 
 
 
@@ -86,7 +121,67 @@ organize a meeting location, and provide an agenda. Following all meetings, the 
 
 \section{Team Communication Plan}
 
+\section{Communication Plan}
+
+1.	Primary Liaison for External Stakeholders: Kartik will act as the main point of contact for external stakeholders, ensuring clear communication with groups like Air Rescue Services and other key parties. \\
+\\
+
+2.	Managing Cross-Team Communication: Responsible for ensuring seamless communication between team members and supervisor during any conflicts of interest, Kartik will coordinate updates, ensuring everyone is aligned with project objectives. \\
+\\
+
+3.	Issue Escalation and Resolution: Monitoring GitHub issues, any critical roadblocks will be escalated and resolved through team discussions during meetings or via Teams, ensuring the project stays on track.\\
+\\
+
+4.	Feedback Coordination: Feedback from external stakeholders will be compiled and tracked to ensure it is clearly communicated to the development team and integrated into project improvements.\\
+\\
+
+5.	Regular Stakeholder Updates: Team members will manage the creation and dissemination of concise updates to stakeholders, keeping them informed on project progress, timelines, and deliverables. \\
+\\
+
+6.	Documentation of Key Communications: All significant external communications and feedback will be documented for future reference, maintaining transparency and accountability across the project.\\
+\\
+
 \wss{Issues on GitHub should be part of your communication plan.}
+
+\section*{Git Workflow Plan}
+
+\begin{enumerate}
+    \item \textbf{Git Workflow Oversight:} \\
+    Kartik will oversee the entire Git workflow to ensure the adoption of best practices. This includes enforcing branching and merging strategies, such as creating feature branches for new tasks and only merging them into the main branch after passing all necessary reviews. Protection of the main branch will be enforced by requiring approvals from 1-2 team members before any merges.
+    
+    \item \textbf{Approval Process:} \\
+    Before any branch is merged into the main branch, at least one or two team members must approve the changes. Code reviews will focus on checking for code quality, adherence to project standards, and testing coverage. Pull requests will include detailed comments describing the changes made, associated issue numbers, and any potential impacts.
+    
+    \item \textbf{Branch and Issue Management:} \\
+    Each branch will be associated with a specific GitHub issue to ensure tasks are clearly delineated. Issues will be small, focused tasks with clear descriptions. Each task will be broken into manageable parts, helping the team stay organized and providing clarity on the state of the project at all times. This will also simplify issue tracking and debugging when needed.
+    
+    \item \textbf{Milestone and Deliverable Tracking:} \\
+    GitHub's milestone feature will be used to track project deliverables. Each issue will be assigned to specific milestones, which are aligned with project deadlines. Regular monitoring of milestones will help identify blockers or delays early. Team members will be responsible for updating their progress and addressing blockers as soon as they arise.
+    
+    \item \textbf{Consistent Naming Conventions:} \\
+    A clear and consistent naming convention will be followed for branches, commits, and issues.
+    \begin{itemize}
+        \item \textbf{Branch names:} Should follow the format \texttt{<issue number>-<short-description>} (e.g., \texttt{23-fix-navbar} or \texttt{45-add-login-feature}).
+        \item \textbf{Commit messages:} Should be concise but descriptive, explaining the purpose of the change (e.g., \textit{Fix navbar alignment issue} or \textit{Implement user login feature}).
+        \item \textbf{Issue titles:} Will follow a similar format to describe the nature of the task (e.g., \textit{Fix alignment on homepage navbar}).
+    \end{itemize}
+    
+    \item \textbf{Tagging and Labeling Issues:} \\
+    GitHub Issues will be categorized and labeled for better tracking and prioritization:
+    \begin{itemize}
+        \item \textbf{Priority:} \texttt{high-priority}, \texttt{medium-priority}, \texttt{low-priority} to signify the urgency of tasks.
+        \item \textbf{Type:} \texttt{bug}, \texttt{enhancement}, \texttt{documentation}, \texttt{meeting} (for tracking meeting notes or action items).
+        \item \textbf{Status:} \texttt{in-progress}, \texttt{blocked}, \texttt{completed} to provide a quick visual status of each issue.
+        \item \textbf{Special tags:} \texttt{documentation} (for tasks related to docs) and \texttt{meeting} (for tracking meetings) to keep these types of work organized.
+    \end{itemize}
+    
+    \item \textbf{Integration of GitHub Issues and Projects:} \\
+    GitHub Issues will be the core tool for managing the project’s progress. Each issue will be assigned to a team member and associated with a branch. The team will use GitHub Projects (or similar) for Kanban-style task management, keeping the workflow efficient and transparent.
+    
+    \item \textbf{Automated Checks and CI Integration:} \\
+    To ensure code quality, Continuous Integration (CI) will be integrated into the Git workflow. Before merging into the main branch, CI checks will automatically run unit tests and linting to verify that the code adheres to the project's quality standards.
+\end{enumerate}
+
 
 \section{Team Member Roles}
 \begin{table}[H]
@@ -101,7 +196,7 @@ organize a meeting location, and provide an agenda. Following all meetings, the 
     \cline{1-2} 
     Kyle McMaster & Meeting Chair, Back-End Development \& AI Expert  & \\
     \cline{1-2}
-    Kartik Chaudhari & Customer Relations Manager, Git Expert & \\
+    Kartik Chaudhari & Customer Relations Manager, Product \& Deployment Manager, ML, \& Git Expert & \\
     \hline
   \end{tabular}
   \caption{Team Roles}
@@ -240,7 +335,84 @@ For both demos, we will utilize images from the "Where's Waldo?" book series. Th
     \item Complexity: The crowded scenes provide a realistic challenge similar to locating objects in satellite imagery.
 \end{itemize}
 
-\section{Expected Technology}
+\section{Project schedule}
+
+\begin{table}[h!]
+  \centering
+  \arrayrulecolor{headerblue}
+  \setlength{\arrayrulewidth}{1pt}
+  \rowcolors{1}{rowblue}{white}
+  \begin{adjustbox}{max width=\textwidth}
+  \begin{tabular}{|p{3cm}|p{5cm}|p{2.5cm}|p{2.5cm}|p{4cm}|p{2cm}|p{2.5cm}|p{4cm}|}
+  \hline
+  \rowcolor{headerblue}
+  \textbf{\color{white}Phase} & \textbf{\color{white}Tasks} & \textbf{\color{white}Start Date} & \textbf{\color{white}End Date} & \textbf{\color{white}Milestone} & \textbf{\color{white}Progress (\%)} & \textbf{\color{white}Expected Days} & \textbf{\color{white}Hardest Challenge} \\ \hline
+  Team Formation \& Initial Planning & Team Formed, Project Selected & 16-Sep-24 & 16-Sep-24 & Team Formed & 0\% & 1 & Aligning everyone on the project scope \\ \hline
+  Problem Definition \& POC Plan & Problem Statement, POC Plan, Development Plan & 17-Sep-24 & 23-Sep-24 & Submission of Problem Statement \& POC Plan & 2\% & 7 & Defining a clear and achievable proof of concept \\ \hline
+  Requirements Gathering & Draft Requirements Document (Backend \& Frontend) & 24-Sep-24 & 08-Oct-24 & Requirements Document Revision 0 & 5\% & 15 & Gathering comprehensive and precise requirements \\ \hline
+  Hazard Analysis & Identify Risks (Data quality, server security, etc.) & 10-Oct-24 & 23-Oct-24 & Submission of Hazard Analysis & 3\% & 14 & Identifying all possible hazards in satellite images \\ \hline
+  V\&V Plan & Verification \& Validation Plan (Test Plans, QA Plans) & 24-Oct-24 & 01-Nov-24 & V\&V Plan Revision 0 & 5\% & 9 & Designing a comprehensive testing plan for image models \\ \hline
+  Proof of Concept (POC) & Backend setup (database, server), Frontend skeleton & 01-Nov-24 & 10-Nov-24 & Basic functionality demonstrated & 5\% & 10 & Integrating satellite data into the backend system \\ \hline
+  Proof of Concept Demo & Present basic working model, get feedback & 11-Nov-24 & 22-Nov-24 & Proof of Concept Demonstration & 5\% & 12 & Gathering meaningful feedback and adjusting the system \\ \hline
+  Backend Development & API development, satellite image integration & 23-Nov-24 & 05-Jan-25 & Functional Backend for satellite data & Ongoing & 44 & Handling large amounts of satellite data efficiently \\ \hline
+  Frontend Development & UI/UX Design, Integrate APIs, Map Rendering & 23-Nov-24 & 05-Jan-25 & Functional Frontend & Ongoing & 44 & Building a user-friendly and interactive map interface \\ \hline
+  Design Document Revision & Revision of Design Document with final system architecture & 15-Dec-24 & 15-Jan-25 & Design Document Revision 0 & 5\% & 31 & Creating detailed technical architecture and design \\ \hline
+  Mid-Project Demonstration & Functional prototype of backend, frontend, and APIs & 03-Feb-25 & 14-Feb-25 & Revision 0 Demonstration & 10\% & 12 & Demonstrating a fully integrated prototype \\ \hline
+  Verification \& Validation (V\&V) & Test satellite image data processing, system reliability & 15-Feb-25 & 07-Mar-25 & V\&V Report Revision 0 & 5\% & 21 & Ensuring accuracy and consistency of the data processing \\ \hline
+  Final Project Demo (Revision 1) & Full system demo (backend, frontend, datasets, etc.) & 24-Mar-25 & 30-Mar-25 & Final Demonstration (Revision 1) & 20\% & 7 & Coordinating all components for a seamless demo \\ \hline
+  EXPO Preparation & Prepare for Expo, polishing the UI, final system tweaks & 01-Apr-25 & Apr TBD, 2025 & EXPO Demonstration & 10\% & 15 & Finalizing and polishing all aspects of the project \\ \hline
+  Final Documentation & Compile final reports, code, guides (Problem Statement to Final Report) & 01-Apr-25 & 15-Apr-25 & Final Submission & 30\% & 15 & Completing all documentation to a high standard \\ \hline
+  \end{tabular}
+  \end{adjustbox}
+  \caption{Project Schedule Overview}
+  \end{table}
+
+
+  \section{Expected Technology}
+
+  \section{Frontend:}
+  \begin{itemize}
+      \item JavaScript: The primary language for the frontend development. It will handle user interactions and dynamic content updates on the web application.
+  
+      \item React: A popular JavaScript library used to build the user interface (UI). It will manage the frontend components and allow for a dynamic, responsive user experience.
+  \end{itemize}
+  
+  \section{Backend:}
+  \begin{itemize}
+      \item Node.js: Used for the server-side development, Node.js provides an asynchronous event-driven architecture, making it suitable for handling multiple client requests efficiently.
+      \item Python: Plays a major role in machine learning (ML) tasks, image processing, and backend scripting.
+      \item Flask: A lightweight Python framework used to build the backend server. It will handle API requests, manage server routing, and integrate with the database.
+  \end{itemize}
+  
+  \section{Machine Learning \& Data Processing:}
+  \begin{itemize}
+      \item TensorFlow (TF): The main machine learning framework to train or fine-tune models for tasks such as image classification and segmentation. We may also leverage pre-trained models, like Meta’s Segment Anything Model for segmentation tasks.
+      \item Numpy: A core library for numerical computing in Python, essential for handling arrays and performing mathematical operations efficiently.
+      \item PILLOW: A Python library used for image processing, enabling tasks like image resizing, format conversion, and basic manipulations.
+  \end{itemize}
+  
+  \section{Database:}
+  \begin{itemize}
+      \item SQLAlchemy: A powerful ORM (Object Relational Mapper) for Python that will facilitate database connections and work with both SQL and NoSQL databases.
+      \item SQL (PostgreSQL): Suitable for handling structured data and relationships. There is a program called PostGIS which extendes the capabilities of PostgreSQL database by allowing us to store geospatial data. Ideal if we require ACID compliance and structured querying.
+  \end{itemize}
+  
+  \section{Cloud:}
+  \begin{itemize}
+      \item AWS/Azure: Used for hosting, storage, and machine learning models. AWS/Azure provides scalable infrastructure for both our backend and frontend.
+
+  \section{Linting and Static Type Checking:}
+  \begin{itemize}
+    \item Mypy: A static type checker for Python that will ensure the correctness of types throughout the code, helping prevent runtime errors.
+    \item ESLint: The linter for JavaScript code, ensuring code quality and consistency in the frontend. It enforces best practices and helps catch errors early in development.
+  \end{itemize}
+
+   \section{Model Training:}
+  \begin{itemize}
+      \item The project will involve training custom models or fine-tuning existing ones, particularly focusing on computer vision tasks. We will be working with Meta’s Segment Anything Model for fine-tuning and extending its capabilities to fit our satellite image use case.
+
+  \end{itemize}
+  
 
 % \wss{What programming language or languages do you expect to use?  What external
 % libraries?  What frameworks?  What technologies.  Are there major components of
