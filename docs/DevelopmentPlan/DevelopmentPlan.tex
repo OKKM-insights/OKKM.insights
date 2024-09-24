@@ -26,7 +26,7 @@
 \textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
 \midrule
 9/18/2024 & Mathew Petronilho & Added Member Roles and Coding Standards\\
-9/23/2024 & Kartik Chaudhari & Added Stakeholders\\
+9/23/2024 & Oleg Glotov & Added technical sections\\
 Date2 & Name(s) & Description of changes\\
 ... & ... & ...\\
 \bottomrule
@@ -65,22 +65,17 @@ Other Stakeholders: Beyond the primary stakeholders, other key groups that benef
 
 \section{Confidential Information?}
 
-\wss{State whether your project has confidential information from industry, or
-not.  If there is confidential information, point to the agreement you have in
-place.}
+There is no confidential information to protect.
 
-\wss{For most teams this section will just state that there is no confidential
-information to protect.}
 \section{IP to Protect}
 
-\wss{State whether there is IP to protect.  If there is, point to the agreement.
-All students who are working on a project that requires an IP agreement are also
-required to sign the ``Intellectual Property Guide Acknowledgement.''}
+Currently we chose not to protect our IP as we are aiming for a commercial product. Down the line we most likely will have to opt in for IP protection.
 
 \section{Copyright License}
 
-\wss{What copyright license is your team adopting.  Point to the license in your
-repo.}
+We opted to go with the Apache License 2.0. It allows anyone to use, modify, and distribute the software for free as long as they include the license and copyright notice. However, we are entitled to payments if it is used commercially.
+
+https://github.com/OKKM-insights/OKKM.insights/blob/main/LICENSE
 
 \section{Team Meeting Plan}
 The team will meet weekly on Mondays from 11:30 until 13:20, in a study room booked by Kyle McMaster.
@@ -199,7 +194,51 @@ The project can be found at \\\url{https://github.com/orgs/OKKM-insights/project
 
 What is the main risk, or risks, for the success of your project?  What will you
 demonstrate during your proof of concept demonstration to convince yourself that
-you will be able to overcome this risk?
+you will be able to overcome this risk?\\
+
+Our project consists of two main components: the computer vision algorithm and the labeling tool. We intend to present both in our upcoming demo to illustrate the complete pipeline—from data labeling to model training and application on new data.\\
+
+Computer vision demo:\\
+
+We will simulate a specific business case that involves searching for a particular object within an image, using the "Where's Waldo?" book series as our dataset. In these books, readers are challenged to find the character Waldo, who is cleverly hidden among numerous other characters and objects. This scenario mirrors real-world challenges in satellite imagery analysis, where identifying specific targets within complex visuals is essential.\\
+
+Demo Objectives:
+
+\begin{itemize}
+    \item Model Training: Train a computer vision model using the labeled data to recognize and locate Waldo.
+    \item Out-of-Sample Testing: Apply the trained model to new, unlabeled images to assess its ability to find Waldo without prior hints.
+\end{itemize}
+
+This demonstration will showcase our ability to create a functional model capable of detecting specific objects in complex images.\\
+
+Web application demo:\\
+
+Our web application serves as the primary labeling tool within our platform. We aim to demonstrate a basic yet functional implementation that walks through all the steps involved in the labeling process.\\
+
+Demo objectives (Frontend):
+
+\begin{itemize}
+    \item Client Upload Page: A dedicated interface where clients can upload a labeling "Job," consisting of images requiring annotation.
+    \item Job Selection Screen: A portal where users (labelers) can view available jobs and select tasks they wish to work on.
+    \item Labeling Interface: A user-friendly page where labelers can annotate images according to the job specifications.
+\end{itemize}
+
+Demo objectives (Backend):
+
+\begin{itemize}
+    \item Image Management: Accept and securely store incoming images from clients.
+    \item Task Distribution: Break down images into manageable labeling tasks and assign them to users.
+    \item Data Integration: Ensure the labeled data seamlessly feeds into the computer vision model for training.
+\end{itemize}
+
+By implementing these features, we aim to demonstrate how users can contribute to the labeling process and how clients can initiate jobs, demonstrating the full experience of our platform.\\
+
+For both demos, we will utilize images from the "Where's Waldo?" book series. This choice offers several advantages:
+
+\begin{itemize}
+    \item Clarity: The task of finding Waldo is straightforward and easily understood by all audiences.
+    \item Complexity: The crowded scenes provide a realistic challenge similar to locating objects in satellite imagery.
+\end{itemize}
 
 \section{Expected Technology}
 
