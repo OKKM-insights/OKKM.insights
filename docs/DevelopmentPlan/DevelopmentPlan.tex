@@ -36,9 +36,8 @@
 \toprule
 \textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
 \midrule
-9/18/2024 & Mathew Petronilho & Added Member Roles and Coding Standards\\
-9/23/2024 & Oleg Glotov & Added technical sections\\
-Date2 & Name(s) & Description of changes\\
+9/24/2024 & Oleg, Kartik, Kyle, Mathew & First Revision\\
+
 ... & ... & ...\\
 \bottomrule
 \end{tabularx}
@@ -53,8 +52,8 @@ what is contained in the report.}
 % \href{https://gitlab.cas.mcmaster.ca/courses/capstone/-/blob/main/Lectures/L02b_POCAndDevPlan/POCAndDevPlan.pdf?ref_type=heads}
 % {lecture slides}.}
 
-\section(Stakeholders)
-\\
+\section{Stakeholders}
+
 
 1.	Air Rescue Services: These organizations rely on satellite imagery to assist in critical missions like search and rescue. High-quality datasets can enhance their ability to assess disaster zones or monitor large areas efficiently, making response times quicker and saving lives. Satellite images tailored to disaster management, including flood zones or forest fires, are of particular importance to them. \\
 \\
@@ -98,7 +97,7 @@ The development and deployment will prioritize portability to maximize usability
 
 
 
-\section{Confidential Information?} 
+\section{Confidential Information} 
 
 There is no confidential information to protect.
 
@@ -119,7 +118,6 @@ Weekly meetings will be chaired by Kyle, who will prepare an agenda to be sent i
 needed. Team members are also able to request additional meetings if necessary. In this case, it is their responsibility to chair the meeting, 
 organize a meeting location, and provide an agenda. Following all meetings, the meeting chair will prepare a list of action items.
 
-\section{Team Communication Plan}
 
 \section{Communication Plan}
 
@@ -141,46 +139,9 @@ organize a meeting location, and provide an agenda. Following all meetings, the 
 6.	Documentation of Key Communications: All significant external communications and feedback will be documented for future reference, maintaining transparency and accountability across the project.\\
 \\
 
-\wss{Issues on GitHub should be part of your communication plan.}
+% \wss{Issues on GitHub should be part of your communication plan.}
 
-\section*{Git Workflow Plan}
 
-\begin{enumerate}
-    \item \textbf{Git Workflow Oversight:} \\
-    Kartik will oversee the entire Git workflow to ensure the adoption of best practices. This includes enforcing branching and merging strategies, such as creating feature branches for new tasks and only merging them into the main branch after passing all necessary reviews. Protection of the main branch will be enforced by requiring approvals from 1-2 team members before any merges.
-    
-    \item \textbf{Approval Process:} \\
-    Before any branch is merged into the main branch, at least one or two team members must approve the changes. Code reviews will focus on checking for code quality, adherence to project standards, and testing coverage. Pull requests will include detailed comments describing the changes made, associated issue numbers, and any potential impacts.
-    
-    \item \textbf{Branch and Issue Management:} \\
-    Each branch will be associated with a specific GitHub issue to ensure tasks are clearly delineated. Issues will be small, focused tasks with clear descriptions. Each task will be broken into manageable parts, helping the team stay organized and providing clarity on the state of the project at all times. This will also simplify issue tracking and debugging when needed.
-    
-    \item \textbf{Milestone and Deliverable Tracking:} \\
-    GitHub's milestone feature will be used to track project deliverables. Each issue will be assigned to specific milestones, which are aligned with project deadlines. Regular monitoring of milestones will help identify blockers or delays early. Team members will be responsible for updating their progress and addressing blockers as soon as they arise.
-    
-    \item \textbf{Consistent Naming Conventions:} \\
-    A clear and consistent naming convention will be followed for branches, commits, and issues.
-    \begin{itemize}
-        \item \textbf{Branch names:} Should follow the format \texttt{<issue number>-<short-description>} (e.g., \texttt{23-fix-navbar} or \texttt{45-add-login-feature}).
-        \item \textbf{Commit messages:} Should be concise but descriptive, explaining the purpose of the change (e.g., \textit{Fix navbar alignment issue} or \textit{Implement user login feature}).
-        \item \textbf{Issue titles:} Will follow a similar format to describe the nature of the task (e.g., \textit{Fix alignment on homepage navbar}).
-    \end{itemize}
-    
-    \item \textbf{Tagging and Labeling Issues:} \\
-    GitHub Issues will be categorized and labeled for better tracking and prioritization:
-    \begin{itemize}
-        \item \textbf{Priority:} \texttt{high-priority}, \texttt{medium-priority}, \texttt{low-priority} to signify the urgency of tasks.
-        \item \textbf{Type:} \texttt{bug}, \texttt{enhancement}, \texttt{documentation}, \texttt{meeting} (for tracking meeting notes or action items).
-        \item \textbf{Status:} \texttt{in-progress}, \texttt{blocked}, \texttt{completed} to provide a quick visual status of each issue.
-        \item \textbf{Special tags:} \texttt{documentation} (for tasks related to docs) and \texttt{meeting} (for tracking meetings) to keep these types of work organized.
-    \end{itemize}
-    
-    \item \textbf{Integration of GitHub Issues and Projects:} \\
-    GitHub Issues will be the core tool for managing the project’s progress. Each issue will be assigned to a team member and associated with a branch. The team will use GitHub Projects (or similar) for Kanban-style task management, keeping the workflow efficient and transparent.
-    
-    \item \textbf{Automated Checks and CI Integration:} \\
-    To ensure code quality, Continuous Integration (CI) will be integrated into the Git workflow. Before merging into the main branch, CI checks will automatically run unit tests and linting to verify that the code adheres to the project's quality standards.
-\end{enumerate}
 
 
 \section{Team Member Roles}
@@ -225,23 +186,53 @@ organize a meeting location, and provide an agenda. Following all meetings, the 
     Oversees the GitHub repository by organizing files and ensuring it is updated to reflect project progress. Provides guidance to team members on resolving issues related to Git.
     
 \end{itemize}
-\wss{You should identify the types of roles you anticipate, like notetaker,
-leader, meeting chair, reviewer.  Assigning specific people to those roles is
-not necessary at this stage.  In a student team the role of the individuals will
-likely change throughout the year.}
+% \wss{You should identify the types of roles you anticipate, like notetaker,
+% leader, meeting chair, reviewer.  Assigning specific people to those roles is
+% not necessary at this stage.  In a student team the role of the individuals will
+% likely change throughout the year.}
 
 \section{Workflow Plan}
 
+% \begin{itemize}
+% 	\item How will you be using git, including branches, pull request, etc.?
+% 	\item How will you be managing issues, including template issues, issue
+% 	classification, etc.?
+%   \item Use of CI/CD
+% \end{itemize}
+
+\subsection{Git Workflow Plan}
+
+\subsubsection{Git Workflow Oversight:} 
+Kartik will oversee the entire Git workflow to ensure the adoption of best practices. This includes enforcing branching and merging strategies, such as creating feature branches for new tasks and only merging them into the main branch after passing all necessary reviews. Protection of the main branch will be enforced by requiring approvals from 1-2 team members before any merges.
+
+\subsubsection{Approval Process:} 
+Before any branch is merged into the main branch, at least one or two team members must approve the changes. Code reviews will focus on checking for code quality, adherence to project standards, and testing coverage. Pull requests will include detailed comments describing the changes made, associated issue numbers, and any potential impacts.
+
+\subsubsection{Branch and Issue Management:} 
+Each branch will be associated with a specific GitHub issue to ensure tasks are clearly delineated. Issues will be small, focused tasks with clear descriptions. Each task will be broken into manageable parts, helping the team stay organized and providing clarity on the state of the project at all times. This will also simplify issue tracking and debugging when needed.
+
+\subsubsection{Milestone and Deliverable Tracking:} 
+GitHub's milestone feature will be used to track project deliverables. Each issue will be assigned to specific milestones, which are aligned with project deadlines. Regular monitoring of milestones will help identify blockers or delays early. Team members will be responsible for updating their progress and addressing blockers as soon as they arise.
+
+\subsubsection{Consistent Naming Conventions:} 
+A clear and consistent naming convention will be followed for branches, commits, and issues.
 \begin{itemize}
-	\item How will you be using git, including branches, pull request, etc.?
-	\item How will you be managing issues, including template issues, issue
-	classification, etc.?
-  \item Use of CI/CD
+    \item \textbf{Branch names:} Should follow the format \texttt{<issue number>-<short-description>} (e.g., \texttt{23-fix-navbar} or \texttt{45-add-login-feature}).
+    \item \textbf{Commit messages:} Should be concise but descriptive, explaining the purpose of the change (e.g., \textit{Fix navbar alignment issue} or \textit{Implement user login feature}).
+    \item \textbf{Issue titles:} Will follow a similar format to describe the nature of the task (e.g., \textit{Fix alignment on homepage navbar}).
 \end{itemize}
 
-\subsection{Git Workflow}
+\subsubsection{Tagging and Labeling Issues:} 
+GitHub Issues will be categorized and labeled for better tracking and prioritization:
+\begin{itemize}
+    \item \textbf{Priority:} \texttt{high-priority}, \texttt{medium-priority}, \texttt{low-priority} to signify the urgency of tasks.
+    \item \textbf{Type:} \texttt{bug}, \texttt{enhancement}, \texttt{documentation}, \texttt{meeting} (for tracking meeting notes or action items).
+    \item \textbf{Status:} \texttt{in-progress}, \texttt{blocked}, \texttt{completed} to provide a quick visual status of each issue.
+    \item \textbf{Special tags:} \texttt{documentation} (for tasks related to docs) and \texttt{meeting} (for tracking meetings) to keep these types of work organized.
+\end{itemize}
 
-\subsection{Issue Management}
+\subsubsection{Integration of GitHub Issues and Projects:} 
+GitHub Issues will be the core tool for managing the project’s progress. Each issue will be assigned to a team member and associated with a branch. The team will use GitHub Projects (or similar) for Kanban-style task management, keeping the workflow efficient and transparent.
 
 \subsection{Usage of CI/CD}
 
@@ -254,7 +245,7 @@ To ensure the PDFs found in our repository are consistent with the tex files the
 As discussed in sections 10 and 11, we expect we will use Python to develop the backend components of our software. To improve the clarity of our code, especially
 when collaborating, we have decided to use type hinting. To enfore this requirement and reap further benefits of type hinting, we will use a static
 type checker as part of our CI/CD workflow. This is possible with a package called 
- \href{https://mypy-lang.org/}{mypy}.\\\\
+ \href{https://mypy-lang.org/}{mypy}.\\
 
  For both the front and back ends of the project, we have selected coding standards as described in section 11. To ensure these standards are met, we will include
  a linting step before pull requests can be merged into the main branch.
@@ -280,62 +271,6 @@ complete, they are moved to the archive. This organization will allow us to trac
 if a team member is overwhelmed before it becomes a catastrophic issue.
 
 The project can be found at \\\url{https://github.com/orgs/OKKM-insights/projects/1/}
-
-% \wss{How will the project be scheduled?  This is the big picture schedule, not
-% details. You will need to reproduce information that is in the course outline
-% for deadlines.}
-
-\section{Proof of Concept Demonstration Plan}
-
-What is the main risk, or risks, for the success of your project?  What will you
-demonstrate during your proof of concept demonstration to convince yourself that
-you will be able to overcome this risk?\\
-
-Our project consists of two main components: the computer vision algorithm and the labeling tool. We intend to present both in our upcoming demo to illustrate the complete pipeline—from data labeling to model training and application on new data.\\
-
-Computer vision demo:\\
-
-We will simulate a specific business case that involves searching for a particular object within an image, using the "Where's Waldo?" book series as our dataset. In these books, readers are challenged to find the character Waldo, who is cleverly hidden among numerous other characters and objects. This scenario mirrors real-world challenges in satellite imagery analysis, where identifying specific targets within complex visuals is essential.\\
-
-Demo Objectives:
-
-\begin{itemize}
-    \item Model Training: Train a computer vision model using the labeled data to recognize and locate Waldo.
-    \item Out-of-Sample Testing: Apply the trained model to new, unlabeled images to assess its ability to find Waldo without prior hints.
-\end{itemize}
-
-This demonstration will showcase our ability to create a functional model capable of detecting specific objects in complex images.\\
-
-Web application demo:\\
-
-Our web application serves as the primary labeling tool within our platform. We aim to demonstrate a basic yet functional implementation that walks through all the steps involved in the labeling process.\\
-
-Demo objectives (Frontend):
-
-\begin{itemize}
-    \item Client Upload Page: A dedicated interface where clients can upload a labeling "Job," consisting of images requiring annotation.
-    \item Job Selection Screen: A portal where users (labelers) can view available jobs and select tasks they wish to work on.
-    \item Labeling Interface: A user-friendly page where labelers can annotate images according to the job specifications.
-\end{itemize}
-
-Demo objectives (Backend):
-
-\begin{itemize}
-    \item Image Management: Accept and securely store incoming images from clients.
-    \item Task Distribution: Break down images into manageable labeling tasks and assign them to users.
-    \item Data Integration: Ensure the labeled data seamlessly feeds into the computer vision model for training.
-\end{itemize}
-
-By implementing these features, we aim to demonstrate how users can contribute to the labeling process and how clients can initiate jobs, demonstrating the full experience of our platform.\\
-
-For both demos, we will utilize images from the "Where's Waldo?" book series. This choice offers several advantages:
-
-\begin{itemize}
-    \item Clarity: The task of finding Waldo is straightforward and easily understood by all audiences.
-    \item Complexity: The crowded scenes provide a realistic challenge similar to locating objects in satellite imagery.
-\end{itemize}
-
-\section{Project schedule}
 
 \begin{table}[h!]
   \centering
@@ -367,47 +302,101 @@ For both demos, we will utilize images from the "Where's Waldo?" book series. Th
   \caption{Project Schedule Overview}
   \end{table}
 
+% \wss{How will the project be scheduled?  This is the big picture schedule, not
+% details. You will need to reproduce information that is in the course outline
+% for deadlines.}
+
+\section{Proof of Concept Demonstration Plan}
+
+What is the main risk, or risks, for the success of your project?  What will you
+demonstrate during your proof of concept demonstration to convince yourself that
+you will be able to overcome this risk?\\
+
+Our project consists of two main components: the computer vision algorithm and the labeling tool. We intend to present both in our upcoming demo to illustrate the complete pipeline—from data labeling to model training and application on new data.\\
+
+\subsection{Computer vision demo:}
+
+We will simulate a specific business case that involves searching for a particular object within an image, using the "Where's Waldo?" book series as our dataset. In these books, readers are challenged to find the character Waldo, who is cleverly hidden among numerous other characters and objects. This scenario mirrors real-world challenges in satellite imagery analysis, where identifying specific targets within complex visuals is essential.\\
+
+Demo Objectives:
+
+\begin{itemize}
+    \item Model Training: Train a computer vision model using the labeled data to recognize and locate Waldo.
+    \item Out-of-Sample Testing: Apply the trained model to new, unlabeled images to assess its ability to find Waldo without prior hints.
+\end{itemize}
+
+This demonstration will showcase our ability to create a functional model capable of detecting specific objects in complex images.\\
+
+\subsection{Web application demo:}
+
+Our web application serves as the primary labeling tool within our platform. We aim to demonstrate a basic yet functional implementation that walks through all the steps involved in the labeling process.\\
+
+Demo objectives (Frontend):
+
+\begin{itemize}
+    \item Client Upload Page: A dedicated interface where clients can upload a labeling "Job," consisting of images requiring annotation.
+    \item Job Selection Screen: A portal where users (labelers) can view available jobs and select tasks they wish to work on.
+    \item Labeling Interface: A user-friendly page where labelers can annotate images according to the job specifications.
+\end{itemize}
+
+Demo objectives (Backend):
+
+\begin{itemize}
+    \item Image Management: Accept and securely store incoming images from clients.
+    \item Task Distribution: Break down images into manageable labeling tasks and assign them to users.
+    \item Data Integration: Ensure the labeled data seamlessly feeds into the computer vision model for training.
+\end{itemize}
+
+By implementing these features, we aim to demonstrate how users can contribute to the labeling process and how clients can initiate jobs, demonstrating the full experience of our platform.\\
+
+For both demos, we will utilize images from the "Where's Waldo?" book series. This choice offers several advantages:
+
+\begin{itemize}
+    \item Clarity: The task of finding Waldo is straightforward and easily understood by all audiences.
+    \item Complexity: The crowded scenes provide a realistic challenge similar to locating objects in satellite imagery.
+\end{itemize}
+
 
   \section{Expected Technology}
 
-  \section{Frontend:}
+  \subsection{Frontend:}
   \begin{itemize}
       \item JavaScript: The primary language for the frontend development. It will handle user interactions and dynamic content updates on the web application.
   
       \item React: A popular JavaScript library used to build the user interface (UI). It will manage the frontend components and allow for a dynamic, responsive user experience.
   \end{itemize}
   
-  \section{Backend:}
+  \subsection{Backend:}
   \begin{itemize}
       \item Node.js: Used for the server-side development, Node.js provides an asynchronous event-driven architecture, making it suitable for handling multiple client requests efficiently.
       \item Python: Plays a major role in machine learning (ML) tasks, image processing, and backend scripting.
       \item Flask: A lightweight Python framework used to build the backend server. It will handle API requests, manage server routing, and integrate with the database.
   \end{itemize}
   
-  \section{Machine Learning \& Data Processing:}
+  \subsection{Machine Learning \& Data Processing:}
   \begin{itemize}
       \item TensorFlow (TF): The main machine learning framework to train or fine-tune models for tasks such as image classification and segmentation. We may also leverage pre-trained models, like Meta’s Segment Anything Model for segmentation tasks.
       \item Numpy: A core library for numerical computing in Python, essential for handling arrays and performing mathematical operations efficiently.
       \item PILLOW: A Python library used for image processing, enabling tasks like image resizing, format conversion, and basic manipulations.
   \end{itemize}
   
-  \section{Database:}
+  \subsection{Database:}
   \begin{itemize}
       \item SQLAlchemy: A powerful ORM (Object Relational Mapper) for Python that will facilitate database connections and work with both SQL and NoSQL databases.
       \item SQL (PostgreSQL): Suitable for handling structured data and relationships. There is a program called PostGIS which extendes the capabilities of PostgreSQL database by allowing us to store geospatial data. Ideal if we require ACID compliance and structured querying.
   \end{itemize}
   
-  \section{Cloud:}
+  \subsection{Cloud:}
   \begin{itemize}
       \item AWS/Azure: Used for hosting, storage, and machine learning models. AWS/Azure provides scalable infrastructure for both our backend and frontend.
  \end{itemize}
-  \section{Linting and Static Type Checking:}
+  \subsection{Linting and Static Type Checking:}
   \begin{itemize}
     \item Mypy: A static type checker for Python that will ensure the correctness of types throughout the code, helping prevent runtime errors.
     \item ESLint: The linter for JavaScript code, ensuring code quality and consistency in the frontend. It enforces best practices and helps catch errors early in development.
   \end{itemize}
 
-   \section{Model Training:}
+   \subsection{Model Training:}
   \begin{itemize}
       \item The project will involve training custom models or fine-tuning existing ones, particularly focusing on computer vision tasks. We will be working with Meta’s Segment Anything Model for fine-tuning and extending its capabilities to fit our satellite image use case.
 
@@ -428,21 +417,21 @@ For both demos, we will utilize images from the "Where's Waldo?" book series. Th
 % project.  It may also help with early identification of areas where project
 % members will need to augment their training.}
 
-Topics to discuss include the following:
+% Topics to discuss include the following:
 
-\begin{itemize}
-\item Specific programming language
-\item Specific libraries
-\item Pre-trained models
-\item Specific linter tool (if appropriate)
-\item Specific unit testing framework
-\item Investigation of code coverage measuring tools
-\item Specific plans for Continuous Integration (CI), or an explanation that CI
-  is not being done
-\item Specific performance measuring tools (like Valgrind), if
-  appropriate
-\item Tools you will likely be using?
-\end{itemize}
+% \begin{itemize}
+% \item Specific programming language
+% \item Specific libraries
+% \item Pre-trained models
+% \item Specific linter tool (if appropriate)
+% \item Specific unit testing framework
+% \item Investigation of code coverage measuring tools
+% \item Specific plans for Continuous Integration (CI), or an explanation that CI
+%   is not being done
+% \item Specific performance measuring tools (like Valgrind), if
+%   appropriate
+% \item Tools you will likely be using?
+% \end{itemize}
 
 % \wss{git, GitHub and GitHub projects should be part of your technology.}
 
