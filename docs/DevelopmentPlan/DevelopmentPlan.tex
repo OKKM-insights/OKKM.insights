@@ -140,25 +140,45 @@ organize a meeting location, and provide an agenda. Following all meetings, the 
 
 \wss{Issues on GitHub should be part of your communication plan.}
 
-\section{Git Workflow}
+\section*{Git Workflow Plan}
 
-1.	Git Workflow Oversight: Kartik will oversee the Git workflow, ensuring best practices for branching, merging, and committing. Protection of the main branch will be a key responsibility, with required approvals before merges. \\
-\\
+\begin{enumerate}
+    \item \textbf{Git Workflow Oversight:} \\
+    Kartik will oversee the entire Git workflow to ensure the adoption of best practices. This includes enforcing branching and merging strategies, such as creating feature branches for new tasks and only merging them into the main branch after passing all necessary reviews. Protection of the main branch will be enforced by requiring approvals from 1-2 team members before any merges.
+    
+    \item \textbf{Approval Process:} \\
+    Before any branch is merged into the main branch, at least one or two team members must approve the changes. Code reviews will focus on checking for code quality, adherence to project standards, and testing coverage. Pull requests will include detailed comments describing the changes made, associated issue numbers, and any potential impacts.
+    
+    \item \textbf{Branch and Issue Management:} \\
+    Each branch will be associated with a specific GitHub issue to ensure tasks are clearly delineated. Issues will be small, focused tasks with clear descriptions. Each task will be broken into manageable parts, helping the team stay organized and providing clarity on the state of the project at all times. This will also simplify issue tracking and debugging when needed.
+    
+    \item \textbf{Milestone and Deliverable Tracking:} \\
+    GitHub's milestone feature will be used to track project deliverables. Each issue will be assigned to specific milestones, which are aligned with project deadlines. Regular monitoring of milestones will help identify blockers or delays early. Team members will be responsible for updating their progress and addressing blockers as soon as they arise.
+    
+    \item \textbf{Consistent Naming Conventions:} \\
+    A clear and consistent naming convention will be followed for branches, commits, and issues.
+    \begin{itemize}
+        \item \textbf{Branch names:} Should follow the format \texttt{<issue number>-<short-description>} (e.g., \texttt{23-fix-navbar} or \texttt{45-add-login-feature}).
+        \item \textbf{Commit messages:} Should be concise but descriptive, explaining the purpose of the change (e.g., \textit{Fix navbar alignment issue} or \textit{Implement user login feature}).
+        \item \textbf{Issue titles:} Will follow a similar format to describe the nature of the task (e.g., \textit{Fix alignment on homepage navbar}).
+    \end{itemize}
+    
+    \item \textbf{Tagging and Labeling Issues:} \\
+    GitHub Issues will be categorized and labeled for better tracking and prioritization:
+    \begin{itemize}
+        \item \textbf{Priority:} \texttt{high-priority}, \texttt{medium-priority}, \texttt{low-priority} to signify the urgency of tasks.
+        \item \textbf{Type:} \texttt{bug}, \texttt{enhancement}, \texttt{documentation}, \texttt{meeting} (for tracking meeting notes or action items).
+        \item \textbf{Status:} \texttt{in-progress}, \texttt{blocked}, \texttt{completed} to provide a quick visual status of each issue.
+        \item \textbf{Special tags:} \texttt{documentation} (for tasks related to docs) and \texttt{meeting} (for tracking meetings) to keep these types of work organized.
+    \end{itemize}
+    
+    \item \textbf{Integration of GitHub Issues and Projects:} \\
+    GitHub Issues will be the core tool for managing the project’s progress. Each issue will be assigned to a team member and associated with a branch. The team will use GitHub Projects (or similar) for Kanban-style task management, keeping the workflow efficient and transparent.
+    
+    \item \textbf{Automated Checks and CI Integration:} \\
+    To ensure code quality, Continuous Integration (CI) will be integrated into the Git workflow. Before merging into the main branch, CI checks will automatically run unit tests and linting to verify that the code adheres to the project's quality standards.
+\end{enumerate}
 
-2.	Approval Process: Ensuring that any code merged into the main branch receives approval from 1-2 team members, maintaining code quality and consistency across the project. \\
-\\ 
-
-3.	Branch and Issue Management: Each branch must be linked to a specific GitHub issue, and tasks will be broken down into small, manageable chunks. This ensures clarity and organization in the workflow.\\
-\\
-
-4.	Milestone and Deliverable Tracking: Each team member will monitor the progress of milestones and ensure that tasks are completed on time. Delays or blockers will be identified and addressed promptly. \\
-\\
-
-5.	Consistent Naming Conventions: Enforcing consistent naming conventions for branches, commits, and issues, ensuring ease of navigation and review within the project.\\
-\\
-
-6.	Integration of GitHub Issues: GitHub Issues will serve as the central tool for tracking tasks, with issues labeled and assigned based on their priority. This ensures that the workflow remains focused and efficient. \\
-\\
 
 \section{Team Member Roles}
 \begin{table}[H]
@@ -371,8 +391,7 @@ For both demos, we will utilize images from the "Where's Waldo?" book series. Th
   \section{Database:}
   \begin{itemize}
       \item SQLAlchemy: A powerful ORM (Object Relational Mapper) for Python that will facilitate database connections and work with both SQL and NoSQL databases.
-      \item SQL (PostgreSQL): Suitable for handling structured data and relationships. Ideal if we require ACID compliance and structured querying.
-      \item NoSQL (MongoDB): More flexible for handling unstructured data, allowing for greater scalability and schema-less design.
+      \item SQL (PostgreSQL): Suitable for handling structured data and relationships. There is a program called PostGIS which extendes the capabilities of PostgreSQL database by allowing us to store geospatial data. Ideal if we require ACID compliance and structured querying.
   \end{itemize}
   
   \section{Cloud:}
