@@ -22,21 +22,20 @@
 \toprule
 \textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
 \midrule
-9/18/2024 & Mathew Petronilho & Added Problem, Challenge level and Extras\\
-Date2 & Name(s) & Description of changes\\
-... & ... & ...\\
+9/24/2024 & Oleg, Kartik, Kyle, Mathew & First Revision\\
+
 \bottomrule
 \end{tabularx}
 \end{table}
 
 \section{Problem Statement}
 
-\wss{You should check your problem statement with the
-\href{https://github.com/smiths/capTemplate/blob/main/docs/Checklists/ProbState-Checklist.pdf}
-{problem statement checklist}.} 
+% \wss{You should check your problem statement with the
+% \href{https://github.com/smiths/capTemplate/blob/main/docs/Checklists/ProbState-Checklist.pdf}
+% {problem statement checklist}.} 
 
-\wss{You can change the section headings, as long as you include the required
-information.}
+% \wss{You can change the section headings, as long as you include the required
+% information.}
 
 \subsection{Problem}
 There is currently a lack of high-quality, labeled satellite imagery datasets tailored for specific use cases. Many industries require specialized data for tasks like disaster 
@@ -49,14 +48,52 @@ be used to train custom computer vision models for various use cases. At its cor
 and in turn, distribute the earnings to the users who contribute to the labeling effort.
 \subsection{Inputs and Outputs}
 
-\wss{Characterize the problem in terms of ``high level'' inputs and outputs.  
-Use abstraction so that you can avoid details.}
+% \wss{Characterize the problem in terms of ``high level'' inputs and outputs.  
+% Use abstraction so that you can avoid details.}
+Inputs:
 
-\subsection{Stakeholders}
+\begin{itemize}
+    \item Satellite imagery: Raw, unlabeled (satellite) images that form the foundational data for analysis.
+    \item Financial resources: Monetary resources for user compensations.
+    \item Human effort: Time and expertise contributed by users who label the images.
+\end{itemize}
 
-\subsection{Environment}
+Outputs:
 
-\wss{Hardware and software environment}
+\begin{itemize}
+    \item Labeled datasets: high-quality, specialized datasets tailored to specific industry needs.
+    \item Actionable insights: Industry specific information derived from the data as part of the labeling process
+    \item Trained models: Trained CV models capable of automating or simplifying image analysis tasks for different use cases.
+    \item Customer satisfaction: Users satisfaction stemming from platform use and monetary rewards.
+    \item Revenue generation: Income derived from providing paid services to clients needing specialized datasets and models.
+\end{itemize}
+\section{Stakeholders}
+
+1.	Air Rescue Services: These organizations rely on satellite imagery to assist in critical missions like search and rescue. High-quality datasets can enhance their ability to assess disaster zones or monitor large areas efficiently, making response times quicker and saving lives. Satellite images tailored to disaster management, including flood zones or forest fires, are of particular importance to them.
+2.	Alternative Financial Data Companies: These companies use satellite data to analyze economic activities and trends. For example, satellite imagery of crop growth can be used to predict agricultural yields, or images of traffic patterns near malls can provide insights into retail performance. High-quality datasets enable these companies to develop more accurate financial models and market predictions.
+3.	Farmers and Agricultural Enterprises: Farmers benefit from satellite imagery for precision farming, monitoring crop health, soil conditions, and weather patterns. Access to customized datasets allows them to optimize planting schedules, monitor water usage, and make informed decisions about fertilizer application, improving yield and reducing costs.
+4.	End Users/Clients: This could include governments, NGOs, private companies, and environmental organizations that use the datasets to make informed decisions. These stakeholders expect reliable datasets that offer actionable insights, whether for environmental monitoring, urban planning, or defense-related tasks. Their satisfaction hinges on the accuracy and usability of the models developed from the data.
+
+Other Stakeholders: Beyond the primary stakeholders, other key groups that benefit from high-quality satellite imagery datasets include defense agencies, which rely on tailored data for surveillance, intelligence, and threat detection to enhance national security. Environmental agencies use satellite data to monitor ecosystems, track deforestation, and respond to climate change. Similarly, urban planners leverage this data to manage land use, plan infrastructure development, and promote sustainable growth in cities. Additionally, disaster relief organizations depend on satellite imagery to assess damage in real-time and prioritize aid during crisis situations, making these datasets crucial for effective disaster response. Another important group includes the image labeling teams, who manually classify and annotate satellite images. Their work is crucial for building accurate datasets, and they benefit from improved tools and clearer guidelines to make the labeling process more efficient.
+
+\section{Environment}
+
+The primary environment for this project will be a web-based application, ensuring accessibility across a wide range of devices, including laptops, desktops, and potentially mobile devices. The web app will be accessible via any modern browser, making it cross-platform compatible and usable on Windows, Linux, and macOS.
+
+The development and deployment will prioritize portability to maximize usability across different platforms. Key points regarding the environment include:
+
+\begin{itemize}
+    \item Web-Based: The software will be a web app, meaning it will run within web browsers, such as Google Chrome, Mozilla Firefox, and Safari. This will allow users to access the application regardless of their operating system, making it highly portable.
+
+    \item Cross-Platform Compatibility: While primarily targeted for laptops and desktops, the web app will also be responsive to work on mobile devices. The development will aim to make the app usable across all major operating systems (Windows, Linux, macOS).
+
+    \item Hosting and Backend: The backend services and APIs will be hosted on AWS/Azure, ensuring high scalability, performance, and availability. Users will not need to install any specific software or dependencies, as all services will be accessible through the web.
+
+    \item Development Environment: The development will be done primarily on Linux for server-side services, but the tools and frameworks used (Node.js, Flask, Python) are cross-compatible, meaning that development and testing can also occur on Windows and macOS environments.
+
+    \item Portability: Due to its web-based nature, the application will not be tied to any specific hardware and can be accessed from any device with internet connectivity, further enhancing its portability and ease of use.
+\end{itemize}
+% \wss{Hardware and software environment}
 
 \section{Goals}
 \subsection{High Data Accuracy}
@@ -117,37 +154,43 @@ Overall, with the complexity of the implementation and our current knowledge gap
   \item Demonstration Video: Create a video demonstrating how to use the product and its various features
   \item Formal Proof: Come up with a proof of convergence for labeled images to show that they have a certain level of consistency and accuracy
 \end{itemize}
-\wss{State your expected challenge level (advanced, general or basic).  The
-challenge can come through the required domain knowledge, the implementation or
-something else.  Usually the greater the novelty of a project the greater its
-challenge level.  You should include your rationale for the selected level.
-Approval of the level will be part of the discussion with the instructor for
-approving the project.  The challenge level, with the approval (or request) of
-the instructor, can be modified over the course of the term.}
+% \wss{State your expected challenge level (advanced, general or basic).  The
+% challenge can come through the required domain knowledge, the implementation or
+% something else.  Usually the greater the novelty of a project the greater its
+% challenge level.  You should include your rationale for the selected level.
+% Approval of the level will be part of the discussion with the instructor for
+% approving the project.  The challenge level, with the approval (or request) of
+% the instructor, can be modified over the course of the term.}
 
-\wss{Teams may wish to include extras as either potential bonus grades, or to
-make up for a less advanced challenge level.  Potential extras include usability
-testing, code walkthroughs, user documentation, formal proof, GenderMag
-personas, Design Thinking, etc.  Normally the maximum number of extras will be
-two.  Approval of the extras will be part of the discussion with the instructor
-for approving the project.  The extras, with the approval (or request) of the
-instructor, can be modified over the course of the term.}
+% \wss{Teams may wish to include extras as either potential bonus grades, or to
+% make up for a less advanced challenge level.  Potential extras include usability
+% testing, code walkthroughs, user documentation, formal proof, GenderMag
+% personas, Design Thinking, etc.  Normally the maximum number of extras will be
+% two.  Approval of the extras will be part of the discussion with the instructor
+% for approving the project.  The extras, with the approval (or request) of the
+% instructor, can be modified over the course of the term.}
 
 \newpage{}
 
 \section*{Appendix --- Reflection}
 
-\wss{Not required for CAS 741}
+% \wss{Not required for CAS 741}
 
 \input{../Reflection.tex}
 
 \begin{enumerate}
-    \item What went well while writing this deliverable? 
-    \item What pain points did you experience during this deliverable, and how
-    did you resolve them?
-    \item How did you and your team adjust the scope of your goals to ensure
-    they are suitable for a Capstone project (not overly ambitious but also of
-    appropriate complexity for a senior design project)?
+  \item What went well while writing this deliverable? 
+
+  This deliverable was relatively straightforward for our team to complete. We had decided on a project early in the process and made sure that all team members were genuinely interested in the proposal before moving forward. We regularly discussed the progress of the deliverable, both in our team meetings and following our capstone classes. The workload was distributed evenly, and team members cross-checked each other's work to ensure consistency in our understanding of the project's objectives. This collaborative approach helped us stay aligned and on track throughout the process.
+  \item What pain points did you experience during this deliverable, and how
+  did you resolve them?
+
+  The primary challenge was establishing the project's workflow, specifically configuring the GitHub-LaTeX pipeline to automatically compile files upon upload. We addressed this by organizing a team-wide meeting to align everyone on the process and identify best practices. Additionally, we consulted with the professor, both in-person and through a discussion post on Teams, to ensure we were following the correct approach.
+  \item How did you and your team adjust the scope of your goals to ensure
+  they are suitable for a Capstone project (not overly ambitious but also of
+  appropriate complexity for a senior design project)?
+
+  Our project's flexible nature allows us to adjust its complexity by adding or removing features around the core idea. While the core concept itself is not entirely new, our focus is on applying it to a new domain, which will require research to determine the best approach. The core functionality will be supplemented with more advanced features and techniques to allow our project to be classified as “advanced”. However, should we encounter time constraints or technical challenges, these additional features can be omitted without compromising the project's core functionality.
 \end{enumerate}  
 
 \end{document}
