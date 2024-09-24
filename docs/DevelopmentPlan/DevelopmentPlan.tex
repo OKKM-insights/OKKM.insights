@@ -53,6 +53,9 @@ what is contained in the report.}
 \href{https://gitlab.cas.mcmaster.ca/courses/capstone/-/blob/main/Lectures/L02b_POCAndDevPlan/POCAndDevPlan.pdf?ref_type=heads}
 {lecture slides}.}
 
+\section(Stakeholders)
+\\
+
 1.	Air Rescue Services: These organizations rely on satellite imagery to assist in critical missions like search and rescue. High-quality datasets can enhance their ability to assess disaster zones or monitor large areas efficiently, making response times quicker and saving lives. Satellite images tailored to disaster management, including flood zones or forest fires, are of particular importance to them. \\
 \\
 
@@ -70,7 +73,25 @@ what is contained in the report.}
 
 
 Other Stakeholders: Beyond the primary stakeholders, other key groups that benefit from high-quality satellite imagery datasets include defense agencies, which rely on tailored data for surveillance, intelligence, and threat detection to enhance national security. Environmental agencies use satellite data to monitor ecosystems, track deforestation, and respond to climate change. Similarly, urban planners leverage this data to manage land use, plan infrastructure development, and promote sustainable growth in cities. Additionally, disaster relief organizations depend on satellite imagery to assess damage in real-time and prioritize aid during crisis situations, making these datasets crucial for effective disaster response. Another important group includes the image labeling teams, who manually classify and annotate satellite images. Their work is crucial for building accurate datasets, and they benefit from improved tools and clearer guidelines to make the labeling process more efficient.
-\end{document}
+\\
+
+\section{Environment}
+
+The primary environment for this project will be a web-based application, ensuring accessibility across a wide range of devices, including laptops, desktops, and potentially mobile devices. The web app will be accessible via any modern browser, making it cross-platform compatible and usable on Windows, Linux, and macOS.
+
+The development and deployment will prioritize portability to maximize usability across different platforms. Key points regarding the environment include:
+
+\begin{itemize}
+    \item Web-Based: The software will be a web app, meaning it will run within web browsers, such as Google Chrome, Mozilla Firefox, and Safari. This will allow users to access the application regardless of their operating system, making it highly portable.
+    
+    \item Cross-Platform Compatibility: While primarily targeted for laptops and desktops, the web app will also be responsive to work on mobile devices. The development will aim to make the app usable across all major operating systems (Windows, Linux, macOS).
+
+    \item Hosting and Backend: The backend services and APIs will be hosted on AWS/Azure, ensuring high scalability, performance, and availability. Users will not need to install any specific software or dependencies, as all services will be accessible through the web.
+
+    \item Development Environment: The development will be done primarily on Linux for server-side services, but the tools and frameworks used (Node.js, Flask, Python) are cross-compatible, meaning that development and testing can also occur on Windows and macOS environments.
+
+    \item Portability: Due to its web-based nature, the application will not be tied to any specific hardware and can be accessed from any device with internet connectivity, further enhancing its portability and ease of use.
+\end{itemize}
 
 
 
@@ -152,7 +173,7 @@ organize a meeting location, and provide an agenda. Following all meetings, the 
     \cline{1-2} 
     Kyle McMaster & Meeting Chair, Back-End Development \& AI Expert  & \\
     \cline{1-2}
-    Kartik Chaudhari & Customer Relations Manager, Git Expert & \\
+    Kartik Chaudhari & Customer Relations Manager, ML \& Git Expert & \\
     \hline
   \end{tabular}
   \caption{Team Roles}
