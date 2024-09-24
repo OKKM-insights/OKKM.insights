@@ -42,13 +42,34 @@ what is contained in the report.}
 \href{https://gitlab.cas.mcmaster.ca/courses/capstone/-/blob/main/Lectures/L02b_POCAndDevPlan/POCAndDevPlan.pdf?ref_type=heads}
 {lecture slides}.}
 
+1.	Air Rescue Services: These organizations rely on satellite imagery to assist in critical missions like search and rescue. High-quality datasets can enhance their ability to assess disaster zones or monitor large areas efficiently, making response times quicker and saving lives. Satellite images tailored to disaster management, including flood zones or forest fires, are of particular importance to them. \\
+\\
+
+2.	Alternative Financial Data Companies: These companies use satellite data to analyze economic activities and trends. For example, satellite imagery of crop growth can be used to predict agricultural yields, or images of traffic patterns near malls can provide insights into retail performance. High-quality datasets enable these companies to develop more accurate financial models and market predictions. \\
+\\
+
+3.	Farmers and Agricultural Enterprises: Farmers benefit from satellite imagery for precision farming, monitoring crop health, soil conditions, and weather patterns. Access to customized datasets allows them to optimize planting schedules, monitor water usage, and make informed decisions about fertilizer application, improving yield and reducing costs. \\
+\\
+
+4.	Users: These are individuals or entities responsible for labeling the data on the platform. In return for their efforts, they receive compensation. Their primary role is to ensure that the datasets are correctly annotated according to specified requirements, which forms the basis of the models developed. Their work directly impacts the quality and usability of the final product. \\
+\\
+
+5.	End Clients/Customers: These stakeholders include governments, NGOs, private companies, and environmental organizations that pay for access to the labeled datasets and models. They rely on these datasets to make informed decisions in areas like environmental monitoring, urban planning, or defense-related tasks. Their satisfaction depends on the accuracy and reliability of both the data and the models provided. \\
+\\
+
+
+Other Stakeholders: Beyond the primary stakeholders, other key groups that benefit from high-quality satellite imagery datasets include defense agencies, which rely on tailored data for surveillance, intelligence, and threat detection to enhance national security. Environmental agencies use satellite data to monitor ecosystems, track deforestation, and respond to climate change. Similarly, urban planners leverage this data to manage land use, plan infrastructure development, and promote sustainable growth in cities. Additionally, disaster relief organizations depend on satellite imagery to assess damage in real-time and prioritize aid during crisis situations, making these datasets crucial for effective disaster response. Another important group includes the image labeling teams, who manually classify and annotate satellite images. Their work is crucial for building accurate datasets, and they benefit from improved tools and clearer guidelines to make the labeling process more efficient.
+\end{document}
+
+
+
 \section{Confidential Information?}
 
 There is no confidential information to protect.
 
 \section{IP to Protect}
 
-Currently we chose not to protect our IP as we are aiming for a commercial product. Down the line me most likely will have to opt in for IP protection.
+Currently we chose not to protect our IP as we are aiming for a commercial product. Down the line we most likely will have to opt in for IP protection.
 
 \section{Copyright License}
 
@@ -152,14 +173,22 @@ Depending on how we decided to host our server, we will also investigate if it w
 pushed to the main branch. This will be determined in the future when our requirements are more clear.
 \section{Project Decomposition and Scheduling}
 
-\begin{itemize}
-  \item How will you be using GitHub projects?
-  \item Include a link to your GitHub project
-\end{itemize}
+% \begin{itemize}
+%   \item How will you be using GitHub projects?
+%   \item Include a link to your GitHub project
+% \end{itemize}
 
-\wss{How will the project be scheduled?  This is the big picture schedule, not
-details. You will need to reproduce information that is in the course outline
-for deadlines.}
+We will use a Kanban board to track tasks for each deliverable. First, work to be completed will be identified and added to the project backlog.
+Then, team members will be assigned tasks. Once assigned, they will be moved to the `Assigned' section of the board. When actively being worked on, they will
+move to the `inflight' section. After completion, and when a pull request is made, they will be moved to the `for review' board. Finally, when the review is
+complete, they are moved to the archive. This organization will allow us to track how different components of the project are progressing, and identify
+if a team member is overwhelmed before it becomes a catastrophic issue.
+
+The project can be found at \\\url{https://github.com/orgs/OKKM-insights/projects/1/settings}
+
+% \wss{How will the project be scheduled?  This is the big picture schedule, not
+% details. You will need to reproduce information that is in the course outline
+% for deadlines.}
 
 \section{Proof of Concept Demonstration Plan}
 
@@ -213,19 +242,19 @@ For both demos, we will utilize images from the "Where's Waldo?" book series. Th
 
 \section{Expected Technology}
 
-\wss{What programming language or languages do you expect to use?  What external
-libraries?  What frameworks?  What technologies.  Are there major components of
-the implementation that you expect you will implement, despite the existence of
-libraries that provide the required functionality.  For projects with machine
-learning, will you use pre-trained models, or be training your own model?  }
+% \wss{What programming language or languages do you expect to use?  What external
+% libraries?  What frameworks?  What technologies.  Are there major components of
+% the implementation that you expect you will implement, despite the existence of
+% libraries that provide the required functionality.  For projects with machine
+% learning, will you use pre-trained models, or be training your own model?  }
 
-\wss{The implementation decisions can, and likely will, change over the course
-of the project.  The initial documentation should be written in an abstract way;
-it should be agnostic of the implementation choices, unless the implementation
-choices are project constraints.  However, recording our initial thoughts on
-implementation helps understand the challenge level and feasibility of a
-project.  It may also help with early identification of areas where project
-members will need to augment their training.}
+% \wss{The implementation decisions can, and likely will, change over the course
+% of the project.  The initial documentation should be written in an abstract way;
+% it should be agnostic of the implementation choices, unless the implementation
+% choices are project constraints.  However, recording our initial thoughts on
+% implementation helps understand the challenge level and feasibility of a
+% project.  It may also help with early identification of areas where project
+% members will need to augment their training.}
 
 Topics to discuss include the following:
 
@@ -243,12 +272,12 @@ Topics to discuss include the following:
 \item Tools you will likely be using?
 \end{itemize}
 
-\wss{git, GitHub and GitHub projects should be part of your technology.}
+% \wss{git, GitHub and GitHub projects should be part of your technology.}
 
 \section{Coding Standard}
 Our back-end code, written in Python, will adhere to PEP 8 for code formatting and PEP 484 for type annotations. 
 For our front-end code, written in JavaScript, we will follow the JavaScript Standard Style.
-\wss{What coding standard will you adopt?}
+% \wss{What coding standard will you adopt?}
 
 \newpage{}
 
