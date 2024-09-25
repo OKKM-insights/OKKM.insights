@@ -44,8 +44,7 @@
 
 \newpage{}
 
-\wss{Put your introductory blurb here.  Often the blurb is a brief roadmap of
-what is contained in the report.}
+This report outlines several key operational and organizational components of our project. It begins with an overview of confidential information and intellectual property (IP) considerations, followed by the selection of the Apache License 2.0 for copyright management. The report then presents the team’s meeting and communication plans, detailing roles and responsibilities for internal coordination and external stakeholder management. The document further provides a clear definition of team member roles, covering areas such as project management, customer relations, and technical responsibilities in development. It also includes a workflow plan, including the Git workflow, task management via Kanban boards, and CI/CD practices. Additionally, the project decomposition and scheduling section offers an in-depth look at the project's phases, tasks, milestones, and expected technology use, concluding with plans for both a proof of concept and project demonstration. Finally, the report emphasizes teamwork, accountability, and decision-making practices, supported by a team charter outlining goals, attendance expectations, and collaboration guidelines.
 
 % \wss{Additional information on the development plan can be found in the
 % \href{https://gitlab.cas.mcmaster.ca/courses/capstone/-/blob/main/Lectures/L02b_POCAndDevPlan/POCAndDevPlan.pdf?ref_type=heads}
@@ -65,9 +64,9 @@ Currently we chose not to protect our IP as we are aiming for a commercial produ
 
 \section{Copyright License}
 
-We opted to go with the Apache License 2.0. It allows anyone to use, modify, and distribute the software for free as long as they include the license and copyright notice. However, we are entitled to payments if it is used commercially.
+We opted to go with the Apache License 2.0. It allows anyone to use, modify, and distribute the software for free as long as they include the license and copyright notice. However, we are entitled to payments if it is used commercially. \\
 
-https://github.com/OKKM-insights/OKKM.insights/blob/main/LICENSE
+\url{https://github.com/OKKM-insights/OKKM.insights/blob/main/LICENSE}
 
 \section{Team Meeting Plan}
 The team will meet weekly on Mondays from 11:30 until 13:20, in a study room booked by Kyle McMaster.
@@ -266,13 +265,9 @@ The project can be found at \\\url{https://github.com/orgs/OKKM-insights/project
 
 \section{Proof of Concept Demonstration Plan}
 
-What is the main risk, or risks, for the success of your project?  What will you
-demonstrate during your proof of concept demonstration to convince yourself that
-you will be able to overcome this risk?\\
+Our project consists of two main components: the computer vision algorithm and the labeling tool. We intend to present both in our upcoming demo to illustrate the complete pipeline—from data labeling to model training and application on new data. The primary risk we want to address in the demo is the computer vision model and the data pipeline pertaining to it, hence for the full picture we wish to demonstrate each component in its simplest, working form. \\
 
-Our project consists of two main components: the computer vision algorithm and the labeling tool. We intend to present both in our upcoming demo to illustrate the complete pipeline—from data labeling to model training and application on new data.\\
-
-\subsection{Computer vision demo:}
+\subsection{Computer Vision Demo}
 
 We will simulate a specific business case that involves searching for a particular object within an image, using the "Where's Waldo?" book series as our dataset. In these books, readers are challenged to find the character Waldo, who is cleverly hidden among numerous other characters and objects. This scenario mirrors real-world challenges in satellite imagery analysis, where identifying specific targets within complex visuals is essential.\\
 
@@ -285,7 +280,7 @@ Demo Objectives:
 
 This demonstration will showcase our ability to create a functional model capable of detecting specific objects in complex images.\\
 
-\subsection{Web application demo:}
+\subsection{Web Application Demo}
 
 Our web application serves as the primary labeling tool within our platform. We aim to demonstrate a basic yet functional implementation that walks through all the steps involved in the labeling process.\\
 
@@ -348,7 +343,7 @@ For both demos, we will utilize images from the "Where's Waldo?" book series. Th
   \begin{itemize}
       \item AWS/Azure: Used for hosting, storage, and machine learning models. AWS/Azure provides scalable infrastructure for both our backend and frontend.
  \end{itemize}
-  \subsection{Linting and Static Type Checking:}
+  \subsection{Linting and Static Type Checking}
   \begin{itemize}
     \item Mypy: A static type checker for Python that will ensure the correctness of types throughout the code, helping prevent runtime errors.
     \item ESLint: The linter for JavaScript code, ensuring code quality and consistency in the frontend. It enforces best practices and helps catch errors early in development.
