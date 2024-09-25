@@ -140,8 +140,8 @@ organize a meeting location, and provide an agenda. Following all meetings, the 
     Also responsible for assisting team members with the application's back-end logic, deploying services, and contributing expertise in machine learning and artificial intelligence 
     to integrate advanced data processing, and intelligent system functionalities.
     
-    \item \textbf{Kartik Chaudhari:} Responsible for contacting potential customers and managing customer relationships. 
-    Oversees the GitHub repository by organizing files and ensuring it is updated to reflect project progress. Provides guidance to team members on resolving issues related to Git.
+    \item \textbf{Kartik Chaudhari:} Responsible for managing relationships with clients and stakeholders, ensuring that project requirements are understood and met. Leads the deployment and integration of the product by overseeing infrastructure, pipelines, and cloud environments. As the team's Git expert, Kartik ensures best practices for branching, merging, and resolving conflicts, while protecting the integrity of the main branch by managing required approvals. Additionally, Kartik applies his expertise in machine learning to guide the team in developing and optimizing models, ensuring the accuracy and efficiency of the platform's AI capabilities.
+
     
 \end{itemize}
 % \wss{You should identify the types of roles you anticipate, like notetaker,
@@ -160,19 +160,19 @@ organize a meeting location, and provide an agenda. Following all meetings, the 
 
 \subsection{Git Workflow Plan}
 
-\subsubsection{Git Workflow Oversight:} 
+\subsubsection{Git Workflow Oversight} 
 Kartik will oversee the entire Git workflow to ensure the adoption of best practices. This includes enforcing branching and merging strategies, such as creating feature branches for new tasks and only merging them into the main branch after passing all necessary reviews. Protection of the main branch will be enforced by requiring approvals from 1-2 team members before any merges.
 
-\subsubsection{Approval Process:} 
+\subsubsection{Approval Process} 
 Before any branch is merged into the main branch, at least one or two team members must approve the changes. Code reviews will focus on checking for code quality, adherence to project standards, and testing coverage. Pull requests will include detailed comments describing the changes made, associated issue numbers, and any potential impacts.
 
-\subsubsection{Branch and Issue Management:} 
+\subsubsection{Branch and Issue Management} 
 Each branch will be associated with a specific GitHub issue to ensure tasks are clearly delineated. Issues will be small, focused tasks with clear descriptions. Each task will be broken into manageable parts, helping the team stay organized and providing clarity on the state of the project at all times. This will also simplify issue tracking and debugging when needed.
 
-\subsubsection{Milestone and Deliverable Tracking:} 
+\subsubsection{Milestone and Deliverable Tracking} 
 GitHub's milestone feature will be used to track project deliverables. Each issue will be assigned to specific milestones, which are aligned with project deadlines. Regular monitoring of milestones will help identify blockers or delays early. Team members will be responsible for updating their progress and addressing blockers as soon as they arise.
 
-\subsubsection{Consistent Naming Conventions:} 
+\subsubsection{Consistent Naming Conventions} 
 A clear and consistent naming convention will be followed for branches, commits, and issues.
 \begin{itemize}
     \item \textbf{Branch names:} Should follow the format \texttt{<issue number>-<short-description>} (e.g., \texttt{23-fix-navbar} or \texttt{45-add-login-feature}).
@@ -180,7 +180,7 @@ A clear and consistent naming convention will be followed for branches, commits,
     \item \textbf{Issue titles:} Will follow a similar format to describe the nature of the task (e.g., \textit{Fix alignment on homepage navbar}).
 \end{itemize}
 
-\subsubsection{Tagging and Labeling Issues:} 
+\subsubsection{Tagging and Labeling Issues} 
 GitHub Issues will be categorized and labeled for better tracking and prioritization:
 \begin{itemize}
     \item \textbf{Priority:} \texttt{high-priority}, \texttt{medium-priority}, \texttt{low-priority} to signify the urgency of tasks.
@@ -189,7 +189,7 @@ GitHub Issues will be categorized and labeled for better tracking and prioritiza
     \item \textbf{Special tags:} \texttt{documentation} (for tasks related to docs) and \texttt{meeting} (for tracking meetings) to keep these types of work organized.
 \end{itemize}
 
-\subsubsection{Integration of GitHub Issues and Projects:} 
+\subsubsection{Integration of GitHub Issues and Projects} 
 GitHub Issues will be the core tool for managing the project’s progress. Each issue will be assigned to a team member and associated with a branch. The team will use GitHub Projects (or similar) for Kanban-style task management, keeping the workflow efficient and transparent.
 
 \subsection{Usage of CI/CD}
@@ -317,34 +317,34 @@ For both demos, we will utilize images from the "Where's Waldo?" book series. Th
 
   \section{Expected Technology}
 
-  \subsection{Frontend:}
+  \subsection{Frontend}
   \begin{itemize}
       \item JavaScript: The primary language for the frontend development. It will handle user interactions and dynamic content updates on the web application.
   
       \item React: A popular JavaScript library used to build the user interface (UI). It will manage the frontend components and allow for a dynamic, responsive user experience.
   \end{itemize}
   
-  \subsection{Backend:}
+  \subsection{Backend}
   \begin{itemize}
       \item Node.js: Used for the server-side development, Node.js provides an asynchronous event-driven architecture, making it suitable for handling multiple client requests efficiently.
       \item Python: Plays a major role in machine learning (ML) tasks, image processing, and backend scripting.
       \item Flask: A lightweight Python framework used to build the backend server. It will handle API requests, manage server routing, and integrate with the database.
   \end{itemize}
   
-  \subsection{Machine Learning \& Data Processing:}
+  \subsection{Machine Learning \& Data Processing}
   \begin{itemize}
       \item TensorFlow (TF): The main machine learning framework to train or fine-tune models for tasks such as image classification and segmentation. We may also leverage pre-trained models, like Meta’s Segment Anything Model for segmentation tasks.
       \item Numpy: A core library for numerical computing in Python, essential for handling arrays and performing mathematical operations efficiently.
       \item PILLOW: A Python library used for image processing, enabling tasks like image resizing, format conversion, and basic manipulations.
   \end{itemize}
   
-  \subsection{Database:}
+  \subsection{Database}
   \begin{itemize}
       \item SQLAlchemy: A powerful ORM (Object Relational Mapper) for Python that will facilitate database connections and work with both SQL and NoSQL databases.
       \item SQL (PostgreSQL): Suitable for handling structured data and relationships. There is a program called PostGIS which extendes the capabilities of PostgreSQL database by allowing us to store geospatial data. Ideal if we require ACID compliance and structured querying.
   \end{itemize}
   
-  \subsection{Cloud:}
+  \subsection{Cloud}
   \begin{itemize}
       \item AWS/Azure: Used for hosting, storage, and machine learning models. AWS/Azure provides scalable infrastructure for both our backend and frontend.
  \end{itemize}
@@ -354,7 +354,7 @@ For both demos, we will utilize images from the "Where's Waldo?" book series. Th
     \item ESLint: The linter for JavaScript code, ensuring code quality and consistency in the frontend. It enforces best practices and helps catch errors early in development.
   \end{itemize}
 
-   \subsection{Model Training:}
+   \subsection{Model Training}
   \begin{itemize}
       \item The project will involve training custom models or fine-tuning existing ones, particularly focusing on computer vision tasks. We will be working with Meta’s Segment Anything Model for fine-tuning and extending its capabilities to fit our satellite image use case.
 
