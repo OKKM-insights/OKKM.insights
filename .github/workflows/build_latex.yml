@@ -26,6 +26,7 @@ jobs:
         (cd ./docs/HazardAnalysis && latexmk -pdf HazardAnalysis.tex)
         (cd ./docs/DevelopmentPlan && latexmk -pdf DevelopmentPlan.tex)
         (cd ./docs/ProblemStatementAndGoals && latexmk -pdf ProblemStatement.tex)
+        (cd ./docs/SRS && latexmk -pdf SRS.tex)
 
     - name: List files in docs directory
       run: ls -R docs
