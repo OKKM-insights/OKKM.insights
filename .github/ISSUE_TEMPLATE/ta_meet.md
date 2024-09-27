@@ -1,8 +1,8 @@
 ---
 name: TA Meeting
 about: Track team details for TA meetings.
-title: 'TA Meeting - Date'
-labels: 'meeting'
+title: TA Meeting - Date
+labels: ''
 assignees: ''
 
 ---

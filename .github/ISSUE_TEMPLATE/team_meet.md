@@ -1,11 +1,12 @@
 ---
 name: Team Meeting
 about: Create an agenda for team meetings and track details.
-title: 'Team Meeting - Date'
-labels: 'meeting'
+title: Team Meeting - Date
+labels: ''
 assignees: ''
 
 ---
+
 September 23rd, 11:30 - 13:30
 
 Location: Virtual
@@ -26,4 +27,4 @@ Location: Virtual
 **Kartik:**
 **Mathew:**
 
-- 
+-
