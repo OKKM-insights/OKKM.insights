@@ -167,7 +167,7 @@ involved in the Project}
 \begin{itemize}
   \item \textbf{Description:} The system shall process new user requests within 15 minutes of a Labeler  completing the account creation process 90\% of the time, and within 48 hours in all cases. 
   \item \textbf{Rationale:} To improve engagement from Labelers, there should be minimal delay in getting started.
-  \item \textbf{Fit Criterion:}\\ Let $t_{\text{newLabelAccount}}$ be the time it takes to process a new Labeler account request, in hours.\\ \probP($t_{\text{newLabelAccount}} < 0.25) \geq .90 \wedge \probP(t_{\text{newLabelAccount}} < 48) = 1 $
+  \item \textbf{Fit Criterion:}\\ Let $t_{\text{newLabelAccount}}$ be the time it takes to process a new Labeler account request, in hours.\\ \probP($t_{\text{newLabelAccount}} < 0.25) \geq 0.9 \wedge \probP(t_{\text{newLabelAccount}} < 48) = 1 $
 \end{itemize}
 
 \subsubsection*{NFR-PR2}
@@ -175,7 +175,7 @@ involved in the Project}
   \item \textbf{Description:} The system shall return a complete report of results to the Customer within the negotiated amount of time, 90\% of the time, and within 48 additional hours in all cases.
   \item \textbf{Rationale:} The user is expecting to be able to act on the insights the system provides. To build trust and loyalty, the system must ensure that it is meeting the agreed upon timelines.
   \item \textbf{Fit Criterion:}\\ Let $t_{\text{serviceRequestTime}}$ be the time it takes to complete a service request, in hours.\\
-  Let $t_{\text{serviceRequestTimeLimit}}$ be the negotiated time limit for completing a service request, in hours.\\ \probP($t_{\text{serviceRequestTime}} < t_{\text{serviceRequestTimeLimit}}) \geq .90\\ \wedge \probP(t_{\text{serviceRequestTime}} < t_{\text{serviceRequestTimeLimit}}+48) = 1 $
+  Let $t_{\text{serviceRequestTimeLimit}}$ be the negotiated time limit for completing a service request, in hours.\\ \probP($t_{\text{serviceRequestTime}} < t_{\text{serviceRequestTimeLimit}}) \geq 0.9\\ \wedge \probP(t_{\text{serviceRequestTime}} < t_{\text{serviceRequestTimeLimit}}+48) = 1 $
 \end{itemize}
 
 \subsubsection*{NFR-PR3}
@@ -208,13 +208,30 @@ N/A
   $(\forall o \in O|: \probP(L_{\text{True}}(o) = L_{\text{Guess}}(o))\geq 0.75)$
 \end{itemize}
 \subsection{Robustness or Fault-Tolerance Requirements}
-\lips
+\subsubsection*{NFR-PR6}
+\begin{itemize}
+  \item \textbf{Description:} The system shall have 97\% uptime. 
+  \item \textbf{Rationale:} It is crucial that in emergency response use cases, the system is able to accept and process requests with minimal delay.
+  \item \textbf{Fit Criterion:}\\ Let $t_{\text{uptime}}$ be the uptime of the system.\\
+  Let $t_{\text{downtime}}$ be the downtime of the system.\\
+  $\frac{t_{\text{uptime}}}{t_{\text{uptime}} + t_{\text{downtime}}} > 0.97$
+\end{itemize}
 \subsection{Capacity Requirements}
-\lips
+\subsubsection*{NFR-PR7}
+\begin{itemize}
+  \item \textbf{Description:} The system shall have the capacity to support enough labelers to meet all service request deadlines.
+  \item \textbf{Rationale:} This requirement is critical to satisfy NFR-PR2.
+  \item \textbf{Fit Criterion:} See NFR-PR2.
+\end{itemize}
 \subsection{Scalability or Extensibility Requirements}
-\lips
+\subsubsection*{NFR-PR8}
+\begin{itemize}
+  \item \textbf{Description:} The system shall be able to scale to meet the capacity specified in NFR-PR7.
+  \item \textbf{Rationale:} This requirement is critical to satisfy NFR-PR7.
+  \item \textbf{Fit Criterion:} See NFR-PR7.
+\end{itemize}
 \subsection{Longevity Requirements}
-\lips
+N/A
 
 \section{Operational and Environmental Requirements}
 \subsection{Expected Physical Environment}
