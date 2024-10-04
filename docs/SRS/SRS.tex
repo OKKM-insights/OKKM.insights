@@ -44,7 +44,7 @@
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
 \toprule {\textbf{Date}} & {\textbf{Version}} & {\textbf{Notes}}\\
 \midrule
-Date 1 & 1.0 & Notes\\
+10/1/2024 & Mathew Petronilho & Added Purpose Of Project\\
 Date 2 & 1.1 & Notes\\
 \bottomrule
 \end{tabularx}
@@ -53,10 +53,29 @@ Date 2 & 1.1 & Notes\\
 
 ~\newpage
 \section{Purpose of the Project}
-\subsection{User Business}
-\lips
+There is currently a lack of high-quality, labeled satellite imagery datasets tailored for specific use cases. Many industries require specialized data for tasks like disaster 
+response, environmental monitoring, urban planning, or defense, but building these datasets manually is time-consuming, costly, inefficient and may require expert data analysis. 
+This hinders the development and deployment of accurate computer vision models for critical use cases across these various industries.
+
+The purpose of this project is to create an online platform that accelerates this process and brings simplicity to satellite imagery data analysis.
 \subsection{Goals of the Project}
-\lips
+\subsubsection{High Data Accuracy}
+The system should have high classification accuracy for objects reported in the images. The core problem this system must solve is extracting useful information from the provided images.
+ One key metric to determine the utility of the information found, is the classification accuracy of objects identified in the images. If the system is 
+ not able to determine what is contained in an image, it will not be useful to stakeholders.
+\subsubsection{Ease of use}
+The system should be very easy for stakeholders to use. There should be very low friction for users to classify images and objects found
+within images, with minimal training. It should also be simple for users to upload images to be analyzed. To maximize the information gained from users who are contributing to classification efforts, the system must ensure it is simple for users to 
+get started with, and continue using the system. This is necessary to build a large enough user base, which will make it more likely to get insights in an acceptable 
+amount of time.
+\subsubsection{Minimizing Cost to Analyze Images}
+The system should minimize the cost for users request insights from images. This could be implemented through intelligent algorithms for task delegation. Users of the system who upload images are interested in getting an appropriate return for their investment. If the cost to analyze is too high, the platform will not
+retain a sufficiently large user base of purchasers.
+\subsubsection{Results Returned Within Appropriate Timeframe}
+The system should ensure the time it takes to obtain information from images is within a specified limit, as determined by users who upload images. Purchasers will have some time limit they require the system to process images within. To ensure timing needs are met, the system should provide realistic timelines and stick to them.
+\subsubsection{High System Reliability and Accessibility}
+The system should be useable remotely for purchasers and labellers, and have minimal downtime.The system should allow purchasers to upload images without being physically located where the system is hosted to ensure flexibility of use. The same should also be true for labellers, as they 
+should be able to perform their tasks remotely. In both cases, the system should have low down time as to not introduce additional friction into the completion of tasks.
 \section{Stakeholders}
 \subsection{Client}
 \lips
