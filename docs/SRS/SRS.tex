@@ -98,13 +98,34 @@ Date 2 & 1.1 & Notes\\
 involved in the Project}
 \lips
 
-\section{Relevant Facts And Assumptions}
-\subsection{Relevant Facts}
-\lips
-\subsection{Business Rules}
-\lips
-\subsection{Assumptions}
-\lips
+\section*{5 Relevant Facts and Assumptions}
+
+\subsection*{5.1 Relevant Facts}
+\begin{itemize}[leftmargin=2cm]
+    \item \textbf{Market Need for Labeled Satellite Data}: There is a significant gap in the availability of high-quality labeled satellite imagery tailored for various industries like disaster response, environmental monitoring, and defense.
+    \item \textbf{Use of AI for Labeling}: The project employs an AI-powered crowdsourcing model to facilitate image labeling, which will then be used to build datasets for computer vision applications.
+    \item \textbf{Crowdsourcing and Compensation Model}: Users on the platform will label images and receive compensation, helping to ensure data quality while incentivizing participation.
+    \item \textbf{Platform Accessibility}: The platform will be web-based, accessible through any modern browser on major operating systems (Windows, Linux, macOS), enhancing its usability and portability.
+    \item \textbf{Client Engagement}: The primary users include end clients who require labeled data and models, users who label data, and stakeholders like rescue services, financial data companies, and agricultural enterprises who benefit from the data insights.
+\end{itemize}
+
+\subsection*{5.2 Business Rules}
+\begin{itemize}[leftmargin=2cm]
+    \item \textbf{Data Privacy and Confidentiality}: No confidential information is currently protected, but IP may need protection in the future as the project evolves.
+    \item \textbf{Apache License 2.0 Usage}: The project will use the Apache License 2.0, allowing others to use and modify the software freely, with payment required if used commercially.
+    \item \textbf{Stakeholder Communication Protocols}: There will be established communication protocols, including weekly team meetings, regular updates, and documentation of all key communications with stakeholders.
+    \item \textbf{Workflow and Git Management}: A structured Git workflow is in place, ensuring code quality through branching strategies, approvals, and consistent naming conventions. CI/CD practices include static checks, linting, and testing before code is merged.
+    \item \textbf{Payment and Compensation}: Compensation rules are designed to reward users for labeling data accurately and efficiently, with a clear system in place for managing payments for both users and clients.
+\end{itemize}
+
+\subsection*{5.3 Assumptions}
+\begin{itemize}[leftmargin=2cm]
+    \item \textbf{Accuracy and Reliability of Data Labeling}: It is assumed that the crowd-sourced labeling model will produce accurate datasets for training computer vision models, and there will be mechanisms to ensure data quality.
+    \item \textbf{High User Engagement}: It is assumed that the system will attract and retain a sufficient number of users willing to label images in return for compensation, ensuring timely dataset creation.
+    \item \textbf{Scalability of the Platform}: The web-based nature of the platform and its hosting on AWS/Azure will allow for easy scalability as user demand increases.
+    \item \textbf{Effective AI Model Performance}: The assumption is that the AI models used for labeling and processing satellite images will perform well enough to offer insights within appropriate time frames, and that labeled data will be suitable for training accurate models.
+    \item \textbf{Technology Stack Suitability}: It is assumed that the chosen technology stack (React, Node.js, Python, Flask, TensorFlow) will be adequate for both development and deployment of the platform, and that it will meet performance and security requirements.
+\end{itemize}
 
 \section{The Scope of the Work}
 \subsection{The Current Situation}
