@@ -9,6 +9,7 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{hyperref}
+\usepackage{amsmath}
 \hypersetup{
     bookmarks=true,         % show bookmarks bar?
       colorlinks=true,      % false: boxed links; true: colored links
@@ -19,6 +20,7 @@
 }
 
 \newcommand{\lips}{\textit{Insert your content here.}}
+\newcommand{\probP}{\text{I\kern-0.15em P}}
 
 \input{../Comments}
 \input{../Common}
@@ -195,19 +197,88 @@ involved in the Project}
 
 \section{Performance Requirements}
 \subsection{Speed and Latency Requirements}
-\lips
+\subsubsection*{NFR-PR0}
+\begin{itemize}
+  \item \textbf{Description:} The system shall process new user requests within 15 minutes of a Customer completing the account creation process 90\% of the time, and within 48 hours in all cases. 
+  \item \textbf{Rationale:} The user likely has urgent needs if they are signing up to access the system. They must have quick access to the services offered by the system, and authentication is the first step of this process.
+  \item \textbf{Fit Criterion:}\\ Let $t_{\text{newCustomerAccount}}$ be the time it takes to process a new Customer account request, in hours.\\ \probP($t_{\text{newCustomerAccount}} < 0.25) \geq .90 \wedge \probP(t_{\text{newCustomerAccount}} < 48) = 1 $
+\end{itemize}
+
+\subsubsection*{NFR-PR1}
+\begin{itemize}
+  \item \textbf{Description:} The system shall process new user requests within 15 minutes of a Labeler  completing the account creation process 90\% of the time, and within 48 hours in all cases. 
+  \item \textbf{Rationale:} To improve engagement from Labelers, there should be minimal delay in getting started.
+  \item \textbf{Fit Criterion:}\\ Let $t_{\text{newLabelAccount}}$ be the time it takes to process a new Labeler account request, in hours.\\ \probP($t_{\text{newLabelAccount}} < 0.25) \geq 0.9 \wedge \probP(t_{\text{newLabelAccount}} < 48) = 1 $
+\end{itemize}
+
+\subsubsection*{NFR-PR2}
+\begin{itemize}
+  \item \textbf{Description:} The system shall return a complete report of results to the Customer within the negotiated amount of time, 90\% of the time, and within 48 additional hours in all cases.
+  \item \textbf{Rationale:} The user is expecting to be able to act on the insights the system provides. To build trust and loyalty, the system must ensure that it is meeting the agreed upon timelines.
+  \item \textbf{Fit Criterion:}\\ Let $t_{\text{serviceRequestTime}}$ be the time it takes to complete a service request, in hours.\\
+  Let $t_{\text{serviceRequestTimeLimit}}$ be the negotiated time limit for completing a service request, in hours.\\ \probP($t_{\text{serviceRequestTime}} < t_{\text{serviceRequestTimeLimit}}) \geq 0.9\\ \wedge \probP(t_{\text{serviceRequestTime}} < t_{\text{serviceRequestTimeLimit}}+48) = 1 $
+\end{itemize}
+
+\subsubsection*{NFR-PR3}
+\begin{itemize}
+  \item \textbf{Description:} The system shall take no longer than 10 seconds to display the next image to be labeled to a labeler, if there is one available.
+  \item \textbf{Rationale:} To reduce friction for labelers, the system must ensure there is no unnecessary delay in preparing the next job. For users exposed to modern media, attention spans can be expected to be less than 10 seconds \href{https://profiletree.com/attention-span-crisis-digital-age-statistics/#:~:text=Studies%20have%20proven%20that%20being,focus%20after%208%20mere%20seconds}{src}.
+  \item \textbf{Fit Criterion:}\\ Let $t_{\text{imageServing}}$ be the time it takes to serve the next image, in seconds.\\
+  Let $x_{\text{nextImage}}$ equal True if there is a next image available, and False otherwise.\\
+  $x_{\text{nextImage}} \Rightarrow t_{\text{imageServing}} \leq 10$
+\end{itemize}
+
+\subsubsection*{NFR-PR4}
+\begin{itemize}
+  \item \textbf{Description:} The system shall deliver earned payouts to labelers within 7 business days of a request being made through the system.
+  \item \textbf{Rationale:} The labelers are entitled to their earned income, and there must not be unnecessary delay. 7 days accounts for delays in the platform used to distribute payments.
+  \item \textbf{Fit Criterion:}\\ Let $t_{\text{payoutDelay}}$ be the time it takes for a user to receive their payments after a request is received by the system, in days.\\
+  $t_{\text{payoutDelay}} < 7$
+\end{itemize}
 \subsection{Safety-Critical Requirements}
-\lips
+N/A
 \subsection{Precision or Accuracy Requirements}
-\lips
+\subsubsection*{NFR-PR5}
+\begin{itemize}
+  \item \textbf{Description:} The system shall report accurate labels 75\% of the time.
+  \item \textbf{Rationale:} Average data label accuracy for competitors is greater than 75\% (\href{https://www.researchgate.net/publication/234774537_Data_quality_from_crowdsourcing_A_study_of_annotation_selection_criteria#:~:text=Depending%20on%20the%20number%20of,%5B13%5D%20%5B14%5D%20.}{link}). The system should at a minimum provide the same label accuracy.
+  \item \textbf{Fit Criterion:}\\ Let $O$ be the set of objects to label.\\
+  Let $C$ be the set of classes an object in $O$ can be.\\
+  Let $L_{\text{True}}: O \rightarrow C $ be a function which maps objects in $O$ to their true classes in $C$.
+  Let $L_{\text{Guess}}: O \rightarrow C $ be the funtion derived from the system which maps objects in $O$ to their assumed classes in $C$.
+  $(\forall o \in O|: \probP(L_{\text{True}}(o) = L_{\text{Guess}}(o))\geq 0.75)$
+\end{itemize}
 \subsection{Robustness or Fault-Tolerance Requirements}
-\lips
+\subsubsection*{NFR-PR6}
+\begin{itemize}
+  \item \textbf{Description:} The system shall have 97\% uptime. 
+  \item \textbf{Rationale:} It is crucial that in emergency response use cases, the system is able to accept and process requests with minimal delay.
+  \item \textbf{Fit Criterion:}\\ Let $t_{\text{uptime}}$ be the uptime of the system.\\
+  Let $t_{\text{downtime}}$ be the downtime of the system.\\
+  $\frac{t_{\text{uptime}}}{t_{\text{uptime}} + t_{\text{downtime}}} > 0.97$
+\end{itemize}
 \subsection{Capacity Requirements}
-\lips
+\subsubsection*{NFR-PR7}
+\begin{itemize}
+  \item \textbf{Description:} The system shall have the capacity to support enough labelers to meet all service request deadlines.
+  \item \textbf{Rationale:} This requirement is critical to satisfy NFR-PR2.
+  \item \textbf{Fit Criterion:} See NFR-PR2.
+\end{itemize}
+\subsubsection*{NFR-PR8}
+\begin{itemize}
+  \item \textbf{Description:} The system shall have the capacity to store and process large image files.
+  \item \textbf{Rationale:} This requirement is necessary to obtain information from satelite images, which can be several gigabites in size.
+  \item \textbf{Fit Criterion:} The system will not crash or fail to store when given images files <50 Gb in size.
+\end{itemize}
 \subsection{Scalability or Extensibility Requirements}
-\lips
+\subsubsection*{NFR-PR9}
+\begin{itemize}
+  \item \textbf{Description:} The system shall be able to scale to meet the capacity specified in NFR-PR7.
+  \item \textbf{Rationale:} This requirement is critical to satisfy NFR-PR7.
+  \item \textbf{Fit Criterion:} See NFR-PR7.
+\end{itemize}
 \subsection{Longevity Requirements}
-\lips
+N/A
 
 \section{Operational and Environmental Requirements}
 \subsection{Expected Physical Environment}
