@@ -9,7 +9,9 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{hyperref}
+\usepackage{amsfonts}
 \usepackage{amsmath}
+
 \hypersetup{
     bookmarks=true,         % show bookmarks bar?
       colorlinks=true,      % false: boxed links; true: colored links
@@ -20,6 +22,7 @@
 }
 
 \newcommand{\lips}{\textit{Insert your content here.}}
+\newcommand{\tabitem}{~~\llap{\textbullet}~~}
 \newcommand{\probP}{\text{I\kern-0.15em P}}
 
 \input{../Comments}
@@ -144,10 +147,102 @@ involved in the Project}
 \lips
 
 \section{Business Data Model and Data Dictionary}
-\subsection{Business Data Model}
-\lips
 \subsection{Data Dictionary}
-\lips
+\begin{center}
+\begin{tabular}{ |c|c|c| } % chktex 44
+  \hline
+    \textbf{Data Object} & \hspace{80pt} \textbf{Content} \hspace{80pt} & \textbf{Type} \\
+    & & \\
+    & & \\
+    \hline
+    Labeler &  LabelerID & Class \\ 
+    \hline
+    Customer &  CustomerID & Class \\ 
+    \hline
+    Labeler Payment Details &  LabelerID & Class \\ 
+    &  Payment Details & \\
+    \hline
+    Customer Payment Details &  CustomerID & Class \\ 
+    &  Payment Details & \\
+    \hline
+    Labeler Personal Details &  LabelerID & Class \\ 
+    &  Personal Details & \\
+    \hline
+    Customer Personal Details &  CustomerID & Class \\ 
+    &  Personal Details & \\
+    \hline
+    Historic Accuracy &  LabelerID & Class \\ 
+    &  CategoryID & \\
+    &  Accuracy & \\
+    &  Samples & \\
+    \hline
+    Service Request &  Image & Class \\ 
+    &  CustomerID & \\
+    &  Request Deadline & \\
+    \hline
+    Image &  Image Data & Class \\ 
+    &  Image Metadata & \\
+    &  Labels & \\
+    \hline
+    Label &  Labeled Class & Class \\ 
+    &  Bounding Box & \\
+    &  Labeler & \\
+    &  Label Metadata & \\
+    \hline
+    Object Class &  Object Class List & Class \\ 
+    &  Object Class Score & \\
+    &  Labels & \\
+    &  Image & \\
+    \hline
+    Task Allocation &  \{Service Request & Data Flow \\ 
+    &  +Available Labelers & \\
+    &  +Historic Accuracy & \\
+    &  +Object Class & \\
+    &  +Request Deadline \} & \\
+    \hline
+    
+    
+\end{tabular}
+\end{center}
+\begin{center}
+  \begin{tabular}{ |c|c|c| } % chktex 44
+    \hline
+    Class Consensus &  \{Label & Data Flow \\ 
+    &  +Historic Accuracy\} & \\
+    \hline
+    Payment Details & All details necessary to   & Attribute/Element \\ 
+    & process payment. Depends on &\\
+    & payment vendor and location  &  \\ 
+    \hline
+    Personal Details & Details necessary to identify and contact & Attribute/Element \\
+    &    a user  &  \\
+    \hline
+    Accuracy & $a \in \mathbb{R} \wedge 0 \leq a \leq 1$ & Attribute/Element \\
+    \hline
+    Samples & $n \in \mathbb{N} \wedge a \geq 0 $ & Attribute/Element \\
+    \hline
+    Request Deadline & YYYY-MM-DDTHH:MM:SS & Attribute/Element \\
+    & In 24HR UTC &  \\
+    \hline
+    Image Data & NxM grid of RGB pixels & Attribute/Element \\
+    \hline
+    Image Metadata & Additional details related to an image& Attribute/Element \\
+    \hline
+    Label class & String representing class of object& Attribute/Element \\
+    \hline
+    Bounding Box & $(x_0,y_0),(x_1,y_1)$ where  & Attribute/Element \\
+    & $\forall x_j,y_j |: 0 \leq x_j \leq N \wedge 0 \leq y_j \leq M $   &  \\
+    \hline
+    Label Metadata & Additional details related to an label& Attribute/Element \\
+    \hline
+    Object Class List & List of classes reported in image & Attribute/Element \\
+    \hline
+    Object Class Score & Likelihood of class appearing in image & Attribute/Element \\
+    & $s \in \mathbb{R} \wedge 0 \leq s \leq 1$ &  \\
+    \hline
+
+  \end{tabular}
+\end{center}
 
 \section{The Scope of the Product}
 \subsection{Product Boundary}
