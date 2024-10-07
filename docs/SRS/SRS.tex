@@ -12,6 +12,8 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{hyperref}
+\usepackage{amsfonts}
+\usepackage{amsmath}
 
 \hypersetup{
     bookmarks=true,         % show bookmarks bar?
@@ -23,6 +25,8 @@
 }
 
 \newcommand{\lips}{\textit{Insert your content here.}}
+\newcommand{\tabitem}{~~\llap{\textbullet}~~}
+\newcommand{\probP}{\text{I\kern-0.15em P}}
 
 \input{../Comments}
 \input{../Common}
@@ -48,7 +52,7 @@
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
 \toprule {\textbf{Date}} & {\textbf{Version}} & {\textbf{Notes}}\\
 \midrule
-Date 1 & 1.0 & Notes\\
+10/1/2024 & Mathew Petronilho & Added Purpose Of Project\\
 Date 2 & 1.1 & Notes\\
 \bottomrule
 \end{tabularx}
@@ -57,45 +61,97 @@ Date 2 & 1.1 & Notes\\
 
 ~\newpage
 \section{Purpose of the Project}
-\subsection{User Business}
-\lips
+There is currently a lack of high-quality, labeled satellite imagery datasets tailored for specific use cases. Many industries require specialized data for tasks like disaster 
+response, environmental monitoring, urban planning, or defense, but building these datasets manually is time-consuming, costly, inefficient and may require expert data analysis. 
+This hinders the development and deployment of accurate computer vision models for critical use cases across these various industries.
+
+The purpose of this project is to create an online platform that accelerates this process and brings simplicity to satellite imagery data analysis.
 \subsection{Goals of the Project}
-\lips
+\subsubsection{High Data Accuracy}
+The system should have high classification accuracy for objects reported in the images. The core problem this system must solve is extracting useful information from the provided images.
+ One key metric to determine the utility of the information found, is the classification accuracy of objects identified in the images. If the system is 
+ not able to determine what is contained in an image, it will not be useful to stakeholders.
+\subsubsection{Ease of use}
+The system should be very easy for stakeholders to use. There should be very low friction for users to classify images and objects found
+within images, with minimal training. It should also be simple for users to upload images to be analyzed. To maximize the information gained from users who are contributing to classification efforts, the system must ensure it is simple for users to 
+get started with, and continue using the system. This is necessary to build a large enough user base, which will make it more likely to get insights in an acceptable 
+amount of time.
+\subsubsection{Minimizing Cost to Analyze Images}
+The system should minimize the cost for users request insights from images. This could be implemented through intelligent algorithms for task delegation. Users of the system who upload images are interested in getting an appropriate return for their investment. If the cost to analyze is too high, the platform will not
+retain a sufficiently large user base of purchasers.
+\subsubsection{Results Returned Within Appropriate Timeframe}
+The system should ensure the time it takes to obtain information from images is within a specified limit, as determined by users who upload images. Purchasers will have some time limit they require the system to process images within. To ensure timing needs are met, the system should provide realistic timelines and stick to them.
+\subsubsection{High System Reliability and Accessibility}
+The system should be useable remotely for purchasers and labellers, and have minimal downtime.The system should allow purchasers to upload images without being physically located where the system is hosted to ensure flexibility of use. The same should also be true for labellers, as they 
+should be able to perform their tasks remotely. In both cases, the system should have low down time as to not introduce additional friction into the completion of tasks.
 \section{Stakeholders}
-\subsection{Client}
-\lips
+
 \subsection{Customer}
-\lips
+End Clients/Customers: These stakeholders include governments, NGOs, private companies, and environmental organizations that pay for access to the labeled datasets and models. They rely on these datasets to make informed decisions in areas like environmental monitoring, urban planning, or defense-related tasks. Their satisfaction depends on the accuracy and reliability of both the data and the models provided.
+
+
+\subsubsection{Users (Data Labelers)}
+Data labelers are a core group of users responsible for annotating and classifying raw satellite imagery. Their role is fundamental to the project as they provide the labeled data required to train AI models. Data labelers are essential to the project's workflow, bridging the gap between raw data and actionable insights for stakeholders. Their contributions not only shape the quality of the AI models but also impact the effectiveness of the end clients decision-making processes.
+
+
 \subsection{Other Stakeholders}
-\lips
+Beyond the primary stakeholders, other key groups that benefit from high-quality satellite imagery datasets include:
+\begin{itemize}[leftmargin=2cm]
+    \item \textbf{Defense Agencies:} Rely on tailored data for surveillance, intelligence, and threat detection to enhance national security.
+    \item \textbf{Environmental Agencies:} Use satellite data to monitor ecosystems, track deforestation, and respond to climate change.
+    \item \textbf{Urban Planners:} Leverage data to manage land use, plan infrastructure development, and promote sustainable growth in cities.
+    \item \textbf{Disaster Relief Organizations:} Depend on satellite imagery to assess damage in real-time and prioritize aid during crisis situations, making these datasets crucial for effective disaster response.
+    \item \textbf{Image Labeling Teams:} Manually classify and annotate satellite images. Their work is crucial for building accurate datasets, and they benefit from improved tools and clearer guidelines to make the labeling process more efficient.
+\end{itemize}
+
 \subsection{Hands-On Users of the Project}
-\lips
+Users: These are individuals or entities responsible for labeling the data on the platform. In return for their efforts, they receive compensation. Their primary role is to ensure that the datasets are correctly annotated according to specified requirements, which forms the basis of the models developed. Their work directly impacts the quality and usability of the final product.
+
 \subsection{Personas}
-\lips
+\begin{itemize}[leftmargin=2cm]
+    \item \textbf{Air Rescue Analysts:} Use satellite imagery to assist in disaster management.
+    \item \textbf{Financial Data Analysts:} Utilize satellite data for economic trend analysis.
+    \item \textbf{Farmers/Agricultural Managers:} Monitor crop health, soil conditions, and weather for precision farming.
+\end{itemize}
+
 \subsection{Priorities Assigned to Users}
-\lips
+The importance of stakeholders can be prioritized based on their reliance on accurate and reliable datasets:
+\begin{itemize}[leftmargin=2cm]
+    \item \textbf{High Priority:} End Clients/Customers.
+    \item \textbf{Medium Priority:} Air Rescue Services, Alternative Financial Data Companies.
+    \item \textbf{Low Priority:} Urban Planners, Defense Agencies, Environmental Agencies.
+\end{itemize}
+
 \subsection{User Participation}
-\lips
+Users are integral to the platform as they label data in exchange for compensation. Their active participation is vital for ensuring that the datasets are annotated accurately and in accordance with the required specifications.
+
 \subsection{Maintenance Users and Service Technicians}
-\lips
+These users are responsible for the upkeep of the platform, ensuring that the labeling tools and data processing pipelines are functioning smoothly. They also assist in troubleshooting any technical issues faced by the users.
+
 
 \section{Mandated Constraints}
-\subsection{Solution Constraints}
-\lips
+\begin{itemize}
+  \item The solution must be fully compatible with the latest stable releases of Google Chrome, Firefox, Microsoft Edge, and Safari browsers.\\ \textbf{Rationale:} Users will interact with the web application through various modern web browsers, so ensuring cross-browser compatibility is essential for providing a consistent user experience. \\ \textbf{Fit Criteria:} The web application must display consistently, maintain full functionality, and support core features across all specified browsers without major visual or functional discrepancies. Testing should be conducted on each browser to validate compatibility.
+\end{itemize}
 \subsection{Implementation Environment of the Current System}
-\lips
+There is no current environment in which our application must be implemented.
 \subsection{Partner or Collaborative Applications}
-\lips
+There are no constraints regarding external applications that must be used alongside our product.
 \subsection{Off-the-Shelf Software}
-\lips
+There is no required off-the-shelf software that must be used for our application.
 \subsection{Anticipated Workplace Environment}
-\lips
+There is no particular location where users are required to work and use the product. As a web application, it can be accessed from most computers with an internet connection. We do not anticipate that the users' environment will physically constrain their ability to use the app in any way.
 \subsection{Schedule Constraints}
-\lips
+\begin{itemize}
+  \item The proof of concept for this project must be ready to demonstrate by \textbf{November 11, 2024}. Not meeting this deadline will result in uncertainty about overcoming major risks associated with the project.
+  \item The first project demonstration must be ready by \textbf{February 3, 2025}. Missing this deadline will reduce the time available to make refinements based on feedback and findings.
+  \item The final demonstration must be ready by \textbf{March 24, 2025}. Missing this milestone would prevent the project from being presented and result in a significant loss of marks.
+\end{itemize}
+To see other documentation deadlines related to this project, refer to our \href{https://github.com/OKKM-insights/OKKM.insights/blob/main/docs/DevelopmentPlan/DevelopmentPlan.pdf}{Development Plan}. 
 \subsection{Budget Constraints}
-\lips
-\subsection{Enterprise Constraints}
-\lips
+\begin{itemize}
+  \item The project budget must not exceed \$750. All funds will be sourced from the team itself.
+\end{itemize}
 
 \section{Naming Conventions and Terminology}
 \subsection{Glossary of All Terms, Including Acronyms, Used by Stakeholders
@@ -112,13 +168,34 @@ involved in the Project}
     \caption{Naming Conventions and Terminology}
 \end{table}
 
-\section{Relevant Facts And Assumptions}
-\subsection{Relevant Facts}
-\lips
-\subsection{Business Rules}
-\lips
-\subsection{Assumptions}
-\lips
+\section*{5 Relevant Facts and Assumptions}
+
+\subsection*{5.1 Relevant Facts}
+\begin{itemize}[leftmargin=2cm]
+    \item \textbf{Increasing Demand for Satellite Data}: There is a growing need for accurate satellite imagery across various industries, such as agriculture, disaster response, urban planning, and environmental monitoring, driven by advancements in technology and data analysis.
+    \item \textbf{Advances in AI and Computer Vision}: The rapid development of AI and computer vision techniques has made it possible to analyze and extract meaningful insights from large-scale satellite imagery more efficiently than before.
+    \item \textbf{High Cost of Manual Data Labeling}: Traditional data labeling is labor-intensive, costly, and requires expert knowledge in some cases, which slows down the process of dataset creation and model training.
+    \item \textbf{Crowdsourcing as a Viable Solution}: Crowdsourcing has proven to be a successful method for data labeling in various applications (e.g., reCAPTCHA, image tagging), providing a scalable way to collect labeled data while offering opportunities for user engagement and compensation.
+    \item \textbf{Growing Market for Geospatial Intelligence}: Governments, private enterprises, and NGOs are increasingly investing in geospatial intelligence to support decision-making processes, making high-quality, labeled datasets more valuable for predictive modeling and operational planning.
+\end{itemize}
+
+\subsection*{5.2 Business Rules}
+\begin{itemize}[leftmargin=2cm]
+    \item \textbf{Data Privacy and Confidentiality}: No confidential information is currently protected, but IP may need protection in the future as the project evolves.
+    \item \textbf{Apache License 2.0 Usage}: The project will use the Apache License 2.0, allowing others to use and modify the software freely, with payment required if used commercially.
+    \item \textbf{Stakeholder Communication Protocols}: There will be established communication protocols, including weekly team meetings, regular updates, and documentation of all key communications with stakeholders.
+    \item \textbf{Workflow and Git Management}: A structured Git workflow is in place, ensuring code quality through branching strategies, approvals, and consistent naming conventions. CI/CD practices include static checks, linting, and testing before code is merged.
+    \item \textbf{Payment and Compensation}: Compensation rules are designed to reward users for labeling data accurately and efficiently, with a clear system in place for managing payments for both users and clients.
+\end{itemize}
+
+\subsection*{5.3 Assumptions}
+\begin{itemize}[leftmargin=2cm]
+    \item \textbf{Labelers Have Reliable Internet Access}: It is assumed that all users participating in labeling have stable and sufficient internet connectivity to access the platform, label data, and interact with the system without major disruptions.
+    \item \textbf{Positive User Experience Will Attract and Retain Labelers}: The platform will rely on the assumption that a smooth user interface, fair compensation, and clear instructions will be enough to attract a substantial user base of labelers and keep them engaged over time.
+    \item \textbf{Availability of Suitable Satellite Imagery}: It is assumed that high-resolution, relevant satellite images will be readily available from commercial or open-source providers to populate the platform and support various labeling tasks.
+    \item \textbf{Demand for Labeled Data from Clients}: There is an expectation that industries requiring labeled satellite imagery will have a continuous and growing demand for these datasets, ensuring a steady client base for the platform’s services.
+    \item \textbf{Legal and Ethical Compliance for Data Use}: It is assumed that the acquisition and labeling of satellite imagery will not face any unforeseen legal or ethical issues, allowing for the data to be processed, shared, and monetized in accordance with existing regulations and ethical standards.
+\end{itemize}
 
 \section{The Scope of the Work}
 \subsection{The Current Situation}
@@ -131,10 +208,102 @@ involved in the Project}
 \lips
 
 \section{Business Data Model and Data Dictionary}
-\subsection{Business Data Model}
-\lips
 \subsection{Data Dictionary}
-\lips
+\begin{center}
+\begin{tabular}{ |c|c|c| } % chktex 44
+  \hline
+    \textbf{Data Object} & \hspace{80pt} \textbf{Content} \hspace{80pt} & \textbf{Type} \\
+    & & \\
+    & & \\
+    \hline
+    Labeler &  LabelerID & Class \\ 
+    \hline
+    Customer &  CustomerID & Class \\ 
+    \hline
+    Labeler Payment Details &  LabelerID & Class \\ 
+    &  Payment Details & \\
+    \hline
+    Customer Payment Details &  CustomerID & Class \\ 
+    &  Payment Details & \\
+    \hline
+    Labeler Personal Details &  LabelerID & Class \\ 
+    &  Personal Details & \\
+    \hline
+    Customer Personal Details &  CustomerID & Class \\ 
+    &  Personal Details & \\
+    \hline
+    Historic Accuracy &  LabelerID & Class \\ 
+    &  CategoryID & \\
+    &  Accuracy & \\
+    &  Samples & \\
+    \hline
+    Service Request &  Image & Class \\ 
+    &  CustomerID & \\
+    &  Request Deadline & \\
+    \hline
+    Image &  Image Data & Class \\ 
+    &  Image Metadata & \\
+    &  Labels & \\
+    \hline
+    Label &  Labeled Class & Class \\ 
+    &  Bounding Box & \\
+    &  Labeler & \\
+    &  Label Metadata & \\
+    \hline
+    Object Class &  Object Class List & Class \\ 
+    &  Object Class Score & \\
+    &  Labels & \\
+    &  Image & \\
+    \hline
+    Task Allocation &  \{Service Request & Data Flow \\ 
+    &  +Available Labelers & \\
+    &  +Historic Accuracy & \\
+    &  +Object Class & \\
+    &  +Request Deadline \} & \\
+    \hline
+    
+    
+\end{tabular}
+\end{center}
+\begin{center}
+  \begin{tabular}{ |c|c|c| } % chktex 44
+    \hline
+    Class Consensus &  \{Label & Data Flow \\ 
+    &  +Historic Accuracy\} & \\
+    \hline
+    Payment Details & All details necessary to   & Attribute/Element \\ 
+    & process payment. Depends on &\\
+    & payment vendor and location  &  \\ 
+    \hline
+    Personal Details & Details necessary to identify and contact & Attribute/Element \\
+    &    a user  &  \\
+    \hline
+    Accuracy & $a \in \mathbb{R} \wedge 0 \leq a \leq 1$ & Attribute/Element \\
+    \hline
+    Samples & $n \in \mathbb{N} \wedge a \geq 0 $ & Attribute/Element \\
+    \hline
+    Request Deadline & YYYY-MM-DDTHH:MM:SS & Attribute/Element \\
+    & In 24HR UTC &  \\
+    \hline
+    Image Data & NxM grid of RGB pixels & Attribute/Element \\
+    \hline
+    Image Metadata & Additional details related to an image& Attribute/Element \\
+    \hline
+    Label class & String representing class of object& Attribute/Element \\
+    \hline
+    Bounding Box & $(x_0,y_0),(x_1,y_1)$ where  & Attribute/Element \\
+    & $\forall x_j,y_j |: 0 \leq x_j \leq N \wedge 0 \leq y_j \leq M $   &  \\
+    \hline
+    Label Metadata & Additional details related to an label& Attribute/Element \\
+    \hline
+    Object Class List & List of classes reported in image & Attribute/Element \\
+    \hline
+    Object Class Score & Likelihood of class appearing in image & Attribute/Element \\
+    & $s \in \mathbb{R} \wedge 0 \leq s \leq 1$ &  \\
+    \hline
+
+  \end{tabular}
+\end{center}
 
 \section{The Scope of the Product}
 \subsection{Product Boundary}
@@ -380,41 +549,292 @@ The use case diagram depicted below identifies the boundaries between the users 
 
 \section{Functional Requirements}
 \subsection{Functional Requirements}
-\lips
+\subsubsection*{FR0}
+\begin{itemize}
+  \item \textbf{Description:} The system shall allow Customers to create a new user account.
+  \item \textbf{Rationale:} The customers must have an account to request the services provided by the system.
+  \item \textbf{Fit Criterion:} Customer is created in and stored in the database.
+\end{itemize}
+\subsubsection*{FR1}
+\begin{itemize}
+  \item \textbf{Description:} The system shall allow customers with an existing account to authenticate themselves using the credentials stored by the system.
+  \item \textbf{Rationale:} To access privileged information, the system must authenticate customers.
+  \item \textbf{Fit Criterion:} Customer can use correct credentials to log in to user account.
+\end{itemize}
+\subsubsection*{FR2}
+\begin{itemize}
+  \item \textbf{Description:} The system shall allow authenticated Customers to edit their account information.
+  \item \textbf{Rationale:} After creating an account, the customers must have the necessary tools to modify the information they have provided.
+  \item \textbf{Fit Criterion:} After logging in, customers can modify the stored personal information.
+\end{itemize}
+\subsubsection*{FR3}
+\begin{itemize}
+  \item \textbf{Description:} The system shall accept payments from authenticated Customers.
+  \item \textbf{Rationale:} To request services, the system shall integrate with payment services.
+  \item \textbf{Fit Criterion:} After logging in, customers can send a payment to the system.
+\end{itemize}
+\subsubsection*{FR4}
+\begin{itemize}
+  \item \textbf{Description:} The system shall accept service requests from authenticated Customers.
+  \item \textbf{Rationale:} The system’s key offering is the ability to request services.
+  \item \textbf{Fit Criterion:} After logging in, customers can send a service request which is accepted by the system.
+\end{itemize}
+\subsubsection*{FR5}
+\begin{itemize}
+  \item \textbf{Description:} The system shall provide reports to authenticated customers when a service request is complete.
+  \item \textbf{Rationale:} The system must provide the results of a service request to the users who initiated it.
+  \item \textbf{Fit Criterion:} After logging in and after the completion of a service request, customers can receive a service request report.
+\end{itemize}
+\subsubsection*{FR6}
+\begin{itemize}
+  \item \textbf{Description:} The system shall allow an authenticated Customer to upload images associated with a service request.
+  \item \textbf{Rationale:} If the customer has images to be analyzed, they must have the ability to upload them to the system.
+  \item \textbf{Fit Criterion:} After logging in and after the initiation of a service request, customers can add images associated to the service request.
+\end{itemize}
+\subsubsection*{FR7}
+\begin{itemize}
+  \item \textbf{Description:} The system shall allow a customer to request satellite images for a given geographic area, as designated using a specified geographic coordinate system.
+  \item \textbf{Rationale:} If customers do not have images for the area they would like to be analyzed, they can request the system to source them on their behalf. They system may not be able to fulfill the request.
+  \item \textbf{Fit Criterion:} After logging in and after the initiation of a service request, customers can request the system to locate images from external providers by providing geographic coordinates.
+\end{itemize}
+\subsubsection*{FR8}
+\begin{itemize}
+  \item \textbf{Description:} The system shall alert a customer if their service request is not able to be fulfilled.
+  \item \textbf{Rationale:} In the event the system is unable to complete a request, it should alert the customer, so they are aware.
+  \item \textbf{Fit Criterion:} After logging in and after the initiation of a service request, the customer will get an alert if the request in unable to be fufiled.
+\end{itemize}
+\subsubsection*{FR9}
+\begin{itemize}
+  \item \textbf{Description:} The system shall allow Labelers to create a new user account.
+  \item \textbf{Rationale:} The Labelers must have an account to request the services provided by the system.
+  \item \textbf{Fit Criterion:} Labeler is created in and stored in the database.
+\end{itemize}
+\subsubsection*{FR10}
+\begin{itemize}
+  \item \textbf{Description:} The system shall allow Labelers with an existing account to authenticate themselves using the credentials stored by the system.
+  \item \textbf{Rationale:} In order to access privileged information, the system must Labelers customers.
+\item \textbf{Fit Criterion:} Labelers can use correct credentials to log in to user account.
+\end{itemize}
+\subsubsection*{FR11}
+\begin{itemize}
+  \item \textbf{Description:} The system shall allow authenticated Labelers to edit their account information.
+  \item \textbf{Rationale:} After creating an account, the Labelers must have the necessary tools to modify the information they have provided.
+  \item \textbf{Fit Criterion:} After logging in, Labelers can modify the stored personal information.
+\end{itemize}
+\subsubsection*{FR12}
+\begin{itemize}
+  \item \textbf{Description:} The system shall allow Labelers to request their accrued earnings be transferred to their provided banking platform.
+  \item \textbf{Rationale:} The system must ensure Labelers are compensated for their efforts.
+\item \textbf{Fit Criterion:} After logging in, Labelers can request their earnings be deposited in the account stored in their personal information.
+\end{itemize}
+\subsubsection*{FR13}
+\begin{itemize}
+  \item \textbf{Description:} The system shall allow Labelers to annotate images displayed to them with the purpose of collecting annotation data.
+  \item \textbf{Rationale:} This is the key service the system provides.
+  \item \textbf{Fit Criterion:} Labelers will be able to annotate images.
+\end{itemize}
+\subsubsection*{FR14}
+\begin{itemize}
+  \item \textbf{Description:} The system shall combine annotations obtained from authenticated Labelers into a consolidated report.
+  \item \textbf{Rationale:} This is the key service the system provides.
+  \item \textbf{Fit Criterion:} After a service request has been initaited, and the system has determined the label accuracy is over a certain threshold (NFR-PR5).
+\end{itemize}
 
 \section{Look and Feel Requirements}
 \subsection{Appearance Requirements}
-\lips
+\subsubsection*{Requirement LF1:}
+\begin{itemize}
+  \item \textbf{Description:} The application shall adapt to various screen sizes, ensuring legibility and an uncluttered layout.
+  \item \textbf{Rationale:} Users will have computers with varying screen sizes, so a consistent experience across all these sizes is ideal.
+  \item \textbf{Fit Criterion:} Visual elements must not exceed the boundaries of a screen with a size between the range 1024×768 pixels to 1920×1080 pixels.
+\end{itemize}
+\subsubsection*{Requirement LF2:}
+\begin{itemize}
+  \item \textbf{Description:} Interactive elements such as buttons shall provide visual feedback to the user.
+  \item \textbf{Rationale:} This will allow users a better understanding of when their actions have been processed by the application.
+  \item \textbf{Fit Criterion:} Every interactive element changes colour or displays additional visual cues, such as animations or shadows, to indicate interaction.
+\end{itemize}
 \subsection{Style Requirements}
-\lips
+\subsubsection*{Requirement LF3:}
+\begin{itemize}
+  \item \textbf{Description:} The application should maintain a unified visual design across all components.
+  \item \textbf{Rationale:} A consistent appearance enhances the application's cohesiveness and conveys a professional aesthetic.
+  \item \textbf{Fit Criterion:} Font type, sizing, and colour, along with background tones are all consistent throughout the application.
+\end{itemize}
 
-\section{Usability and Humanity Requirements}
-\subsection{Ease of Use Requirements}
-\lips
-\subsection{Personalization and Internationalization Requirements}
-\lips
-\subsection{Learning Requirements}
-\lips
-\subsection{Understandability and Politeness Requirements}
-\lips
-\subsection{Accessibility Requirements}
-\lips
+\section*{11 Usability and Humanity Requirements}
+
+\subsection*{11.1 Ease of Use Requirement}
+
+
+\begin{enumerate}
+    \item \textbf{Clear Navigation Structure}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: The platform will have a well-organized navigation menu, allowing users to quickly find labeling tasks, settings, help, and account details.  
+            \item \textbf{Rationale}: An easy-to-navigate platform helps reduce the time taken for users to find what they need, improving the efficiency of labeling tasks and overall user satisfaction.  
+            \item \textbf{Fit Criterion}: At least 90\% of users should be able to navigate to any main feature within 3 clicks, as determined by usability testing.
+        \end{itemize}
+    \item \textbf{Consistent User Interface Elements}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: The platform’s buttons, forms, and other UI elements should follow a consistent style and behavior throughout, to ensure a predictable user experience.  
+            \item \textbf{Rationale}: Consistency reduces cognitive load and helps users feel comfortable and confident when interacting with the system, as they can easily recognize and understand patterns in the UI.  
+            \item \textbf{Fit Criterion}: Consistency will be validated by usability tests where at least 95\% of users recognize and correctly use recurring interface elements across different pages.
+        \end{itemize}
+\end{enumerate}
+
+\subsection*{11.2 Personalization and Internationalization Requirements}
+
+\begin{enumerate}
+    \item \textbf{Task Prioritization Based on Preferences}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: Users can set preferences to prioritize specific types of labeling tasks (e.g., agricultural, urban) and receive suggestions aligned with their interests and expertise.  
+            \item \textbf{Rationale}: Allowing users to work on tasks of interest or within their expertise can improve task accuracy and user satisfaction, leading to better retention and data quality.  
+            \item \textbf{Fit Criterion}: Users should be able to set their task preferences in their profile, with at least 80\% of their assigned tasks matching these preferences over time.
+        \end{itemize}
+    \item \textbf{Localized Date, Time, and Currency Formats}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: The platform should display localized formats for date, time, and currency based on the user's location or preference settings.  
+            \item \textbf{Rationale}: Displaying culturally familiar formats enhances user comfort and reduces errors when interpreting critical information like deadlines or earnings.  
+            \item \textbf{Fit Criterion}: Date, time, and currency formats should adjust automatically based on the user’s location or manual settings, verified through localized testing.
+        \end{itemize}
+\end{enumerate}
+
+\subsection*{11.3 Learning Requirements}
+
+\begin{enumerate}
+    \item \textbf{In-App Progress Tracking for Learning}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: Users can track their progress through tutorials and training tasks within the platform, allowing them to see completed and pending learning modules.  
+            \item \textbf{Rationale}: Tracking progress motivates users to complete learning tasks and helps them understand where they stand in terms of mastering platform features.  
+            \item \textbf{Fit Criterion}: A progress tracker will be implemented, and at least 80\% of users should find it helpful, based on post-training feedback surveys.
+        \end{itemize}
+    \item \textbf{Interactive Practice Tasks}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: Provide users with simulated labeling tasks to practice without affecting actual datasets, allowing them to learn through hands-on experience before starting real work.  
+            \item \textbf{Rationale}: Practice tasks help users understand the labeling process without pressure, improving their confidence and accuracy before handling real data.  
+            \item \textbf{Fit Criterion}: At least 85\% of users should complete at least one practice task before labeling real data, with a satisfaction rate of 90\% based on feedback.
+        \end{itemize}
+\end{enumerate}
+
+\subsection*{11.4 Understandability and Politeness Requirements}
+
+\begin{enumerate}
+    \item \textbf{Contextual Help Pop-ups}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: Contextual help pop-ups should be available throughout the platform, offering brief explanations for various features and guidance on how to complete tasks.  
+            \item \textbf{Rationale}: Providing help exactly where users need it reduces confusion and makes it easier for users to understand how to use different parts of the platform without extensive searching.  
+            \item \textbf{Fit Criterion}: At least 90\% of users should find the contextual help pop-ups clear and helpful during usability testing.
+        \end{itemize}
+    \item \textbf{Friendly Error Handling and Guidance}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: Error messages will not only indicate what went wrong but also provide actionable steps to resolve the issue in a friendly, non-blaming tone.  
+            \item \textbf{Rationale}: Friendly and constructive error handling reduces user frustration and helps users quickly resolve issues without needing support, improving overall experience.  
+            \item \textbf{Fit Criterion}: At least 95\% of errors will be accompanied by actionable instructions, and users should report a low frustration rate ($<$ 10\%) when encountering errors, based on feedback.
+        \end{itemize}
+\end{enumerate}
+
+\subsection*{11.5 Accessibility Requirements}
+
+\begin{enumerate}
+    \item \textbf{Adjustable Text Size and Color Themes}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: The platform will provide options for users to adjust text size and choose between different color themes (e.g., light, dark, high contrast) to improve readability based on their preferences.  
+            \item \textbf{Rationale}: Allowing adjustments for visual elements helps users with low vision, color blindness, or different environmental lighting conditions to comfortably use the platform.  
+            \item \textbf{Fit Criterion}: At least three different color themes will be available, and users should be able to increase text size up to 200\% without loss of content or functionality.
+        \end{itemize}
+    \item \textbf{Keyboard Shortcuts for Core Actions}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: The platform will support keyboard shortcuts for essential actions (e.g., navigating between tasks, submitting labels) to facilitate quick access and improve usability for users who cannot use a mouse.  
+            \item \textbf{Rationale}: Keyboard shortcuts provide an alternative way to interact with the system, improving efficiency for power users and ensuring accessibility for users with limited mobility.  
+            \item \textbf{Fit Criterion}: All core actions should have keyboard shortcuts available, and usability tests should confirm that at least 95\% of actions are accessible via keyboard navigation.
+        \end{itemize}
+\end{enumerate}
+
 
 \section{Performance Requirements}
 \subsection{Speed and Latency Requirements}
-\lips
+\subsubsection*{NFR-PR0}
+\begin{itemize}
+  \item \textbf{Description:} The system shall process new user requests within 15 minutes of a Customer completing the account creation process 90\% of the time, and within 48 hours in all cases. 
+  \item \textbf{Rationale:} The user likely has urgent needs if they are signing up to access the system. They must have quick access to the services offered by the system, and authentication is the first step of this process.
+  \item \textbf{Fit Criterion:}\\ Let $t_{\text{newCustomerAccount}}$ be the time it takes to process a new Customer account request, in hours.\\ \probP($t_{\text{newCustomerAccount}} < 0.25) \geq .90 \wedge \probP(t_{\text{newCustomerAccount}} < 48) = 1 $
+\end{itemize}
+
+\subsubsection*{NFR-PR1}
+\begin{itemize}
+  \item \textbf{Description:} The system shall process new user requests within 15 minutes of a Labeler  completing the account creation process 90\% of the time, and within 48 hours in all cases. 
+  \item \textbf{Rationale:} To improve engagement from Labelers, there should be minimal delay in getting started.
+  \item \textbf{Fit Criterion:}\\ Let $t_{\text{newLabelAccount}}$ be the time it takes to process a new Labeler account request, in hours.\\ \probP($t_{\text{newLabelAccount}} < 0.25) \geq 0.9 \wedge \probP(t_{\text{newLabelAccount}} < 48) = 1 $
+\end{itemize}
+
+\subsubsection*{NFR-PR2}
+\begin{itemize}
+  \item \textbf{Description:} The system shall return a complete report of results to the Customer within the negotiated amount of time, 90\% of the time, and within 48 additional hours in all cases.
+  \item \textbf{Rationale:} The user is expecting to be able to act on the insights the system provides. To build trust and loyalty, the system must ensure that it is meeting the agreed upon timelines.
+  \item \textbf{Fit Criterion:}\\ Let $t_{\text{serviceRequestTime}}$ be the time it takes to complete a service request, in hours.\\
+  Let $t_{\text{serviceRequestTimeLimit}}$ be the negotiated time limit for completing a service request, in hours.\\ \probP($t_{\text{serviceRequestTime}} < t_{\text{serviceRequestTimeLimit}}) \geq 0.9\\ \wedge \probP(t_{\text{serviceRequestTime}} < t_{\text{serviceRequestTimeLimit}}+48) = 1 $
+\end{itemize}
+
+\subsubsection*{NFR-PR3}
+\begin{itemize}
+  \item \textbf{Description:} The system shall take no longer than 10 seconds to display the next image to be labeled to a labeler, if there is one available.
+  \item \textbf{Rationale:} To reduce friction for labelers, the system must ensure there is no unnecessary delay in preparing the next job. For users exposed to modern media, attention spans can be expected to be less than 10 seconds \href{https://profiletree.com/attention-span-crisis-digital-age-statistics/#:~:text=Studies%20have%20proven%20that%20being,focus%20after%208%20mere%20seconds}{src}.
+  \item \textbf{Fit Criterion:}\\ Let $t_{\text{imageServing}}$ be the time it takes to serve the next image, in seconds.\\
+  Let $x_{\text{nextImage}}$ equal True if there is a next image available, and False otherwise.\\
+  $x_{\text{nextImage}} \Rightarrow t_{\text{imageServing}} \leq 10$
+\end{itemize}
+
+\subsubsection*{NFR-PR4}
+\begin{itemize}
+  \item \textbf{Description:} The system shall deliver earned payouts to labelers within 7 business days of a request being made through the system.
+  \item \textbf{Rationale:} The labelers are entitled to their earned income, and there must not be unnecessary delay. 7 days accounts for delays in the platform used to distribute payments.
+  \item \textbf{Fit Criterion:}\\ Let $t_{\text{payoutDelay}}$ be the time it takes for a user to receive their payments after a request is received by the system, in days.\\
+  $t_{\text{payoutDelay}} < 7$
+\end{itemize}
 \subsection{Safety-Critical Requirements}
-\lips
+N/A
 \subsection{Precision or Accuracy Requirements}
-\lips
+\subsubsection*{NFR-PR5}
+\begin{itemize}
+  \item \textbf{Description:} The system shall report accurate labels 75\% of the time.
+  \item \textbf{Rationale:} Average data label accuracy for competitors is greater than 75\% (\href{https://www.researchgate.net/publication/234774537_Data_quality_from_crowdsourcing_A_study_of_annotation_selection_criteria#:~:text=Depending%20on%20the%20number%20of,%5B13%5D%20%5B14%5D%20.}{link}). The system should at a minimum provide the same label accuracy.
+  \item \textbf{Fit Criterion:}\\ Let $O$ be the set of objects to label.\\
+  Let $C$ be the set of classes an object in $O$ can be.\\
+  Let $L_{\text{True}}: O \rightarrow C $ be a function which maps objects in $O$ to their true classes in $C$.
+  Let $L_{\text{Guess}}: O \rightarrow C $ be the funtion derived from the system which maps objects in $O$ to their assumed classes in $C$.
+  $(\forall o \in O|: \probP(L_{\text{True}}(o) = L_{\text{Guess}}(o))\geq 0.75)$
+\end{itemize}
 \subsection{Robustness or Fault-Tolerance Requirements}
-\lips
+\subsubsection*{NFR-PR6}
+\begin{itemize}
+  \item \textbf{Description:} The system shall have 97\% uptime. 
+  \item \textbf{Rationale:} It is crucial that in emergency response use cases, the system is able to accept and process requests with minimal delay.
+  \item \textbf{Fit Criterion:}\\ Let $t_{\text{uptime}}$ be the uptime of the system.\\
+  Let $t_{\text{downtime}}$ be the downtime of the system.\\
+  $\frac{t_{\text{uptime}}}{t_{\text{uptime}} + t_{\text{downtime}}} > 0.97$
+\end{itemize}
 \subsection{Capacity Requirements}
-\lips
+\subsubsection*{NFR-PR7}
+\begin{itemize}
+  \item \textbf{Description:} The system shall have the capacity to support enough labelers to meet all service request deadlines.
+  \item \textbf{Rationale:} This requirement is critical to satisfy NFR-PR2.
+  \item \textbf{Fit Criterion:} See NFR-PR2.
+\end{itemize}
+\subsubsection*{NFR-PR8}
+\begin{itemize}
+  \item \textbf{Description:} The system shall have the capacity to store and process large image files.
+  \item \textbf{Rationale:} This requirement is necessary to obtain information from satelite images, which can be several gigabites in size.
+  \item \textbf{Fit Criterion:} The system will not crash or fail to store when given images files <50 Gb in size.
+\end{itemize}
 \subsection{Scalability or Extensibility Requirements}
-\lips
+\subsubsection*{NFR-PR9}
+\begin{itemize}
+  \item \textbf{Description:} The system shall be able to scale to meet the capacity specified in NFR-PR7.
+  \item \textbf{Rationale:} This requirement is critical to satisfy NFR-PR7.
+  \item \textbf{Fit Criterion:} See NFR-PR7.
+\end{itemize}
 \subsection{Longevity Requirements}
-\lips
+N/A
 
 \section{Operational and Environmental Requirements}
 \subsection{Expected Physical Environment}
@@ -430,83 +850,422 @@ The use case diagram depicted below identifies the boundaries between the users 
 
 \section{Maintainability and Support Requirements}
 \subsection{Maintenance Requirements}
-\lips
+\subsubsection*{NFR-MR1}
+\begin{itemize}
+  \item \textbf{Description:} All maintainance required for the system shall be possible to complete by a competent software developer after reading all of the documentation provided in the source repository.
+  \item \textbf{Rationale:} The system should be well documented, and therefore maintainable after reading said documents.
+  \item \textbf{Fit Criterion:} A competent software developer, as determined by the original developers or their agents, can solve problems related to the core of the system, as determined by the 
+  features outlined in this document.
+\end{itemize}
 \subsection{Supportability Requirements}
-\lips
+N/A
 \subsection{Adaptability Requirements}
-\lips
+N/A
 
 \section{Security Requirements}
 \subsection{Access Requirements}
-\lips
+\subsubsection*{Requirement SR1:}
+\begin{itemize}
+  \item \textbf{Description:} The application shall only allow users with labeling access, including labellers, customers, and admins, to view active projects and label images.
+  \item \textbf{Rationale:} We do not want random users with no stake in the process to effect the results.
+  \item \textbf{Fit Criterion:} Users who have not logged in to the application have no way of viewing projects or labeling images. Users logged in as labellers, customers, or admins have access to these features.
+\end{itemize}
+\subsubsection*{Requirement SR2:}
+\begin{itemize}
+  \item \textbf{Description:} The application shall only allow users with customer access and above to create new image analysis projects.
+  \item \textbf{Rationale:} Unidentified users creating projects would be impossible to facilitate. Also, labellers have no need to access project creation. 
+  \item \textbf{Fit Criterion:} Users who have not logged in to the application have no way of creating an image analysis project. Users logged in as customers or admins have access to these features.
+\end{itemize}
+\subsubsection*{Requirement SR3:}
+\begin{itemize}
+  \item \textbf{Description:} The application shall validate the email format the user provides when creating an account.
+  \item \textbf{Rationale:} We do not want users using invalid emails to sign up.
+  \item \textbf{Fit Criterion:} Let E represent the set of all email addresses, and let V represent the set of all valid email addresses. A valid email address conforms to the general pattern:\\\\
+  V = $(\forall\; email \in E\;  |\; email \; matches \; the \; pattern \; $[a-zA-Z0-9+\_.-]+@[a-zA-Z0-9.-]+[a-zA-Z])\\
+\end{itemize}
+\subsubsection*{Requirement SR4:}
+\begin{itemize}
+  \item \textbf{Description:} The application shall validate the password format the user provides when creating an account.
+  \item \textbf{Rationale:} We do not want users using weak passwords to sign up.
+  \item \textbf{Fit Criterion:} Let P represent the set of all passwords, and let V represent the set of all valid passwords. A valid password has a at least one lowercase, uppercase, number and special character and is a minimum of 8 characters in length:\\\\
+  V = $(\forall\; password \in P\;  |\; password \; matches \; the \; pattern \; $(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[\#\$\%\&\*\@])[a-zA-Z0-9\#\$\%\&\*\@]\{8,\})\\
+\end{itemize}
 \subsection{Integrity Requirements}
-\lips
+\subsubsection*{Requirement SR5:}
+\begin{itemize}
+  \item \textbf{Description:} The application shall prevent incorrect data from being introduced.
+  \item \textbf{Rationale:} The database of information should always reflect correct and up to date information.
+  \item \textbf{Fit Criterion:} The system must validate user inputs for data accuracy and format before they are saved. Any invalid data must trigger error messages, preventing it from being entered into the database. Users must be required to correct errors before proceeding.
+\end{itemize}
 \subsection{Privacy Requirements}
-\lips
+\subsubsection*{Requirement SR6:}
+\begin{itemize}
+  \item \textbf{Description:} User data will be securely encrypted to protect user’s privacy.
+  \item \textbf{Rationale:} This will help to avoid user's being compromised if a data leak occurs.
+  \item \textbf{Fit Criterion:} An encryption algorithm is used on sensitive user data such as passwords.
+\end{itemize}
+\subsubsection*{Requirement SR7:}
+\begin{itemize}
+  \item \textbf{Description:} The application shall ensure that all payment transactions are processed securely using encryption and comply with relevant security standards, such as PCI-DSS, which helps to protect payment account data (PCI Security Standards Council, 2024).
+  \item \textbf{Rationale:} Protecting users' financial information is critical to maintaining trust. Failing to secure payments can lead to data breaches, financial loss, and legal liabilities.
+  \item \textbf{Fit Criterion:} All payment transactions must use industry-standard encryption to protect sensitive data. Payment information, such as credit card details, must not be stored locally on the application and must be processed via a secure, PCI-DSS-compliant third-party payment gateway.
+\end{itemize}
+
 \subsection{Audit Requirements}
-\lips
+These requirements are not applicable as we are not an organization that is currently subject to audits.
 \subsection{Immunity Requirements}
-\lips
+\subsubsection*{Requirement SR8:}
+\begin{itemize}
+  \item \textbf{Description:} The application shall use parameterized queries or prepared statements for all database interactions.
+  \item \textbf{Rationale:} We want to prevent SQL injection attacks which can lead to unauthorized data access or manipulation.
+  \item \textbf{Fit Criterion:} All database queries must be implemented using parameterized queries or prepared statements. Dynamic SQL strings that concatenate user input must not be used in the codebase.
+\end{itemize}
 
 \section{Cultural Requirements}
 \subsection{Cultural Requirements}
-\lips
+\subsubsection*{NFR-CUR1}
+\begin{itemize}
+  \item \textbf{Description:} The system shall present users with the option to select the most popular language in each country it is deployed in.
+  \item \textbf{Rationale:} It is important that the users of the program can understand what is said in each step.
+  \item \textbf{Fit Criterion:} A drop down will allow users to select from the list of languages. At a minimum, the most popular language by number of speakers will be available for each country.
+\end{itemize}
 
 \section{Compliance Requirements}
 \subsection{Legal Requirements}
-\lips
+\subsubsection*{NFR-COR1}
+\begin{itemize}
+  \item \textbf{Description:} The system shall not be available in any country currently facing economic sanctions by the Government of Canada.
+  \item \textbf{Rationale:} Legal requirement to operate.
+  \item \textbf{Fit Criterion:} Website must not be reachable in sanctioned countries.
+\end{itemize}
+\subsubsection*{NFR-COR2}
+\begin{itemize}
+  \item \textbf{Description:} The system shall follow Canadian tax code when accepting and paying out earnings.
+  \item \textbf{Rationale:} Legal requirement to operate.
+  \item \textbf{Fit Criterion:} All relevant tax codes must be satisfied when accepting payment from Customers or paying out earnings to Labelers.
+\end{itemize}
+\subsubsection*{NFR-COR3}
+\begin{itemize}
+  \item \textbf{Description:} The system shall allow Customers to restrict Labelers from certain regions from labeling the images related to their service request.
+  \item \textbf{Rationale:} Customers may be uploading sensitive images, which are inappropriate for international Labelers to view.
+  \item \textbf{Fit Criterion:} No restricted image, as identified by the customer, shall be shown to a restricted group.
+\end{itemize}
 \subsection{Standards Compliance Requirements}
-\lips
+N/A
 
 \section{Open Issues}
-\lips
+\textbf{Task Assignment Algorithm: }To ensure labelers are engaged as they complete tasks and to obtain the highest quality of information possible, the system must implement an intelligent task allocation system. This system has not yet been determined.
+\\\textbf{Label Consensus Algorithm: }Similarly, the algorithm for combining multiple user labels into one accurate label has not yet been determined. 
+\\\textbf{Labeling Services Offered: }The system has determined several potential labeling services to be offered by the system, but has not confirmed with certainty what will be included. This will be determined after more research has been completed on the task assignment algorithm.
 
 \section{Off-the-Shelf Solutions}
 \subsection{Ready-Made Products}
-\lips
+\textbf{Amazon Mechanical Turk: } A web-based crowdsourcing platform. Instead of building a novel front end, the system could obtain labels through this platform instead.
 \subsection{Reusable Components}
-\lips
+\textbf{Label Studio: } A React library which contains components for building a web-based data annotation platform.
 \subsection{Products That Can Be Copied}
-\lips
+\textbf{Tolka AI: } A general purpose image label crowdsourcing site. Supports image segmentation, bounding box drawing, and more computer vision labeling tasks.
+
+
 
 \section{New Problems}
 \subsection{Effects on the Current Environment}
-\lips
+The introduction of the OKKM Insights platform is expected to have several impacts on the existing technological and operational environment.
+\subsubsection{Data Privacy and Security Concerns}
+\begin{enumerate}
+    \item Impact: Handling sensitive satellite imagery and user-generated data raises significant privacy and security issues. Ensuring compliance with data protection regulations is paramount.
+    \item Potential Problem: Breaches or mishandling of data could lead to legal repercussions, loss of trust, and reputational damage.
+\end{enumerate}
+\subsubsection{Environmental Footprint}
+\begin{enumerate}
+    \item Impact: Increased computational requirements for AI processing and data storage may lead to higher energy consumption.
+    \item Potential Problem: This could conflict with sustainability goals and lead to higher operational costs.
+\end{enumerate}
 \subsection{Effects on the Installed Systems}
-\lips
+Introducing the OKKM Insights platform will interact with and potentially disrupt existing systems within the organization and for stakeholders.
+\subsubsection{Integration Challenges}
+\begin{enumerate}
+    \item Impact: The platform will need to integrate with existing data sources, cloud services, and possibly applicable third-party APIs.
+    \item Potential Problem: Incompatibilities or integration failures could result in data inconsistencies, system downtimes, or increased maintenance efforts.
+\end{enumerate}
+\subsubsection{Legacy Systems Compatibility}
+\begin{enumerate}
+    \item Impact: Older systems may not support the latest technologies required by the new platform.
+    \item Potential Problem: Upgrading or adjusting to legacy systems can be costly and time-consuming, potentially delaying the platform's deployment.
+\end{enumerate}
 \subsection{Potential User Problems}
-\lips
+Users are at the heart of the OKKM Insights platform, and several issues may arise that affect their experience and satisfaction.
+\subsubsection{Usability Issues}
+\begin{enumerate}
+    \item Impact: If the platform is not intuitive or user-friendly, users may struggle to navigate and utilize its features effectively.
+    \item Potential Problem: Poor user experience can lead to reduced engagement, lower data labeling contributions, and higher dropout rates.
+\end{enumerate}
+\subsubsection{Training and Onboarding}
+\begin{enumerate}
+    \item Impact: Users may require training to understand how to label data accurately and use the platform's tools.
+    \item Potential Problem: Inadequate training resources can result in inconsistent labeling, decreasing the quality of the datasets and the reliability of the AI models.
+\end{enumerate}
+\subsubsection{Compensation and Incentives}
+\begin{enumerate}
+    \item Impact: Users expect fair compensation for their contributions.
+    \item Potential Problem: Delays or inaccuracies in payment processing can lead to dissatisfaction, reducing user retention and the overall quality of data labeling efforts.
+\end{enumerate}
+\subsubsection{Technical Support}
+\begin{enumerate}
+    \item Impact: Users may encounter technical issues that require timely resolution.
+    \item Potential Problem: Insufficient support can frustrate users, leading to decreased platform usage and negative word-of-mouth.
+\end{enumerate}
 \subsection{Limitations in the Anticipated Implementation Environment That May
 Inhibit the New Product}
-\lips
+Several environmental and contextual limitations could hinder the effective implementation and operation of the OKKM Insights platform.
+\subsubsection{Regulatory Constraints}
+\begin{enumerate}
+    \item Limitation: Different countries have varying regulations regarding satellite data usage, privacy, and AI applications.
+    \item Impact: Navigating these regulatory landscapes can be complex and may restrict the platform's operations in certain regions, limiting market potential.
+\end{enumerate}
+\subsubsection{Technological Dependencies}
+\begin{enumerate}
+    \item Limitation: The platform relies on third-party services (e.g., cloud providers, satellite data suppliers) whose availability and reliability are beyond the project's control.
+    \item Impact: Downtime or changes in third-party services can disrupt platform functionality and user experience.
+\end{enumerate}
 \subsection{Follow-Up Problems}
-\lips
+Addressing the initial set of problems may give rise to additional challenges that need to be managed.
+\subsubsection{Data Quality Management}
+\begin{enumerate}
+    \item Follow-Up Problem: Ensuring the ongoing accuracy and relevance of labeled datasets as new data is continuously added. This may require implementing robust quality assurance mechanisms and periodic reviews.
+\end{enumerate}
+\subsubsection{User Engagement and Retention}
+\begin{enumerate}
+    \item Follow-Up Problem: Continuously engaging users to maintain an active labeling workforce may require ongoing incentives, gamification strategies, and community-building efforts to prevent user fatigue and attrition.
+\end{enumerate}
+\subsubsection{Ethical Considerations}
+\begin{enumerate}
+    \item Follow-Up Problem: Addressing ethical concerns related to surveillance, data misuse, and the potential dual-use nature of satellite imagery data. Establishing ethical guidelines and oversight mechanisms will be necessary to prevent misuse.
+\end{enumerate}
+\subsubsection{Dependency on User Participation}
+\begin{enumerate}
+    \item Follow-Up Problem: The platform's success heavily relies on active user participation for data labeling. Fluctuations in user engagement can directly impact data quality and availability, requiring strategies to stabilize user contributions.
+\end{enumerate}
+\subsubsection{Technical Debt Accumulation}
+\begin{enumerate}
+    \item Follow-Up Problem: Rapid development to address emerging problems may lead to technical debt, where short-term solutions create long-term maintenance challenges. Proper code management and refactoring practices will be essential to mitigate this issue.
+\end{enumerate}
 
-\section{Tasks}
-\subsection{Project Planning}
-\lips
-\subsection{Planning of the Development Phases}
-\lips
 
-\section{Migration to the New Product}
-\subsection{Requirements for Migration to the New Product}
-\lips
-\subsection{Data That Has to be Modified or Translated for the New System}
-\lips
+
+\section*{21 Tasks}
+
+\subsection*{21.1 Project Planning}
+\begin{itemize}[leftmargin=2cm]
+    \item \textbf{Define Clear Milestones}: Establish milestones based on key project phases, such as requirements gathering, hazard analysis, proof of concept, backend development, and final project demonstration.
+    \item \textbf{Task Assignment and Role Allocation}: Assign tasks to team members based on their strengths and expertise, with clear ownership over specific deliverables (e.g., backend development, frontend development, documentation, testing).
+    \item \textbf{Use of Project Management Tools}: Utilize tools like Kanban boards in GitHub Projects to track progress, organize tasks into 'To Do,' 'In Progress,' and 'Completed' categories, and set internal deadlines to meet project milestones effectively.
+    \item \textbf{Risk Management and Mitigation}: Identify potential project risks (e.g., data quality issues, development delays) and create mitigation strategies, including regular check-ins, backup plans, and prioritization of critical tasks.
+\end{itemize}
+
+\subsection*{21.2 Planning of the Development Phases}
+\begin{itemize}[leftmargin=2cm]
+    \item \textbf{Requirements Gathering (24-Sep-2024 to 08-Oct-2024)}: Engage in detailed discussions with stakeholders to gather comprehensive requirements for both frontend and backend components, ensuring all technical and business needs are documented.
+    \item \textbf{Hazard Analysis (10-Oct-2024 to 23-Oct-2024)}: Identify risks related to data handling, server security, and other critical project components. Develop a hazard analysis document to mitigate potential threats, especially in handling satellite imagery.
+    \item \textbf{Verification \& Validation (V\&V) Planning (24-Oct-2024 to 01-Nov-2024)}: Develop a detailed V\&V plan, including test plans and quality assurance measures. This will include setting up testing environments and criteria for ensuring code correctness and reliability.
+    \item \textbf{Proof of Concept (01-Nov-2024 to 22-Nov-2024)}: Develop basic functionality for both backend and frontend, demonstrating image processing, API development, and the labeling workflow. Gather feedback to identify areas of improvement.
+    \item \textbf{Backend Development (23-Nov-2024 to 05-Jan-2025)}: Focus on developing API endpoints, integrating satellite image data, and ensuring secure and efficient handling of large datasets. Aim to have a functional backend by the end of this phase.
+    \item \textbf{Frontend Development (23-Nov-2024 to 05-Jan-2025)}: Design and implement UI/UX features, integrate backend APIs, and ensure an interactive user experience for both clients and labelers. Aim for a fully functional frontend that complements backend capabilities.
+    \item \textbf{Design Document Revision (15-Dec-2024 to 15-Jan-2025)}: Revise the design document to reflect final system architecture, covering database schema, API structure, and AI model integration.
+    \item \textbf{Mid-Project Demonstration (03-Feb-2025 to 14-Feb-2025)}: Prepare a functional prototype showcasing the integrated backend, frontend, and APIs. Demonstrate the labeling process, data flow, and key system functionalities.
+    \item \textbf{Verification \& Validation (15-Feb-2025 to 07-Mar-2025)}: Test data processing pipelines, system reliability, and user interfaces to ensure accuracy and consistency. Run automated and manual tests for different use cases.
+    \item \textbf{Final Project Demonstration \& Expo Preparation (24-Mar-2025 to 01-Apr-2025)}: Demonstrate the complete system, including all functionality, datasets, and models. Fine-tune UI and prepare for a polished presentation at the Expo.
+    \item \textbf{Final Documentation (01-Apr-2025 to 15-Apr-2025)}: Compile comprehensive final reports covering the entire development process, technical documentation, user manuals, and deployment guides.
+\end{itemize}
+
+
+
 
 \section{Costs}
+Developing and implementing the requirements for the OKKM Insights platform involves various financial and effort-related expenditures. 
+    Below is a detailed breakdown of the primary cost components associated with building the platform:
+
+\subsection{Development Costs}
+\subsubsection{Software Development}
+\begin{enumerate}
+    \item Front-End Development: Creating a user-friendly web interface requires experience working with front-end technologies such as HTML, CSS, JavaScript, and frameworks like React or Angular.
+    \item Back-End Development: Developing robust server-side infrastructure using technologies like Node.js, Flask, and Python. This includes setting up databases, APIs, and integrating with cloud services (AWS/Azure).
+    \item AI and Machine Learning Integration: Building and integrating AI-powered features for automatic data labeling and computer vision model training will require specialized expertise in machine learning, potentially increasing development costs.
+  \end{enumerate}
+\subsubsection{UI/UX Design}
+\begin{enumerate}
+  \item Investing time into UI/UX design to ensure the platform is intuitive and easy to use for both data labelers and end clients. This includes designing workflows, views, and ensuring responsive design across devices.
+  \end{enumerate}
+  \subsubsection{Testing and Quality Assurance}
+\begin{enumerate}
+  \item Comprehensive testing to identify and fix bugs, ensure cross-platform compatibility, and maintain high system reliability. This involves both automated and manual testing processes.
+  \end{enumerate}
+\subsection{Infrastructure Costs}
+\subsubsection{Cloud Services}
+\begin{enumerate}
+  \item Hosting: Utilizing cloud platforms like AWS or Azure for hosting the backend services and databases. Costs will scale with usage, including storage for satellite images, computational resources for AI processing, and data transfer fees.
+  \item Scalability: Ensuring the infrastructure can scale to handle increasing numbers of users and data volume, which may involve additional costs for load balancing, auto-scaling, and enhanced security measures.
+  \end{enumerate}
+\subsubsection{Data Acquisition}
+\begin{enumerate}
+  \item Purchasing high-quality, commercially available satellite images from third-party providers. These costs can vary based on the resolution, coverage area, and frequency of image updates required for different use cases.
+  \end{enumerate}
+\subsection{Operational Costs}
+\subsubsection{User Compensation}
+\begin{enumerate}
+  \item Labeling Incentives: Allocating funds to compensate users who contribute to the image labeling process. This includes setting competitive rates to attract and retain a large and active user base.
+  \item Payment Processing Fees: Costs associated with handling financial transactions, including fees from payment gateways for distributing earnings to users and receiving payments from clients.
+  \end{enumerate}
+\subsubsection{Maintenance and Support}
+\begin{enumerate}
+  \item Ongoing maintenance of the platform to ensure uptime, implement updates, and address technical issues. This also includes providing customer support to both data labelers and end clients.
+  \end{enumerate}
+\subsubsection{Security and Compliance}
+\begin{enumerate}
+  \item Implementing robust security measures to protect sensitive satellite data and financial transactions. Costs may include encryption technologies, regular security audits, and compliance with data protection regulations.
+  \end{enumerate}
+
+\subsection{Marketing and User Acquisition Costs}
+\subsubsection{Promotional Activities}
+\begin{enumerate}
+  \item Marketing efforts to attract both data labelers and end clients to the platform. This includes digital marketing campaigns, partnerships with relevant organizations, and participation in industry events.
+  \end{enumerate}
+\subsubsection{Onboarding and Training}
+\begin{enumerate}
+  \item Creating tutorials, documentation, and training materials to facilitate easy onboarding of new users and ensure they can effectively contribute to the labeling process with minimal friction.
+  \end{enumerate}
+
+\subsection{Contingency and Miscellaneous Costs}
+\subsubsection{Unexpected Expenses}
+\begin{enumerate}
+  \item Allocating a budget for unforeseen challenges such as technical setbacks, additional feature requests, or changes in market conditions that may require pivoting the project strategy.
+  \end{enumerate}
+
+\subsection{Budget Forecast}
+A detailed budget forecast will be developed, encompassing all the aforementioned cost categories. This forecast will be periodically reviewed and adjusted based on project milestones, market conditions, and actual expenditure patterns to ensure financial sustainability and efficient resource allocation.
+
+
+
 \lips
-\section{User Documentation and Training}
-\subsection{User Documentation Requirements}
-\lips
-\subsection{Training Requirements}
-\lips
+
+\section*{23 User Documentation and Training}
+
+\section*{23.1 User Documentation Requirements}
+
+\begin{enumerate}
+    \item \textbf{Comprehensive User Manual}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: A complete user manual detailing all platform functionalities, including system access, navigation, image labeling, and account management, enhanced with visual aids like screenshots for clarity.  
+            \item \textbf{Rationale}: A thorough manual helps users find information independently, reducing support queries and ensuring they can maximize the platform’s potential.  
+            \item \textbf{Fit Criterion}: The manual should cover at least 95\% of the platform's features, and user feedback should reflect a 90\% satisfaction rate in terms of usefulness and comprehensiveness.
+        \end{itemize}
+    \item \textbf{Online Help System}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: A built-in help system with a searchable knowledge base, FAQs, and step-by-step guides to assist users with common issues or tasks directly within the platform.  
+            \item \textbf{Rationale}: An online help system provides quick, on-demand support, improving user experience by minimizing interruptions when seeking assistance.  
+            \item \textbf{Fit Criterion}: At least 80\% of users should be able to resolve their issues using the help system without contacting support, as validated by user surveys and support metrics.
+        \end{itemize}
+    \item \textbf{API Documentation for Developers}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: Detailed API documentation using a standard like OpenAPI, covering all endpoints, parameters, response formats, and authentication mechanisms to facilitate integration by external developers.  
+            \item \textbf{Rationale}: Well-documented APIs empower developers to integrate their applications with the platform seamlessly, fostering a wider ecosystem and usage.  
+            \item \textbf{Fit Criterion}: The API documentation should be comprehensive and accurate, with at least 90\% of developer feedback confirming clarity and ease of use.
+        \end{itemize}
+    \item \textbf{Release Notes and Updates}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: Timely release notes detailing new features, bug fixes, and system changes, ensuring users are kept informed about platform improvements and updates.  
+            \item \textbf{Rationale}: Regular release notes maintain transparency, keeping users informed and reducing confusion about new functionality or changes to existing features.  
+            \item \textbf{Fit Criterion}: Each major platform update should be accompanied by release notes, with at least 95\% coverage of changes, and users should report a clear understanding of new features based on feedback.
+        \end{itemize}
+    \item \textbf{Quick Start Guide}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: A condensed guide offering a quick overview of key platform features and essential workflows to get users started rapidly.  
+            \item \textbf{Rationale}: A quick start guide enables new users to become productive immediately without needing to read extensive documentation, improving their onboarding experience.  
+            \item \textbf{Fit Criterion}: At least 90\% of new users should report the quick start guide as helpful, and they should be able to complete a basic labeling task within 15 minutes of using it.
+        \end{itemize}
+    \item \textbf{Contextual In-App Help}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: Provide contextual help directly within the platform, such as tooltips and small info pop-ups, offering real-time guidance for features or form fields as users interact with them.  
+            \item \textbf{Rationale}: In-app help reduces the learning curve and provides timely support without requiring users to leave the page or workflow they are on.  
+            \item \textbf{Fit Criterion}: At least 85\% of users should find in-app help intuitive and accurate in providing the necessary support as validated by user surveys.
+        \end{itemize}
+\end{enumerate}
+
+\section*{23.2 Training Requirement}
+
+\begin{enumerate}
+    \item \textbf{Interactive Onboarding Tutorial}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: An onboarding tutorial guiding users through key platform functions interactively, offering tooltips and prompts to familiarize them with core workflows.  
+            \item \textbf{Rationale}: Interactive onboarding accelerates learning, reduces user frustration, and ensures that new users can quickly perform tasks confidently.  
+            \item \textbf{Fit Criterion}: At least 85\% of users should complete the onboarding tutorial successfully within 20 minutes, with a 90\% rate of positive feedback on its effectiveness.
+        \end{itemize}
+    \item \textbf{Video Tutorials and Webinars}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: Short, focused video tutorials covering specific platform tasks (e.g., labeling, account setup) and periodic webinars for in-depth learning and live Q\&A sessions.  
+            \item \textbf{Rationale}: Video content provides a visual and engaging method for users to learn, while webinars offer opportunities for real-time interaction and deeper understanding.  
+            \item \textbf{Fit Criterion}: Each key platform feature should have a corresponding video tutorial, and at least 90\% of webinar attendees should rate the sessions as helpful in post-event feedback.
+        \end{itemize}
+    \item \textbf{Training for Specific User Groups}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: Targeted training materials and sessions tailored to different user groups, such as labelers, clients, and administrators, focusing on their unique needs and platform usage.  
+            \item \textbf{Rationale}: Customized training ensures that users receive relevant guidance, making them more efficient and effective in their roles on the platform.  
+            \item \textbf{Fit Criterion}: At least 90\% of users in specific groups should report that their training materials are relevant to their needs and improve their platform experience.
+        \end{itemize}
+    \item \textbf{Self-Assessment and Practice Environment}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: A sandbox environment allowing users to practice labeling tasks without affecting live data, including quizzes and exercises to assess understanding and improve skills.  
+            \item \textbf{Rationale}: A practice environment enables users to build confidence and hone their skills in a low-pressure setting, ensuring they are prepared for real tasks.  
+            \item \textbf{Fit Criterion}: At least 80\% of new users should utilize the practice environment, with self-assessment scores indicating an average improvement of 20\% in labeling accuracy over their first three attempts.
+        \end{itemize}
+    \item \textbf{Ongoing Support and Community Forum}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: Provide ongoing support through a community forum or discussion board where users can ask questions, share experiences, and learn from one another.  
+            \item \textbf{Rationale}: A support forum fosters a sense of community, provides peer-to-peer assistance, and reduces the load on formal support channels.  
+            \item \textbf{Fit Criterion}: At least 75\% of user questions in the community forum should be answered by either other users or support staff within 2 days.
+        \end{itemize}
+    \item \textbf{Periodic User Training Assessments}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: Conduct periodic assessments of user knowledge through quizzes or practical tasks to identify training gaps and offer refresher sessions where needed.  
+            \item \textbf{Rationale}: Regular assessments help ensure users retain knowledge and stay up-to-date with platform changes, enhancing overall productivity and satisfaction.  
+            \item \textbf{Fit Criterion}: At least 70\% of users should participate in training assessments, with scores indicating a consistent understanding of platform features and workflows.
+        \end{itemize}
+\end{enumerate}
+
+
 
 \section{Waiting Room}
 \lips
 
-\section{Ideas for Solution}
-\lips
+\section*{25 Ideas for Solution}
+
+\begin{itemize}[leftmargin=2cm]
+    \item \textbf{AI-Driven Labeling System}: Implement a machine learning model for preliminary image analysis to assist human labelers. This AI system can automatically pre-label sections of satellite images, allowing human labelers to validate or adjust these labels, significantly speeding up the process.
+    
+    \item \textbf{Gamification for Crowdsourced Labeling}: Introduce a gamification element to motivate and engage users who are labeling data. This can include earning points, badges, or rewards for completing labeling tasks accurately and efficiently, which can improve data quality and increase participation.
+    
+    \item \textbf{Intelligent Task Allocation}: Utilize an algorithm that matches labeling tasks with users based on their experience, preferences, and performance history. This ensures that difficult tasks are assigned to more experienced users while simpler tasks are made available to beginners.
+    
+    \item \textbf{Real-Time Collaboration and Consensus Model}: Allow multiple labelers to work on the same image in parallel, using a consensus model to determine the most accurate labels. Incorporate a review mechanism to resolve discrepancies and ensure that the final labeled data meets the required quality standards.
+    
+    \item \textbf{Automated Quality Assurance (QA) and Feedback}: Develop a QA system that automatically checks the quality of labeled data by comparing it to known benchmarks or running cross-validation with multiple labelers. Provide labelers with instant feedback to help improve their accuracy over time.
+    
+    \item \textbf{Modular Web-Based Platform Architecture}: Build a modular architecture for the platform, separating the frontend, backend, and AI components. This will allow easy updates, scalability, and the ability to add new features or services without disrupting existing functionality.
+    
+    \item \textbf{Flexible API for Client and User Integration}: Create an API that allows clients to easily upload satellite imagery, retrieve labeled data, and interact with the system programmatically. Also, provide endpoints for labelers to claim tasks, submit work, and check their progress or earnings.
+    
+    \item \textbf{Visualization Dashboard for Data Insights}: Provide clients with a dynamic dashboard that visualizes key insights derived from the labeled satellite imagery. This dashboard can display analytics, progress on labeling tasks, model accuracy, and any actionable insights relevant to the client’s industry.
+    
+    \item \textbf{Secure Payment and Compensation System}: Implement a secure and transparent payment system that allows clients to pay for labeled data and compensates labelers based on their contributions. Use automated transaction management to ensure timely and accurate payments to all users.
+    
+    \item \textbf{Cross-Platform Compatibility and Accessibility}: Design the platform to be fully accessible across devices (desktop, mobile, tablets) and compliant with accessibility standards (e.g., WCAG). This ensures that a wide range of users, including those with disabilities, can participate in labeling and use the platform effectively.
+\end{itemize}
+
+\newpage{}
+\section*{References}
+\begin{enumerate}
+    \item PCI Security Standards Council. (2024, May 13). \textit{PCI Security Standards Council – Protect Payment Data with Industry-driven Security Standards, Training, and Programs}. https://www.pcisecuritystandards.org/standards/pci-dss/
+\end{enumerate}
 
 \newpage{}
 \section*{Appendix --- Reflection}
