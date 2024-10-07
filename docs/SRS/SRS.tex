@@ -231,15 +231,62 @@ involved in the Project}
 
 \section{Security Requirements}
 \subsection{Access Requirements}
-\lips
+\subsubsection*{Requirement SR1:}
+\begin{itemize}
+  \item \textbf{Description:} The application shall only allow users with labeling access, including labellers, customers, and admins, to view active projects and label images.
+  \item \textbf{Rationale:} We do not want random users with no stake in the process to effect the results.
+  \item \textbf{Fit Criterion:} Users who have not logged in to the application have no way of viewing projects or labeling images. Users logged in as labellers, customers, or admins have access to these features.
+\end{itemize}
+\subsubsection*{Requirement SR2:}
+\begin{itemize}
+  \item \textbf{Description:} The application shall only allow users with customer access and above to create new image analysis projects.
+  \item \textbf{Rationale:} Unidentified users creating projects would be impossible to facilitate. Also, labellers have no need to access project creation. 
+  \item \textbf{Fit Criterion:} Users who have not logged in to the application have no way of creating an image analysis project. Users logged in as customers or admins have access to these features.
+\end{itemize}
+\subsubsection*{Requirement SR3:}
+\begin{itemize}
+  \item \textbf{Description:} The application shall validate the email format the user provides when creating an account.
+  \item \textbf{Rationale:} We do not want users using invalid emails to sign up.
+  \item \textbf{Fit Criterion:} Let E represent the set of all email addresses, and let V represent the set of all valid email addresses. A valid email address conforms to the general pattern:\\\\
+  V = $(\forall\; email \in E\;  |\; email \; matches \; the \; pattern \; $[a-zA-Z0-9+\_.-]+@[a-zA-Z0-9.-]+[a-zA-Z])\\
+\end{itemize}
+\subsubsection*{Requirement SR4:}
+\begin{itemize}
+  \item \textbf{Description:} The application shall validate the password format the user provides when creating an account.
+  \item \textbf{Rationale:} We do not want users using weak passwords to sign up.
+  \item \textbf{Fit Criterion:} Let P represent the set of all passwords, and let V represent the set of all valid passwords. A valid password has a at least one lowercase, uppercase, number and special character and is a minimum of 8 characters in length:\\\\
+  V = $(\forall\; password \in P\;  |\; password \; matches \; the \; pattern \; $(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[\#\$\%\&\*\@])[a-zA-Z0-9\#\$\%\&\*\@]\{8,\})\\
+\end{itemize}
 \subsection{Integrity Requirements}
-\lips
+\subsubsection*{Requirement SR5:}
+\begin{itemize}
+  \item \textbf{Description:} The application shall prevent incorrect data from being introduced.
+  \item \textbf{Rationale:} The database of information should always reflect correct and up to date information.
+  \item \textbf{Fit Criterion:} The system must validate user inputs for data accuracy and format before they are saved. Any invalid data must trigger error messages, preventing it from being entered into the database. Users must be required to correct errors before proceeding.
+\end{itemize}
 \subsection{Privacy Requirements}
-\lips
+\subsubsection*{Requirement SR6:}
+\begin{itemize}
+  \item \textbf{Description:} User data will be securely encrypted to protect user’s privacy.
+  \item \textbf{Rationale:} This will help to avoid user's being compromised if a data leak occurs.
+  \item \textbf{Fit Criterion:} An encryption algorithm is used on sensitive user data such as passwords.
+\end{itemize}
+\subsubsection*{Requirement SR7:}
+\begin{itemize}
+  \item \textbf{Description:} The application shall ensure that all payment transactions are processed securely using encryption and comply with relevant security standards, such as PCI-DSS, which helps to protect payment account data (PCI Security Standards Council, 2024).
+  \item \textbf{Rationale:} Protecting users' financial information is critical to maintaining trust. Failing to secure payments can lead to data breaches, financial loss, and legal liabilities.
+  \item \textbf{Fit Criterion:} All payment transactions must use industry-standard encryption to protect sensitive data. Payment information, such as credit card details, must not be stored locally on the application and must be processed via a secure, PCI-DSS-compliant third-party payment gateway.
+\end{itemize}
+
 \subsection{Audit Requirements}
-\lips
+These requirements are not applicable as we are not an organization that is currently subject to audits.
 \subsection{Immunity Requirements}
-\lips
+\subsubsection*{Requirement SR8:}
+\begin{itemize}
+  \item \textbf{Description:} The application shall use parameterized queries or prepared statements for all database interactions.
+  \item \textbf{Rationale:} We want to prevent SQL injection attacks which can lead to unauthorized data access or manipulation.
+  \item \textbf{Fit Criterion:} All database queries must be implemented using parameterized queries or prepared statements. Dynamic SQL strings that concatenate user input must not be used in the codebase.
+\end{itemize}
 
 \section{Cultural Requirements}
 \subsection{Cultural Requirements}
@@ -294,6 +341,12 @@ Inhibit the New Product}
 
 \section{Ideas for Solution}
 \lips
+
+\newpage{}
+\section*{References}
+\begin{enumerate}
+    \item PCI Security Standards Council. (2024, May 13). \textit{PCI Security Standards Council – Protect Payment Data with Industry-driven Security Standards, Training, and Programs}. https://www.pcisecuritystandards.org/standards/pci-dss/
+\end{enumerate}
 
 \newpage{}
 \section*{Appendix --- Reflection}
