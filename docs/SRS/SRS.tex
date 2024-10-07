@@ -590,16 +590,77 @@ N/A
 N/A
 
 \section{Operational and Environmental Requirements}
+Ensuring that the OKKM Insights platform operates smoothly and efficiently within its intended environment is critical for delivering reliable services to all stakeholders.
 \subsection{Expected Physical Environment}
-\lips
+The physical environment in which the OKKM Insights platform operates encompasses both the infrastructure supporting the system and the conditions under which users access the platform.
+\subsubsection{Data Centers and Cloud Infrastructure}
+\begin{enumerate}
+    \item Reliability: The platform's backend services will be hosted on reputable cloud providers such as AWS or Azure, which offer robust data center infrastructure with high availability.
+    \item Scalability: Cloud infrastructure must support dynamic scaling to handle varying workloads, especially during peak usage times when large volumes of satellite images are uploaded and labelled.
+\end{enumerate}
+\subsubsection{User Access Points}
+\begin{enumerate}
+    \item Device Compatibility: The platform must be accessible from a range of devices, including desktops, laptops, and mobile devices, requiring responsive design and optimization for different screen sizes and operating systems.
+\end{enumerate}
 \subsection{Wider Environment Requirements}
-\lips
+The broader environmental context includes external factors and systems that influence or are influenced by the platform's operation.
+\subsubsection{Regulatory Compliance}
+\begin{enumerate}
+    \item Industry Standards: Adherence to industry-specific standards for data security, privacy, and operational best practices is essential, particularly when dealing with sensitive applications like defense or environmental monitoring.
+    \item Data Protection Laws: The platform must comply with international and regional data protection regulations, ensuring that user data and labeled datasets are handled securely and responsibly.
+\end{enumerate}
+\subsubsection{Sustainability}
+\begin{enumerate}
+    \item Energy Efficiency: Implementing energy-efficient practices in cloud usage and server management to minimize the platform's carbon footprint.
+\end{enumerate}
 \subsection{Requirements for Interfacing with Adjacent Systems}
-\lips
+To ensure seamless integration and use, the OKKM Insights platform must effectively interface with various adjacent systems and technologies.
+\subsubsection{Satellite Data Providers}
+\begin{enumerate}
+    \item APIs and Data Formats: The platform must support standardized APIs and data formats to facilitate the automatic acquisition and integration of satellite images from third-party providers.
+\end{enumerate}
+\subsubsection{Payment Services}
+\begin{enumerate}
+    \item Secure Transactions: Integration with reliable and secure payment processors to handle user compensations and client payments efficiently.
+    \item Multi-Currency Support: Supporting multiple currencies to accommodate a global user base and international clients.
+\end{enumerate}
+\subsubsection{Machine Learning Frameworks}
+\begin{enumerate}
+    \item Model Training and Deployment: Compatibility with popular machine learning frameworks to facilitate the training, testing, and deployment of computer vision models.
+    \item Data Pipeline Integration: Efficient data pipelines for transferring labeled datasets between the platform and ML models, ensuring smooth and automated workflows.
+\end{enumerate}
 \subsection{Productization Requirements}
-\lips
+Transitioning the OKKM Insights platform from development to a fully operational product involves specific requirements to ensure it meets market and user expectations.
+\subsubsection{User Documentation and Support}
+\begin{enumerate}
+    \item Comprehensive Guides: Providing detailed user manuals, FAQs, and tutorials to assist with user on-boarding and helping users navigate the platform and utilize its features.
+    \item Customer Support: Establishing a responsive customer support system, including live chat, email support, and possibly a dedicated support team to address user queries and issues promptly.
+\end{enumerate}
+\subsubsection{Quality Assurance}
+\begin{enumerate}
+    \item Testing Protocols: Establishing rigorous testing protocols, including unit tests, integration tests, and user acceptance testing to ensure the platform operates reliably under various conditions.
+    \item Performance Monitoring: Continuously monitoring platform performance metrics to identify and address potential issues proactively.
+\end{enumerate}
+\subsubsection{Scalability and Flexibility}
+\begin{enumerate}
+    \item Modular Architecture: Designing the platform with a modular architecture to allow for easy addition of new features, services, or integrations as user needs or platform goals evolve.
+\end{enumerate}
 \subsection{Release Requirements}
-\lips
+Successful releases of the OKKM Insights platform and its updates necessitate careful planning and execution to ensure stability and user satisfaction.
+\subsubsection{Release Planning}
+\begin{enumerate}
+    \item Roadmap Development: Creating a detailed release roadmap outlining the timeline, features, and milestones for upcoming releases to keep the development team and stakeholders aligned.
+\end{enumerate}
+\subsubsection{Beta Testing}
+\begin{enumerate}
+    \item User Feedback: Conducting beta testing during or before the capstone showcase with a select group of users to gather feedback, identify bugs, and refine features before full-scale deployment.
+    \item Iterative Improvements: Utilizing feedback from beta testers to make iterative improvements, ensuring that the platform meets user expectations and operates smoothly upon official release.
+\end{enumerate}
+\subsubsection{Beta Testing}
+\begin{enumerate}
+    \item User Feedback: Conducting beta testing during or before the capstone showcase with a select group of users to gather feedback, identify bugs, and refine features before full-scale deployment.
+    \item Iterative Improvements: Utilizing feedback from beta testers to make iterative improvements, ensuring that the platform meets user expectations and operates smoothly upon official release.
+\end{enumerate}
 
 \section{Maintainability and Support Requirements}
 \subsection{Maintenance Requirements}
