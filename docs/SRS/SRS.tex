@@ -105,7 +105,7 @@ involved in the Project}
     \hline
     \textbf{Term} & \textbf{Definition}\\
     \hline
-    Labellers & Users of our application that will be labeling photos shown to them for a monetary reward\\
+    Labelers & Users of our application that will be labeling photos shown to them for a monetary reward\\
     \hline
     \end{tabular}
     \caption{Naming Conventions and Terminology}
@@ -150,23 +150,23 @@ The use case diagram depicted below identifies the boundaries between the users 
   \toprule
   \textbf{PUC No} & \textbf{PUC Name} & \textbf{Actor/s} & \textbf{Input \& Output}\\
   \midrule
-  1 & Sign Up & Labellers, Customers & Personal information \& credentials (in), New account (out)\\
+  1 & Sign Up & Labelers, Customers & Personal information \& credentials (in), New account (out)\\
   \midrule
-  2 & Log In & Labellers & Credentials (in)\\
+  2 & Log In & Labelers & Credentials (in)\\
   \midrule
   3 & Customer Log In & Customers & Credentials (in)\\
   \midrule
-  4 & Update User Information & Labellers, Customers & Information to change (in),  Updated information (out)\\
+  4 & Update User Information & Labelers, Customers & Information to change (in),  Updated information (out)\\
    \midrule
-  5 & Annotate Images & Labellers & Image \& annotation (in), Labelled image (out)\\
+  5 & Annotate Images & Labelers & Image \& annotation (in), Labeled image (out)\\
   \midrule
-  6 & Segment Annotation & Labellers & Segmented image \& user selections (in), Image with labelled segments (out)\\
+  6 & Segment Annotation & Labelers & Segmented image \& user selections (in), Image with labeled segments (out)\\
   \midrule
-  7 & Bounding Box Annotation & Labellers & Image \& box annotations (in), Image with labelled boxes (out)\\
+  7 & Bounding Box Annotation & Labelers & Image \& box annotations (in), Image with labeled boxes (out)\\
   \midrule
-  8 & Classification & Labellers & Image \& choices (in), Image labelled with the selected choice (out)\\
+  8 & Classification & Labelers & Image \& choices (in), Image labeled with the selected choice (out)\\
   \midrule
-   9 & Cash Out & Labellers, Financial Institution & Financial information (in), Payment to user (out)\\
+   9 & Cash Out & Labelers, Financial Institution & Financial information (in), Payment to user (out)\\
   \midrule
   10 & View Image Insights & Customers & Request to view insights (in), Image insights (out)\\
   \midrule
@@ -184,7 +184,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \end{longtable}
 \subsection{Individual Product Use Cases (PUC's)}
 \subsubsection{PUC 1 - Sign Up}
-\textbf{Primary Actors:} Labellers, Customers\\ 
+\textbf{Primary Actors:} Labelers, Customers\\ 
 \textbf{Precondition:} None\\
 \textbf{Trigger:} User selects create an account\\
 \textbf{Success Scenario:}
@@ -197,16 +197,16 @@ The use case diagram depicted below identifies the boundaries between the users 
 \textbf{Post-condition:} User has successfully created an account and the application has securely stored their information
 
 \subsubsection{PUC 2 - Log In}
-\textbf{Primary Actors:} Labellers\\ 
-\textbf{Precondition:} Labeller has signed up for an account\\
-\textbf{Trigger:} Labeller selects log in\\
+\textbf{Primary Actors:} Labelers\\ 
+\textbf{Precondition:} Labeler has signed up for an account\\
+\textbf{Trigger:} Labeler selects log in\\
 \textbf{Success Scenario:}
 \begin{enumerate}
-    \item Labeller enters credentials
+    \item Labeler enters credentials
     \item System verifies all required information has been provided and matches the stored records
-    \item Labeller is redirected to the home page as a logged-in user
+    \item Labeler is redirected to the home page as a logged-in user
 \end{enumerate}
-\textbf{Post-condition:} The labeller has access to their account. All account related information, such as labeling progress, is accurately represented
+\textbf{Post-condition:} The labeler has access to their account. All account related information, such as labeling progress, is accurately represented
 
 \subsubsection{PUC 3 - Customer Log In}
 \textbf{Primary Actors:} Customers\\ 
@@ -216,12 +216,12 @@ The use case diagram depicted below identifies the boundaries between the users 
 \begin{enumerate}
     \item Customer enters credentials
     \item System verifies all required information has been provided and matches the stored records
-    \item Customer is redirected to the home page as a logged-in customer, which gives them access to more features than a labeller
+    \item Customer is redirected to the home page as a logged-in customer, which gives them access to more features than a labeler
 \end{enumerate}
 \textbf{Post-condition:} The customer has access to their account and all their current image analysis projects
 
 \subsubsection{PUC 4 - Update User Information}
-\textbf{Primary Actors:} Labellers, Customers\\ 
+\textbf{Primary Actors:} Labelers, Customers\\ 
 \textbf{Precondition:} User has logged in\\
 \textbf{Trigger:} User selects update information\\
 \textbf{Success Scenario:}
@@ -233,89 +233,89 @@ The use case diagram depicted below identifies the boundaries between the users 
 \end{enumerate}
 \textbf{Post-condition:} The information that the system stores about the user has been updated
 
-\subsubsection{PUC 5 - Annotate Images}
-\textbf{Primary Actors:} Labellers\\ 
-\textbf{Precondition:} Labeller has logged in\\
-\textbf{Trigger:} Labeller selects a listed project\\
+\subsubsection{PUC 5 - Annotate Satellite Images}
+\textbf{Primary Actors:} Labelers\\ 
+\textbf{Precondition:} Labeler has logged in\\
+\textbf{Trigger:} Labeler selects a listed project\\
 \textbf{Success Scenario:}
 \begin{enumerate}
-    \item An image related to the selected project and a description of what to annotate is shown to the labeller
-    \item The labeller annotates the image to the best of their ability
-    \item The annotated image is submitted by the labeller
-    \item The labeller is rewarded and the image is stored by the system
-    \item If the labeller skips the image rather than submits it, then the annotated image will not be stored by the system and the labeller will not receive a reward
-    \item The next image of the selected project is shown to the labeller and the process repeats
+    \item A satellite image related to the selected project and a description of what to annotate is shown to the labeler
+    \item The labeler annotates the satellite image to the best of their ability
+    \item The annotated satellite image is submitted by the labeler
+    \item The labeler is rewarded and the satellite image is stored by the system
+    \item If the labeler skips the image rather than submits it, then the annotated image will not be stored by the system and the labeler will not receive a reward
+    \item The next satellite image of the selected project is shown to the labeler and the process repeats
 \end{enumerate}
-\textbf{Post-condition:} All submitted annotated images are stored by the system. The labeller's reward balance is updated to reflect their submissions
+\textbf{Post-condition:} All submitted annotated satellite images are stored by the system. The labeler's reward balance is updated to reflect their submissions
 
 \subsubsection{PUC 6 - Segment Annotation}
-\textbf{Primary Actors:} Labellers\\ 
-\textbf{Precondition:} Labeller has logged in\\
-\textbf{Trigger:} Labeller selects a listed project\\
+\textbf{Primary Actors:} Labelers\\ 
+\textbf{Precondition:} Labeler has logged in\\
+\textbf{Trigger:} Labeler selects a listed project\\
 \textbf{Success Scenario:}
 \begin{enumerate}
-    \item The same as Annotate Images, but the labeller is given a image segmented into different parts and must label each segment to the best of their ability 
+    \item The same as Annotate Images, but the labeler is given a satellite image segmented into different parts and must label each segment to the best of their ability 
 \end{enumerate}
-\textbf{Post-condition:} All submitted annotated images are stored by the system. The labeller's reward balance is updated to reflect their submissions
+\textbf{Post-condition:} All submitted annotated satellite images are stored by the system. The labeler's reward balance is updated to reflect their submissions
 
 \subsubsection{PUC 7 - Bounding Box Annotation}
-\textbf{Primary Actors:} Labellers\\ 
-\textbf{Precondition:} Labeller has logged in\\
-\textbf{Trigger:} Labeller selects a listed project\\
+\textbf{Primary Actors:} Labelers\\ 
+\textbf{Precondition:} Labeler has logged in\\
+\textbf{Trigger:} Labeler selects a listed project\\
 \textbf{Success Scenario:}
 \begin{enumerate}
-    \item The same as Annotate Images, but the labeller must annotate areas of the image by drawing boxes and providing a label for each box
+    \item The same as Annotate Images, but the labeler must annotate areas of the satellite image by drawing boxes and providing a label for each box
 \end{enumerate}
-\textbf{Post-condition:} All submitted annotated images are stored by the system. The labeller's reward balance is updated to reflect their submissions
+\textbf{Post-condition:} All submitted annotated satellite images are stored by the system. The labeler's reward balance is updated to reflect their submissions
 
 \subsubsection{PUC 8 - Classification}
-\textbf{Primary Actors:} Labellers\\ 
-\textbf{Precondition:} Labeller has logged in\\
-\textbf{Trigger:} Labeller selects a listed project\\
+\textbf{Primary Actors:} Labelers\\ 
+\textbf{Precondition:} Labeler has logged in\\
+\textbf{Trigger:} Labeler selects a listed project\\
 \textbf{Success Scenario:}
 \begin{enumerate}
-    \item The same as Annotate Images, but the labeller must classify what category an image belongs to given several options
+    \item The same as Annotate Images, but the labeler must classify what category an satellite image belongs to given several options
 \end{enumerate}
-\textbf{Post-condition:} All submitted annotated images are stored by the system. The labeller's reward balance is updated to reflect their submissions
+\textbf{Post-condition:} All submitted annotated satellite images are stored by the system. The labeler's reward balance is updated to reflect their submissions
 
 \subsubsection{PUC 9 - Cash Out}
-\textbf{Primary Actors:} Labellers\\
+\textbf{Primary Actors:} Labelers\\
 \textbf{Secondary Actor:} Financial Institution\\
-\textbf{Precondition:} Labeller has logged in and their reward balance is at least \$1\\
-\textbf{Trigger:} Labeller selects cash out\\
+\textbf{Precondition:} Labeler has logged in and their reward balance is at least \$1\\
+\textbf{Trigger:} Labeler selects cash out\\
 \textbf{Success Scenario:}
 \begin{enumerate}
-    \item The system retrieves the labeller's payment information
-    \item The labeller confirms it is correct, or updates their information accordingly
-    \item The system sends a payment to the labeller through their financial institution
-    \item The labeller's reward balance is set back to \$0
+    \item The system retrieves the labeler's payment information
+    \item The labeler confirms it is correct, or updates their information accordingly
+    \item The system sends a payment to the labeler through their financial institution
+    \item The labeler's reward balance is set back to \$0
 \end{enumerate}
-\textbf{Post-condition:} The financial account that the labeller provided has gained money equal to the labeller's reward balance
+\textbf{Post-condition:} The financial account that the labeler provided has gained money equal to the labeler's reward balance
 
 \subsubsection{PUC 10 - View Image Insights}
 \textbf{Primary Actors:} Customers\\
-\textbf{Precondition:} Customer has logged in and has at least one image analysis project\\
+\textbf{Precondition:} Customer has logged in and has at least one satellite image analysis project\\
 \textbf{Trigger:} Customer selects insights for a project\\
 \textbf{Success Scenario:}
 \begin{enumerate}
-    \item The system provides the customer with a progress update, key statistics, and an overview of current labels for specific images
+    \item The system provides the customer with a progress update, key statistics, and an overview of current labels for specific satellite images
     \item The customer selects a specific image to view insights 
     \item The system gets the information it has stored related to the image and provides insights such as confidence level of annotations
 \end{enumerate}
-\textbf{Post-condition:} The customer has knowledge about how their project is progressing and if the labeling of the images has been complete
+\textbf{Post-condition:} The customer has knowledge about how their project is progressing and if the labeling of the satellite images has been complete
 
 \subsubsection{PUC 11 - Export Results}
 \textbf{Primary Actors:} Customers\\
-\textbf{Precondition:} Customer has logged in, has at least one image analysis project, and all labeled images in that project have an acceptable accuracy\\
+\textbf{Precondition:} Customer has logged in, has at least one satellite image analysis project, and all labeled satellite images in that project have an acceptable accuracy\\
 \textbf{Trigger:} Customer selects export data\\
 \textbf{Success Scenario:}
 \begin{enumerate}
-    \item The system retrieves all the labeled images associated with the project
+    \item The system retrieves all the labeled satellite images associated with the project
     \item The system asks the customer where they would like the images to be saved
     \item The customer specifies the save location
     \item The images are downloaded to the specified location
 \end{enumerate}
-\textbf{Post-condition:} The customer has complete access to the labeled dataset of images
+\textbf{Post-condition:} The customer has complete access to the labeled dataset of satellite images
 
 \subsubsection{PUC 12 - Request Image Analysis}
 \textbf{Primary Actors:} Customers\\
@@ -323,20 +323,20 @@ The use case diagram depicted below identifies the boundaries between the users 
 \textbf{Trigger:} Customer creates a new project request\\
 \textbf{Success Scenario:}
 \begin{enumerate}
-    \item The system prompts the customer with a form to fill out regarding information about the project such as what is to be labelled
+    \item The system prompts the customer with a form to fill out regarding information about the project such as what is to be labeled
     \item The customer fills out the form and submits it
-    \item The system confirms the forms information is valid. It prompts the customer to upload the image dataset to be analyzed
-    \item The customer uploads their own images or requests the system to get images for them
-    \item The system asks the customer to provide sample labelled images that can be shared with labellers
-    \item The customer uploads sample labelled images
+    \item The system confirms the forms information is valid. It prompts the customer to upload the satellite image dataset to be analyzed
+    \item The customer uploads their own satellite images or requests the system to get images for them
+    \item The system asks the customer to provide sample labeled images that can be shared with labelers
+    \item The customer uploads sample labeled images
     \item Based on the size and difficulty of the project, the system provides the total cost of the project to the customer
     \item The customer provides their payment details
     \item The system processes the payment
-    \item The system makes the project available to labellers so they can annotate the images
+    \item The system makes the project available to labelers so they can annotate the satellite images
 \end{enumerate}
-\textbf{Post-condition:} The image analysis project has been created and labellers can start annotating the images
+\textbf{Post-condition:} The image analysis project has been created and labelers can start annotating the satellite images
 
-\subsubsection{PUC 13 - Upload Images}
+\subsubsection{PUC 13 - Upload Satellite Images}
 \textbf{Primary Actors:} Customers\\
 \textbf{Precondition:} Customer has logged in and has created a new project request\\
 \textbf{Trigger:} Customer submits the information form for a new project\\
@@ -348,19 +348,19 @@ The use case diagram depicted below identifies the boundaries between the users 
 \end{enumerate}
 \textbf{Post-condition:} The system has all the images that will be analyzed for the project
 
-\subsubsection{PUC 14 - Request Images}
+\subsubsection{PUC 14 - Request Satellite Images}
 \textbf{Primary Actors:} Customers\\
 \textbf{Secondary Actors:} Satellite Image Provider\\
 \textbf{Precondition:} Customer has logged in and has created a new project request\\
 \textbf{Trigger:} Customer submits the information form for a new project\\
 \textbf{Success Scenario:}
 \begin{enumerate}
-    \item The system prompts the customer about the type of images they want. This could be satellite images from a specific time frame in a specific area
-    \item The customer specifies the type of images they want for analysis
+    \item The system prompts the customer about the type of satellite images they want. This could be satellite images from a specific time frame in a specific area
+    \item The customer specifies the type of satellite images they want for analysis
     \item The system contacts a satellite image provider, and pays a fee to them in exchange for the images. The fee is charged to the customer
     \item The system stores the images with a reference to the project
 \end{enumerate}
-\textbf{Post-condition:} The system has all the images that will be analyzed for the project
+\textbf{Post-condition:} The system has all the satellite images that will be analyzed for the project
 
 \subsubsection{PUC 15 - Process Payment}
 \textbf{Primary Actors:} Customers\\
