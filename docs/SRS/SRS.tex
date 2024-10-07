@@ -223,8 +223,14 @@ N/A
   \item \textbf{Rationale:} This requirement is critical to satisfy NFR-PR2.
   \item \textbf{Fit Criterion:} See NFR-PR2.
 \end{itemize}
-\subsection{Scalability or Extensibility Requirements}
 \subsubsection*{NFR-PR8}
+\begin{itemize}
+  \item \textbf{Description:} The system shall have the capacity to store and process large image files.
+  \item \textbf{Rationale:} This requirement is necessary to obtain information from satelite images, which can be several gigabites in size.
+  \item \textbf{Fit Criterion:} The system will not crash or fail to store when given images files <50 Gb in size.
+\end{itemize}
+\subsection{Scalability or Extensibility Requirements}
+\subsubsection*{NFR-PR9}
 \begin{itemize}
   \item \textbf{Description:} The system shall be able to scale to meet the capacity specified in NFR-PR7.
   \item \textbf{Rationale:} This requirement is critical to satisfy NFR-PR7.
