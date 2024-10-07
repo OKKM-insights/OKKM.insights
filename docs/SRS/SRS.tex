@@ -125,15 +125,51 @@ involved in the Project}
 \subsection{Assumptions}
 \lips
 
+
 \section{The Scope of the Work}
 \subsection{The Current Situation}
-\lips
+The current landscape in satellite imagery analysis is characterized by significant gaps and inefficiencies that prevent various industries from fully leveraging geospatial data.
+\subsubsection{Data Scarcity and Quality Issues}
+\begin{enumerate}
+    \item Limited High-Quality Datasets: There is a notable absence of comprehensive, labeled satellite imagery datasets tailored to specific industry needs. Existing datasets often lack the necessary granularity and specificity required for specialized applications.
+    \item Manual Labeling Challenges: The process of manually creating and labeling satellite imagery datasets is labor-intensive, expensive, and time-consuming. It often requires expertise that is not readily available, leading to delays and increased costs.
+\end{enumerate}
+\subsubsection{Industry-Specific Demands}
+\begin{enumerate}
+    \item Diverse Use Cases: Industries such as disaster response, environmental monitoring, urban planning, defense, agriculture, and financial analysis have unique requirements for satellite data. The lack of customized datasets limits their ability to develop accurate and effective computer vision models.
+    \item Operational Inefficiencies: Without tailored datasets, organizations face difficulties in automating image analysis tasks, resulting in slower decision-making processes and reduced operational effectiveness.
+\end{enumerate}
+\subsubsection{Technological Barriers}
+\begin{enumerate}
+    \item Complexity of Data Processing: Processing raw satellite images to extract meaningful insights involves complex algorithms and significant computational resources, which many organizations are unable to access.
+\end{enumerate}
+\subsubsection{Market Demand}
+\begin{enumerate}
+    \item Growing Need for Geospatial Intelligence: As industries increasingly recognize the value of geospatial data, the demand for high-quality, actionable satellite imagery insights is rising. However, the supply side has not kept pace with this growing demand.
+\end{enumerate}
 \subsection{The Context of the Work}
-\lips
+The development of the OKKM Insights platform occurs within a broader context of technological advancements, market trends, and evolving industry needs.
+\subsubsection{Technological Advancements}
+\begin{enumerate}
+    \item AI and Machine Learning: Recent progress in artificial intelligence and machine learning, particularly in computer vision, has significantly enhanced the capabilities to analyze and interpret satellite imagery.
+    \item Crowdsourcing Platforms: The rise of crowdsourcing as a method for data labeling and annotation has opened new approaches for scalable and cost-effective dataset creation. Leveraging a distributed workforce can accelerate the labeling process and improve dataset quality through diverse input.
+\end{enumerate}
+\subsubsection{Market Trends}
+\begin{enumerate}
+    \item Increased Adoption of Geospatial Data: Industries across the board are increasingly integrating geospatial data into their operations, driving the need for more sophisticated analysis tools and datasets.
+    \item Demand for Real-Time Insights: There is a growing expectation for real-time or near-real-time insights derived from satellite imagery to support timely decision-making in critical areas such as disaster response and environmental monitoring.
+\end{enumerate}
+\subsubsection{Competitive Landscape}
+\begin{enumerate}
+    \item Opportunities for Innovation: The intersection of AI, crowdsourcing, and satellite imagery presents opportunities for innovative solutions that can address existing gaps in the market, particularly in niche and high-demand use cases.
+\end{enumerate}
 \subsection{Work Partitioning}
-\lips
+The division of labour is thoroughly described in the Development plan document.
 \subsection{Specifying a Business Use Case (BUC)}
-\lips
+To demonstrate the practical application and value proposition of the OKKM Insights platform, it is essential to define specific Business Use Cases (BUCs) that illustrate how different stakeholders will interact with and benefit from the platform.
+\subsubsection{BUC Specification: Disaster Response Data Provisioning}
+A government search and rescue agency receives a distress call reporting a downed airplane in a remote or inaccessible area. This report necessitates immediate action to locate the wreckage, assess the situation, and coordinate rescue operations. The OKKM Insights platform is notified of the incident through an integrated communication channel linked to the SAR agency’s reporting system. The platform automatically acquires the latest satellite images of the reported area from third-party providers and segments the large images into smaller, manageable tiles focused on the incident area. The algorithm then preprocesses and creates a task for data labelers using intelligent task delegation algorithms. Data labelers annotate critical features such as the airplane wreckage, debris fields, potential survivors, and any signs of environmental hazards. Consensus algorithms cross-verify annotations from multiple labelers, ensuring high accuracy and consistency. The platform then generates actionable insights, such as the precise location of the wreckage, extent of debris spread, accessibility of the area, and potential hazards. This data can then be used to train computer vision models using the newly labeled data to enhance the platform’s capability to automatically detect and classify aircraft and related features in satellite images. Finally the platform provides the SAR agency with access to the labeled dataset and the trained models through the platform’s user interface.
+
 
 \section{Business Data Model and Data Dictionary}
 \subsection{Business Data Model}
