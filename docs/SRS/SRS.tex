@@ -164,39 +164,91 @@ involved in the Project}
 \section*{11 Usability and Humanity Requirements}
 
 \subsection*{11.1 Ease of Use Requirement}
-\begin{itemize}[leftmargin=2cm]
-    \item \textbf{Intuitive User Interface (UI)}: The platform will have a straightforward, user-friendly UI, allowing users to quickly understand how to label images, navigate datasets, and manage their accounts with minimal training.
-    \item \textbf{Low Friction for Image Labeling}: Labelers should be able to start working on labeling tasks without the need for extensive setup or complex instructions, aiming for an onboarding process that takes under 10 minutes.
-    \item \textbf{Responsive Design}: The platform should be responsive, making it usable on a wide range of devices, including laptops, desktops, and mobile phones, without compromising functionality or performance.
-\end{itemize}
+
+
+\begin{enumerate}
+    \item \textbf{Clear Navigation Structure}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: The platform will have a well-organized navigation menu, allowing users to quickly find labeling tasks, settings, help, and account details.  
+            \item \textbf{Rationale}: An easy-to-navigate platform helps reduce the time taken for users to find what they need, improving the efficiency of labeling tasks and overall user satisfaction.  
+            \item \textbf{Fit Criterion}: At least 90\% of users should be able to navigate to any main feature within 3 clicks, as determined by usability testing.
+        \end{itemize}
+    \item \textbf{Consistent User Interface Elements}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: The platform’s buttons, forms, and other UI elements should follow a consistent style and behavior throughout, to ensure a predictable user experience.  
+            \item \textbf{Rationale}: Consistency reduces cognitive load and helps users feel comfortable and confident when interacting with the system, as they can easily recognize and understand patterns in the UI.  
+            \item \textbf{Fit Criterion}: Consistency will be validated by usability tests where at least 95\% of users recognize and correctly use recurring interface elements across different pages.
+        \end{itemize}
+\end{enumerate}
 
 \subsection*{11.2 Personalization and Internationalization Requirements}
-\begin{itemize}[leftmargin=2cm]
-    \item \textbf{User Preferences}: Users will have the option to customize their experience, including setting preferences for notifications, task assignments, and data visualization. This will enhance their efficiency and satisfaction.
-    \item \textbf{Language Support}: While the initial version may support English only, the platform should be designed to support future internationalization, allowing easy addition of multiple languages to accommodate users from different regions.
-    \item \textbf{Custom Task Allocation}: Labelers can receive tasks based on their preferred categories (e.g., agriculture, disaster management), ensuring a personalized labeling experience and increased relevance to their interests.
-\end{itemize}
+
+\begin{enumerate}
+    \item \textbf{Task Prioritization Based on Preferences}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: Users can set preferences to prioritize specific types of labeling tasks (e.g., agricultural, urban) and receive suggestions aligned with their interests and expertise.  
+            \item \textbf{Rationale}: Allowing users to work on tasks of interest or within their expertise can improve task accuracy and user satisfaction, leading to better retention and data quality.  
+            \item \textbf{Fit Criterion}: Users should be able to set their task preferences in their profile, with at least 80\% of their assigned tasks matching these preferences over time.
+        \end{itemize}
+    \item \textbf{Localized Date, Time, and Currency Formats}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: The platform should display localized formats for date, time, and currency based on the user's location or preference settings.  
+            \item \textbf{Rationale}: Displaying culturally familiar formats enhances user comfort and reduces errors when interpreting critical information like deadlines or earnings.  
+            \item \textbf{Fit Criterion}: Date, time, and currency formats should adjust automatically based on the user’s location or manual settings, verified through localized testing.
+        \end{itemize}
+\end{enumerate}
 
 \subsection*{11.3 Learning Requirements}
-\begin{itemize}[leftmargin=2cm]
-    \item \textbf{Guided Onboarding and Tutorials}: The platform will include brief, step-by-step tutorials to help new users quickly understand the labeling process and the features available.
-    \item \textbf{Tooltips and Help Sections}: Throughout the platform, tooltips and easily accessible help sections will provide context-sensitive guidance to assist users without interrupting their workflow.
-    \item \textbf{User Feedback for Continuous Improvement}: A mechanism will be in place to gather user feedback about the platform’s usability and learning curve. This feedback will be used to iteratively improve the system, especially in areas where users struggle.
-\end{itemize}
+
+\begin{enumerate}
+    \item \textbf{In-App Progress Tracking for Learning}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: Users can track their progress through tutorials and training tasks within the platform, allowing them to see completed and pending learning modules.  
+            \item \textbf{Rationale}: Tracking progress motivates users to complete learning tasks and helps them understand where they stand in terms of mastering platform features.  
+            \item \textbf{Fit Criterion}: A progress tracker will be implemented, and at least 80\% of users should find it helpful, based on post-training feedback surveys.
+        \end{itemize}
+    \item \textbf{Interactive Practice Tasks}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: Provide users with simulated labeling tasks to practice without affecting actual datasets, allowing them to learn through hands-on experience before starting real work.  
+            \item \textbf{Rationale}: Practice tasks help users understand the labeling process without pressure, improving their confidence and accuracy before handling real data.  
+            \item \textbf{Fit Criterion}: At least 85\% of users should complete at least one practice task before labeling real data, with a satisfaction rate of 90\% based on feedback.
+        \end{itemize}
+\end{enumerate}
 
 \subsection*{11.4 Understandability and Politeness Requirements}
-\begin{itemize}[leftmargin=2cm]
-    \item \textbf{Clear Communication}: All instructions, notifications, and error messages will be clear, concise, and free of technical jargon to ensure that users of all skill levels can understand them.
-    \item \textbf{Consistent Language and Tone}: The platform will use a friendly and professional tone across all interactions to build trust and encourage ongoing use. Terminology will be consistent throughout, avoiding confusion for new or returning users.
-    \item \textbf{Respectful Notifications}: Notifications for completed tasks, payment updates, or errors will be designed to be informative without being intrusive. Users will have control over their notification settings, allowing them to manage how and when they receive updates.
-\end{itemize}
+
+\begin{enumerate}
+    \item \textbf{Contextual Help Pop-ups}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: Contextual help pop-ups should be available throughout the platform, offering brief explanations for various features and guidance on how to complete tasks.  
+            \item \textbf{Rationale}: Providing help exactly where users need it reduces confusion and makes it easier for users to understand how to use different parts of the platform without extensive searching.  
+            \item \textbf{Fit Criterion}: At least 90\% of users should find the contextual help pop-ups clear and helpful during usability testing.
+        \end{itemize}
+    \item \textbf{Friendly Error Handling and Guidance}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: Error messages will not only indicate what went wrong but also provide actionable steps to resolve the issue in a friendly, non-blaming tone.  
+            \item \textbf{Rationale}: Friendly and constructive error handling reduces user frustration and helps users quickly resolve issues without needing support, improving overall experience.  
+            \item \textbf{Fit Criterion}: At least 95\% of errors will be accompanied by actionable instructions, and users should report a low frustration rate ($<$ 10\%) when encountering errors, based on feedback.
+        \end{itemize}
+\end{enumerate}
 
 \subsection*{11.5 Accessibility Requirements}
-\begin{itemize}[leftmargin=2cm]
-    \item \textbf{Speech Recognition Compatibility}: The platform will support speech recognition software, allowing users to interact with the system through voice commands as an alternative to manual input.
-    \item \textbf{Time-Based Media Accessibility}: Any video or audio content provided on the platform will have captions, transcripts, or audio descriptions to ensure users with hearing or visual impairments can access the information.
-    \item \textbf{Responsive Design for Accessibility}: The platform will adapt to assistive technology settings, such as high-contrast modes, screen magnifiers, and customizable accessibility settings, ensuring an optimal experience across all devices and user preferences.
-\end{itemize}
+
+\begin{enumerate}
+    \item \textbf{Adjustable Text Size and Color Themes}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: The platform will provide options for users to adjust text size and choose between different color themes (e.g., light, dark, high contrast) to improve readability based on their preferences.  
+            \item \textbf{Rationale}: Allowing adjustments for visual elements helps users with low vision, color blindness, or different environmental lighting conditions to comfortably use the platform.  
+            \item \textbf{Fit Criterion}: At least three different color themes will be available, and users should be able to increase text size up to 200\% without loss of content or functionality.
+        \end{itemize}
+    \item \textbf{Keyboard Shortcuts for Core Actions}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: The platform will support keyboard shortcuts for essential actions (e.g., navigating between tasks, submitting labels) to facilitate quick access and improve usability for users who cannot use a mouse.  
+            \item \textbf{Rationale}: Keyboard shortcuts provide an alternative way to interact with the system, improving efficiency for power users and ensuring accessibility for users with limited mobility.  
+            \item \textbf{Fit Criterion}: All core actions should have keyboard shortcuts available, and usability tests should confirm that at least 95\% of actions are accessible via keyboard navigation.
+        \end{itemize}
+\end{enumerate}
+
 
 \section{Performance Requirements}
 \subsection{Speed and Latency Requirements}
@@ -311,22 +363,89 @@ Inhibit the New Product}
 
 \section*{23 User Documentation and Training}
 
-\subsection*{23.1 User Documentation Requirements}
-\begin{itemize}[leftmargin=2cm]
-    \item \textbf{Comprehensive User Manual}: Create a detailed user manual that covers all aspects of the platform, including how to access the system, navigate the UI, label satellite images, and manage user accounts. The manual should be easy to follow with step-by-step instructions and visual aids like screenshots.
-    \item \textbf{Online Help System}: Develop an integrated online help system within the platform, accessible at any point during the user's journey. This should include a searchable knowledge base, FAQs, and how-to guides for common tasks (e.g., labeling images, uploading datasets, reviewing completed tasks).
-    \item \textbf{API Documentation for Developers}: If external developers or advanced users need to interact with the backend, provide API documentation using a standardized format like OpenAPI. This documentation should detail endpoints, parameters, authentication, and example requests/responses.
-    \item \textbf{Release Notes and Updates}: Ensure regular release notes are published for all major updates and feature releases. Include information about new features, bug fixes, and any changes to existing functionality.
-    \item \textbf{Quick Start Guide}: Provide a condensed "Quick Start" guide that offers a brief overview of how to get started on the platform, aimed at getting users up and running quickly without going into extensive detail.
-\end{itemize}
+\section*{23.1 User Documentation Requirements}
 
-\subsection*{23.2 Training Requirement}
-\begin{itemize}[leftmargin=2cm]
-    \item \textbf{Interactive Onboarding Tutorial}: Implement an interactive onboarding process for new users, guiding them through the core functionalities (such as labeling images, setting preferences, and checking progress) with in-app tooltips and walk-through steps.
-    \item \textbf{Video Tutorials and Webinars}: Create short video tutorials demonstrating different aspects of the platform (e.g., "How to label an image," "How to use the dashboard"). These videos should be easy to follow, with captions and explanations for both beginner and advanced users. Periodic live webinars for Q\&A and advanced training can also be organized.
-    \item \textbf{Training for Specific User Groups}: Offer specialized training sessions for different user groups. For instance, labelers can have sessions on best practices for labeling, while clients can learn how to upload datasets and interpret results.
-    \item \textbf{Self-Assessment and Practice Environment}: Provide a practice environment or sandbox within the platform where new users can try labeling without affecting the live dataset. Include self-assessment quizzes and exercises to help users gain confidence in using the platform.
-\end{itemize}
+\begin{enumerate}
+    \item \textbf{Comprehensive User Manual}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: A complete user manual detailing all platform functionalities, including system access, navigation, image labeling, and account management, enhanced with visual aids like screenshots for clarity.  
+            \item \textbf{Rationale}: A thorough manual helps users find information independently, reducing support queries and ensuring they can maximize the platform’s potential.  
+            \item \textbf{Fit Criterion}: The manual should cover at least 95\% of the platform's features, and user feedback should reflect a 90\% satisfaction rate in terms of usefulness and comprehensiveness.
+        \end{itemize}
+    \item \textbf{Online Help System}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: A built-in help system with a searchable knowledge base, FAQs, and step-by-step guides to assist users with common issues or tasks directly within the platform.  
+            \item \textbf{Rationale}: An online help system provides quick, on-demand support, improving user experience by minimizing interruptions when seeking assistance.  
+            \item \textbf{Fit Criterion}: At least 80\% of users should be able to resolve their issues using the help system without contacting support, as validated by user surveys and support metrics.
+        \end{itemize}
+    \item \textbf{API Documentation for Developers}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: Detailed API documentation using a standard like OpenAPI, covering all endpoints, parameters, response formats, and authentication mechanisms to facilitate integration by external developers.  
+            \item \textbf{Rationale}: Well-documented APIs empower developers to integrate their applications with the platform seamlessly, fostering a wider ecosystem and usage.  
+            \item \textbf{Fit Criterion}: The API documentation should be comprehensive and accurate, with at least 90\% of developer feedback confirming clarity and ease of use.
+        \end{itemize}
+    \item \textbf{Release Notes and Updates}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: Timely release notes detailing new features, bug fixes, and system changes, ensuring users are kept informed about platform improvements and updates.  
+            \item \textbf{Rationale}: Regular release notes maintain transparency, keeping users informed and reducing confusion about new functionality or changes to existing features.  
+            \item \textbf{Fit Criterion}: Each major platform update should be accompanied by release notes, with at least 95\% coverage of changes, and users should report a clear understanding of new features based on feedback.
+        \end{itemize}
+    \item \textbf{Quick Start Guide}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: A condensed guide offering a quick overview of key platform features and essential workflows to get users started rapidly.  
+            \item \textbf{Rationale}: A quick start guide enables new users to become productive immediately without needing to read extensive documentation, improving their onboarding experience.  
+            \item \textbf{Fit Criterion}: At least 90\% of new users should report the quick start guide as helpful, and they should be able to complete a basic labeling task within 15 minutes of using it.
+        \end{itemize}
+    \item \textbf{Contextual In-App Help}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: Provide contextual help directly within the platform, such as tooltips and small info pop-ups, offering real-time guidance for features or form fields as users interact with them.  
+            \item \textbf{Rationale}: In-app help reduces the learning curve and provides timely support without requiring users to leave the page or workflow they are on.  
+            \item \textbf{Fit Criterion}: At least 85\% of users should find in-app help intuitive and accurate in providing the necessary support as validated by user surveys.
+        \end{itemize}
+\end{enumerate}
+
+\section*{23.2 Training Requirement}
+
+\begin{enumerate}
+    \item \textbf{Interactive Onboarding Tutorial}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: An onboarding tutorial guiding users through key platform functions interactively, offering tooltips and prompts to familiarize them with core workflows.  
+            \item \textbf{Rationale}: Interactive onboarding accelerates learning, reduces user frustration, and ensures that new users can quickly perform tasks confidently.  
+            \item \textbf{Fit Criterion}: At least 85\% of users should complete the onboarding tutorial successfully within 20 minutes, with a 90\% rate of positive feedback on its effectiveness.
+        \end{itemize}
+    \item \textbf{Video Tutorials and Webinars}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: Short, focused video tutorials covering specific platform tasks (e.g., labeling, account setup) and periodic webinars for in-depth learning and live Q\&A sessions.  
+            \item \textbf{Rationale}: Video content provides a visual and engaging method for users to learn, while webinars offer opportunities for real-time interaction and deeper understanding.  
+            \item \textbf{Fit Criterion}: Each key platform feature should have a corresponding video tutorial, and at least 90\% of webinar attendees should rate the sessions as helpful in post-event feedback.
+        \end{itemize}
+    \item \textbf{Training for Specific User Groups}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: Targeted training materials and sessions tailored to different user groups, such as labelers, clients, and administrators, focusing on their unique needs and platform usage.  
+            \item \textbf{Rationale}: Customized training ensures that users receive relevant guidance, making them more efficient and effective in their roles on the platform.  
+            \item \textbf{Fit Criterion}: At least 90\% of users in specific groups should report that their training materials are relevant to their needs and improve their platform experience.
+        \end{itemize}
+    \item \textbf{Self-Assessment and Practice Environment}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: A sandbox environment allowing users to practice labeling tasks without affecting live data, including quizzes and exercises to assess understanding and improve skills.  
+            \item \textbf{Rationale}: A practice environment enables users to build confidence and hone their skills in a low-pressure setting, ensuring they are prepared for real tasks.  
+            \item \textbf{Fit Criterion}: At least 80\% of new users should utilize the practice environment, with self-assessment scores indicating an average improvement of 20\% in labeling accuracy over their first three attempts.
+        \end{itemize}
+    \item \textbf{Ongoing Support and Community Forum}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: Provide ongoing support through a community forum or discussion board where users can ask questions, share experiences, and learn from one another.  
+            \item \textbf{Rationale}: A support forum fosters a sense of community, provides peer-to-peer assistance, and reduces the load on formal support channels.  
+            \item \textbf{Fit Criterion}: At least 75\% of user questions in the community forum should be answered by either other users or support staff within 2 days.
+        \end{itemize}
+    \item \textbf{Periodic User Training Assessments}  
+        \begin{itemize}[leftmargin=2cm]
+            \item \textbf{Description}: Conduct periodic assessments of user knowledge through quizzes or practical tasks to identify training gaps and offer refresher sessions where needed.  
+            \item \textbf{Rationale}: Regular assessments help ensure users retain knowledge and stay up-to-date with platform changes, enhancing overall productivity and satisfaction.  
+            \item \textbf{Fit Criterion}: At least 70\% of users should participate in training assessments, with scores indicating a consistent understanding of platform features and workflows.
+        \end{itemize}
+\end{enumerate}
+
+
 
 \section{Waiting Room}
 \lips
