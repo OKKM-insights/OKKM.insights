@@ -875,17 +875,87 @@ N/A
 \subsection{Longevity Requirements}
 N/A
 
+
 \section{Operational and Environmental Requirements}
+Ensuring that the OKKM Insights platform operates smoothly and efficiently within its intended environment is critical for delivering reliable services to all stakeholders.
 \subsection{Expected Physical Environment}
-\lips
+OKKM Insights will not maintain any physical offices or on-premises infrastructure for platform access, as all services are delivered exclusively through the web application.users access the platform.
 \subsection{Wider Environment Requirements}
-\lips
+The broader environmental context includes external factors and systems that influence or are influenced by the platform's operation.
+% \subsubsection{Sustainability}
+\subsubsection*{OER1 - Sustainability}
+\begin{itemize}
+  \item \textbf{Description:} The system shall implement energy-efficient practices in cloud usage and server management.
+  \item \textbf{Rationale:} Minimizes the platform’s carbon footprint and promotes sustainability.
+  \item \textbf{Fit Criterion:} Cloud infrastructure usage is optimized to reduce energy consumption by at least 20\% compared to baseline measurements.
+\end{itemize}
 \subsection{Requirements for Interfacing with Adjacent Systems}
-\lips
+To ensure seamless integration and use, the OKKM Insights platform must effectively interface with various adjacent systems and technologies.
+\subsubsection{OER2 - Satellite Data Providers}
+\begin{itemize}
+  \item \textbf{Description:} The system shall support standardized APIs and data formats for the automatic acquisition and integration of satellite images from third-party providers.
+  \item \textbf{Rationale:} Facilitates seamless integration and efficient data handling from satellite data providers.
+  \item \textbf{Fit Criterion:} The platform can successfully ingest data from at least two major satellite data providers using their APIs without manual intervention.
+\end{itemize}
+\subsubsection{OER3 - Secure Transactions}
+\begin{itemize}
+  \item \textbf{Description:} The system shall integrate with reliable and secure payment processors to handle user compensations and client payments efficiently.
+  \item \textbf{Rationale:} Ensures secure and efficient financial transactions, building trust with users and clients.
+  \item \textbf{Fit Criterion:} Transactions are processed securely through integrated payment gateways, achieving a transaction success rate of 99.5%.
+\end{itemize}
+\subsubsection{OER4 - Multi-Currency Support}
+\begin{itemize}
+  \item \textbf{Description:} The system shall support multiple currencies to accommodate a global user base and international clients.
+  \item \textbf{Rationale:} Enhances the platform’s accessibility and usability for users and clients worldwide.
+  \item \textbf{Fit Criterion:} The platform supports at least four major currencies (e.g., USD, EUR, GBP, INR) and correctly processes transactions in each.
+\end{itemize}
+\subsubsection{OER5 - Model Training and Deployment}
+\begin{itemize}
+  \item \textbf{Description:} The system shall be compatible with popular machine learning frameworks to facilitate the training, testing, and deployment of computer vision models.
+  \item \textbf{Rationale:} Enables efficient development and integration of ML models for various use cases.
+  \item \textbf{Fit Criterion:} The platform can train and deploy models using frameworks like TensorFlow, PyTorch, and scikit-learn without compatibility issues.
+\end{itemize}
+\subsubsection{OER6 - Data Pipeline Integration}
+\begin{itemize}
+  \item \textbf{Description:} The system shall have efficient data pipelines for transferring labeled datasets between the platform and ML models.
+  \item \textbf{Rationale:} Ensures smooth and automated workflows for data handling and model training.
+  \item \textbf{Fit Criterion:} Data transfers occur within minutes, and pipelines support batch processing of large datasets (e.g., 10,000 images) without errors.
+\end{itemize}
 \subsection{Productization Requirements}
-\lips
+Productization requirements ensure that the OKKM Insights platform is a distributable and saleable product, ready for deployment and use by customers with minimal setup.
+\subsubsection{OER7 - System Access}
+\begin{itemize}
+  \item \textbf{Description:} The system shall be accessible without requiring any installation, operating solely through web browsers.
+  \item \textbf{Rationale:} Eliminates the need for users to install software, reducing barriers to entry and simplifying access.
+  \item \textbf{Fit Criterion:} Users can access and use the platform by visiting the web URL on any supported browser without needing to download or install additional software.
+\end{itemize}
+\subsubsection{OER8 - User Experince}
+\begin{itemize}
+  \item \textbf{Description:} The system shall provide an intuitive user interface that allows untrained users to navigate and utilize platform features effectively.
+  \item \textbf{Rationale:} Ensures that users can engage with the platform without extensive training or technical expertise, facilitating broader adoption.
+  \item \textbf{Fit Criterion:} New users can perform key tasks (e.g., uploading images, labeling data) within five minutes of their first login without requiring external instructions.
+\end{itemize}
 \subsection{Release Requirements}
-\lips
+Successful releases of the OKKM Insights platform and its updates necessitate careful planning and execution to ensure stability and user satisfaction.
+\subsubsection{OER9 - Release Roadmap}
+\begin{itemize}
+  \item \textbf{Description:} The system shall include a detailed release roadmap outlining timelines, features, and milestones for upcoming releases.
+  \item \textbf{Rationale:} Keeps the development team and stakeholders aligned and ensures organized progress.
+  \item \textbf{Fit Criterion:} The release roadmap is documented, updated regularly, and adhered to with at least 80\% of milestones achieved on schedule.
+\end{itemize}
+\subsubsection{OER10 - Beta Tests}
+\begin{itemize}
+  \item \textbf{Description:} The system shall conduct beta testing with a select group of users to gather feedback, identify bugs, and refine features before full-scale deployment.
+  \item \textbf{Rationale:} Ensures the platform meets user expectations and operates smoothly upon official release.
+  \item \textbf{Fit Criterion:} Beta testing results in fewer than 10 critical bugs and includes actionable feedback from at least 50 beta users, leading to necessary iterative improvements.
+\end{itemize}
+\subsubsection{OER11 - Regression Testing}
+\begin{itemize}
+  \item \textbf{Description:} Each release shall maintain the functionality of existing features without introducing regressions.
+  \item \textbf{Rationale:} Ensures continuity and reliability of the platform by preventing new updates from disrupting or breaking previously working features, thereby maintaining user trust and satisfaction.
+  \item \textbf{Fit Criterion:} Automated regression testing is performed for each release, and no existing critical features fail post-release. Verification is achieved through passing all regression test cases before deployment.
+\end{itemize}
+
 
 \section{Maintainability and Support Requirements}
 \subsection{Maintenance Requirements}
