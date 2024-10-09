@@ -33,7 +33,7 @@
 
 \begin{document}
 
-\title{Software Requirements Specification for \progname: subtitle describing software} 
+\title{Software Requirements Specification for \progname: GeoWeb} 
 \author{\authname}
 \date{\today}
 	
@@ -41,7 +41,7 @@
 
 ~\newpage
 
-\pagenumbering{roman}
+% \pagenumbering{roman}
 
 \tableofcontents
 
@@ -50,10 +50,10 @@
 \section*{Revision History}
 
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
-\toprule {\textbf{Date}} & {\textbf{Version}} & {\textbf{Notes}}\\
+\toprule {\textbf{Date}} & {\textbf{Authors}} & {\textbf{Version}}\\
 \midrule
-10/1/2024 & Mathew Petronilho & Added Purpose Of Project\\
-Date 2 & 1.1 & Notes\\
+10/09/2024 & Oleg, Kyle, Kartik, Mathew & Revision 0\\
+
 \bottomrule
 \end{tabularx}
 
@@ -67,21 +67,21 @@ This hinders the development and deployment of accurate computer vision models f
 
 The purpose of this project is to create an online platform that accelerates this process and brings simplicity to satellite imagery data analysis.
 \subsection{Goals of the Project}
-\subsubsection{High Data Accuracy}
+\subsubsection*{High Data Accuracy}
 The system should have high classification accuracy for objects reported in the images. The core problem this system must solve is extracting useful information from the provided images.
  One key metric to determine the utility of the information found, is the classification accuracy of objects identified in the images. If the system is 
  not able to determine what is contained in an image, it will not be useful to stakeholders.
-\subsubsection{Ease of use}
+\subsubsection*{Ease of use}
 The system should be very easy for stakeholders to use. There should be very low friction for users to classify images and objects found
 within images, with minimal training. It should also be simple for users to upload images to be analyzed. To maximize the information gained from users who are contributing to classification efforts, the system must ensure it is simple for users to 
 get started with, and continue using the system. This is necessary to build a large enough user base, which will make it more likely to get insights in an acceptable 
 amount of time.
-\subsubsection{Minimizing Cost to Analyze Images}
+\subsubsection*{Minimizing Cost to Analyze Images}
 The system should minimize the cost for users request insights from images. This could be implemented through intelligent algorithms for task delegation. Users of the system who upload images are interested in getting an appropriate return for their investment. If the cost to analyze is too high, the platform will not
 retain a sufficiently large user base of purchasers.
-\subsubsection{Results Returned Within Appropriate Timeframe}
+\subsubsection*{Results Returned Within Appropriate Timeframe}
 The system should ensure the time it takes to obtain information from images is within a specified limit, as determined by users who upload images. Purchasers will have some time limit they require the system to process images within. To ensure timing needs are met, the system should provide realistic timelines and stick to them.
-\subsubsection{High System Reliability and Accessibility}
+\subsubsection*{High System Reliability and Accessibility}
 The system should be useable remotely for purchasers and labellers, and have minimal downtime.The system should allow purchasers to upload images without being physically located where the system is hosted to ensure flexibility of use. The same should also be true for labellers, as they 
 should be able to perform their tasks remotely. In both cases, the system should have low down time as to not introduce additional friction into the completion of tasks.
 \section{Stakeholders}
@@ -107,7 +107,9 @@ Beyond the primary stakeholders, other key groups that benefit from high-quality
 \subsection{Hands-On Users of the Project}
 Users: These are individuals or entities responsible for labeling the data on the platform. In return for their efforts, they receive compensation. Their primary role is to ensure that the datasets are correctly annotated according to specified requirements, which forms the basis of the models developed. Their work directly impacts the quality and usability of the final product.
 
-\section{Personas}
+\newpage
+
+\subsection{Personas}
 \begin{itemize}
     \item \textbf{Independent Data Annotators}
     \begin{itemize}
@@ -167,7 +169,7 @@ Users are integral to the platform as they label data in exchange for compensati
 \subsection{Maintenance Users and Service Technicians}
 These users are responsible for the upkeep of the platform, ensuring that the labeling tools and data processing pipelines are functioning smoothly. They also assist in troubleshooting any technical issues faced by the users.
 
-
+\newpage
 \section{Mandated Constraints}
 \begin{itemize}
   \item The solution must be fully compatible with the latest stable releases of Google Chrome, Firefox, Microsoft Edge, and Safari browsers.\\ \textbf{Rationale:} Users will interact with the web application through various modern web browsers, so ensuring cross-browser compatibility is essential for providing a consistent user experience. \\ \textbf{Fit Criteria:} The web application must display consistently, maintain full functionality, and support core features across all specified browsers without major visual or functional discrepancies. Testing should be conducted on each browser to validate compatibility.
@@ -191,7 +193,7 @@ To see other documentation deadlines related to this project, refer to our \href
 \begin{itemize}
   \item The project budget must not exceed \$750. All funds will be sourced from the team itself.
 \end{itemize}
-
+\newpage
 \section{Naming Conventions and Terminology}
 \subsection{Glossary of All Terms, Including Acronyms, Used by Stakeholders
 involved in the Project}
@@ -203,13 +205,17 @@ involved in the Project}
     \hline
     Labelers & Users of our application that will be labeling photos shown to them for a monetary reward\\
     \hline
+    Service Request & Request for the system to analyze one or more related images.\\
+    \hline
+    Customers & Users of our application that will initiate requests for image analysis (service requests).\\
+    \hline
     \end{tabular}
     \caption{Naming Conventions and Terminology}
 \end{table}
+\newpage
+\section{Relevant Facts and Assumptions}
 
-\section*{5 Relevant Facts and Assumptions}
-
-\subsection*{5.1 Relevant Facts}
+\subsection{Relevant Facts}
 \begin{itemize}
     \item \textbf{Increasing Demand for Satellite Data}: There is a growing need for accurate satellite imagery across various industries, such as agriculture, disaster response, urban planning, and environmental monitoring, driven by advancements in technology and data analysis.
     \item \textbf{Advances in AI and Computer Vision}: The rapid development of AI and computer vision techniques has made it possible to analyze and extract meaningful insights from large-scale satellite imagery more efficiently than before.
@@ -218,7 +224,7 @@ involved in the Project}
     \item \textbf{Growing Market for Geospatial Intelligence}: Governments, private enterprises, and NGOs are increasingly investing in geospatial intelligence to support decision-making processes, making high-quality, labeled datasets more valuable for predictive modeling and operational planning.
 \end{itemize}
 
-\subsection*{5.2 Business Rules}
+\subsection{Business Rules}
 \begin{itemize}
     \item \textbf{Data Privacy and Confidentiality}: No confidential information is currently protected, but IP may need protection in the future as the project evolves.
     \item \textbf{Apache License 2.0 Usage}: The project will use the Apache License 2.0, allowing others to use and modify the software freely, with payment required if used commercially.
@@ -227,7 +233,7 @@ involved in the Project}
     \item \textbf{Payment and Compensation}: Compensation rules are designed to reward users for labeling data accurately and efficiently, with a clear system in place for managing payments for both users and clients.
 \end{itemize}
 
-\subsection*{5.3 Assumptions}
+\subsection{Assumptions}
 \begin{itemize}
     \item \textbf{Labelers Have Reliable Internet Access}: It is assumed that all users participating in labeling have stable and sufficient internet connectivity to access the platform, label data, and interact with the system without major disruptions.
     \item \textbf{Positive User Experience Will Attract and Retain Labelers}: The platform will rely on the assumption that a smooth user interface, fair compensation, and clear instructions will be enough to attract a substantial user base of labelers and keep them engaged over time.
@@ -236,7 +242,7 @@ involved in the Project}
     \item \textbf{Legal and Ethical Compliance for Data Use}: It is assumed that the acquisition and labeling of satellite imagery will not face any unforeseen legal or ethical issues, allowing for the data to be processed, shared, and monetized in accordance with existing regulations and ethical standards.
 \end{itemize}
 
-
+\newpage
 \section{The Scope of the Work}
 \subsection{The Current Situation}
 The current landscape in satellite imagery analysis is characterized by significant gaps and inefficiencies that prevent various industries from fully leveraging geospatial data.
@@ -274,8 +280,14 @@ The division of labour is thoroughly described in the Development plan document.
 To demonstrate the practical application and value proposition of the OKKM Insights platform, it is essential to define specific Business Use Cases (BUCs) that illustrate how different stakeholders will interact with and benefit from the platform.
 \subsubsection{BUC Specification: Disaster Response Data Provisioning}
 A government search and rescue agency receives a distress call reporting a downed airplane in a remote or inaccessible area. This report necessitates immediate action to locate the wreckage, assess the situation, and coordinate rescue operations. The OKKM Insights platform is notified of the incident through an integrated communication channel linked to the SAR agency’s reporting system. The platform automatically acquires the latest satellite images of the reported area from third-party providers and segments the large images into smaller, manageable tiles focused on the incident area. The algorithm then preprocesses and creates a task for data labelers using intelligent task delegation algorithms. Data labelers annotate critical features such as the airplane wreckage, debris fields, potential survivors, and any signs of environmental hazards. Consensus algorithms cross-verify annotations from multiple labelers, ensuring high accuracy and consistency. The platform then generates actionable insights, such as the precise location of the wreckage, extent of debris spread, accessibility of the area, and potential hazards. This data can then be used to train computer vision models using the newly labeled data to enhance the platform’s capability to automatically detect and classify aircraft and related features in satellite images. Finally the platform provides the SAR agency with access to the labeled dataset and the trained models through the platform’s user interface.
-
+\newpage
 \section{Business Data Model and Data Dictionary}
+\subsection{Business Data Model}
+\begin{figure}[H]
+\includegraphics[scale=0.75]{businessDataModel.png}
+\caption{Business Data Model}
+    \label{fig:usecase}
+\end{figure}
 \subsection{Data Dictionary}
 \begin{center}
 \begin{tabular}{ |c|c|c| } % chktex 44
@@ -301,7 +313,7 @@ A government search and rescue agency receives a distress call reporting a downe
     &  Personal Details & \\
     \hline
     Historic Accuracy &  LabelerID & Class \\ 
-    &  CategoryID & \\
+    &  Object Class & \\
     &  Accuracy & \\
     &  Samples & \\
     \hline
@@ -311,7 +323,6 @@ A government search and rescue agency receives a distress call reporting a downe
     \hline
     Image &  Image Data & Class \\ 
     &  Image Metadata & \\
-    &  Labels & \\
     \hline
     Label &  Labeled Class & Class \\ 
     &  Bounding Box & \\
@@ -323,18 +334,18 @@ A government search and rescue agency receives a distress call reporting a downe
     &  Labels & \\
     &  Image & \\
     \hline
-    Task Allocation &  \{Service Request & Data Flow \\ 
-    &  +Available Labelers & \\
-    &  +Historic Accuracy & \\
-    &  +Object Class & \\
-    &  +Request Deadline \} & \\
-    \hline
     
     
 \end{tabular}
 \end{center}
 \begin{center}
   \begin{tabular}{ |c|c|c| } % chktex 44
+    \hline
+    Task Allocation &  \{Service Request & Data Flow \\ 
+    &  +Available Labelers & \\
+    &  +Historic Accuracy & \\
+    &  +Object Class & \\
+    &  +Request Deadline \} & \\
     \hline
     Class Consensus &  \{Label & Data Flow \\ 
     &  +Historic Accuracy\} & \\
@@ -346,7 +357,8 @@ A government search and rescue agency receives a distress call reporting a downe
     Personal Details & Details necessary to identify and contact & Attribute/Element \\
     &    a user  &  \\
     \hline
-    Accuracy & $a \in \mathbb{R} \wedge 0 \leq a \leq 1$ & Attribute/Element \\
+    Accuracy & Represents proportion of correct labels & Attribute/Element \\
+    & $a \in \mathbb{R} \wedge 0 \leq a \leq 1$ & \\
     \hline
     Samples & $n \in \mathbb{N} \wedge a \geq 0 $ & Attribute/Element \\
     \hline
@@ -371,8 +383,9 @@ A government search and rescue agency receives a distress call reporting a downe
     \hline
 
   \end{tabular}
-\end{center}
 
+\end{center}
+\newpage
 \section{The Scope of the Product}
 \subsection{Product Boundary}
 The use case diagram depicted below identifies the boundaries between the users and the product.
@@ -382,6 +395,7 @@ The use case diagram depicted below identifies the boundaries between the users 
     \caption{Use Case diagram}
     \label{fig:usecase}
 \end{figure}
+\newpage
 \subsection{Product Use Case Table}
 \begin{longtable}
  {p{0.1\textwidth} | p{0.35\textwidth} | p{0.2\textwidth} | p{0.35\textwidth}}
@@ -421,7 +435,7 @@ The use case diagram depicted below identifies the boundaries between the users 
   \caption{Product Use Cases} \label{TblPUC}\\
 \end{longtable}
 \subsection{Individual Product Use Cases (PUC's)}
-\subsubsection{PUC 1 - Sign Up}
+\subsubsection*{PUC 0 - Sign Up}
 \textbf{Primary Actors:} Labelers, Customers\\ 
 \textbf{Precondition:} None\\
 \textbf{Trigger:} User selects create an account\\
@@ -434,7 +448,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \end{enumerate}
 \textbf{Post-condition:} User has successfully created an account and the application has securely stored their information
 
-\subsubsection{PUC 2 - Log In}
+\subsubsection*{PUC 1 - Log In}
 \textbf{Primary Actors:} Labelers\\ 
 \textbf{Precondition:} Labeler has signed up for an account\\
 \textbf{Trigger:} Labeler selects log in\\
@@ -446,7 +460,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \end{enumerate}
 \textbf{Post-condition:} The labeler has access to their account. All account related information, such as labeling progress, is accurately represented
 
-\subsubsection{PUC 3 - Customer Log In}
+\subsubsection*{PUC 2 - Customer Log In}
 \textbf{Primary Actors:} Customers\\ 
 \textbf{Precondition:} Customer has signed up for an account\\
 \textbf{Trigger:} Customer selects log in\\
@@ -458,7 +472,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \end{enumerate}
 \textbf{Post-condition:} The customer has access to their account and all their current image analysis projects
 
-\subsubsection{PUC 4 - Update User Information}
+\subsubsection*{PUC 3 - Update User Information}
 \textbf{Primary Actors:} Labelers, Customers\\ 
 \textbf{Precondition:} User has logged in\\
 \textbf{Trigger:} User selects update information\\
@@ -471,7 +485,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \end{enumerate}
 \textbf{Post-condition:} The information that the system stores about the user has been updated
 
-\subsubsection{PUC 5 - Annotate Satellite Images}
+\subsubsection*{PUC 4 - Annotate Satellite Images}
 \textbf{Primary Actors:} Labelers\\ 
 \textbf{Precondition:} Labeler has logged in\\
 \textbf{Trigger:} Labeler selects a listed project\\
@@ -486,7 +500,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \end{enumerate}
 \textbf{Post-condition:} All submitted annotated satellite images are stored by the system. The labeler's reward balance is updated to reflect their submissions
 
-\subsubsection{PUC 6 - Segment Annotation}
+\subsubsection*{PUC 5 - Segment Annotation}
 \textbf{Primary Actors:} Labelers\\ 
 \textbf{Precondition:} Labeler has logged in\\
 \textbf{Trigger:} Labeler selects a listed project\\
@@ -496,7 +510,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \end{enumerate}
 \textbf{Post-condition:} All submitted annotated satellite images are stored by the system. The labeler's reward balance is updated to reflect their submissions
 
-\subsubsection{PUC 7 - Bounding Box Annotation}
+\subsubsection*{PUC 6 - Bounding Box Annotation}
 \textbf{Primary Actors:} Labelers\\ 
 \textbf{Precondition:} Labeler has logged in\\
 \textbf{Trigger:} Labeler selects a listed project\\
@@ -506,7 +520,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \end{enumerate}
 \textbf{Post-condition:} All submitted annotated satellite images are stored by the system. The labeler's reward balance is updated to reflect their submissions
 
-\subsubsection{PUC 8 - Classification}
+\subsubsection*{PUC 7 - Classification}
 \textbf{Primary Actors:} Labelers\\ 
 \textbf{Precondition:} Labeler has logged in\\
 \textbf{Trigger:} Labeler selects a listed project\\
@@ -516,7 +530,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \end{enumerate}
 \textbf{Post-condition:} All submitted annotated satellite images are stored by the system. The labeler's reward balance is updated to reflect their submissions
 
-\subsubsection{PUC 9 - Cash Out}
+\subsubsection{PUC 8 - Cash Out}
 \textbf{Primary Actors:} Labelers\\
 \textbf{Secondary Actor:} Financial Institution\\
 \textbf{Precondition:} Labeler has logged in and their reward balance is at least \$1\\
@@ -530,7 +544,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \end{enumerate}
 \textbf{Post-condition:} The financial account that the labeler provided has gained money equal to the labeler's reward balance
 
-\subsubsection{PUC 10 - View Image Insights}
+\subsubsection*{PUC 9 - View Image Insights}
 \textbf{Primary Actors:} Customers\\
 \textbf{Precondition:} Customer has logged in and has at least one satellite image analysis project\\
 \textbf{Trigger:} Customer selects insights for a project\\
@@ -542,7 +556,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \end{enumerate}
 \textbf{Post-condition:} The customer has knowledge about how their project is progressing and if the labeling of the satellite images has been complete
 
-\subsubsection{PUC 11 - Export Results}
+\subsubsection*{PUC 10 - Export Results}
 \textbf{Primary Actors:} Customers\\
 \textbf{Precondition:} Customer has logged in, has at least one satellite image analysis project, and all labeled satellite images in that project have an acceptable accuracy\\
 \textbf{Trigger:} Customer selects export data\\
@@ -555,7 +569,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \end{enumerate}
 \textbf{Post-condition:} The customer has complete access to the labeled dataset of satellite images
 
-\subsubsection{PUC 12 - Request Image Analysis}
+\subsubsection*{PUC 11 - Request Image Analysis}
 \textbf{Primary Actors:} Customers\\
 \textbf{Precondition:} Customer has logged in\\
 \textbf{Trigger:} Customer creates a new project request\\
@@ -574,7 +588,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \end{enumerate}
 \textbf{Post-condition:} The image analysis project has been created and labelers can start annotating the satellite images
 
-\subsubsection{PUC 13 - Upload Satellite Images}
+\subsubsection*{PUC 12 - Upload Satellite Images}
 \textbf{Primary Actors:} Customers\\
 \textbf{Precondition:} Customer has logged in and has created a new project request\\
 \textbf{Trigger:} Customer submits the information form for a new project\\
@@ -586,7 +600,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \end{enumerate}
 \textbf{Post-condition:} The system has all the images that will be analyzed for the project
 
-\subsubsection{PUC 14 - Request Satellite Images}
+\subsubsection*{PUC 13 - Request Satellite Images}
 \textbf{Primary Actors:} Customers\\
 \textbf{Secondary Actors:} Satellite Image Provider\\
 \textbf{Precondition:} Customer has logged in and has created a new project request\\
@@ -600,7 +614,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \end{enumerate}
 \textbf{Post-condition:} The system has all the satellite images that will be analyzed for the project
 
-\subsubsection{PUC 15 - Process Payment}
+\subsubsection*{PUC 14 - Process Payment}
 \textbf{Primary Actors:} Customers\\
 \textbf{Secondary Actor:} Financial Institution\\
 \textbf{Precondition:} Customer has logged in and has created a new project request\\
@@ -614,7 +628,7 @@ The use case diagram depicted below identifies the boundaries between the users 
     \item The payment is deposited in the financial account associated with the system
 \end{enumerate}
 \textbf{Post-condition:} The fees for facilitating the project have been paid
-
+\newpage
 \section{Functional Requirements}
 \subsection{Functional Requirements}
 \subsubsection*{FR0}
@@ -710,113 +724,113 @@ The use case diagram depicted below identifies the boundaries between the users 
 
 \section{Look and Feel Requirements}
 \subsection{Appearance Requirements}
-\subsubsection*{Requirement LF1:}
+\subsubsection*{NFR-LF1}
 \begin{itemize}
   \item \textbf{Description:} The application shall adapt to various screen sizes, ensuring legibility and an uncluttered layout.
   \item \textbf{Rationale:} Users will have computers with varying screen sizes, so a consistent experience across all these sizes is ideal.
   \item \textbf{Fit Criterion:} Visual elements must not exceed the boundaries of a screen with a size between the range 1024×768 pixels to 1920×1080 pixels.
 \end{itemize}
-\subsubsection*{Requirement LF2:}
+\subsubsection*{NFR-LF2}
 \begin{itemize}
   \item \textbf{Description:} Interactive elements such as buttons shall provide visual feedback to the user.
   \item \textbf{Rationale:} This will allow users a better understanding of when their actions have been processed by the application.
   \item \textbf{Fit Criterion:} Every interactive element changes colour or displays additional visual cues, such as animations or shadows, to indicate interaction.
 \end{itemize}
 \subsection{Style Requirements}
-\subsubsection*{Requirement LF3:}
+\subsubsection*{NFR-LF3}
 \begin{itemize}
   \item \textbf{Description:} The application should maintain a unified visual design across all components.
   \item \textbf{Rationale:} A consistent appearance enhances the application's cohesiveness and conveys a professional aesthetic.
   \item \textbf{Fit Criterion:} Font type, sizing, and colour, along with background tones are all consistent throughout the application.
 \end{itemize}
 
-\section*{11 Usability and Humanity Requirements}
+\section{Usability and Humanity Requirements}
 
-\subsection*{11.1 Ease of Use Requirement}
+\subsection{Ease of Use Requirements}
 
 
-\begin{enumerate}
-    \item \textbf{Clear Navigation Structure}  
-        \begin{itemize}
-            \item \textbf{Description}: The platform will have a well-organized navigation menu, allowing users to quickly find labeling tasks, settings, help, and account details.  
-            \item \textbf{Rationale}: An easy-to-navigate platform helps reduce the time taken for users to find what they need, improving the efficiency of labeling tasks and overall user satisfaction.  
-            \item \textbf{Fit Criterion}: At least 90\% of users should be able to navigate to any main feature within 3 clicks, as determined by usability testing.
-        \end{itemize}
-    \item \textbf{Consistent User Interface Elements}  
-        \begin{itemize}
-            \item \textbf{Description}: The platform’s buttons, forms, and other UI elements should follow a consistent style and behavior throughout, to ensure a predictable user experience.  
-            \item \textbf{Rationale}: Consistency reduces cognitive load and helps users feel comfortable and confident when interacting with the system, as they can easily recognize and understand patterns in the UI.  
-            \item \textbf{Fit Criterion}: Consistency will be validated by usability tests where at least 95\% of users recognize and correctly use recurring interface elements across different pages.
-        \end{itemize}
-\end{enumerate}
 
-\subsection*{11.2 Personalization and Internationalization Requirements}
+\subsubsection*{NFR-UH0}
+      \begin{itemize}
+          \item \textbf{Description}: The platform will have a well-organized navigation menu, allowing users to quickly find labeling tasks, settings, help, and account details.  
+          \item \textbf{Rationale}: An easy-to-navigate platform helps reduce the time taken for users to find what they need, improving the efficiency of labeling tasks and overall user satisfaction.  
+          \item \textbf{Fit Criterion}: At least 90\% of users should be able to navigate to any main feature within 3 clicks, as determined by usability testing.
+      \end{itemize}
+\subsubsection*{NFR-UH1} 
+      \begin{itemize}
+          \item \textbf{Description}: The platform’s buttons, forms, and other UI elements should follow a consistent style and behavior throughout, to ensure a predictable user experience.  
+          \item \textbf{Rationale}: Consistency reduces cognitive load and helps users feel comfortable and confident when interacting with the system, as they can easily recognize and understand patterns in the UI.  
+          \item \textbf{Fit Criterion}: Consistency will be validated by usability tests where at least 95\% of users recognize and correctly use recurring interface elements across different pages.
+      \end{itemize}
 
-\begin{enumerate}
-    \item \textbf{Task Prioritization Based on Preferences}  
+
+\subsection{Personalization and Internationalization Requirements}
+
+
+\subsubsection*{NFR-UH2} 
         \begin{itemize}
             \item \textbf{Description}: Users can set preferences to prioritize specific types of labeling tasks (e.g., agricultural, urban) and receive suggestions aligned with their interests and expertise.  
             \item \textbf{Rationale}: Allowing users to work on tasks of interest or within their expertise can improve task accuracy and user satisfaction, leading to better retention and data quality.  
             \item \textbf{Fit Criterion}: Users should be able to set their task preferences in their profile, with at least 80\% of their assigned tasks matching these preferences over time.
         \end{itemize}
-    \item \textbf{Localized Date, Time, and Currency Formats}  
+        \subsubsection*{NFR-UH3} 
         \begin{itemize}
             \item \textbf{Description}: The platform should display localized formats for date, time, and currency based on the user's location or preference settings.  
             \item \textbf{Rationale}: Displaying culturally familiar formats enhances user comfort and reduces errors when interpreting critical information like deadlines or earnings.  
             \item \textbf{Fit Criterion}: Date, time, and currency formats should adjust automatically based on the user’s location or manual settings, verified through localized testing.
         \end{itemize}
-\end{enumerate}
 
-\subsection*{11.3 Learning Requirements}
 
-\begin{enumerate}
-    \item \textbf{In-App Progress Tracking for Learning}  
+\subsection{Learning Requirements}
+
+
+\subsubsection*{NFR-UH4} 
         \begin{itemize} 
             \item \textbf{Description}: Users can track their progress through tutorials and training tasks within the platform, allowing them to see completed and pending learning modules.  
             \item \textbf{Rationale}: Tracking progress motivates users to complete learning tasks and helps them understand where they stand in terms of mastering platform features.  
             \item \textbf{Fit Criterion}: A progress tracker will be implemented, and at least 80\% of users should find it helpful, based on post-training feedback surveys.
         \end{itemize}
-    \item \textbf{Interactive Practice Tasks}  
+        \subsubsection*{NFR-UH5} 
         \begin{itemize} 
             \item \textbf{Description}: Provide users with simulated labeling tasks to practice without affecting actual datasets, allowing them to learn through hands-on experience before starting real work.  
             \item \textbf{Rationale}: Practice tasks help users understand the labeling process without pressure, improving their confidence and accuracy before handling real data.  
             \item \textbf{Fit Criterion}: At least 85\% of users should complete at least one practice task before labeling real data, with a satisfaction rate of 90\% based on feedback.
         \end{itemize}
-\end{enumerate}
 
-\subsection*{11.4 Understandability and Politeness Requirements}
 
-\begin{enumerate}
-    \item \textbf{Contextual Help Pop-ups}  
+\subsection{Understandability and Politeness Requirements}
+
+
+\subsubsection*{NFR-UH6} 
         \begin{itemize} 
             \item \textbf{Description}: Contextual help pop-ups should be available throughout the platform, offering brief explanations for various features and guidance on how to complete tasks.  
             \item \textbf{Rationale}: Providing help exactly where users need it reduces confusion and makes it easier for users to understand how to use different parts of the platform without extensive searching.  
             \item \textbf{Fit Criterion}: At least 90\% of users should find the contextual help pop-ups clear and helpful during usability testing.
         \end{itemize}
-    \item \textbf{Friendly Error Handling and Guidance}  
+        \subsubsection*{NFR-UH7} 
         \begin{itemize} 
             \item \textbf{Description}: Error messages will not only indicate what went wrong but also provide actionable steps to resolve the issue in a friendly, non-blaming tone.  
             \item \textbf{Rationale}: Friendly and constructive error handling reduces user frustration and helps users quickly resolve issues without needing support, improving overall experience.  
             \item \textbf{Fit Criterion}: At least 95\% of errors will be accompanied by actionable instructions, and users should report a low frustration rate ($<$ 10\%) when encountering errors, based on feedback.
         \end{itemize}
-\end{enumerate}
 
-\subsection*{11.5 Accessibility Requirements}
 
-\begin{enumerate}
-    \item \textbf{Adjustable Text Size and Color Themes}  
+\subsection{Accessibility Requirements}
+
+
+\subsubsection*{NFR-UH8} 
         \begin{itemize} 
             \item \textbf{Description}: The platform will provide options for users to adjust text size and choose between different color themes (e.g., light, dark, high contrast) to improve readability based on their preferences.  
             \item \textbf{Rationale}: Allowing adjustments for visual elements helps users with low vision, color blindness, or different environmental lighting conditions to comfortably use the platform.  
             \item \textbf{Fit Criterion}: At least three different color themes will be available, and users should be able to increase text size up to 200\% without loss of content or functionality.
         \end{itemize}
-    \item \textbf{Keyboard Shortcuts for Core Actions}  
+        \subsubsection*{NFR-UH9} 
         \begin{itemize} 
             \item \textbf{Description}: The platform will support keyboard shortcuts for essential actions (e.g., navigating between tasks, submitting labels) to facilitate quick access and improve usability for users who cannot use a mouse.  
             \item \textbf{Rationale}: Keyboard shortcuts provide an alternative way to interact with the system, improving efficiency for power users and ensuring accessibility for users with limited mobility.  
             \item \textbf{Fit Criterion}: All core actions should have keyboard shortcuts available, and usability tests should confirm that at least 95\% of actions are accessible via keyboard navigation.
         \end{itemize}
-\end{enumerate}
+
 
 
 \section{Performance Requirements}
@@ -906,79 +920,68 @@ N/A
 
 
 \section{Operational and Environmental Requirements}
-Ensuring that the OKKM Insights platform operates smoothly and efficiently within its intended environment is critical for delivering reliable services to all stakeholders.
 \subsection{Expected Physical Environment}
-OKKM Insights will not maintain any physical offices or on-premises infrastructure for platform access, as all services are delivered exclusively through the web application.users access the platform.
+N/A
 \subsection{Wider Environment Requirements}
-The broader environmental context includes external factors and systems that influence or are influenced by the platform's operation.
 % \subsubsection{Sustainability}
-\subsubsection*{OER1 - Sustainability}
+\subsubsection*{NFR-OE0}
 \begin{itemize}
   \item \textbf{Description:} The system shall implement energy-efficient practices in cloud usage and server management.
   \item \textbf{Rationale:} Minimizes the platform’s carbon footprint and promotes sustainability.
   \item \textbf{Fit Criterion:} Cloud infrastructure usage is optimized to reduce energy consumption by at least 20\% compared to baseline measurements.
 \end{itemize}
 \subsection{Requirements for Interfacing with Adjacent Systems}
-To ensure seamless integration and use, the OKKM Insights platform must effectively interface with various adjacent systems and technologies.
-\subsubsection{OER2 - Satellite Data Providers}
+\subsubsection*{NFR-OE1}
 \begin{itemize}
   \item \textbf{Description:} The system shall support standardized APIs and data formats for the automatic acquisition and integration of satellite images from third-party providers.
   \item \textbf{Rationale:} Facilitates seamless integration and efficient data handling from satellite data providers.
   \item \textbf{Fit Criterion:} The platform can successfully ingest data from at least two major satellite data providers using their APIs without manual intervention.
 \end{itemize}
-\subsubsection{OER3 - Secure Transactions}
+\subsubsection*{NFR-OE2}
 \begin{itemize}
   \item \textbf{Description:} The system shall integrate with reliable and secure payment processors to handle user compensations and client payments efficiently.
   \item \textbf{Rationale:} Ensures secure and efficient financial transactions, building trust with users and clients.
   \item \textbf{Fit Criterion:} Transactions are processed securely through integrated payment gateways, achieving a transaction success rate of 99.5%.
 \end{itemize}
-\subsubsection{OER4 - Multi-Currency Support}
+\subsubsection*{NFR-OE3}
 \begin{itemize}
   \item \textbf{Description:} The system shall support multiple currencies to accommodate a global user base and international clients.
   \item \textbf{Rationale:} Enhances the platform’s accessibility and usability for users and clients worldwide.
   \item \textbf{Fit Criterion:} The platform supports at least four major currencies (e.g., USD, EUR, GBP, INR) and correctly processes transactions in each.
 \end{itemize}
-\subsubsection{OER5 - Model Training and Deployment}
+\subsubsection*{NFR-OE4}
 \begin{itemize}
   \item \textbf{Description:} The system shall be compatible with popular machine learning frameworks to facilitate the training, testing, and deployment of computer vision models.
   \item \textbf{Rationale:} Enables efficient development and integration of ML models for various use cases.
   \item \textbf{Fit Criterion:} The platform can train and deploy models using frameworks like TensorFlow, PyTorch, and scikit-learn without compatibility issues.
 \end{itemize}
-\subsubsection{OER6 - Data Pipeline Integration}
+\subsubsection*{NFR-OE5}
 \begin{itemize}
   \item \textbf{Description:} The system shall have efficient data pipelines for transferring labeled datasets between the platform and ML models.
   \item \textbf{Rationale:} Ensures smooth and automated workflows for data handling and model training.
   \item \textbf{Fit Criterion:} Data transfers occur within minutes, and pipelines support batch processing of large datasets (e.g., 10,000 images) without errors.
 \end{itemize}
 \subsection{Productization Requirements}
-Productization requirements ensure that the OKKM Insights platform is a distributable and saleable product, ready for deployment and use by customers with minimal setup.
-\subsubsection{OER7 - System Access}
+\subsubsection*{NFR-OE6}
 \begin{itemize}
   \item \textbf{Description:} The system shall be accessible without requiring any installation, operating solely through web browsers.
   \item \textbf{Rationale:} Eliminates the need for users to install software, reducing barriers to entry and simplifying access.
   \item \textbf{Fit Criterion:} Users can access and use the platform by visiting the web URL on any supported browser without needing to download or install additional software.
 \end{itemize}
-\subsubsection{OER8 - User Experince}
-\begin{itemize}
-  \item \textbf{Description:} The system shall provide an intuitive user interface that allows untrained users to navigate and utilize platform features effectively.
-  \item \textbf{Rationale:} Ensures that users can engage with the platform without extensive training or technical expertise, facilitating broader adoption.
-  \item \textbf{Fit Criterion:} New users can perform key tasks (e.g., uploading images, labeling data) within five minutes of their first login without requiring external instructions.
-\end{itemize}
 \subsection{Release Requirements}
-Successful releases of the OKKM Insights platform and its updates necessitate careful planning and execution to ensure stability and user satisfaction.
-\subsubsection{OER9 - Release Roadmap}
+\subsubsection*{NFR-OE7}
 \begin{itemize}
   \item \textbf{Description:} The system shall include a detailed release roadmap outlining timelines, features, and milestones for upcoming releases.
   \item \textbf{Rationale:} Keeps the development team and stakeholders aligned and ensures organized progress.
   \item \textbf{Fit Criterion:} The release roadmap is documented, updated regularly, and adhered to with at least 80\% of milestones achieved on schedule.
 \end{itemize}
-\subsubsection{OER10 - Beta Tests}
+\subsubsection*{NFR-OE8}
 \begin{itemize}
   \item \textbf{Description:} The system shall conduct beta testing with a select group of users to gather feedback, identify bugs, and refine features before full-scale deployment.
   \item \textbf{Rationale:} Ensures the platform meets user expectations and operates smoothly upon official release.
   \item \textbf{Fit Criterion:} Beta testing results in fewer than 10 critical bugs and includes actionable feedback from at least 50 beta users, leading to necessary iterative improvements.
 \end{itemize}
-\subsubsection{OER11 - Regression Testing}
+\subsubsection*{NFR-OE9}
 \begin{itemize}
   \item \textbf{Description:} Each release shall maintain the functionality of existing features without introducing regressions.
   \item \textbf{Rationale:} Ensures continuity and reliability of the platform by preventing new updates from disrupting or breaking previously working features, thereby maintaining user trust and satisfaction.
@@ -1002,26 +1005,26 @@ N/A
 
 \section{Security Requirements}
 \subsection{Access Requirements}
-\subsubsection*{Requirement SR1:}
+\subsubsection*{NFR-SE0}
 \begin{itemize}
   \item \textbf{Description:} The application shall only allow users with labeling access, including labellers, customers, and admins, to view active projects and label images.
   \item \textbf{Rationale:} We do not want random users with no stake in the process to effect the results.
   \item \textbf{Fit Criterion:} Users who have not logged in to the application have no way of viewing projects or labeling images. Users logged in as labellers, customers, or admins have access to these features.
 \end{itemize}
-\subsubsection*{Requirement SR2:}
+\subsubsection*{NFR-SE1}
 \begin{itemize}
   \item \textbf{Description:} The application shall only allow users with customer access and above to create new image analysis projects.
   \item \textbf{Rationale:} Unidentified users creating projects would be impossible to facilitate. Also, labellers have no need to access project creation. 
   \item \textbf{Fit Criterion:} Users who have not logged in to the application have no way of creating an image analysis project. Users logged in as customers or admins have access to these features.
 \end{itemize}
-\subsubsection*{Requirement SR3:}
+\subsubsection*{NFR-SE2}
 \begin{itemize}
   \item \textbf{Description:} The application shall validate the email format the user provides when creating an account.
   \item \textbf{Rationale:} We do not want users using invalid emails to sign up.
   \item \textbf{Fit Criterion:} Let E represent the set of all email addresses, and let V represent the set of all valid email addresses. A valid email address conforms to the general pattern:\\\\
   V = $(\forall\; email \in E\;  |\; email \; matches \; the \; pattern \; $[a-zA-Z0-9+\_.-]+@[a-zA-Z0-9.-]+[a-zA-Z])\\
 \end{itemize}
-\subsubsection*{Requirement SR4:}
+\subsubsection*{NFR-SE3}
 \begin{itemize}
   \item \textbf{Description:} The application shall validate the password format the user provides when creating an account.
   \item \textbf{Rationale:} We do not want users using weak passwords to sign up.
@@ -1029,20 +1032,20 @@ N/A
   V = $(\forall\; password \in P\;  |\; password \; matches \; the \; pattern \; $(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[\#\$\%\&\*\@])[a-zA-Z0-9\#\$\%\&\*\@]\{8,\})\\
 \end{itemize}
 \subsection{Integrity Requirements}
-\subsubsection*{Requirement SR5:}
+\subsubsection*{NFR-SE4}
 \begin{itemize}
   \item \textbf{Description:} The application shall prevent incorrect data from being introduced.
   \item \textbf{Rationale:} The database of information should always reflect correct and up to date information.
   \item \textbf{Fit Criterion:} The system must validate user inputs for data accuracy and format before they are saved. Any invalid data must trigger error messages, preventing it from being entered into the database. Users must be required to correct errors before proceeding.
 \end{itemize}
 \subsection{Privacy Requirements}
-\subsubsection*{Requirement SR6:}
+\subsubsection*{NFR-SE5}
 \begin{itemize}
   \item \textbf{Description:} User data will be securely encrypted to protect user’s privacy.
   \item \textbf{Rationale:} This will help to avoid user's being compromised if a data leak occurs.
   \item \textbf{Fit Criterion:} An encryption algorithm is used on sensitive user data such as passwords.
 \end{itemize}
-\subsubsection*{Requirement SR7:}
+\subsubsection*{NFR-SE6}
 \begin{itemize}
   \item \textbf{Description:} The application shall ensure that all payment transactions are processed securely using encryption and comply with relevant security standards, such as PCI-DSS, which helps to protect payment account data (PCI Security Standards Council, 2024).
   \item \textbf{Rationale:} Protecting users' financial information is critical to maintaining trust. Failing to secure payments can lead to data breaches, financial loss, and legal liabilities.
@@ -1050,9 +1053,9 @@ N/A
 \end{itemize}
 
 \subsection{Audit Requirements}
-These requirements are not applicable as we are not an organization that is currently subject to audits.
+N/A
 \subsection{Immunity Requirements}
-\subsubsection*{Requirement SR8:}
+\subsubsection*{NFR-SE7}
 \begin{itemize}
   \item \textbf{Description:} The application shall use parameterized queries or prepared statements for all database interactions.
   \item \textbf{Rationale:} We want to prevent SQL injection attacks which can lead to unauthorized data access or manipulation.
@@ -1061,7 +1064,7 @@ These requirements are not applicable as we are not an organization that is curr
 
 \section{Cultural Requirements}
 \subsection{Cultural Requirements}
-\subsubsection*{NFR-CUR1}
+\subsubsection*{NFR-CU1}
 \begin{itemize}
   \item \textbf{Description:} The system shall present users with the option to select the most popular language in each country it is deployed in.
   \item \textbf{Rationale:} It is important that the users of the program can understand what is said in each step.
@@ -1070,19 +1073,19 @@ These requirements are not applicable as we are not an organization that is curr
 
 \section{Compliance Requirements}
 \subsection{Legal Requirements}
-\subsubsection*{NFR-COR1}
+\subsubsection*{NFR-CO1}
 \begin{itemize}
   \item \textbf{Description:} The system shall not be available in any country currently facing economic sanctions by the Government of Canada.
   \item \textbf{Rationale:} Legal requirement to operate.
-  \item \textbf{Fit Criterion:} Website must not be reachable in sanctioned countries.
+  \item \textbf{Fit Criterion:} Website must not be reachable in sanctioned countries. Canadian sanctions are outlined in the following legislation: \href{http://laws-lois.justice.gc.ca/eng/acts/U-2/index.html}{United Nation Act}, \href{http://laws-lois.justice.gc.ca/eng/acts/S-14.5/index.html}{Special Economic Measures Act}, and \href{http://laws.justice.gc.ca/eng/acts/J-2.3/}{Justice for Victims of Corrupt Foreign Officials Act}
 \end{itemize}
-\subsubsection*{NFR-COR2}
+\subsubsection*{NFR-CO2}
 \begin{itemize}
   \item \textbf{Description:} The system shall follow Canadian tax code when accepting and paying out earnings.
   \item \textbf{Rationale:} Legal requirement to operate.
-  \item \textbf{Fit Criterion:} All relevant tax codes must be satisfied when accepting payment from Customers or paying out earnings to Labelers.
+  \item \textbf{Fit Criterion:} All relevant tax codes must be satisfied when accepting payment from Customers or paying out earnings to Labelers. Specifically \href{https://www.ontario.ca/laws/statute/90c40}{Ontario Tax Act, 1990} and \href{https://laws-lois.justice.gc.ca/eng/acts/i-3.3/}{Income Tax Act 1985}
 \end{itemize}
-\subsubsection*{NFR-COR3}
+\subsubsection*{NFR-CO3}
 \begin{itemize}
   \item \textbf{Description:} The system shall allow Customers to restrict Labelers from certain regions from labeling the images related to their service request.
   \item \textbf{Rationale:} Customers may be uploading sensitive images, which are inappropriate for international Labelers to view.
@@ -1102,7 +1105,7 @@ N/A
 \subsection{Reusable Components}
 \textbf{Label Studio: } A React library which contains components for building a web-based data annotation platform.
 \subsection{Products That Can Be Copied}
-\textbf{Tolka AI: } A general purpose image label crowdsourcing site. Supports image segmentation, bounding box drawing, and more computer vision labeling tasks.
+\textbf{Toloka AI: } A general purpose image label crowdsourcing site. Supports image segmentation, bounding box drawing, and more computer vision labeling tasks. \href{https://toloka.ai/}{Toloka.ai}
 
 
 
@@ -1191,9 +1194,9 @@ Addressing the initial set of problems may give rise to additional challenges th
 
 
 
-\section*{21 Tasks}
+\section{Tasks}
 
-\subsection*{21.1 Project Planning}
+\subsection{Project Planning}
 \begin{itemize} 
     \item \textbf{Define Clear Milestones}: Establish milestones based on key project phases, such as requirements gathering, hazard analysis, proof of concept, backend development, and final project demonstration.
     \item \textbf{Task Assignment and Role Allocation}: Assign tasks to team members based on their strengths and expertise, with clear ownership over specific deliverables (e.g., backend development, frontend development, documentation, testing).
@@ -1201,7 +1204,7 @@ Addressing the initial set of problems may give rise to additional challenges th
     \item \textbf{Risk Management and Mitigation}: Identify potential project risks (e.g., data quality issues, development delays) and create mitigation strategies, including regular check-ins, backup plans, and prioritization of critical tasks.
 \end{itemize}
 
-\subsection*{21.2 Planning of the Development Phases}
+\subsection{Planning of the Development Phases}
 \begin{itemize} 
     \item \textbf{Requirements Gathering (24-Sep-2024 to 08-Oct-2024)}: Engage in detailed discussions with stakeholders to gather comprehensive requirements for both frontend and backend components, ensuring all technical and business needs are documented.
     \item \textbf{Hazard Analysis (10-Oct-2024 to 23-Oct-2024)}: Identify risks related to data handling, server security, and other critical project components. Develop a hazard analysis document to mitigate potential threats, especially in handling satellite imagery.
@@ -1284,96 +1287,94 @@ A detailed budget forecast will be developed, encompassing all the aforementione
 
 
 
-\section*{23 User Documentation and Training}
+\section{User Documentation and Training}
 
-\section*{23.1 User Documentation Requirements}
+\section{User Documentation Requirements}
 
-\begin{enumerate}
-    \item \textbf{Comprehensive User Manual}  
+\subsubsection*{NFR-UD0} 
         \begin{itemize} 
             \item \textbf{Description}: A complete user manual detailing all platform functionalities, including system access, navigation, image labeling, and account management, enhanced with visual aids like screenshots for clarity.  
             \item \textbf{Rationale}: A thorough manual helps users find information independently, reducing support queries and ensuring they can maximize the platform’s potential.  
             \item \textbf{Fit Criterion}: The manual should cover at least 95\% of the platform's features, and user feedback should reflect a 90\% satisfaction rate in terms of usefulness and comprehensiveness.
         \end{itemize}
-    \item \textbf{Online Help System}  
+        \subsubsection*{NFR-UD1} 
         \begin{itemize} 
             \item \textbf{Description}: A built-in help system with a searchable knowledge base, FAQs, and step-by-step guides to assist users with common issues or tasks directly within the platform.  
             \item \textbf{Rationale}: An online help system provides quick, on-demand support, improving user experience by minimizing interruptions when seeking assistance.  
             \item \textbf{Fit Criterion}: At least 80\% of users should be able to resolve their issues using the help system without contacting support, as validated by user surveys and support metrics.
         \end{itemize}
-    \item \textbf{API Documentation for Developers}  
+        \subsubsection*{NFR-UD1} 
         \begin{itemize} 
             \item \textbf{Description}: Detailed API documentation using a standard like OpenAPI, covering all endpoints, parameters, response formats, and authentication mechanisms to facilitate integration by external developers.  
             \item \textbf{Rationale}: Well-documented APIs empower developers to integrate their applications with the platform seamlessly, fostering a wider ecosystem and usage.  
             \item \textbf{Fit Criterion}: The API documentation should be comprehensive and accurate, with at least 90\% of developer feedback confirming clarity and ease of use.
         \end{itemize}
-    \item \textbf{Release Notes and Updates}  
+        \subsubsection*{NFR-UD2} 
         \begin{itemize} 
             \item \textbf{Description}: Timely release notes detailing new features, bug fixes, and system changes, ensuring users are kept informed about platform improvements and updates.  
             \item \textbf{Rationale}: Regular release notes maintain transparency, keeping users informed and reducing confusion about new functionality or changes to existing features.  
             \item \textbf{Fit Criterion}: Each major platform update should be accompanied by release notes, with at least 95\% coverage of changes, and users should report a clear understanding of new features based on feedback.
         \end{itemize}
-    \item \textbf{Quick Start Guide}  
+        \subsubsection*{NFR-UD3}   
         \begin{itemize} 
             \item \textbf{Description}: A condensed guide offering a quick overview of key platform features and essential workflows to get users started rapidly.  
             \item \textbf{Rationale}: A quick start guide enables new users to become productive immediately without needing to read extensive documentation, improving their onboarding experience.  
             \item \textbf{Fit Criterion}: At least 90\% of new users should report the quick start guide as helpful, and they should be able to complete a basic labeling task within 15 minutes of using it.
         \end{itemize}
-    \item \textbf{Contextual In-App Help}  
+        \subsubsection*{NFR-UD4} 
         \begin{itemize} 
             \item \textbf{Description}: Provide contextual help directly within the platform, such as tooltips and small info pop-ups, offering real-time guidance for features or form fields as users interact with them.  
             \item \textbf{Rationale}: In-app help reduces the learning curve and provides timely support without requiring users to leave the page or workflow they are on.  
             \item \textbf{Fit Criterion}: At least 85\% of users should find in-app help intuitive and accurate in providing the necessary support as validated by user surveys.
         \end{itemize}
-\end{enumerate}
 
-\section*{23.2 Training Requirement}
 
-\begin{enumerate}
-    \item \textbf{Interactive Onboarding Tutorial}  
+\section{Training Requirement}
+
+
+\subsubsection*{NFR-TR0} 
         \begin{itemize} 
             \item \textbf{Description}: An onboarding tutorial guiding users through key platform functions interactively, offering tooltips and prompts to familiarize them with core workflows.  
             \item \textbf{Rationale}: Interactive onboarding accelerates learning, reduces user frustration, and ensures that new users can quickly perform tasks confidently.  
             \item \textbf{Fit Criterion}: At least 85\% of users should complete the onboarding tutorial successfully within 20 minutes, with a 90\% rate of positive feedback on its effectiveness.
         \end{itemize}
-    \item \textbf{Video Tutorials and Webinars}  
+        \subsubsection*{NFR-TR1}   
         \begin{itemize} 
             \item \textbf{Description}: Short, focused video tutorials covering specific platform tasks (e.g., labeling, account setup) and periodic webinars for in-depth learning and live Q\&A sessions.  
             \item \textbf{Rationale}: Video content provides a visual and engaging method for users to learn, while webinars offer opportunities for real-time interaction and deeper understanding.  
             \item \textbf{Fit Criterion}: Each key platform feature should have a corresponding video tutorial, and at least 90\% of webinar attendees should rate the sessions as helpful in post-event feedback.
         \end{itemize}
-    \item \textbf{Training for Specific User Groups}  
+        \subsubsection*{NFR-TR2} 
         \begin{itemize} 
             \item \textbf{Description}: Targeted training materials and sessions tailored to different user groups, such as labelers, clients, and administrators, focusing on their unique needs and platform usage.  
             \item \textbf{Rationale}: Customized training ensures that users receive relevant guidance, making them more efficient and effective in their roles on the platform.  
             \item \textbf{Fit Criterion}: At least 90\% of users in specific groups should report that their training materials are relevant to their needs and improve their platform experience.
         \end{itemize}
-    \item \textbf{Self-Assessment and Practice Environment}  
+        \subsubsection*{NFR-TR3} 
         \begin{itemize} 
             \item \textbf{Description}: A sandbox environment allowing users to practice labeling tasks without affecting live data, including quizzes and exercises to assess understanding and improve skills.  
             \item \textbf{Rationale}: A practice environment enables users to build confidence and hone their skills in a low-pressure setting, ensuring they are prepared for real tasks.  
             \item \textbf{Fit Criterion}: At least 80\% of new users should utilize the practice environment, with self-assessment scores indicating an average improvement of 20\% in labeling accuracy over their first three attempts.
         \end{itemize}
-    \item \textbf{Ongoing Support and Community Forum}  
+        \subsubsection*{NFR-TR4}   
         \begin{itemize} 
             \item \textbf{Description}: Provide ongoing support through a community forum or discussion board where users can ask questions, share experiences, and learn from one another.  
             \item \textbf{Rationale}: A support forum fosters a sense of community, provides peer-to-peer assistance, and reduces the load on formal support channels.  
             \item \textbf{Fit Criterion}: At least 75\% of user questions in the community forum should be answered by either other users or support staff within 2 days.
         \end{itemize}
-    \item \textbf{Periodic User Training Assessments}  
+        \subsubsection*{NFR-TR5} 
         \begin{itemize} 
             \item \textbf{Description}: Conduct periodic assessments of user knowledge through quizzes or practical tasks to identify training gaps and offer refresher sessions where needed.  
             \item \textbf{Rationale}: Regular assessments help ensure users retain knowledge and stay up-to-date with platform changes, enhancing overall productivity and satisfaction.  
             \item \textbf{Fit Criterion}: At least 70\% of users should participate in training assessments, with scores indicating a consistent understanding of platform features and workflows.
         \end{itemize}
-\end{enumerate}
 
 
 
 \section{Waiting Room}
-\lips
+N/A
 
-\section*{25 Ideas for Solution}
+\section{Ideas for Solution}
 
 \begin{itemize} 
     \item \textbf{AI-Driven Labeling System}: Implement a machine learning model for preliminary image analysis to assist human labelers. This AI system can automatically pre-label sections of satellite images, allowing human labelers to validate or adjust these labels, significantly speeding up the process.
@@ -1400,6 +1401,11 @@ A detailed budget forecast will be developed, encompassing all the aforementione
 \newpage{}
 \section*{References}
 \begin{enumerate}
+    \item Government of Canada. (2017). \textit{Government of Canada – Justice for Victims of Corrupt Foreign Officials Act}. https://laws.justice.gc.ca/eng/acts/J-2.3/
+    \item Government of Canada. (1992). \textit{Government of Canada – Special Economic Measures Act}. https://laws-lois.justice.gc.ca/eng/acts/S-14.5/index.html
+    \item Government of Canada. (1985). \textit{Government of Canada – Income Tax Act (1985)}. https://laws-lois.justice.gc.ca/eng/acts/i-3.3/
+    \item Government of Canada. (1985). \textit{Government of Canada – United Nations Act}. https://laws-lois.justice.gc.ca/eng/acts/U-2/index.html
+    \item Government of Ontario. (1990). \textit{Government of Ontario – Corporations Tax Act (1990)}. https://www.ontario.ca/laws/statute/90c40
     \item PCI Security Standards Council. (2024, May 13). \textit{PCI Security Standards Council – Protect Payment Data with Industry-driven Security Standards, Training, and Programs}. https://www.pcisecuritystandards.org/standards/pci-dss/
 \end{enumerate}
 
@@ -1423,21 +1429,21 @@ graduate attribute of Lifelong Learning.  Please answer the following questions:
   member pursue, and why did they make this choice?
 \end{enumerate}
 
-section{Knowledge and Skills}
+\textbf{Knowledge and Skills}
 
-\subsection{Knowledge}
+\textbf{Knowledge}
 \begin{itemize}
     \item \textbf{Machine Learning Algorithms}: Understanding various machine learning algorithms, including supervised and unsupervised learning techniques, deep learning models, and their applications in satellite imagery analysis.
     \item \textbf{Model Evaluation and Tuning}: Gaining insights into model evaluation metrics (e.g., accuracy, precision, recall, F1 score) and techniques for hyperparameter tuning (e.g., grid search, random search, and Bayesian optimization) to improve model performance.
 \end{itemize}
 
-\subsection{Skill}
+\textbf{Skill}
 \begin{itemize}
     \item \textbf{Data Handling and Preprocessing}: Developing skills in data preprocessing techniques such as data cleaning, normalization, augmentation, and handling missing values, which are crucial for preparing satellite imagery data for analysis.
     \item \textbf{Model Deployment}: Learning the practices of deploying machine learning models in production environments, including REST APIs and containerization using Docker.
 \end{itemize}
 
-\section{Approaches to Acquire Knowledge and Master Skills}
+\textbf{Approaches to Acquire Knowledge and Master Skills}
 
 \begin{itemize}
     \item \textbf{Online Courses}:
@@ -1459,9 +1465,9 @@ section{Knowledge and Skills}
     \end{itemize}
 \end{itemize}
 
-\section{Chosen Approach}
+\textbf{Chosen Approach}
 
-I will primarily pursue \textbf{online courses} to build a strong theoretical foundation in machine learning, supplemented by \textbf{practical projects} to reinforce my learning through application. This combination enables me to understand complex machine learning concepts and apply them effectively to the capstone project, ensuring the team leverages cutting-edge techniques for analyzing satellite imagery.
+I, Kartik, will primarily pursue \textbf{online courses} to build a strong theoretical foundation in machine learning, supplemented by \textbf{practical projects} to reinforce my learning through application. This combination enables me to understand complex machine learning concepts and apply them effectively to the capstone project, ensuring the team leverages cutting-edge techniques for analyzing satellite imagery.
 
-
+I (Kyle), am currently enrolled in Fundamentals of Machine Learning, Data-Driven Algorithms for Sequential Decision making, and Mathematical statistics. These courses will supplement the techniques Kartik described to help me learn the background knowledge required for the task allocation part of our project. I forsee that being the biggest challenge, but I am very excited to work on it. While taking these courses, I also have access to the professors, who will likely be willing to discuss issues we run into while designing our algorithms.
 \end{document}
