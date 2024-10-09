@@ -61,6 +61,7 @@
 
 ~\newpage
 \section{Purpose of the Project}
+\subsection{User Business}
 There is currently a lack of high-quality, labeled satellite imagery datasets tailored for specific use cases. Many industries require specialized data for tasks like disaster 
 response, environmental monitoring, urban planning, or defense, but building these datasets manually is time-consuming, costly, inefficient and may require expert data analysis. 
 This hinders the development and deployment of accurate computer vision models for critical use cases across these various industries.
@@ -171,6 +172,7 @@ These users are responsible for the upkeep of the platform, ensuring that the la
 
 \newpage
 \section{Mandated Constraints}
+\subsection{Solution Constraints}
 \begin{itemize}
   \item The solution must be fully compatible with the latest stable releases of Google Chrome, Firefox, Microsoft Edge, and Safari browsers.\\ \textbf{Rationale:} Users will interact with the web application through various modern web browsers, so ensuring cross-browser compatibility is essential for providing a consistent user experience. \\ \textbf{Fit Criteria:} The web application must display consistently, maintain full functionality, and support core features across all specified browsers without major visual or functional discrepancies. Testing should be conducted on each browser to validate compatibility.
 \end{itemize}
@@ -193,6 +195,8 @@ To see other documentation deadlines related to this project, refer to our \href
 \begin{itemize}
   \item The project budget must not exceed \$750. All funds will be sourced from the team itself.
 \end{itemize}
+\subsection{Enterprise Constraints}
+N/A
 \newpage
 \section{Naming Conventions and Terminology}
 \subsection{Glossary of All Terms, Including Acronyms, Used by Stakeholders
@@ -530,7 +534,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \end{enumerate}
 \textbf{Post-condition:} All submitted annotated satellite images are stored by the system. The labeler's reward balance is updated to reflect their submissions
 
-\subsubsection{PUC 8 - Cash Out}
+\subsubsection*{PUC 8 - Cash Out}
 \textbf{Primary Actors:} Labelers\\
 \textbf{Secondary Actor:} Financial Institution\\
 \textbf{Precondition:} Labeler has logged in and their reward balance is at least \$1\\
@@ -1219,8 +1223,11 @@ Addressing the initial set of problems may give rise to additional challenges th
     \item \textbf{Final Documentation (01-Apr-2025 to 15-Apr-2025)}: Compile comprehensive final reports covering the entire development process, technical documentation, user manuals, and deployment guides.
 \end{itemize}
 
-
-
+\section{Migration to the New Product}
+\subsection{Requirements for Migration to the New Product}
+N/A
+\subsection{Data That Has to be Modified or Translated for the New System}
+N/A
 
 \section{Costs}
 Developing and implementing the requirements for the OKKM Insights platform involves various financial and effort-related expenditures. 
@@ -1289,7 +1296,7 @@ A detailed budget forecast will be developed, encompassing all the aforementione
 
 \section{User Documentation and Training}
 
-\section{User Documentation Requirements}
+\subsection{User Documentation Requirements}
 
 \subsubsection*{NFR-UD0} 
         \begin{itemize} 
@@ -1329,7 +1336,7 @@ A detailed budget forecast will be developed, encompassing all the aforementione
         \end{itemize}
 
 
-\section{Training Requirement}
+\subsection{Training Requirement}
 
 
 \subsubsection*{NFR-TR0} 
@@ -1452,12 +1459,13 @@ graduate attribute of Lifelong Learning.  Please answer the following questions:
         \begin{itemize}
             \item \textit{“Machine Learning” by Andrew Ng} (Coursera): Covers foundational concepts, algorithms, and applications of machine learning.
             \item \textit{“Deep Learning Specialization” by Andrew Ng} (Coursera): Provides in-depth knowledge of neural networks and their applications in image processing.
+            \item \textit{“Machine Learning Crash Course” by Google}: A fast-paced, practical introduction to machine learning, featuring a series of lessons relating to ML models, data, and applications of ML.
         \end{itemize}
     \end{itemize}
     
     \item \textbf{Practical Projects}:
     \begin{itemize}
-        \item Engage in hands-on projects that allow me to apply machine learning concepts to satellite imagery, such as:
+        \item Engage in hands-on projects that allow us to apply machine learning concepts to satellite imagery, such as:
         \begin{itemize}
             \item Participating in \textit{Kaggle competitions} that involve image classification or object detection in satellite images.
             \item Collaborating with the team to develop a prototype of the labeling platform that incorporates real-time model predictions.
@@ -1469,5 +1477,7 @@ graduate attribute of Lifelong Learning.  Please answer the following questions:
 
 I, Kartik, will primarily pursue \textbf{online courses} to build a strong theoretical foundation in machine learning, supplemented by \textbf{practical projects} to reinforce my learning through application. This combination enables me to understand complex machine learning concepts and apply them effectively to the capstone project, ensuring the team leverages cutting-edge techniques for analyzing satellite imagery.
 
-I (Kyle), am currently enrolled in Fundamentals of Machine Learning, Data-Driven Algorithms for Sequential Decision making, and Mathematical statistics. These courses will supplement the techniques Kartik described to help me learn the background knowledge required for the task allocation part of our project. I forsee that being the biggest challenge, but I am very excited to work on it. While taking these courses, I also have access to the professors, who will likely be willing to discuss issues we run into while designing our algorithms.
+I, Kyle, am currently enrolled in Fundamentals of Machine Learning, Data-Driven Algorithms for Sequential Decision making, and Mathematical statistics. These courses will supplement the techniques Kartik described to help me learn the background knowledge required for the task allocation part of our project. I forsee that being the biggest challenge, but I am very excited to work on it. While taking these courses, I also have access to the professors, who will likely be willing to discuss issues we run into while designing our algorithms.
+
+I, Mathew, will focus on completing \textbf{online courses} to get a better understanding of the basics of machine learning. Specifically, I plan to follow google's machine learning crash course. This is because it combines video lectures with interactive visuals and practice exercises, which I think is an effective way to quickly gain knowledge on a topic.
 \end{document}
