@@ -3,6 +3,9 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{hyperref}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{longtable}
 
 \hypersetup{
     colorlinks=true,       % false: boxed links; true: colored links
@@ -80,14 +83,129 @@ this potential failure mode.}
 
 \section{Failure Mode and Effect Analysis}
 
-\wss{Include your FMEA table here. This is the most important part of this document.}
-\wss{The safety requirements in the table do not have to have the prefix SR.
-The most important thing is to show traceability to your SRS. You might trace to
-requirements you have already written, or you might need to add new
-requirements.}
-\wss{If no safety requirement can be devised, other mitigation strategies can be
-entered in the table, including strategies involving providing additional
-documentation, and/or test cases.}
+\setlength\LTleft{-4.3cm}
+\scriptsize
+\begin{longtable}{|l|l|l|l|l|l|l|l|}
+\hline
+\textbf{\begin{tabular}[c]{@{}l@{}}Design \\ Function\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}l@{}}Failure \\ Modes\end{tabular}} &
+  \textbf{Effects of Failure} &
+  \textbf{Causes of Failure} &
+  \textbf{Detection} &
+  \textbf{Recommended Action} &
+  \textbf{SR} &
+  \textbf{Ref} \\ \hline
+\endfirsthead
+%
+\endhead
+%
+\multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Account \\ Creation\end{tabular}} &
+  \begin{tabular}[c]{@{}l@{}}User already \\ exists\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}User can not \\ create an\\ account\end{tabular} &
+  Email is duplicated &
+  \begin{tabular}[c]{@{}l@{}}Compare the email \\ entered with the user \\ database records\\ to see if the email is in use\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Notify the user that the email \\ is associated with another\\  account\\ \\ Prompt them to give another \\ email or sign in with the one \\ they entered\end{tabular} &
+   &
+  H1-1 \\ \cline{2-8} 
+ &
+  \begin{tabular}[c]{@{}l@{}}Invalid input \\ syntax and \\ length\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}User can not\\ create an\\ account\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}1) Email is not valid\\ 2) Password is not \\ strong enough\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}1) Use regular expressions \\ to  detect if the string \\ pattern  is valid\\ 2) Use regular expressions \\ to detect if all password \\ requirements are met\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}1) Notify the user that they must\\ enter a valid email and give an \\ example of a valid email\\ 2) Tell the user what password\\ requirements they have and \\ have not satisfied\end{tabular} &
+   &
+  H1-2 \\ \hline
+\multirow{2}{*}{Log In} &
+  \begin{tabular}[c]{@{}l@{}}Incorrect \\ credentials \\ entered\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}User can not\\ access application\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}1) No account with\\ the entered email\\ exists\\ 2) Password does\\ not match records\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}1) Compare email entered \\ with database records to \\ see if account exists\\ 2) Compare password \\ entered with what is stored \\ in the database for\\ the entered email\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}1) Tell user account does not\\ exist and prompt them to \\ make one\\ 2) Tell user password is incorrect\\ and prompt password recovery\end{tabular} &
+   &
+  H2-1 \\ \cline{2-8} 
+ &
+  \begin{tabular}[c]{@{}l@{}}Excessive \\ permissions \\ given\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Users can perform\\ unauthorized\\ actions\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Application paths\\ are unprotected\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Check user login token \\ each time a new page of \\ the website is accessed\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Tell the user to log in\\ \\ Deny access if they try to \\ access a \\ page they should not\end{tabular} &
+   &
+  H2-2 \\ \hline
+\multirow{4}{*}{\begin{tabular}[c]{@{}l@{}}Labeling \\ Satallite \\ Images\end{tabular}} &
+  \begin{tabular}[c]{@{}l@{}}Internet \\ connection \\ is lost\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Users can not \\ submit labeled\\ images or \\ navigate the website\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Internet connection\\ is weak or power\\ is lost\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Device shows no internet\\ connection\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Any labeled photos or created \\ projects that have already been\\ submitted have been saved\\ \\ Progress is resumed when \\ connection is re-established\end{tabular} &
+   &
+  H3-1 \\ \cline{2-8} 
+ &
+  \begin{tabular}[c]{@{}l@{}}Application is \\ closed\end{tabular} &
+  Same as H3-1 &
+  \begin{tabular}[c]{@{}l@{}}Power outage or\\ misclick\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Application is no longer \\ running on the users \\ device\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Any labeled photos or created\\ projects that have already been\\ submitted have been saved\\ \\ Progress is resumed on log in\end{tabular} &
+   &
+  H3-2 \\ \cline{2-8} 
+ &
+  \begin{tabular}[c]{@{}l@{}}Unlabelled data \\ is submitted\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Bad data is \\ added to the \\ dataset\end{tabular} &
+  Misclick &
+  \begin{tabular}[c]{@{}l@{}}On submission, \\ application checks that \\ there are as many\\ labels as requested \\ by the job\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Reject a submission if no \\ labeling was done\end{tabular} &
+   &
+  H3-3 \\ \cline{2-8} 
+ &
+  \begin{tabular}[c]{@{}l@{}}Mass labeling \\ done too quickly\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Bad data is \\ added and \\ reward system\\ is abused\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Bots have been\\ deployed to make\\ quick labels\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}User is submitting data \\ at an unreasonable \\ speed\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Implement a submission cool \\ down to prevent \\ bot submissions \\ \\ Reward system is based \\ on accuracy\end{tabular} &
+   &
+  H3-4 \\ \hline
+\multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Backend \\ Server \\ and \\ API \\ Requests\end{tabular}} &
+  Server crashes &
+  \begin{tabular}[c]{@{}l@{}}All services \\ provided\\ by the server \\ are down\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Software error on\\ server side\end{tabular} &
+  Error found in logs &
+  \begin{tabular}[c]{@{}l@{}}Monitor errors in logs\\ \\ Notify users that the \\ server is down\end{tabular} &
+   &
+  H4-1 \\ \cline{2-8} 
+ &
+  \begin{tabular}[c]{@{}l@{}}API is not \\ responding\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}All services \\ provided\\ by an API \\ do not work\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}API service provider\\ is down or\\ overwhelmed\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Response from the \\ API has an error code\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Retry all API requests after a \\ specific amount of time\\ \\ Monitor errors in logs\end{tabular} &
+   &
+  H4-2 \\ \hline
+\multirow{3}{*}{Data Storage} &
+  \begin{tabular}[c]{@{}l@{}}User account is\\ compromised\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}User info is\\ exposed and \\ they will be\\ dissatisfied \\ with the\\ application\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Lack of encryption\\ and protection of\\ sensitive infomation\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}User notifies the team \\ of lost reward balance \\ or lost account access\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Ensure user passwords are \\ encrpyted when stored\\ \\ Ensure financial transactions \\ are secure\\ \\ Password reset occurs \\ through a trusted \\ source such as email\end{tabular} &
+   &
+  H5-1 \\ \cline{2-8} 
+ &
+  \begin{tabular}[c]{@{}l@{}}Duplicate entry \\ occurs\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Data inconsistency,\\ unneccesary \\ storage\\ usage, and slower\\ query performance\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Lack of \\ constraints/validation\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Check the database \\ entries\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Ensure the database has \\ unique keys\\ \\ Set up a duplicate key \\ procedure on the\\ database\end{tabular} &
+   &
+  H5-2 \\ \cline{2-8} 
+ &
+  \begin{tabular}[c]{@{}l@{}}Database is \\ compromised\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Data inconsistency,\\ malicous entries, \\ and data leaks\end{tabular} &
+  SQL injection &
+  Check database entries &
+  \begin{tabular}[c]{@{}l@{}}Use parameterized queries\\ \\ Avoid dynamic SQL strings\end{tabular} &
+   &
+  H5-3 \\ \hline
+\end{longtable}
+
+\normalsize
 
 \section{Safety and Security Requirements}
 
