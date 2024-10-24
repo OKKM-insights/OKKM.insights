@@ -237,8 +237,19 @@ rationale design process how and why to fake it.)}
 
 \section{Roadmap}
 
-\wss{Which safety requirements will be implemented as part of the capstone timeline?
-Which requirements will be implemented in the future?}
+\textbf{Primary Requirements}
+The first priority for the system is to ensure integrity in the labels collected. This means we will first prioritize requirements
+related to the user authentication process (
+\textbf{NFR-SE0, NFR-SE1}), data integrity (
+  \textbf{NFR-SE5, NFR-SE6, NFR-SE7}), and user privacy(
+    \textbf{NFR-SE8, NFR-SE9}).
+
+\textbf{Secondary Requirements}
+Additionally, the system must also be prepared for malicious actions from users. This is out of scope for completion during the capstone course, but must be implemented
+before exposing the system to a large pool of users. These requirements are related to malicious inputs (
+  \textbf{NFR-SE10}) and potentially harmful inputs (
+    \textbf{NFR-SE2, NFR-SE3}). In the event of a system failure, we would also like to ensure that error messages are helpful to users (
+      \textbf{NFR-SE4}).
 
 \newpage{}
 
