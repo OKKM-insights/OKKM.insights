@@ -6,6 +6,7 @@
 \usepackage{multirow}
 \usepackage{float}
 \usepackage{longtable}
+\usepackage{url}
 
 \hypersetup{
     colorlinks=true,       % false: boxed links; true: colored links
@@ -68,11 +69,124 @@ hazards.}
 
 \section{System Boundaries and Components}
 
-\wss{Dividing the system into components will help you brainstorm the hazards.
-You shouldn't do a full design of the components, just get a feel for the major
-ones.  For projects that involve hardware, the components will typically include
-each individual piece of hardware.  If your software will have a database, or an
-important library, these are also potential components.}
+\subsection{Front End (FE)}
+\textbf{Potential Hazards:}
+\begin{itemize}
+    \item \textbf{User Input Errors:} The frontend may not properly validate inputs (e.g., incorrectly labeled data or unauthorized access attempts).
+    \item \textbf{UI Design Flaws:} Poor usability could cause users to make mistakes, such as submitting incorrect labels or missing important instructions.
+    \item \textbf{Cross-Site Scripting (XSS):} JavaScript code that improperly checks user inputs could allow malicious scripts to be executed in the user's browser.
+    \item \textbf{Session Hijacking:} Improper management of session tokens and cookies could allow attackers to impersonate users.
+\end{itemize}
+\textbf{Mitigations:}
+\begin{itemize}
+    \item Implement thorough input validation and provide clear feedback to users.
+    \item Ensure that critical actions like labeling are supported by warnings or confirmations to reduce errors.
+    \item Use Content Security Policy (CSP) headers and HTML escaping techniques to prevent XSS attacks.
+    \item Secure cookies with \texttt{HttpOnly} and \texttt{Secure} flags and employ strong session management practices.
+\end{itemize}
+
+\subsection{Back End (BE)}
+\subsubsection{Login Service}
+\textbf{Potential Hazards:}
+\begin{itemize}
+    \item \textbf{Authentication Failure:} Unauthorized access could allow malicious actors to label data incorrectly or access sensitive customer information.
+    \item \textbf{Session Hijacking:} If session management is not handled correctly, attackers could hijack valid user sessions.
+\end{itemize}
+\textbf{Mitigations:}
+\begin{itemize}
+    \item Implement strong authentication mechanisms (e.g., two-factor authentication) and monitor for suspicious login activity.
+    \item Secure cookies and session tokens, implementing timeout features.
+\end{itemize}
+
+\subsubsection{Money Service}
+\textbf{Potential Hazards:}
+\begin{itemize}
+    \item \textbf{Payment Failures:} Incorrect payments could cause disputes between the labelers and the platform, leading to operational delays.
+    \item \textbf{Financial Data Breaches:} Weak encryption or improper payment processor integration could expose sensitive financial data.
+\end{itemize}
+\textbf{Mitigations:}
+\begin{itemize}
+    \item Secure payment processing with encryption and multi-step verification for payout transactions.
+    \item Implement industry-standard encryption for payment details and integrate with PCI-DSS-compliant payment gateways.
+\end{itemize}
+
+\subsubsection{Task Delegation Service}
+\textbf{Potential Hazards:}
+\begin{itemize}
+    \item \textbf{Task Misallocation:} If tasks are assigned to unqualified labelers, the quality of data labeling could decrease, leading to flawed training data.
+\end{itemize}
+\textbf{Mitigations:}
+\begin{itemize}
+    \item Employ task delegation algorithms that consider labelers’ accuracy and expertise.
+\end{itemize}
+
+\subsection{Database (DB)}
+\textbf{Potential Hazards:}
+\begin{itemize}
+    \item \textbf{Data Corruption or Loss:} Corrupted or missing data, especially labeled data, can introduce significant inaccuracies in model training and analysis.
+    \item \textbf{SQL Injection:} If queries are not parameterized, attackers may manipulate query inputs, resulting in unauthorized access or data manipulation.
+\end{itemize}
+\textbf{Mitigations:}
+\begin{itemize}
+    \item Implement backups and data redundancy mechanisms to prevent loss or corruption.
+    \item Use parameterized queries or prepared statements to prevent SQL injection.
+    \item Ensure proper data validation before storing data.
+\end{itemize}
+
+\subsection{Machine Learning Task Allocation Model}
+\textbf{Potential Hazards:}
+\begin{itemize}
+    \item \textbf{Model Misconfiguration:} The allocation model may incorrectly assign tasks if it misinterprets labeler performance data, leading to inefficiency and low-quality labeled datasets.
+    \item \textbf{Bias in Task Allocation:} If the model favors certain users, this could introduce biases in the labeling process, affecting data accuracy.
+    \item \textbf{Adversarial Attacks:} Machine learning models might be vulnerable to adversarial attacks that can skew the task allocations.
+\end{itemize}
+\textbf{Mitigations:}
+\begin{itemize}
+    \item Continuously monitor and test the task allocation model’s performance and adjust for fairness and accuracy.
+    \item Implement adversarial training or model-hardening techniques to defend against attacks.
+\end{itemize}
+
+\subsection{Libraries (e.g., BoTorch, TensorFlow, PyTorch)}
+\textbf{Potential Hazards:}
+\begin{itemize}
+    \item \textbf{Library Bugs or Vulnerabilities:} External libraries may have bugs or security vulnerabilities that can affect system performance or introduce security risks.
+    \item \textbf{Version Conflicts:} Dependency issues may arise when integrating BoTorch with other machine learning libraries.
+    \item \textbf{Optimization Failures:} Incorrect hyperparameter optimization might result in poor allocation of labeling tasks.
+    \item \textbf{Adversarial Model Attacks:} TensorFlow or PyTorch models may be susceptible to adversarial attacks, leading to incorrect classifications.
+\end{itemize}
+\textbf{Mitigations:}
+\begin{itemize}
+    \item Regularly update libraries and conduct security audits to ensure all dependencies are secure.
+    \item Use virtual environments or Docker to manage dependencies and avoid conflicts.
+    \item Rigorously test optimization outcomes using test datasets.
+    \item Implement adversarial defenses, such as adversarial training and data augmentation.
+\end{itemize}
+
+\subsection{Python (General Back-End Processing)}
+\textbf{Potential Hazards:}
+\begin{itemize}
+    \item \textbf{Performance Bottlenecks:} Python can introduce performance issues, especially in CPU-bound processes.
+    \item \textbf{Memory Leaks:} Improper memory management can cause resource exhaustion, leading to crashes.
+    \item \textbf{Security Vulnerabilities:} Since Python is dynamically typed, unexpected inputs could lead to runtime errors, potentially compromising data integrity.
+\end{itemize}
+\textbf{Mitigations:}
+\begin{itemize}
+    \item Use Cython or external compiled languages for performance-critical tasks.
+    \item Regularly run memory profiling tools to ensure no memory leaks.
+    \item Implement input validation and use static analysis tools like \texttt{bandit} to enforce security best practices.
+\end{itemize}
+
+\subsection{Docker (Containerization)}
+\textbf{Potential Hazards:}
+\begin{itemize}
+    \item \textbf{Container Breakout:} Misconfigurations or unpatched vulnerabilities in Docker containers could allow attackers to escape the container and gain access to the host system.
+    \item \textbf{Resource Exhaustion:} Poor resource management inside containers could lead to resource exhaustion, affecting system performance.
+\end{itemize}
+\textbf{Mitigations:}
+\begin{itemize}
+    \item Use security best practices such as running containers with the least privilege, using \texttt{Seccomp} profiles, and isolating sensitive workloads.
+    \item Set resource limits on containers to prevent exhaustion of host system resources.
+\end{itemize}
 
 \section{Critical Assumptions}
 
@@ -237,5 +351,23 @@ Which requirements will be implemented in the future?}
     appreciable risks of this form), list at least 2 other types of risk in
     software products. Why are they important to consider?
 \end{enumerate}
+
+\section{References}
+\sloppy
+
+\begin{itemize}
+    \item OWASP. Cross-Site Scripting (XSS). Available at: \url{https://owasp.org/www-community/attacks/xss/}.
+    \item The SSL Store. The Ultimate Guide to Session Hijacking (aka Cookie Hijacking). Available at: \url{https://www.thesslstore.com/blog/the-ultimate-guide-to-session-hijacking-aka-cookie-hijacking/}.
+    \item Mozilla Developer Network. Content Security Policy (CSP). Available at: \url{https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP}.
+    \item Neontri. PCI DSS Compliance. Available at: \url{https://neontri.com/blog/pci-dss-compliance/}.
+    \item Imperva. Session Hijacking. Available at: \url{https://www.imperva.com/learn/application-security/session-hijacking/}.
+    \item Label Your Data. Bias in Machine Learning. Available at: \url{https://labelyourdata.com/articles/bias-in-machine-learning}.
+    \item Reversing Labs. How to Harden ML Models Against Adversarial Attacks. Available at: \url{https://www.reversinglabs.com/blog/how-to-harden-ml-models-against-adversarial-attacks}.
+    \item Hyperopt GitHub Issues. Hyperopt Version Conflicts. Available at: \url{https://github.com/hyperopt/hyperopt/issues/642}.
+    \item HiddenLayer. What's in the Box? Understanding Adversarial Attacks on ML Models. Available at: \url{https://hiddenlayer.com/research/whats-in-the-box/}.
+    \item Medium. Python Security Best Practices for Writing Secure Code. Available at: \url{https://medium.com/@VAISHAK_CP/python-security-best-practices-for-writing-secure-code-a6a9130e3748}.
+    \item Docker Documentation. Seccomp Security Profiles. Available at: \url{https://docs.docker.com/engine/security/seccomp/}.
+\end{itemize}
+\sloppy
 
 \end{document}
