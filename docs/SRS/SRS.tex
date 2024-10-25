@@ -1024,9 +1024,10 @@ N/A
 \subsubsection*{NFR-SE2}
 \begin{itemize}
   \item \textbf{Description:} The application shall validate the email format the user provides when creating an account.
-  \item \textbf{Rationale:} We do not want users using invalid emails to sign up.
+  \item \textbf{Rationale:} We do not want users using invalid or duplicate emails to sign up.
   \item \textbf{Fit Criterion:} Let E represent the set of all email addresses, and let V represent the set of all valid email addresses. A valid email address conforms to the general pattern:\\\\
   V = $(\forall\; email \in E\;  |\; email \; matches \; the \; pattern \; $[a-zA-Z0-9+\_.-]+@[a-zA-Z0-9.-]+[a-zA-Z])\\
+  $\text{New email} \in V \land \text{New email} \neg \in \text{Registered Emails}$
 \end{itemize}
 \subsubsection*{NFR-SE3}
 \begin{itemize}
