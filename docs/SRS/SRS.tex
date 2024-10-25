@@ -1024,9 +1024,10 @@ N/A
 \subsubsection*{NFR-SE2}
 \begin{itemize}
   \item \textbf{Description:} The application shall validate the email format the user provides when creating an account.
-  \item \textbf{Rationale:} We do not want users using invalid emails to sign up.
+  \item \textbf{Rationale:} We do not want users using invalid or duplicate emails to sign up.
   \item \textbf{Fit Criterion:} Let E represent the set of all email addresses, and let V represent the set of all valid email addresses. A valid email address conforms to the general pattern:\\\\
   V = $(\forall\; email \in E\;  |\; email \; matches \; the \; pattern \; $[a-zA-Z0-9+\_.-]+@[a-zA-Z0-9.-]+[a-zA-Z])\\
+  $\text{New email} \in V \land \text{New email} \neg \in \text{Registered Emails}$
 \end{itemize}
 \subsubsection*{NFR-SE3}
 \begin{itemize}
@@ -1035,21 +1036,39 @@ N/A
   \item \textbf{Fit Criterion:} Let P represent the set of all passwords, and let V represent the set of all valid passwords. A valid password has a at least one lowercase, uppercase, number and special character and is a minimum of 8 characters in length:\\\\
   V = $(\forall\; password \in P\;  |\; password \; matches \; the \; pattern \; $(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[\#\$\%\&\*\@])[a-zA-Z0-9\#\$\%\&\*\@]\{8,\})\\
 \end{itemize}
-\subsection{Integrity Requirements}
 \subsubsection*{NFR-SE4}
+\begin{itemize}
+  \item \textbf{Description:} The system shall, during system failure, notify users trying to make a request of the system failure.
+  \item \textbf{Rationale:} The system should provide good warning messages to users to prevent additional frustration.
+  \item \textbf{Fit Criterion:} When services are unavailable, the system shall provide an error message to the user making the request of the unavailable service.
+\end{itemize}
+\subsection{Integrity Requirements}
+\subsubsection*{NFR-SE5}
 \begin{itemize}
   \item \textbf{Description:} The application shall prevent incorrect data from being introduced.
   \item \textbf{Rationale:} The database of information should always reflect correct and up to date information.
   \item \textbf{Fit Criterion:} The system must validate user inputs for data accuracy and format before they are saved. Any invalid data must trigger error messages, preventing it from being entered into the database. Users must be required to correct errors before proceeding.
 \end{itemize}
+\subsubsection*{NFR-SE6}
+\begin{itemize}
+  \item \textbf{Description:} The application shall prohibit new user actions when user is disconnected from the system.
+  \item \textbf{Rationale:} The system should avoid batch updates upon reconnect as to prevent malicious users creating a false package of updates.
+  \item \textbf{Fit Criterion:} Upon user disconnect and reconnect, the system will not accept any updates from the user not submitted before the disconnect occured.
+\end{itemize}
+\subsubsection*{NFR-SE7}
+\begin{itemize}
+  \item \textbf{Description:} The system shall reject duplicate entries in database.
+  \item \textbf{Rationale:} Each entry to the database should be a unique data piece. If two entries are identical, they must differ by at least the creation time.
+  \item \textbf{Fit Criterion:} No two entries in the database shall exist together for longer than 24 hours from their introduction into the database.
+\end{itemize}
 \subsection{Privacy Requirements}
-\subsubsection*{NFR-SE5}
+\subsubsection*{NFR-SE8}
 \begin{itemize}
   \item \textbf{Description:} User data will be securely encrypted to protect user’s privacy.
   \item \textbf{Rationale:} This will help to avoid user's being compromised if a data leak occurs.
   \item \textbf{Fit Criterion:} An encryption algorithm is used on sensitive user data such as passwords.
 \end{itemize}
-\subsubsection*{NFR-SE6}
+\subsubsection*{NFR-SE9}
 \begin{itemize}
   \item \textbf{Description:} The application shall ensure that all payment transactions are processed securely using encryption and comply with relevant security standards, such as PCI-DSS, which helps to protect payment account data (PCI Security Standards Council, 2024).
   \item \textbf{Rationale:} Protecting users' financial information is critical to maintaining trust. Failing to secure payments can lead to data breaches, financial loss, and legal liabilities.
@@ -1059,7 +1078,7 @@ N/A
 \subsection{Audit Requirements}
 N/A
 \subsection{Immunity Requirements}
-\subsubsection*{NFR-SE7}
+\subsubsection*{NFR-SE10}
 \begin{itemize}
   \item \textbf{Description:} The application shall use parameterized queries or prepared statements for all database interactions.
   \item \textbf{Rationale:} We want to prevent SQL injection attacks which can lead to unauthorized data access or manipulation.
