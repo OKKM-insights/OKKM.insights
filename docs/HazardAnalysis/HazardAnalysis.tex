@@ -433,22 +433,22 @@ before exposing the system to a large pool of users. These requirements are rela
     We were aware of risks to the data integrity before this deliverable. We have been thinking to methods to ensure that users are rewarded for being consistently accurate. Kartik also 
     made us aware of SQL injection and API vunerabilities, which he had learned about through his internship. Another thing that was raised was that deprecated libraries can cause significant 
     issues and how important it is to use stable versions during the development phase.\\
-    \\ One risk that we discovered during this deliverable was around failures for the system to operate as intended, mostly related to API/ internet failures. Mathew first raised this issue, and
+    One risk that we discovered during this deliverable was around failures for the system to operate as intended, mostly related to API/ internet failures. Mathew first raised this issue, and
     as a team we discussed how the system should respond. We decided that if a client disconnects during a labeling session, we should reject labels sent to us after the disconnection and before
     we can reestablish connection with the user. They may have legitimate labels from this window if the system sends a buffer of images, but there is a risk that a malicious user could prepare 
     a package of automatically generated fake labels upon reconnection to increase their earnings. This bot activity would be hard to detect and mitigate, so we have decided to be conservative and block all labels
     made when not actively connected.
-
-
+    \\\\
     \item Other than the risk of physical harm (some projects may not have any
     appreciable risks of this form), list at least 2 other types of risk in
     software products. Why are they important to consider?\\\\
     A big risk is privacy. Users trust us to keep their personal information secure. In the past, the only way a malicious agent could collect so much personal data at one time 
     would be to break into a public records building. Now, there are thousands (maybe millions) of possible places they could get it. And they only need to find the one weakest link to break in. 
-    It is the responsibility of every software designer to build with security at top of mind. This will ensure that the users are respected and protected.\\\\
+    It is the responsibility of every software designer to build with security at top of mind. This will ensure that the users are respected and protected.
     Also, there is a risk of behaviour modification from the use of software. This is harder to plan for, but after the introduction of software such as social media sites, it is unboubtably present.
     Misinformation, social isolation, and low-self image have all been in some way attributed to use of social media. The products we build should enhance the lives of the users they are built for
     and designing a site which exacerbates these symptoms is irresponsible.
+    \\\\
 
 \end{enumerate}
 \newpage
