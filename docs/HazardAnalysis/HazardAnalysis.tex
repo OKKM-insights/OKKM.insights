@@ -40,9 +40,7 @@
 \toprule
 \textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
 \midrule
-Date1 & Name(s) & Description of changes\\
-Date2 & Name(s) & Description of changes\\
-... & ... & ...\\
+October 25 & Kyle, Kartik, Mathew, Oleg & Rev 0\\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -55,7 +53,6 @@ Date2 & Name(s) & Description of changes\\
 
 \pagenumbering{arabic}
 
-\wss{You are free to modify this template.}
 
 \section{Introduction}
 This document presents the hazard analysis for OrbitWatch, an online application that uses an AI-powered crowdsourcing model to build labeled satellite image datasets.
@@ -230,7 +227,7 @@ In developing the OKKM Insights platform, several critical assumptions have to b
   \item \textbf{Rationale:} Reliable compensation is essential for sustaining user participation and promoting high-quality data labeling.
 \end{itemize}
 
-
+\newpage
 \section{Failure Mode and Effect Analysis}
 
 \setlength\LTleft{-4.3cm}
@@ -356,7 +353,7 @@ In developing the OKKM Insights platform, several critical assumptions have to b
 \end{longtable}
 
 \normalsize
-
+\newpage
 \section{Safety and Security Requirements}
 
 A comprehensive list of requirements can be found in the \href{https://github.com/OKKM-insights/OKKM.insights/blob/main/docs/SRS/SRS.pdf}{SRS}.
@@ -404,30 +401,57 @@ before exposing the system to a large pool of users. These requirements are rela
 
 \section*{Appendix --- Reflection}
 
-\wss{Not required for CAS 741}
-
 \input{../Reflection.tex}
 
-Kartik \\
-
 \begin{enumerate}
-    \item What went well while writing this deliverable? 
+    \item What went well while writing this deliverable?\\\\
+    As a team, we have a lot more experience working with eachother and assigning tasks based on expertise. This showed during this stage of the project. We were able to
+    assign the tasks that could be completed independently so that our team meeting was focused on brainstorming the parts that would be better to work on together. Truthfully, we 
+    were unable to work much on this deliverable until midway through last week (with the exception of Mathew, who provided the team with the first iteration of the harzard table). If we 
+    didn't have the experience and trust in each other, it would have been much more stressful to ensure completion of this document.
+    
+    During this deliverable, we had the opportunity to research topics related to the app’s safety and the threats it may be subjected to. Previously, when writing about hazards, 
+    we were only aware of some basic risks that we had heard about since childhood. However, investigating each topic related to our SRS made us think in-depth about other potential hazards. 
+    We would say the aspect of research based on existing SRS went really well, as we learned a lot of new things. Although this deliverable was relatively shorter than the previous ones, we developed the habit of starting early. In the back of my mind, we knew what to 
+    do and what was coming early on when this assignment was released. Another positive aspect was starting this assignment earlier and establishing a flow of ideas.
+    \\\\
+    \item What pain points did you experience during this deliverable, and how
+    did you resolve them?\\\\
+    As discussed above, there was a real challenge for the team to allocate time towards this deliverable. The team had personal commitments over reading week
+    and 2/3 midterms in the first days back from reading week. We resolved them through a carefully planned team meeting, which was designed to gain alignment on any team decisions
+    early in the week, so that the team could complete their assigned work when they had time to spare.
 
-    During this deliverable, I had the opportunity to research topics related to an app’s safety and the threats it may be subjected to. Previously, when writing about hazards, I was only aware of some basic risks that I had heard about since childhood. However, investigating each topic related to our SRS made me think in-depth about other potential hazards. I would say the aspect of research based on existing SRS went really well, as I learned a lot of new things. Although this deliverable was relatively shorter than the previous ones, I developed the habit of starting early. In the back of my mind, I knew what to do and what was coming early on when this assignment was released. Another positive aspect was starting this assignment earlier and establishing a flow of ideas in my head.
+    Another pain point was identifying specific issues related to our project. The libraries we are going to use aren’t definitive yet, and since they may change in the future, 
+    we had to anticipate potential hazards concerning future libraries we might use. We did write specific risks related to a few of them, 
+    but generalizing these risks was challenging, especially predicting the problems we might encounter, which is a necessary skill to develop.
+    
+    \\\\
+    \item Which of your listed risks had your team thought of before this
+    deliverable, and which did you think of while doing this deliverable? For
+    the latter ones (ones you thought of while doing the Hazard Analysis), how
+    did they come about?\\\\
+    We were aware of risks to the data integrity before this deliverable. We have been thinking to methods to ensure that users are rewarded for being consistently accurate. Kartik also 
+    made us aware of SQL injection and API vunerabilities, which he had learned about through his internship. Another thing that was raised was that deprecated libraries can cause significant 
+    issues and how important it is to use stable versions during the development phase.\\
+    \\ One risk that we discovered during this deliverable was around failures for the system to operate as intended, mostly related to API/ internet failures. Mathew first raised this issue, and
+    as a team we discussed how the system should respond. We decided that if a client disconnects during a labeling session, we should reject labels sent to us after the disconnection and before
+    we can reestablish connection with the user. They may have legitimate labels from this window if the system sends a buffer of images, but there is a risk that a malicious user could prepare 
+    a package of automatically generated fake labels upon reconnection to increase their earnings. This bot activity would be hard to detect and mitigate, so we have decided to be conservative and block all labels
+    made when not actively connected.
 
-    \item What pain points did you experience during this deliverable, and how did you resolve them? 
 
-    One of the pain points was identifying specific issues related to our project. The libraries we are going to use aren’t definitive yet, and since they may change in the future, I had to anticipate potential hazards concerning future libraries we might use. I did write specific risks related to a few of them, but generalizing these risks was challenging, especially predicting the problems we might encounter, which is a necessary skill to develop.
+    \item Other than the risk of physical harm (some projects may not have any
+    appreciable risks of this form), list at least 2 other types of risk in
+    software products. Why are they important to consider?\\\\
+    A big risk is privacy. Users trust us to keep their personal information secure. In the past, the only way a malicious agent could collect so much personal data at one time 
+    would be to break into a public records building. Now, there are thousands (maybe millions) of possible places they could get it. And they only need to find the one weakest link to break in. 
+    It is the responsibility of every software designer to build with security at top of mind. This will ensure that the users are respected and protected.\\\\
+    Also, there is a risk of behaviour modification from the use of software. This is harder to plan for, but after the introduction of software such as social media sites, it is unboubtably present.
+    Misinformation, social isolation, and low-self image have all been in some way attributed to use of social media. The products we build should enhance the lives of the users they are built for
+    and designing a site which exacerbates these symptoms is irresponsible.
 
-    \item Which of your listed risks had your team thought of before this deliverable, and which did you think of while doing this deliverable? For the latter ones (the ones you thought of while doing the Hazard Analysis), how did they come about? 
-
-    I was already aware of SQL injection and API vulnerabilities, as I learned about them during my internship and even had a chance to address them when we encountered a situation at my workplace. For the frontend, I understood how deprecated libraries can cause significant issues and how important it is to use stable versions during the development phase. While working on this deliverable, I learned more about Cross-Site Scripting (XSS), Session Hijacking, and how unpatched vulnerabilities in Docker could allow attackers to gain access to our system. Additionally, learning about the mitigations was very useful, as I had to delve deeper to understand how I could implement them for our project. Overall, I found the process to be quite solid, and as I mentioned, I learned a lot during this journey, including watching in-depth videos on hazards related to Docker containers.
-
-    \item Other than the risk of physical harm (some projects may not have any appreciable risks of this form), list at least two other types of risk in software products. Why are they important to consider? 
-
-    One potential risk related to software products is Server-Side Request Forgery (SSRF). In this case, an attacker could make connections to internal-only services within the organization’s infrastructure, allowing them to make requests to unintended locations. Another potential risk is a more generic one—Insecure Design. This broad category of risks relates to how a system behaves when something goes wrong. When an attacker tries to compromise our application, we need a set of automated instructions to prevent the attacker from accessing other data or to stop further misuse. Having strong security policies and sufficient validation for user inputs are a few examples of measures to avoid such problems while also improving designs in areas prone to failure.
 \end{enumerate}
-
+\newpage
 \section{References}
 \sloppy
 
