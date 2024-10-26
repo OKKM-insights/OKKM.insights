@@ -408,17 +408,24 @@ before exposing the system to a large pool of users. These requirements are rela
 
 \input{../Reflection.tex}
 
+Kartik \\
+
 \begin{enumerate}
-    \item What went well while writing this deliverable? sample text
-    \item What pain points did you experience during this deliverable, and how
-    did you resolve them?
-    \item Which of your listed risks had your team thought of before this
-    deliverable, and which did you think of while doing this deliverable? For
-    the latter ones (ones you thought of while doing the Hazard Analysis), how
-    did they come about?
-    \item Other than the risk of physical harm (some projects may not have any
-    appreciable risks of this form), list at least 2 other types of risk in
-    software products. Why are they important to consider?
+    \item What went well while writing this deliverable? 
+
+    During this deliverable, I had the opportunity to research topics related to an app’s safety and the threats it may be subjected to. Previously, when writing about hazards, I was only aware of some basic risks that I had heard about since childhood. However, investigating each topic related to our SRS made me think in-depth about other potential hazards. I would say the aspect of research based on existing SRS went really well, as I learned a lot of new things. Although this deliverable was relatively shorter than the previous ones, I developed the habit of starting early. In the back of my mind, I knew what to do and what was coming early on when this assignment was released. Another positive aspect was starting this assignment earlier and establishing a flow of ideas in my head.
+
+    \item What pain points did you experience during this deliverable, and how did you resolve them? 
+
+    One of the pain points was identifying specific issues related to our project. The libraries we are going to use aren’t definitive yet, and since they may change in the future, I had to anticipate potential hazards concerning future libraries we might use. I did write specific risks related to a few of them, but generalizing these risks was challenging, especially predicting the problems we might encounter, which is a necessary skill to develop.
+
+    \item Which of your listed risks had your team thought of before this deliverable, and which did you think of while doing this deliverable? For the latter ones (the ones you thought of while doing the Hazard Analysis), how did they come about? 
+
+    I was already aware of SQL injection and API vulnerabilities, as I learned about them during my internship and even had a chance to address them when we encountered a situation at my workplace. For the frontend, I understood how deprecated libraries can cause significant issues and how important it is to use stable versions during the development phase. While working on this deliverable, I learned more about Cross-Site Scripting (XSS), Session Hijacking, and how unpatched vulnerabilities in Docker could allow attackers to gain access to our system. Additionally, learning about the mitigations was very useful, as I had to delve deeper to understand how I could implement them for our project. Overall, I found the process to be quite solid, and as I mentioned, I learned a lot during this journey, including watching in-depth videos on hazards related to Docker containers.
+
+    \item Other than the risk of physical harm (some projects may not have any appreciable risks of this form), list at least two other types of risk in software products. Why are they important to consider? 
+
+    One potential risk related to software products is Server-Side Request Forgery (SSRF). In this case, an attacker could make connections to internal-only services within the organization’s infrastructure, allowing them to make requests to unintended locations. Another potential risk is a more generic one—Insecure Design. This broad category of risks relates to how a system behaves when something goes wrong. When an attacker tries to compromise our application, we need a set of automated instructions to prevent the attacker from accessing other data or to stop further misuse. Having strong security policies and sufficient validation for user inputs are a few examples of measures to avoid such problems while also improving designs in areas prone to failure.
 \end{enumerate}
 
 \section{References}
