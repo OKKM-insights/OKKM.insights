@@ -190,10 +190,38 @@ hazards.}
 
 \section{Critical Assumptions}
 
-\wss{These assumptions that are made about the software or system.  You should
-minimize the number of assumptions that remove potential hazards.  For instance,
-you could assume a part will never fail, but it is generally better to include
-this potential failure mode.}
+In developing the OKKM Insights platform, several critical assumptions have to be made about the system's functionality and reliability. These assumptions are necessary to focus the development process and mitigation efforts on areas with the highest potential hazards.
+
+\subsection*{Third-Party Libraries and Maintenance}
+\begin{itemize}
+  \item \textbf{Assumption:} All utilized third-party libraries will remain freely available and continue to be actively maintained by their respective developers.
+  \item \textbf{Rationale:} The platform relies on these libraries for core functionalities such as image processing, web development, and AI model training. Assuming ongoing maintenance and availability allows the team to focus on building platform-specific features without diverting resources to manage library-related issues.
+\end{itemize}
+
+\subsection*{Consistency of Public APIs}
+\begin{itemize}
+  \item \textbf{Assumption:} Public APIs integrated into the platform will maintain consistency in their logic, structure, and functionality, ensuring uninterrupted access to required data.
+  \item \textbf{Rationale:} Reliable access to satellite imagery and other data sources through stable APIs is crucial for the platform's operations. Consistent APIs ensure that data retrieval processes remain functional without constant adjustments.
+\end{itemize}
+
+\subsection*{User Participation and Engagement}
+\begin{itemize}
+  \item \textbf{Assumption:} A sufficient number of users will engage with the platform to provide timely and accurate image labeling.
+  \item \textbf{Rationale:} The success of the crowd-sourcing model depends on active user participation. Assuming consistent user engagement ensures that datasets can be built and updated efficiently.
+\end{itemize}
+
+\subsection*{Scalability of Cloud Infrastructure}
+\begin{itemize}
+  \item \textbf{Assumption:} The chosen cloud infrastructure will scale efficiently to handle varying loads without performance hits.
+  \item \textbf{Rationale:} The platform's ability to handle large volumes of data and user interactions relies on scalable cloud services. Assuming scalability ensures that the system can grow with increasing demand.
+\end{itemize}
+
+\subsection*{Financial Stability for Compensation}
+\begin{itemize}
+  \item \textbf{Assumption:} Adequate financial resources will be available to compensate users for their labeling efforts.
+  \item \textbf{Rationale:} Reliable compensation is essential for sustaining user participation and promoting high-quality data labeling.
+\end{itemize}
+
 
 \section{Failure Mode and Effect Analysis}
 
