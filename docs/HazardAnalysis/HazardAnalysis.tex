@@ -61,8 +61,16 @@ This document aims to detect, analyze, and mitigate potential hazards that are a
 
 \section{Scope and Purpose of Hazard Analysis}
 
-\wss{You should say what \textbf{loss} could be incurred because of the
-hazards.}
+\subsection{Scope}
+The Hazard Analysis for the OKKM Insights platform is confined to identifying and evaluating potential hazards within our internal system architecture, specifically focusing on the API backend, database, and AI model components. This analysis combines all risks associated with the application's functionality, performance, and security that could adversely affect the system's operation.
+\subsection{Purpose}
+The primary purpose of this Hazard Analysis is to systematically identify, assess, and mitigate risks that could lead to significant losses for OKKM Insights. The potential losses associated with these hazards include:
+\begin{enumerate}
+    \item Monetary Losses: Prolonged platform unavailability can result in direct financial losses due to decreased service sales. Additionally, functionality disruptions may result in extra costs related to incident response and system recovery efforts.
+    \item Client Attrition: Downtime or unreliable performance can decrease client confidence, leading to the loss of existing clients and deterring potential new clients from engaging with our services.
+    \item User Attrition: A subpar user experience, characterized by inefficiencies in task labeling or system responsiveness, can drive users away from the platform. High user turnover diminishes the quality and volume of labeled data, which is essential for training accurate AI models.
+\end{enumerate}
+By acknowledging these potential losses, the Hazard Analysis underscores the importance of proactive risk management in maintaining the platform's reliability, security, and user satisfaction.
 
 \section{System Boundaries and Components}
 
@@ -187,10 +195,38 @@ hazards.}
 
 \section{Critical Assumptions}
 
-\wss{These assumptions that are made about the software or system.  You should
-minimize the number of assumptions that remove potential hazards.  For instance,
-you could assume a part will never fail, but it is generally better to include
-this potential failure mode.}
+In developing the OKKM Insights platform, several critical assumptions have to be made about the system's functionality and reliability. These assumptions are necessary to focus the development process and mitigation efforts on areas with the highest potential hazards.
+
+\subsection*{Third-Party Libraries and Maintenance}
+\begin{itemize}
+  \item \textbf{Assumption:} All utilized third-party libraries will remain freely available and continue to be actively maintained by their respective developers.
+  \item \textbf{Rationale:} The platform relies on these libraries for core functionalities such as image processing, web development, and AI model training. Assuming ongoing maintenance and availability allows the team to focus on building platform-specific features without diverting resources to manage library-related issues.
+\end{itemize}
+
+\subsection*{Consistency of Public APIs}
+\begin{itemize}
+  \item \textbf{Assumption:} Public APIs integrated into the platform will maintain consistency in their logic, structure, and functionality, ensuring uninterrupted access to required data.
+  \item \textbf{Rationale:} Reliable access to satellite imagery and other data sources through stable APIs is crucial for the platform's operations. Consistent APIs ensure that data retrieval processes remain functional without constant adjustments.
+\end{itemize}
+
+\subsection*{User Participation and Engagement}
+\begin{itemize}
+  \item \textbf{Assumption:} A sufficient number of users will engage with the platform to provide timely and accurate image labeling.
+  \item \textbf{Rationale:} The success of the crowd-sourcing model depends on active user participation. Assuming consistent user engagement ensures that datasets can be built and updated efficiently.
+\end{itemize}
+
+\subsection*{Scalability of Cloud Infrastructure}
+\begin{itemize}
+  \item \textbf{Assumption:} The chosen cloud infrastructure will scale efficiently to handle varying loads without performance hits.
+  \item \textbf{Rationale:} The platform's ability to handle large volumes of data and user interactions relies on scalable cloud services. Assuming scalability ensures that the system can grow with increasing demand.
+\end{itemize}
+
+\subsection*{Financial Stability for Compensation}
+\begin{itemize}
+  \item \textbf{Assumption:} Adequate financial resources will be available to compensate users for their labeling efforts.
+  \item \textbf{Rationale:} Reliable compensation is essential for sustaining user participation and promoting high-quality data labeling.
+\end{itemize}
+
 \newpage
 \section{Failure Mode and Effect Analysis}
 
@@ -365,27 +401,38 @@ before exposing the system to a large pool of users. These requirements are rela
 
 \section*{Appendix --- Reflection}
 
-\wss{Not required for CAS 741}
-
 \input{../Reflection.tex}
 
 \begin{enumerate}
-    \item What went well while writing this deliverable?\\
-    
-    \textbf{Kyle:} As a team, we have a lot more experience working with eachother and assigning tasks based on expertise. This showed during this stage of the project. We were able to
+    \item What went well while writing this deliverable?\\\\
+    As a team, we have a lot more experience working with eachother and assigning tasks based on expertise. This showed during this stage of the project. We were able to
     assign the tasks that could be completed independently so that our team meeting was focused on brainstorming the parts that would be better to work on together. Truthfully, we 
-    we unable to work much on this deliverable until midway through last week (with the exception of Mathew, who provided the team with the first iteration of the harzard table). If we 
-    didn't have the experience and trust in each other, it would have been much more stressful to ensure completion of this document.\\\\
+    were unable to work much on this deliverable until midway through last week (with the exception of Mathew, who provided the team with the first iteration of the harzard table). If we 
+    didn't have the experience and trust in each other, it would have been much more stressful to ensure completion of this document.
+    
+    During this deliverable, we had the opportunity to research topics related to the app’s safety and the threats it may be subjected to. Previously, when writing about hazards, 
+    we were only aware of some basic risks that we had heard about since childhood. However, investigating each topic related to our SRS made us think in-depth about other potential hazards. 
+    We would say the aspect of research based on existing SRS went really well, as we learned a lot of new things. Although this deliverable was relatively shorter than the previous ones, we developed the habit of starting early. In the back of my mind, we knew what to 
+    do and what was coming early on when this assignment was released. Another positive aspect was starting this assignment earlier and establishing a flow of ideas.
+    \\\\
     \item What pain points did you experience during this deliverable, and how
     did you resolve them?\\\\
-    \textbf{Kyle:} As I discussed above, there was a real challenge for the team to allocate time towards this deliverable. The team had personal commitments over reading week
+    As discussed above, there was a real challenge for the team to allocate time towards this deliverable. The team had personal commitments over reading week
     and 2/3 midterms in the first days back from reading week. We resolved them through a carefully planned team meeting, which was designed to gain alignment on any team decisions
-    early in the week, so that the team could complete their assigned work when they had time to spare.\\\\
+    early in the week, so that the team could complete their assigned work when they had time to spare.
+
+    Another pain point was identifying specific issues related to our project. The libraries we are going to use aren’t definitive yet, and since they may change in the future, 
+    we had to anticipate potential hazards concerning future libraries we might use. We did write specific risks related to a few of them, 
+    but generalizing these risks was challenging, especially predicting the problems we might encounter, which is a necessary skill to develop.
+    
+    \\\\
     \item Which of your listed risks had your team thought of before this
     deliverable, and which did you think of while doing this deliverable? For
     the latter ones (ones you thought of while doing the Hazard Analysis), how
     did they come about?\\\\
-    \textbf{Kyle:} We were aware of risks to the data integrity before this deliverable. We have been thinking to methods to ensure that users are rewarded for being consistently accurate.\\
+    We were aware of risks to the data integrity before this deliverable. We have been thinking to methods to ensure that users are rewarded for being consistently accurate. Kartik also 
+    made us aware of SQL injection and API vunerabilities, which he had learned about through his internship. Another thing that was raised was that deprecated libraries can cause significant 
+    issues and how important it is to use stable versions during the development phase.\\
     \\ One risk that we discovered during this deliverable was around failures for the system to operate as intended, mostly related to API/ internet failures. Mathew first raised this issue, and
     as a team we discussed how the system should respond. We decided that if a client disconnects during a labeling session, we should reject labels sent to us after the disconnection and before
     we can reestablish connection with the user. They may have legitimate labels from this window if the system sends a buffer of images, but there is a risk that a malicious user could prepare 
@@ -396,12 +443,13 @@ before exposing the system to a large pool of users. These requirements are rela
     \item Other than the risk of physical harm (some projects may not have any
     appreciable risks of this form), list at least 2 other types of risk in
     software products. Why are they important to consider?\\\\
-    \textbf{Kyle:} A big risk is privacy. Users trust us to keep their personal information secure. In the past, the only way a malicious agent could collect so much personal data at one time 
+    A big risk is privacy. Users trust us to keep their personal information secure. In the past, the only way a malicious agent could collect so much personal data at one time 
     would be to break into a public records building. Now, there are thousands (maybe millions) of possible places they could get it. And they only need to find the one weakest link to break in. 
     It is the responsibility of every software designer to build with security at top of mind. This will ensure that the users are respected and protected.\\\\
     Also, there is a risk of behaviour modification from the use of software. This is harder to plan for, but after the introduction of software such as social media sites, it is unboubtably present.
     Misinformation, social isolation, and low-self image have all been in some way attributed to use of social media. The products we build should enhance the lives of the users they are built for
     and designing a site which exacerbates these symptoms is irresponsible.
+
 \end{enumerate}
 \newpage
 \section{References}
