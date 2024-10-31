@@ -388,6 +388,167 @@ Output/Result: The developer can easily make a minor update to a specified part 
 How test will be performed: Give the developer time to read through the documentation. Give them a maintenance task, such as updating the size of the title font to 20px. Observe them and document how long it takes them and if they encountered any troubles.
 \end{enumerate}
 
+\subsubsection{Security}
+		
+\paragraph{Access Tests}
+
+\begin{enumerate}
+
+\item{Logged Out Permissions: T-SE1\\}
+
+Related Reqs: NFR-SE0
+
+Type: Manual, Dynamic, White-box
+					
+Initial State: Application is deployed.
+					
+Input/Condition: Tester who is not signed in tries to access application paths for project creation and image labeling (Ex. /projects or /label).
+					
+Output/Result: The tester is denied access to these paths and is told to sign in.
+					
+How test will be performed: On the deployed application, the tester will visit all possible paths as a logged out user.
+
+\item{Labeler Permissions: T-SE2\\}
+Related Reqs: NFR-SE1
+
+Type: Manual, Dynamic, White-box
+					
+Initial State: Application is deployed.
+					
+Input/Condition: Tester who is signed in as a labeler tries to access application paths for project creation.
+					
+Output/Result: The tester is denied access to these paths. However, the tester has access to paths related to image labeling.
+					
+How test will be performed: On the deployed application, the tester will visit all possible paths as a labeler.
+
+\item{Invalid Email Format: T-SE3\\}
+Related Reqs: NFR-SE2, NFR-SE5
+
+Type: Automatic, Dynamic
+					
+Initial State: Front-end registration page is created and integrated with the database.
+					
+Input/Condition: Email with invalid format, such as an empty string or a string missing '@', is entered.
+					
+Output/Result: Application rejects email and tells the user that the email format is wrong.
+					
+How test will be performed: A unit test will be performed where the input is entered into the email section of the registration form.
+
+\item{Duplicate Email: T-SE4\\}
+Related Reqs: NFR-SE2, NFR-SE5
+
+Type: Automatic, Dynamic
+					
+Initial State: Front-end registration page is created and integrated with the database.
+					
+Input/Condition: Email that is already in database is entered.
+					
+Output/Result: Application rejects email and tells the user that the email is in use.
+					
+How test will be performed: A unit test will be performed where the input is entered into the email section of the registration form.
+
+\item{Invalid Password Format: T-SE5\\}
+Related Reqs: NFR-SE3, NFR-SE5
+
+Type: Automatic, Dynamic
+					
+Initial State: Front-end registration page is created and integrated with the database.
+					
+Input/Condition: Password with invalid format, such as an empty string or a string with no numbers, is entered.
+					
+Output/Result: Application rejects password and tells the user what requirements they have not met.
+					
+How test will be performed: A unit test will be performed where the input is entered into the password section of the registration form.
+
+\item{System Error: T-SE6\\}
+Related Reqs: NFR-SE4, NFR-SE6
+
+Type: Manual, Dynamic
+					
+Initial State: Application is deployed.
+					
+Input/Condition: Purposely invoke a system failure, and attempt to perform an action such as a label submission.
+					
+Output/Result: Application provides an error message on the user interface. The database has not changed in anyway.
+					
+How test will be performed: Go on to the application, start a labeling task, purposely disconnect from the internet, and try to submit a labeled image.
+
+\end{enumerate}
+
+\paragraph{Integrity Tests}
+
+\begin{enumerate}
+
+\item{Duplicate Entries: T-SE7\\}
+
+Related Reqs: NFR-SE7
+
+Type: Manual, Dynamic
+					
+Initial State: Database is deployed.
+					
+Input/Condition: Duplicate database entry is inserted into the database.
+					
+Output/Result: Database has only one of the inputted entry and the duplicate has been removed.
+					
+How test will be performed: Attempt to insert the same entry twice into the database through the database UI.
+
+\end{enumerate}
+
+\paragraph{Privacy Tests}
+
+\begin{enumerate}
+
+\item{Encrypted User Data: T-SE8\\}
+
+Related Reqs: NFR-SE8
+
+Type: Manual, Dynamic
+					
+Initial State: Application is deployed.
+					
+Input/Condition: Tester registers an account.
+					
+Output/Result: All sensitive user data that is stored in the database is encrypted.
+					
+How test will be performed: Tester will create a new account, then check the corresponding user entry in the database and see if the sensitive information is encrypted.
+
+\item{Encrypted Payments: T-SE9\\}
+
+Related Reqs: NFR-SE9
+
+Type: Manual, Dynamic
+					
+Initial State: Application is deployed.
+					
+Input/Condition: Tester enters sample payment details to pay for a labeling project that has been created.
+					
+Output/Result: These details are encrypted and can not be read through packet analyzers. The amount in the request can not be modified by an adversary.
+					
+How test will be performed: Tester will enter sample payment details, and submit their payment. Using a packet analyzer (such as Wireshark), packets from this request will be looked at to ensure all information is encrypted.
+
+\end{enumerate}
+
+\paragraph{Immunity Tests}
+
+\begin{enumerate}
+
+\item{SQL Injection: T-SE11\\}
+
+Related Reqs: NFR-SE10
+
+Type: Manual, Dynamic
+					
+Initial State: Application is deployed.
+					
+Input/Condition: A malicious SQL statement is entered into a text field.
+					
+Output/Result: The system raises an error telling the user that it is invalid.
+					
+How test will be performed: Tester will enter a SQL statement such as "\{valid email\}'--" into an input such as the email input. This example has the potential to bypass a password check by commenting out the rest of the SQL query. The tester will check that when this statement is entered, the system gives feedback that it is invalid.
+
+\end{enumerate}
+
 ...
 
 \subsection{Traceability Between Test Cases and Requirements}
