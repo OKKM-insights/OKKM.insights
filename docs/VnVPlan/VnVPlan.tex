@@ -570,6 +570,75 @@ Output/Result: All text on the website is translated and displayed in the select
 How test will be performed: Tester will check that the language selection list is accessible, and that the most popular languages are included. When a language is selected, the tester will check that the translation has been applied and there is no untranslated or gibberish text. This can be checked for each language.
 \end{enumerate}
 
+\subsubsection{Compliance}
+
+\paragraph{Financial Tests}
+
+\begin{enumerate}
+
+\item{Compliant Payment Process: T-CO1\\}
+
+Related Reqs: NFR-SE9
+
+Type: Manual, Static
+					
+Initial State: Application is deployed.
+					
+Input/Condition: Qualified Security Assessor (QSA) assesses the application.
+					
+Output/Result: They determine that it meets the PCI-DSS standard.
+					
+How test will be performed: A QSA will be found and contacted to perform an assessment. The QSA will be shown all parts of the application that deal will financial transactions and will be able to make a determination on if it meets the standard.
+\end{enumerate}
+		
+\paragraph{Legal Tests}
+
+\begin{enumerate}
+
+\item{System Availability: T-CO2\\}
+
+Related Reqs: NFR-CO1
+
+Type: Manual, Dynamic
+					
+Initial State: Application is deployed.
+					
+Input/Condition: Tester changes country they are accessing the application from using a tool such as a VPN.
+					
+Output/Result: Application is blocked in countries facing economic sanctions by the Government of Canada.
+					
+How test will be performed: A list of the countries facing economic sanctions by Canada will be compiled. Then, the tester will simulate that they are accessing the application from these countries, and ensure it is unreachable.
+
+\item{Taxes: T-CO2\\}
+
+Related Reqs: NFR-CO2
+
+Type: Manual, Dynamic
+					
+Initial State: Application is deployed.
+					
+Input/Condition: Tester redeems a cash balance.
+					
+Output/Result: If the cash balance exceeds a threshold, a tax form will be issued.
+					
+How test will be performed: Tester creates a test account with an account balance over the threshold. When they withdraw, they check that a tax form has been emailed to the email associated with the account. The tax form should reflect the withdrawal balance.
+
+\item{Project Availability: T-CO3\\}
+
+Related Reqs: NFR-CO3
+
+Type: Manual, Dynamic
+					
+Initial State: Application is deployed.
+					
+Input/Condition: Tester changes country they are accessing the application from using a tool such as a VPN.
+					
+Output/Result: Specific project is not shown.
+					
+How test will be performed: A project will be specified to only be distributed in a specific country. Then, the tester will simulate that they are accessing the application from other countries, and ensure the project does not show up.
+
+\end{enumerate}
+
 ...
 
 \subsection{Traceability Between Test Cases and Requirements}
