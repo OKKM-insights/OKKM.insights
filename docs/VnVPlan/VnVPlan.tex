@@ -639,6 +639,39 @@ How test will be performed: A project will be specified to only be distributed i
 
 \end{enumerate}
 
+\subsubsection{User Documentation and Training}
+
+\begin{enumerate}
+
+\item{Helpfulness of User Aids: T-UDT1\\}
+
+Related Reqs: NFR-UD0, NFR-UD1, NFR-UD2, NFR-TR0
+
+Type: Manual, Dynamic
+					
+Initial State: Application is deployed with all help features. Tutorials and user documentation have been created.
+					
+Input/Condition: Users attempt to complete a basic labeling task using only the platform’s built-in help resources (help system, quick start guide, tutorials and contextual tooltips).
+					
+Output/Result: At least \hyperref[MIN_USER_HELP_SATISFACTION]{MIN\_USER\_HELP\_SATISFACTION}\% of users who used a help feature found that feature helpful. With the assistance of the help tools, the user was able to perform the task within \hyperref[MAX_TASK_TIME]{MAX\_TASK\_TIME} minutes.
+					
+How test will be performed: The purpose of the platform will be explained to the users and the built-in help features will be shown. Then, the labeling task will be given to them. Time to complete task is observed and the help tools they use are recorded. Participants will then fill out a usability survey, which can be viewed in the appendix.
+
+\item{Usefulness of Sandbox: T-UDT2\\}
+
+Related Reqs: NFR-TR1
+
+Type: Automatic, Dynamic
+					
+Initial State: Application is deployed with all help features. Tutorials and user documentation has been created.
+					
+Input/Condition: A new user has accessed the platform.
+					
+Output/Result: At least \hyperref[MIN_PRACTICE_USAGE]{MIN\_PRACTICE\_USAGE}\% of new users utilize the practice environment, with self-assessment scores indicating an average improvement of \hyperref[IMPROVE_IN_ACC]{IMPROVE\_IN\_ACC}\% in labeling accuracy over their first three attempts.
+					
+How test will be performed: Practice environment utilization will be tracked by the application. Improvement in accuracy will also be tracked. If the metrics meet or succeed our thresholds, then we can conclude the sandbox is useful.
+\end{enumerate}
+
 ...
 
 \subsection{Traceability Between Test Cases and Requirements}
