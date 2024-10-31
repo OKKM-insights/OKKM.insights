@@ -2,6 +2,7 @@
 
 \usepackage{booktabs}
 \usepackage{tabularx}
+\usepackage{longtable}
 \usepackage{hyperref}
 \hypersetup{
     colorlinks,
@@ -316,39 +317,55 @@ format for the tests given below.}
 How will they be done?  In cases like code (or document) walkthroughs, who will
 be involved? Be specific.}
 
-\subsubsection{Area of Testing1}
+\subsubsection{Operational and Environmental}
 		
-\paragraph{Title for Test}
+\paragraph{Release Tests}
 
 \begin{enumerate}
 
-\item{test-id1\\}
+\item{Road Map Consistency: T-OE1\\}
 
-Type: Functional, Dynamic, Manual, Static etc.
-					
-Initial State: 
-					
-Input/Condition: 
-					
-Output/Result: 
-					
-How test will be performed: 
-					
-\item{test-id2\\}
+Related Reqs: NFR-OE7
 
-Type: Functional, Dynamic, Manual, Static etc.
+Type: Manual, Static
 					
-Initial State: 
+Initial State: Application has a release road map that is publicly accessible.
 					
-Input: 
+Input/Condition: Team member conducts a review.
 					
-Output: 
+Output/Result: At least \hyperref[MIN_ON_TIME_MILESTONE]{MIN\_ON\_TIME\_MILESTONE}\% of the listed milestones have been met on time.
 					
-How test will be performed: 
+How test will be performed: The team member looks over the road map and cross references the completion date of milestones to the dates listed in the road map.
+
+\item{Beta Testing: T-OE2\\}
+
+Related Reqs: NFR-OE8
+
+Type: Dynamic, Exploratory
+					
+Initial State: Beta version of application is deployed and accessible
+					
+Input/Condition: At least \hyperref[BETA_TESTERS]{BETA\_TESTERS} beta testers are provided access to use the application.
+					
+Output/Result: Feedback on any bugs, navigation issues, or aesthetic problems is provided. Less than \hyperref[MAX_BUGS_FOUND]{MAX\_BUGS\_FOUND} bugs are found.
+					
+How test will be performed: Testers will be recruited and identified. They will be from fields of interest that include scientists, labelers, and domain experts. Then, the beta testing environment will be set up and the url will be distributed to the testers along with any other set up resources. Specific tasks are provided for testers to complete that focus on the annotation tools, sign up process and project creation. Feedback will be collected through direct comments from the tester.
+
+\item{Regression Testing: T-OE3\\}
+
+Related Reqs: NFR-OE9
+
+Type: Dynamic, Automated
+					
+Initial State: Application is deployed.
+					
+Input/Condition: Run regression test suite, consisting of unit tests.
+					
+Output/Result: All regression tests are passed.
+					
+How test will be performed: An automated script with regression tests will run when updates are made to the production build.
 
 \end{enumerate}
-
-\subsubsection{Area of Testing2}
 
 ...
 
