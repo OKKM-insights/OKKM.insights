@@ -323,7 +323,7 @@ be involved? Be specific.}
 
 \begin{enumerate}
 
-\item{Road Map Consistency: T-OE1\\}
+\item{Road Map Consistency: T-OE0\\}
 
 Related Reqs: NFR-OE7
 
@@ -337,7 +337,7 @@ Output/Result: At least \hyperref[MIN_ON_TIME_MILESTONE]{MIN\_ON\_TIME\_MILESTON
 					
 How test will be performed: The team member looks over the road map and cross references the completion date of milestones to the dates listed in the road map.
 
-\item{Beta Testing: T-OE2\\}
+\item{Beta Testing: T-OE1\\}
 
 Related Reqs: NFR-OE8
 
@@ -351,7 +351,7 @@ Output/Result: Feedback on any bugs, navigation issues, or aesthetic problems is
 					
 How test will be performed: Testers will be recruited and identified. They will be from fields of interest that include scientists, labelers, and domain experts. Then, the beta testing environment will be set up and the url will be distributed to the testers along with any other set up resources. Specific tasks are provided for testers to complete that focus on the annotation tools, sign up process and project creation. Feedback will be collected through direct comments from the tester.
 
-\item{Regression Testing: T-OE3\\}
+\item{Regression Testing: T-OE2\\}
 
 Related Reqs: NFR-OE9
 
@@ -373,7 +373,7 @@ How test will be performed: An automated script with regression tests will run w
 
 \begin{enumerate}
 
-\item{Ease of Change: T-MS1\\}
+\item{Ease of Change: T-MS0\\}
 
 Related Reqs: NFR-MR0
 
@@ -394,7 +394,7 @@ How test will be performed: Give the developer time to read through the document
 
 \begin{enumerate}
 
-\item{Logged Out Permissions: T-SE1\\}
+\item{Logged Out Permissions: T-SE0\\}
 
 Related Reqs: NFR-SE0
 
@@ -408,7 +408,7 @@ Output/Result: The tester is denied access to these paths and is told to sign in
 					
 How test will be performed: On the deployed application, the tester will visit all possible paths as a logged out user.
 
-\item{Labeler Permissions: T-SE2\\}
+\item{Labeler Permissions: T-SE1\\}
 Related Reqs: NFR-SE1
 
 Type: Manual, Dynamic, White-box
@@ -421,7 +421,7 @@ Output/Result: The tester is denied access to these paths. However, the tester h
 					
 How test will be performed: On the deployed application, the tester will visit all possible paths as a labeler.
 
-\item{Invalid Email Format: T-SE3\\}
+\item{Invalid Email Format: T-SE2\\}
 Related Reqs: NFR-SE2, NFR-SE5
 
 Type: Automatic, Dynamic
@@ -434,7 +434,7 @@ Output/Result: Application rejects email and tells the user that the email forma
 					
 How test will be performed: A unit test will be performed where the input is entered into the email section of the registration form.
 
-\item{Duplicate Email: T-SE4\\}
+\item{Duplicate Email: T-SE3\\}
 Related Reqs: NFR-SE2, NFR-SE5
 
 Type: Automatic, Dynamic
@@ -447,7 +447,7 @@ Output/Result: Application rejects email and tells the user that the email is in
 					
 How test will be performed: A unit test will be performed where the input is entered into the email section of the registration form.
 
-\item{Invalid Password Format: T-SE5\\}
+\item{Invalid Password Format: T-SE4\\}
 Related Reqs: NFR-SE3, NFR-SE5
 
 Type: Automatic, Dynamic
@@ -460,7 +460,7 @@ Output/Result: Application rejects password and tells the user what requirements
 					
 How test will be performed: A unit test will be performed where the input is entered into the password section of the registration form.
 
-\item{System Error: T-SE6\\}
+\item{System Error: T-SE5\\}
 Related Reqs: NFR-SE4, NFR-SE6
 
 Type: Manual, Dynamic
@@ -479,7 +479,7 @@ How test will be performed: Go on to the application, start a labeling task, pur
 
 \begin{enumerate}
 
-\item{Duplicate Entries: T-SE7\\}
+\item{Duplicate Entries: T-SE6\\}
 
 Related Reqs: NFR-SE7
 
@@ -499,7 +499,7 @@ How test will be performed: Attempt to insert the same entry twice into the data
 
 \begin{enumerate}
 
-\item{Encrypted User Data: T-SE8\\}
+\item{Encrypted User Data: T-SE7\\}
 
 Related Reqs: NFR-SE8
 
@@ -513,7 +513,7 @@ Output/Result: All sensitive user data that is stored in the database is encrypt
 					
 How test will be performed: Tester will create a new account, then check the corresponding user entry in the database and see if the sensitive information is encrypted.
 
-\item{Encrypted Payments: T-SE9\\}
+\item{Encrypted Payments: T-SE8\\}
 
 Related Reqs: NFR-SE9
 
@@ -533,7 +533,7 @@ How test will be performed: Tester will enter sample payment details, and submit
 
 \begin{enumerate}
 
-\item{SQL Injection: T-SE10\\}
+\item{SQL Injection: T-SE9\\}
 
 Related Reqs: NFR-SE10
 
@@ -555,9 +555,9 @@ How test will be performed: Tester will enter a SQL statement such as "\{valid e
 
 \begin{enumerate}
 
-\item{Support of Different Languages: T-CU1\\}
+\item{Support of Different Languages: T-CU0\\}
 
-Related Reqs: NFR-CU1
+Related Reqs: NFR-CU0
 
 Type: Manual, Dynamic
 					
@@ -576,7 +576,7 @@ How test will be performed: Tester will check that the language selection list i
 
 \begin{enumerate}
 
-\item{Compliant Payment Process: T-CO1\\}
+\item{Compliant Payment Process: T-CO0\\}
 
 Related Reqs: NFR-SE9
 
@@ -595,9 +595,9 @@ How test will be performed: A QSA will be found and contacted to perform an asse
 
 \begin{enumerate}
 
-\item{System Availability: T-CO2\\}
+\item{System Availability: T-CO1\\}
 
-Related Reqs: NFR-CO1
+Related Reqs: NFR-CO0
 
 Type: Manual, Dynamic
 					
@@ -609,9 +609,9 @@ Output/Result: Application is blocked in countries facing economic sanctions by 
 					
 How test will be performed: A list of the countries facing economic sanctions by Canada will be compiled. Then, the tester will simulate that they are accessing the application from these countries, and ensure it is unreachable.
 
-\item{Taxes: T-CO3\\}
+\item{Taxes: T-CO2\\}
 
-Related Reqs: NFR-CO2
+Related Reqs: NFR-CO1
 
 Type: Manual, Dynamic
 					
@@ -623,9 +623,9 @@ Output/Result: If the cash balance exceeds a threshold, a tax form will be issue
 					
 How test will be performed: Tester creates a test account with an account balance over the threshold. When they withdraw, they check that a tax form has been emailed to the email associated with the account. The tax form should reflect the withdrawal balance.
 
-\item{Project Availability: T-CO4\\}
+\item{Project Availability: T-CO3\\}
 
-Related Reqs: NFR-CO3
+Related Reqs: NFR-CO2
 
 Type: Manual, Dynamic
 					
@@ -643,7 +643,7 @@ How test will be performed: A project will be specified to only be distributed i
 
 \begin{enumerate}
 
-\item{Helpfulness of User Aids: T-UDT1\\}
+\item{Helpfulness of User Aids: T-UDT0\\}
 
 Related Reqs: NFR-UD0, NFR-UD1, NFR-UD2, NFR-TR0
 
@@ -657,7 +657,7 @@ Output/Result: At least \hyperref[MIN_USER_HELP_SATISFACTION]{MIN\_USER\_HELP\_S
 					
 How test will be performed: The purpose of the platform will be explained to the users and the built-in help features will be shown. Then, the labeling task will be given to them. Time to complete task is observed and the help tools they use are recorded. Participants will then fill out a usability survey, which can be viewed in the appendix.
 
-\item{Usefulness of Sandbox: T-UDT2\\}
+\item{Usefulness of Sandbox: T-UDT1\\}
 
 Related Reqs: NFR-TR1
 
