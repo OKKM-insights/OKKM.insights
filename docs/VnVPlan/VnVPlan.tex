@@ -3,6 +3,12 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{amssymb}
+
+\newlist{todolist}{itemize}{2}
+\setlist[todolist]{label=$\square$}
+
 \hypersetup{
     colorlinks,
     citecolor=blue,
@@ -142,95 +148,246 @@ how they relate to your VnV efforts.}
 
 \section{Plan}
 
-\wss{Introduce this section.  You can provide a roadmap of the sections to
-  come.}
+This section describes the team, verification plans for the system design and documentation, use of automated testing tools, and the validation plan of the software following implementation.
 
 \subsection{Verification and Validation Team}
+When not listed as lead, members of core team will support through team discussion and implementation of feedback.\\
+\begin{center}
+\begin{tabular}{|c|c|l|}
+  \hline
+  \textbf{Name} & \textbf{Role} & \textbf{Responsibilities}\\\hline
+  Mathew Petronilho & Core team & \textbf{SRS} \\
+  & & Lead review of SRS\\
+  & & \textbf{Implementation}\\
+  & & Support review of implementation\\
+  & & Review Implementation for coding \\
+  & & standards, comment quality\\
+  \hline
+  Oleg Glotov & Core team & \textbf{VnV Plan} \\
+  & & Support review of VnV Plan\\
+  & & Review VnV Plan for formatting and \\
+  & & grammar errors\\
+  & & \textbf{Implementation}\\
+  & & Lead review of Implementation\\
+  \hline
+  Kartik Chaudhari & Core team & \textbf{Design} \\
+  & & Support review of Design\\
+  & & Review diagrams and documents for correct \\
+  & & notation, formatting and grammar\\
+  & & \textbf{VnV Plan}\\
+  & & Lead review of VnV Plan\\
+  & & \textbf{Implementation}\\
+  & & Support review of implementation\\
+  \hline
+  Kyle McMaster & Core team & \textbf{SRS} \\
+  & & Check SRS for formatting and grammar errors\\
+  & & Support review of SRS\\
+  & & \textbf{Design}\\
+  & & Lead review of design\\
+  & & Ensure team is following standard design principles\\
+  \hline
+  Dr. Swati Mishra & Project Supervisor & Validate all team docs in structured review\\\hline
+  Capstone Team 10 & Primary Reviewers & Validate all team docs in \\
+  & & async review through Git issues\\
+  \hline
+\end{tabular}
+\end{center}
 
-\wss{Your teammates.  Maybe your supervisor.
-  You should do more than list names.  You should say what each person's role is
-  for the project's verification.  A table is a good way to summarize this information.}
+% \wss{Your teammates.  Maybe your supervisor.
+%   You should do more than list names.  You should say what each person's role is
+%   for the project's verification.  A table is a good way to summarize this information.}
 
 \subsection{SRS Verification Plan}
 
-\wss{List any approaches you intend to use for SRS verification.  This may
-  include ad hoc feedback from reviewers, like your classmates (like your
-  primary reviewer), or you may plan for something more rigorous/systematic.}
+The SRS will be verified through several channels. First, the document will be reviewed by another capstone team. This will help the team identify issues
+which are obscured to the team, due to the additional time they have spent thinking about the project. We expect this feedback to generally consist of 
+omitted definitions or unstated assumptions. Since the team is more familiar with the project, it is likely that we have some information which is obvious 
+to the team, but is necessary to define for others. The team will collect feedback from our primary reviewers in the issue tracker.\\
+The SRS will also be reviewed by our supervisor in a structured review meeting. The team will guide the review with the following checklist:\\\\
+\textbf{Constraints \& Assumptions}\\
+The following sections are informed by the constraints \& assumptions. Therefore, it is critical that the these are verified first.
+\begin{todolist}
+\item All constraints are correct and necessary
+\item All constraints are unambigious
+\item All constraints which should be present are present
+\item All constraints are verifiable
+\item All assumptions are correct and necessary
+\item All assumptions are unambigious
+\item All assumptions which should be present are present
+\item All assumptions are verifiable
+\end{todolist}
+\textbf{Data Model}\\
+The data model affects how the system will be decomposed in the future design. This in turn affects the requirements, so it should be verified next.
+\begin{todolist}
+  \item Data model is correct
+  \item Data model is complete
+  \item Each element of data dictionary is correctly described. There are no extra or missing attributes.
+  \item Elements of data dictionary are unambigious
+\end{todolist}
+\textbf{Functional Requirements}\\
+This section describes the functionality of the system. This will be useful for understanding the context of the NFRs.
+\begin{todolist}
+\item All requirements are correct and necessary
+\item All requirements are unambigious
+\item All requirements which should be present are present
+\item All requirements are verifiable
+\item All requirements are feasible
+\item All requirements are traceable
+\end{todolist}
+\textbf{Non-Functional Requirements}\\
+The NFRs have now been properly introduced by the other sections and should now be assessed.
+\begin{todolist}
+  \item All requirements are correct and necessary
+  \item All requirements are unambigious
+  \item All requirements which should be present are present
+  \item All requirements are verifiable
+  \item All requirements are feasible
+  \item All requirements are traceable
+  \end{todolist}
+\textbf{General}\\
+Each of the sections reviewed should also be monitored for the following criteria.
+\begin{todolist}
+  \item Document contains properly formatted title, table of contents, references and all necessary sections
+  \item Tables and figures are correctly formatted
+  \item No grammar errors are present
+  \item Each required section is present
+  \item All requirements are feasible
+  \end{todolist}
 
-\wss{If you have a supervisor for the project, you shouldn't just say they will
-read over the SRS.  You should explain your structured approach to the review.
-Will you have a meeting?  What will you present?  What questions will you ask?
-Will you give them instructions for a task-based inspection?  Will you use your
-issue tracker?}
 
-\wss{Maybe create an SRS checklist?}
+% \wss{List any approaches you intend to use for SRS verification.  This may
+%   include ad hoc feedback from reviewers, like your classmates (like your
+%   primary reviewer), or you may plan for something more rigorous/systematic.}
+
+% \wss{If you have a supervisor for the project, you shouldn't just say they will
+% read over the SRS.  You should explain your structured approach to the review.
+% Will you have a meeting?  What will you present?  What questions will you ask?
+% Will you give them instructions for a task-based inspection?  Will you use your
+% issue tracker?}
+
+% \wss{Maybe create an SRS checklist?}
 
 \subsection{Design Verification Plan}
+Upon completion of the System Design, the team will verify the design. This verification will involve reviews from the primary reviewers, in the same manner as described above.
+This again will provide fresh prospective on the design, and help identify any omitted or underexplained information. The verification will continue with a systematic review with The
+project supervisor using the following checklist:\\\\
 
-\wss{Plans for design verification}
+\textbf{Class Decomposition}\\
+\begin{todolist}
+  \item All functional requirements are covered by a class/subsystem
+  \item All non-functional requirements are covered by a class/subsystem
+  \item All classes are correctly sized. That is, each class should be concerned with one purpose
+  \item When appropriate, interfaces and abstract classes are used
+  \item All class attributes are complete and necessary
+  \item When appropriate, design patterns are used to improve design clarity
+  \item Function permissions are appropriate for all classes
+  \item Classes cannot be simplified without degrading the understanability of the system
+  \end{todolist}
+  \textbf{General}\\
+\begin{todolist}
+  \item The types of all attributes are listed
+  \item The argument and return types of all functions are listed
+  \item Correct notation is used to describe class relationships
+  \item Class diagram is legible
+  \end{todolist}
+% \wss{Plans for design verification}
 
-\wss{The review will include reviews by your classmates}
+% \wss{The review will include reviews by your classmates}
 
-\wss{Create a checklists?}
+% \wss{Create a checklists?}
 
 \subsection{Verification and Validation Plan Verification Plan}
+This document must be verified and validated, to ensure the validation and verification of other artifacts is correct. Like other documents, this will include review
+from our primary reviewers, as well as a review with the project supervisor. The review with the project supervisor will be guided by the folllowing checklist:\\
 
-\wss{The verification and validation plan is an artifact that should also be
-verified.  Techniques for this include review and mutation testing.}
+\textbf{Testing Plan}\\
+\begin{todolist}
+  \item Testing plan includes a checklist for each artifact
+  \item Checklist items are unambigious
+  \item Checklist contains all recessary items
+  \item Checklist does not contain unnecessary items
+  \item Plan includes review from multiple parties
+  \item Plan includes method for collecting feedback on artifacts
+  \item Plan is verifiable
+  \end{todolist}
+\textbf{Tests}\\
+\begin{todolist}
+  \item All functional requirements are covered by one or more tests\\
+  \item All non-functional requirements are covered by one or more tests\\
+  \item All `units' are sufficiently covered by one or more tests\\
+  \item Tests are unambigious
+  \item Tests are verifiable
+  \item Tests are repeatable
+  \end{todolist}
 
-\wss{The review will include reviews by your classmates}
+% \wss{The verification and validation plan is an artifact that should also be
+% verified.  Techniques for this include review and mutation testing.}
 
-\wss{Create a checklists?}
+% \wss{The review will include reviews by your classmates}
+
+% \wss{Create a checklists?}
 
 \subsection{Implementation Verification Plan}
 
-\wss{You should at least point to the tests listed in this document and the unit
-  testing plan.}
+As part of the implementation verification plan, the team will conduct a series of static tests. One of which, will be a code walkthrough with members of the team.
+Before submitting Rev 0 and Rev 1, the members of the team will schedule time to walk through other members of the team through the code they have written. This will be 
+an opportunity for the team to look for code quality and adherence to standards, correctness, and alignment to the system design. During this walkthrough, we expect that 
+the lead developer of the code being displayed will explain the overall flow and control structures. In doing so, we expect they will find the errors in their own code.\\\\
+The team will also use a suite of tests, which is described in section 4.\\\\
+The team will used static analyzers to verify adherence to coding standards to perform type checking. Please refer to section 7.2.2 and 7.2.3 in the Development Plan found \href{https://github.com/OKKM-insights/OKKM.insights/blob/main/docs/DevelopmentPlan/DevelopmentPlan.pdf}{here}.
 
-\wss{In this section you would also give any details of any plans for static
-  verification of the implementation.  Potential techniques include code
-  walkthroughs, code inspection, static analyzers, etc.}
+% \wss{You should at least point to the tests listed in this document and the unit
+%   testing plan.}
 
-\wss{The final class presentation in CAS 741 could be used as a code
-walkthrough.  There is also a possibility of using the final presentation (in
-CAS741) for a partial usability survey.}
+% \wss{In this section you would also give any details of any plans for static
+%   verification of the implementation.  Potential techniques include code
+%   walkthroughs, code inspection, static analyzers, etc.}
+
+% \wss{The final class presentation in CAS 741 could be used as a code
+% walkthrough.  There is also a possibility of using the final presentation (in
+% CAS741) for a partial usability survey.}
 
 \subsection{Automated Testing and Verification Tools}
 
-\wss{What tools are you using for automated testing.  Likely a unit testing
-  framework and maybe a profiling tool, like ValGrind.  Other possible tools
-  include a static analyzer, make, continuous integration tools, test coverage
-  tools, etc.  Explain your plans for summarizing code coverage metrics.
-  Linters are another important class of tools.  For the programming language
-  you select, you should look at the available linters.  There may also be tools
-  that verify that coding standards have been respected, like flake9 for
-  Python.}
+Please refer to section 7.2.2 and 7.2.3 in the Development Plan found \href{https://github.com/OKKM-insights/OKKM.insights/blob/main/docs/DevelopmentPlan/DevelopmentPlan.pdf}{here}.
 
-\wss{If you have already done this in the development plan, you can point to
-that document.}
+% \wss{What tools are you using for automated testing.  Likely a unit testing
+%   framework and maybe a profiling tool, like ValGrind.  Other possible tools
+%   include a static analyzer, make, continuous integration tools, test coverage
+%   tools, etc.  Explain your plans for summarizing code coverage metrics.
+%   Linters are another important class of tools.  For the programming language
+%   you select, you should look at the available linters.  There may also be tools
+%   that verify that coding standards have been respected, like flake9 for
+%   Python.}
 
-\wss{The details of this section will likely evolve as you get closer to the
-  implementation.}
+% \wss{If you have already done this in the development plan, you can point to
+% that document.}
+
+% \wss{The details of this section will likely evolve as you get closer to the
+%   implementation.}
 
 \subsection{Software Validation Plan}
+  As discussed in section 6.2 of the Problem Statement and Goals, found \href{https://github.com/OKKM-insights/OKKM.insights/blob/main/docs/ProblemStatementAndGoals/ProblemStatement.pdf}{here}, 
+  we will validate our software through user testing. More specifically, we will conduct testing of the user interface with peers, who will fill in a survey containing both qualitative and quantitative questions.
+  This survery will be used to track progress on the usability of the software by comparing results collecting during different iterations of the user interface. See the appendix for a sample of the user survey.
 
-\wss{If there is any external data that can be used for validation, you should
-  point to it here.  If there are no plans for validation, you should state that
-  here.}
+% \wss{If there is any external data that can be used for validation, you should
+%   point to it here.  If there are no plans for validation, you should state that
+%   here.}
 
-\wss{You might want to use review sessions with the stakeholder to check that
-the requirements document captures the right requirements.  Maybe task based
-inspection?}
+% \wss{You might want to use review sessions with the stakeholder to check that
+% the requirements document captures the right requirements.  Maybe task based
+% inspection?}
 
-\wss{For those capstone teams with an external supervisor, the Rev 0 demo should 
-be used as an opportunity to validate the requirements.  You should plan on 
-demonstrating your project to your supervisor shortly after the scheduled Rev 0 demo.  
-The feedback from your supervisor will be very useful for improving your project.}
+% \wss{For those capstone teams with an external supervisor, the Rev 0 demo should 
+% be used as an opportunity to validate the requirements.  You should plan on 
+% demonstrating your project to your supervisor shortly after the scheduled Rev 0 demo.  
+% The feedback from your supervisor will be very useful for improving your project.}
 
-\wss{For teams without an external supervisor, user testing can serve the same purpose 
-as a Rev 0 demo for the supervisor.}
+% \wss{For teams without an external supervisor, user testing can serve the same purpose 
+% as a Rev 0 demo for the supervisor.}
 
-\wss{This section might reference back to the SRS verification section.}
+% \wss{This section might reference back to the SRS verification section.}
 
 \section{System Tests}
 
