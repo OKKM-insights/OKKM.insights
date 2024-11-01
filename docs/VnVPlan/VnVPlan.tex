@@ -340,6 +340,260 @@ the contents of the subsections.}
     \end{itemize}
 \end{enumerate}
 
+\section*{FR2: Customer Account Modification Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: FR2\_Test\_01
+    \item \textbf{Control}: \textbf{Manual}
+    \item \textbf{Initial State}: Customer is logged in and has access to their account information page.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Customer updates personal information fields:
+        \begin{itemize}
+            \item \textbf{Address}: ``123 New Street, Cityville''
+            \item \textbf{Phone Number}: ``555-1234''
+            \item \textbf{Profile Picture}: Uploads a new image file.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item Updated personal information is saved and reflected in the database.
+            \item The user receives a confirmation message indicating successful update.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Confirms that authenticated customers can modify their information, maintaining data accuracy and relevance.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Manual Steps}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Log in to the customer account.
+            \item \textbf{Step 2}: Navigate to the account settings or profile page.
+            \item \textbf{Step 3}: Change the address and phone number to the new values.
+            \item \textbf{Step 4}: Upload a new profile picture.
+            \item \textbf{Step 5}: Save the changes.
+            \item \textbf{Step 6}: Verify that the changes are displayed correctly on the profile page.
+            \item \textbf{Step 7}: Check the database to ensure the new information is updated.
+            \item \textbf{Step 8}: Log out and log back in to confirm that the changes persist.
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
+\section*{FR3: Payment Processing Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: FR3\_Test\_01
+    \item \textbf{Control}: \textbf{Automated}
+    \item \textbf{Initial State}: Customer is logged in and ready to make a payment for a service request.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Valid payment information:
+        \begin{itemize}
+            \item \textbf{Credit Card Number}: ``4111 1111 1111 1111'' (Test Visa number)
+            \item \textbf{Expiry Date}: ``12/25''
+            \item \textbf{CVV}: ``123''
+            \item \textbf{Billing Address}: Matches the address on file.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item Payment is processed successfully.
+            \item A confirmation receipt is generated and emailed to the customer.
+            \item The service request status is updated to ``Paid'' or equivalent.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Verifies payment integration, ensuring that authenticated customers can complete transactions securely.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Automated Test Script Execution}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Navigate to the payment page for the pending service request.
+            \item \textbf{Step 2}: Input the valid payment details.
+            \item \textbf{Step 3}: Submit the payment form.
+            \item \textbf{Step 4}: Mock the payment gateway response if using a sandbox environment.
+            \item \textbf{Step 5}: Verify that the system displays a payment success message.
+            \item \textbf{Step 6}: Check that a confirmation receipt is generated and sent to the customer's email.
+            \item \textbf{Step 7}: Verify that the service request status is updated appropriately in the database.
+        \end{enumerate}
+        \item \textbf{Security Verification}:
+        \begin{enumerate}
+            \item \textbf{Step 8}: Ensure that sensitive payment information is not stored in plain text and complies with PCI DSS standards.
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
+\section*{FR4: Service Request Submission Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: FR4\_Test\_01
+    \item \textbf{Control}: \textbf{Manual}
+    \item \textbf{Initial State}: Customer is logged in and has a confirmed payment.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Customer fills out the service request form with necessary details:
+        \begin{itemize}
+            \item \textbf{Service Type}: ``Image Analysis''
+            \item \textbf{Description}: ``Analysis of satellite images for deforestation.''
+            \item \textbf{Preferred Completion Date}: ``2023-12-31''
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item Service request is accepted and logged in the system.
+            \item Customer receives a confirmation message and request ID.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Ensures that the system accepts valid requests from authenticated customers.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Manual Steps}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Navigate to the new service request page.
+            \item \textbf{Step 2}: Fill in the form with the input data.
+            \item \textbf{Step 3}: Submit the form.
+            \item \textbf{Step 4}: Verify that a confirmation message with a unique request ID is displayed.
+            \item \textbf{Step 5}: Check the database to confirm that the service request is logged with correct details.
+            \item \textbf{Step 6}: Ensure that the service request appears in the customer's list of active requests.
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
+\section*{FR5: Service Report Delivery Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: FR5\_Test\_01
+    \item \textbf{Control}: \textbf{Automated}
+    \item \textbf{Initial State}: Customer is logged in and has a completed service request.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Customer navigates to the ``My Reports'' section after being notified of service completion.
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item The service report is available for viewing and download.
+            \item Report contents are accurate and correspond to the service request.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Confirms that customers receive reports on completed services, fulfilling the system’s purpose.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Automated Test Script Execution}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Simulate the completion of a service request in the system (can be mocked or set up in a test environment).
+            \item \textbf{Step 2}: Log in as the customer.
+            \item \textbf{Step 3}: Navigate to the ``My Reports'' or equivalent section.
+            \item \textbf{Step 4}: Verify that the completed service report is listed.
+            \item \textbf{Step 5}: Open the report and check that it loads correctly.
+            \item \textbf{Step 6}: Validate that the report content matches the expected output based on the service provided.
+            \item \textbf{Step 7}: Attempt to download the report and ensure the file is intact and accessible.
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
+\section*{FR6: Image Upload Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: FR6\_Test\_01
+    \item \textbf{Control}: \textbf{Manual}
+    \item \textbf{Initial State}: Customer is logged in with an active service request requiring image uploads.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Customer uploads multiple image files:
+        \begin{itemize}
+            \item \texttt{Image1.jpg}: 2\,MB
+            \item \texttt{Image2.png}: 3\,MB
+            \item \texttt{Image3.tif}: 5\,MB
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item All images are successfully uploaded and stored.
+            \item Images are correctly linked to the specific service request.
+            \item Customer receives an upload success message.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Ensures that customers can upload images for requested services, fulfilling the fit criterion.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Manual Steps}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Navigate to the image upload section of the active service request.
+            \item \textbf{Step 2}: Select the image files for upload.
+            \item \textbf{Step 3}: Initiate the upload process.
+            \item \textbf{Step 4}: Monitor progress indicators for each file.
+            \item \textbf{Step 5}: Verify that a success message is displayed after upload completion.
+            \item \textbf{Step 6}: Check the service request details to ensure images are listed.
+            \item \textbf{Step 7}: Confirm that the images are stored in the correct directory or database location.
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
+\section*{FR7: Satellite Image Request Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: FR7\_Test\_01
+    \item \textbf{Control}: \textbf{Automated}
+    \item \textbf{Initial State}: Customer is logged in with an active service request that requires satellite images.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Geographic coordinates:
+        \begin{itemize}
+            \item \textbf{Latitude}: $37.7749^\circ$ N
+            \item \textbf{Longitude}: $122.4194^\circ$ W (San Francisco, CA)
+            \item \textbf{Date Range}: ``2023-01-01'' to ``2023-01-31''
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item The system retrieves and stores satellite images corresponding to the provided coordinates and date range.
+            \item Customer is notified of successful retrieval.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Confirms the system can source images using specified geographical data, aiding in analysis.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Automated Test Script Execution}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Input the geographic coordinates and date range into the request form.
+            \item \textbf{Step 2}: Submit the request.
+            \item \textbf{Step 3}: Mock the satellite data provider's API response if necessary.
+            \item \textbf{Step 4}: Verify that the system processes the input without errors.
+            \item \textbf{Step 5}: Check that the images are retrieved and stored in the system.
+            \item \textbf{Step 6}: Confirm that the images are linked to the correct service request.
+            \item \textbf{Step 7}: Validate that the customer receives a notification or confirmation message.
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
 \subsection{Tests for Nonfunctional Requirements}
 
 \wss{The nonfunctional requirements for accuracy will likely just reference the
