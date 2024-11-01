@@ -1,7 +1,7 @@
 # Verification and Validation Plan (V&V)
 
 ## Overview
-This Verification and Validation (V&V) Plan is developed for the OKKM Insights project, aimed at verifying and validating that the platform’s functionalities and non-functional requirements meet the expectations and standards required by stakeholders. The V&V process ensures the system's reliability, usability, and performance, supporting the project's goals of providing accurate satellite image labeling for clients across various industries, including environmental monitoring, urban planning, and disaster response.
+This Verification and Validation (V&V) Plan aims at verifying and validating that the platform’s functionalities and non-functional requirements meet the expectations and standards required by stakeholders. The V&V process ensures the system's reliability, usability, and performance, supporting the project's goals of providing accurate satellite image labeling for clients across various industries, including environmental monitoring, urban planning, and disaster response.
 
 The V&V Plan is designed to:
 - **Verify** that each component of the platform meets its specified requirements, ensuring the accuracy and reliability of core functionalities such as image labeling, data management, and user compensation.
