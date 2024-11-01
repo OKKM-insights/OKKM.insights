@@ -27,6 +27,8 @@ jobs:
         (cd ./docs/DevelopmentPlan && latexmk -pdf DevelopmentPlan.tex)
         (cd ./docs/ProblemStatementAndGoals && latexmk -pdf ProblemStatement.tex)
         (cd ./docs/SRS && latexmk -pdf SRS.tex)
+        (cd ./docs/VnVPlan && latexmk -pdf VnVPlan.tex)
+        (cd ./docs/projMngmnt && latexmk -pdf POC_Team_Contrib.tex)
 
     - name: List files in docs directory
       run: ls -R docs
