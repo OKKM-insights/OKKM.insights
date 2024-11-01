@@ -85,60 +85,52 @@ in.}
 This document ... \wss{provide an introductory blurb and roadmap of the
   Verification and Validation plan}
 
-\section{General Information}
+  \section{2 General Information}
 
-\subsection{Summary}
-
-\wss{Say what software is being tested.  Give its name and a brief overview of
-  its general functions.}
-
-\subsection{Objectives}
-
-\wss{State what is intended to be accomplished.  The objective will be around
-  the qualities that are most important for your project.  You might have
-  something like: ``build confidence in the software correctness,''
-  ``demonstrate adequate usability.'' etc.  You won't list all of the qualities,
-  just those that are most important.}
-
-\wss{You should also list the objectives that are out of scope.  You don't have 
-the resources to do everything, so what will you be leaving out.  For instance, 
-if you are not going to verify the quality of usability, state this.  It is also 
-worthwhile to justify why the objectives are left out.}
-
-\wss{The objectives are important because they highlight that you are aware of 
-limitations in your resources for verification and validation.  You can't do everything, 
-so what are you going to prioritize?  As an example, if your system depends on an 
-external library, you can explicitly state that you will assume that external library 
-has already been verified by its implementation team.}
-
-\subsection{Challenge Level and Extras}
-
-\wss{State the challenge level (advanced, general, basic) for your project.
-Your challenge level should exactly match what is included in your problem
-statement.  This should be the challenge level agreed on between you and the
-course instructor.  You can use a pull request to update your challenge level
-(in TeamComposition.csv or Repos.csv) if your plan changes as a result of the
-VnV planning exercise.}
-
-\wss{Summarize the extras (if any) that were tackled by this project.  Extras
-can include usability testing, code walkthroughs, user documentation, formal
-proof, GenderMag personas, Design Thinking, etc.  Extras should have already
-been approved by the course instructor as included in your problem statement.
-You can use a pull request to update your extras (in TeamComposition.csv or
-Repos.csv) if your plan changes as a result of the VnV planning exercise.}
-
-\subsection{Relevant Documentation}
-
-\wss{Reference relevant documentation.  This will definitely include your SRS
-  and your other project documents (design documents, like MG, MIS, etc).  You
-  can include these even before they are written, since by the time the project
-  is done, they will be written.  You can create BibTeX entries for your
-  documents and within those entries include a hyperlink to the documents.}
-
-\citet{SRS}
-
-\wss{Don't just list the other documents.  You should explain why they are relevant and 
-how they relate to your VnV efforts.}
+  \subsection{2.1 Summary}
+  
+  Orbit Watch is an online platform developed by OKKM Insights to streamline and simplify satellite imagery data analysis. The software addresses the scarcity of high-quality, labeled satellite imagery datasets tailored for specific use cases across various industries such as disaster response, environmental monitoring, urban planning, and defense. Leveraging an AI-powered crowd-sourcing model, Orbit Watch enables users to label commercially available satellite images. These labeled datasets are then utilized to train custom computer vision models, enhancing accuracy and efficiency in image analysis. The platform offers a paid service for identifying objects within satellite images and distributes earnings to users who contribute to the labeling efforts.
+  
+  \subsection{2.2 Objectives}
+  
+  The primary objectives of the Verification and Validation (V\&V) plan for Orbit Watch are:
+  
+  \begin{itemize}
+      \item \textbf{Ensure High Data Accuracy}: Build confidence in the software's correctness by verifying that the system achieves high classification accuracy for objects reported in the images. This is crucial for extracting useful information and providing value to stakeholders.
+      \item \textbf{Validate System Reliability and Accessibility}: Confirm that the system is reliable with minimal downtime and is accessible remotely for both purchasers and labelers, ensuring flexibility and efficiency in usage.
+  \end{itemize}
+  
+  The following objectives are out of scope for this V\&V plan:
+  
+  \begin{itemize}
+      \item \textbf{Usability Testing (Ease of Use)}: Due to limited resources, we will not conduct extensive usability testing to verify the ease of use of the platform. We assume that the user interface adheres to standard design principles that facilitate user interaction with minimal training.
+      \item \textbf{Verification of External Components}: We will not verify external libraries or services used for image acquisition, payment processing, or AI algorithms. It is assumed that these components have been adequately verified by their respective development teams.
+      \item \textbf{Stretch Goals}: Objectives related to automatic data labeling and multi-source integration are considered stretch goals and will not be included in the current V\&V efforts due to time and resource constraints.
+  \end{itemize}
+  
+  \subsection{2.3 Challenge Level and Extras}
+  
+  This project is classified at the \textbf{advanced} challenge level due to several factors:
+  
+  \begin{itemize}
+      \item \textbf{Limited Domain Knowledge}: The team has minimal experience with satellite imagery and computer vision models, requiring additional research and learning to implement effective solutions.
+      \item \textbf{Complex Implementation}: Developing a web application from scratch involves challenges in front-end development, integrating secure payment systems, handling parallel image labeling tasks, and designing consensus algorithms for data accuracy.
+      \item \textbf{Integration of Multiple Components}: The project demands seamless integration of crowd-sourcing models, AI algorithms, payment processing, and user interfaces, increasing the complexity of development and testing.
+  \end{itemize}
+  
+  No additional extras, such as formal proofs or GenderMag personas, are included in this project as per the agreed-upon problem statement.
+  
+  \subsection{2.4 Relevant Documentation}
+  
+  \textbf{--NOTE:-- Will add references to the SRS if the content is fine above --}
+  
+  \begin{itemize}
+      \item \textbf{Software Requirements Specification (SRS)}
+      \item \textbf{Module Guide (MG)}
+      \item \textbf{Module Interface Specification (MIS)}
+      \item \textbf{User Documentation}
+      \item \textbf{External Library and API Documentation}
+  \end{itemize}
 
 \section{Plan}
 
