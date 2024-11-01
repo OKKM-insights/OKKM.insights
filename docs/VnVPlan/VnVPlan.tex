@@ -287,6 +287,58 @@ the contents of the subsections.}
         \end{itemize}
     \end{itemize}
 \end{enumerate}
+\section*{FR1: Customer Authentication Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: FR1\_Test\_01
+    \item \textbf{Control}: \textbf{Automated}
+    \item \textbf{Initial State}: An existing user account with the following credentials:
+    \begin{itemize}
+        \item \textbf{Email}: \texttt{user.test@example.com}
+        \item \textbf{Password}: ``TestPass\#123''
+    \end{itemize}
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Customer enters the correct login credentials:
+        \begin{itemize}
+            \item \textbf{Email}: \texttt{user.test@example.com}
+            \item \textbf{Password}: ``TestPass\#123''
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item Customer is successfully authenticated.
+            \item Access to privileged information (e.g., user dashboard) is granted.
+            \item A session token or cookie is established for the user session.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Ensures that only authenticated customers can access the system, satisfying security requirements.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Automated Test Script Execution}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Navigate to the login page.
+            \item \textbf{Step 2}: Input the correct email and password.
+            \item \textbf{Step 3}: Submit the login form.
+            \item \textbf{Step 4}: Verify redirection to the user dashboard or home page.
+            \item \textbf{Step 5}: Check for the presence of privileged information on the page.
+            \item \textbf{Step 6}: Verify that a session token or authentication cookie has been set.
+            \item \textbf{Negative Test}:
+            \begin{enumerate}
+                \item \textbf{Step 7}: Attempt to access the dashboard with incorrect credentials to ensure access is denied.
+            \end{enumerate}
+        \end{enumerate}
+        \item \textbf{Session Validation}:
+        \begin{enumerate}
+            \item \textbf{Step 8}: Use the session token to access a secure API endpoint to confirm authentication persistence.
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
 
 \subsection{Tests for Nonfunctional Requirements}
 
