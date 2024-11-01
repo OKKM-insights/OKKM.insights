@@ -239,59 +239,54 @@ the contents of the subsections.}
 
 \subsection{Tests for Functional Requirements}
 
-\wss{Subsets of the tests may be in related, so this section is divided into
-  different areas.  If there are no identifiable subsets for the tests, this
-  level of document structure can be removed.}
-
-\wss{Include a blurb here to explain why the subsections below
-  cover the requirements.  References to the SRS would be good here.}
-
-\subsubsection{Area of Testing1}
-
-\wss{It would be nice to have a blurb here to explain why the subsections below
-  cover the requirements.  References to the SRS would be good here.  If a section
-  covers tests for input constraints, you should reference the data constraints
-  table in the SRS.}
-		
-\paragraph{Title for Test}
+\section*{FR0: Customer Account Creation Test}
 
 \begin{enumerate}
-
-\item{test-id1\\}
-
-Control: Manual versus Automatic
-					
-Initial State: 
-					
-Input: 
-					
-Output: \wss{The expected result for the given inputs.  Output is not how you
-are going to return the results of the test.  The output is the expected
-result.}
-
-Test Case Derivation: \wss{Justify the expected value given in the Output field}
-					
-How test will be performed: 
-					
-\item{test-id2\\}
-
-Control: Manual versus Automatic
-					
-Initial State: 
-					
-Input: 
-					
-Output: \wss{The expected result for the given inputs}
-
-Test Case Derivation: \wss{Justify the expected value given in the Output field}
-
-How test will be performed: 
-
+    \item \textbf{Test ID}: FR0\_Test\_01
+    \item \textbf{Control}: \textbf{Automated}
+    \item \textbf{Initial State}: The system is accessible, and no user account currently exists for the test user.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Customer provides valid personal information:
+        \begin{itemize}
+            \item \textbf{Name}: ``Alice Smith''
+            \item \textbf{Email}: \texttt{alice.smith@example.com}
+            \item \textbf{Password}: ``StrongPassword!2021''
+        \end{itemize}
+        \item Customer agrees to the system's privacy policy.
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item A new user account is created.
+            \item Account information is securely stored in the database.
+            \item The customer is redirected to the login page with a success message.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Based on the requirement that customers must have an account to access system services. This test verifies that with valid input and acceptance of terms, the account creation process is successfully executed and persists data appropriately.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Automated Test Script Execution}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Navigate to the account creation page using a testing tool like Selenium WebDriver.
+            \item \textbf{Step 2}: Fill in the registration form fields with the provided valid data.
+            \item \textbf{Step 3}: Check the agreement box for the privacy policy.
+            \item \textbf{Step 4}: Submit the registration form.
+            \item \textbf{Step 5}: Verify that the response indicates successful account creation (e.g., success message displayed).
+            \item \textbf{Step 6}: Confirm redirection to the login page.
+            \item \textbf{Step 7}: Query the database to verify that a new user record exists with the email \texttt{alice.smith@example.com}.
+            \item \textbf{Step 8}: Ensure the password is hashed and not stored in plain text.
+        \end{enumerate}
+        \item \textbf{Cleanup}:
+        \begin{itemize}
+            \item After verification, delete the test user account from the database to maintain a clean state for future tests.
+        \end{itemize}
+    \end{itemize}
 \end{enumerate}
-
-\subsubsection{Area of Testing2}
-
-...
 
 \subsection{Tests for Nonfunctional Requirements}
 
