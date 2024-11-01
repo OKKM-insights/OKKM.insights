@@ -594,6 +594,300 @@ the contents of the subsections.}
     \end{itemize}
 \end{enumerate}
 
+\section*{FR8: Service Request Failure Alert Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: FR8\_Test\_01
+    \item \textbf{Control}: \textbf{Manual}
+    \item \textbf{Initial State}: Customer has initiated a service request that cannot be fulfilled due to invalid parameters.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Service request with unfulfillable criteria:
+        \begin{itemize}
+            \item \textbf{Service Type}: ``Image Analysis''
+            \item \textbf{Geographic Coordinates}: Invalid coordinates (e.g., Latitude: $95^\circ$ N)
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item Customer receives an alert indicating that the service request cannot be processed.
+            \item An explanation of the failure is provided.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Ensures customers are promptly notified when requests cannot be processed, enhancing user experience.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Manual Steps}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Attempt to submit the service request with invalid coordinates.
+            \item \textbf{Step 2}: Observe the system's response.
+            \item \textbf{Step 3}: Verify that an alert or error message is displayed to the customer.
+            \item \textbf{Step 4}: Ensure the message clearly explains the reason for failure.
+            \item \textbf{Step 5}: Check that no service request is logged in the system for the invalid input.
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
+\section*{FR9: Labeler Account Creation Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: FR9\_Test\_01
+    \item \textbf{Control}: \textbf{Automated}
+    \item \textbf{Initial State}: No labeler account exists for the test user in the system.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Labeler provides required account information:
+        \begin{itemize}
+            \item \textbf{Name}: ``Bob Labeler''
+            \item \textbf{Email}: \texttt{bob.labeler@example.com}
+            \item \textbf{Password}: ``LabelerPass789!''
+            \item \textbf{Expertise Area}: ``Satellite Image Annotation''
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item A new labeler account is created and securely stored.
+            \item Labeler is prompted to complete any additional onboarding steps.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Ensures labelers can create accounts to access the system, which is essential for workflow.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Automated Test Script Execution}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Navigate to the labeler registration page.
+            \item \textbf{Step 2}: Fill in the registration form with the input data.
+            \item \textbf{Step 3}: Submit the form.
+            \item \textbf{Step 4}: Verify that a success message is displayed.
+            \item \textbf{Step 5}: Check the database to ensure the new labeler account exists with the correct details.
+            \item \textbf{Step 6}: Confirm that the password is stored securely (hashed).
+        \end{enumerate}
+        \item \textbf{Cleanup}:
+        \begin{itemize}
+            \item After verification, delete the test labeler account from the database to maintain a clean state for future tests.
+        \end{itemize}
+    \end{itemize}
+\end{enumerate}
+
+\section*{FR10: Labeler Authentication Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: FR10\_Test\_01
+    \item \textbf{Control}: \textbf{Automated}
+    \item \textbf{Initial State}: Labeler account exists with credentials:
+    \begin{itemize}
+        \item \textbf{Email}: \texttt{labeler.test@example.com}
+        \item \textbf{Password}: ``LabelerSecure!2022''
+    \end{itemize}
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Labeler enters correct login credentials.
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item Labeler is authenticated successfully.
+            \item Access to the labeler dashboard is granted.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Confirms authentication mechanisms for labelers, maintaining system security.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Automated Test Script Execution}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Navigate to the labeler login page.
+            \item \textbf{Step 2}: Input the correct credentials.
+            \item \textbf{Step 3}: Submit the login form.
+            \item \textbf{Step 4}: Verify redirection to the labeler dashboard.
+            \item \textbf{Step 5}: Check for access to labeler-specific features and data.
+            \item \textbf{Negative Test}:
+            \begin{enumerate}
+                \item \textbf{Step 6}: Attempt login with incorrect credentials to ensure authentication fails appropriately.
+            \end{enumerate}
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
+\section*{FR11: Labeler Account Modification Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: FR11\_Test\_01
+    \item \textbf{Control}: \textbf{Manual}
+    \item \textbf{Initial State}: Labeler is logged in and on the account settings page.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Update personal information:
+        \begin{itemize}
+            \item \textbf{Expertise Area}: Add ``Aerial Photography Annotation''
+            \item \textbf{Contact Number}: ``555-6789''
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item Personal information is updated and stored in the database.
+            \item Labeler receives a confirmation of successful update.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Ensures labelers can maintain current information, which is crucial for assignment matching.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Manual Steps}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Navigate to account settings.
+            \item \textbf{Step 2}: Modify the expertise area and contact number.
+            \item \textbf{Step 3}: Save the changes.
+            \item \textbf{Step 4}: Verify that the updated information is displayed.
+            \item \textbf{Step 5}: Check the database for updated records.
+            \item \textbf{Step 6}: Log out and log back in to confirm persistence.
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
+\section*{FR12: Labeler Earnings Transfer Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: FR12\_Test\_01
+    \item \textbf{Control}: \textbf{Automated}
+    \item \textbf{Initial State}: Labeler is logged in with available earnings exceeding the minimum transfer threshold.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Transfer request to linked banking platform:
+        \begin{itemize}
+            \item \textbf{Amount}: Total available earnings.
+            \item \textbf{Bank Account Details}: Pre-verified and linked.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item Earnings are transferred successfully.
+            \item Transaction record is created.
+            \item Labeler receives confirmation and updated earnings balance.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Ensures labelers are compensated accurately and promptly, critical for system trust.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Automated Test Script Execution}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Navigate to the earnings or wallet section.
+            \item \textbf{Step 2}: Initiate a transfer request for the total available amount.
+            \item \textbf{Step 3}: Mock the banking API response if necessary.
+            \item \textbf{Step 4}: Verify that the system processes the transfer without errors.
+            \item \textbf{Step 5}: Confirm that the earnings balance is updated to reflect the transfer.
+            \item \textbf{Step 6}: Check that a transaction record is logged in the database.
+            \item \textbf{Step 7}: Validate that a confirmation message or email is sent to the labeler.
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
+\section*{FR13: Image Annotation Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: FR13\_Test\_01
+    \item \textbf{Control}: \textbf{Manual}
+    \item \textbf{Initial State}: Labeler is logged in with images assigned for annotation.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Labeler annotates an image using the provided tools:
+        \begin{itemize}
+            \item Draws bounding boxes around objects.
+            \item Adds classification labels to each object.
+            \item Saves the annotation.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item Annotated image is stored in the system.
+            \item Annotation data is correctly linked to the image and service request.
+            \item Labeler receives confirmation of successful submission.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Confirms annotation capabilities, essential for image analysis services.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Manual Steps}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Access the image annotation interface.
+            \item \textbf{Step 2}: Use annotation tools to mark objects.
+            \item \textbf{Step 3}: Assign appropriate labels to each annotation.
+            \item \textbf{Step 4}: Save and submit the annotations.
+            \item \textbf{Step 5}: Verify that a confirmation is received.
+            \item \textbf{Step 6}: Check the database to ensure annotations are stored correctly.
+            \item \textbf{Step 7}: Attempt to re-access the annotated image to confirm annotations persist.
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
+\section*{FR14: Consolidated Annotation Report Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: FR14\_Test\_01
+    \item \textbf{Control}: \textbf{Automated}
+    \item \textbf{Initial State}: All required labeler annotations are complete for a service request.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item System triggers consolidation process for annotations.
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item Consolidated report is generated if label accuracy meets the predefined threshold.
+            \item Report is stored and made accessible to the customer.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Verifies that the system consolidates annotations accurately, ensuring quality results for customers.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Automated Test Script Execution}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Simulate completion of all annotations for a service request.
+            \item \textbf{Step 2}: Initiate the consolidation process (this may be automatic upon annotation completion).
+            \item \textbf{Step 3}: Verify that the system calculates label accuracy and compares it against the threshold.
+            \item \textbf{Step 4}: Confirm that if the accuracy meets or exceeds the threshold, the report is generated.
+            \item \textbf{Step 5}: Check that the report contains consolidated data from all annotations.
+            \item \textbf{Step 6}: Ensure the report is stored and accessible to the customer linked to the service request.
+            \item \textbf{Step 7}: Validate that notifications are sent to the customer about the report availability.
+        \end{enumerate}
+        \item \textbf{Edge Case Testing}:
+        \begin{enumerate}
+            \item \textbf{Step 8}: Repeat the test with annotations that do not meet the accuracy threshold to verify that the report is not generated and appropriate actions are taken (e.g., re-annotation request).
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
 \subsection{Tests for Nonfunctional Requirements}
 
 \wss{The nonfunctional requirements for accuracy will likely just reference the
