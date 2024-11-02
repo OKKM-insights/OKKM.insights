@@ -236,59 +236,654 @@ the contents of the subsections.}
 
 \subsection{Tests for Functional Requirements}
 
-\wss{Subsets of the tests may be in related, so this section is divided into
-  different areas.  If there are no identifiable subsets for the tests, this
-  level of document structure can be removed.}
-
-\wss{Include a blurb here to explain why the subsections below
-  cover the requirements.  References to the SRS would be good here.}
-
-\subsubsection{Area of Testing1}
-
-\wss{It would be nice to have a blurb here to explain why the subsections below
-  cover the requirements.  References to the SRS would be good here.  If a section
-  covers tests for input constraints, you should reference the data constraints
-  table in the SRS.}
-		
-\paragraph{Title for Test}
+\section*{FR0: Customer Account Creation Test}
 
 \begin{enumerate}
+    \item \textbf{Test ID}: FR0\_Test\_01
+    \item \textbf{Control}: \textbf{Automated}
+    \item \textbf{Initial State}: The system is accessible, and no user account currently exists for the test user.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Customer provides valid personal information:
+        \begin{itemize}
+            \item \textbf{Name}: ``Alice Smith''
+            \item \textbf{Email}: \texttt{alice.smith@example.com}
+            \item \textbf{Password}: ``StrongPassword!2021''
+        \end{itemize}
+        \item Customer agrees to the system's privacy policy.
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item A new user account is created.
+            \item Account information is securely stored in the database.
+            \item The customer is redirected to the login page with a success message.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Based on the requirement that customers must have an account to access system services. This test verifies that with valid input and acceptance of terms, the account creation process is successfully executed and persists data appropriately.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Automated Test Script Execution}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Navigate to the account creation page using a testing tool like Selenium WebDriver.
+            \item \textbf{Step 2}: Fill in the registration form fields with the provided valid data.
+            \item \textbf{Step 3}: Check the agreement box for the privacy policy.
+            \item \textbf{Step 4}: Submit the registration form.
+            \item \textbf{Step 5}: Verify that the response indicates successful account creation (e.g., success message displayed).
+            \item \textbf{Step 6}: Confirm redirection to the login page.
+            \item \textbf{Step 7}: Query the database to verify that a new user record exists with the email \texttt{alice.smith@example.com}.
+            \item \textbf{Step 8}: Ensure the password is hashed and not stored in plain text.
+        \end{enumerate}
+        \item \textbf{Cleanup}:
+        \begin{itemize}
+            \item After verification, delete the test user account from the database to maintain a clean state for future tests.
+        \end{itemize}
+    \end{itemize}
+\end{enumerate}
+\section*{FR1: Customer Authentication Test}
 
-\item{test-id1\\}
-
-Control: Manual versus Automatic
-					
-Initial State: 
-					
-Input: 
-					
-Output: \wss{The expected result for the given inputs.  Output is not how you
-are going to return the results of the test.  The output is the expected
-result.}
-
-Test Case Derivation: \wss{Justify the expected value given in the Output field}
-					
-How test will be performed: 
-					
-\item{test-id2\\}
-
-Control: Manual versus Automatic
-					
-Initial State: 
-					
-Input: 
-					
-Output: \wss{The expected result for the given inputs}
-
-Test Case Derivation: \wss{Justify the expected value given in the Output field}
-
-How test will be performed: 
-
+\begin{enumerate}
+    \item \textbf{Test ID}: FR1\_Test\_01
+    \item \textbf{Control}: \textbf{Automated}
+    \item \textbf{Initial State}: An existing user account with the following credentials:
+    \begin{itemize}
+        \item \textbf{Email}: \texttt{user.test@example.com}
+        \item \textbf{Password}: ``TestPass\#123''
+    \end{itemize}
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Customer enters the correct login credentials:
+        \begin{itemize}
+            \item \textbf{Email}: \texttt{user.test@example.com}
+            \item \textbf{Password}: ``TestPass\#123''
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item Customer is successfully authenticated.
+            \item Access to privileged information (e.g., user dashboard) is granted.
+            \item A session token or cookie is established for the user session.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Ensures that only authenticated customers can access the system, satisfying security requirements.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Automated Test Script Execution}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Navigate to the login page.
+            \item \textbf{Step 2}: Input the correct email and password.
+            \item \textbf{Step 3}: Submit the login form.
+            \item \textbf{Step 4}: Verify redirection to the user dashboard or home page.
+            \item \textbf{Step 5}: Check for the presence of privileged information on the page.
+            \item \textbf{Step 6}: Verify that a session token or authentication cookie has been set.
+            \item \textbf{Negative Test}:
+            \begin{enumerate}
+                \item \textbf{Step 7}: Attempt to access the dashboard with incorrect credentials to ensure access is denied.
+            \end{enumerate}
+        \end{enumerate}
+        \item \textbf{Session Validation}:
+        \begin{enumerate}
+            \item \textbf{Step 8}: Use the session token to access a secure API endpoint to confirm authentication persistence.
+        \end{enumerate}
+    \end{itemize}
 \end{enumerate}
 
-\subsubsection{Area of Testing2}
+\section*{FR2: Customer Account Modification Test}
 
-...
+\begin{enumerate}
+    \item \textbf{Test ID}: FR2\_Test\_01
+    \item \textbf{Control}: \textbf{Manual}
+    \item \textbf{Initial State}: Customer is logged in and has access to their account information page.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Customer updates personal information fields:
+        \begin{itemize}
+            \item \textbf{Address}: ``123 New Street, Cityville''
+            \item \textbf{Phone Number}: ``555-1234''
+            \item \textbf{Profile Picture}: Uploads a new image file.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item Updated personal information is saved and reflected in the database.
+            \item The user receives a confirmation message indicating successful update.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Confirms that authenticated customers can modify their information, maintaining data accuracy and relevance.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Manual Steps}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Log in to the customer account.
+            \item \textbf{Step 2}: Navigate to the account settings or profile page.
+            \item \textbf{Step 3}: Change the address and phone number to the new values.
+            \item \textbf{Step 4}: Upload a new profile picture.
+            \item \textbf{Step 5}: Save the changes.
+            \item \textbf{Step 6}: Verify that the changes are displayed correctly on the profile page.
+            \item \textbf{Step 7}: Check the database to ensure the new information is updated.
+            \item \textbf{Step 8}: Log out and log back in to confirm that the changes persist.
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
+\section*{FR3: Payment Processing Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: FR3\_Test\_01
+    \item \textbf{Control}: \textbf{Automated}
+    \item \textbf{Initial State}: Customer is logged in and ready to make a payment for a service request.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Valid payment information:
+        \begin{itemize}
+            \item \textbf{Credit Card Number}: ``4111 1111 1111 1111'' (Test Visa number)
+            \item \textbf{Expiry Date}: ``12/25''
+            \item \textbf{CVV}: ``123''
+            \item \textbf{Billing Address}: Matches the address on file.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item Payment is processed successfully.
+            \item A confirmation receipt is generated and emailed to the customer.
+            \item The service request status is updated to ``Paid'' or equivalent.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Verifies payment integration, ensuring that authenticated customers can complete transactions securely.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Automated Test Script Execution}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Navigate to the payment page for the pending service request.
+            \item \textbf{Step 2}: Input the valid payment details.
+            \item \textbf{Step 3}: Submit the payment form.
+            \item \textbf{Step 4}: Mock the payment gateway response if using a sandbox environment.
+            \item \textbf{Step 5}: Verify that the system displays a payment success message.
+            \item \textbf{Step 6}: Check that a confirmation receipt is generated and sent to the customer's email.
+            \item \textbf{Step 7}: Verify that the service request status is updated appropriately in the database.
+        \end{enumerate}
+        \item \textbf{Security Verification}:
+        \begin{enumerate}
+            \item \textbf{Step 8}: Ensure that sensitive payment information is not stored in plain text and complies with PCI DSS standards.
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
+\section*{FR4: Service Request Submission Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: FR4\_Test\_01
+    \item \textbf{Control}: \textbf{Manual}
+    \item \textbf{Initial State}: Customer is logged in and has a confirmed payment.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Customer fills out the service request form with necessary details:
+        \begin{itemize}
+            \item \textbf{Service Type}: ``Image Analysis''
+            \item \textbf{Description}: ``Analysis of satellite images for deforestation.''
+            \item \textbf{Preferred Completion Date}: ``2023-12-31''
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item Service request is accepted and logged in the system.
+            \item Customer receives a confirmation message and request ID.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Ensures that the system accepts valid requests from authenticated customers.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Manual Steps}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Navigate to the new service request page.
+            \item \textbf{Step 2}: Fill in the form with the input data.
+            \item \textbf{Step 3}: Submit the form.
+            \item \textbf{Step 4}: Verify that a confirmation message with a unique request ID is displayed.
+            \item \textbf{Step 5}: Check the database to confirm that the service request is logged with correct details.
+            \item \textbf{Step 6}: Ensure that the service request appears in the customer's list of active requests.
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
+\section*{FR5: Service Report Delivery Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: FR5\_Test\_01
+    \item \textbf{Control}: \textbf{Automated}
+    \item \textbf{Initial State}: Customer is logged in and has a completed service request.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Customer navigates to the ``My Reports'' section after being notified of service completion.
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item The service report is available for viewing and download.
+            \item Report contents are accurate and correspond to the service request.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Confirms that customers receive reports on completed services, fulfilling the system’s purpose.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Automated Test Script Execution}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Simulate the completion of a service request in the system (can be mocked or set up in a test environment).
+            \item \textbf{Step 2}: Log in as the customer.
+            \item \textbf{Step 3}: Navigate to the ``My Reports'' or equivalent section.
+            \item \textbf{Step 4}: Verify that the completed service report is listed.
+            \item \textbf{Step 5}: Open the report and check that it loads correctly.
+            \item \textbf{Step 6}: Validate that the report content matches the expected output based on the service provided.
+            \item \textbf{Step 7}: Attempt to download the report and ensure the file is intact and accessible.
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
+\section*{FR6: Image Upload Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: FR6\_Test\_01
+    \item \textbf{Control}: \textbf{Manual}
+    \item \textbf{Initial State}: Customer is logged in with an active service request requiring image uploads.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Customer uploads multiple image files:
+        \begin{itemize}
+            \item \texttt{Image1.jpg}: 2\,MB
+            \item \texttt{Image2.png}: 3\,MB
+            \item \texttt{Image3.tif}: 5\,MB
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item All images are successfully uploaded and stored.
+            \item Images are correctly linked to the specific service request.
+            \item Customer receives an upload success message.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Ensures that customers can upload images for requested services, fulfilling the fit criterion.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Manual Steps}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Navigate to the image upload section of the active service request.
+            \item \textbf{Step 2}: Select the image files for upload.
+            \item \textbf{Step 3}: Initiate the upload process.
+            \item \textbf{Step 4}: Monitor progress indicators for each file.
+            \item \textbf{Step 5}: Verify that a success message is displayed after upload completion.
+            \item \textbf{Step 6}: Check the service request details to ensure images are listed.
+            \item \textbf{Step 7}: Confirm that the images are stored in the correct directory or database location.
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
+\section*{FR7: Satellite Image Request Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: FR7\_Test\_01
+    \item \textbf{Control}: \textbf{Automated}
+    \item \textbf{Initial State}: Customer is logged in with an active service request that requires satellite images.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Geographic coordinates:
+        \begin{itemize}
+            \item \textbf{Latitude}: $37.7749^\circ$ N
+            \item \textbf{Longitude}: $122.4194^\circ$ W (San Francisco, CA)
+            \item \textbf{Date Range}: ``2023-01-01'' to ``2023-01-31''
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item The system retrieves and stores satellite images corresponding to the provided coordinates and date range.
+            \item Customer is notified of successful retrieval.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Confirms the system can source images using specified geographical data, aiding in analysis.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Automated Test Script Execution}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Input the geographic coordinates and date range into the request form.
+            \item \textbf{Step 2}: Submit the request.
+            \item \textbf{Step 3}: Mock the satellite data provider's API response if necessary.
+            \item \textbf{Step 4}: Verify that the system processes the input without errors.
+            \item \textbf{Step 5}: Check that the images are retrieved and stored in the system.
+            \item \textbf{Step 6}: Confirm that the images are linked to the correct service request.
+            \item \textbf{Step 7}: Validate that the customer receives a notification or confirmation message.
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
+\section*{FR8: Service Request Failure Alert Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: FR8\_Test\_01
+    \item \textbf{Control}: \textbf{Manual}
+    \item \textbf{Initial State}: Customer has initiated a service request that cannot be fulfilled due to invalid parameters.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Service request with unfulfillable criteria:
+        \begin{itemize}
+            \item \textbf{Service Type}: ``Image Analysis''
+            \item \textbf{Geographic Coordinates}: Invalid coordinates (e.g., Latitude: $95^\circ$ N)
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item Customer receives an alert indicating that the service request cannot be processed.
+            \item An explanation of the failure is provided.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Ensures customers are promptly notified when requests cannot be processed, enhancing user experience.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Manual Steps}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Attempt to submit the service request with invalid coordinates.
+            \item \textbf{Step 2}: Observe the system's response.
+            \item \textbf{Step 3}: Verify that an alert or error message is displayed to the customer.
+            \item \textbf{Step 4}: Ensure the message clearly explains the reason for failure.
+            \item \textbf{Step 5}: Check that no service request is logged in the system for the invalid input.
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
+\section*{FR9: Labeler Account Creation Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: FR9\_Test\_01
+    \item \textbf{Control}: \textbf{Automated}
+    \item \textbf{Initial State}: No labeler account exists for the test user in the system.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Labeler provides required account information:
+        \begin{itemize}
+            \item \textbf{Name}: ``Bob Labeler''
+            \item \textbf{Email}: \texttt{bob.labeler@example.com}
+            \item \textbf{Password}: ``LabelerPass789!''
+            \item \textbf{Expertise Area}: ``Satellite Image Annotation''
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item A new labeler account is created and securely stored.
+            \item Labeler is prompted to complete any additional onboarding steps.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Ensures labelers can create accounts to access the system, which is essential for workflow.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Automated Test Script Execution}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Navigate to the labeler registration page.
+            \item \textbf{Step 2}: Fill in the registration form with the input data.
+            \item \textbf{Step 3}: Submit the form.
+            \item \textbf{Step 4}: Verify that a success message is displayed.
+            \item \textbf{Step 5}: Check the database to ensure the new labeler account exists with the correct details.
+            \item \textbf{Step 6}: Confirm that the password is stored securely (hashed).
+        \end{enumerate}
+        \item \textbf{Cleanup}:
+        \begin{itemize}
+            \item After verification, delete the test labeler account from the database to maintain a clean state for future tests.
+        \end{itemize}
+    \end{itemize}
+\end{enumerate}
+
+\section*{FR10: Labeler Authentication Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: FR10\_Test\_01
+    \item \textbf{Control}: \textbf{Automated}
+    \item \textbf{Initial State}: Labeler account exists with credentials:
+    \begin{itemize}
+        \item \textbf{Email}: \texttt{labeler.test@example.com}
+        \item \textbf{Password}: ``LabelerSecure!2022''
+    \end{itemize}
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Labeler enters correct login credentials.
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item Labeler is authenticated successfully.
+            \item Access to the labeler dashboard is granted.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Confirms authentication mechanisms for labelers, maintaining system security.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Automated Test Script Execution}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Navigate to the labeler login page.
+            \item \textbf{Step 2}: Input the correct credentials.
+            \item \textbf{Step 3}: Submit the login form.
+            \item \textbf{Step 4}: Verify redirection to the labeler dashboard.
+            \item \textbf{Step 5}: Check for access to labeler-specific features and data.
+            \item \textbf{Negative Test}:
+            \begin{enumerate}
+                \item \textbf{Step 6}: Attempt login with incorrect credentials to ensure authentication fails appropriately.
+            \end{enumerate}
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
+\section*{FR11: Labeler Account Modification Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: FR11\_Test\_01
+    \item \textbf{Control}: \textbf{Manual}
+    \item \textbf{Initial State}: Labeler is logged in and on the account settings page.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Update personal information:
+        \begin{itemize}
+            \item \textbf{Expertise Area}: Add ``Aerial Photography Annotation''
+            \item \textbf{Contact Number}: ``555-6789''
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item Personal information is updated and stored in the database.
+            \item Labeler receives a confirmation of successful update.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Ensures labelers can maintain current information, which is crucial for assignment matching.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Manual Steps}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Navigate to account settings.
+            \item \textbf{Step 2}: Modify the expertise area and contact number.
+            \item \textbf{Step 3}: Save the changes.
+            \item \textbf{Step 4}: Verify that the updated information is displayed.
+            \item \textbf{Step 5}: Check the database for updated records.
+            \item \textbf{Step 6}: Log out and log back in to confirm persistence.
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
+\section*{FR12: Labeler Earnings Transfer Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: FR12\_Test\_01
+    \item \textbf{Control}: \textbf{Automated}
+    \item \textbf{Initial State}: Labeler is logged in with available earnings exceeding the minimum transfer threshold.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Transfer request to linked banking platform:
+        \begin{itemize}
+            \item \textbf{Amount}: Total available earnings.
+            \item \textbf{Bank Account Details}: Pre-verified and linked.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item Earnings are transferred successfully.
+            \item Transaction record is created.
+            \item Labeler receives confirmation and updated earnings balance.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Ensures labelers are compensated accurately and promptly, critical for system trust.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Automated Test Script Execution}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Navigate to the earnings or wallet section.
+            \item \textbf{Step 2}: Initiate a transfer request for the total available amount.
+            \item \textbf{Step 3}: Mock the banking API response if necessary.
+            \item \textbf{Step 4}: Verify that the system processes the transfer without errors.
+            \item \textbf{Step 5}: Confirm that the earnings balance is updated to reflect the transfer.
+            \item \textbf{Step 6}: Check that a transaction record is logged in the database.
+            \item \textbf{Step 7}: Validate that a confirmation message or email is sent to the labeler.
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
+\section*{FR13: Image Annotation Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: FR13\_Test\_01
+    \item \textbf{Control}: \textbf{Manual}
+    \item \textbf{Initial State}: Labeler is logged in with images assigned for annotation.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Labeler annotates an image using the provided tools:
+        \begin{itemize}
+            \item Draws bounding boxes around objects.
+            \item Adds classification labels to each object.
+            \item Saves the annotation.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item Annotated image is stored in the system.
+            \item Annotation data is correctly linked to the image and service request.
+            \item Labeler receives confirmation of successful submission.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Confirms annotation capabilities, essential for image analysis services.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Manual Steps}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Access the image annotation interface.
+            \item \textbf{Step 2}: Use annotation tools to mark objects.
+            \item \textbf{Step 3}: Assign appropriate labels to each annotation.
+            \item \textbf{Step 4}: Save and submit the annotations.
+            \item \textbf{Step 5}: Verify that a confirmation is received.
+            \item \textbf{Step 6}: Check the database to ensure annotations are stored correctly.
+            \item \textbf{Step 7}: Attempt to re-access the annotated image to confirm annotations persist.
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
+\section*{FR14: Consolidated Annotation Report Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: FR14\_Test\_01
+    \item \textbf{Control}: \textbf{Automated}
+    \item \textbf{Initial State}: All required labeler annotations are complete for a service request.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item System triggers consolidation process for annotations.
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item Consolidated report is generated if label accuracy meets the predefined threshold.
+            \item Report is stored and made accessible to the customer.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Verifies that the system consolidates annotations accurately, ensuring quality results for customers.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Automated Test Script Execution}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Simulate completion of all annotations for a service request.
+            \item \textbf{Step 2}: Initiate the consolidation process (this may be automatic upon annotation completion).
+            \item \textbf{Step 3}: Verify that the system calculates label accuracy and compares it against the threshold.
+            \item \textbf{Step 4}: Confirm that if the accuracy meets or exceeds the threshold, the report is generated.
+            \item \textbf{Step 5}: Check that the report contains consolidated data from all annotations.
+            \item \textbf{Step 6}: Ensure the report is stored and accessible to the customer linked to the service request.
+            \item \textbf{Step 7}: Validate that notifications are sent to the customer about the report availability.
+        \end{enumerate}
+        \item \textbf{Edge Case Testing}:
+        \begin{enumerate}
+            \item \textbf{Step 8}: Repeat the test with annotations that do not meet the accuracy threshold to verify that the report is not generated and appropriate actions are taken (e.g., re-annotation request).
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
 
 \subsection{Tests for Nonfunctional Requirements}
 
