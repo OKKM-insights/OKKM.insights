@@ -2,6 +2,7 @@
 
 \usepackage{booktabs}
 \usepackage{tabularx}
+\usepackage{longtable}
 \usepackage{hyperref}
 \hypersetup{
     colorlinks,
@@ -316,39 +317,360 @@ format for the tests given below.}
 How will they be done?  In cases like code (or document) walkthroughs, who will
 be involved? Be specific.}
 
-\subsubsection{Area of Testing1}
+\subsubsection{Operational and Environmental}
 		
-\paragraph{Title for Test}
+\paragraph{Release Tests}
 
 \begin{enumerate}
 
-\item{test-id1\\}
+\item{Road Map Consistency: T-OE0\\}
 
-Type: Functional, Dynamic, Manual, Static etc.
-					
-Initial State: 
-					
-Input/Condition: 
-					
-Output/Result: 
-					
-How test will be performed: 
-					
-\item{test-id2\\}
+Related Reqs: NFR-OE7
 
-Type: Functional, Dynamic, Manual, Static etc.
+Type: Manual, Static
 					
-Initial State: 
+Initial State: Application has a release road map that is publicly accessible.
 					
-Input: 
+Input/Condition: Team member conducts a review.
 					
-Output: 
+Output/Result: At least \hyperref[MIN_ON_TIME_MILESTONE]{MIN\_ON\_TIME\_MILESTONE}\% of the listed milestones have been met on time.
 					
-How test will be performed: 
+How test will be performed: The team member looks over the road map and cross references the completion date of milestones to the dates listed in the road map.
+
+\item{Beta Testing: T-OE1\\}
+
+Related Reqs: NFR-OE8
+
+Type: Dynamic, Exploratory
+					
+Initial State: Beta version of application is deployed and accessible
+					
+Input/Condition: At least \hyperref[BETA_TESTERS]{BETA\_TESTERS} beta testers are provided access to use the application.
+					
+Output/Result: Feedback on any bugs, navigation issues, or aesthetic problems is provided. Less than \hyperref[MAX_BUGS_FOUND]{MAX\_BUGS\_FOUND} bugs are found.
+					
+How test will be performed: Testers will be recruited and identified. They will be from fields of interest that include scientists, labelers, and domain experts. Then, the beta testing environment will be set up and the url will be distributed to the testers along with any other set up resources. Specific tasks are provided for testers to complete that focus on the annotation tools, sign up process and project creation. Feedback will be collected through direct comments from the tester.
+
+\item{Regression Testing: T-OE2\\}
+
+Related Reqs: NFR-OE9
+
+Type: Dynamic, Automated
+					
+Initial State: Application is deployed.
+					
+Input/Condition: Run regression test suite, consisting of unit tests.
+					
+Output/Result: All regression tests are passed.
+					
+How test will be performed: An automated script with regression tests will run when updates are made to the production build.
 
 \end{enumerate}
 
-\subsubsection{Area of Testing2}
+\subsubsection{Maintainability and Support}
+		
+\paragraph{Maintenance Tests}
+
+\begin{enumerate}
+
+\item{Ease of Change: T-MS0\\}
+
+Related Reqs: NFR-MR0
+
+Type: Manual, Static
+					
+Initial State: Application's source repository contains complete documentation.
+					
+Input/Condition: Competent software developer who has not previously worked on the app reviews documentation and attempts to perform tasks.
+					
+Output/Result: The developer can easily make a minor update to a specified part of the application.
+					
+How test will be performed: Give the developer time to read through the documentation. Give them a maintenance task, such as updating the size of the title font to 20px. Observe them and document how long it takes them and if they encountered any troubles.
+\end{enumerate}
+
+\subsubsection{Security}
+		
+\paragraph{Access Tests}
+
+\begin{enumerate}
+
+\item{Logged Out Permissions: T-SE0\\}
+
+Related Reqs: NFR-SE0
+
+Type: Manual, Dynamic, White-box
+					
+Initial State: Application is deployed.
+					
+Input/Condition: Tester who is not signed in tries to access application paths for project creation and image labeling (Ex. /projects or /label).
+					
+Output/Result: The tester is denied access to these paths and is told to sign in.
+					
+How test will be performed: On the deployed application, the tester will visit all possible paths as a logged out user.
+
+\item{Labeler Permissions: T-SE1\\}
+Related Reqs: NFR-SE1
+
+Type: Manual, Dynamic, White-box
+					
+Initial State: Application is deployed.
+					
+Input/Condition: Tester who is signed in as a labeler tries to access application paths for project creation.
+					
+Output/Result: The tester is denied access to these paths. However, the tester has access to paths related to image labeling.
+					
+How test will be performed: On the deployed application, the tester will visit all possible paths as a labeler.
+
+\item{Invalid Email Format: T-SE2\\}
+Related Reqs: NFR-SE2, NFR-SE5
+
+Type: Automatic, Dynamic
+					
+Initial State: Front-end registration page is created and integrated with the database.
+					
+Input/Condition: Email with invalid format, such as an empty string or a string missing '@', is entered.
+					
+Output/Result: Application rejects email and tells the user that the email format is wrong.
+					
+How test will be performed: A unit test will be performed where the input is entered into the email section of the registration form.
+
+\item{Duplicate Email: T-SE3\\}
+Related Reqs: NFR-SE2, NFR-SE5
+
+Type: Automatic, Dynamic
+					
+Initial State: Front-end registration page is created and integrated with the database.
+					
+Input/Condition: Email that is already in database is entered.
+					
+Output/Result: Application rejects email and tells the user that the email is in use.
+					
+How test will be performed: A unit test will be performed where the input is entered into the email section of the registration form.
+
+\item{Invalid Password Format: T-SE4\\}
+Related Reqs: NFR-SE3, NFR-SE5
+
+Type: Automatic, Dynamic
+					
+Initial State: Front-end registration page is created and integrated with the database.
+					
+Input/Condition: Password with invalid format, such as an empty string or a string with no numbers, is entered.
+					
+Output/Result: Application rejects password and tells the user what requirements they have not met.
+					
+How test will be performed: A unit test will be performed where the input is entered into the password section of the registration form.
+
+\item{System Error: T-SE5\\}
+Related Reqs: NFR-SE4, NFR-SE6
+
+Type: Manual, Dynamic
+					
+Initial State: Application is deployed.
+					
+Input/Condition: Purposely invoke a system failure, and attempt to perform an action such as a label submission.
+					
+Output/Result: Application provides an error message on the user interface. The database has not changed in anyway.
+					
+How test will be performed: Go on to the application, start a labeling task, purposely disconnect from the internet, and try to submit a labeled image.
+
+\end{enumerate}
+
+\paragraph{Integrity Tests}
+
+\begin{enumerate}
+
+\item{Duplicate Entries: T-SE6\\}
+
+Related Reqs: NFR-SE7
+
+Type: Manual, Dynamic
+					
+Initial State: Database is deployed.
+					
+Input/Condition: Duplicate database entry is inserted into the database.
+					
+Output/Result: Database has only one of the inputted entry and the duplicate has been removed.
+					
+How test will be performed: Attempt to insert the same entry twice into the database through the database UI.
+
+\end{enumerate}
+
+\paragraph{Privacy Tests}
+
+\begin{enumerate}
+
+\item{Encrypted User Data: T-SE7\\}
+
+Related Reqs: NFR-SE8
+
+Type: Manual, Dynamic
+					
+Initial State: Application is deployed.
+					
+Input/Condition: Tester registers an account.
+					
+Output/Result: All sensitive user data that is stored in the database is encrypted.
+					
+How test will be performed: Tester will create a new account, then check the corresponding user entry in the database and see if the sensitive information is encrypted.
+
+\item{Encrypted Payments: T-SE8\\}
+
+Related Reqs: NFR-SE9
+
+Type: Manual, Dynamic
+					
+Initial State: Application is deployed.
+					
+Input/Condition: Tester enters sample payment details to pay for a labeling project that has been created.
+					
+Output/Result: These details are encrypted and can not be read through packet analyzers. The amount in the request can not be modified by an adversary.
+					
+How test will be performed: Tester will enter sample payment details, and submit their payment. Using a packet analyzer (such as Wireshark), packets from this request will be looked at to ensure all information is encrypted.
+
+\end{enumerate}
+
+\paragraph{Immunity Tests}
+
+\begin{enumerate}
+
+\item{SQL Injection: T-SE9\\}
+
+Related Reqs: NFR-SE10
+
+Type: Manual, Dynamic
+					
+Initial State: Application is deployed.
+					
+Input/Condition: A malicious SQL statement is entered into a text field.
+					
+Output/Result: The system raises an error telling the user that it is invalid.
+					
+How test will be performed: Tester will enter a SQL statement such as "\{valid email\}'--" into an input such as the email input. This example has the potential to bypass a password check by commenting out the rest of the SQL query. The tester will check that when this statement is entered, the system gives feedback that it is invalid.
+
+\end{enumerate}
+
+\subsubsection{Cultural}
+		
+\paragraph{Language Tests}
+
+\begin{enumerate}
+
+\item{Support of Different Languages: T-CU0\\}
+
+Related Reqs: NFR-CU0
+
+Type: Manual, Dynamic
+					
+Initial State: Application is deployed.
+					
+Input/Condition: Tester selects a language from a list of available languages.
+					
+Output/Result: All text on the website is translated and displayed in the selected language.
+					
+How test will be performed: Tester will check that the language selection list is accessible, and that the most popular languages are included. When a language is selected, the tester will check that the translation has been applied and there is no untranslated or gibberish text. This can be checked for each language.
+\end{enumerate}
+
+\subsubsection{Compliance}
+
+\paragraph{Financial Tests}
+
+\begin{enumerate}
+
+\item{Compliant Payment Process: T-CO0\\}
+
+Related Reqs: NFR-SE9
+
+Type: Manual, Static
+					
+Initial State: Application is deployed.
+					
+Input/Condition: Qualified Security Assessor (QSA) assesses the application.
+					
+Output/Result: They determine that it meets the PCI-DSS standard.
+					
+How test will be performed: A QSA will be found and contacted to perform an assessment. The QSA will be shown all parts of the application that deal will financial transactions and will be able to make a determination on if it meets the standard.
+\end{enumerate}
+		
+\paragraph{Legal Tests}
+
+\begin{enumerate}
+
+\item{System Availability: T-CO1\\}
+
+Related Reqs: NFR-CO0
+
+Type: Manual, Dynamic
+					
+Initial State: Application is deployed.
+					
+Input/Condition: Tester changes country they are accessing the application from using a tool such as a VPN.
+					
+Output/Result: Application is blocked in countries facing economic sanctions by the Government of Canada.
+					
+How test will be performed: A list of the countries facing economic sanctions by Canada will be compiled. Then, the tester will simulate that they are accessing the application from these countries, and ensure it is unreachable.
+
+\item{Taxes: T-CO2\\}
+
+Related Reqs: NFR-CO1
+
+Type: Manual, Dynamic
+					
+Initial State: Application is deployed.
+					
+Input/Condition: Tester redeems a cash balance.
+					
+Output/Result: If the cash balance exceeds a threshold, a tax form will be issued.
+					
+How test will be performed: Tester creates a test account with an account balance over the threshold. When they withdraw, they check that a tax form has been emailed to the email associated with the account. The tax form should reflect the withdrawal balance.
+
+\item{Project Availability: T-CO3\\}
+
+Related Reqs: NFR-CO2
+
+Type: Manual, Dynamic
+					
+Initial State: Application is deployed.
+					
+Input/Condition: Tester changes country they are accessing the application from using a tool such as a VPN.
+					
+Output/Result: Specific project is not shown.
+					
+How test will be performed: A project will be specified to only be distributed in a specific country. Then, the tester will simulate that they are accessing the application from other countries, and ensure the project does not show up.
+
+\end{enumerate}
+
+\subsubsection{User Documentation and Training}
+
+\begin{enumerate}
+
+\item{Helpfulness of User Aids: T-UDT0\\}
+
+Related Reqs: NFR-UD0, NFR-UD1, NFR-UD2, NFR-TR0
+
+Type: Manual, Dynamic
+					
+Initial State: Application is deployed with all help features. Tutorials and user documentation have been created.
+					
+Input/Condition: Users attempt to complete a basic labeling task using only the platform’s built-in help resources (help system, quick start guide, tutorials and contextual tooltips).
+					
+Output/Result: At least \hyperref[MIN_USER_HELP_SATISFACTION]{MIN\_USER\_HELP\_SATISFACTION}\% of users who used a help feature found that feature helpful. With the assistance of the help tools, the user was able to perform the task within \hyperref[MAX_TASK_TIME]{MAX\_TASK\_TIME} minutes.
+					
+How test will be performed: The purpose of the platform will be explained to the users and the built-in help features will be shown. Then, the labeling task will be given to them. Time to complete task is observed and the help tools they use are recorded. Participants will then fill out a usability survey, which can be viewed in the appendix.
+
+\item{Usefulness of Sandbox: T-UDT1\\}
+
+Related Reqs: NFR-TR1
+
+Type: Automatic, Dynamic
+					
+Initial State: Application is deployed with all help features. Tutorials and user documentation has been created.
+					
+Input/Condition: A new user has accessed the platform.
+					
+Output/Result: At least \hyperref[MIN_PRACTICE_USAGE]{MIN\_PRACTICE\_USAGE}\% of new users utilize the practice environment, with self-assessment scores indicating an average improvement of \hyperref[IMPROVE_IN_ACC]{IMPROVE\_IN\_ACC}\% in labeling accuracy over their first three attempts.
+					
+How test will be performed: Practice environment utilization will be tracked by the application. Improvement in accuracy will also be tracked. If the metrics meet or succeed our thresholds, then we can conclude the sandbox is useful.
+\end{enumerate}
 
 ...
 
@@ -497,9 +819,38 @@ This is where you can place additional information.
 The definition of the test cases will call for SYMBOLIC\_CONSTANTS.
 Their values are defined in this section for easy maintenance.
 
-\subsection{Usability Survey Questions?}
+\begin{longtable}{|l|l|l|p{4cm}|}
+  \hline
+  \textbf{Parameter} & \textbf{Value} & \textbf{Unit} & \textbf{Description} \\ \hline
+  \endfirsthead
 
-\wss{This is a section that would be appropriate for some projects.}
+  \hline
+  \textbf{Parameter} & \textbf{Value} & \textbf{Unit} & \textbf{Description} \\ \hline
+  \endhead
+
+  \hline
+  \endfoot
+
+  \hline
+  MIN\_ON\_TIME\_MILESTONE & 80 & \% & Minimum percent of milestones that have been met on time \label{MIN_ON_TIME_MILESTONE} \\ \hline
+  BETA\_TESTERS & 50 & People & Number of beta testers \label{BETA_TESTERS} \\ \hline
+  MAX\_BUGS\_FOUND & 10 & Bugs & Number of software bugs found \label{MAX_BUGS_FOUND} \\ \hline
+  MIN\_USER\_HELP\_SATISFACTION & 80 & \% & Minimum percent of users satisfied with help feature \label{MIN_USER_HELP_SATISFACTION} \\ \hline
+  MAX\_TASK\_TIME & 15 & Minutes & Maximum time it takes a user to complete a task \label{MAX_TASK_TIME} \\ \hline
+  MIN\_PRACTICE\_USAGE & 80 & \% & Minimum percent of new users who have used the practice sandbox \label{MIN_PRACTICE_USAGE} \\ \hline
+  IMPROVE\_IN\_ACC & 20 & \% & Improvement in accuracy of a user after practicing \label{IMPROVE_IN_ACC} \\ \hline
+\end{longtable}
+
+\subsection{Usability Survey Questions}
+\begin{enumerate}
+  \item Did you use the help system to aid in completing your task? Yes/No
+  \item If you answered yes, please rate how useful it was in helping you accomplish your task: 1 (Not Useful) - 5 (Very Useful)
+  \item Did you use the quick start guide to aid in completing your task? Yes/No
+  \item If you answered yes, please rate the clarity and helpfulness of it: 1 (Not Helpful) - 5 (Very Helpful)
+  \item Did you notice the tool-tips or pop-ups providing contextual help as you worked? Yes/No
+  \item If you answered yes, please rate the clarity and usefulness of the in-app help indicators: 1 (Not Helpful) - 5 (Very Helpful)
+  
+\end{enumerate}
 
 \newpage{}
 \section*{Appendix --- Reflection}
