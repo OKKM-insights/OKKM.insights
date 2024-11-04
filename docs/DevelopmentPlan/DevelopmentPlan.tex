@@ -205,12 +205,21 @@ type checker as part of our CI/CD workflow. This is possible with a package call
  \href{https://mypy-lang.org/}{mypy}.\\
 
  For both the front and back ends of the project, we have selected coding standards as described in section 11. To ensure these standards are met, we will include
- a linting step before pull requests can be merged into the main branch.
+ a linting step before pull requests can be merged into the main branch. We will use typescript-eslint for typescript and mypy for Python.
 
 \subsubsection{Testing}
 We will use a suite of tests to ensure our code base continues to satisfy our requirements before integrating changes into the code base. These tests
-will be run when a new pull request is created, before a code review is conducted.
+will be run when a new pull request is created, before a code review is conducted to ensure only passing code is reviewed by the team.
 
+For the Python code in the backend, we will use PyTest to check key functionality. Through linting checks, we will have already ensured the variable types match and the code syntax is correct.
+These tests will be used to provide additional confidence in the adherence to requirements. Thus, we are planning to have 100\% coverage of the relevant functional requirements in our automated testing suite.
+Several NFRs require additional set-up to verify, such as stress testing, and therefore are not practical to cover in automated tests. These will be assessed through other activities.
+
+For the front-end and system testing, we will be using PlayWright to conduct automated tests. This framework allows the tester to develop a suite of tests which can be run on multiple browsers, 
+and with seperate contexts. This will help ensure the compatability of the system across environments. This will support not only front end testing, but automation of system testing. When the front end actions
+are triggered, the python backend can be evoked.
+
+We will keep track of lines of code, branches, and requirements covered by our automated tests to provide metrics of test coverage. We will consider using Coverage.py to keep track of the lines of Python code run and codecov for Javascript/typescript. 
 \subsubsection{Deployment}
 Depending on how we decided to host our server, we will also investigate if it would be beneficial to develop a continuous deployment workflow when changes are 
 pushed to the main branch. This will be determined in the future when our requirements are more clear.
