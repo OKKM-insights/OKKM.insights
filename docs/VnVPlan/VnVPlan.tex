@@ -1,4 +1,6 @@
 \documentclass[12pt, titlepage]{article}
+\usepackage[style=numeric]{biblatex} % We are using biblatex with numeric style sorted alphabetically
+\addbibresource{references.bib}
 
 \usepackage{booktabs}
 \usepackage{tabularx}
@@ -87,11 +89,11 @@ This document ... \wss{provide an introductory blurb and roadmap of the
 
   \section{2 General Information}
 
-  \subsection{2.1 Summary}
+  \subsection{2.1 Summary} \cite{Problem_Statement}
   
   Orbit Watch is an online platform developed by OKKM Insights to streamline and simplify satellite imagery data analysis. The software addresses the scarcity of high-quality, labeled satellite imagery datasets tailored for specific use cases across various industries such as disaster response, environmental monitoring, urban planning, and defense. Leveraging an AI-powered crowd-sourcing model, Orbit Watch enables users to label commercially available satellite images. These labeled datasets are then utilized to train custom computer vision models, enhancing accuracy and efficiency in image analysis. The platform offers a paid service for identifying objects within satellite images and distributes earnings to users who contribute to the labeling efforts.
   
-  \subsection{2.2 Objectives}
+  \subsection{2.2 Objectives} \cite{Problem_Statement}
   
   The primary objectives of the Verification and Validation (V\&V) plan for Orbit Watch are:
   
@@ -103,14 +105,15 @@ This document ... \wss{provide an introductory blurb and roadmap of the
   The following objectives are out of scope for this V\&V plan:
   
   \begin{itemize}
-      \item \textbf{Usability Testing (Ease of Use)}: Due to limited resources, we will not conduct extensive usability testing to verify the ease of use of the platform. We assume that the user interface adheres to standard design principles that facilitate user interaction with minimal training.
       \item \textbf{Verification of External Components}: We will not verify external libraries or services used for image acquisition, payment processing, or AI algorithms. It is assumed that these components have been adequately verified by their respective development teams.
       \item \textbf{Stretch Goals}: Objectives related to automatic data labeling and multi-source integration are considered stretch goals and will not be included in the current V\&V efforts due to time and resource constraints.
   \end{itemize}
   
-  \subsection{2.3 Challenge Level and Extras}
+  \subsection{2.3 Challenge Level and Extras}\cite{Development_Plan} \cite{Problem_Statement}
   
-  This project is classified at the \textbf{advanced} challenge level due to several factors:
+  \, \, \, We aim to classify this project as an advanced level project. \\
+
+  This project can be classified at the \textbf{advanced} challenge level due to several factors:
   
   \begin{itemize}
       \item \textbf{Limited Domain Knowledge}: The team has minimal experience with satellite imagery and computer vision models, requiring additional research and learning to implement effective solutions.
@@ -118,19 +121,49 @@ This document ... \wss{provide an introductory blurb and roadmap of the
       \item \textbf{Integration of Multiple Components}: The project demands seamless integration of crowd-sourcing models, AI algorithms, payment processing, and user interfaces, increasing the complexity of development and testing.
   \end{itemize}
   
-  No additional extras, such as formal proofs or GenderMag personas, are included in this project as per the agreed-upon problem statement.
+
+\textbf{Extras from the Problem Statement} \cite{Problem_Statement}
+
+\begin{itemize}
+    \item \textbf{Usability Testing}: This phase involves selecting a group of users, ideally from the target demographic (e.g., professionals in satellite imagery analysis or end-users in agriculture or rescue services). These users interact with the application's interface, performing tasks relevant to the platform's purpose, like labeling images or reviewing AI-generated annotations. They then provide feedback via a structured questionnaire focusing on usability aspects—such as ease of use, intuitiveness, and clarity. This feedback helps refine the user interface to ensure it meets user expectations and requirements.
+
+    \item \textbf{Demonstration Video}: The video will serve as an onboarding tool, guiding users on how to navigate and utilize the platform effectively. It will highlight key features, demonstrate a labeling task from start to finish, and showcase any unique functionalities, such as model-assisted annotations or accuracy checks. The video can be used in training materials or as a quick tutorial accessible directly from the platform to help new users become familiar with the tool's workflow.
+
+    \item \textbf{Formal Proof of Convergence for Labeled Images}: This proof aims to establish that labeled images converge toward a standard of accuracy and consistency. This involves statistical or mathematical validation showing that repeated labeling by different users (or with the assistance of AI) leads to a stable and reliable dataset over time. Proving convergence is crucial in ensuring that the labeling quality remains high, even as new users interact with the platform. This might include metrics such as inter-annotator agreement or AI confidence scores, contributing to the credibility and reliability of the labeled dataset.
+\end{itemize}
   
-  \subsection{2.4 Relevant Documentation}
-  
-  \textbf{--NOTE:-- Will add references to the SRS if the content is fine above --}
-  
-  \begin{itemize}
-      \item \textbf{Software Requirements Specification (SRS)}
-      \item \textbf{Module Guide (MG)}
-      \item \textbf{Module Interface Specification (MIS)}
-      \item \textbf{User Documentation}
-      \item \textbf{External Library and API Documentation}
-  \end{itemize}
+\subsection{2.4 Relevant Documentation}
+
+\bigskip
+Created BibTeX entries for our documents and within those entries we have included a hyperlink to the documents. As listed above. Here is a sample of the references for all of the documents. Future references are also included in this sample. \\
+
+\begin{itemize}
+    \item Development Plan - \cite{Development_Plan}
+    \item Module Guide - \cite{MG}
+    \item Module Interface Specification - \cite{MIS}
+    \item Verification and Validation Plan - \cite{VnV}
+    \item Problem Statement - \cite{Problem_Statement}
+    \item Software Requirements Specification - \cite{SRS}
+\end{itemize}
+
+By referencing these documents, we ensure that our V\&V efforts are comprehensive and aligned with the project's goals and requirements. Each document provides specific insights that help us design effective verification and validation activities:
+
+\begin{itemize}
+    \item \textbf{Problem Statement} (\cite{Problem_Statement}): Outlines the core challenges and objectives of the Orbit Watch project, providing context and motivation for development. It helps align our V\&V activities with the original goals and ensures that the software addresses the identified needs.
+
+    \item \textbf{Development Plan} (\cite{Development_Plan}): Details the project timeline, milestones, and resource allocation. It assists in scheduling V\&V activities appropriately within the development lifecycle, ensuring they are integrated at optimal points for maximum effectiveness.
+
+    \item \textbf{Software Requirements Specification (SRS)} (\cite{SRS}): Defines all functional and non-functional requirements of Orbit Watch. It serves as the foundation for developing test cases to verify that the software meets all specified requirements and performs as intended.
+
+    \item \textbf{Module Guide (MG)} (\cite{MG}): Provides an overview of the system's modular architecture, including the decomposition into modules and their relationships. This information is vital for planning integration testing and ensuring that the modules interact correctly.
+
+    \item \textbf{Module Interface Specification (MIS)} (\cite{MIS}): Details the interfaces for each module, specifying input and output parameters. This is essential for verifying that modules communicate correctly and adhere to their specified interfaces, which is critical for system reliability.
+
+    \item \textbf{Verification and Validation Plan (V\&V Plan)} (\cite{VnV}): Outlines the strategies, methodologies, and resources allocated for the V\&V activities. It guides our testing efforts and ensures that all aspects of the system are adequately verified and validated according to the project's objectives.
+\end{itemize}
+
+By utilizing these documents, our V\&V efforts are thorough and focused on delivering a reliable and accurate platform for satellite imagery analysis.
+
 
 \section{Plan}
 
@@ -1112,5 +1145,7 @@ graduate attribute of Lifelong Learning.
   mastering the skill?  Of the identified approaches, which will each team
   member pursue, and why did they make this choice?
 \end{enumerate}
+
+\printbibliography % For biblatex
 
 \end{document}
