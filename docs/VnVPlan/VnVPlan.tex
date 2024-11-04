@@ -1,5 +1,6 @@
 \documentclass[12pt, titlepage]{article}
 
+\usepackage{amsmath} 
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{hyperref}
@@ -318,35 +319,53 @@ be involved? Be specific.}
 
 
 
+
+
+
+
 % NFRs 10---------------------------------------------------------
 \subsubsection{Look and Feel Tests}
 % 10.1
 \paragraph{Appearance Tests}
 \begin{enumerate}
-\item{Responsive Design Validation: T-LF0\\}
+\item{Responsive Layout Validation: T-LF0\\}
 
 Related Reqs: NFR-LF0
 
-Type: Manual, Dynamic
+Type: Manual, Usability
 
-Initial State: Application is accessible on devices or simulators with varying screen resolutions.
+Initial State: Users access the application on devices with screen resolutions ranging from 1024$\times$768 pixels to 1920$\times$1080 pixels.
 
-Input/Condition: Access the application on screens with resolutions 1024×768, 1280×800, 1366×768, 1600×900, and 1920×1080 pixels.
+Input/Condition: The application is displayed on various screen sizes within the specified range to verify adaptability and layout consistency.
 
-How test will be performed: A tester will resize the application window or use different devices to display the application at each specified resolution. The tester will verify that all visual elements remain within screen boundaries, the layout stays uncluttered, and text remains legible without the need for scrolling or zooming.
+How test will be performed:
+\begin{enumerate}
+    \item Select a representative set of screen resolutions within the range 1024$\times$768 to 1920$\times$1080 pixels (e.g., 1024$\times$768, 1366$\times$768, 1440$\times$900, 1600$\times$900, 1920$\times$1080).
+    \item Use physical devices or browser developer tools to simulate each selected screen resolution.
+    \item Verify that all visual elements (buttons, text, images, menus) are fully visible and do not exceed screen boundaries.
+    \item Ensure that the layout remains uncluttered, with appropriate spacing and alignment across different screen sizes.
+\end{enumerate}
 
-\item{Visual Feedback Validation: T-LF1\\}
+\item{Interactive Elements Feedback Validation: T-LF1\\}
 
 Related Reqs: NFR-LF1
 
-Type: Manual, Dynamic
+Type: Manual, Usability
 
-Initial State: Application is accessible and contains interactive elements such as buttons, links, and icons.
+Initial State: Interactive elements (e.g., buttons, links) are present within the application interface.
 
-Input/Condition: User interacts with each interactive element through actions like clicking, hovering, or tapping.
+Input/Condition: Users interact with various interactive elements to verify that visual feedback is provided appropriately.
 
-How test will be performed: A tester will interact with all interactive elements and observe whether each element provides the appropriate visual feedback. This includes verifying that buttons change color, display animations, show shadows, or use other visual cues to indicate interaction. The tester will document any inconsistencies or failures in providing the required visual feedback.
+How test will be performed:
+\begin{enumerate}
+    \item Identify all interactive elements within the application, including buttons, links, and menu items.
+    \item For each interactive element, perform the following interactions: hover, click, and focus (if applicable).
+    \item Observe and document the visual feedback provided for each interaction, such as color changes, animations, or shadows.
+    \item Ensure that every interactive element provides at least one form of visual feedback as specified in the fit criterion.
 \end{enumerate}
+
+\end{enumerate}
+
 
 % 10.2
 \paragraph{Style Tests}
@@ -355,13 +374,20 @@ How test will be performed: A tester will interact with all interactive elements
 
 Related Reqs: NFR-LF2
 
-Type: Manual, Static
+Type: Manual, Usability
 
-Initial State: Application is fully developed and accessible across all modules and components.
+Initial State: The application interface displays all components (buttons, menus, text fields, images, etc.) with the unified visual design specifications.
 
-Input/Condition: Tester navigates through all sections, pages, and components of the application.
+Input/Condition: Users or testers navigate through the application to assess the consistency of font type, sizing, color, and background tones across all components.
 
-How test will be performed: The tester will systematically review each component and page to ensure that font types, font sizes, colors, and background tones are consistent throughout the application. This includes verifying headers, buttons, labels, and any other text elements against the design specifications. The tester will use design guidelines or a style guide as a reference to identify any inconsistencies. Any discrepancies or deviations from the unified visual design will be documented and reported for correction.
+How test will be performed:
+\begin{enumerate}
+    \item Review the application's style guide or design specifications to understand the expected visual standards.
+    \item Navigate through each section of the application, observing the font type, size, color, and background tones used in various components.
+    \item Compare each observed element against the style guide to ensure consistency.
+    \item Utilize browser developer tools or design inspection tools to verify CSS properties related to fonts and colors.
+\end{enumerate}
+
 \end{enumerate}
 
 
@@ -380,29 +406,44 @@ How test will be performed: The tester will systematically review each component
 \paragraph{Ease of Use Tests}
 \begin{enumerate}
 
-\item{Navigation Efficiency Test: T-UH0\\}
+\item{Navigation Menu Usability Test: T-UH0\\}
 
 Related Reqs: NFR-UH0
 
 Type: Manual, Usability
 
-Initial State: Application is fully functional with a well-organized navigation menu.
+Initial State: Users have access to the platform's main interface with a well-organized navigation menu.
 
-Input/Condition: A representative sample of users is given tasks to navigate to main features such as labeling tasks, settings, help, and account details.
+Input/Condition: Users are asked to locate and access various main features (e.g., labeling tasks, settings, help, account details) using the navigation menu.
 
-How test will be performed: Conduct a usability test where each user is asked to locate and access each main feature within the application. Track the number of clicks each user takes to reach the desired feature. Calculate the percentage of users who successfully navigate to each main feature within 3 clicks. Verify that at least 90\% of users meet this criterion. Additionally, collect user feedback through a survey to identify any navigation issues or areas for improvement.
+How test will be performed:
+\begin{enumerate}
+    \item Prepare a set of tasks where users must navigate to specific main features (e.g., "Find the labeling tasks section", "Access account details").
+    \item Instruct users to perform each task using the navigation menu, counting the number of clicks required to reach the target feature.
+    \item Record whether each task is completed within 3 clicks.
+    \item Calculate the percentage of tasks where users were able to navigate to the target feature within 3 clicks.
+    \item Ensure that at least \hyperref[MIN_USER_USABILITY_METRIC]{MIN\_USER\_USABILITY\_METRIC}\% of the tasks meet the success criterion.
+    \item Analyze any tasks that exceed the 3-click limit to identify navigation issues.
+\end{enumerate}
 
-\item{UI Consistency Validation: T-UH1\\}
+\item{Consistency of UI Elements Validation: T-UH1\\}
 
 Related Reqs: NFR-UH1
 
 Type: Manual, Usability
 
-Initial State: The application is fully functional with all buttons, forms, and other UI elements styled consistently across all pages.
+Initial State: The application interface displays all UI elements (buttons, forms, etc.) following the platform’s visual style guidelines.
 
-Input/Condition: A representative sample of users is asked to perform a series of tasks that involve interacting with various UI elements across different sections of the application.
+Input/Condition: Users navigate through different pages of the application, interacting with various UI elements to assess consistency.
 
-How test will be performed: Conduct usability tests where each user navigates through multiple pages and interacts with buttons, forms, and other UI components. Observe and record whether users can recognize and correctly use recurring interface elements without confusion. Calculate the percentage of users who successfully recognize and correctly interact with these elements across different pages. Ensure that at least 95\% of users meet this criterion. Additionally, collect qualitative feedback through surveys to identify any instances of inconsistency or user difficulties, and use this information to make necessary UI adjustments.
+How test will be performed:
+\begin{enumerate}
+    \item Review the application's style guide or design specifications to identify the expected consistent styles for UI elements.
+    \item Identify all recurring interactive elements (e.g., buttons, forms, menus) across different pages of the application.
+    \item Instruct users to perform the tasks, observing whether they recognize and correctly use the UI elements based on their consistency.
+    \item Calculate the percentage of users who correctly recognized and used the recurring interface elements across different pages.
+    \item Ensure that at least \hyperref[MIN_USER_USABILITY_METRIC]{MIN\_USER\_USABILITY\_METRIC}\% of users meet the recognition and correct usage criterion.
+\end{enumerate}
 
 \end{enumerate}
 
@@ -425,8 +466,7 @@ How test will be performed:
     \item Select a representative sample of users and have them set their task preferences in their profiles.
     \item Over a set period (e.g., two weeks), track the labeling tasks assigned to these users.
     \item Analyze the assigned tasks to determine the percentage that matches the users' specified preferences.
-    \item Verify that at least 80\% of the assigned tasks align with the users' preferences.
-    \item Additionally, conduct surveys or interviews with the users to gather feedback on the relevance and satisfaction with the task assignments.
+    \item Verify that at least \hyperref[MIN_PREF_MATCH]{MIN\_PREF\_MATCH}\% of the assigned tasks align with the users' preferences.
 \end{enumerate}
 
 \item{Localized Format Validation: T-UH3\\}
@@ -473,7 +513,7 @@ How test will be performed:
     \item Ensure that the progress tracker accurately displays the status of each learning module, indicating which are completed and which are pending.
     \item After users have completed the training, administer a post-training survey asking them to rate the helpfulness of the progress tracker.
     \item Analyze the survey responses to determine the percentage of users who find the progress tracker helpful.
-    \item Verify that at least 80\% of the surveyed users rate the progress tracker as helpful.
+    \item Verify that at least \hyperref[MIN_TRAINING_TRACKER_USEFULNESS]{MIN\_TRAINING\_TRACKER\_USEFULNESS}\% of the surveyed users rate the progress tracker as helpful.
     \item Collect additional qualitative feedback to identify any issues or areas for improvement in the progress tracking feature.
 \end{enumerate}
 
@@ -491,9 +531,9 @@ How test will be performed:
 \begin{enumerate}
     \item Recruit a representative sample of new users and onboard them to the platform.
     \item Instruct users to complete a simulated labeling task provided in the practice section.
-    \item Track the completion rate of simulated tasks to determine if at least 85\% of users complete a practice task before accessing real data.
+    \item Track the completion rate of simulated tasks to determine if at least \hyperref[MIN_PRACTICE_TASK_COMPLETION]{MIN\_PRACTICE\_TASK\_COMPLETION}\% of users complete a practice task before accessing real data.
     \item After task completion, administer a satisfaction survey to users to gather feedback on their experience with the simulated tasks.
-    \item Analyze survey results to ensure that at least 90\% of users report satisfaction with the practice tasks.
+    \item Analyze survey results to ensure that at least \hyperref[MIN_PRACTICE_TASK_SATISFACTION]{MIN\_PRACTICE\_TASK\_SATISFACTION}\% of users report satisfaction with the practice tasks.
     \item Document any issues or feedback received to identify areas for improvement in the simulated labeling experience.
 \end{enumerate}
 
@@ -516,13 +556,10 @@ Input/Condition: Users interact with different features and tasks, triggering co
 
 How test will be performed:
 \begin{enumerate}
-    \item Select a representative sample of users to participate in usability testing.
     \item Instruct users to perform a set of typical tasks within the platform, ensuring they engage with areas where contextual help pop-ups are available.
     \item Monitor and record instances where contextual help pop-ups appear during user interactions.
-    \item After task completion, administer a survey asking users to rate the clarity and helpfulness of the contextual help pop-ups on a predefined scale.
-    \item Analyze the survey responses to determine if at least 90\% of users find the contextual help pop-ups clear and helpful.
+    \item Analyze the survey responses to determine if at least \hyperref[MIN_POPUP_USEFULNESS]{MIN\_POPUP\_USEFULNESS}\% of users find the contextual help pop-ups clear and helpful.
     \item Collect qualitative feedback to identify any areas where help pop-ups could be improved or where additional help pop-ups may be needed.
-    \item Document any discrepancies or issues encountered during the testing and provide recommendations for enhancements.
 \end{enumerate}
 
 \item{Error Message Effectiveness Test: T-UH7\\}
@@ -538,14 +575,11 @@ Input/Condition: Users perform actions that intentionally trigger different type
 How test will be performed:
 \begin{enumerate}
     \item Identify and document common error scenarios within the platform.
-    \item Recruit a representative sample of users to participate in usability testing.
     \item Instruct users to perform tasks that will trigger each identified error scenario.
     \item Observe and record the error messages displayed, ensuring they include clear explanations of what went wrong.
-    \item Verify that each error message provides actionable steps for resolution and is written in a friendly, non-blaming tone.
+    \item Verify that each error message provides actionable steps for resolution.
     \item After encountering errors, administer a survey asking users to rate their frustration level on a predefined scale and assess whether the error messages were helpful.
-    \item Analyze the survey results to ensure that at least 95\% of error messages include actionable instructions and that the reported frustration rate is below 10\%.
-    \item Collect qualitative feedback on the clarity and tone of the error messages to identify any areas for improvement.
-    \item Document any discrepancies or issues found during testing and provide recommendations for enhancing error message effectiveness.
+    \item Analyze the survey results to ensure that at least \hyperref[ERRORS_WITH_INSTRUCTIONS]{ERRORS\_WITH\_INSTRUCTIONS}\% of error messages include actionable instructions and that the reported frustration rate is below \hyperref[FRUSTRATION_RATE]{FRUSTRATION\_RATE}\%.
 \end{enumerate}
 
 
@@ -561,283 +595,131 @@ Related Reqs: NFR-UH8
 
 Type: Manual, Usability
 
-Initial State: The platform includes options in the user settings to adjust text size and select different color themes (e.g., light, dark, high contrast).
+Initial State: Users have access to the platform's settings or preferences section where they can adjust text size and select different color themes.
 
-Input/Condition: Users access the settings to modify text size and change color themes according to their preferences.
+Input/Condition: Users adjust the text size up to 200\% and choose among at least three different color themes (e.g., light, dark, high contrast) to improve readability based on their preferences.
 
 How test will be performed:
 \begin{enumerate}
-    \item \textbf{Color Theme Verification:}
-    \begin{enumerate}
-        \item Ensure that at least three different color themes (e.g., light, dark, high contrast) are available in the settings.
-        \item Select each color theme one by one and navigate through various sections of the platform to verify that the selected theme is consistently applied across all pages and components.
-        \item Check for readability and visual comfort in each theme, ensuring that text is legible and that there is no loss of content or functionality.
-    \end{enumerate}
-    \item \textbf{Text Size Adjustment Verification:}
-    \begin{enumerate}
-        \item Access the text size adjustment option in the user settings.
-        \item Incrementally increase the text size up to 200% and observe the layout and content display.
-        \item Verify that all text remains readable without requiring horizontal or vertical scrolling and that no content is obscured or lost.
-        \item Ensure that interactive elements (e.g., buttons, links, forms) remain fully functional and accessible at increased text sizes.
-    \end{enumerate}
-    \item \textbf{User Testing:}
-    \begin{enumerate}
-        \item Recruit a diverse group of users, including those with visual impairments such as low vision or color blindness.
-        \item Instruct users to adjust the text size and switch between different color themes based on their preferences.
-        \item Collect feedback through surveys or interviews to assess the usability and effectiveness of the accessibility options.
-        \item Verify that users can comfortably use the platform with the adjusted settings and that their preferences are accurately reflected across the application.
-    \end{enumerate}
-    \item \textbf{Performance and Compatibility:}
-    \begin{enumerate}
-        \item Test the accessibility options on various devices and browsers to ensure consistent behavior and appearance.
-        \item Verify that the platform maintains performance standards (e.g., load times, responsiveness) when accessibility settings are adjusted.
-    \end{enumerate}
-    \item \textbf{Documentation and Reporting:}
-    \begin{enumerate}
-        \item Document any issues or inconsistencies found during testing.
-        \item Provide recommendations for improving accessibility features based on user feedback and observed performance.
-        \item Ensure that all accessibility options meet the fit criteria of having at least three color themes and supporting text size adjustments up to 200\% without loss of content or functionality.
-    \end{enumerate}
+    \item Verify that the settings or preferences section includes options for adjusting text size and selecting color themes.
+    \item Select each available color theme (e.g., light, dark, high contrast) and observe the changes in the application's appearance.
+    \item Adjust the text size incrementally up to 200\%, ensuring that all text remains readable and that no content is cut off or overlaps.
+    \item Navigate through various sections and features of the application with each color theme and text size setting to ensure that functionality is not compromised.
+    \item Test the adjustments on different devices and screen resolutions to confirm consistency and responsiveness.
+    \item Document any instances where text size adjustments cause loss of content or functionality, or where color themes do not apply uniformly across the platform.
+    \item Compile the results to verify that all color themes are available and that text size can be increased up to 200\% without any loss of content or functionality.
 \end{enumerate}
 
-\item{Keyboard Shortcuts Accessibility Test: T-UH9\\}
+\item{Keyboard Shortcuts Accessibility Validation: T-UH9\\}
 
 Related Reqs: NFR-UH9
 
 Type: Manual, Usability
 
-Initial State: The platform includes keyboard shortcuts for all core actions such as navigating between tasks and submitting labels.
+Initial State: Users have access to the platform with all core actions available through both mouse and keyboard interactions.
 
-Input/Condition: Users interact with the platform exclusively using keyboard navigation without the use of a mouse.
+Input/Condition: Users are instructed to perform essential actions using only keyboard shortcuts to assess accessibility and efficiency.
 
 How test will be performed:
 \begin{enumerate}
-    \item \textbf{Identify Core Actions:}
-    \begin{enumerate}
-        \item Compile a list of all core actions within the platform (e.g., navigating between tasks, submitting labels, accessing settings).
-        \item Document the corresponding keyboard shortcuts for each core action.
-    \end{enumerate}
-    \item \textbf{User Recruitment:}
-    \begin{enumerate}
-        \item Recruit a diverse group of participants, including power users and users with limited mobility who rely on keyboard navigation.
-    \end{enumerate}
-    \item \textbf{Task Execution:}
-    \begin{enumerate}
-        \item Instruct participants to perform a series of predefined tasks using only keyboard shortcuts.
-        \item Ensure that participants refrain from using a mouse or other pointing devices during the test.
-    \end{enumerate}
-    \item \textbf{Observation and Recording:}
-    \begin{enumerate}
-        \item Observe participants as they use keyboard shortcuts to perform each core action.
-        \item Record the success rate of accessing and completing each action via keyboard.
-    \end{enumerate}
-    \item \textbf{Data Analysis:}
-    \begin{enumerate}
-        \item Calculate the percentage of core actions that were successfully accessed and performed using keyboard shortcuts.
-        \item Verify that at least 95\% of core actions are accessible through keyboard navigation.
-    \end{enumerate}
-    \item \textbf{Reporting and Recommendations:}
-    \begin{enumerate}
-        \item Document any issues or shortcomings discovered during testing.
-        \item Provide recommendations for adding missing shortcuts or improving existing ones to enhance keyboard accessibility.
-        \item Ensure that all core actions meet the fit criterion of being accessible via keyboard shortcuts.
-    \end{enumerate}
+    \item Identify all core actions within the platform (e.g., navigating between tasks, submitting labels) and ensure each has an assigned keyboard shortcut.
+    \item Create a comprehensive list of these keyboard shortcuts for reference during testing.
+    \item Recruit a representative sample of users, including power users and those with limited mobility, for usability testing.
+    \item Instruct users to perform a series of tasks using only keyboard navigation, utilizing the provided shortcuts.
+    \item Track the completion rate of each action to determine if users can access and perform at least \hyperref[MIN_ACTIONS_WITH_KEYBOARD]{MIN\_ACTIONS\_WITH\_KEYBOARD}\% of the core actions via keyboard.
+    \item Observe and document any difficulties or barriers users encounter while using keyboard shortcuts.
+\end{enumerate}
 \end{enumerate}
 
-\end{enumerate}
+
+
+
 
 % NFRs 12---------------------------------------------------------
 \subsubsection{Performance Requirements}
 % 12.1
 \paragraph{Speed and Latency Tests}
 \begin{enumerate}
+
 \item{New User Account Processing Time Validation: T-PR0\\}
 
-Related Reqs: NFR-PR0
+Related Reqs: NFR-PR0, NFR-PR1 
 
-Type: Automated, Performance
+Type: Manual, Performance
 
-Initial State: The system is operational and capable of accepting new user account creation requests.
+Initial State: The system is ready to accept new user account creation requests.
 
-Input/Condition: A large sample of new user account creation requests are submitted to the system.
+Input/Condition: A set of new user account creation requests are submitted, and their processing times are tracked.
 
 How test will be performed:
 \begin{enumerate}
-    \item \textbf{Request Generation:}
-    \begin{enumerate}
-        \item Generate a statistically significant number of new user account creation requests that mimic real-world usage patterns.
-    \end{enumerate}
-    \item \textbf{Request Submission:}
-    \begin{enumerate}
-        \item Submit the generated account creation requests to the system.
-        \item Record the timestamp at the moment each request is submitted.
-    \end{enumerate}
-    \item \textbf{Processing Monitoring:}
-    \begin{enumerate}
-        \item Continuously monitor the system to capture the timestamp when each account creation request is processed and completed.
-        \item Ensure that the monitoring mechanism accurately records processing times without introducing significant overhead.
-    \end{enumerate}
-    \item \textbf{Data Collection and Analysis:}
-    \begin{enumerate}
-        \item Calculate the processing time for each request by subtracting the submission timestamp from the completion timestamp.
-        \item Aggregate the processing times to determine the distribution of request handling durations.
-    \end{enumerate}
-    \item \textbf{Fit Criterion Verification:}
-    \begin{enumerate}
-        \item Compute the percentage of requests processed within 0.25 hours (15 minutes).
-        \item Verify that at least 90\% of the requests meet this criterion.
-        \item Additionally, ensure that 100\% of the requests are processed within 48 hours.
-    \end{enumerate}
+    \item Define a representative sample size of new user account creation requests to be submitted (e.g., 100 requests).
+    \item Submit each account creation request to the system, ensuring that the requests are made under typical operating conditions.
+    \item Calculate the processing time for each request by determining the difference between the submission and completion timestamps.
+    \item Analyze the processing times to calculate the percentage of requests processed within 15 minutes (0.25 hours).
+    \item Verify that at least \hyperref[MIN_ACCOUNT_CREATION_SUCCESS]{MIN\_ACCOUNT\_CREATION\_SUCCESS}\% of the requests are processed within the 15-minute threshold.
+    \item Additionally, confirm that all requests are processed within the 48-hour limit.
+    \item Document any instances where processing times exceed the specified limits and investigate potential causes.
 \end{enumerate}
 
-\item{Service Request Report Timing Validation: T-PR2\\}
+\item{Service Request Completion Time Validation: T-PR1\\}
 
 Related Reqs: NFR-PR2
 
-Type: Automated, Performance
+Type: Manual, Performance
 
-Initial State: The system is operational and capable of handling service requests and generating reports for Customers.
+Initial State: The system is ready to accept service requests from Customers, with negotiated time limits defined for each request.
 
-Input/Condition: A large sample of service requests with varying negotiated time limits are submitted to the system.
+Input/Condition: A set of service requests are submitted with specific negotiated time limits, and their completion times are tracked.
 
 How test will be performed:
 \begin{enumerate}
-    \item \textbf{Request Generation:}
-    \begin{enumerate}
-        \item Generate a statistically significant number of service requests, each with a specified negotiated time limit ($t_{\text{serviceRequestTimeLimit}}$).
-        \item Ensure that the service requests cover a range of $t_{\text{serviceRequestTimeLimit}}$ values to represent different customer agreements.
-    \end{enumerate}
-    
-    \item \textbf{Request Submission:}
-    \begin{enumerate}
-        \item Submit the generated service requests to the system.
-        \item Record the timestamp at the moment each service request is submitted.
-    \end{enumerate}
-    
-    \item \textbf{Processing Monitoring:}
-    \begin{enumerate}
-        \item Continuously monitor the system to capture the timestamp when each service request report is completed and returned to the Customer.
-        \item Ensure that the monitoring mechanism accurately records processing times without introducing significant overhead.
-    \end{enumerate}
-    
-    \item \textbf{Data Collection and Analysis:}
-    \begin{enumerate}
-        \item Calculate the processing time for each service request by subtracting the submission timestamp from the completion timestamp.
-        \item For each service request, determine if $t_{\text{serviceRequestTime}} < t_{\text{serviceRequestTimeLimit}}$ and if $t_{\text{serviceRequestTime}} < t_{\text{serviceRequestTimeLimit}} + 48$.
-    \end{enumerate}
-    
-    \item \textbf{Fit Criterion Verification:}
-    \begin{enumerate}
-        \item Compute the percentage of service requests processed within $t_{\text{serviceRequestTimeLimit}}$.
-        \item Verify that at least 90\% of the service requests meet this criterion.
-        \item Additionally, ensure that 100\% of the service requests are processed within $t_{\text{serviceRequestTimeLimit}} + 48$ hours.
-    \end{enumerate}
+    \item Define a representative sample size of service requests to be submitted (e.g., 100 requests), each with a predefined negotiated time limit, $t_{serviceRequestTimeLimit}$.
+    \item Submit each service request to the system under typical operating conditions, ensuring that the negotiated time limits vary to reflect real-world scenarios.
+    \item Calculate the completion time for each request by determining the difference between the submission and completion timestamps.
+    \item Analyze the completion times to calculate the percentage of requests processed within the negotiated time limit, $t_{serviceRequestTime} < t_{serviceRequestTimeLimit}$.
+    \item Verify that at least \hyperref[MIN_REPORT_RETURN]{MIN\_REPORT\_RETURN}\% of the requests are completed within the negotiated time limit.
+    \item Additionally, confirm that all requests are completed within the extended time limit of $t_{serviceRequestTimeLimit} + 48$ hours.
 \end{enumerate}
 
-\item{Image Serving Time Validation: T-PR3\\}
+\item{Next Image Serving Time Validation: T-PR2\\}
 
 Related Reqs: NFR-PR3
 
 Type: Automated, Performance
 
-Initial State: 
-\begin{enumerate}
-    \item The system is fully operational and connected to a repository of images ready for labeling.
-    \item Labelers are logged into the platform and are available to receive new labeling tasks.
-\end{enumerate}
-Input/Condition: 
-\begin{enumerate}
-    \item A labeler requests the next image to be labeled.
-    \item The condition $x_{\text{nextImage}} = \text{True}$, indicating that there is a next image available for labeling.
-\end{enumerate}
+Initial State: Labelers are logged into the platform with a queue of images available for labeling.
+
+Input/Condition: Labelers request the next image to label while images are available in the queue.
+
 How test will be performed:
 \begin{enumerate}
-    \item \textbf{Test Environment Setup:}
-    \begin{enumerate}
-        \item Ensure that the system is deployed in a testing environment that mirrors the production setup.
-        \item Populate the image repository with a sufficient number of images to simulate real-world usage.
-        \item Configure automated monitoring tools to accurately measure the time taken to serve images.
-    \end{enumerate}
-    
-    \item \textbf{Request Simulation:}
-    \begin{enumerate}
-        \item Use automated scripts or performance testing tools to simulate labelers requesting the next image.
-        \item Ensure that multiple simultaneous requests are generated to test the system under load.
-    \end{enumerate}
-    
-    \item \textbf{Time Measurement:}
-    \begin{enumerate}
-        \item For each image request, record the timestamp immediately before the request is made.
-        \item Record the timestamp as soon as the image is fully displayed to the labeler.
-        \item Calculate $t_{\text{imageServing}}$ by computing the difference between the two timestamps for each request.
-    \end{enumerate}
-    
-    \item \textbf{Data Collection and Analysis:}
-    \begin{enumerate}
-        \item Aggregate all recorded $t_{\text{imageServing}}$ values.
-        \item For each request where $x_{\text{nextImage}} = \text{True}$, verify that $t_{\text{imageServing}} \leq 10$ seconds.
-        \item Calculate the percentage of requests that meet the criterion $t_{\text{imageServing}} \leq 10$ seconds.
-    \end{enumerate}
-    
-    \item \textbf{Fit Criterion Verification:}
-    \begin{enumerate}
-        \item Confirm that for all instances where $x_{\text{nextImage}} = \text{True}$, $t_{\text{imageServing}} \leq 10$ seconds.
-        \item Ensure that 100\% of such requests comply with the time limit.
-    \end{enumerate}
+    \item Ensure the labeling queue has a sufficient number of images available for testing.
+    \item Set up automated performance testing tools or scripts to simulate multiple labelers requesting the next image simultaneously.
+    \item For each image request, calculate the time difference between the request and image display for each instance.
+    \item Verify that for all instances where a next image is available, the serving time does not exceed \hyperref[MAX_IMAGE_DISPLAY_TIME]{MAX\_IMAGE\_DISPLAY\_TIME} seconds.
+    \item Identify and document any instances where the serving time exceeds the \hyperref[MAX_IMAGE_DISPLAY_TIME]{MAX\_IMAGE\_DISPLAY\_TIME}-second threshold.
+    \item Analyze the collected data to ensure that the system meets the fit criterion.
 \end{enumerate}
 
-\item{Payout Delivery Time Validation: T-PR4\\}
+\item{Payout Processing Time Validation: T-PR3\\}
 
 Related Reqs: NFR-PR4
 
-Type: Automated, Performance
+Type: Manual, Performance
 
-Initial State: 
+Initial State: Labelers have earned payouts and have submitted payout requests through the system.
 
-\begin{enumerate}
-    \item The system is fully operational and capable of processing payout requests.
-    \item Labelers are registered and have earned payouts eligible for withdrawal.
-    \item The payout distribution mechanism (e.g., payment gateway) is integrated and functioning correctly.
-\end{enumerate}
-Input/Condition: 
-\begin{enumerate}
-    \item A payout request is made by a labeler through the system.
-    \item The system records the timestamp when the payout request is received.
-\end{enumerate}
+Input/Condition: Payout requests are made by labelers, and the system processes these requests to deliver payments.
+
 How test will be performed:
 \begin{enumerate}
-    \item \textbf{Test Environment Setup:}
-    \begin{enumerate}
-        \item Ensure that the payout distribution system (e.g., payment gateway) is properly integrated and configured in the testing environment.
-        \item Populate the system with a sufficient number of labelers who have earned payouts eligible for withdrawal.
-        \item Configure automated monitoring tools to accurately track and record payout processing times.
-    \end{enumerate}
-    
-    \item \textbf{Payout Request Simulation:}
-    \begin{enumerate}
-        \item Use automated scripts to simulate payout requests from a representative sample of labelers.
-        \item Ensure that the simulated requests cover different payout methods (e.g., bank transfer, PayPal) if applicable.
-    \end{enumerate}
-    
-    \item \textbf{Timestamp Recording:}
-    \begin{enumerate}
-        \item For each payout request, record the exact timestamp when the request is submitted to the system.
-        \item Continuously monitor the system to capture the timestamp when the payout is successfully delivered to the labeler.
-    \end{enumerate}
-    
-    \item \textbf{Processing Time Calculation:}
-    \begin{enumerate}
-        \item Calculate the payout delay ($t_{\text{payoutDelay}}$) for each request by computing the difference between the delivery timestamp and the request submission timestamp, measured in days.
-    \end{enumerate}
-    
-    \item \textbf{Data Collection and Analysis:}
-    \begin{enumerate}
-        \item Aggregate all recorded $t_{\text{payoutDelay}}$ values.
-        \item Determine the percentage of payout requests where $t_{\text{payoutDelay}} < 7$ days.
-        \item Ensure that 90\% or more of the payout requests meet the criterion $t_{\text{payoutDelay}} < 7$ days.
-        \item Verify that 100\% of the payout requests are processed within $t_{\text{payoutDelay}} \leq 7$ days.
-    \end{enumerate}
-    
+    \item Define a representative sample size of payout requests to be processed (e.g., 100 requests).
+    \item Ensure that the system is configured to handle payout requests under typical operating conditions.
+    \item Submit each payout request through the system, recording the timestamp when each request is made.
+    \item Calculate the payout delay for each request.
+    \item Analyze the payout delays to verify that all requests are processed within 7 business days.
+    \item Identify and document any instances where payout delays exceed 7 business days to investigate potential bottlenecks or issues in the payout process.
 \end{enumerate}
 
 \end{enumerate}
@@ -846,50 +728,31 @@ How test will be performed:
 \paragraph{Precision or Accuracy Tests}
 \begin{enumerate}
 
-\item{Label Accuracy Validation: T-PR5\\}
+\item{Label Accuracy Validation: T-PR4\\}
 
 Related Reqs: NFR-PR5
 
-Type: Automated, Functional
+Type: Automated, Quality Assurance
 
-Initial State:
-\begin{enumerate}
-    \item The system is operational and capable of labeling objects in satellite images.
-    \item A validated dataset with true labels ($L_{\text{True}}$) is available.
-\end{enumerate}
-Input/Condition:
-\begin{enumerate}
-    \item A sample of objects ($O$) with known true classes ($L_{\text{True}}(o)$) is selected.
-\end{enumerate}
+Initial State: The system has access to a dataset of objects \( O \) with known true classifications \( LTrue \).
+
+Input/Condition: The system processes and labels each object in \( O \), producing guessed classifications \( LGuess \).
+
 How test will be performed:
 \begin{enumerate}
-    \item \textbf{Dataset Preparation:}
-    \begin{enumerate}
-        \item Select a diverse and statistically significant sample of objects from the dataset.
-        \item Ensure each object has an accurate true label assigned by experts.
-    \end{enumerate}
-    
-    \item \textbf{Label Generation:}
-    \begin{enumerate}
-        \item Run the system to generate predicted labels ($L_{\text{Guess}}(o)$) for each object in the sample.
-    \end{enumerate}
-    
-    \item \textbf{Accuracy Calculation:}
-    \begin{enumerate}
-        \item Compare each predicted label with the true label.
-        \item Calculate the accuracy percentage:
-        \[
-        \text{Accuracy} = \left( \frac{\text{Number of Correct Labels}}{\text{Total Number of Labels}} \right) \times 100\%
-        \]
-    \end{enumerate}
-    
-    \item \textbf{Fit Criterion Verification:}
-    \begin{enumerate}
-        \item Ensure that at least 75\% of the labels are correct:
-        \[
-        \text{Accuracy} \geq 75\%
-        \]
-    \end{enumerate}
+    \item Compile a representative sample of objects \( O \) with their true classifications \( LTrue(o) \).
+    \item Input each object \( o \in O \) into the system to obtain the system-generated labels \( LGuess(o) \).
+    \item Compare each \( LGuess(o) \) with the corresponding \( LTrue(o) \) to determine correctness.
+    \item Calculate the label accuracy by dividing the number of correctly labeled objects by the total number of objects:
+    \[
+    \text{Accuracy} = \frac{|\{ o \in O \mid LGuess(o) = LTrue(o) \}|}{|O|}
+    \]
+    \item Verify that the calculated accuracy is at least \hyperref[MIN_LABEL_ACCURACY]{MIN\_LABEL\_ACCURACY}\%:
+    \[
+    \text{Accuracy} \geq \hyperref[MIN_LABEL_ACCURACY]{MIN\_LABEL\_ACCURACY}\%
+    \]
+    \item Generate a report summarizing the accuracy results, including any discrepancies and potential areas for improvement.
+    \item If the accuracy meets or exceeds \hyperref[MIN_LABEL_ACCURACY]{MIN\_LABEL\_ACCURACY}\%, the system satisfies the fit criterion. If not, investigate and address factors contributing to lower accuracy.
 \end{enumerate}
 
 
@@ -899,110 +762,78 @@ How test will be performed:
 \paragraph{Robustness or Fault-Tolerance Tests}
 \begin{enumerate}
 
-\item{System Uptime Validation: T-PR6\\}
+\item{System Uptime Validation: T-PR5\\}
 
 Related Reqs: NFR-PR6
 
 Type: Automated, Performance
 
-Initial State:
-\begin{enumerate}
-    \item The system is fully operational and integrated with monitoring tools.
-\end{enumerate}
-Input/Condition:
-\begin{enumerate}
-    \item The system operates continuously over a defined monitoring period (e.g., one month).
-\end{enumerate}
+Initial State: The system is fully operational and connected to uptime monitoring tools.
+
+Input/Condition: The system operates continuously under normal conditions over a defined monitoring period.
+
 How test will be performed:
 \begin{enumerate}
-    \item \textbf{Monitoring Setup:}
-    \begin{enumerate}
-        \item Deploy and configure monitoring tools to track system uptime and downtime.
-        \item Ensure that all critical components and services are included in the monitoring scope.
-        \item Set up alerts to notify the testing team of any downtime events.
-    \end{enumerate}
-    
-    \item \textbf{Data Collection:}
-    \begin{enumerate}
-        \item Allow the system to run continuously for the duration of the monitoring period.
-        \item Collect uptime and downtime logs automatically through the monitoring tools.
-        \item Ensure that timestamps for all uptime and downtime events are accurately recorded.
-    \end{enumerate}
-    
-    \item \textbf{Data Analysis:}
-    \begin{enumerate}
-        \item Calculate the total uptime ($t_{\text{uptime}}$) and total downtime ($t_{\text{downtime}}$) during the monitoring period.
-        \item Use the following formula to compute the uptime percentage:
-        \[
-        \text{Uptime Percentage} = \frac{t_{\text{uptime}}}{t_{\text{uptime}} + t_{\text{downtime}}} \times 100\%
-        \]
-    \end{enumerate}
-    
-    \item \textbf{Fit Criterion Verification:}
-    \begin{enumerate}
-        \item Verify that the uptime percentage exceeds 97\%:
-        \[
-        \frac{t_{\text{uptime}}}{t_{\text{uptime}} + t_{\text{downtime}}} > 0.97
-        \]
-        \item Confirm that all downtime incidents are within acceptable limits and do not compromise the overall uptime requirement.
-    \end{enumerate}
-    
+    \item Implement and configure uptime monitoring tools (e.g., Pingdom, Nagios, or AWS CloudWatch) to continuously track the system's availability.
+    \item Define the monitoring period (e.g., one calendar month) to collect sufficient uptime and downtime data.
+    \item Ensure that all critical system components and services are included in the monitoring setup.
+    \item Collect and log uptime and downtime events throughout the monitoring period.
+    \item Calculate the uptime percentage using the formula:
+    \[
+    \text{Uptime Percentage} = \frac{t_{\text{uptime}}}{t_{\text{uptime}} + t_{\text{downtime}}} \times 100\%
+    \]
+    \item Verify that the calculated uptime percentage exceeds \hyperref[MIN_UPTIME]{MIN\_UPTIME}\%:
+    \[
+    \text{Uptime Percentage} > \hyperref[MIN_UPTIME]{MIN\_UPTIME}\%
+    \]
+    \item Identify and document any instances of downtime, including their duration and underlying causes.
 \end{enumerate}
+
 \end{enumerate}
 
 % 12.5
 \paragraph{Capacity Tests}
 \begin{enumerate}
 
-\item{Large Image File Handling Validation: T-PR8\\}
+\item{Labeler Capacity Validation: T-PR6\\}
+
+Related Reqs: NFR-PR7
+
+Type: Automated, Performance
+
+Initial State: The system has a baseline number of active labelers and pending service requests.
+
+Input/Condition: Simulate varying numbers of labelers to ensure all service request deadlines are met as per NFR-PR2.
+
+How test will be performed:
+\begin{enumerate}
+    \item Use load testing tools (e.g., JMeter, Locust) to simulate different numbers of active labelers.
+    \item For each load level, generate a set of service requests that need to be processed within the negotiated deadlines.
+    \item Monitor the percentage of service requests completed within the required timeframes.
+    \item Identify the maximum number of labelers the system can support while maintaining at least \hyperref[MIN_REPORT_RETURN]{MIN\_REPORT\_RETURN}\% of requests meeting the deadlines.
+\end{enumerate}
+
+
+
+\item{Large Image File Handling Validation: T-PR7\\}
 
 Related Reqs: NFR-PR8
 
 Type: Automated, Performance
 
-Initial State:
-\begin{enumerate}
-    \item The system is fully operational with sufficient storage capacity.
-    \item Necessary infrastructure (e.g., servers, storage solutions) is configured to handle large file sizes.
-    \item Monitoring tools are in place to track system performance and stability.
-\end{enumerate}
-Input/Condition:
-\begin{enumerate}
-    \item Image files exceeding 50 GB in size are prepared for upload and processing.
-\end{enumerate}
+Initial State: The system is configured with sufficient storage capacity and is ready to accept image file uploads.
+
+Input/Condition: Image files up to 50 GB in size are uploaded and processed by the system.
+
 How test will be performed:
 \begin{enumerate}
-    \item \textbf{Test Environment Setup:}
-    \begin{enumerate}
-        \item Ensure that the testing environment mirrors the production setup in terms of hardware, network bandwidth, and storage configurations.
-        \item Verify that all necessary services and dependencies are running correctly.
-    \end{enumerate}
-    
-    \item \textbf{File Preparation:}
-    \begin{enumerate}
-        \item Generate or obtain a set of image files each larger than 50 GB.
-        \item Ensure that the files are in the supported formats required by the system.
-    \end{enumerate}
-    
-    \item \textbf{Upload Simulation:}
-    \begin{enumerate}
-        \item Use automated scripts or performance testing tools to upload the large image files to the system.
-        \item Simulate multiple simultaneous uploads to test the system's ability to handle concurrent large file transfers.
-    \end{enumerate}
-    
-    \item \textbf{Processing Monitoring:}
-    \begin{enumerate}
-        \item Monitor system resources (CPU, memory, disk I/O, network usage) during the upload and processing of large files.
-        \item Track any errors, crashes, or failures that occur during the process.
-        \item Ensure that the system logs relevant information for any issues encountered.
-    \end{enumerate}
-    
-    \item \textbf{Validation of Successful Storage and Processing:}
-    \begin{enumerate}
-        \item Verify that each uploaded image file is successfully stored in the designated storage location without corruption.
-        \item Confirm that the system can process the large image files as intended (e.g., indexing, analysis) without performance degradation.
-    \end{enumerate}
-    
+    \item Prepare a set of image files, each up to 50 GB in size.
+    \item Use automated scripts to upload each large image file to the system.
+    \item Monitor the system for any crashes or failures during the upload and storage process.
+    \item Verify that each image file is successfully stored without errors.
+    \item Initiate processing tasks on the stored image files.
+    \item Ensure that processing completes successfully without system crashes or failures.
+    \item Compile the results to confirm that the system can handle image files up to 50 GB without crashing or failing.
 \end{enumerate}
 
 \end{enumerate}
@@ -1011,55 +842,26 @@ How test will be performed:
 \paragraph{Scalability or Extensibility Tests}
 \begin{enumerate}
 
-\item{System Scalability Validation: T-PR9\\}
+\item{Scalability Validation: T-PR9\\}
 
 Related Reqs: NFR-PR9
 
 Type: Automated, Performance
 
-Initial State:
-\begin{enumerate}
-    \item The system is deployed on a scalable infrastructure (e.g., cloud-based with auto-scaling capabilities).
-    \item Monitoring tools are configured to track system performance and resource utilization.
-\end{enumerate}
-Input/Condition:
-\begin{enumerate}
-    \item The system is subjected to varying loads up to the capacity specified in NFR-PR7.
-\end{enumerate}
+Initial State: The system is configured for scaling operations with monitoring tools in place.
+
+Input/Condition: Simulate the required labeler capacity as specified in NFR-PR7 to test the system's ability to scale accordingly.
+
 How test will be performed:
 \begin{enumerate}
-    \item \textbf{Load Testing Setup:}
-    \begin{enumerate}
-        \item Configure load testing tools to simulate user activity based on the capacity requirements outlined in NFR-PR7.
-        \item Define scaling parameters and thresholds according to NFR-PR7's specifications.
-    \end{enumerate}
-    
-    \item \textbf{Load Simulation:}
-    \begin{enumerate}
-        \item Gradually increase the load on the system to reach the specified capacity.
-        \item Simulate peak usage scenarios to test how the system scales in response to high demand.
-        \item Monitor system resources (CPU, memory, storage, network bandwidth) during the load increase.
-    \end{enumerate}
-    
-    \item \textbf{Performance Monitoring:}
-    \begin{enumerate}
-        \item Use monitoring tools to track key performance metrics such as response time, throughput, error rates, and resource utilization.
-        \item Ensure that the system scales dynamically (e.g., adding more instances) to maintain performance within acceptable limits as defined by NFR-PR7.
-    \end{enumerate}
-    
-    \item \textbf{Stress Testing:}
-    \begin{enumerate}
-        \item Push the system beyond the specified capacity to evaluate its behavior under extreme conditions.
-        \item Identify the system's breaking points and observe how it recovers from high-load scenarios.
-    \end{enumerate}
-    
-    \item \textbf{Fit Criterion Verification:}
-    \begin{enumerate}
-        \item Confirm that the system successfully scales to meet the capacity specified in NFR-PR7 without performance degradation.
-        \item Ensure that the system does not crash or fail to handle the specified load.
-    \end{enumerate}
-
+    \item Utilize load testing tools (e.g., JMeter, Locust) to simulate the number of labelers required to meet the capacity defined in NFR-PR7.
+    \item Gradually increase the number of simulated labelers while monitoring system performance metrics such as response time, CPU usage, memory consumption, and network throughput.
+    \item Ensure that the system dynamically scales resources (e.g., adding more servers or allocating more memory) to handle the increased load without performance degradation.
+    \item Verify that all service request deadlines defined in NFR-PR7 are consistently met under the simulated load.
+    \item Identify and document any performance bottlenecks or scaling issues encountered during the test.
+    \item Compile the results to confirm that the system can scale to meet the required capacity as specified in NFR-PR7.
 \end{enumerate}
+
 \end{enumerate}
 
 
@@ -1071,43 +873,25 @@ How test will be performed:
 % 13.2
 \paragraph{Wider Environmental Tests}
 \begin{enumerate}
+
 \item{Energy Efficiency Validation: T-OE0\\}
 
 Related Reqs: NFR-OE0
 
 Type: Automated, Performance
 
-Initial State:
-\begin{enumerate}
-    \item The system is fully operational and deployed on a cloud infrastructure with energy monitoring tools configured.
-    \item Baseline energy consumption metrics are established from previous measurements without energy-efficient optimizations.
-    \item Energy-efficient practices (e.g., optimized server configurations, auto-scaling, resource management) are implemented in the cloud usage and server management.
-\end{enumerate}
-Input/Condition:
-\begin{enumerate}
-    \item The system operates under typical load conditions comparable to the baseline measurement period.
-    \item Monitoring tools are actively tracking energy consumption metrics throughout the testing period.
-\end{enumerate}
+Initial State: The system is running on cloud infrastructure with existing server management configurations.
+
+Input/Condition: Implement energy-efficient practices in cloud usage and server management, then measure energy consumption before and after optimization.
+
 How test will be performed:
 \begin{enumerate}
-    \item \textbf{Baseline Measurement:}
-    \begin{enumerate}
-        \item Collect baseline energy consumption data over a defined period (e.g., one week) without any energy-efficient optimizations in place.
-        \item Ensure that the baseline period accurately represents normal operating conditions.
-    \end{enumerate}
-    
-    \item \textbf{Implementation of Energy-Efficient Practices:}
-    \begin{enumerate}
-        \item Apply energy-efficient configurations and optimizations to the cloud infrastructure and server management as per best practices.
-        \item Examples include enabling auto-scaling, optimizing virtual machine sizes, implementing efficient load balancing, and reducing idle resource usage.
-    \end{enumerate}
-    
-    \item \textbf{Post-Implementation Measurement:}
-    \begin{enumerate}
-        \item Collect energy consumption data over the same duration as the baseline period (e.g., one week) with the energy-efficient practices active.
-        \item Ensure that the operational load during this period is comparable to the baseline to maintain consistency in measurements.
-    \end{enumerate}
-    
+    \item Establish baseline energy consumption by monitoring current cloud infrastructure and server operations using energy monitoring tools.
+    \item Identify and implement energy-efficient practices such as optimizing server utilization, enabling power-saving modes, and selecting energy-efficient instance types.
+    \item Collect energy consumption data for a defined period (e.g., one month) after implementing the optimizations.
+    \item Compare the post-optimization energy consumption data against the baseline measurements.
+    \item Calculate the percentage reduction in energy usage to verify that it meets or exceeds the \hyperref[ENERGY_REDUCTION_TARGET]{ENERGY\_REDUCTION\_TARGET}\% target.
+    \item Identify any deviations or unexpected increases in energy consumption and investigate potential causes.
 \end{enumerate}
 
 \end{enumerate}
@@ -1116,53 +900,23 @@ How test will be performed:
 \paragraph{Adjacent System Interfacing Tests}
 \begin{enumerate}
 
-\item{API Integration Validation: T-OE1\\}
+\item{API and Data Format Integration Validation: T-OE1\\}
 
 Related Reqs: NFR-OE1
 
-Type: Automated, Functional
+Type: Automated, Integration
 
-Initial State:
-\begin{enumerate}
-    \item The system is fully operational and configured with API credentials and endpoints for at least two major satellite data providers.
-    \item Standardized data formats (e.g., JSON, XML) required by the system for data ingestion are implemented.
-\end{enumerate}
-Input/Condition:
-\begin{enumerate}
-    \item The system is set to automatically acquire satellite images from the integrated third-party providers using their standardized APIs.
-\end{enumerate}
+Initial State: The system is configured with API access credentials for at least two major satellite data providers.
+
+Input/Condition: The system attempts to automatically acquire and integrate satellite images from the specified providers using their standardized APIs and data formats.
+
 How test will be performed:
 \begin{enumerate}
-    \item \textbf{API Configuration Verification:}
-    \begin{enumerate}
-        \item Ensure that API keys, authentication tokens, and endpoints for both satellite data providers are correctly configured in the system.
-        \item Verify that the system adheres to the API usage policies and rate limits of each provider.
-    \end{enumerate}
-    
-    \item \textbf{Automated Data Acquisition:}
-    \begin{enumerate}
-        \item Initiate automated data acquisition processes for both satellite data providers.
-        \item Use automated scripts or testing tools to trigger API requests for fetching satellite images.
-    \end{enumerate}
-    
-    \item \textbf{Data Format Validation:}
-    \begin{enumerate}
-        \item Verify that the data received from each provider conforms to the standardized formats expected by the system (e.g., correct JSON schema, valid XML structure).
-        \item Use automated validators to check the integrity and format of the acquired data.
-    \end{enumerate}
-    
-    \item \textbf{Data Integration Verification:}
-    \begin{enumerate}
-        \item Confirm that the acquired satellite images are correctly ingested and stored in the system’s database or storage solution without manual intervention.
-        \item Ensure that metadata associated with each image (e.g., acquisition date, provider information) is accurately recorded.
-    \end{enumerate}
-    
-    \item \textbf{Error Handling and Logging:}
-    \begin{enumerate}
-        \item Test the system’s ability to handle API errors gracefully, such as authentication failures, rate limit exceedances, or data retrieval issues.
-        \item Verify that appropriate error messages are logged and that the system retries failed requests as per the defined policies.
-    \end{enumerate}
-    
+    \item Identify two major satellite data providers and obtain their API documentation and access credentials.
+    \item Configure the system to connect to each provider's API, ensuring support for their standardized data formats.
+    \item Develop and execute automated scripts to initiate data acquisition from each provider.
+    \item Monitor the system for successful ingestion of satellite images without manual intervention.
+    \item Verify that the acquired data is correctly formatted, stored, and integrated into the platform's datasets.
 \end{enumerate}
 
 
@@ -1170,145 +924,84 @@ How test will be performed:
 
 Related Reqs: NFR-OE2
 
-Type: Automated, Performance
+Type: Automated, Integration
 
-Initial State:
-\begin{enumerate}
-    \item The system is fully operational with integrated payment processors.
-    \item Payment gateway credentials and endpoints are correctly configured.
-    \item Monitoring tools are set up to track transaction success rates and security metrics.
-\end{enumerate}
-Input/Condition:
-\begin{enumerate}
-    \item A large number of payment transactions are initiated through the system using the integrated payment processors.
-\end{enumerate}
+Initial State: The system is configured with API access credentials for reliable and secure payment processors (e.g., Stripe, PayPal).
+
+Input/Condition: Users and clients perform financial transactions through the integrated payment gateways.
+
 How test will be performed:
 \begin{enumerate}
-    \item \textbf{Configuration Verification:}
-    \begin{enumerate}
-        \item Verify that API keys, authentication tokens, and endpoints for both payment processors are correctly configured in the system.
-        \item Ensure compliance with payment industry security.
-    \end{enumerate}
-    
-    \item \textbf{Transaction Simulation:}
-    \begin{enumerate}
-        \item Use automated scripts to simulate a high volume of payment transactions through each integrated payment gateway.
-        \item Include various transaction types (e.g., payments, refunds) to cover different scenarios.
-    \end{enumerate}
-    
-    \item \textbf{Security Validation:}
-    \begin{enumerate}
-        \item Ensure that all transaction data is transmitted securely using encryption protocols (e.g., TLS).
-        \item Verify that sensitive data (e.g., credit card information) is handled according to security standards.
-    \end{enumerate}
-    
-    \item \textbf{Fit Criterion Verification:}
-    \begin{enumerate}
-        \item Ensure that the transaction success rate meets or exceeds 99.5\%:
-        \[
-        \text{Success Rate} \geq 99.5\%
-        \]
-        \item Confirm that all transactions are processed securely without data breaches or security incidents.
-    \end{enumerate}
-    
+    \item Identify and obtain API documentation and access credentials for at least two major payment processors.
+    \item Develop automated scripts to simulate various types of transactions, including user compensations and client payments.
+    \item Monitor and log each transaction to verify successful processing without errors or delays.
+    \item Calculate the transaction success rate by dividing the number of successful transactions by the total number of attempted transactions.
+    \item Ensure that the transaction success rate meets or exceeds \hyperref[MIN_TRANSACTION_SUCCESS_RATE]{MIN\_TRANSACTION\_SUCCESS\_RATE}\%.
 \end{enumerate}
 
 \item{Multiple Currency Support Validation: T-OE3\\}
 
 Related Reqs: NFR-OE3
 
-Type: Automated, Functional
+Type: Automated, Integration
 
-Initial State:
-\begin{enumerate}
-    \item The system is fully operational with integrated support for multiple currencies.
-    \item Exchange rates are up-to-date and correctly configured within the system.
-    \item Payment processors support transactions in the specified major currencies (e.g., USD, EUR, GBP, INR).
-\end{enumerate}
-Input/Condition:
-\begin{enumerate}
-    \item Transactions are initiated in each of the supported currencies: USD, EUR, GBP, and INR.
-    \item Users have accounts configured to transact in their preferred currencies.
-\end{enumerate}
+Initial State: The system is configured to support multiple currencies, including USD, EUR, GBP, and INR.
+
+Input/Condition: Users perform transactions in each supported currency to verify correct processing.
+
 How test will be performed:
 \begin{enumerate}
-    \item \textbf{Configuration Verification:}
-    \begin{enumerate}
-        \item Confirm that the system is configured to support at least four major currencies: USD, EUR, GBP, and INR.
-        \item Verify that currency conversion rates are accurately fetched and updated from a reliable source.
-    \end{enumerate}
-    
-    \item \textbf{Transaction Simulation:}
-    \begin{enumerate}
-        \item Use automated scripts to simulate transactions in each supported currency.
-        \item Ensure that transactions cover various scenarios, including payments, refunds, and currency conversions.
-    \end{enumerate}
-    
-    \item \textbf{Currency Processing Verification:}
-    \begin{enumerate}
-        \item For each simulated transaction, verify that the system correctly processes the amount in the specified currency.
-        \item Ensure that the correct currency symbols and formats are displayed in all relevant parts of the platform (e.g., transaction summaries, invoices).
-    \end{enumerate}
-    
-    \item \textbf{Exchange Rate Accuracy:}
-    \begin{enumerate}
-        \item Compare the system's currency conversion results with known accurate exchange rates.
-        \item Ensure that the conversions are precise within an acceptable margin of error (e.g., ±0.5\%).
-    \end{enumerate}
-    
-    \item \textbf{Payment Processor Integration:}
-    \begin{enumerate}
-        \item Confirm that all integrated payment processors can handle transactions in the supported currencies without errors.
-        \item Verify successful completion of transactions through each payment processor for every supported currency.
-    \end{enumerate}
-    
+    \item Configure the system with exchange rates for USD, EUR, GBP, and INR.
+    \item Develop automated scripts to simulate transactions in each currency.
+    \item Execute the scripts and verify:
+    \begin{itemize}
+        \item Accurate currency conversion.
+        \item Correct display of currency symbols and values.
+        \item Proper recording of transactions with the correct currency.
+    \end{itemize}
+    \item Ensure all transactions are processed without errors.
 \end{enumerate}
 
 \item{Machine Learning Framework Compatibility Validation: T-OE4\\}
 
 Related Reqs: NFR-OE4
 
-Type: Automated, Functional
+Type: Automated, Integration
 
-Initial State:
-\begin{enumerate}
-    \item The system is fully operational with necessary dependencies installed.
-    \item Popular machine learning frameworks such as TensorFlow, PyTorch, and scikit-learn are installed and configured within the system environment.
-    \item Sample datasets and predefined models are available for testing purposes.
-\end{enumerate}
-Input/Condition:
-\begin{enumerate}
-    \item Users initiate training, testing, and deployment processes using TensorFlow, PyTorch, and scikit-learn frameworks.
-    \item The system has access to necessary computational resources to support model operations.
-\end{enumerate}
+Initial State: The system is configured with machine learning frameworks such as TensorFlow, PyTorch, and scikit-learn installed.
+
+Input/Condition: Users train and deploy models using each framework to verify compatibility.
+
 How test will be performed:
 \begin{enumerate}
-    \item \textbf{Environment Setup:}
-    \begin{enumerate}
-        \item Ensure that TensorFlow, PyTorch, and scikit-learn are correctly installed and configured in the system.
-        \item Verify that the versions of the frameworks are compatible with the system's software stack.
-    \end{enumerate}
-    
-    \item \textbf{Model Training:}
-    \begin{enumerate}
-        \item Select a simple computer vision model (e.g., image classifier) for each framework.
-        \item Train the model using TensorFlow, PyTorch, and scikit-learn with a predefined dataset.
-        \item Monitor the training process to ensure it completes without errors.
-    \end{enumerate}
-    
-    \item \textbf{Model Testing:}
-    \begin{enumerate}
-        \item Test the trained models using a validation dataset in each framework.
-        \item Verify that the testing process runs smoothly and produces expected evaluation metrics.
-    \end{enumerate}
-    
-    \item \textbf{Model Deployment:}
-    \begin{enumerate}
-        \item Deploy the trained models to the production environment using each framework's deployment tools.
-        \item Ensure that the deployment process completes successfully and that the models are accessible for inference.
-    \end{enumerate}
-    
+    \item Install TensorFlow, PyTorch, and scikit-learn on the system.
+    \item Develop or use existing sample models compatible with each framework.
+    \item Train each sample model using the respective framework.
+    \item Deploy the trained models to the production environment.
+    \item Verify that training and deployment processes complete without errors.
+    \item Ensure that the deployed models function correctly within the platform.
 \end{enumerate}
+
+\item{Data Pipeline Efficiency Validation: T-OE5\\}
+
+Related Reqs: NFR-OE5
+
+Type: Automated, Performance
+
+Initial State: The system has established data pipelines for transferring labeled datasets between the platform and ML models.
+
+Input/Condition: Large labeled datasets (e.g., 10,000 images) are transferred through the data pipelines.
+
+How test will be performed:
+\begin{enumerate}
+    \item Prepare a large labeled dataset consisting of 10,000 images.
+    \item Initiate the data transfer from the platform to the ML models using the established pipelines.
+    \item Monitor the transfer process to measure the time taken to complete the transfer.
+    \item Verify that the data transfer completes within the specified timeframe.
+    \item Execute batch processing of the large dataset through the pipelines and ensure no errors occur during the process.
+    \item Repeat the transfer and processing under different load conditions to assess pipeline robustness.
+\end{enumerate}
+
 
 \end{enumerate}
 
@@ -1316,45 +1009,26 @@ How test will be performed:
 \paragraph{Productization Tests}
 \begin{enumerate}
 
-\item{Web Accessibility Validation: T-OE6\\}
+\item{Web Browser Accessibility Validation: T-OE6\\}
 
 Related Reqs: NFR-OE6
 
 Type: Manual, Usability
 
-Initial State:
-\begin{enumerate}
-    \item The platform is fully deployed and accessible via a stable web URL.
-    \item Supported web browsers (e.g., Google Chrome, Mozilla Firefox, Safari, Microsoft Edge) are identified.
-\end{enumerate}
-Input/Condition:
-\begin{enumerate}
-    \item Users attempt to access the platform using the provided web URL on various supported browsers without downloading or installing any additional software.
-\end{enumerate}
+Initial State: Users have access to the platform's web URL.
+
+Input/Condition: Users attempt to access and use the platform via various supported web browsers without installing any software.
+
 How test will be performed:
 \begin{enumerate}
-    \item \textbf{Browser Compatibility Check:}
-    \begin{enumerate}
-        \item Identify and list all supported web browsers and their latest versions.
-        \item Ensure that the platform is compatible with each listed browser.
-    \end{enumerate}
-    
-    \item \textbf{Access Without Installation:}
-    \begin{enumerate}
-        \item Using each supported browser, navigate to the platform’s web URL.
-        \item Attempt to log in, navigate through different sections, and perform typical user actions without installing any browser plugins or additional software.
-    \end{enumerate}
-    
-    \item \textbf{Performance Monitoring:}
-    \begin{enumerate}
-        \item Assess the loading times and responsiveness of the platform on each browser.
-        \item Ensure that performance is consistent and meets acceptable standards without the need for additional resources.
-    \end{enumerate}
-    
+    \item Identify supported web browsers (e.g., Chrome, Firefox, Safari, Edge).
+    \item Using each browser, navigate to the platform's web URL.
+    \item Verify that the platform loads correctly without prompting for any software installations.
+    \item Perform key tasks (e.g., login, label images, access settings) to ensure full functionality is available through the browser.
+    \item Confirm that all users can access and use the platform solely through their web browsers without additional installations.
 \end{enumerate}
 
 \end{enumerate}
-
 
 
 \subsubsection{Area of Testing1}
@@ -1538,9 +1212,46 @@ This is where you can place additional information.
 The definition of the test cases will call for SYMBOLIC\_CONSTANTS.
 Their values are defined in this section for easy maintenance.
 
+
+% MIN\_USER\_USABILITY\_METRIC & 90 & \% & Minimum percent of users that satisfy usability requirements \label{MIN_USER_USABILITY_METRIC} \\ \hline
+% MIN\_PREF\_MATCH & 80 & \% & Minimum percent of label task preference match \label{MIN_PREF_MATCH} \\ \hline
+% MIN\_TRAINING\_TRACKER\_USEFULNESS & 80 & \% & Minimum percent of trackers usefulness \label{MIN_TRAINING_TRACKER_USEFULNESS} \\ \hline
+% MIN\_PRACTICE\_TASK\_COMPLETION & 85 & \% & Minimum percent of user to complete practice task \label{MIN_PRACTICE_TASK_COMPLETION} \\ \hline
+% MIN\_POPUP\_USEFULNESS & 80 & \% & Minimum percent of users to find popups useful \label{MIN_POPUP_USEFULNESS} \\ \hline
+% ERRORS\_WITH\_INSTRUCTIONS & 80 & \% & Percent of errors with follow up instructions \label{ERRORS_WITH_INSTRUCTIONS} \\ \hline
+% FRUSTRATION\_RATE & 10 & \% & Frustration rate when encountering errors \label{FRUSTRATION_RATE} \\ \hline
+% MIN\_ACTIONS\_WITH\_KEYBOARD & 95 & \% & Minimum percent of actions available with keyboard inputs \label{MIN_ACTIONS_WITH_KEYBOARD} \\ \hline
+% MIN\_ACCOUNT\_CREATION\_SUCCESS & 90 & \% & Minimum percent of accounts created successfully within 48 hours \label{MIN_ACCOUNT_CREATION_SUCCESS} \\ \hline
+% MIN\_REPORT\_RETURN & 90 & \% & Minimum percent of reports returned to customer within time frame \label{MIN_REPORT_RETURN} \\ \hline
+% MAX\_IMAGE\_DISPLAY\_TIME & 10 & \% & Maximum time to display image to labeller \label{MAX_IMAGE_DISPLAY_TIME} \\ \hline
+% MIN\_LABEL\_ACCURACY & 75 & \% & Minimum percent of label accuracy \label{MIN_LABEL_ACCURACY} \\ \hline
+% MIN\_UPTIME & 80 & \% & Minimum percent of system uptime \label{MIN_UPTIME} \\ \hline
+% ENERGY\_REDUCTION\_TARGET & 20 & \% & Minimum percent of achieved energy reduction \label{ENERGY_REDUCTION_TARGET} \\ \hline
+% MIN\_TRANSACTION\_SUCCESS\_RATE & 99.5 & \% & Minimum percent of successful transactions \label{MIN_TRANSACTION_SUCCESS_RATE} \\ \hline
+
 \subsection{Usability Survey Questions?}
 
 \wss{This is a section that would be appropriate for some projects.}
+
+\begin{enumerate}
+    \item On a scale of 1 to 5, how would you rate the readability of text at this screen size? 
+    \item On a scale of 1 to 5, how clear was the visual feedback when interacting with buttons and other interactive elements?
+    \item On a scale of 1 to 5, how consistent do you find the visual design across different sections of the application?
+    \item On a scale of 1 to 5, how intuitive did you find the navigation menu?
+    \item On a scale of 1 to 5, how consistent did you find the style of buttons and forms across different pages of the application?
+    \item On a scale of 1 to 5, how satisfied are you with the alignment of your assigned tasks to your preferences?
+    \item On a scale of 1 to 5, how helpful do you find the progress tracker in monitoring your training progress?
+    \item On a scale of 1 to 5, how satisfied are you with the simulated labeling tasks provided for practice?
+    \item On a scale of 1 to 5, how clear and understandable did you find the contextual help pop-ups?
+    \item On a scale of 1 to 5, how clear and actionable were the error messages you encountered?
+    \item On a scale of 1 to 5, how easy was it to adjust the text size to your preference?
+    \item On a scale of 1 to 5, how satisfied are you with the available color themes for improving readability?
+    \item On a scale of 1 to 5, how easy was it to access the platform through your web browser? 
+
+    
+    % Matthews stuff
+
+\end{enumerate}
 
 \newpage{}
 \section*{Appendix --- Reflection}
