@@ -1,6 +1,6 @@
 \documentclass[12pt, titlepage]{article}
-%\usepackage[style=numeric]{biblatex} % We are using biblatex with numeric style sorted alphabetically
-%\addbibresource{references.bib}
+\usepackage[style=numeric]{biblatex} % We are using biblatex with numeric style sorted alphabetically
+\addbibresource{references.bib}
 
 \usepackage{booktabs}
 \usepackage{tabularx}
@@ -140,30 +140,30 @@ start with a review of the system, a description of the testing plan, and a list
 \bigskip
 Created BibTeX entries for our documents and within those entries we have included a hyperlink to the documents. As listed above. Here is a sample of the references for all of the documents. Future references are also included in this sample. \\
 
-%\begin{itemize}
-    %\item Development Plan - \cite{Development_Plan}
-    %\item Module Guide - \cite{MG}
-    %\item Module Interface Specification - \cite{MIS}
-    %\item Verification and Validation Plan - \cite{VnV}
-    %\item Problem Statement - \cite{Problem_Statement}
-    %\item Software Requirements Specification - \cite{SRS}
-%\end{itemize}
+\begin{itemize}
+    \item Development Plan - \cite{Development_Plan}
+    \item Module Guide - \cite{MG}
+    \item Module Interface Specification - \cite{MIS}
+    \item Verification and Validation Plan - \cite{VnV}
+    \item Problem Statement - \cite{Problem_Statement}
+    \item Software Requirements Specification - \cite{SRS}
+\end{itemize}
 
 By referencing these documents, we ensure that our V\&V efforts are comprehensive and aligned with the project's goals and requirements. Each document provides specific insights that help us design effective verification and validation activities:
 
-%\begin{itemize}
-    %\item \textbf{Problem Statement} (\cite{Problem_Statement}): Outlines the core challenges and objectives of the Orbit Watch project, providing context and motivation for development. It helps align our V\&V activities with the original goals and ensures that the software addresses the identified needs.
+\begin{itemize}
+    \item \textbf{Problem Statement} (\cite{Problem_Statement}): Outlines the core challenges and objectives of the Orbit Watch project, providing context and motivation for development. It helps align our V\&V activities with the original goals and ensures that the software addresses the identified needs.
 
-    %\item \textbf{Development Plan} (\cite{Development_Plan}): Details the project timeline, milestones, and resource allocation. It assists in scheduling V\&V activities appropriately within the development lifecycle, ensuring they are integrated at optimal points for maximum effectiveness.
+    \item \textbf{Development Plan} (\cite{Development_Plan}): Details the project timeline, milestones, and resource allocation. It assists in scheduling V\&V activities appropriately within the development lifecycle, ensuring they are integrated at optimal points for maximum effectiveness.
 
-    %\item \textbf{Software Requirements Specification (SRS)} (\cite{SRS}): Defines all functional and non-functional requirements of Orbit Watch. It serves as the foundation for developing test cases to verify that the software meets all specified requirements and performs as intended.
+    \item \textbf{Software Requirements Specification (SRS)} (\cite{SRS}): Defines all functional and non-functional requirements of Orbit Watch. It serves as the foundation for developing test cases to verify that the software meets all specified requirements and performs as intended.
 
-    %\item \textbf{Module Guide (MG)} (\cite{MG}): Provides an overview of the system's modular architecture, including the decomposition into modules and their relationships. This information is vital for planning integration testing and ensuring that the modules interact correctly.
+    \item \textbf{Module Guide (MG)} (\cite{MG}): Provides an overview of the system's modular architecture, including the decomposition into modules and their relationships. This information is vital for planning integration testing and ensuring that the modules interact correctly.
 
-    %\item \textbf{Module Interface Specification (MIS)} (\cite{MIS}): Details the interfaces for each module, specifying input and output parameters. This is essential for verifying that modules communicate correctly and adhere to their specified interfaces, which is critical for system reliability.
+    \item \textbf{Module Interface Specification (MIS)} (\cite{MIS}): Details the interfaces for each module, specifying input and output parameters. This is essential for verifying that modules communicate correctly and adhere to their specified interfaces, which is critical for system reliability.
 
-    %\item \textbf{Verification and Validation Plan (V\&V Plan)} (\cite{VnV}): Outlines the strategies, methodologies, and resources allocated for the V\&V activities. It guides our testing efforts and ensures that all aspects of the system are adequately verified and validated according to the project's objectives.
-%\end{itemize}
+    \item \textbf{Verification and Validation Plan (V\&V Plan)} (\cite{VnV}): Outlines the strategies, methodologies, and resources allocated for the V\&V activities. It guides our testing efforts and ensures that all aspects of the system are adequately verified and validated according to the project's objectives.
+\end{itemize}
 
 By utilizing these documents, our V\&V efforts are thorough and focused on delivering a reliable and accurate platform for satellite imagery analysis.
 
@@ -1671,9 +1671,8 @@ How test will be performed:
 
 \wss{Provide evidence that all of the modules have been considered.}
 				
-\bibliographystyle{plainnat}
+\printbibliography
 
-\bibliography{../../refs/References}
 
 \newpage
 
@@ -1744,6 +1743,6 @@ graduate attribute of Lifelong Learning.
   member pursue, and why did they make this choice?
 \end{enumerate}
 
-%\printbibliography % For biblatex
+\printbibliography % For biblatex
 
 \end{document}
