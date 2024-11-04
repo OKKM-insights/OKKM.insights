@@ -17,6 +17,8 @@ The `vnv` folder contains the following files:
   
 - **VnVPlan.tex**: The LaTeX source file for the V&V Plan. This file is used to generate the PDF document and contains the structured content, sections, and formatting necessary to maintain consistency. Any updates to the V&V Plan should be made here.
 
+- **references.bib**: This file includes the references to all the documents we have worked in the past or are currently working on. This can be used by any future files for pointing our references.
+
 ## Key Sections in VnVPlan.pdf
 The V&V Plan document is structured into several essential sections for the OKKM Insights project:
 
