@@ -2,6 +2,7 @@
 \usepackage[style=numeric]{biblatex} % We are using biblatex with numeric style sorted alphabetically
 \addbibresource{references.bib}
 
+\usepackage{amsmath} 
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{longtable}
@@ -39,35 +40,28 @@
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
-Date 1 & 1.0 & Notes\\
-Date 2 & 1.1 & Notes\\
+11/04/2024 & Oleg, Kyle, Kartik, Mathew & Revision 0\\
 \bottomrule
 \end{tabularx}
 
-~\\
-\wss{The intention of the VnV plan is to increase confidence in the software.
-However, this does not mean listing every verification and validation technique
-that has ever been devised.  The VnV plan should also be a \textbf{feasible}
-plan. Execution of the plan should be possible with the time and team available.
-If the full plan cannot be completed during the time available, it can either be
-modified to ``fake it'', or a better solution is to add a section describing
-what work has been completed and what work is still planned for the future.}
+% ~\\
+% \wss{The intention of the VnV plan is to increase confidence in the software.
+% However, this does not mean listing every verification and validation technique
+% that has ever been devised.  The VnV plan should also be a \textbf{feasible}
+% plan. Execution of the plan should be possible with the time and team available.
+% If the full plan cannot be completed during the time available, it can either be
+% modified to ``fake it'', or a better solution is to add a section describing
+% what work has been completed and what work is still planned for the future.}
 
-\wss{The VnV plan is typically started after the requirements stage, but before
-the design stage.  This means that the sections related to unit testing cannot
-initially be completed.  The sections will be filled in after the design stage
-is complete.  the final version of the VnV plan should have all sections filled
-in.}
+% \wss{The VnV plan is typically started after the requirements stage, but before
+% the design stage.  This means that the sections related to unit testing cannot
+% initially be completed.  The sections will be filled in after the design stage
+% is complete.  the final version of the VnV plan should have all sections filled
+% in.}
 
 \newpage
 
 \tableofcontents
-
-\listoftables
-\wss{Remove this section if it isn't needed}
-
-\listoffigures
-\wss{Remove this section if it isn't needed}
 
 \newpage
 
@@ -413,8 +407,8 @@ Please refer to section 7.2.2 and 7.2.3 in the Development Plan found \href{http
 
 \section{System Tests}
 
-\wss{There should be text between all headings, even if it is just a roadmap of
-the contents of the subsections.}
+% \wss{There should be text between all headings, even if it is just a roadmap of
+% the contents of the subsections.}
 
 \subsection{Tests for Functional Requirements}
 
@@ -1069,34 +1063,671 @@ the contents of the subsections.}
 
 \subsection{Tests for Nonfunctional Requirements}
 
-\wss{The nonfunctional requirements for accuracy will likely just reference the
-  appropriate functional tests from above.  The test cases should mention
-  reporting the relative error for these tests.  Not all projects will
-  necessarily have nonfunctional requirements related to accuracy.}
+% \wss{The nonfunctional requirements for accuracy will likely just reference the
+%   appropriate functional tests from above.  The test cases should mention
+%   reporting the relative error for these tests.  Not all projects will
+%   necessarily have nonfunctional requirements related to accuracy.}
 
-\wss{For some nonfunctional tests, you won't be setting a target threshold for
-passing the test, but rather describing the experiment you will do to measure
-the quality for different inputs.  For instance, you could measure speed versus
-the problem size.  The output of the test isn't pass/fail, but rather a summary
-table or graph.}
+% \wss{For some nonfunctional tests, you won't be setting a target threshold for
+% passing the test, but rather describing the experiment you will do to measure
+% the quality for different inputs.  For instance, you could measure speed versus
+% the problem size.  The output of the test isn't pass/fail, but rather a summary
+% table or graph.}
 
-\wss{Tests related to usability could include conducting a usability test and
-  survey.  The survey will be in the Appendix.}
+% \wss{Tests related to usability could include conducting a usability test and
+%   survey.  The survey will be in the Appendix.}
 
-\wss{Static tests, review, inspections, and walkthroughs, will not follow the
-format for the tests given below.}
+% \wss{Static tests, review, inspections, and walkthroughs, will not follow the
+% format for the tests given below.}
 
-\wss{If you introduce static tests in your plan, you need to provide details.
-How will they be done?  In cases like code (or document) walkthroughs, who will
-be involved? Be specific.}
+% \wss{If you introduce static tests in your plan, you need to provide details.
+% How will they be done?  In cases like code (or document) walkthroughs, who will
+% be involved? Be specific.}
 
+% NFRs 10---------------------------------------------------------
+\subsubsection{Look and Feel Tests}
+% 10.1
+\paragraph{Appearance Tests}
+\begin{enumerate}
+\item{Responsive Layout Validation: T-LF0\\}
+
+Type: Manual, Usability
+
+Initial State: Users access the application on devices with screen resolutions ranging from 1024$\times$768 pixels to 1920$\times$1080 pixels.
+
+Input/Condition: The application is displayed on various screen sizes within the specified range to verify adaptability and layout consistency.
+
+How test will be performed:
+\begin{enumerate}
+    \item Select a representative set of screen resolutions within the range 1024$\times$768 to 1920$\times$1080 pixels (e.g., 1024$\times$768, 1366$\times$768, 1440$\times$900, 1600$\times$900, 1920$\times$1080).
+    \item Use physical devices or browser developer tools to simulate each selected screen resolution.
+    \item Verify that all visual elements (buttons, text, images, menus) are fully visible and do not exceed screen boundaries.
+    \item Ensure that the layout remains uncluttered, with appropriate spacing and alignment across different screen sizes.
+\end{enumerate}
+
+\item{Interactive Elements Feedback Validation: T-LF1\\}
+
+Type: Manual, Usability
+
+Initial State: Interactive elements (e.g., buttons, links) are present within the application interface.
+
+Input/Condition: Users interact with various interactive elements to verify that visual feedback is provided appropriately.
+
+How test will be performed:
+\begin{enumerate}
+    \item Identify all interactive elements within the application, including buttons, links, and menu items.
+    \item For each interactive element, perform the following interactions: hover, click, and focus (if applicable).
+    \item Observe and document the visual feedback provided for each interaction, such as color changes, animations, or shadows.
+    \item Ensure that every interactive element provides at least one form of visual feedback as specified in the fit criterion.
+\end{enumerate}
+
+\end{enumerate}
+
+
+% 10.2
+\paragraph{Style Tests}
+\begin{enumerate}
+\item{Unified Visual Design Validation: T-LF2\\}
+
+Type: Manual, Usability
+
+Initial State: The application interface displays all components (buttons, menus, text fields, images, etc.) with the unified visual design specifications.
+
+Input/Condition: Users or testers navigate through the application to assess the consistency of font type, sizing, color, and background tones across all components.
+
+How test will be performed:
+\begin{enumerate}
+    \item Review the application's style guide or design specifications to understand the expected visual standards.
+    \item Navigate through each section of the application, observing the font type, size, color, and background tones used in various components.
+    \item Compare each observed element against the style guide to ensure consistency.
+    \item Utilize browser developer tools or design inspection tools to verify CSS properties related to fonts and colors.
+\end{enumerate}
+
+\end{enumerate}
+
+
+% NFRs 11---------------------------------------------------------
+\subsubsection{Usability and Humanity Requirements}
+% 11.1
+\paragraph{Ease of Use Tests}
+\begin{enumerate}
+
+\item{Navigation Menu Usability Test: T-UH0\\}
+
+Type: Manual, Usability
+
+Initial State: Users have access to the platform's main interface with a well-organized navigation menu.
+
+Input/Condition: Users are asked to locate and access various main features (e.g., labeling tasks, settings, help, account details) using the navigation menu.
+
+How test will be performed:
+\begin{enumerate}
+    \item Prepare a set of tasks where users must navigate to specific main features (e.g., "Find the labeling tasks section", "Access account details").
+    \item Instruct users to perform each task using the navigation menu, counting the number of clicks required to reach the target feature.
+    \item Record whether each task is completed within 3 clicks.
+    \item Calculate the percentage of tasks where users were able to navigate to the target feature within 3 clicks.
+    \item Ensure that at least \hyperref[MIN_USER_USABILITY_METRIC]{MIN\_USER\_USABILITY\_METRIC}\% of the tasks meet the success criterion.
+    \item Analyze any tasks that exceed the 3-click limit to identify navigation issues.
+\end{enumerate}
+
+\item{Consistency of UI Elements Validation: T-UH1\\}
+
+Type: Manual, Usability
+
+Initial State: The application interface displays all UI elements (buttons, forms, etc.) following the platform’s visual style guidelines.
+
+Input/Condition: Users navigate through different pages of the application, interacting with various UI elements to assess consistency.
+
+How test will be performed:
+\begin{enumerate}
+    \item Review the application's style guide or design specifications to identify the expected consistent styles for UI elements.
+    \item Identify all recurring interactive elements (e.g., buttons, forms, menus) across different pages of the application.
+    \item Instruct users to perform the tasks, observing whether they recognize and correctly use the UI elements based on their consistency.
+    \item Calculate the percentage of users who correctly recognized and used the recurring interface elements across different pages.
+    \item Ensure that at least \hyperref[MIN_USER_USABILITY_METRIC]{MIN\_USER\_USABILITY\_METRIC}\% of users meet the recognition and correct usage criterion.
+\end{enumerate}
+
+\end{enumerate}
+
+% 11.2
+\paragraph{Personalization and Internationalization Tests}
+\begin{enumerate}
+
+\item{Task Preference Matching Validation: T-UH2\\}
+
+Type: Manual, Usability
+
+Initial State: Users have access to their profile settings where they can set preferences for specific types of labeling tasks (e.g., agricultural, urban).
+
+Input/Condition: Users configure their task preferences in their profile settings and begin receiving assigned tasks over a defined period.
+
+How test will be performed: 
+\begin{enumerate}
+    \item Select a representative sample of users and have them set their task preferences in their profiles.
+    \item Over a set period (e.g., two weeks), track the labeling tasks assigned to these users.
+    \item Analyze the assigned tasks to determine the percentage that matches the users' specified preferences.
+    \item Verify that at least \hyperref[MIN_PREF_MATCH]{MIN\_PREF\_MATCH}\% of the assigned tasks align with the users' preferences.
+\end{enumerate}
+
+\item{Localized Format Validation: T-UH3\\}
+
+Type: Manual, Dynamic
+
+Initial State: Users have access to their profile settings where they can set or have their location automatically detected for date, time, and currency preferences.
+
+Input/Condition: Users either allow the application to detect their location automatically or manually set their preferred locale settings for date, time, and currency.
+
+How test will be performed:
+\begin{enumerate}
+    \item Select a diverse set of users from different geographical locations with varying locale settings.
+    \item For each user, ensure that their location is either correctly detected by the application or manually set their preferred locale settings in their profile.
+    \item Navigate to sections of the application where date, time, and currency are displayed (e.g., task deadlines, earnings reports).
+    \item Verify that the date formats (e.g., DD/MM/YYYY vs. MM/DD/YYYY), time formats (e.g., 24-hour vs. 12-hour), and currency symbols and formats (e.g., \$, €, ¥) align with the user's locale or manual settings.
+    \item Repeat the process after changing the user's locale settings to different regions to ensure the formats update accordingly.
+    \item Document any discrepancies where the formats do not match the expected locale settings.
+    \item Aggregate the results to ensure that all tested instances correctly display localized formats based on user settings.
+\end{enumerate}
+
+\end{enumerate}
+
+% 11.3
+\paragraph{Learning Tests}
+\begin{enumerate}
+
+\item{Progress Tracker Effectiveness Test: T-UH4\\}
+
+Type: Manual, Usability
+
+Initial State: The application includes a fully functional progress tracker that displays completed and pending tutorials and training tasks.
+
+Input/Condition: Users complete a series of tutorials and training tasks within the platform.
+
+How test will be performed:
+\begin{enumerate}
+    \item Select a representative sample of users who will undergo the tutorials and training tasks.
+    \item Instruct users to navigate to the progress tracker before, during, and after completing the tutorials.
+    \item Ensure that the progress tracker accurately displays the status of each learning module, indicating which are completed and which are pending.
+    \item After users have completed the training, administer a post-training survey asking them to rate the helpfulness of the progress tracker.
+    \item Analyze the survey responses to determine the percentage of users who find the progress tracker helpful.
+    \item Verify that at least \hyperref[MIN_TRAINING_TRACKER_USEFULNESS]{MIN\_TRAINING\_TRACKER\_USEFULNESS}\% of the surveyed users rate the progress tracker as helpful.
+    \item Collect additional qualitative feedback to identify any issues or areas for improvement in the progress tracking feature.
+\end{enumerate}
+
+\item{Simulated Labeling Task Validation: T-UH5\\}
+
+Type: Manual, Usability
+
+Initial State: The platform provides a dedicated section for simulated labeling tasks that do not affect actual datasets.
+
+Input/Condition: New users are prompted to complete at least one simulated labeling task before accessing real labeling tasks.
+
+How test will be performed:
+\begin{enumerate}
+    \item Recruit a representative sample of new users and onboard them to the platform.
+    \item Instruct users to complete a simulated labeling task provided in the practice section.
+    \item Track the completion rate of simulated tasks to determine if at least \hyperref[MIN_PRACTICE_TASK_COMPLETION]{MIN\_PRACTICE\_TASK\_COMPLETION}\% of users complete a practice task before accessing real data.
+    \item After task completion, administer a satisfaction survey to users to gather feedback on their experience with the simulated tasks.
+    \item Analyze survey results to ensure that at least \hyperref[MIN_PRACTICE_TASK_SATISFACTION]{MIN\_PRACTICE\_TASK\_SATISFACTION}\% of users report satisfaction with the practice tasks.
+    \item Document any issues or feedback received to identify areas for improvement in the simulated labeling experience.
+\end{enumerate}
+
+
+\end{enumerate}
+
+% 11.4
+\paragraph{Understandability and Politeness Tests}
+\begin{enumerate}
+
+\item{Contextual Help Pop-Up Effectiveness: T-UH6\\}
+
+Type: Manual, Usability
+
+Initial State: The platform includes contextual help pop-ups integrated throughout various features and task interfaces.
+
+Input/Condition: Users interact with different features and tasks, triggering contextual help pop-ups as needed.
+
+How test will be performed:
+\begin{enumerate}
+    \item Instruct users to perform a set of typical tasks within the platform, ensuring they engage with areas where contextual help pop-ups are available.
+    \item Monitor and record instances where contextual help pop-ups appear during user interactions.
+    \item Analyze the survey responses to determine if at least \hyperref[MIN_POPUP_USEFULNESS]{MIN\_POPUP\_USEFULNESS}\% of users find the contextual help pop-ups clear and helpful.
+    \item Collect qualitative feedback to identify any areas where help pop-ups could be improved or where additional help pop-ups may be needed.
+\end{enumerate}
+
+\item{Error Message Effectiveness Test: T-UH7\\}
+
+Type: Manual, Usability
+
+Initial State: The platform is fully functional and capable of generating error messages in response to various user actions and system failures.
+
+Input/Condition: Users perform actions that intentionally trigger different types of errors (e.g., invalid input, network issues, unauthorized access).
+
+How test will be performed:
+\begin{enumerate}
+    \item Identify and document common error scenarios within the platform.
+    \item Instruct users to perform tasks that will trigger each identified error scenario.
+    \item Observe and record the error messages displayed, ensuring they include clear explanations of what went wrong.
+    \item Verify that each error message provides actionable steps for resolution.
+    \item After encountering errors, administer a survey asking users to rate their frustration level on a predefined scale and assess whether the error messages were helpful.
+    \item Analyze the survey results to ensure that at least \hyperref[ERRORS_WITH_INSTRUCTIONS]{ERRORS\_WITH\_INSTRUCTIONS}\% of error messages include actionable instructions and that the reported frustration rate is below \hyperref[FRUSTRATION_RATE]{FRUSTRATION\_RATE}\%.
+\end{enumerate}
+
+
+\end{enumerate}
+
+% 11.5
+\paragraph{Accessibility Requirements}
+\begin{enumerate}
+
+\item{Accessibility Options Validation: T-UH8\\}
+
+Type: Manual, Usability
+
+Initial State: Users have access to the platform's settings or preferences section where they can adjust text size and select different color themes.
+
+Input/Condition: Users adjust the text size up to 200\% and choose among at least three different color themes (e.g., light, dark, high contrast) to improve readability based on their preferences.
+
+How test will be performed:
+\begin{enumerate}
+    \item Verify that the settings or preferences section includes options for adjusting text size and selecting color themes.
+    \item Select each available color theme (e.g., light, dark, high contrast) and observe the changes in the application's appearance.
+    \item Adjust the text size incrementally up to 200\%, ensuring that all text remains readable and that no content is cut off or overlaps.
+    \item Navigate through various sections and features of the application with each color theme and text size setting to ensure that functionality is not compromised.
+    \item Test the adjustments on different devices and screen resolutions to confirm consistency and responsiveness.
+    \item Document any instances where text size adjustments cause loss of content or functionality, or where color themes do not apply uniformly across the platform.
+    \item Compile the results to verify that all color themes are available and that text size can be increased up to 200\% without any loss of content or functionality.
+\end{enumerate}
+
+\item{Keyboard Shortcuts Accessibility Validation: T-UH9\\}
+
+Type: Manual, Usability
+
+Initial State: Users have access to the platform with all core actions available through both mouse and keyboard interactions.
+
+Input/Condition: Users are instructed to perform essential actions using only keyboard shortcuts to assess accessibility and efficiency.
+
+How test will be performed:
+\begin{enumerate}
+    \item Identify all core actions within the platform (e.g., navigating between tasks, submitting labels) and ensure each has an assigned keyboard shortcut.
+    \item Create a comprehensive list of these keyboard shortcuts for reference during testing.
+    \item Recruit a representative sample of users, including power users and those with limited mobility, for usability testing.
+    \item Instruct users to perform a series of tasks using only keyboard navigation, utilizing the provided shortcuts.
+    \item Track the completion rate of each action to determine if users can access and perform at least \hyperref[MIN_ACTIONS_WITH_KEYBOARD]{MIN\_ACTIONS\_WITH\_KEYBOARD}\% of the core actions via keyboard.
+    \item Observe and document any difficulties or barriers users encounter while using keyboard shortcuts.
+\end{enumerate}
+\end{enumerate}
+
+
+
+
+
+% NFRs 12---------------------------------------------------------
+\subsubsection{Performance Requirements}
+% 12.1
+\paragraph{Speed and Latency Tests}
+\begin{enumerate}
+
+\item{New User Account Processing Time Validation: T-PR0\\}
+
+Type: Manual, Performance
+
+Initial State: The system is ready to accept new user account creation requests.
+
+Input/Condition: A set of new user account creation requests are submitted, and their processing times are tracked.
+
+How test will be performed:
+\begin{enumerate}
+    \item Define a representative sample size of new user account creation requests to be submitted (e.g., 100 requests).
+    \item Submit each account creation request to the system, ensuring that the requests are made under typical operating conditions.
+    \item Calculate the processing time for each request by determining the difference between the submission and completion timestamps.
+    \item Analyze the processing times to calculate the percentage of requests processed within 15 minutes (0.25 hours).
+    \item Verify that at least \hyperref[MIN_ACCOUNT_CREATION_SUCCESS]{MIN\_ACCOUNT\_CREATION\_SUCCESS}\% of the requests are processed within the 15-minute threshold.
+    \item Additionally, confirm that all requests are processed within the 48-hour limit.
+    \item Document any instances where processing times exceed the specified limits and investigate potential causes.
+\end{enumerate}
+
+\item{Service Request Completion Time Validation: T-PR1\\}
+
+Type: Manual, Performance
+
+Initial State: The system is ready to accept service requests from Customers, with negotiated time limits defined for each request.
+
+Input/Condition: A set of service requests are submitted with specific negotiated time limits, and their completion times are tracked.
+
+How test will be performed:
+\begin{enumerate}
+    \item Define a representative sample size of service requests to be submitted (e.g., 100 requests), each with a predefined negotiated time limit, $t_{serviceRequestTimeLimit}$.
+    \item Submit each service request to the system under typical operating conditions, ensuring that the negotiated time limits vary to reflect real-world scenarios.
+    \item Calculate the completion time for each request by determining the difference between the submission and completion timestamps.
+    \item Analyze the completion times to calculate the percentage of requests processed within the negotiated time limit, $t_{serviceRequestTime} < t_{serviceRequestTimeLimit}$.
+    \item Verify that at least \hyperref[MIN_REPORT_RETURN]{MIN\_REPORT\_RETURN}\% of the requests are completed within the negotiated time limit.
+    \item Additionally, confirm that all requests are completed within the extended time limit of $t_{serviceRequestTimeLimit} + 48$ hours.
+\end{enumerate}
+
+\item{Next Image Serving Time Validation: T-PR2\\}
+
+Type: Automated, Performance
+
+Initial State: Labelers are logged into the platform with a queue of images available for labeling.
+
+Input/Condition: Labelers request the next image to label while images are available in the queue.
+
+How test will be performed:
+\begin{enumerate}
+    \item Ensure the labeling queue has a sufficient number of images available for testing.
+    \item Set up automated performance testing tools or scripts to simulate multiple labelers requesting the next image simultaneously.
+    \item For each image request, calculate the time difference between the request and image display for each instance.
+    \item Verify that for all instances where a next image is available, the serving time does not exceed \hyperref[MAX_IMAGE_DISPLAY_TIME]{MAX\_IMAGE\_DISPLAY\_TIME} seconds.
+    \item Identify and document any instances where the serving time exceeds the \hyperref[MAX_IMAGE_DISPLAY_TIME]{MAX\_IMAGE\_DISPLAY\_TIME}-second threshold.
+    \item Analyze the collected data to ensure that the system meets the fit criterion.
+\end{enumerate}
+
+\item{Payout Processing Time Validation: T-PR3\\}
+
+Type: Manual, Performance
+
+Initial State: Labelers have earned payouts and have submitted payout requests through the system.
+
+Input/Condition: Payout requests are made by labelers, and the system processes these requests to deliver payments.
+
+How test will be performed:
+\begin{enumerate}
+    \item Define a representative sample size of payout requests to be processed (e.g., 100 requests).
+    \item Ensure that the system is configured to handle payout requests under typical operating conditions.
+    \item Submit each payout request through the system, recording the timestamp when each request is made.
+    \item Calculate the payout delay for each request.
+    \item Analyze the payout delays to verify that all requests are processed within 7 business days.
+    \item Identify and document any instances where payout delays exceed 7 business days to investigate potential bottlenecks or issues in the payout process.
+\end{enumerate}
+
+\end{enumerate}
+
+% 12.3
+\paragraph{Precision or Accuracy Tests}
+\begin{enumerate}
+
+\item{Label Accuracy Validation: T-PR4\\}
+
+Type: Automated, Quality Assurance
+
+Initial State: The system has access to a dataset of objects \( O \) with known true classifications \( LTrue \).
+
+Input/Condition: The system processes and labels each object in \( O \), producing guessed classifications \( LGuess \).
+
+How test will be performed:
+\begin{enumerate}
+    \item Compile a representative sample of objects \( O \) with their true classifications \( LTrue(o) \).
+    \item Input each object \( o \in O \) into the system to obtain the system-generated labels \( LGuess(o) \).
+    \item Compare each \( LGuess(o) \) with the corresponding \( LTrue(o) \) to determine correctness.
+    \item Calculate the label accuracy by dividing the number of correctly labeled objects by the total number of objects:
+    \[
+    \text{Accuracy} = \frac{|\{ o \in O \mid LGuess(o) = LTrue(o) \}|}{|O|}
+    \]
+    \item Verify that the calculated accuracy is at least \hyperref[MIN_LABEL_ACCURACY]{MIN\_LABEL\_ACCURACY}\%:
+    \[
+    \text{Accuracy} \geq \hyperref[MIN_LABEL_ACCURACY]{MIN\_LABEL\_ACCURACY}\%
+    \]
+    \item Generate a report summarizing the accuracy results, including any discrepancies and potential areas for improvement.
+    \item If the accuracy meets or exceeds \hyperref[MIN_LABEL_ACCURACY]{MIN\_LABEL\_ACCURACY}\%, the system satisfies the fit criterion. If not, investigate and address factors contributing to lower accuracy.
+\end{enumerate}
+
+
+\end{enumerate}
+
+% 12.4
+\paragraph{Robustness or Fault-Tolerance Tests}
+\begin{enumerate}
+
+\item{System Uptime Validation: T-PR5\\}
+
+Type: Automated, Performance
+
+Initial State: The system is fully operational and connected to uptime monitoring tools.
+
+Input/Condition: The system operates continuously under normal conditions over a defined monitoring period.
+
+How test will be performed:
+\begin{enumerate}
+    \item Implement and configure uptime monitoring tools (e.g., Pingdom, Nagios, or AWS CloudWatch) to continuously track the system's availability.
+    \item Define the monitoring period (e.g., one calendar month) to collect sufficient uptime and downtime data.
+    \item Ensure that all critical system components and services are included in the monitoring setup.
+    \item Collect and log uptime and downtime events throughout the monitoring period.
+    \item Calculate the uptime percentage using the formula:
+    \[
+    \text{Uptime Percentage} = \frac{t_{\text{uptime}}}{t_{\text{uptime}} + t_{\text{downtime}}} \times 100\%
+    \]
+    \item Verify that the calculated uptime percentage exceeds \hyperref[MIN_UPTIME]{MIN\_UPTIME}\%:
+    \[
+    \text{Uptime Percentage} > \hyperref[MIN_UPTIME]{MIN\_UPTIME}\%
+    \]
+    \item Identify and document any instances of downtime, including their duration and underlying causes.
+\end{enumerate}
+
+\end{enumerate}
+
+% 12.5
+\paragraph{Capacity Tests}
+\begin{enumerate}
+
+\item{Labeler Capacity Validation: T-PR6\\}
+
+Type: Automated, Performance
+
+Initial State: The system has a baseline number of active labelers and pending service requests.
+
+Input/Condition: Simulate varying numbers of labelers to ensure all service request deadlines are met as per NFR-PR2.
+
+How test will be performed:
+\begin{enumerate}
+    \item Use load testing tools (e.g., JMeter, Locust) to simulate different numbers of active labelers.
+    \item For each load level, generate a set of service requests that need to be processed within the negotiated deadlines.
+    \item Monitor the percentage of service requests completed within the required timeframes.
+    \item Identify the maximum number of labelers the system can support while maintaining at least \hyperref[MIN_REPORT_RETURN]{MIN\_REPORT\_RETURN}\% of requests meeting the deadlines.
+\end{enumerate}
+
+\item{Large Image File Handling Validation: T-PR7\\}
+
+Type: Automated, Performance
+
+Initial State: The system is configured with sufficient storage capacity and is ready to accept image file uploads.
+
+Input/Condition: Image files up to 50 GB in size are uploaded and processed by the system.
+
+How test will be performed:
+\begin{enumerate}
+    \item Prepare a set of image files, each up to 50 GB in size.
+    \item Use automated scripts to upload each large image file to the system.
+    \item Monitor the system for any crashes or failures during the upload and storage process.
+    \item Verify that each image file is successfully stored without errors.
+    \item Initiate processing tasks on the stored image files.
+    \item Ensure that processing completes successfully without system crashes or failures.
+    \item Compile the results to confirm that the system can handle image files up to 50 GB without crashing or failing.
+\end{enumerate}
+
+\end{enumerate}
+
+% 12.6
+\paragraph{Scalability or Extensibility Tests}
+\begin{enumerate}
+
+\item{Scalability Validation: T-PR8\\}
+
+Type: Automated, Performance
+
+Initial State: The system is configured for scaling operations with monitoring tools in place.
+
+Input/Condition: Simulate the required labeler capacity as specified in NFR-PR7 to test the system's ability to scale accordingly.
+
+How test will be performed:
+\begin{enumerate}
+    \item Utilize load testing tools (e.g., JMeter, Locust) to simulate the number of labelers required to meet the capacity defined in NFR-PR7.
+    \item Gradually increase the number of simulated labelers while monitoring system performance metrics such as response time, CPU usage, memory consumption, and network throughput.
+    \item Ensure that the system dynamically scales resources (e.g., adding more servers or allocating more memory) to handle the increased load without performance degradation.
+    \item Verify that all service request deadlines defined in NFR-PR7 are consistently met under the simulated load.
+    \item Identify and document any performance bottlenecks or scaling issues encountered during the test.
+    \item Compile the results to confirm that the system can scale to meet the required capacity as specified in NFR-PR7.
+\end{enumerate}
+
+\end{enumerate}
+
+
+
+
+
+% NFRs 13---------------------------------------------------------
 \subsubsection{Operational and Environmental}
-		
+% 13.2
+\paragraph{Wider Environmental Tests}
+\begin{enumerate}
+
+\item{Energy Efficiency Validation: T-OE0\\}
+
+Type: Automated, Performance
+
+Initial State: The system is running on cloud infrastructure with existing server management configurations.
+
+Input/Condition: Implement energy-efficient practices in cloud usage and server management, then measure energy consumption before and after optimization.
+
+How test will be performed:
+\begin{enumerate}
+    \item Establish baseline energy consumption by monitoring current cloud infrastructure and server operations using energy monitoring tools.
+    \item Identify and implement energy-efficient practices such as optimizing server utilization, enabling power-saving modes, and selecting energy-efficient instance types.
+    \item Collect energy consumption data for a defined period (e.g., one month) after implementing the optimizations.
+    \item Compare the post-optimization energy consumption data against the baseline measurements.
+    \item Calculate the percentage reduction in energy usage to verify that it meets or exceeds the \hyperref[ENERGY_REDUCTION_TARGET]{ENERGY\_REDUCTION\_TARGET}\% target.
+    \item Identify any deviations or unexpected increases in energy consumption and investigate potential causes.
+\end{enumerate}
+
+\end{enumerate}
+
+% 13.3
+\paragraph{Adjacent System Interfacing Tests}
+\begin{enumerate}
+
+\item{API and Data Format Integration Validation: T-OE1\\}
+
+Type: Automated, Integration
+
+Initial State: The system is configured with API access credentials for at least two major satellite data providers.
+
+Input/Condition: The system attempts to automatically acquire and integrate satellite images from the specified providers using their standardized APIs and data formats.
+
+How test will be performed:
+\begin{enumerate}
+    \item Identify two major satellite data providers and obtain their API documentation and access credentials.
+    \item Configure the system to connect to each provider's API, ensuring support for their standardized data formats.
+    \item Develop and execute automated scripts to initiate data acquisition from each provider.
+    \item Monitor the system for successful ingestion of satellite images without manual intervention.
+    \item Verify that the acquired data is correctly formatted, stored, and integrated into the platform's datasets.
+\end{enumerate}
+
+
+\item{Payment Processor Integration Validation: T-OE2\\}
+
+Type: Automated, Integration
+
+Initial State: The system is configured with API access credentials for reliable and secure payment processors (e.g., Stripe, PayPal).
+
+Input/Condition: Users and clients perform financial transactions through the integrated payment gateways.
+
+How test will be performed:
+\begin{enumerate}
+    \item Identify and obtain API documentation and access credentials for at least two major payment processors.
+    \item Develop automated scripts to simulate various types of transactions, including user compensations and client payments.
+    \item Monitor and log each transaction to verify successful processing without errors or delays.
+    \item Calculate the transaction success rate by dividing the number of successful transactions by the total number of attempted transactions.
+    \item Ensure that the transaction success rate meets or exceeds \hyperref[MIN_TRANSACTION_SUCCESS_RATE]{MIN\_TRANSACTION\_SUCCESS\_RATE}\%.
+\end{enumerate}
+
+\item{Multiple Currency Support Validation: T-OE3\\}
+
+Type: Automated, Integration
+
+Initial State: The system is configured to support multiple currencies, including USD, EUR, GBP, and INR.
+
+Input/Condition: Users perform transactions in each supported currency to verify correct processing.
+
+How test will be performed:
+\begin{enumerate}
+    \item Configure the system with exchange rates for USD, EUR, GBP, and INR.
+    \item Develop automated scripts to simulate transactions in each currency.
+    \item Execute the scripts and verify:
+    \begin{itemize}
+        \item Accurate currency conversion.
+        \item Correct display of currency symbols and values.
+        \item Proper recording of transactions with the correct currency.
+    \end{itemize}
+    \item Ensure all transactions are processed without errors.
+\end{enumerate}
+
+\item{Machine Learning Framework Compatibility Validation: T-OE4\\}
+
+Type: Automated, Integration
+
+Initial State: The system is configured with machine learning frameworks such as TensorFlow, PyTorch, and scikit-learn installed.
+
+Input/Condition: Users train and deploy models using each framework to verify compatibility.
+
+How test will be performed:
+\begin{enumerate}
+    \item Install TensorFlow, PyTorch, and scikit-learn on the system.
+    \item Develop or use existing sample models compatible with each framework.
+    \item Train each sample model using the respective framework.
+    \item Deploy the trained models to the production environment.
+    \item Verify that training and deployment processes complete without errors.
+    \item Ensure that the deployed models function correctly within the platform.
+\end{enumerate}
+
+\item{Data Pipeline Efficiency Validation: T-OE5\\}
+
+Type: Automated, Performance
+
+Initial State: The system has established data pipelines for transferring labeled datasets between the platform and ML models.
+
+Input/Condition: Large labeled datasets (e.g., 10,000 images) are transferred through the data pipelines.
+
+How test will be performed:
+\begin{enumerate}
+    \item Prepare a large labeled dataset consisting of 10,000 images.
+    \item Initiate the data transfer from the platform to the ML models using the established pipelines.
+    \item Monitor the transfer process to measure the time taken to complete the transfer.
+    \item Verify that the data transfer completes within the specified timeframe.
+    \item Execute batch processing of the large dataset through the pipelines and ensure no errors occur during the process.
+    \item Repeat the transfer and processing under different load conditions to assess pipeline robustness.
+\end{enumerate}
+
+
+\end{enumerate}
+
+% 13.4
+\paragraph{Productization Tests}
+\begin{enumerate}
+
+\item{Web Browser Accessibility Validation: T-OE6\\}
+
+Type: Manual, Usability
+
+Initial State: Users have access to the platform's web URL.
+
+Input/Condition: Users attempt to access and use the platform via various supported web browsers without installing any software.
+
+How test will be performed:
+\begin{enumerate}
+    \item Identify supported web browsers (e.g., Chrome, Firefox, Safari, Edge).
+    \item Using each browser, navigate to the platform's web URL.
+    \item Verify that the platform loads correctly without prompting for any software installations.
+    \item Perform key tasks (e.g., login, label images, access settings) to ensure full functionality is available through the browser.
+    \item Confirm that all users can access and use the platform solely through their web browsers without additional installations.
+\end{enumerate}
+
+\end{enumerate}
+
+% 13.5
 \paragraph{Release Tests}
 
 \begin{enumerate}
 
-\item{Road Map Consistency: T-OE6\\}
+\item{Road Map Consistency: T-OE7\\}
 
 Type: Manual, Static
 					
@@ -1108,7 +1739,7 @@ Output/Result: At least \hyperref[MIN_ON_TIME_MILESTONE]{MIN\_ON\_TIME\_MILESTON
 					
 How test will be performed: The team member looks over the road map and cross references the completion date of milestones to the dates listed in the road map.
 
-\item{Beta Testing: T-OE7\\}
+\item{Beta Testing: T-OE8\\}
 
 Type: Dynamic, Exploratory
 					
@@ -1120,7 +1751,7 @@ Output/Result: Feedback on any bugs, navigation issues, or aesthetic problems is
 					
 How test will be performed: Testers will be recruited and identified. They will be from fields of interest that include scientists, labelers, and domain experts. Then, the beta testing environment will be set up and the url will be distributed to the testers along with any other set up resources. Specific tasks are provided for testers to complete that focus on the annotation tools, sign up process and project creation. Feedback will be collected through direct comments from the tester.
 
-\item{Regression Testing: T-OE8\\}
+\item{Regression Testing: T-OE9\\}
 
 Type: Dynamic, Automated
 					
@@ -1408,141 +2039,98 @@ Output/Result: At least \hyperref[MIN_PRACTICE_USAGE]{MIN\_PRACTICE\_USAGE}\% of
 How test will be performed: Practice environment utilization will be tracked by the application. Improvement in accuracy will also be tracked. If the metrics meet or succeed our thresholds, then we can conclude the sandbox is useful.
 \end{enumerate}
 
-...
-
 \subsection{Traceability Between Test Cases and Requirements}
 
 \setlength\LTleft{-3cm}
 \tiny
-\begin{longtable}{llllllllllllllll}
+\begin{longtable}{lcccclllllclcccc}
 \multicolumn{1}{l|}{FR \#} & \multicolumn{15}{c}{Test Case} \\ \hline
 \endfirsthead
 %
 \endhead
 %
-\multicolumn{1}{l|}{} & \multicolumn{1}{c}{T-FR0} & \multicolumn{1}{c}{T-FR1} & \multicolumn{1}{c}{T-FR2} & \multicolumn{1}{c}{T-FR3} & \multicolumn{1}{c}{T-FR4} & \multicolumn{1}{c}{T-FR5} & \multicolumn{1}{c}{T-FR6} & \multicolumn{1}{c}{T-FR7} & \multicolumn{1}{c}{T-FR8} & \multicolumn{1}{c}{T-FR9} & \multicolumn{1}{c}{T-FR10} & \multicolumn{1}{c}{T-FR11} & \multicolumn{1}{c}{T-FR12} & \multicolumn{1}{c}{T-FR13} & \multicolumn{1}{c}{T-FR14} \\
-\multicolumn{1}{l|}{FR0} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{FR1} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{FR2} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{FR3} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{FR4} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{FR5} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{FR6} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{FR7} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{FR8} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{FR9} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{FR10} &  &  &  &  &  &  &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{FR11} &  &  &  &  &  &  &  &  &  & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{FR12} &  &  &  &  &  &  &  &  &  & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{FR13} &  &  &  &  &  &  &  &  &  & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{FR14} &  &  &  &  &  &  &  &  &  & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} \\
- &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
+\multicolumn{1}{l|}{} & T-FR0 & T-FR1 & T-FR2 & T-FR3 & \multicolumn{1}{c}{T-FR4} & \multicolumn{1}{c}{T-FR5} & \multicolumn{1}{c}{T-FR6} & \multicolumn{1}{c}{T-FR7} & \multicolumn{1}{c}{T-FR8} & T-FR9 & \multicolumn{1}{c}{T-FR10} & T-FR11 & T-FR12 & T-FR13 & T-FR14 \\
+\multicolumn{1}{l|}{FR0} & X &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  &  &  &  &  &  \\
+\multicolumn{1}{l|}{FR1} &  & X &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  &  &  &  &  &  \\
+\multicolumn{1}{l|}{FR2} &  &  & X &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  &  &  &  &  &  \\
+\multicolumn{1}{l|}{FR3} &  &  &  & X & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  &  &  &  &  &  \\
+\multicolumn{1}{l|}{FR4} &  &  &  &  & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  &  &  &  &  &  \\
+\multicolumn{1}{l|}{FR5} &  &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  &  &  &  &  &  \\
+\multicolumn{1}{l|}{FR6} &  &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  &  &  &  &  &  \\
+\multicolumn{1}{l|}{FR7} &  &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} &  &  &  &  &  &  \\
+\multicolumn{1}{l|}{FR8} &  &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} &  &  &  &  &  &  \\
+\multicolumn{1}{l|}{FR9} &  &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & X &  &  &  &  &  \\
+\multicolumn{1}{l|}{FR10} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  &  &  & \multicolumn{1}{c}{X} &  &  &  &  \\
+\multicolumn{1}{l|}{FR11} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  &  &  &  & X &  &  &  \\
+\multicolumn{1}{l|}{FR12} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  &  &  &  &  & X &  &  \\
+\multicolumn{1}{l|}{FR13} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  &  &  &  &  &  & X &  \\
+\multicolumn{1}{l|}{FR14} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  &  &  &  &  &  &  & X \\
+ & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
 \multicolumn{1}{l|}{NFR \#} & \multicolumn{15}{c}{Test Case} \\ \hline
-\multicolumn{1}{l|}{} & \multicolumn{1}{c}{T-LF0} & \multicolumn{1}{c}{T-LF1} & \multicolumn{1}{c}{T-LF2} & \multicolumn{1}{c}{T-UH0} & \multicolumn{1}{c}{T-UH1} & \multicolumn{1}{c}{T-UH2} & \multicolumn{1}{c}{T-UH3} & \multicolumn{1}{c}{T-UH4} & \multicolumn{1}{c}{T-UH5} & \multicolumn{1}{c}{T-UH6} & \multicolumn{1}{c}{T-UH7} & \multicolumn{1}{c}{T-UH8} & \multicolumn{1}{c}{T-UH9} & \multicolumn{1}{c}{T-PR0} & \multicolumn{1}{c}{T-PR1} \\
-\multicolumn{1}{l|}{LF0} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  &  &  &  &  &  &  &  &  &  \\
-\multicolumn{1}{l|}{LF1} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  &  &  &  &  &  &  &  &  &  \\
-\multicolumn{1}{l|}{LF2} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  &  &  &  &  &  &  &  &  &  \\
-\multicolumn{1}{l|}{UH0} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} &  &  &  &  &  &  &  &  &  &  \\
-\multicolumn{1}{l|}{UH1} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} &  &  &  &  &  &  &  &  &  &  \\
-\multicolumn{1}{l|}{UH2} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} &  &  &  &  &  &  &  &  &  \\
-\multicolumn{1}{l|}{UH3} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{X} &  &  &  &  &  &  &  &  \\
-\multicolumn{1}{l|}{UH4} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  &  & \multicolumn{1}{c}{X} &  &  &  &  &  &  &  \\
-\multicolumn{1}{l|}{UH5} &  &  &  &  &  &  &  &  & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{UH6} &  &  &  &  &  &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{UH7} &  &  &  &  &  &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{UH8} &  &  &  &  &  &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{UH9} &  &  &  &  &  &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{PR0} &  &  &  &  &  &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{PR1} &  &  &  &  &  &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{PR2} &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \multicolumn{1}{c}{X} \\
- &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
+\multicolumn{1}{l|}{} & T-LF0 & T-LF1 & T-LF2 & T-UH0 & \multicolumn{1}{c}{T-UH1} & \multicolumn{1}{c}{T-UH2} & \multicolumn{1}{c}{T-UH3} & \multicolumn{1}{c}{T-UH4} & \multicolumn{1}{c}{T-UH5} & T-UH6 & \multicolumn{1}{c}{T-UH7} & T-UH8 & T-UH9 & T-PR0 & T-PR1 \\
+\multicolumn{1}{l|}{LF0} & X &  &  &  & \multicolumn{1}{c}{} &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{LF1} &  & X &  &  & \multicolumn{1}{c}{} &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{LF2} &  &  & X &  & \multicolumn{1}{c}{} &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{UH0} &  &  &  & X & \multicolumn{1}{c}{} &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{UH1} &  &  &  &  & \multicolumn{1}{c}{X} &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{UH2} &  &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{UH3} &  &  &  &  & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{X} &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{UH4} &  &  &  &  & \multicolumn{1}{c}{} &  &  & \multicolumn{1}{c}{X} &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{UH5} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  & \multicolumn{1}{c}{X} &  & \multicolumn{1}{c}{} &  &  &  &  \\
+\multicolumn{1}{l|}{UH6} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  & \multicolumn{1}{c}{} & X & \multicolumn{1}{c}{} &  &  &  &  \\
+\multicolumn{1}{l|}{UH7} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{X} &  &  &  &  \\
+\multicolumn{1}{l|}{UH8} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} & X &  &  &  \\
+\multicolumn{1}{l|}{UH9} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} &  & X &  &  \\
+\multicolumn{1}{l|}{PR0} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} &  &  & X &  \\
+\multicolumn{1}{l|}{PR1} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} &  &  & X &  \\
+\multicolumn{1}{l|}{PR2} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & X \\
+ & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
 \multicolumn{1}{l|}{NFR \#} & \multicolumn{15}{c}{Test Case} \\ \hline
-\multicolumn{1}{l|}{} & \multicolumn{1}{c}{T-PR1} & \multicolumn{1}{c}{T-PR2} & \multicolumn{1}{c}{T-PR3} & \multicolumn{1}{c}{T-PR4} & \multicolumn{1}{c}{T-PR5} & \multicolumn{1}{c}{T-PR6} & \multicolumn{1}{c}{T-PR7} & \multicolumn{1}{c}{T-OE0} & \multicolumn{1}{c}{T-OE1} & \multicolumn{1}{c}{T-OE2} & \multicolumn{1}{c}{T-OE3} & \multicolumn{1}{c}{T-OE4} & \multicolumn{1}{c}{T-OE5} & \multicolumn{1}{c}{T-OE6} & \multicolumn{1}{c}{T-OE7} \\
-\multicolumn{1}{l|}{PR3} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  &  &  &  &  &  &  &  &  &  \\
-\multicolumn{1}{l|}{PR4} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  &  &  &  &  &  &  &  &  &  \\
-\multicolumn{1}{l|}{PR5} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} &  &  &  &  &  &  &  &  &  &  \\
-\multicolumn{1}{l|}{PR6} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} &  &  &  &  &  &  &  &  &  &  \\
-\multicolumn{1}{l|}{PR7} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  &  &  &  &  &  &  &  &  &  \\
-\multicolumn{1}{l|}{PR8} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} &  &  &  &  &  &  &  &  &  \\
-\multicolumn{1}{l|}{PR9} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{X} &  &  &  &  &  &  &  &  \\
-\multicolumn{1}{l|}{OE0} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  &  & \multicolumn{1}{c}{X} &  &  &  &  &  &  &  \\
-\multicolumn{1}{l|}{OE1} &  &  &  &  &  &  &  &  & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{OE2} &  &  &  &  &  &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{OE3} &  &  &  &  &  &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{OE4} &  &  &  &  &  &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{OE5} &  &  &  &  &  &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{OE6} &  &  &  &  &  &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{OE7} &  &  &  &  &  &  &  &  &  &  &  &  &  & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{OE8} &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \multicolumn{1}{c}{X} \\
- &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
+\multicolumn{1}{l|}{} & T-PR2 & T-PR3 & T-PR4 & T-PR5 & \multicolumn{1}{c}{T-PR6} & \multicolumn{1}{c}{T-PR7} & \multicolumn{1}{c}{T-PR8} & \multicolumn{1}{c}{T-OE0} & \multicolumn{1}{c}{T-OE1} & T-OE2 & \multicolumn{1}{c}{T-OE3} & T-OE4 & T-OE5 & T-OE6 & T-OE7 \\
+\multicolumn{1}{l|}{PR3} & X &  &  &  &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{PR4} &  & X &  &  &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{PR5} &  &  & X &  &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{PR6} &  &  &  & X &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{PR7} &  &  &  &  & \multicolumn{1}{c}{X} &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{PR8} &  &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{PR9} &  &  &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{OE0} &  &  &  &  &  &  &  & \multicolumn{1}{c}{X} &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{OE1} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  & \multicolumn{1}{c}{X} &  & \multicolumn{1}{c}{} &  &  &  &  \\
+\multicolumn{1}{l|}{OE2} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  & \multicolumn{1}{c}{} & X & \multicolumn{1}{c}{} &  &  &  &  \\
+\multicolumn{1}{l|}{OE3} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{X} &  &  &  &  \\
+\multicolumn{1}{l|}{OE4} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} & X &  &  &  \\
+\multicolumn{1}{l|}{OE5} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} &  & X &  &  \\
+\multicolumn{1}{l|}{OE6} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} &  &  & X &  \\
+\multicolumn{1}{l|}{OE7} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  & X \\
+ & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
 \multicolumn{1}{l|}{NFR \#} & \multicolumn{15}{c}{Test Case} \\ \hline
-\multicolumn{1}{l|}{} & \multicolumn{1}{c}{T-OE8} & \multicolumn{1}{c}{T-MS0} & \multicolumn{1}{c}{T-SE0} & \multicolumn{1}{c}{T-SE1} & \multicolumn{1}{c}{T-SE2} & \multicolumn{1}{c}{T-SE3} & \multicolumn{1}{c}{T-SE4} & \multicolumn{1}{c}{T-SE5} & \multicolumn{1}{c}{T-SE6} & \multicolumn{1}{c}{T-SE7} & \multicolumn{1}{c}{T-SE8} & \multicolumn{1}{c}{T-SE9} & \multicolumn{1}{c}{T-CU0} & \multicolumn{1}{c}{T-CO0} & \multicolumn{1}{c}{T-C01} \\
-\multicolumn{1}{l|}{OE9} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{MR0} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{SE0} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{SE1} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{SE2} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{SE3} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{SE4} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{SE5} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{SE6} &  &  &  &  &  &  &  & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{SE7} &  &  &  &  &  &  &  &  & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{SE8} &  &  &  &  &  &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{SE9} &  &  &  &  &  &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{SE10} &  &  &  &  &  &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
-\multicolumn{1}{l|}{CU0} &  &  &  &  &  &  &  &  &  &  &  &  & \multicolumn{1}{c}{X} &  &  \\
-\multicolumn{1}{l|}{CO0} &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \multicolumn{1}{c}{X} \\
- &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
+\multicolumn{1}{l|}{} & T-OE8 & T-OE9 & T-MS0 & T-SE0 & \multicolumn{1}{c}{T-SE1} & \multicolumn{1}{c}{T-SE2} & \multicolumn{1}{c}{T-SE3} & \multicolumn{1}{c}{T-SE4} & \multicolumn{1}{c}{T-SE5} & T-SE6 & \multicolumn{1}{c}{T-SE7} & T-SE8 & T-SE9 & T-CU0 & T-CO0 \\
+\multicolumn{1}{l|}{OE8} & X & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{OE9} &  & X &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} &  &  &  &  \\
+\multicolumn{1}{l|}{MR0} &  &  & X &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} &  &  &  &  \\
+\multicolumn{1}{l|}{SE0} &  &  &  & X & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} &  &  &  &  \\
+\multicolumn{1}{l|}{SE1} &  &  &  &  & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} &  &  &  &  \\
+\multicolumn{1}{l|}{SE2} &  &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} &  &  &  &  \\
+\multicolumn{1}{l|}{SE3} &  &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} &  &  &  &  \\
+\multicolumn{1}{l|}{SE4} &  &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} &  & \multicolumn{1}{c}{} &  &  &  &  \\
+\multicolumn{1}{l|}{SE5} &  &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} &  &  &  &  \\
+\multicolumn{1}{l|}{SE6} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  & \multicolumn{1}{c}{X} &  & \multicolumn{1}{c}{} &  &  &  &  \\
+\multicolumn{1}{l|}{SE7} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  &  & X & \multicolumn{1}{c}{} &  &  &  &  \\
+\multicolumn{1}{l|}{SE8} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  &  &  & \multicolumn{1}{c}{X} &  &  &  &  \\
+\multicolumn{1}{l|}{SE9} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  &  &  & \multicolumn{1}{c}{} & X &  &  & X \\
+\multicolumn{1}{l|}{SE10} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  &  &  & \multicolumn{1}{c}{} &  & X &  &  \\
+\multicolumn{1}{l|}{CU0} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & X & \multicolumn{1}{l}{} \\
+ & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
 \multicolumn{1}{l|}{NFR \#} & \multicolumn{15}{c}{Test Case} \\ \hline
-\multicolumn{1}{l|}{} & T-C02 & T-C03 & T-UDT0 & T-UDT1 &  &  &  &  &  &  &  &  &  &  &  \\
-\multicolumn{1}{l|}{CO1} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} &  &  &  &  &  &  &  &  &  &  \\
-\multicolumn{1}{l|}{CO2} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} &  &  &  &  &  &  &  &  &  &  \\
-\multicolumn{1}{l|}{UD0} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} &  & \multicolumn{1}{c}{} &  &  &  &  &  &  &  &  &  &  \\
-\multicolumn{1}{l|}{UD1} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} &  & \multicolumn{1}{c}{} &  &  &  &  &  &  &  &  &  &  \\
-\multicolumn{1}{l|}{UD2} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} &  & \multicolumn{1}{c}{} &  &  &  &  &  &  &  &  &  &  \\
-\multicolumn{1}{l|}{TR0} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} &  & \multicolumn{1}{c}{} &  &  &  &  &  &  &  &  &  &  \\
-\multicolumn{1}{l|}{TR1} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  &  &  &  &  &  &  &  &  \\
- &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
- & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
- &  &  &  &  &  &  &  &  &  & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
- &  &  &  &  &  &  &  &  &  & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
- &  &  &  &  &  &  &  &  &  & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
- &  &  &  &  &  &  &  &  &  & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
- &  &  &  &  &  &  &  &  &  & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
- &  &  &  &  &  &  &  &  &  & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} \\
- &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
- &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
- &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
- &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
- &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
- &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
- &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
- &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
- &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
- &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
- &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
- &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
- &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
- &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
- &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
- &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
- &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
- &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
- &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
- &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
- &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
- &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
- &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
- &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
- &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
- &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
- &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
- &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
- &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
- &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
- &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
- &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
- &  &  &  &  &  &  &  &  &  &  &  &  &  &  & 
+\multicolumn{1}{l|}{} & \multicolumn{1}{l}{T-C01} & \multicolumn{1}{l}{T-C02} & \multicolumn{1}{l}{T-C03} & \multicolumn{1}{l}{T-UDT0} & T-UDT1 &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{CO0} & X & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{CO1} &  & X &  &  &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{CO2} &  &  & X &  &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{UD0} &  &  &  & X &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{UD1} &  &  &  & X &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{UD2} &  &  &  & X &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{TR0} &  &  &  & X &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{TR1} &  &  &  &  & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{}
 \end{longtable}
 \normalsize
 
@@ -1678,12 +2266,12 @@ How test will be performed:
 
 \section{Appendix}
 
-This is where you can place additional information.
-
 \subsection{Symbolic Parameters}
 
 The definition of the test cases will call for SYMBOLIC\_CONSTANTS.
 Their values are defined in this section for easy maintenance.
+
+
 
 \begin{longtable}{|l|l|l|p{4cm}|}
   \hline
@@ -1698,6 +2286,21 @@ Their values are defined in this section for easy maintenance.
   \endfoot
 
   \hline
+  MIN\_USER\_USABILITY\_METRIC & 90 & \% & Minimum percent of users that satisfy usability requirements \label{MIN_USER_USABILITY_METRIC} \\ \hline
+  MIN\_PREF\_MATCH & 80 & \% & Minimum percent of label task preference match \label{MIN_PREF_MATCH} \\ \hline
+  MIN\_TRAINING\_TRACKER\_USEFULNESS & 80 & \% & Minimum percent of trackers usefulness \label{MIN_TRAINING_TRACKER_USEFULNESS} \\ \hline
+  MIN\_PRACTICE\_TASK\_COMPLETION & 85 & \% & Minimum percent of user to complete practice task \label{MIN_PRACTICE_TASK_COMPLETION} \\ \hline
+  MIN\_POPUP\_USEFULNESS & 80 & \% & Minimum percent of users to find popups useful \label{MIN_POPUP_USEFULNESS} \\ \hline
+  ERRORS\_WITH\_INSTRUCTIONS & 80 & \% & Percent of errors with follow up instructions \label{ERRORS_WITH_INSTRUCTIONS} \\ \hline
+  FRUSTRATION\_RATE & 10 & \% & Frustration rate when encountering errors \label{FRUSTRATION_RATE} \\ \hline
+  MIN\_ACTIONS\_WITH\_KEYBOARD & 95 & \% & Minimum percent of actions available with keyboard inputs \label{MIN_ACTIONS_WITH_KEYBOARD} \\ \hline
+  MIN\_ACCOUNT\_CREATION\_SUCCESS & 90 & \% & Minimum percent of accounts created successfully within 48 hours \label{MIN_ACCOUNT_CREATION_SUCCESS} \\ \hline
+  MIN\_REPORT\_RETURN & 90 & \% & Minimum percent of reports returned to customer within time frame \label{MIN_REPORT_RETURN} \\ \hline
+  MAX\_IMAGE\_DISPLAY\_TIME & 10 & Minutes & Maximum time to display image to labeller \label{MAX_IMAGE_DISPLAY_TIME} \\ \hline
+  MIN\_LABEL\_ACCURACY & 75 & \% & Minimum percent of label accuracy \label{MIN_LABEL_ACCURACY} \\ \hline
+  MIN\_UPTIME & 80 & \% & Minimum percent of system uptime \label{MIN_UPTIME} \\ \hline
+  ENERGY\_REDUCTION\_TARGET & 20 & \% & Minimum percent of achieved energy reduction \label{ENERGY_REDUCTION_TARGET} \\ \hline
+  MIN\_TRANSACTION\_SUCCESS\_RATE & 99.5 & \% & Minimum percent of successful transactions \label{MIN_TRANSACTION_SUCCESS_RATE} \\ \hline
   MIN\_ON\_TIME\_MILESTONE & 80 & \% & Minimum percent of milestones that have been met on time \label{MIN_ON_TIME_MILESTONE} \\ \hline
   BETA\_TESTERS & 50 & People & Number of beta testers \label{BETA_TESTERS} \\ \hline
   MAX\_BUGS\_FOUND & 10 & Bugs & Number of software bugs found \label{MAX_BUGS_FOUND} \\ \hline
@@ -1709,13 +2312,25 @@ Their values are defined in this section for easy maintenance.
 
 \subsection{Usability Survey Questions}
 \begin{enumerate}
-  \item Did you use the help system to aid in completing your task? Yes/No
-  \item If you answered yes, please rate how useful it was in helping you accomplish your task: 1 (Not Useful) - 5 (Very Useful)
-  \item Did you use the quick start guide to aid in completing your task? Yes/No
-  \item If you answered yes, please rate the clarity and helpfulness of it: 1 (Not Helpful) - 5 (Very Helpful)
-  \item Did you notice the tool-tips or pop-ups providing contextual help as you worked? Yes/No
-  \item If you answered yes, please rate the clarity and usefulness of the in-app help indicators: 1 (Not Helpful) - 5 (Very Helpful)
-  
+    \item On a scale of 1 to 5, how would you rate the readability of text at this screen size? 
+    \item On a scale of 1 to 5, how clear was the visual feedback when interacting with buttons and other interactive elements?
+    \item On a scale of 1 to 5, how consistent do you find the visual design across different sections of the application?
+    \item On a scale of 1 to 5, how intuitive did you find the navigation menu?
+    \item On a scale of 1 to 5, how consistent did you find the style of buttons and forms across different pages of the application?
+    \item On a scale of 1 to 5, how satisfied are you with the alignment of your assigned tasks to your preferences?
+    \item On a scale of 1 to 5, how helpful do you find the progress tracker in monitoring your training progress?
+    \item On a scale of 1 to 5, how satisfied are you with the simulated labeling tasks provided for practice?
+    \item On a scale of 1 to 5, how clear and understandable did you find the contextual help pop-ups?
+    \item On a scale of 1 to 5, how clear and actionable were the error messages you encountered?
+    \item On a scale of 1 to 5, how easy was it to adjust the text size to your preference?
+    \item On a scale of 1 to 5, how satisfied are you with the available color themes for improving readability?
+    \item On a scale of 1 to 5, how easy was it to access the platform through your web browser? 
+    \item Did you use the help system to aid in completing your task? Yes/No
+    \item If you answered yes, please rate how useful it was in helping you accomplish your task: 1 (Not Useful) - 5 (Very Useful)
+    \item Did you use the quick start guide to aid in completing your task? Yes/No
+    \item If you answered yes, please rate the clarity and helpfulness of it: 1 (Not Helpful) - 5 (Very Helpful)
+    \item Did you notice the tool-tips or pop-ups providing contextual help as you worked? Yes/No
+    \item If you answered yes, please rate the clarity and usefulness of the in-app help indicators: 1 (Not Helpful) - 5 (Very Helpful)
 \end{enumerate}
 
 \newpage{}
