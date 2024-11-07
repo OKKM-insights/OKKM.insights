@@ -274,49 +274,34 @@ The project can be found at \\\url{https://github.com/orgs/OKKM-insights/project
 
 \section{Proof of Concept Demonstration Plan}
 
-Our project consists of two main components: the computer vision algorithm and the labeling tool. We intend to present both in our upcoming demo to illustrate the complete pipeline—from data labeling to model training and application on new data. The primary risk we want to address in the demo is the computer vision model and the data pipeline pertaining to it, hence for the full picture we wish to demonstrate each component in its simplest, working form. \\
+Our project consists of two main components: the computer vision algorithm and the labeling tool. We intend to present both in our upcoming demo to illustrate the complete pipeline—from data labeling to model training and application on new data. The primary risks we want to address in the demonstration are the following:
 
-\subsection{Computer Vision Demo}
+\begin{enumerate} 
+    \item The ability to source relevant satellite images from third-party providers. 
+    \item Enabling users to label images with minimal training on how to use the platform. 
+    \item Our capacity to analyze and extract useful information from a labeled dataset. 
+    \item The feasibility of training an image identification model using aggregated images. 
+\end{enumerate}
 
-We will simulate a specific business case that involves searching for a particular object within an image, using the "Where's Waldo?" book series as our dataset. In these books, readers are challenged to find the character Waldo, who is cleverly hidden among numerous other characters and objects. This scenario mirrors real-world challenges in satellite imagery analysis, where identifying specific targets within complex visuals is essential.\\
+By addressing these points, we will showcase the most important aspects of our project and identify any major roadblocks and potential difficulties early in the development cycle.
 
-Demo Objectives:
+The demo will include the following specific components:
 
-\begin{itemize}
-    \item Model Training: Train a computer vision model using the labeled data to recognize and locate Waldo.
-    \item Out-of-Sample Testing: Apply the trained model to new, unlabeled images to assess its ability to find Waldo without prior hints.
-\end{itemize}
+\subsection{Third-Party Image Provider}
 
-This demonstration will showcase our ability to create a functional model capable of detecting specific objects in complex images.\\
+First, we will demonstrate the raw data that our program will ingest and our ability to source it. We are currently in discussions with multiple potential agencies and have access to open-source data. Ideally, we aim to obtain an educational account with Planet Labs, a high-frequency satellite imagery provider that will enable us to receive on-demand pictures of any chosen area worldwide.
 
-\subsection{Web Application Demo}
+\subsection{Image Labeling UI}
 
-Our web application serves as the primary labeling tool within our platform. We aim to demonstrate a basic yet functional implementation that walks through all the steps involved in the labeling process.\\
+Next, we will showcase the crowdsourcing platform, which is the core of our application. We aim to present a basic yet functional implementation that walks through all the steps involved in the labeling process, from users receiving labeling tasks to submitting accurate image annotations.
 
-Demo objectives (Frontend):
+For our demonstration, we intend to present a simple challenge of finding an object on a primarily uniform background, which will also serve as the basis for the image recognition model. We will simulate a specific business case involving the search for a large ship at open sea. This scenario mirrors real-world challenges in satellite imagery analysis, where identifying specific targets within a target area is essential when conventional means are unavailable.
 
-\begin{itemize}
-    \item Client Upload Page: A dedicated interface where clients can upload a labeling "Job," consisting of images requiring annotation.
-    \item Job Selection Screen: A portal where users (labelers) can view available jobs and select tasks they wish to work on.
-    \item Labeling Interface: A user-friendly page where labelers can annotate images according to the job specifications.
-\end{itemize}
+\subsection{Image Recognition Model}
 
-Demo objectives (Backend):
+The final section of the demonstration will cover the analysis of aggregated labeled data. We aim to present a comprehensive view of how we partition, store, and utilize the insights collected from the user side of the application. For demonstration purposes, we will reuse the same image from Section 2 to visualize the final dataset.
 
-\begin{itemize}
-    \item Image Management: Accept and securely store incoming images from clients.
-    \item Task Distribution: Break down images into manageable labeling tasks and assign them to users.
-    \item Data Integration: Ensure the labeled data seamlessly feeds into the computer vision model for training.
-\end{itemize}
-
-By implementing these features, we aim to demonstrate how users can contribute to the labeling process and how clients can initiate jobs, demonstrating the full experience of our platform.\\
-
-For both demos, we will utilize images from the "Where's Waldo?" book series. This choice offers several advantages:
-
-\begin{itemize}
-    \item Clarity: The task of finding Waldo is straightforward and easily understood by all audiences.
-    \item Complexity: The crowded scenes provide a realistic challenge similar to locating objects in satellite imagery.
-\end{itemize}
+We will also present a working image recognition model tailored specifically to the use case described above. By showcasing the model, we intend to demonstrate our ability to create a specialized solution for the given business case and provide insights on out-of-sample data.
 
 
   \section{Expected Technology}
