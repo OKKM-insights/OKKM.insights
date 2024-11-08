@@ -174,7 +174,7 @@ These users are responsible for the upkeep of the platform, ensuring that the la
 \section{Mandated Constraints}
 \subsection{Solution Constraints}
 \begin{itemize}
-  \item The solution must be fully compatible with the latest stable releases of Google Chrome, Firefox, Microsoft Edge, and Safari browsers.\\ \textbf{Rationale:} Users will interact with the web application through various modern web browsers, so ensuring cross-browser compatibility is essential for providing a consistent user experience. \\ \textbf{Fit Criteria:} The web application must display consistently, maintain full functionality, and support core features across all specified browsers without major visual or functional discrepancies. Testing should be conducted on each browser to validate compatibility.
+  \item The solution must be fully compatible with the latest stable releases of Google Chrome, Firefox, Microsoft Edge, and Safari browsers. This is covered by \hyperref[sec:OE6]{NFR-OE6}.\\ \textbf{Rationale:} Users will interact with the web application through various modern web browsers, so ensuring cross-browser compatibility is essential for providing a consistent user experience. \\ \textbf{Fit Criteria:} The web application must display consistently, maintain full functionality, and support core features across all specified browsers without major visual or functional discrepancies. Testing should be conducted on each browser to validate compatibility.
 \end{itemize}
 \subsection{Implementation Environment of the Current System}
 There is no current environment in which our application must be implemented.
@@ -753,7 +753,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \begin{itemize}
   \item \textbf{Description:} The system shall combine annotations obtained from authenticated Labelers into a consolidated report.
   \item \textbf{Rationale:} This is the key service the system provides.
-  \item \textbf{Fit Criterion:} After a service request has been initaited, and the system has determined the label accuracy is over a certain threshold (NFR-PR5).
+  \item \textbf{Fit Criterion:} After a service request has been initaited, and the system has determined the label accuracy is over a certain threshold (\hyperref[sec:PR5]{NFR-PR5}).
 \end{itemize}
 
 \section{Look and Feel Requirements}
@@ -955,7 +955,7 @@ N/A
 \begin{itemize}
   \item \textbf{Description:} The system shall have the capacity to support enough labelers to meet all service request deadlines.
   \item \textbf{Rationale:} This requirement is critical to satisfy NFR-PR2.
-  \item \textbf{Fit Criterion:} See NFR-PR2.
+  \item \textbf{Fit Criterion:} See \hyperref[sec:PR2]{NFR-PR2}.
 \end{itemize}
 \subsubsection*{NFR-PR8}
 \label{sec:PR8}
@@ -970,7 +970,7 @@ N/A
 \begin{itemize}
   \item \textbf{Description:} The system shall be able to scale to meet the capacity specified in NFR-PR7.
   \item \textbf{Rationale:} This requirement is critical to satisfy NFR-PR7.
-  \item \textbf{Fit Criterion:} See NFR-PR7.
+  \item \textbf{Fit Criterion:} See \hyperref[sec:PR7]{NFR-PR7}.
 \end{itemize}
 \subsection{Longevity Requirements}
 N/A
