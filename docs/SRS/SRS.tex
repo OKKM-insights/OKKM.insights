@@ -439,7 +439,8 @@ The use case diagram depicted below identifies the boundaries between the users 
   \caption{Product Use Cases} \label{TblPUC}\\
 \end{longtable}
 \subsection{Individual Product Use Cases (PUC's)}
-\subsubsection*{PUC 0 - Sign Up}
+\subsubsection*{PUC0 - Sign Up}
+\label{sec:PUC0}
 \textbf{Primary Actors:} Labelers, Customers\\ 
 \textbf{Precondition:} None\\
 \textbf{Trigger:} User selects create an account\\
@@ -452,7 +453,8 @@ The use case diagram depicted below identifies the boundaries between the users 
 \end{enumerate}
 \textbf{Post-condition:} User has successfully created an account and the application has securely stored their information
 
-\subsubsection*{PUC 1 - Log In}
+\subsubsection*{PUC1 - Log In}
+\label{sec:PUC1}
 \textbf{Primary Actors:} Labelers\\ 
 \textbf{Precondition:} Labeler has signed up for an account\\
 \textbf{Trigger:} Labeler selects log in\\
@@ -464,7 +466,8 @@ The use case diagram depicted below identifies the boundaries between the users 
 \end{enumerate}
 \textbf{Post-condition:} The labeler has access to their account. All account related information, such as labeling progress, is accurately represented
 
-\subsubsection*{PUC 2 - Customer Log In}
+\subsubsection*{PUC2 - Customer Log In}
+\label{sec:PUC2}
 \textbf{Primary Actors:} Customers\\ 
 \textbf{Precondition:} Customer has signed up for an account\\
 \textbf{Trigger:} Customer selects log in\\
@@ -476,7 +479,8 @@ The use case diagram depicted below identifies the boundaries between the users 
 \end{enumerate}
 \textbf{Post-condition:} The customer has access to their account and all their current image analysis projects
 
-\subsubsection*{PUC 3 - Update User Information}
+\subsubsection*{PUC3 - Update User Information}
+\label{sec:PUC3}
 \textbf{Primary Actors:} Labelers, Customers\\ 
 \textbf{Precondition:} User has logged in\\
 \textbf{Trigger:} User selects update information\\
@@ -489,7 +493,8 @@ The use case diagram depicted below identifies the boundaries between the users 
 \end{enumerate}
 \textbf{Post-condition:} The information that the system stores about the user has been updated
 
-\subsubsection*{PUC 4 - Annotate Satellite Images}
+\subsubsection*{PUC4 - Annotate Satellite Images}
+\label{sec:PUC4}
 \textbf{Primary Actors:} Labelers\\ 
 \textbf{Precondition:} Labeler has logged in\\
 \textbf{Trigger:} Labeler selects a listed project\\
@@ -504,7 +509,8 @@ The use case diagram depicted below identifies the boundaries between the users 
 \end{enumerate}
 \textbf{Post-condition:} All submitted annotated satellite images are stored by the system. The labeler's reward balance is updated to reflect their submissions
 
-\subsubsection*{PUC 5 - Segment Annotation}
+\subsubsection*{PUC5 - Segment Annotation}
+\label{sec:PUC5}
 \textbf{Primary Actors:} Labelers\\ 
 \textbf{Precondition:} Labeler has logged in\\
 \textbf{Trigger:} Labeler selects a listed project\\
@@ -514,7 +520,8 @@ The use case diagram depicted below identifies the boundaries between the users 
 \end{enumerate}
 \textbf{Post-condition:} All submitted annotated satellite images are stored by the system. The labeler's reward balance is updated to reflect their submissions
 
-\subsubsection*{PUC 6 - Bounding Box Annotation}
+\subsubsection*{PUC6 - Bounding Box Annotation}
+\label{sec:PUC6}
 \textbf{Primary Actors:} Labelers\\ 
 \textbf{Precondition:} Labeler has logged in\\
 \textbf{Trigger:} Labeler selects a listed project\\
@@ -524,7 +531,8 @@ The use case diagram depicted below identifies the boundaries between the users 
 \end{enumerate}
 \textbf{Post-condition:} All submitted annotated satellite images are stored by the system. The labeler's reward balance is updated to reflect their submissions
 
-\subsubsection*{PUC 7 - Classification}
+\subsubsection*{PUC7 - Classification}
+\label{sec:PUC7}
 \textbf{Primary Actors:} Labelers\\ 
 \textbf{Precondition:} Labeler has logged in\\
 \textbf{Trigger:} Labeler selects a listed project\\
@@ -534,7 +542,8 @@ The use case diagram depicted below identifies the boundaries between the users 
 \end{enumerate}
 \textbf{Post-condition:} All submitted annotated satellite images are stored by the system. The labeler's reward balance is updated to reflect their submissions
 
-\subsubsection*{PUC 8 - Cash Out}
+\subsubsection*{PUC8 - Cash Out}
+\label{sec:PUC8}
 \textbf{Primary Actors:} Labelers\\
 \textbf{Secondary Actor:} Financial Institution\\
 \textbf{Precondition:} Labeler has logged in and their reward balance is at least \$1\\
@@ -548,7 +557,8 @@ The use case diagram depicted below identifies the boundaries between the users 
 \end{enumerate}
 \textbf{Post-condition:} The financial account that the labeler provided has gained money equal to the labeler's reward balance
 
-\subsubsection*{PUC 9 - View Image Insights}
+\subsubsection*{PUC9 - View Image Insights}
+\label{sec:PUC9}
 \textbf{Primary Actors:} Customers\\
 \textbf{Precondition:} Customer has logged in and has at least one satellite image analysis project\\
 \textbf{Trigger:} Customer selects insights for a project\\
@@ -560,7 +570,8 @@ The use case diagram depicted below identifies the boundaries between the users 
 \end{enumerate}
 \textbf{Post-condition:} The customer has knowledge about how their project is progressing and if the labeling of the satellite images has been complete
 
-\subsubsection*{PUC 10 - Export Results}
+\subsubsection*{PUC10 - Export Results}
+\label{sec:PUC10}
 \textbf{Primary Actors:} Customers\\
 \textbf{Precondition:} Customer has logged in, has at least one satellite image analysis project, and all labeled satellite images in that project have an acceptable accuracy\\
 \textbf{Trigger:} Customer selects export data\\
@@ -573,7 +584,8 @@ The use case diagram depicted below identifies the boundaries between the users 
 \end{enumerate}
 \textbf{Post-condition:} The customer has complete access to the labeled dataset of satellite images
 
-\subsubsection*{PUC 11 - Request Image Analysis}
+\subsubsection*{PUC11 - Request Image Analysis}
+\label{sec:PUC11}
 \textbf{Primary Actors:} Customers\\
 \textbf{Precondition:} Customer has logged in\\
 \textbf{Trigger:} Customer creates a new project request\\
@@ -592,7 +604,8 @@ The use case diagram depicted below identifies the boundaries between the users 
 \end{enumerate}
 \textbf{Post-condition:} The image analysis project has been created and labelers can start annotating the satellite images
 
-\subsubsection*{PUC 12 - Upload Satellite Images}
+\subsubsection*{PUC12 - Upload Satellite Images}
+\label{sec:PUC12}
 \textbf{Primary Actors:} Customers\\
 \textbf{Precondition:} Customer has logged in and has created a new project request\\
 \textbf{Trigger:} Customer submits the information form for a new project\\
@@ -604,7 +617,8 @@ The use case diagram depicted below identifies the boundaries between the users 
 \end{enumerate}
 \textbf{Post-condition:} The system has all the images that will be analyzed for the project
 
-\subsubsection*{PUC 13 - Request Satellite Images}
+\subsubsection*{PUC13 - Request Satellite Images}
+\label{sec:PUC13}
 \textbf{Primary Actors:} Customers\\
 \textbf{Secondary Actors:} Satellite Image Provider\\
 \textbf{Precondition:} Customer has logged in and has created a new project request\\
@@ -618,7 +632,8 @@ The use case diagram depicted below identifies the boundaries between the users 
 \end{enumerate}
 \textbf{Post-condition:} The system has all the satellite images that will be analyzed for the project
 
-\subsubsection*{PUC 14 - Process Payment}
+\subsubsection*{PUC14 - Process Payment}
+\label{sec:PUC14}
 \textbf{Primary Actors:} Customers\\
 \textbf{Secondary Actor:} Financial Institution\\
 \textbf{Precondition:} Customer has logged in and has created a new project request\\
