@@ -756,6 +756,68 @@ The use case diagram depicted below identifies the boundaries between the users 
   \item \textbf{Fit Criterion:} After a service request has been initaited, and the system has determined the label accuracy is over a certain threshold (\hyperref[sec:PR5]{NFR-PR5}).
 \end{itemize}
 
+\subsection{Traceability}
+\setlength\LTleft{-2cm}
+\scriptsize
+\begin{longtable}{l|ccccccccccccccc}
+
+PUC \# & \multicolumn{15}{c}{Functional Requirement} \\ \hline
+\endfirsthead
+%
+\endhead
+%
+ & \hyperref[sec:FR0]{FR0} & \hyperref[sec:FR1]{FR1} & \hyperref[sec:FR2]{FR2} & \hyperref[sec:FR3]{FR3} & \hyperref[sec:FR4]{FR4} & \hyperref[sec:FR5]{FR5} & \hyperref[sec:FR6]{FR6} & \hyperref[sec:FR7]{FR7} & \hyperref[sec:FR8]{FR8} & \hyperref[sec:FR9]{FR9} & \hyperref[sec:FR10]{FR10} & \hyperref[sec:FR11]{FR11} & \hyperref[sec:FR12]{FR12} & \hyperref[sec:FR13]{FR13} & \hyperref[sec:FR14]{FR14} \\
+\hyperref[sec:PUC0]{PUC0} & X &  &  &  &  &  &  &  &  & X &  &  &  &  &  \\
+\hyperref[sec:PUC1]{PUC1} &  &  &  &  &  &  &  &  &  &  & X &  &  &  &  \\
+\hyperref[sec:PUC2]{PUC2} &  & X &  &  &  &  &  &  &  &  &  &  &  &  &  \\
+\hyperref[sec:PUC3]{PUC3} &  &  & X &  &  &  &  &  &  &  &  & X &  &  &  \\
+\hyperref[sec:PUC4]{PUC4} &  &  &  &  &  &  &  &  &  &  &  &  &  & X &  \\
+\hyperref[sec:PUC5]{PUC5} &  &  &  &  &  &  &  &  &  &  &  &  &  & X &  \\
+\hyperref[sec:PUC6]{PUC6} &  &  &  &  &  &  &  &  &  &  &  &  &  & X &  \\
+\hyperref[sec:PUC7]{PUC7} &  &  &  &  &  &  &  &  &  &  &  &  &  & X &  \\
+\hyperref[sec:PUC8]{PUC8} &  &  &  &  &  &  &  &  &  &  &  &  & X &  &  \\
+\hyperref[sec:PUC9]{PUC9} &  &  &  &  &  & X &  &  &  &  &  &  &  &  & X \\
+\hyperref[sec:PUC10]{PUC10} &  &  &  &  &  & X &  &  &  &  &  &  &  &  & X \\
+\hyperref[sec:PUC11]{PUC11} &  &  &  &  & X &  &  &  &  &  &  &  &  &  &  \\
+\hyperref[sec:PUC12]{PUC12} &  &  &  &  &  &  & X &  &  &  &  &  &  &  &  \\
+\hyperref[sec:PUC13]{PUC13} &  &  &  &  &  &  &  & X &  &  &  &  &  &  &  \\
+\hyperref[sec:PUC14]{PUC14} &  &  &  & X &  &  &  &  &  &  &  &  &  &  & \\
+\caption{Traceability between FR and PUC} \\
+\end{longtable}
+
+\setlength\LTleft{-2cm}
+\begin{longtable}{l|ccccccccccccccc}
+
+NFR \# & \multicolumn{15}{c}{Functional Requirement} \\ \hline
+\endfirsthead
+%
+\endhead
+%
+ & \hyperref[sec:FR0]{FR0} & \hyperref[sec:FR1]{FR1} & \hyperref[sec:FR2]{FR2} & \hyperref[sec:FR3]{FR3} & \hyperref[sec:FR4]{FR4} & \hyperref[sec:FR5]{FR5} & \hyperref[sec:FR6]{FR6} & \hyperref[sec:FR7]{FR7} & \hyperref[sec:FR8]{FR8} & \hyperref[sec:FR9]{FR9} & \hyperref[sec:FR10]{FR10} & \hyperref[sec:FR11]{FR11} & \hyperref[sec:FR12]{FR12} & \hyperref[sec:FR13]{FR13} & \hyperref[sec:FR14]{FR14} \\
+\hyperref[sec:UH0]{UH0} &  &  & X &  &  &  &  &  &  &  &  & X &  &  &  \\
+\hyperref[sec:UH2]{UH2} &  &  &  &  &  &  &  &  &  &  &  &  &  & X &  \\
+\hyperref[sec:UH9]{UH9} &  &  &  &  &  &  &  &  &  &  &  &  &  & X &  \\
+\hyperref[sec:PR0]{PR0} & X &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
+\hyperref[sec:PR1]{PR1} &  &  &  &  &  &  &  &  &  & X &  &  &  &  &  \\
+\hyperref[sec:PR2]{PR2} &  &  &  &  &  & X &  &  &  &  &  &  &  &  &  \\
+\hyperref[sec:PR3]{PR3} &  &  &  &  &  &  &  &  &  &  &  &  &  & X &  \\
+\hyperref[sec:PR4]{PR4} &  &  &  &  &  &  &  &  &  &  &  &  & X &  &  \\
+\hyperref[sec:PR5]{PR5} &  &  &  &  &  &  &  &  &  &  &  &  &  &  & X \\
+\hyperref[sec:PR7]{PR7} &  &  &  &  & X &  &  &  &  &  &  &  &  &  &  \\
+\hyperref[sec:PR8]{PR8} &  &  &  &  &  &  & X & X &  &  &  &  &  &  &  \\
+\hyperref[sec:OE1]{OE1} &  &  &  &  &  &  &  & X &  &  &  &  &  &  &  \\
+\hyperref[sec:OE2]{OE2} &  &  &  & X &  &  &  &  &  &  &  &  & X &  &  \\
+\hyperref[sec:SE0]{SE0} &  &  &  &  &  &  &  &  &  &  & X &  &  & X &  \\
+\hyperref[sec:SE1]{SE1} &  & X &  &  & X &  &  &  &  &  &  &  &  &  &  \\
+\hyperref[sec:SE2]{SE2} & X &  &  &  &  &  &  &  &  & X &  &  &  &  &  \\
+\hyperref[sec:SE3]{SE3} & X &  &  &  &  &  &  &  &  & X &  &  &  &  &  \\
+\hyperref[sec:SE4]{SE4} &  &  &  &  &  &  &  &  & X &  &  &  &  &  &  \\
+\hyperref[sec:SE9]{SE9} &  &  &  & X &  &  &  &  &  &  &  &  & X &  & \\
+\caption{Traceability between FR and NFR} \\
+\end{longtable}
+
+\normalsize
+
 \section{Look and Feel Requirements}
 \subsection{Appearance Requirements}
 \subsubsection*{NFR-LF0}
