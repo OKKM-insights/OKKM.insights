@@ -1241,7 +1241,7 @@ How test will be performed:
     \item Ensure that the progress tracker accurately displays the status of each learning module, indicating which are completed and which are pending.
     \item After users have completed the training, administer a post-training survey asking them to rate the helpfulness of the progress tracker.
     \item Analyze the survey responses to determine the percentage of users who find the progress tracker helpful.
-    \item Verify that at least \hyperref[MIN_TRAINING_TRACKER_USEFULNESS]{MIN\_TRAINING\_TRACKER\_USEFULNESS}\% of the surveyed users rate the progress tracker as helpful.
+    \item Verify that at least \hyperref[MIN_TRAINING_TRACKER_USEFULNESS]{MIN\_TRAINING\_TRACKER\_USEFULNESS}\% of the surveyed users rate the progress tracker a 4 or higher on helpfulness.
     \item Collect additional qualitative feedback to identify any issues or areas for improvement in the progress tracking feature.
 \end{enumerate}
 
@@ -1259,7 +1259,7 @@ How test will be performed:
     \item Instruct users to complete a simulated labeling task provided in the practice section.
     \item Track the completion rate of simulated tasks to determine if at least \hyperref[MIN_PRACTICE_TASK_COMPLETION]{MIN\_PRACTICE\_TASK\_COMPLETION}\% of users complete a practice task before accessing real data.
     \item After task completion, administer a satisfaction survey to users to gather feedback on their experience with the simulated tasks.
-    \item Analyze survey results to ensure that at least \hyperref[MIN_PRACTICE_TASK_SATISFACTION]{MIN\_PRACTICE\_TASK\_SATISFACTION}\% of users report satisfaction with the practice tasks.
+    \item Analyze survey results to ensure that at least \hyperref[MIN_PRACTICE_TASK_SATISFACTION]{MIN\_PRACTICE\_TASK\_SATISFACTION}\% of users rate their satisfaction with the practice tasks a 4 or higher.
     \item Document any issues or feedback received to identify areas for improvement in the simulated labeling experience.
 \end{enumerate}
 
@@ -1282,7 +1282,7 @@ How test will be performed:
 \begin{enumerate}
     \item Instruct users to perform a set of typical tasks within the platform, ensuring they engage with areas where contextual help pop-ups are available.
     \item Monitor and record instances where contextual help pop-ups appear during user interactions.
-    \item Analyze the survey responses to determine if at least \hyperref[MIN_POPUP_USEFULNESS]{MIN\_POPUP\_USEFULNESS}\% of users find the contextual help pop-ups clear and helpful.
+    \item Analyze the survey responses to determine if at least \hyperref[MIN_POPUP_USEFULNESS]{MIN\_POPUP\_USEFULNESS}\% of users rate the contextual help pop-ups a 4 or higher in clarity and helpfulness.
     \item Collect qualitative feedback to identify any areas where help pop-ups could be improved or where additional help pop-ups may be needed.
 \end{enumerate}
 
@@ -1301,7 +1301,7 @@ How test will be performed:
     \item Observe and record the error messages displayed, ensuring they include clear explanations of what went wrong.
     \item Verify that each error message provides actionable steps for resolution.
     \item After encountering errors, administer a survey asking users to rate their frustration level on a predefined scale and assess whether the error messages were helpful.
-    \item Analyze the survey results to ensure that at least \hyperref[ERRORS_WITH_INSTRUCTIONS]{ERRORS\_WITH\_INSTRUCTIONS}\% of error messages include actionable instructions and that the reported frustration rate is below \hyperref[FRUSTRATION_RATE]{FRUSTRATION\_RATE}\%.
+    \item Analyze the survey results to ensure that at least \hyperref[ERRORS_WITH_INSTRUCTIONS]{ERRORS\_WITH\_INSTRUCTIONS}\% of users rated error message clarity a 4 or higher and that the number of users who said they were frustrated due to errors is below \hyperref[FRUSTRATION_RATE]{FRUSTRATION\_RATE}\%.
 \end{enumerate}
 
 
@@ -2014,7 +2014,7 @@ Initial State: Application is deployed with all help features. Tutorials and use
 					
 Input/Condition: Users attempt to complete a basic labeling task using only the platform’s built-in help resources (help system, quick start guide, tutorials and contextual tooltips).
 					
-Output/Result: At least \hyperref[MIN_USER_HELP_SATISFACTION]{MIN\_USER\_HELP\_SATISFACTION}\% of users who used a help feature found that feature helpful. With the assistance of the help tools, the user was able to perform the task within \hyperref[MAX_TASK_TIME]{MAX\_TASK\_TIME} minutes.
+Output/Result: At least \hyperref[MIN_USER_HELP_SATISFACTION]{MIN\_USER\_HELP\_SATISFACTION}\% of users who used a help feature rated the feature as 4 or higher for helpfulness in the survey. With the assistance of the help tools, the user was able to perform the task within \hyperref[MAX_TASK_TIME]{MAX\_TASK\_TIME} minutes.
 					
 How test will be performed: The purpose of the platform will be explained to the users and the built-in help features will be shown. Then, the labeling task will be given to them. Time to complete task is observed and the help tools they use are recorded. Participants will then fill out a usability survey, which can be viewed in the appendix.
 
@@ -2314,6 +2314,7 @@ Their values are defined in this section for easy maintenance.
     \item On a scale of 1 to 5, how satisfied are you with the simulated labeling tasks provided for practice?
     \item On a scale of 1 to 5, how clear and understandable did you find the contextual help pop-ups?
     \item On a scale of 1 to 5, how clear and actionable were the error messages you encountered?
+    \item When faced with an error, did you feel frustrated? Yes/No/I did not experience an error
     \item On a scale of 1 to 5, how easy was it to adjust the text size to your preference?
     \item On a scale of 1 to 5, how satisfied are you with the available color themes for improving readability?
     \item On a scale of 1 to 5, how easy was it to access the platform through your web browser? 
