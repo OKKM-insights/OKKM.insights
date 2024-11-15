@@ -174,7 +174,7 @@ These users are responsible for the upkeep of the platform, ensuring that the la
 \section{Mandated Constraints}
 \subsection{Solution Constraints}
 \begin{itemize}
-  \item The solution must be fully compatible with the latest stable releases of Google Chrome, Firefox, Microsoft Edge, and Safari browsers. This is covered by \hyperref[sec:OE6]{NFR-OE6}.\\ \textbf{Rationale:} Users will interact with the web application through various modern web browsers, so ensuring cross-browser compatibility is essential for providing a consistent user experience. \\ \textbf{Fit Criteria:} The web application must display consistently, maintain full functionality, and support core features across all specified browsers without major visual or functional discrepancies. Testing should be conducted on each browser to validate compatibility.
+  \item \textbf{Description:} The solution must be fully compatible with the latest stable releases of Google Chrome, Firefox, Microsoft Edge, and Safari browsers.\\ \textbf{Rationale:} Users will interact with the web application through various modern web browsers, so ensuring cross-browser compatibility is essential for providing a consistent user experience. \\ \textbf{Fit Criteria:} The web application must display consistently, maintain full functionality, and support core features across all specified browsers without major visual or functional discrepancies. Testing should be conducted on each browser to validate compatibility. \\ \textbf{Related:}  \hyperref[sec:OE6]{NFR-OE6}
 \end{itemize}
 \subsection{Implementation Environment of the Current System}
 There is no current environment in which our application must be implemented.
@@ -451,7 +451,8 @@ The use case diagram depicted below identifies the boundaries between the users 
     \item System securely registers the given information
     \item User is directed to the login page
 \end{enumerate}
-\textbf{Post-condition:} User has successfully created an account and the application has securely stored their information
+\textbf{Post-condition:} User has successfully created an account and the application has securely stored their information\\
+\textbf{Related:} \hyperref[sec:FR0]{FR0}
 
 \subsubsection*{PUC1 - Log In}
 \label{sec:PUC1}
@@ -464,7 +465,8 @@ The use case diagram depicted below identifies the boundaries between the users 
     \item System verifies all required information has been provided and matches the stored records
     \item Labeler is redirected to the home page as a logged-in user
 \end{enumerate}
-\textbf{Post-condition:} The labeler has access to their account. All account related information, such as labeling progress, is accurately represented
+\textbf{Post-condition:} The labeler has access to their account. All account related information, such as labeling progress, is accurately represented\\
+\textbf{Related:} \hyperref[sec:FR10]{FR10}
 
 \subsubsection*{PUC2 - Customer Log In}
 \label{sec:PUC2}
@@ -477,7 +479,8 @@ The use case diagram depicted below identifies the boundaries between the users 
     \item System verifies all required information has been provided and matches the stored records
     \item Customer is redirected to the home page as a logged-in customer, which gives them access to more features than a labeler
 \end{enumerate}
-\textbf{Post-condition:} The customer has access to their account and all their current image analysis projects
+\textbf{Post-condition:} The customer has access to their account and all their current image analysis projects\\
+\textbf{Related:} \hyperref[sec:FR1]{FR1}
 
 \subsubsection*{PUC3 - Update User Information}
 \label{sec:PUC3}
@@ -491,7 +494,8 @@ The use case diagram depicted below identifies the boundaries between the users 
     \item System updates the information
     \item User is given a confirmation that their information has been updated
 \end{enumerate}
-\textbf{Post-condition:} The information that the system stores about the user has been updated
+\textbf{Post-condition:} The information that the system stores about the user has been updated\\
+\textbf{Related:} \hyperref[sec:FR2]{FR2}, \hyperref[sec:FR11]{FR11}
 
 \subsubsection*{PUC4 - Annotate Satellite Images}
 \label{sec:PUC4}
@@ -507,7 +511,8 @@ The use case diagram depicted below identifies the boundaries between the users 
     \item If the labeler skips the image rather than submits it, then the annotated image will not be stored by the system and the labeler will not receive a reward
     \item The next satellite image of the selected project is shown to the labeler and the process repeats
 \end{enumerate}
-\textbf{Post-condition:} All submitted annotated satellite images are stored by the system. The labeler's reward balance is updated to reflect their submissions
+\textbf{Post-condition:} All submitted annotated satellite images are stored by the system. The labeler's reward balance is updated to reflect their submissions\\
+\textbf{Related:} \hyperref[sec:FR13]{FR13}
 
 \subsubsection*{PUC5 - Segment Annotation}
 \label{sec:PUC5}
@@ -518,7 +523,8 @@ The use case diagram depicted below identifies the boundaries between the users 
 \begin{enumerate}
     \item The same as Annotate Images, but the labeler is given a satellite image segmented into different parts and must label each segment to the best of their ability 
 \end{enumerate}
-\textbf{Post-condition:} All submitted annotated satellite images are stored by the system. The labeler's reward balance is updated to reflect their submissions
+\textbf{Post-condition:} All submitted annotated satellite images are stored by the system. The labeler's reward balance is updated to reflect their submissions\\
+\textbf{Related:} \hyperref[sec:FR13]{FR13}
 
 \subsubsection*{PUC6 - Bounding Box Annotation}
 \label{sec:PUC6}
@@ -529,7 +535,8 @@ The use case diagram depicted below identifies the boundaries between the users 
 \begin{enumerate}
     \item The same as Annotate Images, but the labeler must annotate areas of the satellite image by drawing boxes and providing a label for each box
 \end{enumerate}
-\textbf{Post-condition:} All submitted annotated satellite images are stored by the system. The labeler's reward balance is updated to reflect their submissions
+\textbf{Post-condition:} All submitted annotated satellite images are stored by the system. The labeler's reward balance is updated to reflect their submissions\\
+\textbf{Related:} \hyperref[sec:FR13]{FR13}
 
 \subsubsection*{PUC7 - Classification}
 \label{sec:PUC7}
@@ -540,7 +547,8 @@ The use case diagram depicted below identifies the boundaries between the users 
 \begin{enumerate}
     \item The same as Annotate Images, but the labeler must classify what category a satellite image belongs to given several options
 \end{enumerate}
-\textbf{Post-condition:} All submitted annotated satellite images are stored by the system. The labeler's reward balance is updated to reflect their submissions
+\textbf{Post-condition:} All submitted annotated satellite images are stored by the system. The labeler's reward balance is updated to reflect their submissions\\
+\textbf{Related:} \hyperref[sec:FR13]{FR13}
 
 \subsubsection*{PUC8 - Cash Out}
 \label{sec:PUC8}
@@ -555,7 +563,8 @@ The use case diagram depicted below identifies the boundaries between the users 
     \item The system sends a payment to the labeler through their financial institution
     \item The labeler's reward balance is set back to \$0
 \end{enumerate}
-\textbf{Post-condition:} The financial account that the labeler provided has gained money equal to the labeler's reward balance
+\textbf{Post-condition:} The financial account that the labeler provided has gained money equal to the labeler's reward balance\\
+\textbf{Related:} \hyperref[sec:FR12]{FR12}
 
 \subsubsection*{PUC9 - View Image Insights}
 \label{sec:PUC9}
@@ -568,7 +577,8 @@ The use case diagram depicted below identifies the boundaries between the users 
     \item The customer selects a specific image to view insights 
     \item The system gets the information it has stored related to the image and provides insights such as confidence level of annotations
 \end{enumerate}
-\textbf{Post-condition:} The customer has knowledge about how their project is progressing and if the labeling of the satellite images has been complete
+\textbf{Post-condition:} The customer has knowledge about how their project is progressing and if the labeling of the satellite images has been complete\\
+\textbf{Related:} \hyperref[sec:FR5]{FR5}, \hyperref[sec:FR14]{FR14}
 
 \subsubsection*{PUC10 - Export Results}
 \label{sec:PUC10}
@@ -582,7 +592,8 @@ The use case diagram depicted below identifies the boundaries between the users 
     \item The customer specifies the save location
     \item The images are downloaded to the specified location
 \end{enumerate}
-\textbf{Post-condition:} The customer has complete access to the labeled dataset of satellite images
+\textbf{Post-condition:} The customer has complete access to the labeled dataset of satellite images\\
+\textbf{Related:} \hyperref[sec:FR5]{FR5}, \hyperref[sec:FR14]{FR14}
 
 \subsubsection*{PUC11 - Request Image Analysis}
 \label{sec:PUC11}
@@ -602,7 +613,8 @@ The use case diagram depicted below identifies the boundaries between the users 
     \item The system processes the payment
     \item The system makes the project available to labelers so they can annotate the satellite images
 \end{enumerate}
-\textbf{Post-condition:} The image analysis project has been created and labelers can start annotating the satellite images
+\textbf{Post-condition:} The image analysis project has been created and labelers can start annotating the satellite images\\
+\textbf{Related:} \hyperref[sec:FR4]{FR4}
 
 \subsubsection*{PUC12 - Upload Satellite Images}
 \label{sec:PUC12}
@@ -615,7 +627,8 @@ The use case diagram depicted below identifies the boundaries between the users 
     \item The customer selects the images they want analyzed and uploads them
     \item The system stores the images with a reference to the project
 \end{enumerate}
-\textbf{Post-condition:} The system has all the images that will be analyzed for the project
+\textbf{Post-condition:} The system has all the images that will be analyzed for the project\\
+\textbf{Related:} \hyperref[sec:FR6]{FR6}
 
 \subsubsection*{PUC13 - Request Satellite Images}
 \label{sec:PUC13}
@@ -630,7 +643,8 @@ The use case diagram depicted below identifies the boundaries between the users 
     \item The system contacts a satellite image provider, and pays a fee to them in exchange for the images. The fee is charged to the customer
     \item The system stores the images with a reference to the project
 \end{enumerate}
-\textbf{Post-condition:} The system has all the satellite images that will be analyzed for the project
+\textbf{Post-condition:} The system has all the satellite images that will be analyzed for the project\\
+\textbf{Related:} \hyperref[sec:FR7]{FR7}
 
 \subsubsection*{PUC14 - Process Payment}
 \label{sec:PUC14}
@@ -646,7 +660,9 @@ The use case diagram depicted below identifies the boundaries between the users 
     \item The financial institution validates the payment information and sends the payment
     \item The payment is deposited in the financial account associated with the system
 \end{enumerate}
-\textbf{Post-condition:} The fees for facilitating the project have been paid
+\textbf{Post-condition:} The fees for facilitating the project have been paid\\
+\textbf{Related:} \hyperref[sec:FR3]{FR3}
+
 \newpage
 \section{Functional Requirements}
 \subsection{Functional Requirements}
@@ -656,6 +672,7 @@ The use case diagram depicted below identifies the boundaries between the users 
   \item \textbf{Description:} The system shall allow Customers to create a new user account.
   \item \textbf{Rationale:} The customers must have an account to request the services provided by the system.
   \item \textbf{Fit Criterion:} Customer is created in and stored in the database.
+  \item \textbf{Related:} \hyperref[sec:PUC0]{PUC0}, \hyperref[sec:PR0]{NFR-PR0}, \hyperref[sec:SE2]{NFR-SE2}
 \end{itemize}
 \subsubsection*{FR1}
 \label{sec:FR1}
@@ -663,6 +680,7 @@ The use case diagram depicted below identifies the boundaries between the users 
   \item \textbf{Description:} The system shall allow customers with an existing account to authenticate themselves using the credentials stored by the system.
   \item \textbf{Rationale:} To access privileged information, the system must authenticate customers.
   \item \textbf{Fit Criterion:} Customer can use correct credentials to log in to user account.
+  \item \textbf{Related:} \hyperref[sec:PUC2]{PUC2}, \hyperref[sec:SE1]{NFR-SE1}
 \end{itemize}
 \subsubsection*{FR2}
 \label{sec:FR2}
@@ -670,6 +688,7 @@ The use case diagram depicted below identifies the boundaries between the users 
   \item \textbf{Description:} The system shall allow authenticated Customers to edit their account information.
   \item \textbf{Rationale:} After creating an account, the customers must have the necessary tools to modify the information they have provided.
   \item \textbf{Fit Criterion:} After logging in, customers can modify the stored personal information.
+  \item \textbf{Related:} \hyperref[sec:PUC3]{PUC3}, \hyperref[sec:UH0]{NFR-UH0}
 \end{itemize}
 \subsubsection*{FR3}
 \label{sec:FR3}
@@ -677,6 +696,7 @@ The use case diagram depicted below identifies the boundaries between the users 
   \item \textbf{Description:} The system shall accept payments from authenticated Customers.
   \item \textbf{Rationale:} To request services, the system shall integrate with payment services.
   \item \textbf{Fit Criterion:} After logging in, customers can send a payment to the system.
+  \item \textbf{Related:} \hyperref[sec:PUC14]{PUC14}, \hyperref[sec:OE2]{NFR-OE2}, \hyperref[sec:SE9]{NFR-SE9}
 \end{itemize}
 \subsubsection*{FR4}
 \label{sec:FR4}
@@ -684,6 +704,7 @@ The use case diagram depicted below identifies the boundaries between the users 
   \item \textbf{Description:} The system shall accept service requests from authenticated Customers.
   \item \textbf{Rationale:} The system’s key offering is the ability to request services.
   \item \textbf{Fit Criterion:} After logging in, customers can send a service request which is accepted by the system.
+  \item \textbf{Related:} \hyperref[sec:PUC11]{PUC11}, \hyperref[sec:PR7]{NFR-PR7}, \hyperref[sec:SE1]{NFR-SE1}
 \end{itemize}
 \subsubsection*{FR5}
 \label{sec:FR5}
@@ -691,6 +712,7 @@ The use case diagram depicted below identifies the boundaries between the users 
   \item \textbf{Description:} The system shall provide reports to authenticated customers when a service request is complete.
   \item \textbf{Rationale:} The system must provide the results of a service request to the users who initiated it.
   \item \textbf{Fit Criterion:} After logging in and after the completion of a service request, customers can receive a service request report.
+  \item \textbf{Related:} \hyperref[sec:PUC9]{PUC9}, \hyperref[sec:PUC10]{PUC10}, \hyperref[sec:PR2]{NFR-PR2}
 \end{itemize}
 \subsubsection*{FR6}
 \label{sec:FR6}
@@ -698,6 +720,7 @@ The use case diagram depicted below identifies the boundaries between the users 
   \item \textbf{Description:} The system shall allow an authenticated Customer to upload images associated with a service request.
   \item \textbf{Rationale:} If the customer has images to be analyzed, they must have the ability to upload them to the system.
   \item \textbf{Fit Criterion:} After logging in and after the initiation of a service request, customers can add images associated to the service request.
+  \item \textbf{Related:} \hyperref[sec:PUC12]{PUC12}, \hyperref[sec:PR8]{NFR-PR8}
 \end{itemize}
 \subsubsection*{FR7}
 \label{sec:FR7}
@@ -705,6 +728,7 @@ The use case diagram depicted below identifies the boundaries between the users 
   \item \textbf{Description:} The system shall allow a customer to request satellite images for a given geographic area, as designated using a specified geographic coordinate system.
   \item \textbf{Rationale:} If customers do not have images for the area they would like to be analyzed, they can request the system to source them on their behalf. They system may not be able to fulfill the request.
   \item \textbf{Fit Criterion:} After logging in and after the initiation of a service request, customers can request the system to locate images from external providers by providing geographic coordinates.
+  \item \textbf{Related:} \hyperref[sec:PUC13]{PUC13}, \hyperref[sec:PR8]{NFR-PR8}, \hyperref[sec:OE1]{NFR-OE1}
 \end{itemize}
 \subsubsection*{FR8}
 \label{sec:FR8}
@@ -712,6 +736,7 @@ The use case diagram depicted below identifies the boundaries between the users 
   \item \textbf{Description:} The system shall alert a customer if their service request is not able to be fulfilled.
   \item \textbf{Rationale:} In the event the system is unable to complete a request, it should alert the customer, so they are aware.
   \item \textbf{Fit Criterion:} After logging in and after the initiation of a service request, the customer will get an alert if the request in unable to be fufiled.
+  \item \textbf{Related:} \hyperref[sec:SE4]{NFR-SE4}
 \end{itemize}
 \subsubsection*{FR9}
 \label{sec:FR9}
@@ -719,6 +744,7 @@ The use case diagram depicted below identifies the boundaries between the users 
   \item \textbf{Description:} The system shall allow Labelers to create a new user account.
   \item \textbf{Rationale:} The Labelers must have an account to request the services provided by the system.
   \item \textbf{Fit Criterion:} Labeler is created in and stored in the database.
+  \item \textbf{Related:} \hyperref[sec:PUC0]{PUC0}, \hyperref[sec:PR1]{NFR-PR1}, \hyperref[sec:SE2]{NFR-SE2}, \hyperref[sec:SE3]{NFR-SE3}
 \end{itemize}
 \subsubsection*{FR10}
 \label{sec:FR10}
@@ -726,6 +752,7 @@ The use case diagram depicted below identifies the boundaries between the users 
   \item \textbf{Description:} The system shall allow Labelers with an existing account to authenticate themselves using the credentials stored by the system.
   \item \textbf{Rationale:} In order to access privileged information, the system must Labelers customers.
 \item \textbf{Fit Criterion:} Labelers can use correct credentials to log in to user account.
+\item \textbf{Related:} \hyperref[sec:PUC1]{PUC1}, \hyperref[sec:SE0]{NFR-SE0}
 \end{itemize}
 \subsubsection*{FR11}
 \label{sec:FR11}
@@ -733,6 +760,7 @@ The use case diagram depicted below identifies the boundaries between the users 
   \item \textbf{Description:} The system shall allow authenticated Labelers to edit their account information.
   \item \textbf{Rationale:} After creating an account, the Labelers must have the necessary tools to modify the information they have provided.
   \item \textbf{Fit Criterion:} After logging in, Labelers can modify the stored personal information.
+  \item \textbf{Related:}  \hyperref[sec:PUC4]{PUC4}, \hyperref[sec:UH0]{NFR-UH0}
 \end{itemize}
 \subsubsection*{FR12}
 \label{sec:FR12}
@@ -740,6 +768,7 @@ The use case diagram depicted below identifies the boundaries between the users 
   \item \textbf{Description:} The system shall allow Labelers to request their accrued earnings be transferred to their provided banking platform.
   \item \textbf{Rationale:} The system must ensure Labelers are compensated for their efforts.
 \item \textbf{Fit Criterion:} After logging in, Labelers can request their earnings be deposited in the account stored in their personal information.
+\item \textbf{Related:}  \hyperref[sec:PUC8]{PUC8}, \hyperref[sec:PR4]{NFR-PR4}, \hyperref[sec:OE2]{NFR-OE2}, \hyperref[sec:SE9]{NFR-SE9}
 \end{itemize}
 \subsubsection*{FR13}
 \label{sec:FR13}
@@ -747,15 +776,18 @@ The use case diagram depicted below identifies the boundaries between the users 
   \item \textbf{Description:} The system shall allow Labelers to annotate images displayed to them with the purpose of collecting annotation data.
   \item \textbf{Rationale:} This is the key service the system provides.
   \item \textbf{Fit Criterion:} Labelers will be able to annotate images.
+  \item \textbf{Related:} \hyperref[sec:PUC4]{PUC4}, \hyperref[sec:PUC5]{PUC5}, \hyperref[sec:PUC6]{PUC6}, \hyperref[sec:PUC7]{PUC7}, \hyperref[sec:UH2]{NFR-UH2}, \hyperref[sec:UH9]{NFR-UH9} \hyperref[sec:PR3]{NFR-PR3}, \hyperref[sec:SE0]{NFR-SE0}
 \end{itemize}
 \subsubsection*{FR14}
 \label{sec:FR14}
 \begin{itemize}
   \item \textbf{Description:} The system shall combine annotations obtained from authenticated Labelers into a consolidated report.
   \item \textbf{Rationale:} This is the key service the system provides.
-  \item \textbf{Fit Criterion:} After a service request has been initaited, and the system has determined the label accuracy is over a certain threshold (\hyperref[sec:PR5]{NFR-PR5}).
+  \item \textbf{Fit Criterion:} After a service request has been initaited, and the system has determined the label accuracy is over a certain threshold.
+  \item \textbf{Related:} \hyperref[sec:PUC9]{PUC9}, \hyperref[sec:PUC10]{PUC10} \hyperref[sec:PR5]{NFR-PR5}
 \end{itemize}
 
+\newpage
 \subsection{Traceability}
 \setlength\LTleft{-2cm}
 \scriptsize
@@ -855,6 +887,7 @@ NFR \# & \multicolumn{15}{c}{Functional Requirement} \\ \hline
           \item \textbf{Description}: The platform will have a well-organized navigation menu, allowing users to quickly find labeling tasks, settings, help, and account details.  
           \item \textbf{Rationale}: An easy-to-navigate platform helps reduce the time taken for users to find what they need, improving the efficiency of labeling tasks and overall user satisfaction.  
           \item \textbf{Fit Criterion}: At least 90\% of users should be able to navigate to any main feature within 3 clicks, as determined by usability testing.
+          \item \textbf{Related:} \hyperref[sec:FR2]{FR2}, \hyperref[sec:FR11]{FR11}
       \end{itemize}
 \subsubsection*{NFR-UH1}
 \label{sec:UH1}
@@ -874,6 +907,7 @@ NFR \# & \multicolumn{15}{c}{Functional Requirement} \\ \hline
             \item \textbf{Description}: Users can set preferences to prioritize specific types of labeling tasks (e.g., agricultural, urban) and receive suggestions aligned with their interests and expertise.  
             \item \textbf{Rationale}: Allowing users to work on tasks of interest or within their expertise can improve task accuracy and user satisfaction, leading to better retention and data quality.  
             \item \textbf{Fit Criterion}: Users should be able to set their task preferences in their profile, with at least 80\% of their assigned tasks matching these preferences over time.
+            \item \textbf{Related:} \hyperref[sec:FR13]{FR13}
         \end{itemize}
         \subsubsection*{NFR-UH3} 
         \label{sec:UH3}
@@ -938,6 +972,7 @@ NFR \# & \multicolumn{15}{c}{Functional Requirement} \\ \hline
             \item \textbf{Description}: The platform will support keyboard shortcuts for essential actions (e.g., navigating between tasks, submitting labels) to facilitate quick access and improve usability for users who cannot use a mouse.  
             \item \textbf{Rationale}: Keyboard shortcuts provide an alternative way to interact with the system, improving efficiency for power users and ensuring accessibility for users with limited mobility.  
             \item \textbf{Fit Criterion}: All core actions should have keyboard shortcuts available, and usability tests should confirm that at least 95\% of actions are accessible via keyboard navigation.
+            \item \textbf{Related:} \hyperref[sec:FR13]{FR13}
         \end{itemize}
 
 
@@ -950,6 +985,7 @@ NFR \# & \multicolumn{15}{c}{Functional Requirement} \\ \hline
   \item \textbf{Description:} The system shall process new user requests within 15 minutes of a Customer completing the account creation process 90\% of the time, and within 48 hours in all cases. 
   \item \textbf{Rationale:} The user likely has urgent needs if they are signing up to access the system. They must have quick access to the services offered by the system, and authentication is the first step of this process.
   \item \textbf{Fit Criterion:}\\ Let $t_{\text{newCustomerAccount}}$ be the time it takes to process a new Customer account request, in hours.\\ \probP($t_{\text{newCustomerAccount}} < 0.25) \geq .90 \wedge \probP(t_{\text{newCustomerAccount}} < 48) = 1 $
+  \item \textbf{Related:} \hyperref[sec:FR0]{FR0}
 \end{itemize}
 
 \subsubsection*{NFR-PR1}
@@ -958,6 +994,7 @@ NFR \# & \multicolumn{15}{c}{Functional Requirement} \\ \hline
   \item \textbf{Description:} The system shall process new user requests within 15 minutes of a Labeler  completing the account creation process 90\% of the time, and within 48 hours in all cases. 
   \item \textbf{Rationale:} To improve engagement from Labelers, there should be minimal delay in getting started.
   \item \textbf{Fit Criterion:}\\ Let $t_{\text{newLabelAccount}}$ be the time it takes to process a new Labeler account request, in hours.\\ \probP($t_{\text{newLabelAccount}} < 0.25) \geq 0.9 \wedge \probP(t_{\text{newLabelAccount}} < 48) = 1 $
+  \item \textbf{Related:} \hyperref[sec:FR9]{FR9}
 \end{itemize}
 
 \subsubsection*{NFR-PR2}
@@ -967,6 +1004,7 @@ NFR \# & \multicolumn{15}{c}{Functional Requirement} \\ \hline
   \item \textbf{Rationale:} The user is expecting to be able to act on the insights the system provides. To build trust and loyalty, the system must ensure that it is meeting the agreed upon timelines.
   \item \textbf{Fit Criterion:}\\ Let $t_{\text{serviceRequestTime}}$ be the time it takes to complete a service request, in hours.\\
   Let $t_{\text{serviceRequestTimeLimit}}$ be the negotiated time limit for completing a service request, in hours.\\ \probP($t_{\text{serviceRequestTime}} < t_{\text{serviceRequestTimeLimit}}) \geq 0.9\\ \wedge \probP(t_{\text{serviceRequestTime}} < t_{\text{serviceRequestTimeLimit}}+48) = 1 $
+  \item \textbf{Related:} \hyperref[sec:FR5]{FR5},  \hyperref[sec:PR7]{NFR-PR7}
 \end{itemize}
 
 \subsubsection*{NFR-PR3}
@@ -977,6 +1015,7 @@ NFR \# & \multicolumn{15}{c}{Functional Requirement} \\ \hline
   \item \textbf{Fit Criterion:}\\ Let $t_{\text{imageServing}}$ be the time it takes to serve the next image, in seconds.\\
   Let $x_{\text{nextImage}}$ equal True if there is a next image available, and False otherwise.\\
   $x_{\text{nextImage}} \Rightarrow t_{\text{imageServing}} \leq 10$
+  \item \textbf{Related:} \hyperref[sec:FR13]{FR13}
 \end{itemize}
 
 \subsubsection*{NFR-PR4}
@@ -986,6 +1025,7 @@ NFR \# & \multicolumn{15}{c}{Functional Requirement} \\ \hline
   \item \textbf{Rationale:} The labelers are entitled to their earned income, and there must not be unnecessary delay. 7 days accounts for delays in the platform used to distribute payments.
   \item \textbf{Fit Criterion:}\\ Let $t_{\text{payoutDelay}}$ be the time it takes for a user to receive their payments after a request is received by the system, in days.\\
   $t_{\text{payoutDelay}} < 7$
+  \item \textbf{Related:} \hyperref[sec:FR12]{FR12}
 \end{itemize}
 \subsection{Safety-Critical Requirements}
 N/A
@@ -1000,6 +1040,7 @@ N/A
   Let $L_{\text{True}}: O \rightarrow C $ be a function which maps objects in $O$ to their true classes in $C$.
   Let $L_{\text{Guess}}: O \rightarrow C $ be the funtion derived from the system which maps objects in $O$ to their assumed classes in $C$.
   $(\forall o \in O|: \probP(L_{\text{True}}(o) = L_{\text{Guess}}(o))\geq 0.75)$
+  \item \textbf{Related:} \hyperref[sec:FR14]{FR14}
 \end{itemize}
 \subsection{Robustness or Fault-Tolerance Requirements}
 \subsubsection*{NFR-PR6}
@@ -1018,6 +1059,7 @@ N/A
   \item \textbf{Description:} The system shall have the capacity to support enough labelers to meet all service request deadlines.
   \item \textbf{Rationale:} This requirement is critical to satisfy NFR-PR2.
   \item \textbf{Fit Criterion:} See \hyperref[sec:PR2]{NFR-PR2}.
+  \item \textbf{Related:} \hyperref[sec:FR4]{FR4},  \hyperref[sec:PR2]{NFR-PR2},  \hyperref[sec:PR9]{NFR-PR9}
 \end{itemize}
 \subsubsection*{NFR-PR8}
 \label{sec:PR8}
@@ -1025,6 +1067,7 @@ N/A
   \item \textbf{Description:} The system shall have the capacity to store and process large image files.
   \item \textbf{Rationale:} This requirement is necessary to obtain information from satelite images, which can be several gigabites in size.
   \item \textbf{Fit Criterion:} The system will not crash or fail to store when given images files <50 Gb in size.
+  \item \textbf{Related:} \hyperref[sec:FR6]{FR6}, \hyperref[sec:FR7]{FR7}
 \end{itemize}
 \subsection{Scalability or Extensibility Requirements}
 \subsubsection*{NFR-PR9}
@@ -1033,6 +1076,7 @@ N/A
   \item \textbf{Description:} The system shall be able to scale to meet the capacity specified in NFR-PR7.
   \item \textbf{Rationale:} This requirement is critical to satisfy NFR-PR7.
   \item \textbf{Fit Criterion:} See \hyperref[sec:PR7]{NFR-PR7}.
+   \item \textbf{Related:} \hyperref[sec:PR7]{NFR-PR7}
 \end{itemize}
 \subsection{Longevity Requirements}
 N/A
@@ -1057,6 +1101,7 @@ N/A
   \item \textbf{Description:} The system shall support standardized APIs and data formats for the automatic acquisition and integration of satellite images from third-party providers.
   \item \textbf{Rationale:} Facilitates seamless integration and efficient data handling from satellite data providers.
   \item \textbf{Fit Criterion:} The platform can successfully ingest data from at least two major satellite data providers using their APIs without manual intervention.
+  \item \textbf{Related:} \hyperref[sec:FR7]{FR7}
 \end{itemize}
 \subsubsection*{NFR-OE2}
 \label{sec:OE2}
@@ -1064,6 +1109,7 @@ N/A
   \item \textbf{Description:} The system shall integrate with reliable and secure payment processors to handle user compensations and client payments efficiently.
   \item \textbf{Rationale:} Ensures secure and efficient financial transactions, building trust with users and clients.
   \item \textbf{Fit Criterion:} Transactions are processed securely through integrated payment gateways, achieving a transaction success rate of 99.5%.
+  \item \textbf{Related:} \hyperref[sec:FR3]{FR3}, \hyperref[sec:FR12]{FR12}
 \end{itemize}
 \subsubsection*{NFR-OE3}
 \label{sec:OE3}
@@ -1141,6 +1187,7 @@ N/A
   \item \textbf{Description:} The application shall only allow users with labeling access, including labellers, customers, and admins, to view active projects and label images.
   \item \textbf{Rationale:} We do not want random users with no stake in the process to effect the results.
   \item \textbf{Fit Criterion:} Users who have not logged in to the application have no way of viewing projects or labeling images. Users logged in as labellers, customers, or admins have access to these features.
+  \item \textbf{Related:} \hyperref[sec:FR10]{FR10}, \hyperref[sec:FR13]{FR13}
 \end{itemize}
 \subsubsection*{NFR-SE1}
 \label{sec:SE1}
@@ -1148,6 +1195,7 @@ N/A
   \item \textbf{Description:} The application shall only allow users with customer access and above to create new image analysis projects.
   \item \textbf{Rationale:} Unidentified users creating projects would be impossible to facilitate. Also, labellers have no need to access project creation. 
   \item \textbf{Fit Criterion:} Users who have not logged in to the application have no way of creating an image analysis project. Users logged in as customers or admins have access to these features.
+  \item \textbf{Related:} \hyperref[sec:FR1]{FR1}, \hyperref[sec:FR4]{FR4}
 \end{itemize}
 \subsubsection*{NFR-SE2}
 \label{sec:SE2}
@@ -1157,6 +1205,7 @@ N/A
   \item \textbf{Fit Criterion:} Let E represent the set of all email addresses, and let V represent the set of all valid email addresses. A valid email address conforms to the general pattern:\\\\
   V = $(\forall\; email \in E\;  |\; email \; matches \; the \; pattern \; $[a-zA-Z0-9+\_.-]+@[a-zA-Z0-9.-]+[a-zA-Z])\\
   $\text{New email} \in V \land \text{New email} \neg \in \text{Registered Emails}$
+  \item \textbf{Related:}  \hyperref[sec:FR0]{FR0}, \hyperref[sec:FR9]{FR9}
 \end{itemize}
 \subsubsection*{NFR-SE3}
 \label{sec:SE3}
@@ -1165,6 +1214,7 @@ N/A
   \item \textbf{Rationale:} We do not want users using weak passwords to sign up.
   \item \textbf{Fit Criterion:} Let P represent the set of all passwords, and let V represent the set of all valid passwords. A valid password has a at least one lowercase, uppercase, number and special character and is a minimum of 8 characters in length:\\\\
   V = $(\forall\; password \in P\;  |\; password \; matches \; the \; pattern \; $(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[\#\$\%\&\*\@])[a-zA-Z0-9\#\$\%\&\*\@]\{8,\})\\
+  \item \textbf{Related:} \hyperref[sec:FR0]{FR0}, \hyperref[sec:FR9]{FR9}
 \end{itemize}
 \subsubsection*{NFR-SE4}
 \label{sec:SE4}
@@ -1172,6 +1222,7 @@ N/A
   \item \textbf{Description:} The system shall, during system failure, notify users trying to make a request of the system failure.
   \item \textbf{Rationale:} The system should provide good warning messages to users to prevent additional frustration.
   \item \textbf{Fit Criterion:} When services are unavailable, the system shall provide an error message to the user making the request of the unavailable service.
+  \item \textbf{Related:} \hyperref[sec:FR8]{FR8}
 \end{itemize}
 \subsection{Integrity Requirements}
 \subsubsection*{NFR-SE5}
@@ -1209,6 +1260,7 @@ N/A
   \item \textbf{Description:} The application shall ensure that all payment transactions are processed securely using encryption and comply with relevant security standards, such as PCI-DSS, which helps to protect payment account data (PCI Security Standards Council, 2024).
   \item \textbf{Rationale:} Protecting users' financial information is critical to maintaining trust. Failing to secure payments can lead to data breaches, financial loss, and legal liabilities.
   \item \textbf{Fit Criterion:} All payment transactions must use industry-standard encryption to protect sensitive data. Payment information, such as credit card details, must not be stored locally on the application and must be processed via a secure, PCI-DSS-compliant third-party payment gateway.
+  \item \textbf{Related:} \hyperref[sec:FR3]{FR3}, \hyperref[sec:FR12]{FR12}
 \end{itemize}
 
 \subsection{Audit Requirements}
