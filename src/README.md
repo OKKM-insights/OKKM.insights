@@ -1,5 +1,5 @@
 # Project Name Source Code
 
-The folders and files for this project are as follows:
+Please refer to the (front end)[https://github.com/OKKM-insights/frontend] and (back end)[https://github.com/OKKM-insights/backend] repositories
 
 ...
