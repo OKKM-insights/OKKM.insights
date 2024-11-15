@@ -84,7 +84,9 @@ By acknowledging these potential losses, the Hazard Analysis underscores the imp
 \end{itemize}
 \textbf{Mitigations:}
 \begin{itemize}
-    \item Implement thorough input validation and provide clear feedback to users.
+    \item Implement thorough input validation and provide clear feedback to users. 
+    Input validation will include restricting input types, using regular expressions to determine that text inputs are of the correct form, and checking that submitted images have at least one label or choice selected. 
+    We will deter bad image labels by linking accuracy of a labeler with their rewards, and giving less weight to the labels of an inaccurate labeler when aggregating labeled images.
     \item Ensure that critical actions like labeling are supported by warnings or confirmations to reduce errors.
     \item Use Content Security Policy (CSP) headers and HTML escaping techniques to prevent XSS attacks.
     \item Secure cookies with \texttt{HttpOnly} and \texttt{Secure} flags and employ strong session management practices.
