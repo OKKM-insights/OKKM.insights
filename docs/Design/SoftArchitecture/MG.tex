@@ -192,7 +192,28 @@ actually be implemented.
 
 \begin{description}
 \item [\refstepcounter{mnum} \mthemnum \label{mHH}:] Hardware-Hiding Module
-\item ...
+\item [\refstepcounter{mnum} \mthemnum \label{aci}:]
+Account Creation Interface
+\item [\refstepcounter{mnum} \mthemnum \label{accd}:]
+Account Database
+\item [\refstepcounter{mnum} \mthemnum \label{aui}:]
+Account Update Interface
+\item [\refstepcounter{mnum} \mthemnum \label{li}:]
+Login Interface
+\item [\refstepcounter{mnum} \mthemnum \label{at}:]
+Access Token
+\item [\refstepcounter{mnum} \mthemnum \label{labeler}:]
+Labeler
+\item [\refstepcounter{mnum} \mthemnum \label{client}:]
+Client
+\item [\refstepcounter{mnum} \mthemnum \label{user}:]
+User
+\item [\refstepcounter{mnum} \mthemnum \label{acc}:]
+Account Creation Controller
+\item [\refstepcounter{mnum} \mthemnum \label{auc}:]
+Account Update Controller
+\item [\refstepcounter{mnum} \mthemnum \label{ac}:]
+Authentication Controller
 \end{description}
 
 
@@ -206,19 +227,19 @@ actually be implemented.
 {Hardware-Hiding Module} & ~ \\
 \midrule
 
-\multirow{7}{0.3\textwidth}{Behaviour-Hiding Module} & ?\\
-& ?\\
-& ?\\
-& ?\\
-& ?\\
-& ?\\
-& ?\\ 
-& ?\\
+\multirow{7}{0.3\textwidth}{Behaviour-Hiding Module} & Account Creation Interface\\
+& Account Database\\
+& Account Update Interface\\
+& Login Interface\\
+& Access Token\\
+& Labeler\\
+& Client\\ 
+& User\\
 \midrule
 
-\multirow{3}{0.3\textwidth}{Software Decision Module} & {?}\\
-& ?\\
-& ?\\
+\multirow{3}{0.3\textwidth}{Software Decision Module} & {Account Creation Controller}\\
+& Account Update Controller\\
+& Authentication Controller\\
 \bottomrule
 
 \end{tabular}
@@ -278,19 +299,77 @@ to be implemented.
 \item[Implemented By:] --
 \end{description}
 
-\subsubsection{Input Format Module (\mref{mInput})}
+\subsubsection{Account Creation Interface (\mref{aci})}
 
 \begin{description}
-\item[Secrets:]The format and structure of the input data.
-\item[Services:]Converts the input data into the data structure used by the
-  input parameters module.
-\item[Implemented By:] [Your Program Name Here]
-\item[Type of Module:] [Record, Library, Abstract Object, or Abstract Data Type]
-  [Information to include for leaf modules in the decomposition by secrets tree.]
+\item[Secrets:]The design format of the account creation user interface.
+\item[Services:] Displays a form to collect user information and submits that information to be processed.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
 \end{description}
 
-\subsubsection{Etc.}
+\subsubsection{Account Database (\mref{accd})}
 
+\begin{description}
+\item[Secrets:] The data structure, storage, and access mechanisms for account related data.
+\item[Services:] Can store, insert, update and retrieve user account data.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Data Type
+\end{description}
+
+\subsubsection{Account Update Interface (\mref{aui})}
+
+\begin{description}
+\item[Secrets:]The design format of the update account information user interface.
+\item[Services:] Displays a form with the users current information that can be modified and submits any updated information to be processed.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Login Interface (\mref{li})}
+
+\begin{description}
+\item[Secrets:]The design format of the login user interface.
+\item[Services:] Displays a form to collect login credentials and submits that information to be processed.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Access Token (\mref{at})}
+
+\begin{description}
+\item[Secrets:] Token structure, encryption, expiration, and renewal mechanisms.
+\item[Services:] Can determine if a user's token has expired and allows the token to be renewed.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Data Type
+\end{description}
+
+\subsubsection{Labeler (\mref{labeler})}
+
+\begin{description}
+\item[Secrets:]The format and structure of Labeler data.
+\item[Services:] Takes in the necessary data to create a Labeler.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Record
+\end{description}
+
+\subsubsection{Client (\mref{client})}
+
+\begin{description}
+\item[Secrets:]The format and structure of Client data.
+\item[Services:] Takes in the necessary data to create a Client.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Record
+\end{description}
+
+\subsubsection{User (\mref{user})}
+
+\begin{description}
+\item[Secrets:]The format and structure of User data.
+\item[Services:] Takes in the necessary data to create a User.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Record
+\end{description}
 
 \subsection{Software Decision Module}
 
@@ -305,7 +384,32 @@ to be implemented.
 \item[Implemented By:] --
 \end{description}
 
-\subsubsection{Etc.}
+\subsubsection{Account Creation Controller (\mref{acc})}
+
+\begin{description}
+\item[Secrets:] Form validation and account creation algorithms.
+\item[Services:] Validates the form information, creates an account with that information, and can upload the account to the database.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Account Update Controller (\mref{auc})}
+
+\begin{description}
+\item[Secrets:] Form validation and account modification algorithms.
+\item[Services:] Gets current user information, validates the update form information and can pass account updates to the database.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Authentication Controller (\mref{ac})}
+
+\begin{description}
+\item[Secrets:] Credential validation, access token validation, and access token generation algorithms.
+\item[Services:] Validates credentials given by user, generates access tokens, and validates access tokens.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
 
 \section{Traceability Matrix} \label{SecTM}
 
