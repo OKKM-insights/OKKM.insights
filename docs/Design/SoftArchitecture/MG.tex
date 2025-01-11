@@ -224,8 +224,8 @@ Satellite Image Request Form
 Project Creation Interface
 \item [\refstepcounter{mnum} \mthemnum \label{pcc}:]
 Project Creation Controller
-\item [\refstepcounter{mnum} \mthemnum \label{pcf}:]
-Project Creation Form
+\item [\refstepcounter{mnum} \mthemnum \label{project}:]
+Project
 \item [\refstepcounter{mnum} \mthemnum \label{srfi}:]
 Service Request Failure Interface
 \item [\refstepcounter{mnum} \mthemnum \label{iui}:]
@@ -234,10 +234,12 @@ Image Upload Interface
 Report Interface
 \item [\refstepcounter{mnum} \mthemnum \label{rc}:]
 Report Controller
+\item [\refstepcounter{mnum} \mthemnum \label{report}:]
+Report
 \item [\refstepcounter{mnum} \mthemnum \label{psi}:]
 Project Selection Interface
-\item [\refstepcounter{mnum} \mthemnum \label{project}:]
-Project
+\item [\refstepcounter{mnum} \mthemnum \label{psc}:]
+Project Selection Controller
 \item [\refstepcounter{mnum} \mthemnum \label{lbli}:]
 Labeling Interface
 \item [\refstepcounter{mnum} \mthemnum \label{lblc}:]
@@ -268,12 +270,12 @@ Image
 & Satellite Image Request Interface\\
 & Satellite Image Request Form\\
 & Project Creation Interface\\
-& Project Creation Form\\
+& Project\\
 & Service Request Failure Interface\\
 & Image Upload Interface\\
 & Report Interface\\
+& Report\\
 & Project Selection Interface\\
-& Project\\
 & Labeling Interface\\
 & Image\\
 \midrule
@@ -284,6 +286,7 @@ Image
 & Satellite Image Request Controller\\
 & Project Creation Controller\\
 & Report Controller\\
+& Project Selection Controller\\
 & Labeling Controller\\
 \bottomrule
 
@@ -416,6 +419,105 @@ to be implemented.
 \item[Type of Module:] Record
 \end{description}
 
+\subsubsection{Satellite Image Request Interface (\mref{siri})}
+
+\begin{description}
+\item[Secrets:]The design format of the interface for requesting satellite images.
+\item[Services:] Displays a form to collect specifics on the satellite images, calculates estimated cost based on current form entries and submits the form information to be processed.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Satellite Image Request Form (\mref{sirf})}
+
+\begin{description}
+\item[Secrets:]The format and structure of the data needed for a satellite image request.
+\item[Services:] Takes in the necessary data to create a satellite image request.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Record
+\end{description}
+
+\subsubsection{Project Creation Interface (\mref{pci})}
+
+\begin{description}
+\item[Secrets:]The design format of the project creation interface.
+\item[Services:] Displays a form to collect project details, calculates an estimated cost using these details and submits that information to be processed.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Project (\mref{project})}
+
+\begin{description}
+\item[Secrets:]The format and structure of the data needed for a Project.
+\item[Services:] Takes in the necessary data to create a Project.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Record
+\end{description}
+
+\subsubsection{Service Request Failure Interface (\mref{srfi})}
+
+\begin{description}
+\item[Secrets:]The design format of the request failure interface.
+\item[Services:] Displays a warning to users that something went wrong.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Image Upload Interface (\mref{iui})}
+
+\begin{description}
+\item[Secrets:]The design format of the image upload interface.
+\item[Services:] Allows users to upload images from their device, and validates they are images of the correct format.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Report Interface (\mref{ri})}
+
+\begin{description}
+\item[Secrets:]The design format of the summary report interface.
+\item[Services:] Displays statistics and results of a specific project.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Report (\mref{report})}
+
+\begin{description}
+\item[Secrets:]The format and structure of Report data.
+\item[Services:] Takes in the necessary data to create a Report.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Record
+\end{description}
+
+\subsubsection{Project Selection Interface (\mref{psi})}
+
+\begin{description}
+\item[Secrets:]The design format of the project selection interface.
+\item[Services:] Display all available projects that a user can label images from.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Labeling Interface (\mref{lbli})}
+
+\begin{description}
+\item[Secrets:] The design format of the labeling interface.
+\item[Services:] Displays an image to be labeled, displays label choices which can be selected, and allows images to be skipped.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Image (\mref{image})}
+
+\begin{description}
+\item[Secrets:]The format and structure of Image data.
+\item[Services:] Takes in the necessary data to create a Image.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Record
+\end{description}
+
 \subsection{Software Decision Module}
 
 \begin{description}
@@ -452,6 +554,51 @@ to be implemented.
 \begin{description}
 \item[Secrets:] Credential validation, access token validation, and access token generation algorithms.
 \item[Services:] Validates credentials given by user, generates access tokens, and validates access tokens.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Satellite Image Request Controller (\mref{sirc})}
+
+\begin{description}
+\item[Secrets:] Form validation and image request algorithms.
+\item[Services:] Validates the form information, creates and sends a request to a third party for the necessary pictures.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Project Creation Controller (\mref{pcc})}
+
+\begin{description}
+\item[Secrets:] Form validation and project creation algorithms.
+\item[Services:] Validates project information provided and creates a new project.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Report Controller (\mref{rc})}
+
+\begin{description}
+\item[Secrets:] Logic for getting statistics of a project and exporting images onto the users device.
+\item[Services:] Get statistics and labeled images of project, and exports images to external devices.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Project Selection Controller (\mref{psc})}
+
+\begin{description}
+\item[Secrets:] Logic for getting active projects and redirecting labelers upon selection.
+\item[Services:] Gets valid projects that are currently available, and redirects labelers to a selected project labeling interface.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Labeling Controller (\mref{lblc})}
+
+\begin{description}
+\item[Secrets:] Algorithms for label creation, removal and submission.
+\item[Services:] Creates label for an image, removes label from an image, and submits labels to be processed.
 \item[Implemented By:] OrbitWatch
 \item[Type of Module:] Abstract Object
 \end{description}
