@@ -1217,6 +1217,460 @@ Assumes AccountDatabase is operational when calling requestUpdate.
 \subsubsection{Local Functions}
 None
 
+\section{MIS of Authentication Controller} \label{ac}
+
+\subsection{Module}
+
+Authentication Controller
+
+\subsection{Uses}
+
+Login Interface \ref{li}\\
+Account Database \ref{accd} \\
+Access Token \ref{at} \\
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+None
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{4cm} p{4cm} p{4cm} p{2cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+validCredentials & (string, string) & boolean & - \\
+generateAccessToken & string & - & - \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+\begin{itemize}
+    \item token: AccessToken
+\end{itemize}
+
+\subsubsection{Environment Variables}
+None
+
+\subsubsection{Assumptions}
+Assumes AccountDatabase is operational when calling validCredentials.
+
+\subsubsection{Access Routine Semantics}
+
+\noindent validCredentials(email, password):
+\begin{itemize}
+\item output: out := AccountDatabase.retreiveUser(email) $\neq$ null \\ $\land$ AccountDatabase.retreiveUser(email).getPassword() == password
+\end{itemize}
+
+\noindent generateAccessToken(email):
+\begin{itemize}
+\item transition: token := AccessToken(email)
+\end{itemize}
+
+\subsubsection{Local Functions}
+None
+
+\section{MIS of Satellite Image Request Interface} \label{siri}
+
+\subsection{Module}
+
+Satellite Image Request Interface
+
+\subsection{Uses}
+
+Satellite Image Request Controller \ref{sirc}
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+None
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+renderPage & - & - & - \\
+submitForm & list[(string, string)] & - & - \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+None
+\subsubsection{Environment Variables}
+win: 2D sequence of coloured pixels
+
+\subsubsection{Assumptions}
+None
+
+\subsubsection{Access Routine Semantics}
+
+\noindent renderPage():
+\begin{itemize}
+\item transition: win := Modify window so that it shows a form requesting information regarding an image request.
+\end{itemize}
+
+\noindent submitForm(formData):
+\begin{itemize}
+\item transition: Passes the submitted changes to the Satellite Image Request Controller for validation and processing.
+\end{itemize}
+
+\subsubsection{Local Functions}
+None
+
+\section{MIS of Satellite Image Request Controller} \label{sirc}
+
+\subsection{Module}
+
+Satellite Image Request Controller
+
+\subsection{Uses}
+
+Satellite Image Request Interface \ref{siri}\\
+Satellite Image Request \ref{sir} \\
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+None
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{4cm} p{4cm} p{4cm} p{2cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+validateForm & list[(string, string)] & boolean & - \\
+requestImages & SatelliteImageRequest & - & - \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+None
+
+\subsubsection{Environment Variables}
+None
+
+\subsubsection{Assumptions}
+None
+
+\subsubsection{Access Routine Semantics}
+
+\noindent validateForm(formData):
+\begin{itemize}
+\item output: out := $\forall \text{data} \in \text{formData}, (\text{data[1]} \neq \text{""})$
+\end{itemize}
+
+\noindent requestImages(imgRequest):
+\begin{itemize}
+\item transition: Passes imgRequest to third party image provider to be processed.
+\end{itemize}
+
+\subsubsection{Local Functions}
+\begin{itemize}
+    \item calculateCost(imgRequest): out := Use information given to calculate the cost of a request using third party rates
+\end{itemize}
+
+\section{MIS of Satellite Image Request} \label{sir}
+
+\subsection{Module}
+
+Satellite Image Request
+
+\subsection{Uses}
+None
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+None
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{3.2cm} p{4cm} p{4cm} p{2cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+getLocation & - & (float, float) & - \\
+getRadius & - & float & - \\
+getDate & - & Date & - \\
+setLocation & (float, float) & - & - \\
+setRadius & float & - & - \\
+setDate & Date & - & - \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+\begin{itemize}
+    \item locationX: float
+    \item locationY: float
+    \item radius: float
+    \item date: Date
+\end{itemize}
+\subsubsection{Environment Variables}
+None
+
+\subsubsection{Assumptions}
+None
+
+\subsubsection{Access Routine Semantics}
+
+\noindent getLocation():
+\begin{itemize}
+\item output: out := (locationX, locationY)
+\end{itemize}
+
+\noindent getRadius():
+\begin{itemize}
+\item output: out := radius
+\end{itemize}
+
+\noindent getDate():
+\begin{itemize}
+\item output: out := date
+\end{itemize}
+
+\noindent setLocation(x, y):
+\begin{itemize}
+\item transition: locationX, locationY := x, y 
+\end{itemize}
+
+\noindent setRadius(newRadius):
+\begin{itemize}
+\item transition: radius := newRadius
+\end{itemize}
+
+\noindent setDate(newDate):
+\begin{itemize}
+\item transition: date := newDate 
+\end{itemize}
+
+\subsubsection{Local Functions}
+None
+
+\section{MIS of Project Creation Interface} \label{pci}
+
+\subsection{Module}
+
+Project Creation Interface
+
+\subsection{Uses}
+
+Project Creation Controller \ref{pcc}
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+None
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+renderPage & - & - & - \\
+submitForm & list[(string, string)] & - & - \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+None
+\subsubsection{Environment Variables}
+win: 2D sequence of coloured pixels
+
+\subsubsection{Assumptions}
+None
+
+\subsubsection{Access Routine Semantics}
+
+\noindent renderPage():
+\begin{itemize}
+\item transition: win := Modify window so that it shows a form requesting information regarding creating a new project.
+\end{itemize}
+
+\noindent submitForm(formData):
+\begin{itemize}
+\item transition: Passes the submitted changes to the Project Creation Controller for validation and processing.
+\end{itemize}
+
+\subsubsection{Local Functions}
+None
+
+\section{MIS of Project Creation Controller} \label{pcc}
+
+\subsection{Module}
+
+Project Creation Controller
+
+\subsection{Uses}
+
+Project Creation Interface \ref{pci}\\
+Project \ref{project} \\
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+None
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{4cm} p{4cm} p{4cm} p{2cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+validateForm & list[(string, string)] & boolean & - \\
+createNewProject & list[(string, string)] & Project & - \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+None
+
+\subsubsection{Environment Variables}
+None
+
+\subsubsection{Assumptions}
+None
+
+\subsubsection{Access Routine Semantics}
+
+\noindent validateForm(formData):
+\begin{itemize}
+\item output: out := $\forall \text{data} \in \text{formData}, (\text{data[1]} \neq \text{""})$
+\end{itemize}
+
+\noindent createNewProject(formData):
+\begin{itemize}
+\item output: out := 
+    \text{Project}(formData.name, formData.description, formData.labelClasses.split(), \\ Date(formData.startDate), Date(formData.endDate))
+\end{itemize}
+
+\subsubsection{Local Functions}
+\begin{itemize}
+    \item calculateEstimatedCost(imgRequest): out := Use information given to calculate the estimated cost of a project.
+\end{itemize}
+
+\section{MIS of Project} \label{project}
+
+\subsection{Module}
+
+Project
+
+\subsection{Uses}
+None
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+None
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{3.2cm} p{4cm} p{4cm} p{2cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+getProjectID & - & int & - \\
+getName & - & string & - \\
+getDescription & - & string & - \\
+getLabelClasses & - & list[Enum[string]] & - \\
+getTimePeriod & - & (Date, Date) & - \\
+setName & string & - & - \\
+setDescription & string & - & - \\
+setLabelClasses & list[Enum[string]] & - & - \\
+setTimePeriod & (Date, Date) & - & - \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+\begin{itemize}
+    \item projectID: int
+    \item name: string
+    \item description: string
+    \item labelClasses: list[Enum[String]]
+    \item startDate: Date
+    \item endDate: Date
+\end{itemize}
+\subsubsection{Environment Variables}
+None
+
+\subsubsection{Assumptions}
+None
+
+\subsubsection{Access Routine Semantics}
+
+\noindent getProjectID():
+\begin{itemize}
+\item output: out := projectID
+\end{itemize}
+
+\noindent getName():
+\begin{itemize}
+\item output: out := name
+\end{itemize}
+
+\noindent getDescription():
+\begin{itemize}
+\item output: out := description
+\end{itemize}
+
+\noindent getLabelClasses():
+\begin{itemize}
+\item output: out := labelClasses
+\end{itemize}
+
+\noindent getTimePeriod():
+\begin{itemize}
+\item output: out := (startDate, endDate)
+\end{itemize}
+
+\noindent setName(newName):
+\begin{itemize}
+\item transition: name := newName 
+\end{itemize}
+
+\noindent setDescription(newDesc):
+\begin{itemize}
+\item transition: description := newDesc
+\end{itemize}
+
+\noindent setLabelClasses(newlc):
+\begin{itemize}
+\item transition: labelClasses := newlc 
+\end{itemize}
+
+\noindent setTimePeriod(start, end):
+\begin{itemize}
+\item transition: startDate, endDate := start, end 
+\end{itemize}
+
+\subsubsection{Local Functions}
+None
+
 \newpage
 
 \bibliographystyle {plainnat}
