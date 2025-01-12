@@ -1671,6 +1671,386 @@ None
 \subsubsection{Local Functions}
 None
 
+\section{MIS of Service Request Failure Interface} \label{srfi}
+
+\subsection{Module}
+
+Service Request Failure Interface
+
+\subsection{Uses}
+
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+None
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{3cm} p{4cm} p{4cm} p{2cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+displayErrorInfo & - & - & - \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+None
+\subsubsection{Environment Variables}
+win: 2D sequence of coloured pixels
+
+\subsubsection{Assumptions}
+None
+
+\subsubsection{Access Routine Semantics}
+
+\noindent displayErrorInfo():
+\begin{itemize}
+\item transition: win := Modify window so that it shows a warning to the user that their request has failed.
+\end{itemize}
+
+\subsubsection{Local Functions}
+None
+
+\section{MIS of Image Upload Interface} \label{iui}
+
+\subsection{Module}
+
+Image Upload Interface
+
+\subsection{Uses}
+
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+None
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{3cm} p{4cm} p{4cm} p{2cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+displayUploadImages & - & - & - \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+None
+\subsubsection{Environment Variables}
+win: 2D sequence of coloured pixels
+
+\subsubsection{Assumptions}
+None
+
+\subsubsection{Access Routine Semantics}
+
+\noindent displayUploadImages():
+\begin{itemize}
+\item transition: win := Modify window so that it allows users to upload images.
+\end{itemize}
+
+\subsubsection{Local Functions}
+\begin{itemize}
+\item validateImage(image): out := \[
+\text{image.extension} \in \{\text{svg}, \text{jpeg}, \text{png}\}
+\]
+\end{itemize}
+
+\section{MIS of Report Interface} \label{ri}
+
+\subsection{Module}
+
+Report Interface
+
+\subsection{Uses}
+
+Report Controller \ref{rc}
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+None
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+displayStats & - & - & - \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+None
+\subsubsection{Environment Variables}
+win: 2D sequence of coloured pixels
+
+\subsubsection{Assumptions}
+None
+
+\subsubsection{Access Routine Semantics}
+
+\noindent displayStats():
+\begin{itemize}
+\item transition: win := Modify window so that it shows project specific statistics.
+\end{itemize}
+
+\subsubsection{Local Functions}
+None
+
+\section{MIS of Report Controller} \label{rc}
+
+\subsection{Module}
+
+Report Controller
+
+\subsection{Uses}
+
+Report Interface \ref{ri}\\
+Report \ref{report} \\
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+None
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{4cm} p{4cm} p{4cm} p{2cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+getProjectStats & string & - & - \\
+exportLabeledImages & - & - & - \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+\begin{itemize}
+    \item report: Report
+\end{itemize}
+
+\subsubsection{Environment Variables}
+fm: External systems file manager
+
+\subsubsection{Assumptions}
+None
+
+\subsubsection{Access Routine Semantics}
+
+\noindent getProjectStats(projectID):
+\begin{itemize}
+\item transition: report := Report of statistics for project with projectID
+\end{itemize}
+
+\noindent exportLabeledImages():
+\begin{itemize}
+\item transition: fm := given labeled images to download to device.
+\end{itemize}
+
+\subsubsection{Local Functions}
+None
+
+\section{MIS of Report} \label{report}
+
+\subsection{Module}
+
+Report
+
+\subsection{Uses}
+None
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+None
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{3.2cm} p{4cm} p{4cm} p{2cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+getLabeledImages & - & list[Image] & - \\
+getReviewedImages & - & list[Image] & - \\
+getEndDate & - & Date & - \\
+getTotalLabelers & - & int & - \\
+getAccuracy & - & int & - \\
+getClassCount & - & list[(string, int)] & - \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+\begin{itemize}
+    \item labeledImages: list[Image]
+    \item reviewedImages: list[Image]
+    \item endDate: Date
+    \item totalLabelers: int
+    \item accuracyOfLabelers: int
+    \item classCount: list[(string, int)]
+\end{itemize}
+\subsubsection{Environment Variables}
+None
+
+\subsubsection{Assumptions}
+None
+
+\subsubsection{Access Routine Semantics}
+
+\noindent getLabeledImages():
+\begin{itemize}
+\item output: out := labeledImages
+\end{itemize}
+
+\noindent getReviewedImages():
+\begin{itemize}
+\item output: out := reviewedImages
+\end{itemize}
+
+\noindent getEndDate():
+\begin{itemize}
+\item output: out := endDate
+\end{itemize}
+
+\noindent getTotalLabelers():
+\begin{itemize}
+\item output: out := totalLabelers
+\end{itemize}
+
+\noindent getAccuracyOfLabelers():
+\begin{itemize}
+\item output: out := accuracyOfLabelers
+\end{itemize}
+
+\noindent getClassCount():
+\begin{itemize}
+\item output: out := classCount
+\end{itemize}
+
+\subsubsection{Local Functions}
+None
+
+\section{MIS of Project Selection Interface} \label{psi}
+
+\subsection{Module}
+
+Project Selection Interface
+
+\subsection{Uses}
+
+Project Selection Controller \ref{psc}
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+None
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{4cm} p{4cm} p{4cm} p{2cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+displayActiveProjects & - & - & - \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+None
+\subsubsection{Environment Variables}
+win: 2D sequence of coloured pixels
+
+\subsubsection{Assumptions}
+None
+
+\subsubsection{Access Routine Semantics}
+
+\noindent displayActiveProjects():
+\begin{itemize}
+\item transition: win := Modify window so that it shows all active projects and a small description of each.
+\end{itemize}
+
+\subsubsection{Local Functions}
+None
+
+\section{MIS of Project Selection Controller} \label{psc}
+
+\subsection{Module}
+
+Project Selection Controller
+
+\subsection{Uses}
+
+Project Selection Interface \ref{psi}\\
+Project \ref{project} \\
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+None
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{4cm} p{4cm} p{4cm} p{2cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+getActiveProjects & - & - & - \\
+selectProject & Project & - & - \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+\begin{itemize}
+    \item activeProjects: list[Project] 
+\end{itemize}
+
+\subsubsection{Environment Variables}
+win: 2D sequence of coloured pixels
+
+\subsubsection{Assumptions}
+None
+
+\subsubsection{Access Routine Semantics}
+
+\noindent getActiveProjects():
+\begin{itemize}
+\item transition: activeProjects := All projects marked as active in the project database
+\end{itemize}
+
+\noindent selectProject(project):
+\begin{itemize}
+\item transition: win := redirects users to labeling interface of that project
+\end{itemize}
+
+\subsubsection{Local Functions}
+None
+
 \newpage
 
 \bibliographystyle {plainnat}
