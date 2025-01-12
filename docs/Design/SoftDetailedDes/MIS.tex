@@ -108,6 +108,7 @@ character & char & a single symbol or digit\\
 integer & $\mathbb{Z}$ & a number without a fractional component in (-$\infty$, $\infty$) \\
 natural number & $\mathbb{N}$ & a number without a fractional component in [1, $\infty$) \\
 real & $\mathbb{R}$ & any number in (-$\infty$, $\infty$)\\
+date & Date & provides a specific date and time\\
 \bottomrule
 \end{tabular} 
 \end{center}
@@ -226,6 +227,586 @@ The following table is taken directly from the Module Guide document for this pr
   They are not necessarily something that is going to be implemented
   explicitly.  Even if they are implemented, they are not exported; they only
   have local scope.}
+
+\section{MIS of Account Creation Interface} \label{aci}
+
+\subsection{Module}
+
+Account Creation Interface
+
+\subsection{Uses}
+
+Account Creation Controller \ref{acc}
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+None
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+renderPage & Enum[labeler, client] & - & - \\
+submitForm & list[(string, string)] & - & - \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+None
+\subsubsection{Environment Variables}
+win: 2D sequence of coloured pixels
+
+\subsubsection{Assumptions}
+None
+
+\subsubsection{Access Routine Semantics}
+
+\noindent renderPage(userType):
+\begin{itemize}
+\item transition: win := Modify window so that it shows a registration form that asks for the necessary information depending on if the user is a labeler or client.
+\end{itemize}
+
+\noindent submitForm(formData):
+\begin{itemize}
+\item transition: Passes the submitted form data to the Account Creation Controller for validation and processing.
+\end{itemize}
+
+\subsubsection{Local Functions}
+None
+
+\section{MIS of Account Database} \label{accd}
+
+\subsection{Module}
+
+Account Database
+
+\subsection{Uses}
+
+Relational Database
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+None
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+insertUser & User & - & - \\
+retrieveUser & string & User & - \\
+updateUser & User & - & - \\
+userExists & string & boolean & - \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+None
+\subsubsection{Environment Variables}
+databaseConnection: connection to relational database
+
+\subsubsection{Assumptions}
+None
+
+\subsubsection{Access Routine Semantics}
+
+\noindent insertUser(user):
+\begin{itemize}
+\item transition: Insert user into database through databaseConection.
+\end{itemize}
+
+\noindent retrieveUser(email):
+\begin{itemize}
+\item output: 
+\[
+\begin{cases}
+    \text{User where User.email == email}, & \text{if } \text{userExists(email)}\\
+    \text{null}, & \text{otherwise}
+\end{cases}
+\]
+\end{itemize}
+
+\noindent updateUser(user):
+\begin{itemize}
+\item transition: 
+\[
+\begin{cases}
+    \text{Update user in database through databaseConection}, & \text{if } \text{userExists(user.email)}\\
+    \text{Do nothing} & \text{otherwise}
+\end{cases}
+\]
+\end{itemize}
+
+\noindent userExists(email):
+\begin{itemize}
+\item output: out := 
+\[ \exists \, \text{User} \in \text{Database} \, \text{s.t.} \, \text{User.email} = \text{email}
+\]
+\end{itemize}
+
+
+\subsubsection{Local Functions}
+None
+
+\section{MIS of Account Update Interface} \label{aui}
+
+\subsection{Module}
+
+Account Update Interface
+
+\subsection{Uses}
+
+Account Update Controller \ref{auc}
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+None
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+renderPage & User & - & - \\
+submitForm & list[(string, string)] & - & - \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+None
+\subsubsection{Environment Variables}
+win: 2D sequence of coloured pixels
+
+\subsubsection{Assumptions}
+None
+
+\subsubsection{Access Routine Semantics}
+
+\noindent renderPage(userInfo):
+\begin{itemize}
+\item transition: win := Modify window so that it shows a form with the current user's information. This information can be changed by the user.
+\end{itemize}
+
+\noindent submitForm(formData):
+\begin{itemize}
+\item transition: Passes the submitted changes to the Account Update Controller for validation and processing.
+\end{itemize}
+
+\subsubsection{Local Functions}
+None
+
+\section{MIS of Login Interface} \label{li}
+
+\subsection{Module}
+
+Login Interface
+
+\subsection{Uses}
+
+Authentication Controller \ref{ac}
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+None
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+renderPage & - & - & - \\
+submitForm & list[(string, string)] & - & - \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+None
+\subsubsection{Environment Variables}
+win: 2D sequence of coloured pixels
+
+\subsubsection{Assumptions}
+None
+
+\subsubsection{Access Routine Semantics}
+
+\noindent renderPage():
+\begin{itemize}
+\item transition: win := Modify window so that it shows a login form.
+\end{itemize}
+
+\noindent submitForm(formData):
+\begin{itemize}
+\item transition: Passes the submitted credentials to the Authentication Controller for validation.
+\end{itemize}
+
+\subsubsection{Local Functions}
+None
+
+\section{MIS of Access Token} \label{at}
+
+\subsection{Module}
+
+Access Token
+
+\subsection{Uses}
+None
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+None
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+isExpired & - & boolean & - \\
+renew & - & - & - \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+\begin{itemize}
+    \item tokenValue: string
+    \item expirationTime: Date
+    \item userID: string
+\end{itemize}
+\subsubsection{Environment Variables}
+None
+
+\subsubsection{Assumptions}
+None
+
+\subsubsection{Access Routine Semantics}
+
+\noindent isExpired():
+\begin{itemize}
+\item output: out := currentTime $>$ expirationTime
+\end{itemize}
+
+\noindent renew():
+\begin{itemize}
+\item transition: expirationTime := expirationTime + 5 hours
+\end{itemize}
+
+\subsubsection{Local Functions}
+None
+
+\section{MIS of Account Creation Interface} \label{aci}
+
+\subsection{Module}
+
+Account Creation Interface
+
+\subsection{Uses}
+
+Account Creation Controller \ref{acc}
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+None
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+renderPage & Enum[labeler, client] & - & - \\
+submitForm & list[(string, string)] & - & - \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+None
+\subsubsection{Environment Variables}
+win: 2D sequence of coloured pixels
+
+\subsubsection{Assumptions}
+None
+
+\subsubsection{Access Routine Semantics}
+
+\noindent renderPage(userType):
+\begin{itemize}
+\item transition: win := Modify window so that it shows a registration form that asks for the necessary information depending on if the user is a labeler or client.
+\end{itemize}
+
+\noindent submitForm(formData):
+\begin{itemize}
+\item transition: Passes the submitted form data to the Account Creation Controller for validation and processing.
+\end{itemize}
+
+\subsubsection{Local Functions}
+None
+
+\section{MIS of Account Database} \label{accd}
+
+\subsection{Module}
+
+Account Database
+
+\subsection{Uses}
+
+Relational Database
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+None
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+insertUser & User & - & - \\
+retrieveUser & string & User & - \\
+updateUser & User & - & - \\
+userExists & string & boolean & - \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+None
+\subsubsection{Environment Variables}
+databaseConnection: connection to relational database
+
+\subsubsection{Assumptions}
+None
+
+\subsubsection{Access Routine Semantics}
+
+\noindent insertUser(user):
+\begin{itemize}
+\item transition: Insert user into database through databaseConection.
+\end{itemize}
+
+\noindent retrieveUser(email):
+\begin{itemize}
+\item output: 
+\[
+\begin{cases}
+    \text{User where User.email == email}, & \text{if } \text{userExists(email)}\\
+    \text{null}, & \text{otherwise}
+\end{cases}
+\]
+\end{itemize}
+
+\noindent updateUser(user):
+\begin{itemize}
+\item transition: 
+\[
+\begin{cases}
+    \text{Update user in database through databaseConection}, & \text{if } \text{userExists(user.email)}\\
+    \text{Do nothing} & \text{otherwise}
+\end{cases}
+\]
+\end{itemize}
+
+\noindent userExists(email):
+\begin{itemize}
+\item output: out := 
+\[ \exists \, \text{User} \in \text{Database} \, \text{s.t.} \, \text{User.email} = \text{email}
+\]
+\end{itemize}
+
+
+\subsubsection{Local Functions}
+None
+
+\section{MIS of Account Update Interface} \label{aui}
+
+\subsection{Module}
+
+Account Update Interface
+
+\subsection{Uses}
+
+Account Update Controller \ref{auc}
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+None
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+renderPage & User & - & - \\
+submitForm & list[(string, string)] & - & - \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+None
+\subsubsection{Environment Variables}
+win: 2D sequence of coloured pixels
+
+\subsubsection{Assumptions}
+None
+
+\subsubsection{Access Routine Semantics}
+
+\noindent renderPage(userInfo):
+\begin{itemize}
+\item transition: win := Modify window so that it shows a form with the current user's information. This information can be changed by the user.
+\end{itemize}
+
+\noindent submitForm(formData):
+\begin{itemize}
+\item transition: Passes the submitted changes to the Account Update Controller for validation and processing.
+\end{itemize}
+
+\subsubsection{Local Functions}
+None
+
+\section{MIS of Login Interface} \label{li}
+
+\subsection{Module}
+
+Login Interface
+
+\subsection{Uses}
+
+Authentication Controller \ref{ac}
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+None
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+renderPage & - & - & - \\
+submitForm & list[(string, string)] & - & - \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+None
+\subsubsection{Environment Variables}
+win: 2D sequence of coloured pixels
+
+\subsubsection{Assumptions}
+None
+
+\subsubsection{Access Routine Semantics}
+
+\noindent renderPage():
+\begin{itemize}
+\item transition: win := Modify window so that it shows a login form.
+\end{itemize}
+
+\noindent submitForm(formData):
+\begin{itemize}
+\item transition: Passes the submitted credentials to the Authentication Controller for validation.
+\end{itemize}
+
+\subsubsection{Local Functions}
+None
+
+\section{MIS of Access Token} \label{at}
+
+\subsection{Module}
+
+Access Token
+
+\subsection{Uses}
+None
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+None
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+isExpired & - & boolean & - \\
+renew & - & - & - \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+\begin{itemize}
+    \item tokenValue: string
+    \item expirationTime: Date
+    \item userID: string
+\end{itemize}
+\subsubsection{Environment Variables}
+None
+
+\subsubsection{Assumptions}
+None
+
+\subsubsection{Access Routine Semantics}
+
+\noindent isExpired():
+\begin{itemize}
+\item output: out := currentTime $>$ expirationTime
+\end{itemize}
+
+\noindent renew():
+\begin{itemize}
+\item transition: expirationTime := expirationTime + 5 hours
+\end{itemize}
+
+\subsubsection{Local Functions}
+None
 
 \newpage
 
