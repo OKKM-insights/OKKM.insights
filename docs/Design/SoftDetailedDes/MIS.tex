@@ -2051,6 +2051,215 @@ None
 \subsubsection{Local Functions}
 None
 
+\section{MIS of Labeling Interface} \label{li}
+
+\subsection{Module}
+
+Labeling Interface
+
+\subsection{Uses}
+
+Labeling Controller \ref{lc} \\
+Image \ref{image}
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+None
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{4cm} p{4cm} p{4cm} p{2cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+renderPage & - & - & - \\
+displayImage & Image & - & - \\
+skipImage & - & - & - \\
+selectLabelClass & - & - & - \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+\begin{itemize}
+    \item projectImages: list[Image]
+    \item currImage: int
+    \item currLabelClass: Enum[string]
+\end{itemize}
+\subsubsection{Environment Variables}
+win: 2D sequence of coloured pixels
+
+\subsubsection{Assumptions}
+None
+
+\subsubsection{Access Routine Semantics}
+
+\noindent renderPage():
+\begin{itemize}
+\item transition: win := Modify window so that it shows labeling tools along with a picture to label.
+\end{itemize}
+
+\noindent displayImage(img):
+\begin{itemize}
+\item transition: win := Modify window so that the picture it is showing is img.
+\end{itemize}
+
+\noindent skipImage():
+\begin{itemize}
+\item transition: 
+currentImage := (currentImage + 1) \% projectImages.length \\
+win := Modify window so that the picture it is showing is projectImages[currentImage].
+
+\end{itemize}
+
+\noindent selectLabelClass():
+\begin{itemize}
+\item transition: currLabelClass := the label class the user has selected on win.
+\end{itemize}
+
+\subsubsection{Local Functions}
+None
+
+\section{MIS of Labeling Controller} \label{lc}
+
+\subsection{Module}
+
+Labeling Controller
+
+\subsection{Uses}
+
+Labeling Interface \ref{li}\\
+Label \ref{label} \\
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+None
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{4cm} p{4cm} p{4cm} p{2cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+getProjectImages & string & - & - \\
+addLabel & Label & - & - \\
+removeLabel & string & - & - \\
+submitLabels & list[Label] & - & - \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+\begin{itemize}
+    \item labels: list[Label]
+\end{itemize}
+
+\subsubsection{Environment Variables}
+None
+
+\subsubsection{Assumptions}
+None
+
+\subsubsection{Access Routine Semantics}
+
+\noindent getProjectImages(projectID):
+\begin{itemize}
+\item output: out := All images from project with projectID
+\end{itemize}
+
+\noindent addLabel(lbl):
+\begin{itemize}
+\item transition: labels := labels $ \cup$ \{lbl\}
+\end{itemize}
+
+\noindent removeLabel(lblID):
+\begin{itemize}
+\item transition: labels := $ \{ \ell \in \text{labels} \mid \ell.\text{id} \neq \text{lblID} \}$
+\end{itemize}
+
+\noindent submitLabels(lbls):
+\begin{itemize}
+\item transition: labels are sent to be added to the Label Database
+\end{itemize}
+
+\subsubsection{Local Functions}
+None
+
+\section{MIS of Image} \label{image}
+
+\subsection{Module}
+
+Image
+
+\subsection{Uses}
+None
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+None
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{3.2cm} p{4cm} p{4cm} p{2cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+getProjectID & - & int & - \\
+getImageID & - & int & - \\
+getDimensions & - & (float, float) & - \\
+getImageData & - & binary & - \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+\begin{itemize}
+    \item projectID: int
+    \item imageID: int
+    \item width: float
+    \item height: float
+    \item imageData: binary
+\end{itemize}
+\subsubsection{Environment Variables}
+None
+
+\subsubsection{Assumptions}
+None
+
+\subsubsection{Access Routine Semantics}
+
+\noindent getProjectID():
+\begin{itemize}
+\item output: out := projectID
+\end{itemize}
+
+\noindent getImageID():
+\begin{itemize}
+\item output: out := imageID
+\end{itemize}
+
+\noindent getDimensions():
+\begin{itemize}
+\item output: out := (width, height)
+\end{itemize}
+
+\noindent getImageData():
+\begin{itemize}
+\item output: out := imageData
+\end{itemize}
+
+\subsubsection{Local Functions}
+None
+
 \newpage
 
 \bibliographystyle {plainnat}
