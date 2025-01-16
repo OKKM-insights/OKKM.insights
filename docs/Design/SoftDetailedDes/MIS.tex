@@ -227,6 +227,678 @@ The following table is taken directly from the Module Guide document for this pr
   explicitly.  Even if they are implemented, they are not exported; they only
   have local scope.}
 
+
+  \newpage
+  ~\newpage
+  
+  \section{MIS of Label Server}\label{LabelServer}
+  
+  % \wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
+  
+  % \wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
+  
+  \subsection{Module}
+  
+  Label Server
+  
+  \subsection{Uses}
+  
+  Labeling Controller \ref{lc}\\
+  Label \ref{label}\\ 
+  Label Database Connector \ref{label database connector}
+  
+  \subsection{Syntax}
+
+
+  
+  \subsubsection{Exported Constants}
+  None
+  \subsubsection{Exported Access Programs}
+  
+  \begin{center}
+  \begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+  \hline
+  \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+  \hline
+  acceptLabel & Label & - & ValueError, ConnectionError \\
+  \hline
+  \end{tabular}
+  \end{center}
+  
+  \subsection{Semantics}
+  
+  \subsubsection{State Variables}
+  
+  None
+  
+  \subsubsection{Environment Variables}
+  
+  LabelDatabaseConnector
+  
+  \subsubsection{Assumptions}
+  
+  Label Objects are given to the label server in JSON format. Exceptions will be thrown based on failure to match this standard.
+  
+  \subsubsection{Access Routine Semantics}
+  
+  \noindent acceptLabel(object o):
+  \begin{itemize}
+  \item transition: Transition occurs in LabelDatabaseConnector
+  \item output: Standard HTTP response codes
+  \item exception: Let L be the set of valid Labels. Throw ValueError if $\neg (o \in \text{L})$\\
+  Throw ConnectionError if ConnectionError is raised by LabelDatabaseConnector
+  \end{itemize}
+  
+  % \wss{A module without environment variables or state variables is unlikely to
+  %   have a state transition.  In this case a state transition can only occur if
+  %   the module is changing the state of another module.}
+  
+  % \wss{Modules rarely have both a transition and an output.  In most cases you
+  %   will have one or the other.}
+  
+  \subsubsection{Local Functions}
+
+  JSONLabeltoLabel: converts a JSON object into a Label object. 
+  
+  % \wss{As appropriate} \wss{These functions are for the purpose of specification.
+  %   They are not necessarily something that is going to be implemented
+  %   explicitly.  Even if they are implemented, they are not exported; they only
+  %   have local scope.}
+
+\newpage
+
+% --------------------------------------------------------------------------------------
+% --/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\--
+% --------------------------------------------------------------------------------------
+
+\section{MIS of Label Database Connector}\label{label database connector}
+  
+  % \wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
+  
+  % \wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
+  
+  \subsection{Module}
+  
+  Label Database Connector
+
+  
+  \subsection{Uses}
+  
+  Label Database \ref{label database}\\
+  Label \ref{label}\\ 
+
+  
+  \subsection{Syntax}
+
+
+  
+  \subsubsection{Exported Constants}
+  None
+  \subsubsection{Exported Access Programs}
+  
+  \begin{center}
+  \begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+  \hline
+  \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+  \hline
+  pushLabel & Label & - & ValueError, ConnectionError \\
+  \hline
+  makeDB Connection & Label & - & ConnectionError \\
+  \hline
+  getLabels & String & list[Label] & ValueError, ConnectionError \\
+  \hline
+  \end{tabular}
+  \end{center}
+  
+  \subsection{Semantics}
+  
+  \subsubsection{State Variables}
+  
+  None
+  
+  \subsubsection{Environment Variables}
+  
+  None
+  
+  \subsubsection{Assumptions}
+  
+  
+  \subsubsection{Access Routine Semantics}
+  
+  \noindent pushLabel(Label l):
+  \begin{itemize}
+  \item transition: Transition occurs in LabelDatabase
+  \item output: 
+  \item exception: Let L be the set of valid Labels. Throw ValueError if $\neg (l \in \text{L})$\\
+  Throw ConnectionError if ConnectionError is raised by makeDBConnection
+  \end{itemize}
+
+  \noindent makeDBConnection():
+  \begin{itemize}
+  \item transition: 
+  \item output: 
+  \item exception: Throw ConnectionError if connection is not accepted by LabelDatabase
+  \end{itemize}
+
+  \noindent getLabels(String q):
+  \begin{itemize}
+  \item transition: 
+  \item output: list of labels satisfying the provided query
+  \item exception: Let Q be the set of valid Queries. Throw ValueError if $\neg (q \in \text{Q})$\\
+  Throw ConnectionError if ConnectionError is raised by makeDBConnection
+
+  \end{itemize}
+  
+  % \wss{A module without environment variables or state variables is unlikely to
+  %   have a state transition.  In this case a state transition can only occur if
+  %   the module is changing the state of another module.}
+  
+  % \wss{Modules rarely have both a transition and an output.  In most cases you
+  %   will have one or the other.}
+  
+  \subsubsection{Local Functions}
+
+  None
+  
+  % \wss{As appropriate} \wss{These functions are for the purpose of specification.
+  %   They are not necessarily something that is going to be implemented
+  %   explicitly.  Even if they are implemented, they are not exported; they only
+  %   have local scope.}
+
+\newpage
+
+% --------------------------------------------------------------------------------------
+% --/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\--
+% --------------------------------------------------------------------------------------
+
+\section{MIS of Label Database }\label{label database}
+  
+  % \wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
+  
+  % \wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
+  
+  \subsection{Module}
+  
+  Label Database
+  
+  \subsection{Uses}
+  
+  None
+  
+  \subsection{Syntax}
+
+
+  
+  \subsubsection{Exported Constants}
+  None
+  \subsubsection{Exported Access Programs}
+  
+  \begin{center}
+  \begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+  \hline
+  \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+  \hline
+  pushLabel & Label & - & ValueError \\
+  \hline
+  makeDB Connection & Label & - &  ConnectionError\\
+  \hline
+  getLabels & String & list[Label] & ValueError \\
+  \hline
+  \end{tabular}
+  \end{center}
+  
+  \subsection{Semantics}
+  
+  \subsubsection{State Variables}
+  
+  labels: labels stored in the database
+  users: list of authenticated users
+  
+  \subsubsection{Environment Variables}
+  
+  None
+  
+  \subsubsection{Assumptions}
+  
+  
+  \subsubsection{Access Routine Semantics}
+  
+  \noindent pushLabel(Label l):
+  \begin{itemize}
+  \item transition: $\text{labels} := \text{labels} \cup l $
+  \item output: 
+  \item exception: Let L be the set of valid Labels. Throw ValueError if $\neg (l \in \text{L})$\\
+  Throw ConnectionError if $\neg (\text{requestor} \in \text{users})$
+  \end{itemize}
+
+  \noindent makeDBConnection(credentials):
+  \begin{itemize}
+  \item transition: if credentials are valid, $\text{users} := \text{users} \cup credentials.user $
+  \item output: 
+  \item exception: Throw ConnectionError if credentials are not valid
+  \end{itemize}
+
+  \noindent getLabels(String q):
+  \begin{itemize}
+  \item transition: 
+  \item output: list of labels satisfying the provided query
+  \item exception: Let Q be the set of valid Queries. Throw ValueError if $\neg (q \in \text{Q})$\\
+  Throw ConnectionError if $\neg (\text{requestor} \in \text{users})$
+
+  \end{itemize}
+  
+  % \wss{A module without environment variables or state variables is unlikely to
+  %   have a state transition.  In this case a state transition can only occur if
+  %   the module is changing the state of another module.}
+  
+  % \wss{Modules rarely have both a transition and an output.  In most cases you
+  %   will have one or the other.}
+  
+  \subsubsection{Local Functions}
+
+  None
+  
+  % \wss{As appropriate} \wss{These functions are for the purpose of specification.
+  %   They are not necessarily something that is going to be implemented
+  %   explicitly.  Even if they are implemented, they are not exported; they only
+  %   have local scope.}
+
+\newpage
+
+% --------------------------------------------------------------------------------------
+% --/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\--
+% --------------------------------------------------------------------------------------
+
+\section{MIS of ImageObject Database Connector}\label{ImageObject database connector}
+  
+  % \wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
+  
+  % \wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
+  
+  \subsection{Module}
+  
+  ImageObject Database Connector
+
+  
+  \subsection{Uses}
+  
+  ImageObject Database \ref{ImageObject database}\\
+  ImageObject \ref{ImageObject}\\ 
+
+  
+  \subsection{Syntax}
+
+
+  
+  \subsubsection{Exported Constants}
+  None
+  \subsubsection{Exported Access Programs}
+  
+  \begin{center}
+  \begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+  \hline
+  \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+  \hline
+  pushImageObject & ImageObject & - & ValueError, ConnectionError \\
+  \hline
+  makeDB Connection & ImageObject & - & ConnectionError \\
+  \hline
+  getImageObjects & String & list[ImageObject] & ValueError, ConnectionError \\
+  \hline
+  \end{tabular}
+  \end{center}
+  
+  \subsection{Semantics}
+  
+  \subsubsection{State Variables}
+  
+  None
+  
+  \subsubsection{Environment Variables}
+  
+  None
+  
+  \subsubsection{Assumptions}
+  
+  
+  \subsubsection{Access Routine Semantics}
+  
+  \noindent pushLabel(ImageObject l):
+  \begin{itemize}
+  \item transition: Transition occurs in ImageObjectDatabase
+  \item output: 
+  \item exception: Let L be the set of valid ImageObjects. Throw ValueError if $\neg (l \in \text{L})$\\
+  Throw ConnectionError if ConnectionError is raised by makeDBConnection
+  \end{itemize}
+
+  \noindent makeDBConnection():
+  \begin{itemize}
+  \item transition: 
+  \item output: 
+  \item exception: Throw ConnectionError if connection is not accepted by ImageObjectDatabase
+  \end{itemize}
+
+  \noindent getLabels(String q):
+  \begin{itemize}
+  \item transition: 
+  \item output: list of ImageObjects satisfying the provided query
+  \item exception: Let Q be the set of valid Queries. Throw ValueError if $\neg (q \in \text{Q})$\\
+  Throw ConnectionError if ConnectionError is raised by makeDBConnection
+
+  \end{itemize}
+  
+  % \wss{A module without environment variables or state variables is unlikely to
+  %   have a state transition.  In this case a state transition can only occur if
+  %   the module is changing the state of another module.}
+  
+  % \wss{Modules rarely have both a transition and an output.  In most cases you
+  %   will have one or the other.}
+  
+  \subsubsection{Local Functions}
+
+  None
+  
+  % \wss{As appropriate} \wss{These functions are for the purpose of specification.
+  %   They are not necessarily something that is going to be implemented
+  %   explicitly.  Even if they are implemented, they are not exported; they only
+  %   have local scope.}
+
+\newpage
+
+% --------------------------------------------------------------------------------------
+% --/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\--
+% --------------------------------------------------------------------------------------
+
+\section{MIS of ImageObject Database }\label{ImageObject database}
+  
+  % \wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
+  
+  % \wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
+  
+  \subsection{Module}
+  
+  ImageObject Database
+  
+  \subsection{Uses}
+  
+  None
+  
+  \subsection{Syntax}
+
+
+  
+  \subsubsection{Exported Constants}
+  None
+  \subsubsection{Exported Access Programs}
+  
+  \begin{center}
+  \begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+  \hline
+  \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+  \hline
+  pushImageObject & ImageObject & - & ValueError \\
+  \hline
+  makeDB Connection & ImageObject & - &  ConnectionError\\
+  \hline
+  getImageObjects & String & list[ImageObject] & ValueError \\
+  \hline
+  \end{tabular}
+  \end{center}
+  
+  \subsection{Semantics}
+  
+  \subsubsection{State Variables}
+  
+  ImageObjects: ImageObjects stored in the database
+  users: list of authenticated users
+  
+  \subsubsection{Environment Variables}
+  
+  None
+  
+  \subsubsection{Assumptions}
+  
+  
+  \subsubsection{Access Routine Semantics}
+  
+  \noindent pushLabel(ImageObject l):
+  \begin{itemize}
+  \item transition: $\text{labels} := \text{labels} \cup l $
+  \item output: 
+  \item exception: Let L be the set of valid ImageObjects. Throw ValueError if $\neg (l \in \text{L})$\\
+  Throw ConnectionError if $\neg (\text{requestor} \in \text{users})$
+  \end{itemize}
+
+  \noindent makeDBConnection(credentials):
+  \begin{itemize}
+  \item transition: if credentials are valid, $\text{users} := \text{users} \cup credentials.user $
+  \item output: 
+  \item exception: Throw ConnectionError if credentials are not valid
+  \end{itemize}
+
+  \noindent getLabels(String q):
+  \begin{itemize}
+  \item transition: 
+  \item output: list of ImageObjects satisfying the provided query
+  \item exception: Let Q be the set of valid Queries. Throw ValueError if $\neg (q \in \text{Q})$\\
+  Throw ConnectionError if $\neg (\text{requestor} \in \text{users})$
+
+  \end{itemize}
+  
+  % \wss{A module without environment variables or state variables is unlikely to
+  %   have a state transition.  In this case a state transition can only occur if
+  %   the module is changing the state of another module.}
+  
+  % \wss{Modules rarely have both a transition and an output.  In most cases you
+  %   will have one or the other.}
+  
+  \subsubsection{Local Functions}
+
+  None
+  
+  % \wss{As appropriate} \wss{These functions are for the purpose of specification.
+  %   They are not necessarily something that is going to be implemented
+  %   explicitly.  Even if they are implemented, they are not exported; they only
+  %   have local scope.}
+
+\newpage
+
+% --------------------------------------------------------------------------------------
+% --/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\--
+% --------------------------------------------------------------------------------------
+
+\section{MIS of ImageObject Database Connector}\label{ImageObject database connector}
+  
+  % \wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
+  
+  % \wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
+  
+  \subsection{Module}
+  
+  ImageObject Database Connector
+
+  
+  \subsection{Uses}
+  
+  ImageObject Database \ref{ImageObject database}\\
+  ImageObject \ref{ImageObject}\\ 
+
+  
+  \subsection{Syntax}
+
+
+  
+  \subsubsection{Exported Constants}
+  None
+  \subsubsection{Exported Access Programs}
+  
+  \begin{center}
+  \begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+  \hline
+  \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+  \hline
+  pushImageObject & ImageObject & - & ValueError, ConnectionError \\
+  \hline
+  makeDB Connection & ImageObject & - & ConnectionError \\
+  \hline
+  getImageObjects & String & list[ImageObject] & ValueError, ConnectionError \\
+  \hline
+  \end{tabular}
+  \end{center}
+  
+  \subsection{Semantics}
+  
+  \subsubsection{State Variables}
+  
+  None
+  
+  \subsubsection{Environment Variables}
+  
+  None
+  
+  \subsubsection{Assumptions}
+  
+  
+  \subsubsection{Access Routine Semantics}
+  
+  \noindent pushImageObject(ImageObject o):
+  \begin{itemize}
+  \item transition: Transition occurs in ImageObjectDatabase
+  \item output: 
+  \item exception: Let O be the set of valid ImageObjects. Throw ValueError if $\neg (o \in \text{O})$\\
+  Throw ConnectionError if ConnectionError is raised by makeDBConnection
+  \end{itemize}
+
+  \noindent makeDBConnection():
+  \begin{itemize}
+  \item transition: 
+  \item output: 
+  \item exception: Throw ConnectionError if connection is not accepted by ImageObjectDatabase
+  \end{itemize}
+
+  \noindent getImageObjects(String q):
+  \begin{itemize}
+  \item transition: 
+  \item output: list of ImageObjects satisfying the provided query
+  \item exception: Let Q be the set of valid Queries. Throw ValueError if $\neg (q \in \text{Q})$\\
+  Throw ConnectionError if ConnectionError is raised by makeDBConnection
+
+  \end{itemize}
+  
+  % \wss{A module without environment variables or state variables is unlikely to
+  %   have a state transition.  In this case a state transition can only occur if
+  %   the module is changing the state of another module.}
+  
+  % \wss{Modules rarely have both a transition and an output.  In most cases you
+  %   will have one or the other.}
+  
+  \subsubsection{Local Functions}
+
+  None
+  
+  % \wss{As appropriate} \wss{These functions are for the purpose of specification.
+  %   They are not necessarily something that is going to be implemented
+  %   explicitly.  Even if they are implemented, they are not exported; they only
+  %   have local scope.}
+
+\newpage
+
+% --------------------------------------------------------------------------------------
+% --/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\--
+% --------------------------------------------------------------------------------------
+
+\section{MIS of ImageObject Database }\label{ImageObject database}
+  
+  % \wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
+  
+  % \wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
+  
+  \subsection{Module}
+  
+  ImageObject Database
+  
+  \subsection{Uses}
+  
+  None
+  
+  \subsection{Syntax}
+
+
+  
+  \subsubsection{Exported Constants}
+  None
+  \subsubsection{Exported Access Programs}
+  
+  \begin{center}
+  \begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+  \hline
+  \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+  \hline
+  pushImageObject & ImageObject & - & ValueError \\
+  \hline
+  makeDB Connection & ImageObject & - &  ConnectionError\\
+  \hline
+  getImageObjects & String & list[ImageObject] & ValueError \\
+  \hline
+  \end{tabular}
+  \end{center}
+  
+  \subsection{Semantics}
+  
+  \subsubsection{State Variables}
+  
+  ImageObjects: ImageObjects stored in the database
+  users: list of authenticated users
+  
+  \subsubsection{Environment Variables}
+  
+  None
+  
+  \subsubsection{Assumptions}
+  
+  
+  \subsubsection{Access Routine Semantics}
+  
+  \noindent pushImageObject(ImageObject o):
+  \begin{itemize}
+  \item transition: $\text{labels} := \text{labels} \cup l $
+  \item output: 
+  \item exception: Let O be the set of valid ImageObjects. Throw ValueError if $\neg (o \in \text{O})$\\
+  Throw ConnectionError if $\neg (\text{requestor} \in \text{users})$
+  \end{itemize}
+
+  \noindent makeDBConnection(credentials):
+  \begin{itemize}
+  \item transition: if credentials are valid, $\text{users} := \text{users} \cup credentials.user $
+  \item output: 
+  \item exception: Throw ConnectionError if credentials are not valid
+  \end{itemize}
+
+  \noindent getImageObjects(String q):
+  \begin{itemize}
+  \item transition: 
+  \item output: list of ImageObjects satisfying the provided query
+  \item exception: Let Q be the set of valid Queries. Throw ValueError if $\neg (q \in \text{Q})$\\
+  Throw ConnectionError if $\neg (\text{requestor} \in \text{users})$
+
+  \end{itemize}
+  
+  % \wss{A module without environment variables or state variables is unlikely to
+  %   have a state transition.  In this case a state transition can only occur if
+  %   the module is changing the state of another module.}
+  
+  % \wss{Modules rarely have both a transition and an output.  In most cases you
+  %   will have one or the other.}
+  
+  \subsubsection{Local Functions}
+
+  None
+  
+  % \wss{As appropriate} \wss{These functions are for the purpose of specification.
+  %   They are not necessarily something that is going to be implemented
+  %   explicitly.  Even if they are implemented, they are not exported; they only
+  %   have local scope.}
+
 \newpage
 
 \bibliographystyle {plainnat}
