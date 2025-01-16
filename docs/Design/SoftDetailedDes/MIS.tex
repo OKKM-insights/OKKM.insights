@@ -280,6 +280,91 @@ None
 \subsubsection{Local Functions}
 None
 
+\section{MIS of Account Database Connector} \label{accdc}
+
+\subsection{Module}
+
+Account Database Connector
+
+\subsection{Uses}
+
+Account Database \ref{accd}
+
+\subsection{Syntax}
+
+\subsubsection{Exported Constants}
+None
+\subsubsection{Exported Access Programs}
+
+\begin{center}
+\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+insertUser & User & - & - \\
+retrieveUser & string & User & - \\
+updateUser & User & - & - \\
+userExists & string & boolean & - \\
+makeDBConnection & credentials & & - \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Semantics}
+
+\subsubsection{State Variables}
+None
+\subsubsection{Environment Variables}
+databaseConnection: connection to relational database
+
+\subsubsection{Assumptions}
+None
+
+\subsubsection{Access Routine Semantics}
+
+\noindent insertUser(user):
+\begin{itemize}
+\item transition: Request to insert user into database through databaseConection.
+\end{itemize}
+
+\noindent retrieveUser(email):
+\begin{itemize}
+\item output: 
+\[
+\begin{cases}
+    \text{User where User.email == email}, & \text{if } \text{userExists(email)}\\
+    \text{null}, & \text{otherwise}
+\end{cases}
+\]
+\end{itemize}
+
+\noindent updateUser(user):
+\begin{itemize}
+\item transition: 
+\[
+\begin{cases}
+    \text{Request to update user in database}, & \text{if } \text{userExists(user.email)}\\
+    \text{Do nothing} & \text{otherwise}
+\end{cases}
+\]
+\end{itemize}
+
+\noindent userExists(email):
+\begin{itemize}
+\item output: out := 
+\[ \exists \, \text{User} \in \text{Database} \, \text{s.t.} \, \text{User.email} == \text{email}
+\]
+\end{itemize}
+
+\noindent makeDBConnection(credentials):
+\begin{itemize}
+\item transition: databaseConnection := connection is established with database if credentials are correct
+\end{itemize}
+
+
+\subsubsection{Local Functions}
+None
+
 \section{MIS of Account Database} \label{accd}
 
 \subsection{Module}
@@ -288,7 +373,7 @@ Account Database
 
 \subsection{Uses}
 
-Relational Database
+None
 
 \subsection{Syntax}
 
@@ -314,7 +399,7 @@ userExists & string & boolean & - \\
 \subsubsection{State Variables}
 None
 \subsubsection{Environment Variables}
-databaseConnection: connection to relational database
+databaseConnection: connection to Application
 
 \subsubsection{Assumptions}
 None
@@ -323,7 +408,7 @@ None
 
 \noindent insertUser(user):
 \begin{itemize}
-\item transition: Insert user into database through databaseConection.
+\item transition: Insert user into database.
 \end{itemize}
 
 \noindent retrieveUser(email):
@@ -342,7 +427,7 @@ None
 \item transition: 
 \[
 \begin{cases}
-    \text{Update user in database through databaseConection}, & \text{if } \text{userExists(user.email)}\\
+    \text{Update user in database}, & \text{if } \text{userExists(user.email)}\\
     \text{Do nothing} & \text{otherwise}
 \end{cases}
 \]
@@ -351,7 +436,7 @@ None
 \noindent userExists(email):
 \begin{itemize}
 \item output: out := 
-\[ \exists \, \text{User} \in \text{Database} \, \text{s.t.} \, \text{User.email} = \text{email}
+\[ \exists \, \text{User} \in \text{Database} \, \text{s.t.} \, \text{User.email} == \text{email}
 \]
 \end{itemize}
 
