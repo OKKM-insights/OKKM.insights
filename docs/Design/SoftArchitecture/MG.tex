@@ -192,7 +192,62 @@ actually be implemented.
 
 \begin{description}
 \item [\refstepcounter{mnum} \mthemnum \label{mHH}:] Hardware-Hiding Module
-\item ...
+\item [\refstepcounter{mnum} \mthemnum \label{aci}:]
+Account Creation Interface
+\item [\refstepcounter{mnum} \mthemnum \label{accdc}:]
+Account Database Connector
+\item [\refstepcounter{mnum} \mthemnum \label{accd}:]
+Account Database
+\item [\refstepcounter{mnum} \mthemnum \label{aui}:]
+Account Update Interface
+\item [\refstepcounter{mnum} \mthemnum \label{li}:]
+Login Interface
+\item [\refstepcounter{mnum} \mthemnum \label{at}:]
+Access Token
+\item [\refstepcounter{mnum} \mthemnum \label{labeler}:]
+Labeler
+\item [\refstepcounter{mnum} \mthemnum \label{client}:]
+Client
+\item [\refstepcounter{mnum} \mthemnum \label{user}:]
+User
+\item [\refstepcounter{mnum} \mthemnum \label{acc}:]
+Account Creation Controller
+\item [\refstepcounter{mnum} \mthemnum \label{auc}:]
+Account Update Controller
+\item [\refstepcounter{mnum} \mthemnum \label{ac}:]
+Authentication Controller
+\item [\refstepcounter{mnum} \mthemnum \label{siri}:]
+Satellite Image Request Interface
+\item [\refstepcounter{mnum} \mthemnum \label{sirc}:]
+Satellite Image Request Controller
+\item [\refstepcounter{mnum} \mthemnum \label{sirf}:]
+Satellite Image Request
+\item [\refstepcounter{mnum} \mthemnum \label{pci}:]
+Project Creation Interface
+\item [\refstepcounter{mnum} \mthemnum \label{pcc}:]
+Project Creation Controller
+\item [\refstepcounter{mnum} \mthemnum \label{project}:]
+Project
+\item [\refstepcounter{mnum} \mthemnum \label{srfi}:]
+Service Request Failure Interface
+\item [\refstepcounter{mnum} \mthemnum \label{iui}:]
+Image Upload Interface
+\item [\refstepcounter{mnum} \mthemnum \label{ri}:]
+Report Interface
+\item [\refstepcounter{mnum} \mthemnum \label{rc}:]
+Report Controller
+\item [\refstepcounter{mnum} \mthemnum \label{report}:]
+Report
+\item [\refstepcounter{mnum} \mthemnum \label{psi}:]
+Project Selection Interface
+\item [\refstepcounter{mnum} \mthemnum \label{psc}:]
+Project Selection Controller
+\item [\refstepcounter{mnum} \mthemnum \label{lbli}:]
+Labeling Interface
+\item [\refstepcounter{mnum} \mthemnum \label{lblc}:]
+Labeling Controller
+\item [\refstepcounter{mnum} \mthemnum \label{image}:]
+Image
 \end{description}
 
 
@@ -206,7 +261,26 @@ actually be implemented.
 {Hardware-Hiding Module} & ~ \\
 \midrule
 
-\multirow{7}{0.3\textwidth}{Behaviour-Hiding Module} & ?\\
+
+\multirow{7}{0.3\textwidth}{Behaviour-Hiding Module} & Account Creation Interface\\
+& Account Database\\
+& Account Update Interface\\
+& Login Interface\\
+& Access Token\\
+& Labeler\\
+& Client\\ 
+& User\\
+& Satellite Image Request Interface\\
+& Satellite Image Request\\
+& Project Creation Interface\\
+& Project\\
+& Service Request Failure Interface\\
+& Image Upload Interface\\
+& Report Interface\\
+& Report\\
+& Project Selection Interface\\
+& Labeling Interface\\
+& Image\\
 & Label Server\\
 & Label Database Connector\\
 & Label Database\\
@@ -216,16 +290,24 @@ actually be implemented.
 & Labeller Database\\
 & Object Extraction Manager\\
 & Image Service Manager\\ 
-& ?\\
 \midrule
 
-\multirow{3}{0.3\textwidth}{Software Decision Module} & {?}\\
+\multirow{3}{0.3\textwidth}{Software Decision Module} & {Account Creation Controller}\\
+& Account Database Connector\\
+& Account Update Controller\\
+& Authentication Controller\\
+& Satellite Image Request Controller\\
+& Project Creation Controller\\
+& Report Controller\\
+& Project Selection Controller\\
+& Labeling Controller\\
 & Label Confidence Service\\
 & Object Extraction Service\\
 & Image Prior Analyzer\\
 & Labeller Expertise Calculator\\
 & Image Mask Service\\
 & Image Selection Service\\
+
 \bottomrule
 
 \end{tabular}
@@ -291,19 +373,176 @@ to be implemented.
 \item[Implemented By:] --
 \end{description}
 
-\subsubsection{Input Format Module (\mref{mInput})}
+\subsubsection{Account Creation Interface (\mref{aci})}
 
 \begin{description}
-\item[Secrets:]The format and structure of the input data.
-\item[Services:]Converts the input data into the data structure used by the
-  input parameters module.
-\item[Implemented By:] [Your Program Name Here]
-\item[Type of Module:] [Record, Library, Abstract Object, or Abstract Data Type]
-  [Information to include for leaf modules in the decomposition by secrets tree.]
+\item[Secrets:]The design format of the account creation user interface.
+\item[Services:] Displays a form to collect user information and submits that information to be processed.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
 \end{description}
 
-\subsubsection{Etc.}
+\subsubsection{Account Database (\mref{accd})}
 
+\begin{description}
+\item[Secrets:] The data structure, storage, and access mechanisms for account related data.
+\item[Services:] Can store, insert, update and retrieve user account data.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Data Type
+\end{description}
+
+\subsubsection{Account Update Interface (\mref{aui})}
+
+\begin{description}
+\item[Secrets:]The design format of the update account information user interface.
+\item[Services:] Displays a form with the users current information that can be modified and submits any updated information to be processed.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Login Interface (\mref{li})}
+
+\begin{description}
+\item[Secrets:]The design format of the login user interface.
+\item[Services:] Displays a form to collect login credentials and submits that information to be processed.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Access Token (\mref{at})}
+
+\begin{description}
+\item[Secrets:] Token structure, encryption, expiration, and renewal mechanisms.
+\item[Services:] Can determine if a user's token has expired and allows the token to be renewed.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Data Type
+\end{description}
+
+\subsubsection{Labeler (\mref{labeler})}
+
+\begin{description}
+\item[Secrets:]The format and structure of Labeler data.
+\item[Services:] Takes in the necessary data to create a Labeler.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Record
+\end{description}
+
+\subsubsection{Client (\mref{client})}
+
+\begin{description}
+\item[Secrets:]The format and structure of Client data.
+\item[Services:] Takes in the necessary data to create a Client.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Record
+\end{description}
+
+\subsubsection{User (\mref{user})}
+
+\begin{description}
+\item[Secrets:]The format and structure of User data.
+\item[Services:] Takes in the necessary data to create a User.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Record
+\end{description}
+
+\subsubsection{Satellite Image Request Interface (\mref{siri})}
+
+\begin{description}
+\item[Secrets:]The design format of the interface for requesting satellite images.
+\item[Services:] Displays a form to collect specifics on the satellite images, calculates estimated cost based on current form entries and submits the form information to be processed.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Satellite Image Request (\mref{sirf})}
+
+\begin{description}
+\item[Secrets:]The format and structure of the data needed for a satellite image request.
+\item[Services:] Takes in the necessary data to create a satellite image request.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Record
+\end{description}
+
+\subsubsection{Project Creation Interface (\mref{pci})}
+
+\begin{description}
+\item[Secrets:]The design format of the project creation interface.
+\item[Services:] Displays a form to collect project details, calculates an estimated cost using these details and submits that information to be processed.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Project (\mref{project})}
+
+\begin{description}
+\item[Secrets:]The format and structure of the data needed for a Project.
+\item[Services:] Takes in the necessary data to create a Project.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Record
+\end{description}
+
+\subsubsection{Service Request Failure Interface (\mref{srfi})}
+
+\begin{description}
+\item[Secrets:]The design format of the request failure interface.
+\item[Services:] Displays a warning to users that something went wrong.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Image Upload Interface (\mref{iui})}
+
+\begin{description}
+\item[Secrets:]The design format of the image upload interface.
+\item[Services:] Allows users to upload images from their device, and validates they are images of the correct format.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Report Interface (\mref{ri})}
+
+\begin{description}
+\item[Secrets:]The design format of the summary report interface.
+\item[Services:] Displays statistics and results of a specific project.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Report (\mref{report})}
+
+\begin{description}
+\item[Secrets:]The format and structure of Report data.
+\item[Services:] Takes in the necessary data to create a Report.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Record
+\end{description}
+
+\subsubsection{Project Selection Interface (\mref{psi})}
+
+\begin{description}
+\item[Secrets:]The design format of the project selection interface.
+\item[Services:] Display all available projects that a user can label images from.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Labeling Interface (\mref{lbli})}
+
+\begin{description}
+\item[Secrets:] The design format of the labeling interface.
+\item[Services:] Displays an image to be labeled, displays label choices which can be selected, and allows images to be skipped.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Image (\mref{image})}
+
+\begin{description}
+\item[Secrets:]The format and structure of Image data.
+\item[Services:] Takes in the necessary data to create a Image.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Record
+\end{description}
 
 \subsection{Software Decision Module}
 
@@ -318,7 +557,86 @@ to be implemented.
 \item[Implemented By:] --
 \end{description}
 
-\subsubsection{Etc.}
+\subsubsection{Account Creation Controller (\mref{acc})}
+
+\begin{description}
+\item[Secrets:] Form validation and account creation algorithms.
+\item[Services:] Validates the form information, creates an account with that information, and can upload the account to the database.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Account Database Connector (\mref{accdc})}
+
+\begin{description}
+\item[Secrets:] The database access key and database access algorithms.
+\item[Services:] Can request storage, insertion, updates and retrieval of user account data from the database.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Data Type
+\end{description}
+
+\subsubsection{Account Update Controller (\mref{auc})}
+
+\begin{description}
+\item[Secrets:] Form validation and account modification algorithms.
+\item[Services:] Gets current user information, validates the update form information and can pass account updates to the database.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Authentication Controller (\mref{ac})}
+
+\begin{description}
+\item[Secrets:] Credential validation, access token validation, and access token generation algorithms.
+\item[Services:] Validates credentials given by user, generates access tokens, and validates access tokens.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Satellite Image Request Controller (\mref{sirc})}
+
+\begin{description}
+\item[Secrets:] Form validation and image request algorithms.
+\item[Services:] Validates the form information, creates and sends a request to a third party for the necessary pictures.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Project Creation Controller (\mref{pcc})}
+
+\begin{description}
+\item[Secrets:] Form validation and project creation algorithms.
+\item[Services:] Validates project information provided and creates a new project.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Report Controller (\mref{rc})}
+
+\begin{description}
+\item[Secrets:] Logic for getting statistics of a project and exporting images onto the users device.
+\item[Services:] Get statistics and labeled images of project, and exports images to external devices.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Project Selection Controller (\mref{psc})}
+
+\begin{description}
+\item[Secrets:] Logic for getting active projects and redirecting labelers upon selection.
+\item[Services:] Gets valid projects that are currently available, and redirects labelers to a selected project labeling interface.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Labeling Controller (\mref{lblc})}
+
+\begin{description}
+\item[Secrets:] Algorithms for label creation, removal and submission.
+\item[Services:] Creates label for an image, removes label from an image, and submits labels to be processed.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
 
 \section{Traceability Matrix} \label{SecTM}
 
@@ -406,9 +724,56 @@ arrows in the diagram typically correspond to the presence of import statement.}
 %\section*{References}
 
 \section{User Interfaces}
-
-\wss{Design of user interface for software and hardware.  Attach an appendix if
-needed. Drawings, Sketches, Figma}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{home.png}
+    \caption{Home Page}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{login.png}
+    \caption{Login Page}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{forgot_password.png}
+    \caption{Forgot Password}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth, height=10cm]{register.png}
+    \caption{Register Page}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth, height=8cm]{label_projects.png}
+    \caption{Projects to Label Page}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.4]{label.png}
+    \caption{Label Page}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.25]{client_projects.png}
+    \caption{Client Projects Page}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.4]{project_stats.png}
+    \caption{Project Status Page}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.4]{user_info.png}
+    \caption{User Information Page}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{UI_flow.png}
+    \caption{Page Flow Diagram}
+\end{figure}
 
 \section{Design of Communication Protocols}
 
