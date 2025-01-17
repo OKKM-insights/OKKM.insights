@@ -232,12 +232,18 @@ The design of the system is intended to satisfy the requirements developed in
 the SRS. In this stage, the system is decomposed into modules. The connection
 between requirements and modules is listed in Table~\ref{TblRT}.
 
-\wss{The intention of this section is to document decisions that are made
-  ``between'' the requirements and the design.  To satisfy some requirements,
-  design decisions need to be made.  Rather than make these decisions implicit,
-  they are explicitly recorded here.  For instance, if a program has security
-  requirements, a specific design decision may be made to satisfy those
-  requirements with a password.}
+There are X key high level design decisions that were made to ensure the requirements outlined in the SRS are met. First, the system has been decomposed into several microservices. These services all connect to 
+the same databases, but have the flexibility to operate on their own cadence. Each service can be mirrored by a duplicate service to improve capacity. These decisions are critical to ensuring the speed, uptime, capacity, and latency requirements.
+Each of the key algorithms in the system have been encapsulated in their own module. These include the object extraction service, image serving, ML model creation, and report generation, among others. This give the development team the flexibility to experiment with alternative algorithms, allowing continuous improvement towards performance and accuracy requirements.
+The authentication service is designed to meet the authentication requirements by ensuring only approved users can access privileged information.
+Every functional requirement is covered by the functionality of a subsystem.
+
+% \wss{The intention of this section is to document decisions that are made
+%   ``between'' the requirements and the design.  To satisfy some requirements,
+%   design decisions need to be made.  Rather than make these decisions implicit,
+%   they are explicitly recorded here.  For instance, if a program has security
+%   requirements, a specific design decision may be made to satisfy those
+%   requirements with a password.}
 
 \section{Module Decomposition} \label{SecMD}
 
