@@ -248,72 +248,115 @@ Labeling Interface
 Labeling Controller
 \item [\refstepcounter{mnum} \mthemnum \label{image}:]
 Image
+% ---------------------------
+  % New Modules (Behavior-Hiding)
+  % ---------------------------
+  \item [\refstepcounter{mnum} \mthemnum \label{modelcreation}:]
+    \textbf{ModelCreation (Abstract Class)}
+
+  \item [\refstepcounter{mnum} \mthemnum \label{cnnmodelcreation}:]
+    \textbf{CNNModelCreation}
+
+  \item [\refstepcounter{mnum} \mthemnum \label{othermodelcreation}:]
+    \textbf{OtherModelCreation}
+
+  \item [\refstepcounter{mnum} \mthemnum \label{modelmanager}:]
+    \textbf{ModelManager}
+
+  \item [\refstepcounter{mnum} \mthemnum \label{mlmodeldatabase}:]
+    \textbf{MLModelDatabase}
+
+  % ---------------------------
+  % New Modules (Software Decision)
+  % ---------------------------
+  \item [\refstepcounter{mnum} \mthemnum \label{modelcomparison}:]
+    \textbf{ModelComparision Evaluation}
+
+  \item [\refstepcounter{mnum} \mthemnum \label{crossvalidation}:]
+    \textbf{CrossValidation Evaluation}
+
+  \item [\refstepcounter{mnum} \mthemnum \label{modeltrainingservice}:]
+    \textbf{ModelTrainingService}
+
+  \item [\refstepcounter{mnum} \mthemnum \label{modelevaluationservice}:]
+    \textbf{ModelEvaluationService}
 \end{description}
 
 
 \begin{table}[h!]
-\centering
-\begin{tabular}{p{0.3\textwidth} p{0.6\textwidth}}
-\toprule
-\textbf{Level 1} & \textbf{Level 2}\\
-\midrule
-
-{Hardware-Hiding Module} & ~ \\
-\midrule
-
-
-\multirow{7}{0.3\textwidth}{Behaviour-Hiding Module} & Account Creation Interface\\
-& Account Database\\
-& Account Update Interface\\
-& Login Interface\\
-& Access Token\\
-& Labeler\\
-& Client\\ 
-& User\\
-& Satellite Image Request Interface\\
-& Satellite Image Request\\
-& Project Creation Interface\\
-& Project\\
-& Service Request Failure Interface\\
-& Image Upload Interface\\
-& Report Interface\\
-& Report\\
-& Project Selection Interface\\
-& Labeling Interface\\
-& Image\\
-& Label Server\\
-& Label Database Connector\\
-& Label Database\\
-& ImageObject Database Connector\\
-& ImageObject Database\\
-& Labeller Database Connector\\
-& Labeller Database\\
-& Object Extraction Manager\\
-& Image Service Manager\\ 
-\midrule
-
-\multirow{3}{0.3\textwidth}{Software Decision Module} & {Account Creation Controller}\\
-& Account Database Connector\\
-& Account Update Controller\\
-& Authentication Controller\\
-& Satellite Image Request Controller\\
-& Project Creation Controller\\
-& Report Controller\\
-& Project Selection Controller\\
-& Labeling Controller\\
-& Label Confidence Service\\
-& Object Extraction Service\\
-& Image Prior Analyzer\\
-& Labeller Expertise Calculator\\
-& Image Mask Service\\
-& Image Selection Service\\
-
-\bottomrule
-
-\end{tabular}
-\caption{Module Hierarchy}
-\label{TblMH}
-\end{table}
+  \centering
+  \begin{tabular}{p{0.3\textwidth} p{0.6\textwidth}}
+  \toprule
+  \textbf{Level 1} & \textbf{Level 2}\\
+  \midrule
+  
+  \textbf{Hardware-Hiding Module} & ~ \\
+  \midrule
+  
+  \multirow{10}{0.3\textwidth}{\textbf{Behaviour-Hiding Module}} 
+   & Account Creation Interface\\
+   & Account Database\\
+   & Account Update Interface\\
+   & Login Interface\\
+   & Access Token\\
+   & Labeler\\
+   & Client\\
+   & User\\
+   & Satellite Image Request Interface\\
+   & Satellite Image Request\\
+   & Project Creation Interface\\
+   & Project\\
+   & Service Request Failure Interface\\
+   & Image Upload Interface\\
+   & Report Interface\\
+   & Report\\
+   & Project Selection Interface\\
+   & Labeling Interface\\
+   & Image\\
+   & Label Server\\
+   & Label Database Connector\\
+   & Label Database\\
+   & ImageObject Database Connector\\
+   & ImageObject Database\\
+   & Labeller Database Connector\\
+   & Labeller Database\\
+   & Object Extraction Manager\\
+   & Image Service Manager\\
+   % New ML/Model modules (Behavior-Hiding)
+   & ModelCreation (Abstract Class)\\
+   & CNNModelCreation\\
+   & OtherModelCreation\\
+   & ModelManager\\
+   & MLModelDatabase\\
+  \midrule
+  
+  \multirow{10}{0.3\textwidth}{\textbf{Software Decision Module}} 
+   & Account Creation Controller\\
+   & Account Database Connector\\
+   & Account Update Controller\\
+   & Authentication Controller\\
+   & Satellite Image Request Controller\\
+   & Project Creation Controller\\
+   & Report Controller\\
+   & Project Selection Controller\\
+   & Labeling Controller\\
+   & Label Confidence Service\\
+   & Object Extraction Service\\
+   & Image Prior Analyzer\\
+   & Labeller Expertise Calculator\\
+   & Image Mask Service\\
+   & Image Selection Service\\
+   % New ML/Model modules (Software Decision)
+   & ModelComparision Evaluation\\
+   & CrossValidation Evaluation\\
+   & ModelTrainingService\\
+   & ModelEvaluationService\\
+  \bottomrule
+  \end{tabular}
+  \caption{Module Hierarchy}
+  \label{TblMH}
+  \end{table}
+  
 
 \section{Connection Between Requirements and Design} \label{SecConnection}
 
