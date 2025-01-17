@@ -383,6 +383,130 @@ arrows in the diagram typically correspond to the presence of import statement.}
 
 \wss{If module A uses module B, the arrow is directed from A to B.}
 
+\subsection*{Level 1: Foundational Modules}
+
+\begin{itemize}
+    \item \textbf{Label Database}
+    \begin{itemize}
+        \item \textbf{Secrets:} The storing and retrieving of data.
+        \item \textbf{Services:} Allows connection by a database connector to facilitate the storage and retrieval of data.
+    \end{itemize}
+    \item \textbf{ImageObject Database}
+    \begin{itemize}
+        \item \textbf{Secrets:} The storing and retrieving of data.
+        \item \textbf{Services:} Allows connection by a database connector to facilitate the storage and retrieval of data.
+    \end{itemize}
+    \item \textbf{Labeller Database}
+    \begin{itemize}
+        \item \textbf{Secrets:} The storing and retrieving of data.
+        \item \textbf{Services:} Allows connection by a database connector to facilitate the storage and retrieval of data.
+    \end{itemize}
+\end{itemize}
+
+\subsection*{Level 2: Database Connectors}
+
+\begin{itemize}
+    \item \textbf{Label Database Connector}
+    \begin{itemize}
+        \item \textbf{Uses:} Label Database
+        \item \textbf{Secrets:} The steps to connect to and manipulate a database.
+        \item \textbf{Services:} Connects to a database and executes pushing and fetching of data.
+    \end{itemize}
+    \item \textbf{ImageObject Database Connector}
+    \begin{itemize}
+        \item \textbf{Uses:} ImageObject Database
+        \item \textbf{Secrets:} The steps to connect to and manipulate a database.
+        \item \textbf{Services:} Connects to a database and executes pushing and fetching of data.
+    \end{itemize}
+    \item \textbf{Labeller Database Connector}
+    \begin{itemize}
+        \item \textbf{Uses:} Labeller Database
+        \item \textbf{Secrets:} The steps to connect to and manipulate a database.
+        \item \textbf{Services:} Connects to a database and executes pushing and fetching of data.
+    \end{itemize}
+\end{itemize}
+
+\subsection*{Level 3: Core Services}
+
+\begin{itemize}
+    \item \textbf{Label Server}
+    \begin{itemize}
+        \item \textbf{Uses:} Label Database Connector
+        \item \textbf{Secrets:} The steps to accept and store a label.
+        \item \textbf{Services:} Converts a label JSON object and passes it to be stored in the database.
+    \end{itemize}
+    \item \textbf{Object Extraction Manager}
+    \begin{itemize}
+        \item \textbf{Uses:} Label Confidence Service, Object Extraction Service, Labeller Expertise Calculator
+        \item \textbf{Secrets:} The algorithms used to aggregate labels into usable ImageObjects for model training.
+        \item \textbf{Services:} Calls other modules to efficiently compute the most likely set of objects from a set of independent labels.
+    \end{itemize}
+    \item \textbf{Image Service Manager}
+    \begin{itemize}
+        \item \textbf{Uses:} Image Selection Service, Image Mask Service, Image Prior Analyzer
+        \item \textbf{Secrets:} The algorithms used to select images to be served to a user.
+        \item \textbf{Services:} Calls other modules to select the next images to be served to a user.
+    \end{itemize}
+\end{itemize}
+
+\subsection*{Level 4: Specialized Services}
+
+\begin{itemize}
+    \item \textbf{Label Confidence Service}
+    \begin{itemize}
+        \item \textbf{Secrets:} The algorithms used to determine confidence in detected ImageObjects.
+        \item \textbf{Services:} Calculates the confidence of a detected ImageObject.
+    \end{itemize}
+    \item \textbf{Object Extraction Service}
+    \begin{itemize}
+        \item \textbf{Secrets:} The algorithms used to extract ImageObjects.
+        \item \textbf{Services:} Calculates the most likely ImageObjects from a set of labels and priors.
+    \end{itemize}
+    \item \textbf{Image Prior Analyzer}
+    \begin{itemize}
+        \item \textbf{Secrets:} The algorithms used to calculate ImagePriors.
+        \item \textbf{Services:} Calculates the prior likelihood of a pixel being relevant.
+    \end{itemize}
+    \item \textbf{Labeller Expertise Calculator}
+    \begin{itemize}
+        \item \textbf{Secrets:} The algorithms used to calculate Labeller Expertise.
+        \item \textbf{Services:} Calculates the expertise of a labeller in a given class using previous labels.
+    \end{itemize}
+    \item \textbf{Image Mask Service}
+    \begin{itemize}
+        \item \textbf{Secrets:} The algorithms used to modify a given image.
+        \item \textbf{Services:} Modifies an image to improve labelling accuracy or efficiency.
+    \end{itemize}
+    \item \textbf{Image Selection Service}
+    \begin{itemize}
+        \item \textbf{Secrets:} The algorithms used to select the next image to show a user.
+        \item \textbf{Services:} Selects an image to show to a given user.
+    \end{itemize}
+\end{itemize}
+
+\subsection*{Directed Acyclic Graph (DAG)}
+
+The following hierarchy is represented as a directed acyclic graph, with arrows showing the \textit{uses} relationship:
+
+\begin{itemize}
+    \item \textbf{Foundational Modules} (Label Database, ImageObject Database, Labeller Database)
+    \begin{itemize}
+        \item Used by their respective connectors.
+    \end{itemize}
+    \item \textbf{Database Connectors} (Label Database Connector, ImageObject Database Connector, Labeller Database Connector)
+    \begin{itemize}
+        \item Used by core services like Label Server, Object Extraction Manager, and Image Service Manager.
+    \end{itemize}
+    \item \textbf{Core Services} (Label Server, Object Extraction Manager, Image Service Manager)
+    \begin{itemize}
+        \item Use specialized services to provide advanced functionalities.
+    \end{itemize}
+    \item \textbf{Specialized Services} (Label Confidence Service, Object Extraction Service, Image Prior Analyzer, Labeller Expertise Calculator, Image Mask Service, Image Selection Service)
+    \begin{itemize}
+        \item Provide algorithms and computations needed by the core services.
+    \end{itemize}
+\end{itemize}
+
 \begin{figure}[H]
 \centering
 %\includegraphics[width=0.7\textwidth]{UsesHierarchy.png}
