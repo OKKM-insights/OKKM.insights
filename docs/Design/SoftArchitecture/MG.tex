@@ -587,6 +587,80 @@ to be implemented.
 \item[Type of Module:] Record
 \end{description}
 
+\subsubsection{ModelCreation (Abstract Class) (\mref{modelcreation})}
+\begin{description}
+  \item[Secrets:] 
+    The abstract details of how machine learning (ML) model creation is organized,
+    including any hidden complexities of managing configuration parameters.
+  \item[Services:] 
+    Defines the interface for creating ML models. Specific implementations 
+    (e.g., Convolutional Neural Networks, Support Vector Machines) extend this class 
+    to instantiate the appropriate model structure.
+  \item[Implemented By:] 
+    OrbitWatch
+  \item[Type of Module:] 
+    Abstract Object
+\end{description}
+
+\subsubsection{CNNModelCreation (\mref{cnnmodelcreation})}
+\begin{description}
+  \item[Secrets:] 
+    The underlying architecture for a convolutional neural network model, including
+    details about layer definitions, activation functions, and other internal
+    configurations.
+  \item[Services:] 
+    Accepts layer configurations and constructs a CNN model suitable for training
+    or inference tasks.
+  \item[Implemented By:] 
+    OrbitWatch
+  \item[Type of Module:] 
+    Abstract Object
+\end{description}
+
+\subsubsection{OtherModelCreation (\mref{othermodelcreation})}
+\begin{description}
+  \item[Secrets:] 
+    The hyperparameter configurations and implementation details necessary for
+    creating alternative model types (e.g., Decision Trees, SVMs).
+  \item[Services:] 
+    Allows the instantiation of various ML models by applying specific parameters
+    (such as maximum tree depth or kernel functions) to build a model instance.
+  \item[Implemented By:] 
+    OrbitWatch
+  \item[Type of Module:] 
+    Abstract Object
+\end{description}
+
+\subsubsection{ModelManager (\mref{modelmanager})}
+\begin{description}
+  \item[Secrets:] 
+    The internal logic that governs model lifecycle management (e.g., statuses such
+    as ``Training,'' ``Evaluating,'' or ``Completed'') as well as the way creation and
+    update timestamps are maintained.
+  \item[Services:] 
+    Manages ML models by creating new instances, updating their status, retrieving
+    existing models, and deleting models as needed.
+  \item[Implemented By:] 
+    OrbitWatch
+  \item[Type of Module:] 
+    Abstract Object
+\end{description}
+
+\subsubsection{MLModelDatabase (\mref{mlmodeldatabase})}
+\begin{description}
+  \item[Secrets:] 
+    The database schema, connection details, and query mechanisms for storing and 
+    retrieving ML model metadata and configurations.
+  \item[Services:] 
+    Provides persistent storage for ML model data, supporting operations such as 
+    create, read, update, and delete (CRUD).
+  \item[Implemented By:] 
+    OrbitWatch
+  \item[Type of Module:] 
+    Abstract Data Type
+\end{description}
+
+
 \subsection{Software Decision Module}
 
 \begin{description}
@@ -680,6 +754,65 @@ to be implemented.
 \item[Implemented By:] OrbitWatch
 \item[Type of Module:] Abstract Object
 \end{description}
+
+
+\subsubsection{ModelComparision Evaluation (\mref{modelcomparison})}
+\begin{description}
+  \item[Secrets:] 
+    The evaluation metrics and internal comparison algorithms (e.g., accuracy, F1-score)
+    used to contrast multiple ML models.
+  \item[Services:] 
+    Evaluates one or more models against provided test data, calculates a set of
+    performance metrics, and produces a comparison summary or report.
+  \item[Implemented By:] 
+    OrbitWatch
+  \item[Type of Module:] 
+    Abstract Object
+\end{description}
+
+\subsubsection{CrossValidation Evaluation (\mref{crossvalidation})}
+\begin{description}
+  \item[Secrets:] 
+    The logic behind performing K-fold cross-validation (or alternative validation
+    schemes), including how folds are formed and results are averaged.
+  \item[Services:] 
+    Executes cross-validation on a given model and dataset, aggregates the results
+    of each fold, and computes final performance metrics such as mean accuracy,
+    mean precision, etc.
+  \item[Implemented By:] 
+    OrbitWatch
+  \item[Type of Module:] 
+    Abstract Object
+\end{description}
+
+\subsubsection{ModelTrainingService (\mref{modeltrainingservice})}
+\begin{description}
+  \item[Secrets:] 
+    The training algorithms, hyperparameter optimization logic, and internal 
+    routines for monitoring the status of model training.
+  \item[Services:] 
+    Orchestrates the process of training ML models using specified data and 
+    configuration parameters; can also halt training if requested.
+  \item[Implemented By:] 
+    OrbitWatch
+  \item[Type of Module:] 
+    Abstract Object
+\end{description}
+
+\subsubsection{ModelEvaluationService (\mref{modelevaluationservice})}
+\begin{description}
+  \item[Secrets:] 
+    The design and algorithms for evaluating models, combining metrics, and 
+    aggregating results for final output.
+  \item[Services:] 
+    Evaluates a trained model on test data, computes relevant performance metrics,
+    and exposes them for reporting or further analysis.
+  \item[Implemented By:] 
+    OrbitWatch
+  \item[Type of Module:] 
+    Abstract Object
+\end{description}
+
 
 \section{Traceability Matrix} \label{SecTM}
 
