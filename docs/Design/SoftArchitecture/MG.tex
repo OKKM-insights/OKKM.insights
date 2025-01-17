@@ -8,6 +8,7 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{hyperref}
+\usepackage{longtable}
 \hypersetup{
     colorlinks,
     citecolor=blue,
@@ -645,28 +646,75 @@ requirements and between the modules and the anticipated changes.
 
 % the table should use mref, the requirements should be named, use something
 % like fref
-\begin{table}[H]
-\centering
-\begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+\begin{longtable}{p{0.2\textwidth} p{0.6\textwidth}}
+\caption{Trace Between Requirements and Modules} \label{TblRT} \\
+
 \toprule
-\textbf{Req.} & \textbf{Modules}\\
+\textbf{Req.} & \textbf{Modules} \\
 \midrule
-R1 & \mref{mHH}, \mref{mInput}, \mref{mParams}, \mref{mControl}\\
-R2 & \mref{mInput}, \mref{mParams}\\
-R3 & \mref{mVerify}\\
-R4 & \mref{mOutput}, \mref{mControl}\\
-R5 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}, \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
-R6 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}, \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
-R7 & \mref{mOutput}, \mref{mEnergy}, \mref{mControl}, \mref{mSeqDS}, \mref{mPlot}\\
-R8 & \mref{mOutput}, \mref{mEnergy}, \mref{mControl}, \mref{mSeqDS}, \mref{mPlot}\\
-R9 & \mref{mVerifyOut}\\
-R10 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}\\
-R11 & \mref{mOutput}, \mref{mODEs}, \mref{mEnergy}, \mref{mControl}\\
+\endfirsthead
+
+\toprule
+\textbf{Req.} & \textbf{Modules} \\
+\midrule
+\endhead
+
+\midrule
+\multicolumn{2}{r}{\textit{Continued on next page}} \\
+\midrule
+\endfoot
+
 \bottomrule
-\end{tabular}
-\caption{Trace Between Requirements and Modules}
-\label{TblRT}
-\end{table}
+\endlastfoot
+
+FR0 & \mref{acc}, \mref{aci}, \mref{accdc}, \mref{accd}, \mref{user}, \mref{client} \\
+FR1 & \mref{ac}, \mref{li}, \mref{at}, \mref{accdc}, \mref{accd}, \mref{user}, \mref{client} \\
+FR2 & \mref{ac}, \mref{at}, \mref{accdc}, \mref{accd}, \mref{auc}, \mref{aui}, \mref{user}, \mref{client} \\
+FR4 &  \\
+FR5 &  \\
+FR6 &  \\
+FR7 &  \\
+FR8 &  \\
+FR9 & \mref{acc}, \mref{aci}, \mref{accdc}, \mref{accd}, \mref{user}, \mref{client} \\
+FR10 & \mref{ac}, \mref{li}, \mref{at}, \mref{accdc}, \mref{accd}, \mref{user}, \mref{labeler} \\
+FR11 & \mref{ac}, \mref{at}, \mref{accdc}, \mref{accd}, \mref{auc}, \mref{aui}, \mref{user}, \mref{client} \\
+FR13 &  \\
+FR14 &  \\
+LF0 & \mref{aui}, \mref{li}, \mref{aci}, \mref{siri}, \mref{srfi}, \mref{pci}, \mref{iui}, \mref{ri}, \mref{psi}, \mref{lbli}\\
+LF1 & \mref{aui}, \mref{li}, \mref{aci}, \mref{siri}, \mref{srfi}, \mref{pci}, \mref{iui}, \mref{ri}, \mref{psi}, \mref{lbli}\\
+LF2 & \mref{aui}, \mref{li}, \mref{aci}, \mref{siri}, \mref{srfi}, \mref{pci}, \mref{iui}, \mref{ri}, \mref{psi}, \mref{lbli}\\
+UH0 & \mref{aui}, \mref{li}, \mref{aci}, \mref{siri}, \mref{srfi}, \mref{pci}, \mref{iui}, \mref{ri}, \mref{psi}, \mref{lbli}\\
+UH1 & \mref{aui}, \mref{li}, \mref{aci}, \mref{siri}, \mref{srfi}, \mref{pci}, \mref{iui}, \mref{ri}, \mref{psi}, \mref{lbli}\\
+UH2 & \mref{aui}, \mref{auc} \\
+UH6 & \mref{lbli} \\
+UH7 & \mref{srfi} \\
+UH9 & \mref{lbli} \\
+PR0 & \mref{aci}, \mref{acc}, \mref{client} \\
+PR1 & \mref{aci}, \mref{acc}, \mref{labeler} \\
+PR2 & \mref{ri}, \mref{rc}, \mref{report} \\
+PR3 & \mref{lbli}, \mref{lblc}, \mref{image} \\
+PR5 &  \\
+PR6 & Related to all modules \\
+PR7 & Related to all modules \\
+PR8 & \mref{iui}, \mref{siri}, \mref{sirc}, \mref{sirf} \\
+PR9 & Related to all modules \\
+OE0 & Related to all modules \\
+OE1 & \mref{siri}, \mref{sirc}, \mref{sirf} \\
+OE4 &  \\
+OE5 &  \\
+MR0 & Related to all modules \\
+SE0 & \mref{ac}, \mref{at}, \mref{lbli}, \mref{lblc}, \mref{psi}, \mref{psc} \\
+SE1 & \mref{ac}, \mref{at}, \mref{pci}, \mref{pcc} \\
+SE2 & \mref{aci}, \mref{acc} \\
+SE3 & \mref{aci}, \mref{acc} \\
+SE4 & \mref{srfi} \\
+SE5 & \mref{acc}, \mref{auc}, \mref{pcc} \\
+SE6 &  \\
+SE7 & \mref{accd}, \mref{accdc} \\
+SE8 & \mref{auc}, \mref{acc}, \mref{accd} \\
+SE10 & \mref{accdc} \\
+
+\end{longtable}
 
 \begin{table}[H]
 \centering
