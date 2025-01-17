@@ -191,6 +191,9 @@ below, which are leaves in the hierarchy tree, are the modules that will
 actually be implemented.
 
 \begin{description}
+
+
+
 \item [\refstepcounter{mnum} \mthemnum \label{mHH}:] Hardware-Hiding Module
 \item [\refstepcounter{mnum} \mthemnum \label{aci}:]
 Account Creation Interface
@@ -248,6 +251,22 @@ Labeling Interface
 Labeling Controller
 \item [\refstepcounter{mnum} \mthemnum \label{image}:]
 Image
+\item [\refstepcounter{mnum} \mthemnum \label{label server}:] Label Server
+\item [\refstepcounter{mnum} \mthemnum \label{label database connector}:] Label Database Connector
+\item [\refstepcounter{mnum} \mthemnum \label{label database}:] Label Database
+\item [\refstepcounter{mnum} \mthemnum \label{ImageObject database connector}:] ImageObject Database Connector
+\item [\refstepcounter{mnum} \mthemnum \label{ImageObject database}:] ImageObject Database
+\item [\refstepcounter{mnum} \mthemnum \label{Labeller database connector}:] Labeller Database Connector
+\item [\refstepcounter{mnum} \mthemnum \label{Labeller database}:] Labeller Database
+\item [\refstepcounter{mnum} \mthemnum \label{Object Extraction Manager}:]Object Extraction Manager
+\item [\refstepcounter{mnum} \mthemnum \label{Image Service Manager}:]Image Service Manager
+\item [\refstepcounter{mnum} \mthemnum \label{Label Confidence Service}:]Label Confidence Service
+\item [\refstepcounter{mnum} \mthemnum \label{Object Extraction Service}:]Object Extraction Service
+\item [\refstepcounter{mnum} \mthemnum \label{Image Prior Analyzer}:]Image Prior Analyzer
+\item [\refstepcounter{mnum} \mthemnum \label{Labeller Expertise Calculator}:]Labeller Expertise Calculator
+\item [\refstepcounter{mnum} \mthemnum \label{Image Mask Service}:]Image Mask Service
+\item [\refstepcounter{mnum} \mthemnum \label{Image Selection Service}:]Image Selection Service
+
 \end{description}
 
 
@@ -260,6 +279,8 @@ Image
 
 {Hardware-Hiding Module} & ~ \\
 \midrule
+
+
 
 
 \multirow{7}{0.3\textwidth}{Behaviour-Hiding Module} & Account Creation Interface\\
@@ -289,7 +310,7 @@ Image
 & Labeller Database Connector\\
 & Labeller Database\\
 & Object Extraction Manager\\
-& Image Service Manager\\ 
+& Image Service Manager\\
 \midrule
 
 \multirow{3}{0.3\textwidth}{Software Decision Module} & {Account Creation Controller}\\
@@ -307,6 +328,7 @@ Image
 & Labeller Expertise Calculator\\
 & Image Mask Service\\
 & Image Selection Service\\
+
 
 \bottomrule
 
@@ -372,6 +394,7 @@ to be implemented.
   module will need to change if there are changes in the SRS.
 \item[Implemented By:] --
 \end{description}
+
 
 \subsubsection{Account Creation Interface (\mref{aci})}
 
@@ -518,7 +541,6 @@ to be implemented.
 \end{description}
 
 \subsubsection{Project Selection Interface (\mref{psi})}
-
 \begin{description}
 \item[Secrets:]The design format of the project selection interface.
 \item[Services:] Display all available projects that a user can label images from.
@@ -527,7 +549,6 @@ to be implemented.
 \end{description}
 
 \subsubsection{Labeling Interface (\mref{lbli})}
-
 \begin{description}
 \item[Secrets:] The design format of the labeling interface.
 \item[Services:] Displays an image to be labeled, displays label choices which can be selected, and allows images to be skipped.
@@ -543,6 +564,79 @@ to be implemented.
 \item[Implemented By:] OrbitWatch
 \item[Type of Module:] Record
 \end{description}
+
+\subsubsection{Label Server (\ref{label server})} 
+\begin{description}
+  \item[Secrets:] The steps to accept and store a label.
+  \item[Services:] Converts a label JSON object and passes it to be stored in the database.
+  \item[Implemented By:] [OrbitWatch]
+  \item[Type of Module:] [Abstract Object]
+  \end{description}
+
+\subsubsection{Label Database Connector (\ref{label database connector})}
+\begin{description}
+\item[Secrets:] The steps to connect to and manipulate a database.
+\item[Services:] Connects to a database and executes pushing and fetching of data.
+\item[Implemented By:] [OrbitWatch]
+\item[Type of Module:] [Abstract Object]
+\end{description}
+
+\subsubsection{Label Database (\ref{label database})}
+\begin{description}
+\item[Secrets:] The storing and retrieving of data.
+\item[Services:] Allows connection by a database connector to facilitate the storage and retreival of data.
+\item[Implemented By:] [OrbitWatch]
+\item[Type of Module:] [Abstract Object]
+\end{description}
+
+\subsubsection{ImageObject Database Connector (\ref{ImageObject database connector})}
+\begin{description}
+\item[Secrets:] The steps to connect to and manipulate a database.
+\item[Services:] Connects to a database and executes pushing and fetching of data.
+\item[Implemented By:] [OrbitWatch]
+\item[Type of Module:] [Abstract Object]
+\end{description}
+
+\subsubsection{ImageObject Database (\ref{ImageObject database})}
+\begin{description}
+\item[Secrets:] The storing and retrieving of data.
+\item[Services:] Allows connection by a database connector to facilitate the storage and retreival of data.
+\item[Implemented By:] [OrbitWatch]
+\item[Type of Module:] [Abstract Object]
+\end{description}
+
+\subsubsection{Labeller Database Connector (\ref{Labeller database connector})}
+\begin{description}
+\item[Secrets:] The steps to connect to and manipulate a database.
+\item[Services:] Connects to a database and executes pushing and fetching of data.
+\item[Implemented By:] [OrbitWatch]
+\item[Type of Module:] [Abstract Object]
+\end{description}
+
+\subsubsection{Labeller Database (\ref{Labeller database})}
+\begin{description}
+\item[Secrets:] The storing and retrieving of data.
+\item[Services:] Allows connection by a database connector to facilitate the storage and retreival of data.
+\item[Implemented By:] [OrbitWatch]
+\item[Type of Module:] [Abstract Object]
+\end{description}
+
+\subsubsection{Object Extraction Manager (\ref{Object Extraction Manager})}
+\item[Secrets:] The algorithms used to aggregate labels into usable ImageObjects for Model training.
+\item[Services:] Calls other modules to efficiently compute the most likely set of objects from a set of independent labels.
+\item[Implemented By:] [OrbitWatch]
+\item[Type of Module:] [Abstract Object]
+\end{description}
+
+\subsubsection{Image Service Manager (\ref{Image Service Manager})}
+\begin{description}
+\item[Secrets:] The algorithms used to select images to be served to a user.
+\item[Services:] Calls other modules to select the next images to be server to a user.
+\item[Implemented By:] [OrbitWatch]
+\item[Type of Module:] [Abstract Object]
+\end{description}
+
+
 
 \subsection{Software Decision Module}
 
@@ -637,6 +731,55 @@ to be implemented.
 \item[Implemented By:] OrbitWatch
 \item[Type of Module:] Abstract Object
 \end{description}
+
+\subsubsection{Label Confidence Service (\ref{Label Confidence Service})}
+\begin{description}
+\item[Secrets:] The algorithms used to determine confidence in detected ImageObjects.
+\item[Services:] Calculates the confidence of a detected ImageObject.
+\item[Implemented By:] [OrbitWatch]
+\item[Type of Module:] [Abstract Object]
+\end{description}
+
+\subsubsection{Object Extraction Service (\ref{Object Extraction Service})}
+\begin{description}
+\item[Secrets:] The algorithms used to extract ImageObjects.
+\item[Services:] Calculates the most likely ImageObjects from a set of labels and priors.
+\item[Implemented By:] [OrbitWatch]
+\item[Type of Module:] [Abstract Object]
+\end{description}
+
+\subsubsection{Image Prior Analyzer (\ref{Image Prior Analyzer})}
+\begin{description}
+\item[Secrets:] The algorithms used to calculate ImagePriors.
+\item[Services:] Calculates the prior liklihood of a pixel being relevant.
+\item[Implemented By:] [OrbitWatch]
+\item[Type of Module:] [Abstract Object]
+\end{description}
+
+\subsubsection{Labeller Expertise Calculator (\ref{Labeller Expertise Calculator})}
+\begin{description}
+\item[Secrets:] The algorithms used to calculate Labeller Expertise.
+\item[Services:] Calculates the expertise of a labeller in a given class using previous labels.
+\item[Implemented By:] [OrbitWatch]
+\item[Type of Module:] [Abstract Object]
+\end{description}
+
+\subsubsection{Image Mask Service (\ref{Image Mask Service})}
+\begin{description}
+\item[Secrets:] The algorithms used to modify a given image.
+\item[Services:] Modifies an image in an attempt to improve labelling accuracy or efficiency.
+\item[Implemented By:] [OrbitWatch]
+\item[Type of Module:] [Abstract Object]
+\end{description}
+
+\subsubsection{Image Selection Service (\ref{Image Selection Service})}
+\begin{description}
+\item[Secrets:] The algorithms used to select the next image to show a user.
+\item[Services:] Selects an image to show to a given user. 
+\item[Implemented By:] [OrbitWatch]
+\item[Type of Module:] [Abstract Object]
+=======
+
 
 \section{Traceability Matrix} \label{SecTM}
 
