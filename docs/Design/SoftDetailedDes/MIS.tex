@@ -1393,6 +1393,250 @@ The following table is taken directly from the Module Guide document for this pr
 
 \newpage
 
+% --------------------------------------------------------------------------------------
+% --/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\--
+% --------------------------------------------------------------------------------------
+
+\section{MIS of Image Service Manager }\label{image service manager}
+  
+  % \wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
+  
+  % \wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
+  
+  \subsection{Module}
+  
+  Image Service Manager
+  
+  \subsection{Uses}
+  
+  ImageObject Database Connector \ref{ImageObject database connector}\\
+  Labeller Database Connector \ref{labeller database connector}\\
+  Image Mask Service\ref{image mask service}\\
+  Image Selection Engine \ref{image selection engine}\\
+
+  \subsection{Syntax}
+
+
+  
+  \subsubsection{Exported Constants}
+  None
+  \subsubsection{Exported Access Programs}
+  
+  \begin{center}
+  \begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+  \hline
+  \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+  \hline
+  getNextImages & labellerID, projectID, int & List[Image] & ValueError \\
+  
+  \end{tabular}
+  \end{center}
+  
+  \subsection{Semantics}
+  
+  \subsubsection{State Variables}
+  
+ None
+  
+  \subsubsection{Environment Variables}
+  
+  None
+  
+  \subsubsection{Assumptions}
+  
+  
+  \subsubsection{Access Routine Semantics}
+  
+  \noindent getNextImages(LabellerID l, ProjectID p, int n):
+  \begin{itemize}
+  \item transition: 
+  \item output: return the next n images based on which are mose relevant
+  \item exception: Let P be the set of assigned ProjectIDs. Throw ValueError if $\neg (p \in \text{P})$\\
+  Let L be the set of assigned LabellerIDs. Throw ValueError if $\neg (l \in \text{L})$\\
+  Throw ValueError if $\neg (n \in \mathbb{N})$
+  \end{itemize}
+
+
+  
+  % \wss{A module without environment variables or state variables is unlikely to
+  %   have a state transition.  In this case a state transition can only occur if
+  %   the module is changing the state of another module.}
+  
+  % \wss{Modules rarely have both a transition and an output.  In most cases you
+  %   will have one or the other.}
+  
+  \subsubsection{Local Functions}
+
+  
+   
+  
+  % \wss{As appropriate} \wss{These functions are for the purpose of specification.
+  %   They are not necessarily something that is going to be implemented
+  %   explicitly.  Even if they are implemented, they are not exported; they only
+  %   have local scope.}
+
+\newpage
+
+
+% --------------------------------------------------------------------------------------
+% --/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\--
+% --------------------------------------------------------------------------------------
+
+\section{MIS of Image Mask Service }\label{image mask service}
+  
+  % \wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
+  
+  % \wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
+  
+  \subsection{Module}
+  
+  Image Mask Service
+  
+  \subsection{Uses}
+  
+
+  \subsection{Syntax}
+
+
+  
+  \subsubsection{Exported Constants}
+  None
+  \subsubsection{Exported Access Programs}
+  
+  \begin{center}
+  \begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+  \hline
+  \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+  \hline
+  getImageMask & Image & Image & ValueError \\
+  
+  \end{tabular}
+  \end{center}
+  
+  \subsection{Semantics}
+  
+  \subsubsection{State Variables}
+  
+ None
+  
+  \subsubsection{Environment Variables}
+  
+  None
+  
+  \subsubsection{Assumptions}
+  
+  
+  \subsubsection{Access Routine Semantics}
+  
+  \noindent getImageMask(Image i):
+  \begin{itemize}
+  \item transition: 
+  \item output: returns a modified image to improve the labeller's efficiency or accuracy
+  \item exception: Let I be the set of valid Images. Throw ValueError if $\neg (i \in \text{I})$\\
+  \end{itemize}
+
+
+  
+  % \wss{A module without environment variables or state variables is unlikely to
+  %   have a state transition.  In this case a state transition can only occur if
+  %   the module is changing the state of another module.}
+  
+  % \wss{Modules rarely have both a transition and an output.  In most cases you
+  %   will have one or the other.}
+  
+  \subsubsection{Local Functions}
+
+  
+   
+  
+  % \wss{As appropriate} \wss{These functions are for the purpose of specification.
+  %   They are not necessarily something that is going to be implemented
+  %   explicitly.  Even if they are implemented, they are not exported; they only
+  %   have local scope.}
+
+\newpage
+
+% --------------------------------------------------------------------------------------
+% --/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\--
+% --------------------------------------------------------------------------------------
+
+\section{MIS of Image Selection Service }\label{image selection service}
+  
+  % \wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
+  
+  % \wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
+  
+  \subsection{Module}
+  
+  Image Selection Service
+  
+  \subsection{Uses}
+  
+
+  \subsection{Syntax}
+
+
+  
+  \subsubsection{Exported Constants}
+  None
+  \subsubsection{Exported Access Programs}
+  
+  \begin{center}
+  \begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+  \hline
+  \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+  \hline
+  getNextImages & List[Image], List[ImageObjects], Labeller & List[Image] & ValueError \\
+  
+  \end{tabular}
+  \end{center}
+  
+  \subsection{Semantics}
+  
+  \subsubsection{State Variables}
+  
+ None
+  
+  \subsubsection{Environment Variables}
+  
+  None
+  
+  \subsubsection{Assumptions}
+  
+  
+  \subsubsection{Access Routine Semantics}
+  
+  \noindent getNextImages(List[Image] Images, List[ImageObjects] ImageObjects, Labeller labeller):
+  \begin{itemize}
+  \item transition: 
+  \item output: return the next n images based on which are mose relevant
+  \item exception: Let L be the set of valid Labellers. Throw ValueError if ($ \neg (\text{labeller} \in \text{L})$)\\
+  Let X be the set of valid Images. Throw ValueError if ($\exists \text{Image} \in \text{Images} |: \neg (\text{Image} \in \text{X})$)\\
+  Let I be the set of valid ImageObjects. Throw ValueError if ($\exists \text{imageobject} \in \text{imageobjects} |: \neg (\text{imageobject} \in \text{I})$)\\
+  \end{itemize}
+
+
+  
+  % \wss{A module without environment variables or state variables is unlikely to
+  %   have a state transition.  In this case a state transition can only occur if
+  %   the module is changing the state of another module.}
+  
+  % \wss{Modules rarely have both a transition and an output.  In most cases you
+  %   will have one or the other.}
+  
+  \subsubsection{Local Functions}
+
+  
+   
+  
+  % \wss{As appropriate} \wss{These functions are for the purpose of specification.
+  %   They are not necessarily something that is going to be implemented
+  %   explicitly.  Even if they are implemented, they are not exported; they only
+  %   have local scope.}
+
+\newpage
+
+
 \bibliographystyle {plainnat}
 \bibliography {../../../refs/References}
 
