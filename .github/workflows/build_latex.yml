@@ -29,6 +29,8 @@ jobs:
         (cd ./docs/SRS && latexmk -pdf SRS.tex)
         (cd ./docs/VnVPlan && latexmk -pdf VnVPlan.tex)
         (cd ./docs/projMngmnt && latexmk -pdf POC_Team_Contrib.tex)
+        (cd ./docs/Design/SoftArchitecture && latexmk -pdf MG.tex)
+        (cd ./docs/Design/SoftDetailedDes && latexmk -pdf MIS.tex)
 
     - name: List files in docs directory
       run: ls -R docs
@@ -50,6 +52,7 @@ jobs:
     - name: Force add PDFs
       run: |
         git add -f ./docs/*/*.pdf
+        git add -f ./docs/Design/*/*.pdf
         git status
 
     - name: Commit and push updated PDFs

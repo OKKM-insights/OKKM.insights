@@ -8,6 +8,7 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{hyperref}
+\usepackage{longtable}
 \hypersetup{
     colorlinks,
     citecolor=blue,
@@ -59,24 +60,7 @@ This section records information for easy reference.
 
 \subsection{Abbreviations and Acronyms}
 
-\renewcommand{\arraystretch}{1.2}
-\begin{tabular}{l l} 
-  \toprule		
-  \textbf{symbol} & \textbf{description}\\
-  \midrule 
-  AC & Anticipated Change\\
-  DAG & Directed Acyclic Graph \\
-  M & Module \\
-  MG & Module Guide \\
-  OS & Operating System \\
-  R & Requirement\\
-  SC & Scientific Computing \\
-  SRS & Software Requirements Specification\\
-  \progname & Explanation of program name\\
-  UC & Unlikely Change \\
-  \wss{etc.} & \wss{...}\\
-  \bottomrule
-\end{tabular}\\
+See SRS Documentation at \wss{https://github.com/OKKM-insights/OKKM.insights/tree/main/docs/SRS}
 
 \newpage
 
@@ -191,8 +175,82 @@ below, which are leaves in the hierarchy tree, are the modules that will
 actually be implemented.
 
 \begin{description}
+
+
+
 \item [\refstepcounter{mnum} \mthemnum \label{mHH}:] Hardware-Hiding Module
-\item ...
+\item [\refstepcounter{mnum} \mthemnum \label{aci}:]
+Account Creation Interface
+\item [\refstepcounter{mnum} \mthemnum \label{accdc}:]
+Account Database Connector
+\item [\refstepcounter{mnum} \mthemnum \label{accd}:]
+Account Database
+\item [\refstepcounter{mnum} \mthemnum \label{aui}:]
+Account Update Interface
+\item [\refstepcounter{mnum} \mthemnum \label{li}:]
+Login Interface
+\item [\refstepcounter{mnum} \mthemnum \label{at}:]
+Access Token
+\item [\refstepcounter{mnum} \mthemnum \label{labeler}:]
+Labeler
+\item [\refstepcounter{mnum} \mthemnum \label{client}:]
+Client
+\item [\refstepcounter{mnum} \mthemnum \label{user}:]
+User
+\item [\refstepcounter{mnum} \mthemnum \label{acc}:]
+Account Creation Controller
+\item [\refstepcounter{mnum} \mthemnum \label{auc}:]
+Account Update Controller
+\item [\refstepcounter{mnum} \mthemnum \label{ac}:]
+Authentication Controller
+\item [\refstepcounter{mnum} \mthemnum \label{siri}:]
+Satellite Image Request Interface
+\item [\refstepcounter{mnum} \mthemnum \label{sirc}:]
+Satellite Image Request Controller
+\item [\refstepcounter{mnum} \mthemnum \label{sirf}:]
+Satellite Image Request
+\item [\refstepcounter{mnum} \mthemnum \label{pci}:]
+Project Creation Interface
+\item [\refstepcounter{mnum} \mthemnum \label{pcc}:]
+Project Creation Controller
+\item [\refstepcounter{mnum} \mthemnum \label{project}:]
+Project
+\item [\refstepcounter{mnum} \mthemnum \label{srfi}:]
+Service Request Failure Interface
+\item [\refstepcounter{mnum} \mthemnum \label{iui}:]
+Image Upload Interface
+\item [\refstepcounter{mnum} \mthemnum \label{ri}:]
+Report Interface
+\item [\refstepcounter{mnum} \mthemnum \label{rc}:]
+Report Controller
+\item [\refstepcounter{mnum} \mthemnum \label{report}:]
+Report
+\item [\refstepcounter{mnum} \mthemnum \label{psi}:]
+Project Selection Interface
+\item [\refstepcounter{mnum} \mthemnum \label{psc}:]
+Project Selection Controller
+\item [\refstepcounter{mnum} \mthemnum \label{lbli}:]
+Labeling Interface
+\item [\refstepcounter{mnum} \mthemnum \label{lblc}:]
+Labeling Controller
+\item [\refstepcounter{mnum} \mthemnum \label{image}:]
+Image
+\item [\refstepcounter{mnum} \mthemnum \label{label server}:] Label Server
+\item [\refstepcounter{mnum} \mthemnum \label{label database connector}:] Label Database Connector
+\item [\refstepcounter{mnum} \mthemnum \label{label database}:] Label Database
+\item [\refstepcounter{mnum} \mthemnum \label{ImageObject database connector}:] ImageObject Database Connector
+\item [\refstepcounter{mnum} \mthemnum \label{ImageObject database}:] ImageObject Database
+\item [\refstepcounter{mnum} \mthemnum \label{Labeller database connector}:] Labeller Database Connector
+\item [\refstepcounter{mnum} \mthemnum \label{Labeller database}:] Labeller Database
+\item [\refstepcounter{mnum} \mthemnum \label{Object Extraction Manager}:]Object Extraction Manager
+\item [\refstepcounter{mnum} \mthemnum \label{Image Service Manager}:]Image Service Manager
+\item [\refstepcounter{mnum} \mthemnum \label{Label Confidence Service}:]Label Confidence Service
+\item [\refstepcounter{mnum} \mthemnum \label{Object Extraction Service}:]Object Extraction Service
+\item [\refstepcounter{mnum} \mthemnum \label{Image Prior Analyzer}:]Image Prior Analyzer
+\item [\refstepcounter{mnum} \mthemnum \label{Labeller Expertise Calculator}:]Labeller Expertise Calculator
+\item [\refstepcounter{mnum} \mthemnum \label{Image Mask Service}:]Image Mask Service
+\item [\refstepcounter{mnum} \mthemnum \label{Image Selection Service}:]Image Selection Service
+
 \end{description}
 
 
@@ -206,19 +264,56 @@ actually be implemented.
 {Hardware-Hiding Module} & ~ \\
 \midrule
 
-\multirow{7}{0.3\textwidth}{Behaviour-Hiding Module} & ?\\
-& ?\\
-& ?\\
-& ?\\
-& ?\\
-& ?\\
-& ?\\ 
-& ?\\
+
+
+
+\multirow{7}{0.3\textwidth}{Behaviour-Hiding Module} & Account Creation Interface\\
+& Account Database\\
+& Account Database Connector\\
+& Account Update Interface\\
+& Login Interface\\
+& Access Token\\
+& Labeler\\
+& Client\\ 
+& User\\
+& Satellite Image Request Interface\\
+& Satellite Image Request\\
+& Project Creation Interface\\
+& Project\\
+& Service Request Failure Interface\\
+& Image Upload Interface\\
+& Report Interface\\
+& Report\\
+& Project Selection Interface\\
+& Labeling Interface\\
+& Image\\
+& Label Server\\
+& Label Database Connector\\
+& Label Database\\
+& ImageObject Database Connector\\
+& ImageObject Database\\
+& Labeller Database Connector\\
+& Labeller Database\\
+& Object Extraction Manager\\
+& Image Service Manager\\
 \midrule
 
-\multirow{3}{0.3\textwidth}{Software Decision Module} & {?}\\
-& ?\\
-& ?\\
+\multirow{3}{0.3\textwidth}{Software Decision Module} & {Account Creation Controller}\\
+& Account Update Controller\\
+& Authentication Controller\\
+& Satellite Image Request Controller\\
+& Project Creation Controller\\
+& Report Controller\\
+& Project Selection Controller\\
+& Labeling Controller\\
+& Label Confidence Service\\
+& Object Extraction Service\\
+& Image Prior Analyzer\\
+& Labeller Expertise Calculator\\
+& Image Mask Service\\
+& Image Selection Service\\
+
+
 \bottomrule
 
 \end{tabular}
@@ -232,12 +327,18 @@ The design of the system is intended to satisfy the requirements developed in
 the SRS. In this stage, the system is decomposed into modules. The connection
 between requirements and modules is listed in Table~\ref{TblRT}.
 
-\wss{The intention of this section is to document decisions that are made
-  ``between'' the requirements and the design.  To satisfy some requirements,
-  design decisions need to be made.  Rather than make these decisions implicit,
-  they are explicitly recorded here.  For instance, if a program has security
-  requirements, a specific design decision may be made to satisfy those
-  requirements with a password.}
+There are several key high level design decisions that were made to ensure the requirements outlined in the SRS are met. First, the system has been decomposed into several microservices. These services all connect to 
+the same databases, but have the flexibility to operate on their own cadence. Each service can be mirrored by a duplicate service to improve capacity. These decisions are critical to ensuring the speed, uptime, capacity, and latency requirements.
+Each of the key algorithms in the system have been encapsulated in their own module. These include the object extraction service, image serving, ML model creation, and report generation, among others. This gives the development team the flexibility to experiment with alternative algorithms, allowing continuous improvement towards performance and accuracy requirements.
+The authentication service is designed to meet the authentication requirements by ensuring only approved users can access privileged information.
+Every functional requirement is covered by the functionality of a subsystem.
+
+% \wss{The intention of this section is to document decisions that are made
+%   ``between'' the requirements and the design.  To satisfy some requirements,
+%   design decisions need to be made.  Rather than make these decisions implicit,
+%   they are explicitly recorded here.  For instance, if a program has security
+%   requirements, a specific design decision may be made to satisfy those
+%   requirements with a password.}
 
 \section{Module Decomposition} \label{SecMD}
 
@@ -278,18 +379,256 @@ to be implemented.
 \item[Implemented By:] --
 \end{description}
 
-\subsubsection{Input Format Module (\mref{mInput})}
+
+\subsubsection{Account Creation Interface (\mref{aci})}
 
 \begin{description}
-\item[Secrets:]The format and structure of the input data.
-\item[Services:]Converts the input data into the data structure used by the
-  input parameters module.
-\item[Implemented By:] [Your Program Name Here]
-\item[Type of Module:] [Record, Library, Abstract Object, or Abstract Data Type]
-  [Information to include for leaf modules in the decomposition by secrets tree.]
+\item[Secrets:]The design format of the account creation user interface.
+\item[Services:] Displays a form to collect user information and submits that information to be processed.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
 \end{description}
 
-\subsubsection{Etc.}
+\subsubsection{Account Database (\mref{accd})}
+
+\begin{description}
+\item[Secrets:] The data structure, storage, and access mechanisms for account related data.
+\item[Services:] Can store, insert, update and retrieve user account data.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Data Type
+\end{description}
+
+\subsubsection{Account Database Connector (\mref{accdc})}
+
+\begin{description}
+\item[Secrets:] The database access key and database access algorithms.
+\item[Services:] Can request storage, insertion, updates and retrieval of user account data from the database.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Data Type
+\end{description}
+
+\subsubsection{Account Update Interface (\mref{aui})}
+
+\begin{description}
+\item[Secrets:]The design format of the update account information user interface.
+\item[Services:] Displays a form with the users current information that can be modified and submits any updated information to be processed.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Login Interface (\mref{li})}
+
+\begin{description}
+\item[Secrets:]The design format of the login user interface.
+\item[Services:] Displays a form to collect login credentials and submits that information to be processed.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Access Token (\mref{at})}
+
+\begin{description}
+\item[Secrets:] Token structure, encryption, expiration, and renewal mechanisms.
+\item[Services:] Can determine if a user's token has expired and allows the token to be renewed.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Data Type
+\end{description}
+
+\subsubsection{Labeler (\mref{labeler})}
+
+\begin{description}
+\item[Secrets:]The format and structure of Labeler data.
+\item[Services:] Takes in the necessary data to create a Labeler.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Record
+\end{description}
+
+\subsubsection{Client (\mref{client})}
+
+\begin{description}
+\item[Secrets:]The format and structure of Client data.
+\item[Services:] Takes in the necessary data to create a Client.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Record
+\end{description}
+
+\subsubsection{User (\mref{user})}
+
+\begin{description}
+\item[Secrets:]The format and structure of User data.
+\item[Services:] Takes in the necessary data to create a User.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Record
+\end{description}
+
+\subsubsection{Satellite Image Request Interface (\mref{siri})}
+
+\begin{description}
+\item[Secrets:]The design format of the interface for requesting satellite images.
+\item[Services:] Displays a form to collect specifics on the satellite images, calculates estimated cost based on current form entries and submits the form information to be processed.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Satellite Image Request (\mref{sirf})}
+
+\begin{description}
+\item[Secrets:]The format and structure of the data needed for a satellite image request.
+\item[Services:] Takes in the necessary data to create a satellite image request.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Record
+\end{description}
+
+\subsubsection{Project Creation Interface (\mref{pci})}
+
+\begin{description}
+\item[Secrets:]The design format of the project creation interface.
+\item[Services:] Displays a form to collect project details, calculates an estimated cost using these details and submits that information to be processed.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Project (\mref{project})}
+
+\begin{description}
+\item[Secrets:]The format and structure of the data needed for a Project.
+\item[Services:] Takes in the necessary data to create a Project.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Record
+\end{description}
+
+\subsubsection{Service Request Failure Interface (\mref{srfi})}
+
+\begin{description}
+\item[Secrets:]The design format of the request failure interface.
+\item[Services:] Displays a warning to users that something went wrong.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Image Upload Interface (\mref{iui})}
+
+\begin{description}
+\item[Secrets:]The design format of the image upload interface.
+\item[Services:] Allows users to upload images from their device, and validates they are images of the correct format.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Report Interface (\mref{ri})}
+
+\begin{description}
+\item[Secrets:]The design format of the summary report interface.
+\item[Services:] Displays statistics and results of a specific project.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Report (\mref{report})}
+
+\begin{description}
+\item[Secrets:]The format and structure of Report data.
+\item[Services:] Takes in the necessary data to create a Report.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Record
+\end{description}
+
+\subsubsection{Project Selection Interface (\mref{psi})}
+\begin{description}
+\item[Secrets:]The design format of the project selection interface.
+\item[Services:] Display all available projects that a user can label images from.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Labeling Interface (\mref{lbli})}
+\begin{description}
+\item[Secrets:] The design format of the labeling interface.
+\item[Services:] Displays an image to be labeled, displays label choices which can be selected, and allows images to be skipped.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Image (\mref{image})}
+
+\begin{description}
+\item[Secrets:]The format and structure of Image data.
+\item[Services:] Takes in the necessary data to create a Image.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Record
+\end{description}
+
+\subsubsection{Label Server (\ref{label server})} 
+\begin{description}
+  \item[Secrets:] The steps to accept and store a label.
+  \item[Services:] Converts a label JSON object and passes it to be stored in the database.
+  \item[Implemented By:] [OrbitWatch]
+  \item[Type of Module:] [Abstract Object]
+  \end{description}
+
+\subsubsection{Label Database Connector (\ref{label database connector})}
+\begin{description}
+\item[Secrets:] The steps to connect to and manipulate a database.
+\item[Services:] Connects to a database and executes pushing and fetching of data.
+\item[Implemented By:] [OrbitWatch]
+\item[Type of Module:] [Abstract Object]
+\end{description}
+
+\subsubsection{Label Database (\ref{label database})}
+\begin{description}
+\item[Secrets:] The storing and retrieving of data.
+\item[Services:] Allows connection by a database connector to facilitate the storage and retreival of data.
+\item[Implemented By:] [OrbitWatch]
+\item[Type of Module:] [Abstract Object]
+\end{description}
+
+\subsubsection{ImageObject Database Connector (\ref{ImageObject database connector})}
+\begin{description}
+\item[Secrets:] The steps to connect to and manipulate a database.
+\item[Services:] Connects to a database and executes pushing and fetching of data.
+\item[Implemented By:] [OrbitWatch]
+\item[Type of Module:] [Abstract Object]
+\end{description}
+
+\subsubsection{ImageObject Database (\ref{ImageObject database})}
+\begin{description}
+\item[Secrets:] The storing and retrieving of data.
+\item[Services:] Allows connection by a database connector to facilitate the storage and retreival of data.
+\item[Implemented By:] [OrbitWatch]
+\item[Type of Module:] [Abstract Object]
+\end{description}
+
+\subsubsection{Labeller Database Connector (\ref{Labeller database connector})}
+\begin{description}
+\item[Secrets:] The steps to connect to and manipulate a database.
+\item[Services:] Connects to a database and executes pushing and fetching of data.
+\item[Implemented By:] [OrbitWatch]
+\item[Type of Module:] [Abstract Object]
+\end{description}
+
+\subsubsection{Labeller Database (\ref{Labeller database})}
+\begin{description}
+\item[Secrets:] The storing and retrieving of data.
+\item[Services:] Allows connection by a database connector to facilitate the storage and retreival of data.
+\item[Implemented By:] [OrbitWatch]
+\item[Type of Module:] [Abstract Object]
+\end{description}
+
+\subsubsection{Object Extraction Manager (\ref{Object Extraction Manager})}
+\item[Secrets:] The algorithms used to aggregate labels into usable ImageObjects for Model training.
+\item[Services:] Calls other modules to efficiently compute the most likely set of objects from a set of independent labels.
+\item[Implemented By:] [OrbitWatch]
+\item[Type of Module:] [Abstract Object]
+\end{description}
+
+\subsubsection{Image Service Manager (\ref{Image Service Manager})}
+\begin{description}
+\item[Secrets:] The algorithms used to select images to be served to a user.
+\item[Services:] Calls other modules to select the next images to be server to a user.
+\item[Implemented By:] [OrbitWatch]
+\item[Type of Module:] [Abstract Object]
+\end{description}
+
 
 
 \subsection{Software Decision Module}
@@ -305,7 +644,126 @@ to be implemented.
 \item[Implemented By:] --
 \end{description}
 
-\subsubsection{Etc.}
+\subsubsection{Account Creation Controller (\mref{acc})}
+
+\begin{description}
+\item[Secrets:] Form validation and account creation algorithms.
+\item[Services:] Validates the form information, creates an account with that information, and can upload the account to the database.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Account Update Controller (\mref{auc})}
+
+\begin{description}
+\item[Secrets:] Form validation and account modification algorithms.
+\item[Services:] Gets current user information, validates the update form information and can pass account updates to the database.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Authentication Controller (\mref{ac})}
+
+\begin{description}
+\item[Secrets:] Credential validation, access token validation, and access token generation algorithms.
+\item[Services:] Validates credentials given by user, generates access tokens, and validates access tokens.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Satellite Image Request Controller (\mref{sirc})}
+
+\begin{description}
+\item[Secrets:] Form validation and image request algorithms.
+\item[Services:] Validates the form information, creates and sends a request to a third party for the necessary pictures.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Project Creation Controller (\mref{pcc})}
+
+\begin{description}
+\item[Secrets:] Form validation and project creation algorithms.
+\item[Services:] Validates project information provided and creates a new project.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Report Controller (\mref{rc})}
+
+\begin{description}
+\item[Secrets:] Logic for getting statistics of a project and exporting images onto the users device.
+\item[Services:] Get statistics and labeled images of project, and exports images to external devices.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Project Selection Controller (\mref{psc})}
+
+\begin{description}
+\item[Secrets:] Logic for getting active projects and redirecting labelers upon selection.
+\item[Services:] Gets valid projects that are currently available, and redirects labelers to a selected project labeling interface.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Labeling Controller (\mref{lblc})}
+
+\begin{description}
+\item[Secrets:] Algorithms for label creation, removal and submission.
+\item[Services:] Creates label for an image, removes label from an image, and submits labels to be processed.
+\item[Implemented By:] OrbitWatch
+\item[Type of Module:] Abstract Object
+\end{description}
+
+\subsubsection{Label Confidence Service (\ref{Label Confidence Service})}
+\begin{description}
+\item[Secrets:] The algorithms used to determine confidence in detected ImageObjects.
+\item[Services:] Calculates the confidence of a detected ImageObject.
+\item[Implemented By:] [OrbitWatch]
+\item[Type of Module:] [Abstract Object]
+\end{description}
+
+\subsubsection{Object Extraction Service (\ref{Object Extraction Service})}
+\begin{description}
+\item[Secrets:] The algorithms used to extract ImageObjects.
+\item[Services:] Calculates the most likely ImageObjects from a set of labels and priors.
+\item[Implemented By:] [OrbitWatch]
+\item[Type of Module:] [Abstract Object]
+\end{description}
+
+\subsubsection{Image Prior Analyzer (\ref{Image Prior Analyzer})}
+\begin{description}
+\item[Secrets:] The algorithms used to calculate ImagePriors.
+\item[Services:] Calculates the prior liklihood of a pixel being relevant.
+\item[Implemented By:] [OrbitWatch]
+\item[Type of Module:] [Abstract Object]
+\end{description}
+
+\subsubsection{Labeller Expertise Calculator (\ref{Labeller Expertise Calculator})}
+\begin{description}
+\item[Secrets:] The algorithms used to calculate Labeller Expertise.
+\item[Services:] Calculates the expertise of a labeller in a given class using previous labels.
+\item[Implemented By:] [OrbitWatch]
+\item[Type of Module:] [Abstract Object]
+\end{description}
+
+\subsubsection{Image Mask Service (\ref{Image Mask Service})}
+\begin{description}
+\item[Secrets:] The algorithms used to modify a given image.
+\item[Services:] Modifies an image in an attempt to improve labelling accuracy or efficiency.
+\item[Implemented By:] [OrbitWatch]
+\item[Type of Module:] [Abstract Object]
+\end{description}
+
+\subsubsection{Image Selection Service (\ref{Image Selection Service})}
+\begin{description}
+\item[Secrets:] The algorithms used to select the next image to show a user.
+\item[Services:] Selects an image to show to a given user. 
+\item[Implemented By:] [OrbitWatch]
+\item[Type of Module:] [Abstract Object]
+=======
+
 
 \section{Traceability Matrix} \label{SecTM}
 
@@ -314,28 +772,75 @@ requirements and between the modules and the anticipated changes.
 
 % the table should use mref, the requirements should be named, use something
 % like fref
-\begin{table}[H]
-\centering
-\begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+\begin{longtable}{p{0.2\textwidth} p{0.6\textwidth}}
+\caption{Trace Between Requirements and Modules} \label{TblRT} \\
+
 \toprule
-\textbf{Req.} & \textbf{Modules}\\
+\textbf{Req.} & \textbf{Modules} \\
 \midrule
-R1 & \mref{mHH}, \mref{mInput}, \mref{mParams}, \mref{mControl}\\
-R2 & \mref{mInput}, \mref{mParams}\\
-R3 & \mref{mVerify}\\
-R4 & \mref{mOutput}, \mref{mControl}\\
-R5 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}, \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
-R6 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}, \mref{mSeqDS}, \mref{mSolver}, \mref{mPlot}\\
-R7 & \mref{mOutput}, \mref{mEnergy}, \mref{mControl}, \mref{mSeqDS}, \mref{mPlot}\\
-R8 & \mref{mOutput}, \mref{mEnergy}, \mref{mControl}, \mref{mSeqDS}, \mref{mPlot}\\
-R9 & \mref{mVerifyOut}\\
-R10 & \mref{mOutput}, \mref{mODEs}, \mref{mControl}\\
-R11 & \mref{mOutput}, \mref{mODEs}, \mref{mEnergy}, \mref{mControl}\\
+\endfirsthead
+
+\toprule
+\textbf{Req.} & \textbf{Modules} \\
+\midrule
+\endhead
+
+\midrule
+\multicolumn{2}{r}{\textit{Continued on next page}} \\
+\midrule
+\endfoot
+
 \bottomrule
-\end{tabular}
-\caption{Trace Between Requirements and Modules}
-\label{TblRT}
-\end{table}
+\endlastfoot
+
+FR0 & \mref{acc}, \mref{aci}, \mref{accdc}, \mref{accd}, \mref{user}, \mref{client} \\
+FR1 & \mref{ac}, \mref{li}, \mref{at}, \mref{accdc}, \mref{accd}, \mref{user}, \mref{client} \\
+FR2 & \mref{ac}, \mref{at}, \mref{accdc}, \mref{accd}, \mref{auc}, \mref{aui}, \mref{user}, \mref{client} \\
+FR4 &  \\
+FR5 &  \\
+FR6 &  \\
+FR7 &  \\
+FR8 &  \\
+FR9 & \mref{acc}, \mref{aci}, \mref{accdc}, \mref{accd}, \mref{user}, \mref{client} \\
+FR10 & \mref{ac}, \mref{li}, \mref{at}, \mref{accdc}, \mref{accd}, \mref{user}, \mref{labeler} \\
+FR11 & \mref{ac}, \mref{at}, \mref{accdc}, \mref{accd}, \mref{auc}, \mref{aui}, \mref{user}, \mref{client} \\
+FR13 &  \mref{lbli}, \mref{lblc}, \mref{label}, \mref{label server}, \mref{label database}, \mref{label database connector}, \mref{Image Service Manager}, \mref{Image Selection Service}\\
+FR14 &  \mref{ri}, \mref{rc}, \mref{Object Extraction Manager}, \mref{Label Confidence Service}, \mref{Object Extraction Service}, \mref{Image Prior Analyzer}, \mref{Image Mask Service}  \\
+LF0 & \mref{aui}, \mref{li}, \mref{aci}, \mref{siri}, \mref{srfi}, \mref{pci}, \mref{iui}, \mref{ri}, \mref{psi}, \mref{lbli}\\
+LF1 & \mref{aui}, \mref{li}, \mref{aci}, \mref{siri}, \mref{srfi}, \mref{pci}, \mref{iui}, \mref{ri}, \mref{psi}, \mref{lbli}\\
+LF2 & \mref{aui}, \mref{li}, \mref{aci}, \mref{siri}, \mref{srfi}, \mref{pci}, \mref{iui}, \mref{ri}, \mref{psi}, \mref{lbli}\\
+UH0 & \mref{aui}, \mref{li}, \mref{aci}, \mref{siri}, \mref{srfi}, \mref{pci}, \mref{iui}, \mref{ri}, \mref{psi}, \mref{lbli}\\
+UH1 & \mref{aui}, \mref{li}, \mref{aci}, \mref{siri}, \mref{srfi}, \mref{pci}, \mref{iui}, \mref{ri}, \mref{psi}, \mref{lbli}\\
+UH2 & \mref{aui}, \mref{auc} \\
+UH6 & \mref{lbli} \\
+UH7 & \mref{srfi} \\
+UH9 & \mref{lbli} \\
+PR0 & \mref{aci}, \mref{acc}, \mref{client} \\
+PR1 & \mref{aci}, \mref{acc}, \mref{labeler} \\
+PR2 & \mref{ri}, \mref{rc}, \mref{report} \\
+PR3 & \mref{lbli}, \mref{lblc}, \mref{image}, \mref{Image Service Manager}, \mref{Image Selection Service} \\
+PR5 &  \mref{ri}, \mref{rc}, \mref{Object Extraction Manager}, \mref{Label Confidence Service}, \mref{Object Extraction Service}, \mref{Image Prior Analyzer}, \mref{Image Mask Service}\\
+PR6 & Related to all modules \\
+PR7 & Related to all modules \\
+PR8 & \mref{iui}, \mref{siri}, \mref{sirc}, \mref{sirf}, \mref{Image Mask Service}, \mref{Image Service Manager}, \mref{Image Selection Service}, \mref{Image Prior Analyzer}, \mref{ImageObject database}, \mref{ImageObject database connector}, \\
+PR9 & Related to all modules \\
+OE0 & Related to all modules \\
+OE1 & \mref{siri}, \mref{sirc}, \mref{sirf} \\
+OE4 &  \mref{modelcreation}, \mref{cnnmodelcreation}, \mref{othermodelcreation}, \mref{modeltrainingservice}, \mref{modelevaluationservice} \\
+OE5 &  \mref{ImageObject database}, \mref{ImageObject database connector}, \mref{modeltrainingservice}, \mref{modelevaluationservice}, \mref{modelmanager}, \mref{modelcreation}\\
+MR0 & Related to all modules \\
+SE0 & \mref{ac}, \mref{at}, \mref{lbli}, \mref{lblc}, \mref{psi}, \mref{psc} \\
+SE1 & \mref{ac}, \mref{at}, \mref{pci}, \mref{pcc} \\
+SE2 & \mref{aci}, \mref{acc} \\
+SE3 & \mref{aci}, \mref{acc} \\
+SE4 & \mref{srfi} \\
+SE5 & \mref{acc}, \mref{auc}, \mref{pcc}, \mref{Object Extraction Manager}, \mref{Label Confidence Service}, \mref{Object Extraction Service}, \mref{Image Prior Analyzer}, \mref{Image Mask Service}\\
+SE6 &  \\
+SE7 & \mref{accd}, \mref{accdc}, \mref{ImageObject database}, \mref{ImageObject database connector}, \mref{Labeller database connector}, \mref{Labeller database}, \mref{label database connector}, \mref{label database}, \mref{mlmodeldatabase} \\
+SE8 & \mref{auc}, \mref{acc}, \mref{accd} \\
+SE10 & \mref{accdc}, \mref{ImageObject database connector}, \mref{Labeller database connector}, \mref{label database connector} \\
+
+\end{longtable}
 
 \begin{table}[H]
 \centering
@@ -393,9 +898,56 @@ arrows in the diagram typically correspond to the presence of import statement.}
 %\section*{References}
 
 \section{User Interfaces}
-
-\wss{Design of user interface for software and hardware.  Attach an appendix if
-needed. Drawings, Sketches, Figma}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{home.png}
+    \caption{Home Page}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{login.png}
+    \caption{Login Page}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{forgot_password.png}
+    \caption{Forgot Password}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth, height=10cm]{register.png}
+    \caption{Register Page}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth, height=8cm]{label_projects.png}
+    \caption{Projects to Label Page}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.4]{label.png}
+    \caption{Label Page}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.25]{client_projects.png}
+    \caption{Client Projects Page}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.4]{project_stats.png}
+    \caption{Project Status Page}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.4]{user_info.png}
+    \caption{User Information Page}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{UI_flow.png}
+    \caption{Page Flow Diagram}
+\end{figure}
 
 \section{Design of Communication Protocols}
 
