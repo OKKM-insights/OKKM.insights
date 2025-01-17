@@ -121,6 +121,146 @@ different types. In addition, \progname \ uses functions, which
 are defined by the data types of their inputs and outputs. Local functions are
 described by giving their type signature followed by their specification.
 
+\section*{System Components}
+
+\subsection*{MLModel}
+Represents a machine learning model, identified by attributes such as:
+\begin{itemize}
+    \item \textbf{model\_name}
+    \item \textbf{model\_path}
+    \item \textbf{model\_type}
+    \item Metadata about the model (e.g., training parameters, architecture)
+\end{itemize}
+
+\subsection*{ModelTrainingRun}
+Captures the details of a model's training process, including:
+\begin{itemize}
+    \item \textbf{training\_data\_path}
+    \item Evaluation metrics
+    \item Parameters used during training
+\end{itemize}
+
+\subsection*{ModelEvaluationRun}
+Represents the evaluation process for a model, containing:
+\begin{itemize}
+    \item \textbf{evaluation\_data\_path}
+    \item Evaluation metrics (e.g., precision, recall)
+\end{itemize}
+
+\subsection*{ModelDeployment}
+Tracks the deployment details of a machine learning model, such as:
+\begin{itemize}
+    \item \textbf{deployment\_environment} (e.g., Production, Staging)
+    \item \textbf{deployment\_date}
+\end{itemize}
+
+\subsection*{Account}
+Describes user accounts in the system with attributes like:
+\begin{itemize}
+    \item \textbf{username}
+    \item \textbf{email}
+    \item \textbf{account\_type} (e.g., Client, Labeler, Admin)
+    \item Security-related fields such as \textbf{password\_hash} and \textbf{last\_login}
+\end{itemize}
+
+\subsection*{AccountModification}
+Maintains a log of changes made to user accounts, tracking:
+\begin{itemize}
+    \item \textbf{field\_modified}
+    \item \textbf{old\_value}
+    \item \textbf{new\_value}
+\end{itemize}
+
+\subsection*{LoginAttempt}
+Records login attempts for security purposes, including:
+\begin{itemize}
+    \item \textbf{username}
+    \item \textbf{attempt\_time}
+    \item Whether the attempt was successful
+\end{itemize}
+
+\subsection*{Project}
+Defines a labeling or analysis project, identified by:
+\begin{itemize}
+    \item \textbf{project\_name}
+    \item \textbf{description}
+    \item Associated metadata
+\end{itemize}
+
+\subsection*{User}
+Represents individuals (e.g., labelers, managers) working within the system, including:
+\begin{itemize}
+    \item \textbf{username}
+    \item \textbf{role}
+\end{itemize}
+
+\subsection*{ProjectAssignment}
+Tracks which users are assigned to specific projects, identified by:
+\begin{itemize}
+    \item \textbf{project\_id}
+    \item \textbf{user\_id}
+\end{itemize}
+
+\subsection*{SatelliteImage}
+Represents images (e.g., satellite imagery) linked to specific projects, with attributes like:
+\begin{itemize}
+    \item \textbf{image\_path}
+    \item \textbf{acquisition\_date}
+\end{itemize}
+
+\subsection*{LabelingTask}
+Encapsulates a labeling activity, defined by:
+\begin{itemize}
+    \item \textbf{status}
+    \item \textbf{start\_time}
+    \item \textbf{end\_time}
+    \item The user assigned to the task
+\end{itemize}
+
+\subsection*{Report}
+Represents generated reports for projects, with fields like:
+\begin{itemize}
+    \item \textbf{report\_data}
+    \item \textbf{generation\_date}
+    \item The user who generated the report
+\end{itemize}
+
+\subsection*{ServiceRequest}
+Tracks requests for services such as image acquisition or data processing, with attributes like:
+\begin{itemize}
+    \item \textbf{request\_type}
+    \item \textbf{status}
+\end{itemize}
+
+\subsection*{Image}
+Represents standalone images within the system, identified by:
+\begin{itemize}
+    \item \textbf{image\_path}
+    \item \textbf{upload\_date}
+\end{itemize}
+
+\subsection*{Labeller}
+Represents individuals performing labeling tasks, identified by:
+\begin{itemize}
+    \item \textbf{labeller\_name}
+\end{itemize}
+
+\subsection*{Object}
+Represents specific objects detected in an image, with attributes like:
+\begin{itemize}
+    \item \textbf{bounding\_box\_coordinates}
+    \item \textbf{object\_type}
+\end{itemize}
+
+\subsection*{Label}
+Represents annotations made by a labeller, linking to specific objects in an image and storing information like:
+\begin{itemize}
+    \item \textbf{label\_text}
+    \item \textbf{timestamp}
+    \item \textbf{labeller\_id}
+\end{itemize}
+
+
 \section{Module Decomposition}
 
 The following table is taken directly from the Module Guide document for this project.
