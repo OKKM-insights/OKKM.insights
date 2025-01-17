@@ -289,7 +289,77 @@ to be implemented.
   [Information to include for leaf modules in the decomposition by secrets tree.]
 \end{description}
 
-\subsubsection{Etc.}
+\subsubsection{Label Server}
+\begin{description}
+  \item[Secrets:] The steps to accept and store a label.
+  \item[Services:] Converts a label JSON object and passes it to be stored in the database.
+  \item[Implemented By:] [Your Program Name Here]
+  \item[Type of Module:] [Abstract Object]
+  \end{description}
+
+\subsubsection{Label Database Connector}
+\begin{description}
+\item[Secrets:] The steps to connect to and manipulate a database.
+\item[Services:] Connects to a database and executes pushing and fetching of data.
+\item[Implemented By:] [Your Program Name Here]
+\item[Type of Module:] [Abstract Object]
+\end{description}
+
+\subsubsection{Label Database}
+\begin{description}
+\item[Secrets:] The storing and retrieving of data.
+\item[Services:] Allows connection by a database connector to facilitate the storage and retreival of data.
+\item[Implemented By:] [Your Program Name Here]
+\item[Type of Module:] [Abstract Object]
+\end{description}
+
+\subsubsection{ImageObject Database Connector}
+\begin{description}
+\item[Secrets:] The steps to connect to and manipulate a database.
+\item[Services:] Connects to a database and executes pushing and fetching of data.
+\item[Implemented By:] [Your Program Name Here]
+\item[Type of Module:] [Abstract Object]
+\end{description}
+
+\subsubsection{ImageObject Database}
+\begin{description}
+\item[Secrets:] The storing and retrieving of data.
+\item[Services:] Allows connection by a database connector to facilitate the storage and retreival of data.
+\item[Implemented By:] [Your Program Name Here]
+\item[Type of Module:] [Abstract Object]
+\end{description}
+
+\subsubsection{Labeller Database Connector}
+\begin{description}
+\item[Secrets:] The steps to connect to and manipulate a database.
+\item[Services:] Connects to a database and executes pushing and fetching of data.
+\item[Implemented By:] [Your Program Name Here]
+\item[Type of Module:] [Abstract Object]
+\end{description}
+
+\subsubsection{Labeller Database}
+\begin{description}
+\item[Secrets:] The storing and retrieving of data.
+\item[Services:] Allows connection by a database connector to facilitate the storage and retreival of data.
+\item[Implemented By:] [Your Program Name Here]
+\item[Type of Module:] [Abstract Object]
+\end{description}
+
+\subsubsection{Object Extraction Manager}
+\begin{description}
+\item[Secrets:] The algorithms used to aggregate labels into usable ImageObjects for Model training.
+\item[Services:] Calls other modules to efficiently compute the most likely set of objects from a set of independent labels.
+\item[Implemented By:] [Your Program Name Here]
+\item[Type of Module:] [Abstract Object]
+\end{description}
+
+\subsubsection{Image Service Manager}
+\begin{description}
+\item[Secrets:] The algorithms used to select images to be served to a user.
+\item[Services:] Calls other modules to select the next images to be server to a user.
+\item[Implemented By:] [Your Program Name Here]
+\item[Type of Module:] [Abstract Object]
+\end{description}
 
 
 \subsection{Software Decision Module}
@@ -305,7 +375,53 @@ to be implemented.
 \item[Implemented By:] --
 \end{description}
 
-\subsubsection{Etc.}
+\subsubsection{Label Confidence Service}
+\begin{description}
+\item[Secrets:] The algorithms used to determine confidence in detected ImageObjects.
+\item[Services:] Calculates the confidence of a detected ImageObject.
+\item[Implemented By:] [Your Program Name Here]
+\item[Type of Module:] [Abstract Object]
+\end{description}
+
+\subsubsection{Object Extraction Service}
+\begin{description}
+\item[Secrets:] The algorithms used to extract ImageObjects.
+\item[Services:] Calculates the most likely ImageObjects from a set of labels and priors.
+\item[Implemented By:] [Your Program Name Here]
+\item[Type of Module:] [Abstract Object]
+\end{description}
+
+\subsubsection{Image Prior Analyzer}
+\begin{description}
+\item[Secrets:] The algorithms used to calculate ImagePriors.
+\item[Services:] Calculates the prior liklihood of a pixel being relevant.
+\item[Implemented By:] [Your Program Name Here]
+\item[Type of Module:] [Abstract Object]
+\end{description}
+
+\subsubsection{Labeller Expertise Calculator}
+\begin{description}
+\item[Secrets:] The algorithms used to calculate Labeller Expertise.
+\item[Services:] Calculates the expertise of a labeller in a given class using previous labels.
+\item[Implemented By:] [Your Program Name Here]
+\item[Type of Module:] [Abstract Object]
+\end{description}
+
+\subsubsection{Image Mask Service}
+\begin{description}
+\item[Secrets:] The algorithms used to modify a given image.
+\item[Services:] Modifies an image in an attempt to improve labelling accuracy or efficiency.
+\item[Implemented By:] [Your Program Name Here]
+\item[Type of Module:] [Abstract Object]
+\end{description}
+
+\subsubsection{Image Selection Service}
+\begin{description}
+\item[Secrets:] The algorithms used to select the next image to show a user.
+\item[Services:] Selects an image to show to a given user. 
+\item[Implemented By:] [Your Program Name Here]
+\item[Type of Module:] [Abstract Object]
+\end{description}
 
 \section{Traceability Matrix} \label{SecTM}
 
