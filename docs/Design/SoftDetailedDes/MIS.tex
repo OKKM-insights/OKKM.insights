@@ -369,21 +369,18 @@ The following table is taken directly from the Module Guide document for this pr
   \noindent pushLabel(Label l):
   \begin{itemize}
   \item transition: Transition occurs in LabelDatabase
-  \item output: 
   \item exception: Let L be the set of valid Labels. Throw ValueError if $\neg (l \in \text{L})$\\
   Throw ConnectionError if ConnectionError is raised by makeDBConnection
   \end{itemize}
 
   \noindent makeDBConnection():
   \begin{itemize}
-  \item transition: 
-  \item output: 
+  \item transition: If sucessful, connection occurs
   \item exception: Throw ConnectionError if connection is not accepted by LabelDatabase
   \end{itemize}
 
   \noindent getLabels(String q):
   \begin{itemize}
-  \item transition: 
   \item output: list of labels satisfying the provided query
   \item exception: Let Q be the set of valid Queries. Throw ValueError if $\neg (q \in \text{Q})$\\
   Throw ConnectionError if ConnectionError is raised by makeDBConnection
@@ -467,7 +464,6 @@ The following table is taken directly from the Module Guide document for this pr
   \noindent pushLabel(Label l):
   \begin{itemize}
   \item transition: $\text{labels} := \text{labels} \cup l $
-  \item output: 
   \item exception: Let L be the set of valid Labels. Throw ValueError if $\neg (l \in \text{L})$\\
   Throw ConnectionError if $\neg (\text{requestor} \in \text{users})$
   \end{itemize}
@@ -475,13 +471,11 @@ The following table is taken directly from the Module Guide document for this pr
   \noindent makeDBConnection(credentials):
   \begin{itemize}
   \item transition: if credentials are valid, $\text{users} := \text{users} \cup credentials.user $
-  \item output: 
   \item exception: Throw ConnectionError if credentials are not valid
   \end{itemize}
 
   \noindent getLabels(String q):
   \begin{itemize}
-  \item transition: 
   \item output: list of labels satisfying the provided query
   \item exception: Let Q be the set of valid Queries. Throw ValueError if $\neg (q \in \text{Q})$\\
   Throw ConnectionError if $\neg (\text{requestor} \in \text{users})$
@@ -567,15 +561,13 @@ The following table is taken directly from the Module Guide document for this pr
   \noindent pushLabel(ImageObject l):
   \begin{itemize}
   \item transition: Transition occurs in ImageObjectDatabase
-  \item output: 
   \item exception: Let L be the set of valid ImageObjects. Throw ValueError if $\neg (l \in \text{L})$\\
   Throw ConnectionError if ConnectionError is raised by makeDBConnection
   \end{itemize}
 
   \noindent makeDBConnection():
   \begin{itemize}
-  \item transition: 
-  \item output: 
+  \item transition: If sucessful, connection occurs
   \item exception: Throw ConnectionError if connection is not accepted by ImageObjectDatabase
   \end{itemize}
 
@@ -665,7 +657,6 @@ The following table is taken directly from the Module Guide document for this pr
   \noindent pushLabel(ImageObject l):
   \begin{itemize}
   \item transition: $\text{ImageObjects} := \text{ImageObjects} \cup l $
-  \item output: 
   \item exception: Let L be the set of valid ImageObjects. Throw ValueError if $\neg (l \in \text{L})$\\
   Throw ConnectionError if $\neg (\text{requestor} \in \text{users})$
   \end{itemize}
@@ -673,13 +664,11 @@ The following table is taken directly from the Module Guide document for this pr
   \noindent makeDBConnection(credentials):
   \begin{itemize}
   \item transition: if credentials are valid, $\text{users} := \text{users} \cup credentials.user $
-  \item output: 
   \item exception: Throw ConnectionError if credentials are not valid
   \end{itemize}
 
   \noindent getLabels(String q):
   \begin{itemize}
-  \item transition: 
   \item output: list of ImageObjects satisfying the provided query
   \item exception: Let Q be the set of valid Queries. Throw ValueError if $\neg (q \in \text{Q})$\\
   Throw ConnectionError if $\neg (\text{requestor} \in \text{users})$
@@ -765,21 +754,18 @@ The following table is taken directly from the Module Guide document for this pr
   \noindent pushLabeller(Labeller o):
   \begin{itemize}
   \item transition: Transition occurs in LabellerDatabase
-  \item output: 
   \item exception: Let O be the set of valid Labellers. Throw ValueError if $\neg (o \in \text{O})$\\
   Throw ConnectionError if ConnectionError is raised by makeDBConnection
   \end{itemize}
 
   \noindent makeDBConnection():
   \begin{itemize}
-  \item transition: 
-  \item output: 
+  \item transition: If sucessful, connection occurs
   \item exception: Throw ConnectionError if connection is not accepted by LabellerDatabase
   \end{itemize}
 
   \noindent getLabeller(String q):
   \begin{itemize}
-  \item transition: 
   \item output: list of Labellers satisfying the provided query
   \item exception: Let Q be the set of valid Queries. Throw ValueError if $\neg (q \in \text{Q})$\\
   Throw ConnectionError if ConnectionError is raised by makeDBConnection
@@ -863,7 +849,6 @@ The following table is taken directly from the Module Guide document for this pr
   \noindent pushLabeller(Labeller o):
   \begin{itemize}
   \item transition: $\text{Labellers} := \text{Labellers} \cup o $
-  \item output: 
   \item exception: Let O be the set of valid Labellers. Throw ValueError if $\neg (o \in \text{O})$\\
   Throw ConnectionError if $\neg (\text{requestor} \in \text{users})$
   \end{itemize}
@@ -871,13 +856,11 @@ The following table is taken directly from the Module Guide document for this pr
   \noindent makeDBConnection(credentials):
   \begin{itemize}
   \item transition: if credentials are valid, $\text{users} := \text{users} \cup credentials.user $
-  \item output: 
   \item exception: Throw ConnectionError if credentials are not valid
   \end{itemize}
 
   \noindent getLabeller(String q):
   \begin{itemize}
-  \item transition: 
   \item output: list of Labeller satisfying the provided query
   \item exception: Let Q be the set of valid Queries. Throw ValueError if $\neg (q \in \text{Q})$\\
   Throw ConnectionError if $\neg (\text{requestor} \in \text{users})$
@@ -964,7 +947,6 @@ The following table is taken directly from the Module Guide document for this pr
   \begin{itemize}
   \item transition: Updates ImageObject database with identified objects \& confidence\\
   and updates labeller expertise rating in labeller database
-  \item output: 
   \item exception: Let P be the set of assigned ProjectIDs. Throw ValueError if $\neg (p \in \text{P})$\\
   \end{itemize}
 
@@ -1043,7 +1025,6 @@ The following table is taken directly from the Module Guide document for this pr
   
   \noindent getConfidence(list[label] labels , list[labeller] labellers, list[ImageObject] imageobjects):
   \begin{itemize}
-  \item transition: 
   \item output: return the confidence label of each extracted object
   \item exception: Let L be the set of valid Labels. Throw ValueError if ($\exists \text{label} \in \text{labels} |: \neg (\text{label} \in \text{L})$)\\
   Let X be the set of valid Labellers. Throw ValueError if ($\exists \text{labeller} \in \text{labellers} |: \neg (\text{labeller} \in \text{X})$)\\
@@ -1124,7 +1105,6 @@ The following table is taken directly from the Module Guide document for this pr
   
   \noindent getConfidence(list[label] labels, list[labeller] labellers, list[ImageObject] imageobjects, list[list[float]] confidence):
   \begin{itemize}
-  \item transition: 
   \item output: returns a list of extracted image objects
   \item exception: Let L be the set of valid Labels. Throw ValueError if ($\exists \text{label} \in \text{labels} |: \neg (\text{label} \in \text{L})$)\\
   Let X be the set of valid Labellers. Throw ValueError if ($\exists \text{labeller} \in \text{labellers} |: \neg (\text{labeller} \in \text{X})$)\\
@@ -1206,7 +1186,6 @@ The following table is taken directly from the Module Guide document for this pr
   
   \noindent getPriors(list[image] Images):
   \begin{itemize}
-  \item transition: 
   \item output: returns a list of priors for each pixel in the given images
   \item exception: Let I be the set of valid Images. Throw ValueError if ($\exists \text{image} \in \text{images} |: \neg (\text{image} \in \text{I})$)\\
   \end{itemize}
@@ -1284,7 +1263,6 @@ The following table is taken directly from the Module Guide document for this pr
   
   \noindent getObjects(list[label] labels, list[labeller] labellers, list[ImageObject] imageobjects):
   \begin{itemize}
-  \item transition: 
   \item output: return the weighed success rate for each class a labeler has contributed to
   \item exception: Let L be the set of valid Labels. Throw ValueError if ($\exists \text{label} \in \text{labels} |: \neg (\text{label} \in \text{L})$)\\
   Let X be the set of valid Labellers. Throw ValueError if ($\exists \text{labeller} \in \text{labellers} |: \neg (\text{labeller} \in \text{X})$)\\
@@ -1368,7 +1346,6 @@ The following table is taken directly from the Module Guide document for this pr
   
   \noindent getNextImages(LabellerID l, ProjectID p, int n):
   \begin{itemize}
-  \item transition: 
   \item output: return the next n images based on which are mose relevant
   \item exception: Let P be the set of assigned ProjectIDs. Throw ValueError if $\neg (p \in \text{P})$\\
   Let L be the set of assigned LabellerIDs. Throw ValueError if $\neg (l \in \text{L})$\\
@@ -1413,7 +1390,7 @@ The following table is taken directly from the Module Guide document for this pr
   
   \subsection{Uses}
   
-
+  None
   \subsection{Syntax}
 
 
@@ -1449,7 +1426,6 @@ The following table is taken directly from the Module Guide document for this pr
   
   \noindent getImageMask(Image i):
   \begin{itemize}
-  \item transition: 
   \item output: returns a modified image to improve the labeller's efficiency or accuracy
   \item exception: Let I be the set of valid Images. Throw ValueError if $\neg (i \in \text{I})$\\
   \end{itemize}
@@ -1527,7 +1503,6 @@ The following table is taken directly from the Module Guide document for this pr
   
   \noindent getNextImages(List[Image] Images, List[ImageObjects] ImageObjects, Labeller labeller):
   \begin{itemize}
-  \item transition: 
   \item output: return the next n images based on which are mose relevant
   \item exception: Let L be the set of valid Labellers. Throw ValueError if ($ \neg (\text{labeller} \in \text{L})$)\\
   Let X be the set of valid Images. Throw ValueError if ($\exists \text{Image} \in \text{Images} |: \neg (\text{Image} \in \text{X})$)\\
