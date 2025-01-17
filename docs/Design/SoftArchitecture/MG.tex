@@ -8,6 +8,8 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{hyperref}
+\usepackage{longtable}
+
 \hypersetup{
     colorlinks,
     citecolor=blue,
@@ -507,12 +509,30 @@ The following hierarchy is represented as a directed acyclic graph, with arrows 
     \end{itemize}
 \end{itemize}
 
-\begin{figure}[H]
-\centering
-%\includegraphics[width=0.7\textwidth]{UsesHierarchy.png}
-\caption{Use hierarchy among modules}
-\label{FigUH}
-\end{figure}
+\begin{longtable}{|l|l|l|}
+  \hline
+  \textbf{Source Module} & \textbf{Target Module} & \textbf{Relationship} \\ \hline
+  Label Database & Label Database Connector & Uses \\ \hline
+  ImageObject Database & ImageObject Database Connector & Uses \\ \hline
+  Labeller Database & Labeller Database Connector & Uses \\ \hline
+  Label Database Connector & Label Server & Uses \\ \hline
+  ImageObject Database Connector & Object Extraction Manager & Uses \\ \hline
+  Labeller Database Connector & Object Extraction Manager & Uses \\ \hline
+  Label Server & Label Database Connector & Uses \\ \hline
+  Label Server & Label Confidence Service & Uses \\ \hline
+  Object Extraction Manager & Label Confidence Service & Uses \\ \hline
+  Object Extraction Manager & Object Extraction Service & Uses \\ \hline
+  Object Extraction Manager & Labeller Expertise Calculator & Uses \\ \hline
+  Image Service Manager & Image Selection Service & Uses \\ \hline
+  Image Service Manager & Image Mask Service & Uses \\ \hline
+  Image Service Manager & Image Prior Analyzer & Uses \\ \hline
+  Label Confidence Service & N/A & Provides algorithms \\ \hline
+  Object Extraction Service & N/A & Provides algorithms \\ \hline
+  Image Prior Analyzer & N/A & Provides algorithms \\ \hline
+  Labeller Expertise Calculator & N/A & Provides algorithms \\ \hline
+  Image Mask Service & N/A & Provides algorithms \\ \hline
+  Image Selection Service & N/A & Provides algorithms \\ \hline
+  \end{longtable}
 
 %\section*{References}
 
