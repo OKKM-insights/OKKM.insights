@@ -540,11 +540,11 @@ The following table is taken directly from the Module Guide document for this pr
   \hline
   \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
   \hline
-  pushImageObject & ImageObject & - & ValueError, ConnectionError \\
+  push Image Object & ImageObject & - & ValueError, ConnectionError \\
   \hline
   makeDB Connection & ImageObject & - & ConnectionError \\
   \hline
-  getImageObjects & String & list[ImageObject] & ValueError, ConnectionError \\
+  get Image Objects & String & list[ImageObject] & ValueError, ConnectionError \\
   \hline
   \end{tabular}
   \end{center}
@@ -637,11 +637,11 @@ The following table is taken directly from the Module Guide document for this pr
   \hline
   \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
   \hline
-  pushImageObject & ImageObject & - & ValueError \\
+  push Image Object & ImageObject & - & ValueError \\
   \hline
   makeDB Connection & ImageObject & - &  ConnectionError\\
   \hline
-  getImageObjects & String & list[ImageObject] & ValueError \\
+  get Image Objects & String & list[ImageObject] & ValueError \\
   \hline
   \end{tabular}
   \end{center}
@@ -664,7 +664,7 @@ The following table is taken directly from the Module Guide document for this pr
   
   \noindent pushLabel(ImageObject l):
   \begin{itemize}
-  \item transition: $\text{labels} := \text{labels} \cup l $
+  \item transition: $\text{ImageObjects} := \text{ImageObjects} \cup l $
   \item output: 
   \item exception: Let L be the set of valid ImageObjects. Throw ValueError if $\neg (l \in \text{L})$\\
   Throw ConnectionError if $\neg (\text{requestor} \in \text{users})$
@@ -708,7 +708,7 @@ The following table is taken directly from the Module Guide document for this pr
 % --/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\--
 % --------------------------------------------------------------------------------------
 
-\section{MIS of ImageObject Database Connector}\label{ImageObject database connector}
+\section{MIS of Labeller Database Connector}\label{labeller database connector}
   
   % \wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
   
@@ -716,12 +716,12 @@ The following table is taken directly from the Module Guide document for this pr
   
   \subsection{Module}
   
-  ImageObject Database Connector
+  Labeller Database Connector
 
   
   \subsection{Uses}
   
-  ImageObject Database \ref{ImageObject database}\\
+  Labeller Database \ref{labeller database}\\
   ImageObject \ref{ImageObject}\\ 
 
   
@@ -738,11 +738,11 @@ The following table is taken directly from the Module Guide document for this pr
   \hline
   \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
   \hline
-  pushImageObject & ImageObject & - & ValueError, ConnectionError \\
+  push labeller & labeller & - & ValueError, ConnectionError \\
   \hline
-  makeDB Connection & ImageObject & - & ConnectionError \\
+  makeDB Connection & credentials & - & ConnectionError \\
   \hline
-  getImageObjects & String & list[ImageObject] & ValueError, ConnectionError \\
+  get labeller & String & list[labeller] & ValueError, ConnectionError \\
   \hline
   \end{tabular}
   \end{center}
@@ -762,11 +762,11 @@ The following table is taken directly from the Module Guide document for this pr
   
   \subsubsection{Access Routine Semantics}
   
-  \noindent pushImageObject(ImageObject o):
+  \noindent pushLabeller(Labeller o):
   \begin{itemize}
-  \item transition: Transition occurs in ImageObjectDatabase
+  \item transition: Transition occurs in LabellerDatabase
   \item output: 
-  \item exception: Let O be the set of valid ImageObjects. Throw ValueError if $\neg (o \in \text{O})$\\
+  \item exception: Let O be the set of valid Labellers. Throw ValueError if $\neg (o \in \text{O})$\\
   Throw ConnectionError if ConnectionError is raised by makeDBConnection
   \end{itemize}
 
@@ -774,13 +774,13 @@ The following table is taken directly from the Module Guide document for this pr
   \begin{itemize}
   \item transition: 
   \item output: 
-  \item exception: Throw ConnectionError if connection is not accepted by ImageObjectDatabase
+  \item exception: Throw ConnectionError if connection is not accepted by LabellerDatabase
   \end{itemize}
 
-  \noindent getImageObjects(String q):
+  \noindent getLabeller(String q):
   \begin{itemize}
   \item transition: 
-  \item output: list of ImageObjects satisfying the provided query
+  \item output: list of Labellers satisfying the provided query
   \item exception: Let Q be the set of valid Queries. Throw ValueError if $\neg (q \in \text{Q})$\\
   Throw ConnectionError if ConnectionError is raised by makeDBConnection
 
@@ -808,7 +808,7 @@ The following table is taken directly from the Module Guide document for this pr
 % --/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\--
 % --------------------------------------------------------------------------------------
 
-\section{MIS of ImageObject Database }\label{ImageObject database}
+\section{MIS of Labeller Database }\label{Labeller database}
   
   % \wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
   
@@ -816,7 +816,7 @@ The following table is taken directly from the Module Guide document for this pr
   
   \subsection{Module}
   
-  ImageObject Database
+  Labeller Database
   
   \subsection{Uses}
   
@@ -835,11 +835,11 @@ The following table is taken directly from the Module Guide document for this pr
   \hline
   \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
   \hline
-  pushImageObject & ImageObject & - & ValueError \\
+  push Labeller & Labeller & - & ValueError \\
   \hline
-  makeDB Connection & ImageObject & - &  ConnectionError\\
+  makeDB Connection & Credentials & - &  ConnectionError\\
   \hline
-  getImageObjects & String & list[ImageObject] & ValueError \\
+  get Labeller & String & list[Labeller] & ValueError \\
   \hline
   \end{tabular}
   \end{center}
@@ -848,7 +848,7 @@ The following table is taken directly from the Module Guide document for this pr
   
   \subsubsection{State Variables}
   
-  ImageObjects: ImageObjects stored in the database
+  Labellers: Labellers stored in the database
   users: list of authenticated users
   
   \subsubsection{Environment Variables}
@@ -860,11 +860,11 @@ The following table is taken directly from the Module Guide document for this pr
   
   \subsubsection{Access Routine Semantics}
   
-  \noindent pushImageObject(ImageObject o):
+  \noindent pushLabeller(Labeller o):
   \begin{itemize}
-  \item transition: $\text{labels} := \text{labels} \cup l $
+  \item transition: $\text{Labellers} := \text{Labellers} \cup o $
   \item output: 
-  \item exception: Let O be the set of valid ImageObjects. Throw ValueError if $\neg (o \in \text{O})$\\
+  \item exception: Let O be the set of valid Labellers. Throw ValueError if $\neg (o \in \text{O})$\\
   Throw ConnectionError if $\neg (\text{requestor} \in \text{users})$
   \end{itemize}
 
@@ -875,10 +875,10 @@ The following table is taken directly from the Module Guide document for this pr
   \item exception: Throw ConnectionError if credentials are not valid
   \end{itemize}
 
-  \noindent getImageObjects(String q):
+  \noindent getLabeller(String q):
   \begin{itemize}
   \item transition: 
-  \item output: list of ImageObjects satisfying the provided query
+  \item output: list of Labeller satisfying the provided query
   \item exception: Let Q be the set of valid Queries. Throw ValueError if $\neg (q \in \text{Q})$\\
   Throw ConnectionError if $\neg (\text{requestor} \in \text{users})$
 
@@ -1130,87 +1130,6 @@ The following table is taken directly from the Module Guide document for this pr
   Let X be the set of valid Labellers. Throw ValueError if ($\exists \text{labeller} \in \text{labellers} |: \neg (\text{labeller} \in \text{X})$)\\
   Let I be the set of valid ImageObjects. Throw ValueError if ($\exists \text{imageobject} \in \text{imageobjects} |: \neg (\text{imageobject} \in \text{I})$)\\
   Throw ValueError if ($\exists i,j| x = \text{confidence[i][j]} : \neg (x \in \mathbb{R})$)\\
-  \end{itemize}
-
-
-  
-  % \wss{A module without environment variables or state variables is unlikely to
-  %   have a state transition.  In this case a state transition can only occur if
-  %   the module is changing the state of another module.}
-  
-  % \wss{Modules rarely have both a transition and an output.  In most cases you
-  %   will have one or the other.}
-  
-  \subsubsection{Local Functions}
-
-   
-  
-  % \wss{As appropriate} \wss{These functions are for the purpose of specification.
-  %   They are not necessarily something that is going to be implemented
-  %   explicitly.  Even if they are implemented, they are not exported; they only
-  %   have local scope.}
-
-\newpage
-
-
-% --------------------------------------------------------------------------------------
-% --/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\--
-% --------------------------------------------------------------------------------------
-
-\section{MIS of Label Confidence Service }\label{label confidence service}
-  
-  % \wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
-  
-  % \wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
-  
-  \subsection{Module}
-  
-  Label Confidence Service
-  
-  \subsection{Uses}
-  
-  None
-
-  \subsection{Syntax}
-
-
-  
-  \subsubsection{Exported Constants}
-  None
-  \subsubsection{Exported Access Programs}
-  
-  \begin{center}
-  \begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
-  \hline
-  \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
-  \hline
-  getObjects & list[label], list[labeller], list[ImageObject] & list[list[float]]  & ValueError \\
-  
-  \end{tabular}
-  \end{center}
-  
-  \subsection{Semantics}
-  
-  \subsubsection{State Variables}
-  
- None
-  
-  \subsubsection{Environment Variables}
-  
-  None
-  
-  \subsubsection{Assumptions}
-  
-  
-  \subsubsection{Access Routine Semantics}
-  
-  \noindent getObjects(list[label] labels , list[labeller] labellers, list[ImageObject] imageobjects):
-  \begin{itemize}
-  \item transition: 
-  \item output: return the confidence label of each extracted object
-  \item exception: Let L be the set of valid Labels. Throw ValueError if ($\exists \text{label} \in \text{labels} |: \neg (\text{label} \in \text{L})$)\\
-  Let X be the set of valid Labellers. Throw ValueError if ($\exists \text{labeller} \in \text{labellers} |: \neg (\text{labeller} \in \text{X})$)\\
-  Let I be the set of valid ImageObjects. Throw ValueError if ($\exists \text{imageobject} \in \text{imageobjects} |: \neg (\text{imageobject} \in \text{I})$)\\
   \end{itemize}
 
 
