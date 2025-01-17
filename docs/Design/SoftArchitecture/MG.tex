@@ -191,8 +191,21 @@ below, which are leaves in the hierarchy tree, are the modules that will
 actually be implemented.
 
 \begin{description}
-\item [\refstepcounter{mnum} \mthemnum \label{mHH}:] Hardware-Hiding Module
-\item ...
+\item [\refstepcounter{mnum} \mthemnum \label{label server}:] Label Server
+\item [\refstepcounter{mnum} \mthemnum \label{label database connector}:] Label Database Connector
+\item [\refstepcounter{mnum} \mthemnum \label{label database}:] Label Database
+\item [\refstepcounter{mnum} \mthemnum \label{ImageObject database connector}:] ImageObject Database Connector
+\item [\refstepcounter{mnum} \mthemnum \label{ImageObject database}:] ImageObject Database
+\item [\refstepcounter{mnum} \mthemnum \label{Labeller database connector}:] Labeller Database Connector
+\item [\refstepcounter{mnum} \mthemnum \label{Labeller database}:] Labeller Database
+\item [\refstepcounter{mnum} \mthemnum \label{Object Extraction Manager}:]Object Extraction Manager
+\item [\refstepcounter{mnum} \mthemnum \label{Image Service Manager}:]Image Service Manager
+\item [\refstepcounter{mnum} \mthemnum \label{Label Confidence Service}:]Label Confidence Service
+\item [\refstepcounter{mnum} \mthemnum \label{Object Extraction Service}:]Object Extraction Service
+\item [\refstepcounter{mnum} \mthemnum \label{Image Prior Analyzer}:]Image Prior Analyzer
+\item [\refstepcounter{mnum} \mthemnum \label{Labeller Expertise Calculator}:]Labeller Expertise Calculator
+\item [\refstepcounter{mnum} \mthemnum \label{Image Mask Service}:]Image Mask Service
+\item [\refstepcounter{mnum} \mthemnum \label{Image Selection Service}:]Image Selection Service
 \end{description}
 
 
@@ -206,19 +219,25 @@ actually be implemented.
 {Hardware-Hiding Module} & ~ \\
 \midrule
 
-\multirow{7}{0.3\textwidth}{Behaviour-Hiding Module} & ?\\
-& ?\\
-& ?\\
-& ?\\
-& ?\\
-& ?\\
-& ?\\ 
-& ?\\
+\multirow{7}{0.3\textwidth}{Behaviour-Hiding Module}
+& Label Server\\
+& Label Database Connector\\
+& Label Database\\
+& ImageObject Database Connector\\
+& ImageObject Database\\
+& Labeller Database Connector\\
+& Labeller Database\\
+& Object Extraction Manager\\
+& Image Service Manager\\
 \midrule
 
-\multirow{3}{0.3\textwidth}{Software Decision Module} & {?}\\
-& ?\\
-& ?\\
+\multirow{3}{0.3\textwidth}{Software Decision Module}
+& Label Confidence Service \\
+& Object Extraction Service \\
+& Image Prior Analyzer \\
+& Labeller Expertise Calculator \\
+& Image Mask Service \\
+& Image Selection Service \\
 \bottomrule
 
 \end{tabular}
@@ -278,86 +297,76 @@ to be implemented.
 \item[Implemented By:] --
 \end{description}
 
-\subsubsection{Input Format Module (\mref{mInput})}
 
-\begin{description}
-\item[Secrets:]The format and structure of the input data.
-\item[Services:]Converts the input data into the data structure used by the
-  input parameters module.
-\item[Implemented By:] [Your Program Name Here]
-\item[Type of Module:] [Record, Library, Abstract Object, or Abstract Data Type]
-  [Information to include for leaf modules in the decomposition by secrets tree.]
-\end{description}
-
-\subsubsection{Label Server}
+\subsubsection{Label Server (\ref{label server})} 
 \begin{description}
   \item[Secrets:] The steps to accept and store a label.
   \item[Services:] Converts a label JSON object and passes it to be stored in the database.
-  \item[Implemented By:] [Your Program Name Here]
+  \item[Implemented By:] [OrbitWatch]
   \item[Type of Module:] [Abstract Object]
   \end{description}
 
-\subsubsection{Label Database Connector}
+\subsubsection{Label Database Connector (\ref{label database connector})}
 \begin{description}
 \item[Secrets:] The steps to connect to and manipulate a database.
 \item[Services:] Connects to a database and executes pushing and fetching of data.
-\item[Implemented By:] [Your Program Name Here]
+\item[Implemented By:] [OrbitWatch]
 \item[Type of Module:] [Abstract Object]
 \end{description}
 
-\subsubsection{Label Database}
+\subsubsection{Label Database (\ref{label database})}
 \begin{description}
 \item[Secrets:] The storing and retrieving of data.
 \item[Services:] Allows connection by a database connector to facilitate the storage and retreival of data.
-\item[Implemented By:] [Your Program Name Here]
+\item[Implemented By:] [OrbitWatch]
 \item[Type of Module:] [Abstract Object]
 \end{description}
 
-\subsubsection{ImageObject Database Connector}
+\subsubsection{ImageObject Database Connector (\ref{ImageObject database connector})}
 \begin{description}
 \item[Secrets:] The steps to connect to and manipulate a database.
 \item[Services:] Connects to a database and executes pushing and fetching of data.
-\item[Implemented By:] [Your Program Name Here]
+\item[Implemented By:] [OrbitWatch]
 \item[Type of Module:] [Abstract Object]
 \end{description}
 
-\subsubsection{ImageObject Database}
+\subsubsection{ImageObject Database (\ref{ImageObject database})}
 \begin{description}
 \item[Secrets:] The storing and retrieving of data.
 \item[Services:] Allows connection by a database connector to facilitate the storage and retreival of data.
-\item[Implemented By:] [Your Program Name Here]
+\item[Implemented By:] [OrbitWatch]
 \item[Type of Module:] [Abstract Object]
 \end{description}
 
-\subsubsection{Labeller Database Connector}
+\subsubsection{Labeller Database Connector (\ref{Labeller database connector})}
 \begin{description}
 \item[Secrets:] The steps to connect to and manipulate a database.
 \item[Services:] Connects to a database and executes pushing and fetching of data.
-\item[Implemented By:] [Your Program Name Here]
+\item[Implemented By:] [OrbitWatch]
 \item[Type of Module:] [Abstract Object]
 \end{description}
 
-\subsubsection{Labeller Database}
+\subsubsection{Labeller Database (\ref{Labeller database})}
 \begin{description}
 \item[Secrets:] The storing and retrieving of data.
 \item[Services:] Allows connection by a database connector to facilitate the storage and retreival of data.
-\item[Implemented By:] [Your Program Name Here]
+\item[Implemented By:] [OrbitWatch]
 \item[Type of Module:] [Abstract Object]
 \end{description}
 
-\subsubsection{Object Extraction Manager}
+\subsubsection{Object Extraction Manager (\ref{Object Extraction Manager})}
 \begin{description}
 \item[Secrets:] The algorithms used to aggregate labels into usable ImageObjects for Model training.
 \item[Services:] Calls other modules to efficiently compute the most likely set of objects from a set of independent labels.
-\item[Implemented By:] [Your Program Name Here]
+\item[Implemented By:] [OrbitWatch]
 \item[Type of Module:] [Abstract Object]
 \end{description}
 
-\subsubsection{Image Service Manager}
+\subsubsection{Image Service Manager (\ref{Image Service Manager})}
 \begin{description}
 \item[Secrets:] The algorithms used to select images to be served to a user.
 \item[Services:] Calls other modules to select the next images to be server to a user.
-\item[Implemented By:] [Your Program Name Here]
+\item[Implemented By:] [OrbitWatch]
 \item[Type of Module:] [Abstract Object]
 \end{description}
 
@@ -375,51 +384,51 @@ to be implemented.
 \item[Implemented By:] --
 \end{description}
 
-\subsubsection{Label Confidence Service}
+\subsubsection{Label Confidence Service (\ref{Label Confidence Service})}
 \begin{description}
 \item[Secrets:] The algorithms used to determine confidence in detected ImageObjects.
 \item[Services:] Calculates the confidence of a detected ImageObject.
-\item[Implemented By:] [Your Program Name Here]
+\item[Implemented By:] [OrbitWatch]
 \item[Type of Module:] [Abstract Object]
 \end{description}
 
-\subsubsection{Object Extraction Service}
+\subsubsection{Object Extraction Service (\ref{Object Extraction Service})}
 \begin{description}
 \item[Secrets:] The algorithms used to extract ImageObjects.
 \item[Services:] Calculates the most likely ImageObjects from a set of labels and priors.
-\item[Implemented By:] [Your Program Name Here]
+\item[Implemented By:] [OrbitWatch]
 \item[Type of Module:] [Abstract Object]
 \end{description}
 
-\subsubsection{Image Prior Analyzer}
+\subsubsection{Image Prior Analyzer (\ref{Image Prior Analyzer})}
 \begin{description}
 \item[Secrets:] The algorithms used to calculate ImagePriors.
 \item[Services:] Calculates the prior liklihood of a pixel being relevant.
-\item[Implemented By:] [Your Program Name Here]
+\item[Implemented By:] [OrbitWatch]
 \item[Type of Module:] [Abstract Object]
 \end{description}
 
-\subsubsection{Labeller Expertise Calculator}
+\subsubsection{Labeller Expertise Calculator (\ref{Labeller Expertise Calculator})}
 \begin{description}
 \item[Secrets:] The algorithms used to calculate Labeller Expertise.
 \item[Services:] Calculates the expertise of a labeller in a given class using previous labels.
-\item[Implemented By:] [Your Program Name Here]
+\item[Implemented By:] [OrbitWatch]
 \item[Type of Module:] [Abstract Object]
 \end{description}
 
-\subsubsection{Image Mask Service}
+\subsubsection{Image Mask Service (\ref{Image Mask Service})}
 \begin{description}
 \item[Secrets:] The algorithms used to modify a given image.
 \item[Services:] Modifies an image in an attempt to improve labelling accuracy or efficiency.
-\item[Implemented By:] [Your Program Name Here]
+\item[Implemented By:] [OrbitWatch]
 \item[Type of Module:] [Abstract Object]
 \end{description}
 
-\subsubsection{Image Selection Service}
+\subsubsection{Image Selection Service (\ref{Image Selection Service})}
 \begin{description}
 \item[Secrets:] The algorithms used to select the next image to show a user.
 \item[Services:] Selects an image to show to a given user. 
-\item[Implemented By:] [Your Program Name Here]
+\item[Implemented By:] [OrbitWatch]
 \item[Type of Module:] [Abstract Object]
 \end{description}
 
