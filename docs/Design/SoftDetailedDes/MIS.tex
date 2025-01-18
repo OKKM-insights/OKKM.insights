@@ -467,6 +467,66 @@ None
 \subsubsection{Local Functions}
 None
 
+
+
+
+
+\section{MIS of Project Manager} \label{pm} 
+    \subsection{Module}
+        LDBC (ProjectManager)
+
+    \subsection{Uses}
+        ProjectCollectionManager \ref{pcm}\\
+        ProjectDBConnector \ref{cidbc}
+
+    \subsection{Syntax}
+    \subsubsection{Exported Constants}
+        None
+
+    \subsubsection{Exported Access Programs}
+    \begin{center}\begin{tabular}{p{3cm} p{4cm} p{3cm} p{3cm}}
+    \hline\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+    \hline
+        createProject & projectName: String, metadata: Map(String, String) & Project & DatabaseException \\
+        addImageToProject & projectId: String, byte[] & void & DatabaseException \\
+    \hline
+    \end{tabular}\end{center}
+
+    \subsection{Semantics}
+    \subsubsection{State Variables}
+        None
+
+    \subsubsection{Environment Variables}
+        None
+
+    \subsubsection{Assumptions}
+        None
+
+    \subsubsection{Access Routine Semantics}
+        \noindent createProject(projectName, metadata)
+        \begin{itemize}
+            \item output: Returns a newly created Project object with a unique identifier and any associated metadata.
+            \item exception: \textbf{ProjectAlreadyExistsException}: Thrown if a project with the same name or identifier already exists. \textbf{DatabaseException}: Thrown if any error occurs while writing to the database.
+        \end{itemize}
+        \noindent addImageToProject(projectId, imageData)
+        \begin{itemize}
+            \item exception: \textbf{InvalidImageException}: Thrown if the image data is corrupted or unsupported. \textbf{ProjectNotFoundException}: Thrown if the target project does not exist in the system. \textbf{DatabaseException}: Thrown if a database error occurs while storing the image.
+        \end{itemize}
+
+    \subsubsection{Local Functions}
+        Internal helper methods (e.g., validation, transformations) are not exported.
+
+% OG
+\section{MIS of Project Collection Manager} \label{pcm} 
+
+
+
+
+% OG
+\section{MIS of Core Image Database Connector} \label{cidbc} 
+
+
+
 \section{MIS of Account Database Connector} \label{accdc}
 
 \subsection{Module}
