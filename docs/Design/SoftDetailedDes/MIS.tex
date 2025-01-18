@@ -518,6 +518,42 @@ None
 
 % OG
 \section{MIS of Project Collection Manager} \label{pcm} 
+    \subsection{Module}
+        PCM (ProjectCollectionManager)
+
+    \subsection{Uses}
+        ProjectDBConnector \ref{cidbc}
+
+    \subsection{Syntax}
+    \subsubsection{Exported Constants}
+        None
+
+    \subsubsection{Exported Access Programs}
+    \begin{center}\begin{tabular}{p{3cm} p{3cm} p{3cm} p{3cm}}
+    \hline\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+    \hline
+        getAvailableProjects & None & List(Project) & DatabaseException \\
+    \hline
+    \end{tabular}\end{center}
+
+    \subsection{Semantics}
+    \subsubsection{State Variables}
+        None
+
+    \subsubsection{Environment Variables}
+        None
+
+    \subsubsection{Assumptions}
+        None
+
+    \subsubsection{Access Routine Semantics}
+        \noindent getAvailableProjects()
+        \begin{itemize}
+            \item output: Returns a list of existing Project objects (could be filtered by user permissions or some criteria, if applicable).
+            \item exception: \textbf{ProjectAlreadyExistsException}: Thrown if a project with the same name or identifier already exists. 
+        \end{itemize}
+    \subsubsection{Local Functions}
+        Internal helper methods (e.g., transformations) are not exported.
 
 
 
