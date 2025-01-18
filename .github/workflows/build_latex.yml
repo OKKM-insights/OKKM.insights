@@ -23,6 +23,7 @@ jobs:
       
     - name: Build PDFs
       run: |
+        apt-get install -y texlive-latex-recommended
         (cd ./docs/HazardAnalysis && latexmk -pdf HazardAnalysis.tex)
         (cd ./docs/DevelopmentPlan && latexmk -pdf DevelopmentPlan.tex)
         (cd ./docs/ProblemStatementAndGoals && latexmk -pdf ProblemStatement.tex)
