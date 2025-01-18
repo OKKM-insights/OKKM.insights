@@ -491,6 +491,203 @@ None
 \subsubsection{Local Functions}
 None
 
+
+
+
+% OG
+\section{MIS of Project Manager} \label{pm} 
+    \subsection{Module}
+        PM (ProjectManager)
+
+    \subsection{Uses}
+        ProjectCollectionManager \ref{pcm}\\
+        CoreImageDBConnector \ref{cidbc}
+
+    \subsection{Syntax}
+    \subsubsection{Exported Constants}
+        None
+
+    \subsubsection{Exported Access Programs}
+    \begin{center}\begin{tabular}{p{3cm} p{4cm} p{3cm} p{3cm}}
+    \hline\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+    \hline
+        createProject & projectName: String, metadata: Map(String, String) & Project & DatabaseException \\
+        addImageToProject & projectId: String, byte[] & void & DatabaseException \\
+    \hline
+    \end{tabular}\end{center}
+
+    \subsection{Semantics}
+    \subsubsection{State Variables}
+        None
+
+    \subsubsection{Environment Variables}
+        None
+
+    \subsubsection{Assumptions}
+        None
+
+    \subsubsection{Access Routine Semantics}
+        \noindent createProject(projectName, metadata)
+        \begin{itemize}
+            \item output: Returns a newly created Project object with a unique identifier and any associated metadata.
+            \item exception: \textbf{ProjectAlreadyExistsException}: Thrown if a project with the same name or identifier already exists. \textbf{DatabaseException}: Thrown if any error occurs while writing to the database.
+        \end{itemize}
+        \noindent addImageToProject(projectId, imageData)
+        \begin{itemize}
+            \item exception: \textbf{InvalidImageException}: Thrown if the image data is corrupted or unsupported. \textbf{ProjectNotFoundException}: Thrown if the target project does not exist in the system. \textbf{DatabaseException}: Thrown if a database error occurs while storing the image.
+        \end{itemize}
+
+    \subsubsection{Local Functions}
+        Internal helper methods (e.g., validation, transformations) are not exported.
+
+% OG
+\section{MIS of Project Collection Manager} \label{pcm} 
+    \subsection{Module}
+        PCM (ProjectCollectionManager)
+
+    \subsection{Uses}
+        ProjectDBConnector \ref{pdbc}
+
+    \subsection{Syntax}
+    \subsubsection{Exported Constants}
+        None
+
+    \subsubsection{Exported Access Programs}
+    \begin{center}\begin{tabular}{p{3cm} p{3cm} p{3cm} p{3cm}}
+    \hline\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+    \hline
+        getAvailableProjects & None & List(Project) & DatabaseException \\
+    \hline
+    \end{tabular}\end{center}
+
+    \subsection{Semantics}
+    \subsubsection{State Variables}
+        None
+
+    \subsubsection{Environment Variables}
+        None
+
+    \subsubsection{Assumptions}
+        None
+
+    \subsubsection{Access Routine Semantics}
+        \noindent getAvailableProjects()
+        \begin{itemize}
+            \item output: Returns a list of existing Project objects (could be filtered by user permissions or some criteria, if applicable).
+            \item exception: \textbf{ProjectAlreadyExistsException}: Thrown if a project with the same name or identifier already exists. 
+        \end{itemize}
+    \subsubsection{Local Functions}
+        Internal helper methods (e.g., transformations) are not exported.
+
+
+
+% OG
+\section{MIS of Project Database Connector} \label{pdbc} 
+    \subsection{Module}
+        PDBC (ProjectDBConnector)
+
+    \subsection{Uses}
+        MySQL - ProjectDB
+
+    \subsection{Syntax}
+    \subsubsection{Exported Constants}
+        None
+
+    \subsubsection{Exported Access Programs}
+    \begin{center}\begin{tabular}{p{3cm} p{4cm} p{3cm} p{3cm}}
+    \hline\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+    \hline
+        fetchProject & projectId: String & Project & DatabaseException \\
+        fetchProjectList & None & List(Project) & DatabaseException \\
+        storeProject & project : Project & None & DatabaseException \\
+    \hline
+    \end{tabular}\end{center}
+
+    \subsection{Semantics}
+    \subsubsection{State Variables}
+        None
+
+    \subsubsection{Environment Variables}
+        databaseConnection: connection to relational database
+
+    \subsubsection{Assumptions}
+        None
+
+    \subsubsection{Access Routine Semantics}
+        \noindent storeProject(project : Project)
+        \begin{itemize}
+            \item output: No direct output; success indicates the Project was successfully stored.
+            \item exception: \textbf{DatabaseException}: Thrown if there is an issue communicating with any of the underlying databases. \textbf{DuplicateProjectException}: Thrown if the project already exists
+        \end{itemize}
+        \noindent fetchProjectList()
+        \begin{itemize}
+            \item output: Returns a list of all Project objects stored in the database.
+            \item exception: \textbf{DatabaseException}: Thrown if there is an issue communicating with any of the underlying databases. 
+        \end{itemize}
+        \noindent fetchProject(projectId : String)
+        \begin{itemize}
+            \item output: Returns the Project object corresponding to the given projectId.
+            \item exception: \textbf{DatabaseException}: Thrown if there is an issue communicating with any of the underlying databases. \textbf{ProjectNotFoundException}: Thrown if the project with the given ID does not exist.
+        \end{itemize}
+
+    \subsubsection{Local Functions}
+        Any database query-building or data-mapping helpers remain internal and are not exported.
+
+% OG
+\section{MIS of Core Image Database Connector} \label{cidbc}
+    \subsection{Module}
+        CIDBC (CoreImageDBConnector)
+
+    \subsection{Uses}
+        MySQL - CoreImageDB
+
+    \subsection{Syntax}
+    \subsubsection{Exported Constants}
+        None
+
+    \subsubsection{Exported Access Programs}
+    \begin{center}\begin{tabular}{p{3cm} p{4cm} p{3cm} p{3cm}}
+    \hline\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+    \hline
+        storeImage & projectId: String imageData: byte[] & String & DatabaseException \\
+        fetchImage & imageId: String & Image & DatabaseException \\
+        fetchImageForProject & projectId: String & List(Image) & DatabaseException \\
+    \hline
+    \end{tabular}\end{center}
+
+    \subsection{Semantics}
+    \subsubsection{State Variables}
+        None
+
+    \subsubsection{Environment Variables}
+        databaseConnection: connection to relational database
+
+    \subsubsection{Assumptions}
+        None
+
+    \subsubsection{Access Routine Semantics}
+        \noindent storeImage(projectId, imageData)
+        \begin{itemize}
+            \item output: Returns a newly generated String identifier (imageId) that uniquely identifies the stored image in the database.
+            \item exception: \textbf{DatabaseException}: Thrown if there is an issue communicating with any of the underlying databases. \textbf{ProjectNotFoundException}: Thrown if the specified projectId does not exist in the database.
+        \end{itemize}
+        \noindent fetchImage(imageId)
+        \begin{itemize}
+            \item output: Returns an Image object (or equivalent data structure) for the given imageId, including any relevant metadata or binary content.
+            \item exception: \textbf{DatabaseException}: Thrown if there is an issue communicating with any of the underlying databases. 
+            \textbf{ImageNotFoundException}: Thrown if no image with the specified imageId exists in the database.
+        \end{itemize}
+        \noindent fetchImagesForProject(projectId)
+        \begin{itemize}
+            \item output: Returns a list of Image objects associated with the specified projectId.
+            \item exception: \textbf{DatabaseException}: Thrown if there is an issue communicating with any of the underlying databases. \textbf{ProjectNotFoundException}: Thrown if the project with the given ID does not exist.
+        \end{itemize}
+    \subsubsection{Local Functions}
+        Any database query-building or data-mapping helpers remain internal and are not exported.
+
+
+
+
 \section{MIS of Account Database Connector} \label{accdc}
 
 \subsection{Module}
@@ -1818,6 +2015,7 @@ Project Creation Controller
 
 \subsection{Uses}
 
+Project Manager \ref{pm}\\
 Project Creation Interface \ref{pci}\\
 Project \ref{project} \\
 
@@ -2020,6 +2218,7 @@ Image Upload Interface
 
 \subsection{Uses}
 
+Project Manager \ref{pm}\\
 
 \subsection{Syntax}
 
@@ -2299,6 +2498,7 @@ Project Selection Controller
 
 \subsection{Uses}
 
+Project Collection Manager \ref{pcm}\\
 Project Selection Interface \ref{psi}\\
 Project \ref{project} \\
 
