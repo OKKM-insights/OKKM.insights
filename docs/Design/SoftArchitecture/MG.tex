@@ -1310,7 +1310,13 @@ Our platform will center around secure, efficient, and scalable communication pr
     
         \textbf{Statelessness:} The APIs will be stateless, allowing for easier scaling and handling of parallel requests, critical for enabling multiple users to label the same images concurrently.
         
-    
+    \item Backend Infrastructure and AWS Communication:
+
+        \textbf{AWS Hosting:} The backend services will be deployed on AWS, taking advantage of its scalable infrastructure and regional availability to reduce latency and increase reliability.
+        
+        \textbf{Microservices \& API Gateway}: We may structure the backend as microservices behind an API Gateway to manage routing, authentication, and rate limiting more efficiently.
+
+        \textbf{AWS Database Connectivity:} The backend will communicate with AWS-hosted databases (Amazon RDS) via secure connections using AWS SDKs or native drivers over HTTPS or proprietary secured protocols.
 \end{enumerate}
 
 
