@@ -1296,7 +1296,23 @@ The following hierarchy is represented as a directed acyclic graph, with arrows 
 
 \section{Design of Communication Protocols}
 
-\wss{If appropriate}
+
+Our platform will center around secure, efficient, and scalable communication protocols to facilitate interactions between the frontend, backend, and external services. Below is an outline of the key design considerations:
+
+\begin{enumerate}
+    \item Client-to-Backend Communication:
+
+        \textbf{HTTPS/RESTful APIs:} All communication between the web-based frontend and the backend will occur over HTTPS using RESTful API endpoints. This ensures data in transit is encrypted and secure.
+    
+        \textbf{Authentication \& Authorization:} We will implement robust authentication mechanisms such as OAuth2 or JWT tokens for verifying and controlling access to API resources.
+    
+        \textbf{Structured Data Format:} Requests and responses will primarily use JSON for lightweight, human-readable, and easily parsed messages.
+    
+        \textbf{Statelessness:} The APIs will be stateless, allowing for easier scaling and handling of parallel requests, critical for enabling multiple users to label the same images concurrently.
+        
+    
+\end{enumerate}
+
 
 \section{Timeline}
 
