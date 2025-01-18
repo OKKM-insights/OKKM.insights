@@ -230,132 +230,46 @@ have local scope.}
 
 % OG
 \section{MIS of Report Manager} \label{rm} 
-\subsection{Module}
-    RM (ReportManager)
+    \subsection{Module}
+        RM (ReportManager)
 
-\subsection{Uses}
-    LabelDBConnector \ref{label database connector}\\
-    ObjectsOnImageDBConnector \ref{ImageObject database connector}\\
-    RawImageDBConnector \ref{cidbc}\\
-    ProjectDBConnector \ref{pdbc}
+    \subsection{Uses}
+        LabelDBConnector \ref{label database connector}\\
+        ObjectsOnImageDBConnector \ref{ImageObject database connector}\\
+        RawImageDBConnector \ref{cidbc}\\
+        ProjectDBConnector \ref{pdbc}
 
-\subsection{Syntax}
-\subsubsection{Exported Constants}
-    None
+    \subsection{Syntax}
+    \subsubsection{Exported Constants}
+        None
 
-\subsubsection{Exported Access Programs}
-\begin{center}\begin{tabular}{p{3cm} p{4cm} p{3cm} p{3cm}}
-\hline\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
-\hline
-    generateReport & projectId: String & Report & DatabaseException \\
-\hline
-\end{tabular}\end{center}
+    \subsubsection{Exported Access Programs}
+    \begin{center}\begin{tabular}{p{3cm} p{4cm} p{3cm} p{3cm}}
+    \hline\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+    \hline
+        generateReport & projectId: String & Report & DatabaseException \\
+    \hline
+    \end{tabular}\end{center}
 
-\subsection{Semantics}
-\subsubsection{State Variables}
-    None
+    \subsection{Semantics}
+    \subsubsection{State Variables}
+        None
 
-\subsubsection{Environment Variables}
-    None
+    \subsubsection{Environment Variables}
+        None
 
-\subsubsection{Assumptions}
-    None
+    \subsubsection{Assumptions}
+        None
 
-\subsubsection{Access Routine Semantics}
-    \noindent generateReport(projectId: String)
-    \begin{itemize}
-        \item output: Returns a Report object that aggregates data from the label, object-on-image, raw image, and project databases.
-        \item exception: DatabaseException: Thrown if there is an issue communicating with any of the underlying databases.
-    \end{itemize}
+    \subsubsection{Access Routine Semantics}
+        \noindent generateReport(projectId: String)
+        \begin{itemize}
+            \item output: Returns a Report object that aggregates data from the label, object-on-image, raw image, and project databases.
+            \item exception: DatabaseException: Thrown if there is an issue communicating with any of the underlying databases.
+        \end{itemize}
 
-\subsubsection{Local Functions}
-    Any helper methods used internally to combine or transform the data (e.g., formatting label lists, summarizing object data) are not exported and thus not specified here.
-
-
-% OG
-\section{MIS of Label Database Connector} \label{ldbc} 
-\subsection{Module}
-    LDBC (LabelDBConnector)
-
-\subsection{Uses}
-    MySQL - LabelDB
-
-\subsection{Syntax}
-\subsubsection{Exported Constants}
-    None
-
-\subsubsection{Exported Access Programs}
-\begin{center}\begin{tabular}{p{3cm} p{4cm} p{3cm} p{3cm}}
-\hline\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
-\hline
-    fetchLabels & projectId: String & List(Label) & DatabaseException \\
-\hline
-\end{tabular}\end{center}
-
-\subsection{Semantics}
-\subsubsection{State Variables}
-    None
-
-\subsubsection{Environment Variables}
-    databaseConnection: connection to relational database
-
-\subsubsection{Assumptions}
-    None
-
-\subsubsection{Access Routine Semantics}
-    \noindent fetchLabels(projectId: String)
-    \begin{itemize}
-        \item output: Returns a list of Label objects associated with the specified projectId.
-        \item exception: DatabaseException: Thrown if there is an issue communicating with any of the underlying databases.
-    \end{itemize}
-
-\subsubsection{Local Functions}
-    None
-
-% OG
-\section{MIS of Objects Database Connector} \label{odbc} 
-\subsection{Module}
-    ODBC (ObjectsDBConnector)
-
-\subsection{Uses}
-    MySQL - ObjectsDB
-
-\subsection{Syntax}
-\subsubsection{Exported Constants}
-    None
-
-\subsubsection{Exported Access Programs}
-\begin{center}\begin{tabular}{p{3cm} p{4cm} p{3cm} p{3cm}}
-\hline\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
-\hline
-    fetchObjects & projectId: String & List(DetectedObject) & DatabaseException \\
-\hline
-\end{tabular}\end{center}
-
-\subsection{Semantics}
-\subsubsection{State Variables}
-    None
-
-\subsubsection{Environment Variables}
-    databaseConnection: connection to relational database
-
-\subsubsection{Assumptions}
-    None
-
-\subsubsection{Access Routine Semantics}
-    \noindent fetchObjects(projectId: String)
-    \begin{itemize}
-        \item output: Returns a list of DetectedObject instances (e.g., bounding box info, object types, confidence scores) found in images tied to projectId.
-        \item exception: DatabaseException: Thrown if there is an issue communicating with any of the underlying databases.
-    \end{itemize}
-
-\subsubsection{Local Functions}
-    None
-
-
-
-
-
+    \subsubsection{Local Functions}
+        Any helper methods used internally to combine or transform the data (e.g., formatting label lists, summarizing object data) are not exported and thus not specified here.
 
 
   
