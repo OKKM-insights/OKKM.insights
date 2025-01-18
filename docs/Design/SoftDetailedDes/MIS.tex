@@ -235,7 +235,7 @@ have local scope.}
 
 \subsection{Uses}
     LabelDBConnector \ref{ldbc}\\
-    ObjectsOnImageDBConnector \ref{ooidbc}\\
+    ObjectsOnImageDBConnector \ref{odbc}\\
     RawImageDBConnector \ref{ridbc}\\
     ProjectDBConnector \ref{pdbc}
 
@@ -313,7 +313,44 @@ have local scope.}
     None
 
 % OG
-\section{MIS of Objects Database Connector} \label{ooidbc} 
+\section{MIS of Objects Database Connector} \label{odbc} 
+\subsection{Module}
+    ODBC (ObjectsDBConnector)
+
+\subsection{Uses}
+    MySQL - ObjectsDB
+
+\subsection{Syntax}
+\subsubsection{Exported Constants}
+    None
+
+\subsubsection{Exported Access Programs}
+\begin{center}\begin{tabular}{p{3cm} p{4cm} p{3cm} p{3cm}}
+\hline\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+    fetchObjects & projectId: String & List(DetectedObject) & DatabaseException \\
+\hline
+\end{tabular}\end{center}
+
+\subsection{Semantics}
+\subsubsection{State Variables}
+    None
+
+\subsubsection{Environment Variables}
+    databaseConnection: connection to relational database
+
+\subsubsection{Assumptions}
+    None
+
+\subsubsection{Access Routine Semantics}
+    \noindent fetchObjects(projectId: String)
+    \begin{itemize}
+        \item output: Returns a list of DetectedObject instances (e.g., bounding box info, object types, confidence scores) found in images tied to projectId.
+        \item exception: DatabaseException: Thrown if there is an issue communicating with any of the underlying databases.
+    \end{itemize}
+
+\subsubsection{Local Functions}
+    None
 
 % OG
 \section{MIS of Image Database Connector} \label{ridbc} 
