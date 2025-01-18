@@ -266,9 +266,18 @@ Image
 \midrule
 
 
+\end{tabular}
+\caption{Module Hierarchy 1}
+\label{TblMH}
+\end{table}
+\begin{table}[h!]
+  \centering
+\begin{tabular}{p{0.3\textwidth} p{0.6\textwidth}}
+  \toprule
+  \textbf{Level 1} & \textbf{Level 2}\\
+  \midrule
 
-
-\multirow{7}{0.3\textwidth}{Behaviour-Hiding Module} & Account Creation Interface\\
+\multirow{26}{0.3\textwidth}{Behaviour-Hiding Module} & Account Creation Interface\\
 & Account Database\\
 & Account Database Connector\\
 & Account Update Interface\\
@@ -298,8 +307,18 @@ Image
 & Object Extraction Manager\\
 & Image Service Manager\\
 \midrule
+\end{tabular}
+\caption{Module Hierarchy 2}
+\label{TblMH}
+\end{table}
+\begin{table}[h!]
+  \centering
 
-\multirow{3}{0.3\textwidth}{Software Decision Module} & {Account Creation Controller}\\
+\begin{tabular}{p{0.3\textwidth} p{0.6\textwidth}}
+  \toprule
+  \textbf{Level 1} & \textbf{Level 2}\\
+  \midrule
+\multirow{12}{0.3\textwidth}{Software Decision Module} & {Account Creation Controller}\\
 & Account Update Controller\\
 & Authentication Controller\\
 & Satellite Image Request Controller\\
@@ -318,9 +337,12 @@ Image
 \bottomrule
 
 \end{tabular}
-\caption{Module Hierarchy}
+\caption{Module Hierarchy 3}
 \label{TblMH}
 \end{table}
+\newpage
+ .
+\newpage
 
 \section{Connection Between Requirements and Design} \label{SecConnection}
 
@@ -392,12 +414,12 @@ to be implemented.
 
 \subsubsection{Account Database (\mref{accd})}
 
-\begin{description}
+\begin{description} 
 \item[Secrets:] The data structure, storage, and access mechanisms for account related data.
 \item[Services:] Can store, insert, update and retrieve user account data.
 \item[Implemented By:] OrbitWatch
 \item[Type of Module:] Abstract Data Type
-\end{description}
+\end{description} 
 
 \subsubsection{Account Database Connector (\mref{accdc})}
 
