@@ -473,7 +473,7 @@ None
 
 \section{MIS of Project Manager} \label{pm} 
     \subsection{Module}
-        LDBC (ProjectManager)
+        PM (ProjectManager)
 
     \subsection{Uses}
         ProjectCollectionManager \ref{pcm}\\
@@ -610,7 +610,57 @@ None
         Any database query-building or data-mapping helpers remain internal and are not exported.
 
 % OG
-\section{MIS of Project Database Connector} \label{pdbc} 
+\section{MIS of Core Image Database Connector} \label{cidbc}
+    \subsection{Module}
+        CIDBC (CoreImageDBConnector)
+
+    \subsection{Uses}
+        MySQL - CoreImageDB
+
+    \subsection{Syntax}
+    \subsubsection{Exported Constants}
+        None
+
+    \subsubsection{Exported Access Programs}
+    \begin{center}\begin{tabular}{p{3cm} p{4cm} p{3cm} p{3cm}}
+    \hline\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+    \hline
+        storeImage & projectId: String imageData: byte[] & String & DatabaseException \\
+        fetchImage & imageId: String & Image & DatabaseException \\
+        fetchImageForProject & projectId: String & List(Image) & DatabaseException \\
+    \hline
+    \end{tabular}\end{center}
+
+    \subsection{Semantics}
+    \subsubsection{State Variables}
+        None
+
+    \subsubsection{Environment Variables}
+        databaseConnection: connection to relational database
+
+    \subsubsection{Assumptions}
+        None
+
+    \subsubsection{Access Routine Semantics}
+        \noindent storeImage(projectId, imageData)
+        \begin{itemize}
+            \item output: Returns a newly generated String identifier (imageId) that uniquely identifies the stored image in the database.
+            \item exception: \textbf{DatabaseException}: Thrown if there is an issue communicating with any of the underlying databases. \textbf{ProjectNotFoundException}: Thrown if the specified projectId does not exist in the database.
+        \end{itemize}
+        \noindent fetchImage(imageId)
+        \begin{itemize}
+            \item output: Returns an Image object (or equivalent data structure) for the given imageId, including any relevant metadata or binary content.
+            \item exception: \textbf{DatabaseException}: Thrown if there is an issue communicating with any of the underlying databases. 
+            \textbf{ImageNotFoundException}: Thrown if no image with the specified imageId exists in the database.
+        \end{itemize}
+        \noindent fetchImagesForProject(projectId)
+        \begin{itemize}
+            \item output: Returns a list of Image objects associated with the specified projectId.
+            \item exception: \textbf{DatabaseException}: Thrown if there is an issue communicating with any of the underlying databases. \textbf{ProjectNotFoundException}: Thrown if the project with the given ID does not exist.
+        \end{itemize}
+    \subsubsection{Local Functions}
+        Any database query-building or data-mapping helpers remain internal and are not exported.
+
 
 
 
