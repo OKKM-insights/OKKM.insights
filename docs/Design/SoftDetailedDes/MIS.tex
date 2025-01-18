@@ -265,33 +265,78 @@ Represents annotations made by a labeller, linking to specific objects in an ima
 The following table is taken directly from the Module Guide document for this project.
 
 \begin{table}[h!]
-\centering
-\begin{tabular}{p{0.3\textwidth} p{0.6\textwidth}}
-\toprule
-\textbf{Level 1} & \textbf{Level 2}\\
-\midrule
-
-{Hardware-Hiding} & ~ \\
-\midrule
-
-\multirow{7}{0.3\textwidth}{Behaviour-Hiding} & Input Parameters\\
-& Output Format\\
-& Output Verification\\
-& Temperature ODEs\\
-& Energy Equations\\ 
-& Control Module\\
-& Specification Parameters Module\\
-\midrule
-
-\multirow{3}{0.3\textwidth}{Software Decision} & {Sequence Data Structure}\\
-& ODE Solver\\
-& Plotting\\
-\bottomrule
-
-\end{tabular}
-\caption{Module Hierarchy}
-\label{TblMH}
-\end{table}
+  \centering
+  \begin{tabular}{p{0.3\textwidth} p{0.6\textwidth}}
+  \toprule
+  \textbf{Level 1} & \textbf{Level 2}\\
+  \midrule
+  
+  \textbf{Hardware-Hiding Module} & ~ \\
+  \midrule
+  
+  \multirow{10}{0.3\textwidth}{\textbf{Behaviour-Hiding Module}} 
+   & Account Creation Interface\\
+   & Account Database\\
+   & Account Update Interface\\
+   & Login Interface\\
+   & Access Token\\
+   & Labeler\\
+   & Client\\
+   & User\\
+   & Satellite Image Request Interface\\
+   & Satellite Image Request\\
+   & Project Creation Interface\\
+   & Project\\
+   & Service Request Failure Interface\\
+   & Image Upload Interface\\
+   & Report Interface\\
+   & Report\\
+   & Project Selection Interface\\
+   & Labeling Interface\\
+   & Image\\
+   & Label Server\\
+   & Label Database Connector\\
+   & Label Database\\
+   & ImageObject Database Connector\\
+   & ImageObject Database\\
+   & Labeller Database Connector\\
+   & Labeller Database\\
+   & Object Extraction Manager\\
+   & Image Service Manager\\
+   % New ML/Model modules (Behavior-Hiding)
+   & ModelCreation (Abstract Class)\\
+   & CNNModelCreation\\
+   & OtherModelCreation\\
+   & ModelManager\\
+   & MLModelDatabase\\
+  \midrule
+  
+  \multirow{10}{0.3\textwidth}{\textbf{Software Decision Module}} 
+   & Account Creation Controller\\
+   & Account Database Connector\\
+   & Account Update Controller\\
+   & Authentication Controller\\
+   & Satellite Image Request Controller\\
+   & Project Creation Controller\\
+   & Report Controller\\
+   & Project Selection Controller\\
+   & Labeling Controller\\
+   & Label Confidence Service\\
+   & Object Extraction Service\\
+   & Image Prior Analyzer\\
+   & Labeller Expertise Calculator\\
+   & Image Mask Service\\
+   & Image Selection Service\\
+   % New ML/Model modules (Software Decision)
+   & ModelComparision Evaluation\\
+   & CrossValidation Evaluation\\
+   & ModelTrainingService\\
+   & ModelEvaluationService\\
+  \bottomrule
+  \end{tabular}
+  \caption{Module Hierarchy}
+  \label{TblMH}
+  \end{table}
 
 \newpage
 ~\newpage
