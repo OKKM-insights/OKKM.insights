@@ -228,7 +228,7 @@ explicitly.  Even if they are implemented, they are not exported; they only
 have local scope.}
 
 
-
+% OG
 \section{MIS of Report Manager} \label{rm} 
 \subsection{Module}
     RM (ReportManager)
@@ -270,6 +270,52 @@ have local scope.}
 
 \subsubsection{Local Functions}
     Any helper methods used internally to combine or transform the data (e.g., formatting label lists, summarizing object data) are not exported and thus not specified here.
+
+    
+% OG
+\section{MIS of Label Database Connector} \label{ldbc} 
+\subsection{Module}
+    LDBC (LabelDBConnector)
+
+\subsection{Uses}
+    MySQL - LabelDB
+
+\subsection{Syntax}
+\subsubsection{Exported Constants}
+    None
+
+\subsubsection{Exported Access Programs}
+\begin{center}\begin{tabular}{p{3cm} p{4cm} p{3cm} p{3cm}}
+\hline\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+    fetchLabels & projectId: String & List(Label) & DatabaseException \\
+\hline
+\end{tabular}\end{center}
+
+\subsection{Semantics}
+\subsubsection{State Variables}
+    None
+
+\subsubsection{Environment Variables}
+    databaseConnection: connection to relational database
+
+\subsubsection{Assumptions}
+    None
+
+\subsubsection{Access Routine Semantics}
+    \noindent fetchLabels(projectId: String)
+    \begin{itemize}
+        \item output: Returns a list of Label objects associated with the specified projectId.
+        \item exception: DatabaseException: Thrown if there is an issue communicating with any of the underlying databases.
+    \end{itemize}
+
+\subsubsection{Local Functions}
+    None
+
+
+
+
+
 
   
 \section{MIS of Account Creation Interface} \label{aci}
