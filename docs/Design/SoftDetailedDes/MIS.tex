@@ -522,7 +522,7 @@ None
         PCM (ProjectCollectionManager)
 
     \subsection{Uses}
-        ProjectDBConnector \ref{cidbc}
+        ProjectDBConnector \ref{pdbc}
 
     \subsection{Syntax}
     \subsubsection{Exported Constants}
@@ -557,9 +557,60 @@ None
 
 
 
+% OG
+\section{MIS of Project Database Connector} \label{pdbc} 
+    \subsection{Module}
+        PDBC (ProjectDBConnector)
+
+    \subsection{Uses}
+        MySQL - ProjectDB
+
+    \subsection{Syntax}
+    \subsubsection{Exported Constants}
+        None
+
+    \subsubsection{Exported Access Programs}
+    \begin{center}\begin{tabular}{p{3cm} p{4cm} p{3cm} p{3cm}}
+    \hline\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+    \hline
+        fetchProject & projectId: String & Project & DatabaseException \\
+        fetchProjectList & None & List(Project) & DatabaseException \\
+        storeProject & project : Project & None & DatabaseException \\
+    \hline
+    \end{tabular}\end{center}
+
+    \subsection{Semantics}
+    \subsubsection{State Variables}
+        None
+
+    \subsubsection{Environment Variables}
+        databaseConnection: connection to relational database
+
+    \subsubsection{Assumptions}
+        None
+
+    \subsubsection{Access Routine Semantics}
+        \noindent storeProject(project : Project)
+        \begin{itemize}
+            \item output: No direct output; success indicates the Project was successfully stored.
+            \item exception: \textbf{DatabaseException}: Thrown if there is an issue communicating with any of the underlying databases. \textbf{DuplicateProjectException}: Thrown if the project already exists
+        \end{itemize}
+        \noindent fetchProjectList()
+        \begin{itemize}
+            \item output: Returns a list of all Project objects stored in the database.
+            \item exception: \textbf{DatabaseException}: Thrown if there is an issue communicating with any of the underlying databases. 
+        \end{itemize}
+        \noindent fetchProject(projectId : String)
+        \begin{itemize}
+            \item output: Returns the Project object corresponding to the given projectId.
+            \item exception: \textbf{DatabaseException}: Thrown if there is an issue communicating with any of the underlying databases. \textbf{ProjectNotFoundException}: Thrown if the project with the given ID does not exist.
+        \end{itemize}
+
+    \subsubsection{Local Functions}
+        Any database query-building or data-mapping helpers remain internal and are not exported.
 
 % OG
-\section{MIS of Core Image Database Connector} \label{cidbc} 
+\section{MIS of Project Database Connector} \label{pdbc} 
 
 
 
