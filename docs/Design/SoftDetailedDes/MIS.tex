@@ -223,11 +223,53 @@ The following table is taken directly from the Module Guide document for this pr
 \subsubsection{Local Functions}
 
 \wss{As appropriate} \wss{These functions are for the purpose of specification.
-  They are not necessarily something that is going to be implemented
-  explicitly.  Even if they are implemented, they are not exported; they only
-  have local scope.}
+They are not necessarily something that is going to be implemented
+explicitly.  Even if they are implemented, they are not exported; they only
+have local scope.}
 
 
+
+\section{MIS of Report Manager} \label{rm} 
+\subsection{Module}
+    RM (ReportManager)
+
+\subsection{Uses}
+    LabelDBConnector \ref{ldbc}\\
+    ObjectsOnImageDBConnector \ref{ooidbc}\\
+    RawImageDBConnector \ref{ridbc}\\
+    ProjectDBConnector \ref{pdbc}
+
+\subsection{Syntax}
+\subsubsection{Exported Constants}
+    None
+
+\subsubsection{Exported Access Programs}
+\begin{center}\begin{tabular}{p{3cm} p{4cm} p{3cm} p{3cm}}
+\hline\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+    generateReport & projectId: String & Report & DatabaseException \\
+\hline
+\end{tabular}\end{center}
+
+\subsection{Semantics}
+\subsubsection{State Variables}
+    None
+
+\subsubsection{Environment Variables}
+    None
+
+\subsubsection{Assumptions}
+    None
+
+\subsubsection{Access Routine Semantics}
+    \noindent generateReport(projectId: String)
+    \begin{itemize}
+        \item output: Returns a Report object that aggregates data from the label, object-on-image, raw image, and project databases.
+        \item exception: DatabaseException: Thrown if there is an issue communicating with any of the underlying databases.
+    \end{itemize}
+
+\subsubsection{Local Functions}
+    Any helper methods used internally to combine or transform the data (e.g., formatting label lists, summarizing object data) are not exported and thus not specified here.
 
   
 \section{MIS of Account Creation Interface} \label{aci}
