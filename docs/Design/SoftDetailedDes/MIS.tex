@@ -54,8 +54,7 @@ urlcolor=cyan          % color of external links
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
-Date 1 & 1.0 & Notes\\
-Date 2 & 1.1 & Notes\\
+Date January 17th & 1.0 & \\
 \bottomrule
 \end{tabularx}
 
@@ -76,16 +75,16 @@ See SRS Documentation at \wss{https://github.com/OKKM-insights/OKKM.insights/tre
 \section{Introduction}
 
 The following document details the Module Interface Specifications for
-\wss{Fill in your project name and description}
+OrbitWatch, a crowdsourced datalabelling platform which aims to improve the process of extracting information from satelite images.
 
 Complementary documents include the System Requirement Specifications
 and Module Guide.  The full documentation and implementation can be
-found at \url{...}.  \wss{provide the url for your repo}
+found at \url{https://github.com/OKKM-insights/OKKM.insights/}
 
 \section{Notation}
 
-\wss{You should describe your notation.  You can use what is below as
-  a starting point.}
+% \wss{You should describe your notation.  You can use what is below as
+%   a starting point.}
 
 The structure of the MIS for modules comes from \citet{HoffmanAndStrooper1995},
 with the addition that template modules have been adapted from
@@ -120,112 +119,315 @@ different types. In addition, \progname \ uses functions, which
 are defined by the data types of their inputs and outputs. Local functions are
 described by giving their type signature followed by their specification.
 
+\section*{System Components}
+
+\subsection*{MLModel}
+Represents a machine learning model, identified by attributes such as:
+\begin{itemize}
+    \item \textbf{model\_name}
+    \item \textbf{model\_path}
+    \item \textbf{model\_type}
+    \item Metadata about the model (e.g., training parameters, architecture)
+\end{itemize}
+
+\subsection*{ModelTrainingRun}
+Captures the details of a model's training process, including:
+\begin{itemize}
+    \item \textbf{training\_data\_path}
+    \item Evaluation metrics
+    \item Parameters used during training
+\end{itemize}
+
+\subsection*{ModelEvaluationRun}
+Represents the evaluation process for a model, containing:
+\begin{itemize}
+    \item \textbf{evaluation\_data\_path}
+    \item Evaluation metrics (e.g., precision, recall)
+\end{itemize}
+
+\subsection*{ModelDeployment}
+Tracks the deployment details of a machine learning model, such as:
+\begin{itemize}
+    \item \textbf{deployment\_environment} (e.g., Production, Staging)
+    \item \textbf{deployment\_date}
+\end{itemize}
+
+\subsection*{Account}
+Describes user accounts in the system with attributes like:
+\begin{itemize}
+    \item \textbf{username}
+    \item \textbf{email}
+    \item \textbf{account\_type} (e.g., Client, Labeler, Admin)
+    \item Security-related fields such as \textbf{password\_hash} and \textbf{last\_login}
+\end{itemize}
+
+\subsection*{AccountModification}
+Maintains a log of changes made to user accounts, tracking:
+\begin{itemize}
+    \item \textbf{field\_modified}
+    \item \textbf{old\_value}
+    \item \textbf{new\_value}
+\end{itemize}
+
+\subsection*{LoginAttempt}
+Records login attempts for security purposes, including:
+\begin{itemize}
+    \item \textbf{username}
+    \item \textbf{attempt\_time}
+    \item Whether the attempt was successful
+\end{itemize}
+
+\subsection*{Project}
+Defines a labeling or analysis project, identified by:
+\begin{itemize}
+    \item \textbf{project\_name}
+    \item \textbf{description}
+    \item Associated metadata
+\end{itemize}
+
+\subsection*{User}
+Represents individuals (e.g., labelers, managers) working within the system, including:
+\begin{itemize}
+    \item \textbf{username}
+    \item \textbf{role}
+\end{itemize}
+
+\subsection*{ProjectAssignment}
+Tracks which users are assigned to specific projects, identified by:
+\begin{itemize}
+    \item \textbf{project\_id}
+    \item \textbf{user\_id}
+\end{itemize}
+
+\subsection*{SatelliteImage}
+Represents images (e.g., satellite imagery) linked to specific projects, with attributes like:
+\begin{itemize}
+    \item \textbf{image\_path}
+    \item \textbf{acquisition\_date}
+\end{itemize}
+
+\subsection*{LabelingTask}
+Encapsulates a labeling activity, defined by:
+\begin{itemize}
+    \item \textbf{status}
+    \item \textbf{start\_time}
+    \item \textbf{end\_time}
+    \item The user assigned to the task
+\end{itemize}
+
+\subsection*{Report}
+Represents generated reports for projects, with fields like:
+\begin{itemize}
+    \item \textbf{report\_data}
+    \item \textbf{generation\_date}
+    \item The user who generated the report
+\end{itemize}
+
+\subsection*{ServiceRequest}
+Tracks requests for services such as image acquisition or data processing, with attributes like:
+\begin{itemize}
+    \item \textbf{request\_type}
+    \item \textbf{status}
+\end{itemize}
+
+\subsection*{Image}
+Represents standalone images within the system, identified by:
+\begin{itemize}
+    \item \textbf{image\_path}
+    \item \textbf{upload\_date}
+\end{itemize}
+
+\subsection*{Labeller}
+Represents individuals performing labeling tasks, identified by:
+\begin{itemize}
+    \item \textbf{labeller\_name}
+\end{itemize}
+
+\subsection*{Object}
+Represents specific objects detected in an image, with attributes like:
+\begin{itemize}
+    \item \textbf{bounding\_box\_coordinates}
+    \item \textbf{object\_type}
+\end{itemize}
+
+\subsection*{Label}
+Represents annotations made by a labeller, linking to specific objects in an image and storing information like:
+\begin{itemize}
+    \item \textbf{label\_text}
+    \item \textbf{timestamp}
+    \item \textbf{labeller\_id}
+\end{itemize}
+
+The following diagram display additional details on the relationship between datatypes\\ 
+\includegraphics[scale=0.5]{dt3.png}\\
+\includegraphics[scale=0.5]{dt4.png}\\
+\includegraphics[scale=0.5]{dt1.png}\\
+\includegraphics[scale=0.5]{dt2.png}\\
+\includegraphics[scale=0.5]{dt5.png}\\
+
+\newpage 
 \section{Module Decomposition}
 
 The following table is taken directly from the Module Guide document for this project.
 
 \begin{table}[h!]
-\centering
-\begin{tabular}{p{0.3\textwidth} p{0.6\textwidth}}
-\toprule
-\textbf{Level 1} & \textbf{Level 2}\\
-\midrule
-
-{Hardware-Hiding} & ~ \\
-\midrule
-
-\multirow{7}{0.3\textwidth}{Behaviour-Hiding} & Input Parameters\\
-& Output Format\\
-& Output Verification\\
-& Temperature ODEs\\
-& Energy Equations\\ 
-& Control Module\\
-& Specification Parameters Module\\
-\midrule
-
-\multirow{3}{0.3\textwidth}{Software Decision} & {Sequence Data Structure}\\
-& ODE Solver\\
-& Plotting\\
-\bottomrule
-
+  \centering
+  \begin{tabular}{p{0.3\textwidth} p{0.6\textwidth}}
+  \toprule
+  \textbf{Level 1} & \textbf{Level 2}\\
+  \midrule
+  
+  \textbf{Hardware-Hiding Module} & ~ \\
+  \midrule
 \end{tabular}
 \caption{Module Hierarchy}
 \label{TblMH}
 \end{table}
-
-\newpage
-~\newpage
-
-\section{MIS of \wss{Module Name}} \label{Module} \wss{Use labels for
-  cross-referencing}
-
-\wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
-
-\wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
-
-\subsection{Module}
-
-\wss{Short name for the module}
-
-\subsection{Uses}
-
-
-\subsection{Syntax}
-
-\subsubsection{Exported Constants}
-
-\subsubsection{Exported Access Programs}
-
-\begin{center}
-\begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
-\hline
-\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
-\hline
-\wss{accessProg} & - & - & - \\
-\hline
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{p{0.3\textwidth} p{0.6\textwidth}}
+  \toprule
+  \textbf{Level 1} & \textbf{Level 2}\\
+  \multirow{10}{0.3\textwidth}{\textbf{Behaviour-Hiding Module}} 
+   & Account Creation Interface\\
+   & Account Database\\
+   & Account Update Interface\\
+   & Login Interface\\
+   & Access Token\\
+   & Labeler\\
+   & Client\\
+   & User\\
+   & Satellite Image Request Interface\\
+   & Satellite Image Request\\
+   & Project Creation Interface\\
+   & Project\\
+   & Service Request Failure Interface\\
+   & Image Upload Interface\\
+   & Report Interface\\
+   & Report\\
+   & Project Selection Interface\\
+   & Labeling Interface\\
+   & Image\\
+   & Label Server\\
+   & Label Database Connector\\
+   & Label Database\\
+   & ImageObject Database Connector\\
+   & ImageObject Database\\
+   & Labeller Database Connector\\
+   & Labeller Database\\
+   & Object Extraction Manager\\
+   & Image Service Manager\\
+   % New ML/Model modules (Behavior-Hiding)
+   & ModelCreation (Abstract Class)\\
+   & CNNModelCreation\\
+   & OtherModelCreation\\
+   & ModelManager\\
+   & MLModelDatabase\\
+  \midrule
 \end{tabular}
-\end{center}
+\caption{Module Hierarchy}
+\label{TblMH}
+\end{table}
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{p{0.3\textwidth} p{0.6\textwidth}}
+  \toprule
+  \textbf{Level 1} & \textbf{Level 2}\\
+  \multirow{10}{0.3\textwidth}{\textbf{Software Decision Module}} 
+   & Account Creation Controller\\
+   & Account Database Connector\\
+   & Account Update Controller\\
+   & Authentication Controller\\
+   & Satellite Image Request Controller\\
+   & Project Creation Controller\\
+   & Report Controller\\
+   & Project Selection Controller\\
+   & Labeling Controller\\
+   & Label Confidence Service\\
+   & Object Extraction Service\\
+   & Image Prior Analyzer\\
+   & Labeller Expertise Calculator\\
+   & Image Mask Service\\
+   & Image Selection Service\\
+   % New ML/Model modules (Software Decision)
+   & ModelComparision Evaluation\\
+   & CrossValidation Evaluation\\
+   & ModelTrainingService\\
+   & ModelEvaluationService\\
+  \bottomrule
+  \end{tabular}
+  \caption{Module Hierarchy}
+  \label{TblMH}
+  \end{table}
+  
 
-\subsection{Semantics}
+\newpage 
 
-\subsubsection{State Variables}
+~\newpage 
 
-\wss{Not all modules will have state variables.  State variables give the module
-  a memory.}
+% \section{MIS of \wss{Module Name}} \label{Module} \wss{Use labels for
+%   cross-referencing}
 
-\subsubsection{Environment Variables}
+% \wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
 
-\wss{This section is not necessary for all modules.  Its purpose is to capture
-  when the module has external interaction with the environment, such as for a
-  device driver, screen interface, keyboard, file, etc.}
+% \wss{It is also possible to use \LaTeX for hypperlinks to external documents.}
 
-\subsubsection{Assumptions}
+% \subsection{Module}
 
-\wss{Try to minimize assumptions and anticipate programmer errors via
-  exceptions, but for practical purposes assumptions are sometimes appropriate.}
+% \wss{Short name for the module}
 
-\subsubsection{Access Routine Semantics}
+% \subsection{Uses}
 
-\noindent \wss{accessProg}():
-\begin{itemize}
-\item transition: \wss{if appropriate} 
-\item output: \wss{if appropriate} 
-\item exception: \wss{if appropriate} 
-\end{itemize}
 
-\wss{A module without environment variables or state variables is unlikely to
-  have a state transition.  In this case a state transition can only occur if
-  the module is changing the state of another module.}
+% \subsection{Syntax}
 
-\wss{Modules rarely have both a transition and an output.  In most cases you
-  will have one or the other.}
+% \subsubsection{Exported Constants}
 
-\subsubsection{Local Functions}
+% \subsubsection{Exported Access Programs}
 
-\wss{As appropriate} \wss{These functions are for the purpose of specification.
-They are not necessarily something that is going to be implemented
-explicitly.  Even if they are implemented, they are not exported; they only
-have local scope.}
+% \begin{center}
+% \begin{tabular}{p{2cm} p{4cm} p{4cm} p{2cm}}
+% \hline
+% \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+% \hline
+% \wss{accessProg} & - & - & - \\
+% \hline
+% \end{tabular}
+% \end{center}
+
+% \subsection{Semantics}
+
+% \subsubsection{State Variables}
+
+% \wss{Not all modules will have state variables.  State variables give the module
+%   a memory.}
+
+% \subsubsection{Environment Variables}
+
+% \wss{This section is not necessary for all modules.  Its purpose is to capture
+%   when the module has external interaction with the environment, such as for a
+%   device driver, screen interface, keyboard, file, etc.}
+
+% \subsubsection{Assumptions}
+
+% \wss{Try to minimize assumptions and anticipate programmer errors via
+%   exceptions, but for practical purposes assumptions are sometimes appropriate.}
+
+% \subsubsection{Access Routine Semantics}
+
+% \noindent \wss{accessProg}():
+% \begin{itemize}
+% \item transition: \wss{if appropriate} 
+% \item output: \wss{if appropriate} 
+% \item exception: \wss{if appropriate} 
+% \end{itemize}
+
+% \wss{A module without environment variables or state variables is unlikely to
+%   have a state transition.  In this case a state transition can only occur if
+%   the module is changing the state of another module.}
+
+% \wss{Modules rarely have both a transition and an output.  In most cases you
+%   will have one or the other.}
 
 
 % OG
@@ -2391,6 +2593,7 @@ None
 None
 
 
+
 \newpage
   ~\newpage
   
@@ -3293,7 +3496,9 @@ None
   %   explicitly.  Even if they are implemented, they are not exported; they only
   %   have local scope.}
 
+
 \newpage
+
 
 
 % --------------------------------------------------------------------------------------
@@ -3370,6 +3575,7 @@ None
   %   They are not necessarily something that is going to be implemented
   %   explicitly.  Even if they are implemented, they are not exported; they only
   %   have local scope.}
+
 
 \newpage
 
@@ -3683,7 +3889,7 @@ None
   
   \subsubsection{Local Functions}
 
-  
+  None
    
   
   % \wss{As appropriate} \wss{These functions are for the purpose of specification.
@@ -3692,7 +3898,644 @@ None
   %   have local scope.}
 
 \newpage
+\section{MIS of ModelComparisonEvaluation}
+\label{sec:ModelComparisonEvaluation}
 
+\subsection{6.1 Module}
+\textbf{Name}: ModelComparisonEvaluation
+
+\subsection{6.2 Uses}
+\begin{itemize}
+    \item \texttt{TestDataset} (Holds test samples and true labels)
+    \item \texttt{EvaluationResult} (Stores metrics from an evaluation)
+\end{itemize}
+
+\subsection{6.3 Syntax}
+
+\subsubsection{6.3.1 Exported Constants}
+None
+
+\subsubsection{6.3.2 Exported Access Programs}
+\begin{center}
+\begin{tabular}{p{3.5cm} p{4.5cm} p{4cm} p{3cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+\texttt{evaluateModel} & \texttt{String modelId, TestDataset testData} & \texttt{EvaluationResult} & ModelNotFoundError, ValueError \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{6.4 Semantics}
+
+\subsubsection{6.4.1 State Variables}
+\begin{itemize}
+    \item \texttt{comparisonMetrics}: Map$<$String, Float$>$ (Stores metric-name to numeric value)
+    \item \texttt{benchmarkModelId}: String (ID of the benchmark model)
+\end{itemize}
+
+\subsubsection{6.4.2 Environment Variables}
+None
+
+\subsubsection{6.4.3 Assumptions}
+\begin{itemize}
+    \item The \texttt{modelId} provided must exist in the system.
+    \item \texttt{testData} must be valid and non-empty.
+\end{itemize}
+
+\subsubsection{6.4.4 Access Routine Semantics}
+\noindent \texttt{evaluateModel(modelId, testData):}
+\begin{itemize}
+    \item \textbf{transition}: Updates \texttt{comparisonMetrics} by comparing the given model with the benchmark.
+    \item \textbf{output}: Returns an \texttt{EvaluationResult} with metrics (e.g., accuracy, precision).
+    \item \textbf{exception}:
+    \begin{itemize}
+        \item \texttt{ModelNotFoundError} if \texttt{modelId} does not exist.
+        \item \texttt{ValueError} if \texttt{testData} is invalid.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{6.4.5 Local Functions}
+None
+
+\newpage
+
+
+\section{MIS of CrossValidationEvaluation}
+\label{sec:CrossValidationEvaluation}
+
+\subsection{6.1 Module}
+\textbf{Name}: CrossValidationEvaluation
+
+\subsection{6.2 Uses}
+\begin{itemize}
+    \item \texttt{TestDataset}
+    \item \texttt{EvaluationResult}
+\end{itemize}
+
+\subsection{6.3 Syntax}
+
+\subsubsection{6.3.1 Exported Constants}
+None
+
+\subsubsection{6.3.2 Exported Access Programs}
+\begin{center}
+\begin{tabular}{p{3.5cm} p{4.5cm} p{4cm} p{3cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+\texttt{evaluateModel} & \texttt{String modelId, TestDataset testData} & \texttt{EvaluationResult} & ModelNotFoundError, ValueError \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{6.4 Semantics}
+
+\subsubsection{6.4.1 State Variables}
+\begin{itemize}
+    \item \texttt{kFolds}: Integer
+    \item \texttt{ValidationMetrics}: Map$<$String, Float$>$ (Aggregated cross-validation metrics)
+\end{itemize}
+
+\subsubsection{6.4.2 Environment Variables}
+None
+
+\subsubsection{6.4.3 Assumptions}
+\begin{itemize}
+    \item \texttt{kFolds} $\geq 2$.
+    \item \texttt{testData} is large enough for multiple folds.
+\end{itemize}
+
+\subsubsection{6.4.4 Access Routine Semantics}
+\noindent \texttt{evaluateModel(modelId, testData):}
+\begin{itemize}
+    \item \textbf{transition}: Runs cross-validation and updates \texttt{ValidationMetrics}.
+    \item \textbf{output}: An \texttt{EvaluationResult} (e.g., average accuracy).
+    \item \textbf{exception}:
+    \begin{itemize}
+        \item \texttt{ModelNotFoundError} if the model does not exist.
+        \item \texttt{ValueError} if \texttt{testData} is invalid or too small.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{6.4.5 Local Functions}
+None
+
+\newpage
+
+
+\section{MIS of ModelTrainingService}
+\label{sec:ModelTrainingService}
+
+\subsection{6.1 Module}
+\textbf{Name}: ModelTrainingService
+
+\subsection{6.2 Uses}
+\begin{itemize}
+    \item \texttt{TrainingParams}
+    \item \texttt{TrainingData}
+    \item \texttt{ModelConfig}
+    \item \texttt{TrainingResult}
+\end{itemize}
+
+\subsection{6.3 Syntax}
+
+\subsubsection{6.3.1 Exported Constants}
+None
+
+\subsubsection{6.3.2 Exported Access Programs}
+\begin{center}
+\begin{tabular}{p{3.5cm} p{4.5cm} p{4cm} p{3cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+\texttt{trainModel} & \texttt{TrainingData data, ModelConfig modelConfig} & \texttt{TrainingResult} & ValueError, ResourceUnavailableError \\
+\hline
+\texttt{stopTraining} & \texttt{String modelId} & \texttt{void} & ModelNotFoundError \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{6.4 Semantics}
+
+\subsubsection{6.4.1 State Variables}
+\begin{itemize}
+    \item \texttt{trainingParameters}: TrainingParams
+    \item \texttt{trainingStatus}: String (``Not Started'', ``In Progress'', ``Completed'', etc.)
+\end{itemize}
+
+\subsubsection{6.4.2 Environment Variables}
+None
+
+\subsubsection{6.4.3 Assumptions}
+\begin{itemize}
+    \item System has enough resources (GPU, memory) to train the model.
+\end{itemize}
+
+\subsubsection{6.4.4 Access Routine Semantics}
+\noindent \texttt{trainModel(data, modelConfig):}
+\begin{itemize}
+    \item \textbf{transition}: Sets \texttt{trainingStatus} to ``In Progress'' and, upon completion, ``Completed''.
+    \item \textbf{output}: Returns a \texttt{TrainingResult} with metrics (loss, accuracy, etc.).
+    \item \textbf{exception}:
+    \begin{itemize}
+        \item \texttt{ValueError} if data or modelConfig is invalid.
+        \item \texttt{ResourceUnavailableError} if required resources are not available.
+    \end{itemize}
+\end{itemize}
+
+\noindent \texttt{stopTraining(modelId):}
+\begin{itemize}
+    \item \textbf{transition}: If the model is training, changes status to ``Stopped'' or ``Cancelled''.
+    \item \textbf{exception}:
+    \begin{itemize}
+        \item \texttt{ModelNotFoundError} if the model does not exist or is not training.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{6.4.5 Local Functions}
+None
+
+\newpage
+
+
+\section{MIS of ModelEvaluationService}
+\label{sec:ModelEvaluationService}
+
+\subsection{6.1 Module}
+\textbf{Name}: ModelEvaluationService
+
+\subsection{6.2 Uses}
+\begin{itemize}
+    \item \texttt{TestDataset}
+    \item \texttt{EvaluationResult}
+\end{itemize}
+
+\subsection{6.3 Syntax}
+
+\subsubsection{6.3.1 Exported Constants}
+None
+
+\subsubsection{6.3.2 Exported Access Programs}
+\begin{center}
+\begin{tabular}{p{3.5cm} p{4.5cm} p{4cm} p{3cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+\texttt{evaluateModel} & \texttt{String modelId, TestDataset testData} & \texttt{EvaluationResult} & ModelNotFoundError, ValueError \\
+\hline
+\texttt{fetchEvaluationMetrics} & \texttt{String modelId} & \texttt{Map<String,Float>} & ModelNotFoundError \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{6.4 Semantics}
+
+\subsubsection{6.4.1 State Variables}
+\begin{itemize}
+    \item \texttt{evaluationMetrics}: Map$<$String, Float$>$
+    \item \texttt{valuationStatus}: String (``Pending'', ``In Progress'', ``Completed'')
+\end{itemize}
+
+\subsubsection{6.4.2 Environment Variables}
+None
+
+\subsubsection{6.4.3 Assumptions}
+\begin{itemize}
+    \item The \texttt{modelId} references a trained model.
+\end{itemize}
+
+\subsubsection{6.4.4 Access Routine Semantics}
+\noindent \texttt{evaluateModel(modelId, testData):}
+\begin{itemize}
+    \item \textbf{transition}: Sets \texttt{valuationStatus} to ``In Progress'' and updates \texttt{evaluationMetrics}.
+    \item \textbf{output}: An \texttt{EvaluationResult} (accuracy, loss, etc.).
+    \item \textbf{exception}:
+    \begin{itemize}
+        \item \texttt{ModelNotFoundError} if modelId is invalid.
+        \item \texttt{ValueError} if testData is invalid or empty.
+    \end{itemize}
+\end{itemize}
+
+\noindent \texttt{fetchEvaluationMetrics(modelId):}
+\begin{itemize}
+    \item \textbf{output}: Returns the \texttt{evaluationMetrics} for the model.
+    \item \textbf{exception}:
+    \begin{itemize}
+        \item \texttt{ModelNotFoundError} if the modelId does not exist or no metrics are found.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{6.4.5 Local Functions}
+None
+
+\newpage
+
+
+\section{MIS of ModelManager}
+\label{sec:ModelManager}
+
+\subsection{6.1 Module}
+\textbf{Name}: ModelManager
+
+\subsection{6.2 Uses}
+\begin{itemize}
+    \item \texttt{ModelParameters}
+    \item \texttt{MLModel}
+\end{itemize}
+
+\subsection{6.3 Syntax}
+
+\subsubsection{6.3.1 Exported Constants}
+None
+
+\subsubsection{6.3.2 Exported Access Programs}
+\begin{center}
+\begin{tabular}{p{3.5cm} p{4.5cm} p{4cm} p{3cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+\texttt{createModel} & \texttt{ModelParameters params} & \texttt{void} & ValueError \\
+\hline
+\texttt{updateModelStatus} & \texttt{String modelId, String status} & \texttt{void} & ModelNotFoundError \\
+\hline
+\texttt{fetchModel} & \texttt{String modelId} & \texttt{MLModel} & ModelNotFoundError \\
+\hline
+\texttt{deleteModel} & \texttt{String modelId} & \texttt{void} & ModelNotFoundError \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{6.4 Semantics}
+
+\subsubsection{6.4.1 State Variables}
+\begin{itemize}
+    \item \texttt{modelID}: String
+    \item \texttt{status}: String (``Training'', ``Evaluating'', ``Completed'', etc.)
+    \item \texttt{createdAt}: Date
+    \item \texttt{updatedAt}: Date
+\end{itemize}
+
+\subsubsection{6.4.2 Environment Variables}
+None
+
+\subsubsection{6.4.3 Assumptions}
+\begin{itemize}
+    \item A unique \texttt{modelID} is generated upon creation.
+\end{itemize}
+
+\subsubsection{6.4.4 Access Routine Semantics}
+\noindent \texttt{createModel(params):}
+\begin{itemize}
+    \item \textbf{transition}: Instantiates a new \texttt{MLModel}, sets \texttt{modelID}, \texttt{createdAt}, \texttt{updatedAt}, \texttt{status} = ``Created''.
+    \item \textbf{exception}:
+    \begin{itemize}
+        \item \texttt{ValueError} if \texttt{params} are invalid.
+    \end{itemize}
+\end{itemize}
+
+\noindent \texttt{updateModelStatus(modelId, status):}
+\begin{itemize}
+    \item \textbf{transition}: Updates \texttt{status} and \texttt{updatedAt} of the specified model.
+    \item \textbf{exception}:
+    \begin{itemize}
+        \item \texttt{ModelNotFoundError} if the modelId does not exist.
+    \end{itemize}
+\end{itemize}
+
+\noindent \texttt{fetchModel(modelId):}
+\begin{itemize}
+    \item \textbf{output}: Returns the \texttt{MLModel} object.
+    \item \textbf{exception}:
+    \begin{itemize}
+        \item \texttt{ModelNotFoundError} if no model with modelId exists.
+    \end{itemize}
+\end{itemize}
+
+\noindent \texttt{deleteModel(modelId):}
+\begin{itemize}
+    \item \textbf{transition}: Removes the model from storage.
+    \item \textbf{exception}:
+    \begin{itemize}
+        \item \texttt{ModelNotFoundError} if modelId is invalid.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{6.4.5 Local Functions}
+None
+
+\newpage
+
+
+\section{MIS of ModelCreation (Abstract)}
+\label{sec:ModelCreationAbstract}
+
+\subsection{6.1 Module}
+\textbf{Name}: ModelCreation (Abstract Base Class)
+
+\subsection{6.2 Uses}
+\begin{itemize}
+    \item \texttt{ModelParameters}
+    \item \texttt{MLModel}
+\end{itemize}
+
+\subsection{6.3 Syntax}
+
+\subsubsection{6.3.1 Exported Constants}
+None
+
+\subsubsection{6.3.2 Exported Access Programs}
+\begin{center}
+\begin{tabular}{p{4cm} p{3cm} p{4cm} p{3cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+\texttt{createModel} & - & \texttt{MLModel} & NotImplementedError \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{6.4 Semantics}
+
+\subsubsection{6.4.1 State Variables}
+\begin{itemize}
+    \item \texttt{modelType}: String
+    \item \texttt{creationParams}: ModelParameters
+\end{itemize}
+
+\subsubsection{6.4.2 Environment Variables}
+None
+
+\subsubsection{6.4.3 Assumptions}
+\begin{itemize}
+    \item Concrete subclasses must override the \texttt{createModel} method.
+\end{itemize}
+
+\subsubsection{6.4.4 Access Routine Semantics}
+\noindent \texttt{createModel():}
+\begin{itemize}
+    \item \textbf{output}: A fully instantiated \texttt{MLModel}.
+    \item \textbf{exception}:
+    \begin{itemize}
+        \item \texttt{NotImplementedError} if called from the abstract class.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{6.4.5 Local Functions}
+None
+
+\newpage
+
+
+\section{MIS of MLModelDatabase}
+\label{sec:MLModelDatabase}
+
+\subsection{6.1 Module}
+\textbf{Name}: MLModelDatabase
+
+\subsection{6.2 Uses}
+\begin{itemize}
+    \item \texttt{MLModel}
+\end{itemize}
+
+\subsection{6.3 Syntax}
+
+\subsubsection{6.3.1 Exported Constants}
+None
+
+\subsubsection{6.3.2 Exported Access Programs}
+\begin{center}
+\begin{tabular}{p{3.5cm} p{4.5cm} p{4cm} p{3cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+\texttt{saveModel} & \texttt{MLModel model} & \texttt{void} & DatabaseError \\
+\hline
+\texttt{fetchModel} & \texttt{String modelId} & \texttt{MLModel} & ModelNotFoundError, DatabaseError \\
+\hline
+\texttt{deleteModel} & \texttt{String modelId} & \texttt{void} & ModelNotFoundError, DatabaseError \\
+\hline
+\texttt{updateModel} & \texttt{String modelId, Map<String, Any> updates} & \texttt{void} & ModelNotFoundError, DatabaseError \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{6.4 Semantics}
+
+\subsubsection{6.4.1 State Variables}
+\begin{itemize}
+    \item \texttt{dbConnection}: Connection (Active DB connection)
+\end{itemize}
+
+\subsubsection{6.4.2 Environment Variables}
+\begin{itemize}
+    \item External database system (accessed via \texttt{dbConnection})
+\end{itemize}
+
+\subsubsection{6.4.3 Assumptions}
+\begin{itemize}
+    \item \texttt{dbConnection} is valid and open.
+\end{itemize}
+
+\subsubsection{6.4.4 Access Routine Semantics}
+\noindent \texttt{saveModel(model):}
+\begin{itemize}
+    \item \textbf{transition}: Inserts or updates the model in the database.
+    \item \textbf{exception}:
+    \begin{itemize}
+        \item \texttt{DatabaseError} if insertion fails.
+    \end{itemize}
+\end{itemize}
+
+\noindent \texttt{fetchModel(modelId):}
+\begin{itemize}
+    \item \textbf{output}: Returns the \texttt{MLModel} from the database.
+    \item \textbf{exception}:
+    \begin{itemize}
+        \item \texttt{ModelNotFoundError} if the modelId is not found.
+        \item \texttt{DatabaseError} if a DB error occurs.
+    \end{itemize}
+\end{itemize}
+
+\noindent \texttt{deleteModel(modelId):}
+\begin{itemize}
+    \item \textbf{transition}: Removes the model record.
+    \item \textbf{exception}:
+    \begin{itemize}
+        \item \texttt{ModelNotFoundError} if modelId is not found.
+        \item \texttt{DatabaseError} on DB error.
+    \end{itemize}
+\end{itemize}
+
+\noindent \texttt{updateModel(modelId, updates):}
+\begin{itemize}
+    \item \textbf{transition}: Updates the specified fields of the model in the database.
+    \item \textbf{exception}:
+    \begin{itemize}
+        \item \texttt{ModelNotFoundError} if modelId is not found.
+        \item \texttt{DatabaseError} if the update operation fails.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{6.4.5 Local Functions}
+None
+
+\newpage
+
+
+\section{MIS of OtherModelCreation}
+\label{sec:OtherModelCreation}
+
+\subsection{6.1 Module}
+\textbf{Name}: OtherModelCreation
+
+\subsection{6.2 Uses}
+\begin{itemize}
+    \item \texttt{MLModel}
+    \item \texttt{ModelCreation} (abstract base class)
+\end{itemize}
+
+\subsection{6.3 Syntax}
+
+\subsubsection{6.3.1 Exported Constants}
+None
+
+\subsubsection{6.3.2 Exported Access Programs}
+\begin{center}
+\begin{tabular}{p{3.5cm} p{3cm} p{4cm} p{3cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+\texttt{createModel} & - & \texttt{MLModel} & ValueError \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{6.4 Semantics}
+
+\subsubsection{6.4.1 State Variables}
+\begin{itemize}
+    \item \texttt{modelType}: String (e.g., ``Decision Tree'', ``SVM'')
+    \item \texttt{hyperparameters}: Map$<$String, Any$>$
+\end{itemize}
+
+\subsubsection{6.4.2 Environment Variables}
+None
+
+\subsubsection{6.4.3 Assumptions}
+\begin{itemize}
+    \item \texttt{hyperparameters} are valid for \texttt{modelType}.
+\end{itemize}
+
+\subsubsection{6.4.4 Access Routine Semantics}
+\noindent \texttt{createModel():}
+\begin{itemize}
+    \item \textbf{output}: Returns an instantiated \texttt{MLModel} of \texttt{modelType}.
+    \item \textbf{exception}:
+    \begin{itemize}
+        \item \texttt{ValueError} if the \texttt{modelType}/\texttt{hyperparameters} combination is invalid.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{6.4.5 Local Functions}
+None
+
+\section{MIS of CNNModelCreation}
+\label{sec:CNNModelCreation}
+
+\subsection{6.1 Module}
+\textbf{Name}: CNNModelCreation
+
+\subsection{6.2 Uses}
+\begin{itemize}
+    \item \texttt{ModelCreation} (abstract)
+    \item \texttt{MLModel}
+\end{itemize}
+
+\subsection{6.3 Syntax}
+
+\subsubsection{6.3.1 Exported Constants}
+None
+
+\subsubsection{6.3.2 Exported Access Programs}
+\begin{center}
+\begin{tabular}{p{3.5cm} p{3cm} p{4cm} p{3cm}}
+\hline
+\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
+\hline
+\texttt{createModel} & - & \texttt{MLModel} & ValueError \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{6.4 Semantics}
+
+\subsubsection{6.4.1 State Variables}
+\begin{itemize}
+    \item \texttt{layers}: List$<$LayerConfig$>$ (Defines structure of each CNN layer)
+    \item \texttt{activatedFunctions}: List$<$String$>$ (Activation functions for each layer)
+\end{itemize}
+
+\subsubsection{6.4.2 Environment Variables}
+None
+
+\subsubsection{6.4.3 Assumptions}
+\begin{itemize}
+    \item The \texttt{layers} and \texttt{activatedFunctions} lists are valid and aligned.
+\end{itemize}
+
+\subsubsection{6.4.4 Access Routine Semantics}
+\noindent \texttt{createModel():}
+\begin{itemize}
+    \item \textbf{output}: Instantiates a CNN \texttt{MLModel} with specified layers and activation functions.
+    \item \textbf{exception}:
+    \begin{itemize}
+        \item \texttt{ValueError} if \texttt{layers} or \texttt{activatedFunctions} are invalid or mismatched.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{6.4.5 Local Functions}
+None
 
 \bibliographystyle {plainnat}
 \bibliography {../../../refs/References}

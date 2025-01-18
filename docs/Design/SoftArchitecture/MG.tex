@@ -9,6 +9,7 @@
 \usepackage{float}
 \usepackage{hyperref}
 \usepackage{longtable}
+
 \hypersetup{
     colorlinks,
     citecolor=blue,
@@ -47,8 +48,7 @@
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
-Date 1 & 1.0 & Notes\\
-Date 2 & 1.1 & Notes\\
+January 17th & 1.0 & \\
 \bottomrule
 \end{tabularx}
 
@@ -85,7 +85,7 @@ hides represent likely future changes.  Design for change is valuable in SC,
 where modifications are frequent, especially during initial development as the
 solution space is explored.  
 
-Our design follows the rules layed out by \citet{ParnasEtAl1984}, as follows:
+Our design for OrbitWatch follows the rules layed out by \citet{ParnasEtAl1984}, as follows:
 \begin{itemize}
 \item System details that are likely to change independently should be the
   secrets of separate modules.
@@ -235,6 +235,7 @@ Labeling Interface
 Labeling Controller
 \item [\refstepcounter{mnum} \mthemnum \label{image}:]
 Image
+
 \item [\refstepcounter{mnum} \mthemnum \label{label server}:] Label Server
 \item [\refstepcounter{mnum} \mthemnum \label{label database connector}:] Label Database Connector
 \item [\refstepcounter{mnum} \mthemnum \label{label database}:] Label Database
@@ -244,82 +245,143 @@ Image
 \item [\refstepcounter{mnum} \mthemnum \label{Labeller database}:] Labeller Database
 \item [\refstepcounter{mnum} \mthemnum \label{Object Extraction Manager}:]Object Extraction Manager
 \item [\refstepcounter{mnum} \mthemnum \label{Image Service Manager}:]Image Service Manager
+\item [\refstepcounter{mnum} \mthemnum \label{modelcreation}:]
+    ModelCreation (Abstract Class)
+
+  \item [\refstepcounter{mnum} \mthemnum \label{cnnmodelcreation}:]
+    CNNModelCreation
+
+  \item [\refstepcounter{mnum} \mthemnum \label{othermodelcreation}:]
+    OtherModelCreation
+
+  \item [\refstepcounter{mnum} \mthemnum \label{modelmanager}:]
+    ModelManager
+
+  \item [\refstepcounter{mnum} \mthemnum \label{mlmodeldatabase}:]
+    MLModelDatabase
 \item [\refstepcounter{mnum} \mthemnum \label{Label Confidence Service}:]Label Confidence Service
 \item [\refstepcounter{mnum} \mthemnum \label{Object Extraction Service}:]Object Extraction Service
 \item [\refstepcounter{mnum} \mthemnum \label{Image Prior Analyzer}:]Image Prior Analyzer
 \item [\refstepcounter{mnum} \mthemnum \label{Labeller Expertise Calculator}:]Labeller Expertise Calculator
 \item [\refstepcounter{mnum} \mthemnum \label{Image Mask Service}:]Image Mask Service
 \item [\refstepcounter{mnum} \mthemnum \label{Image Selection Service}:]Image Selection Service
+  \item [\refstepcounter{mnum} \mthemnum \label{modelcomparison}:]
+    \textbf{ModelComparision Evaluation}
+
+  \item [\refstepcounter{mnum} \mthemnum \label{crossvalidation}:]
+    \textbf{CrossValidation Evaluation}
+
+  \item [\refstepcounter{mnum} \mthemnum \label{modeltrainingservice}:]
+    \textbf{ModelTrainingService}
+
+  \item [\refstepcounter{mnum} \mthemnum \label{modelevaluationservice}:]
+    \textbf{ModelEvaluationService}
 
 \end{description}
 
 
+  
+
+
+
+
+
+
+\newpage 
 \begin{table}[h!]
-\centering
-\begin{tabular}{p{0.3\textwidth} p{0.6\textwidth}}
-\toprule
-\textbf{Level 1} & \textbf{Level 2}\\
-\midrule
-
-{Hardware-Hiding Module} & ~ \\
-\midrule
-
-
-
-
-\multirow{7}{0.3\textwidth}{Behaviour-Hiding Module} & Account Creation Interface\\
-& Account Database\\
-& Account Database Connector\\
-& Account Update Interface\\
-& Login Interface\\
-& Access Token\\
-& Labeler\\
-& Client\\ 
-& User\\
-& Satellite Image Request Interface\\
-& Satellite Image Request\\
-& Project Creation Interface\\
-& Project\\
-& Service Request Failure Interface\\
-& Image Upload Interface\\
-& Report Interface\\
-& Report\\
-& Project Selection Interface\\
-& Labeling Interface\\
-& Image\\
-& Label Server\\
-& Label Database Connector\\
-& Label Database\\
-& ImageObject Database Connector\\
-& ImageObject Database\\
-& Labeller Database Connector\\
-& Labeller Database\\
-& Object Extraction Manager\\
-& Image Service Manager\\
-\midrule
-
-\multirow{3}{0.3\textwidth}{Software Decision Module} & {Account Creation Controller}\\
-& Account Update Controller\\
-& Authentication Controller\\
-& Satellite Image Request Controller\\
-& Project Creation Controller\\
-& Report Controller\\
-& Project Selection Controller\\
-& Labeling Controller\\
-& Label Confidence Service\\
-& Object Extraction Service\\
-& Image Prior Analyzer\\
-& Labeller Expertise Calculator\\
-& Image Mask Service\\
-& Image Selection Service\\
-
-
-\bottomrule
-
+  \centering
+  \begin{tabular}{p{0.3\textwidth} p{0.6\textwidth}}
+  \toprule
+  \textbf{Level 1} & \textbf{Level 2}\\
+  \midrule
+  
+  \textbf{Hardware-Hiding Module} & ~ \\
+  \midrule
 \end{tabular}
 \caption{Module Hierarchy}
 \label{TblMH}
 \end{table}
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{p{0.3\textwidth} p{0.6\textwidth}}
+  \toprule
+  \textbf{Level 1} & \textbf{Level 2}\\
+  \multirow{10}{0.3\textwidth}{\textbf{Behaviour-Hiding Module}} 
+   & Account Creation Interface\\
+   & Account Database\\
+   & Account Update Interface\\
+   & Login Interface\\
+   & Access Token\\
+   & Labeler\\
+   & Client\\
+   & User\\
+   & Satellite Image Request Interface\\
+   & Satellite Image Request\\
+   & Project Creation Interface\\
+   & Project\\
+   & Service Request Failure Interface\\
+   & Image Upload Interface\\
+   & Report Interface\\
+   & Report\\
+   & Project Selection Interface\\
+   & Labeling Interface\\
+   & Image\\
+   & Label Server\\
+   & Label Database Connector\\
+   & Label Database\\
+   & ImageObject Database Connector\\
+   & ImageObject Database\\
+   & Labeller Database Connector\\
+   & Labeller Database\\
+   & Object Extraction Manager\\
+   & Image Service Manager\\
+   % New ML/Model modules (Behavior-Hiding)
+   & ModelCreation (Abstract Class)\\
+   & CNNModelCreation\\
+   & OtherModelCreation\\
+   & ModelManager\\
+   & MLModelDatabase\\
+  \midrule
+\end{tabular}
+\caption{Module Hierarchy}
+\label{TblMH}
+\end{table}
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{p{0.3\textwidth} p{0.6\textwidth}} 
+  \toprule
+  \textbf{Level 1} & \textbf{Level 2}\\
+  \multirow{10}{0.3\textwidth}{\textbf{Software Decision Module}} 
+   & Account Creation Controller\\
+   & Account Database Connector\\
+   & Account Update Controller\\
+   & Authentication Controller\\
+   & Satellite Image Request Controller\\
+   & Project Creation Controller\\
+   & Report Controller\\
+   & Project Selection Controller\\
+   & Labeling Controller\\
+   & Label Confidence Service\\
+   & Object Extraction Service\\
+   & Image Prior Analyzer\\
+   & Labeller Expertise Calculator\\
+   & Image Mask Service\\
+   & Image Selection Service\\
+   % New ML/Model modules (Software Decision)
+   & ModelComparision Evaluation\\
+   & CrossValidation Evaluation\\
+   & ModelTrainingService\\
+   & ModelEvaluationService\\
+  \bottomrule
+  \end{tabular}
+  \caption{Module Hierarchy}
+  \label{TblMH}
+  \end{table}
+  
+
+\newpage 
+.
+\newpage 
 
 \section{Connection Between Requirements and Design} \label{SecConnection}
 
@@ -391,12 +453,12 @@ to be implemented.
 
 \subsubsection{Account Database (\mref{accd})}
 
-\begin{description}
+\begin{description} 
 \item[Secrets:] The data structure, storage, and access mechanisms for account related data.
 \item[Services:] Can store, insert, update and retrieve user account data.
 \item[Implemented By:] OrbitWatch
 \item[Type of Module:] Abstract Data Type
-\end{description}
+\end{description} 
 
 \subsubsection{Account Database Connector (\mref{accdc})}
 
@@ -558,6 +620,7 @@ to be implemented.
 \item[Type of Module:] Record
 \end{description}
 
+
 \subsubsection{Label Server (\ref{label server})} 
 \begin{description}
   \item[Secrets:] The steps to accept and store a label.
@@ -615,6 +678,7 @@ to be implemented.
 \end{description}
 
 \subsubsection{Object Extraction Manager (\ref{Object Extraction Manager})}
+\begin{description}
 \item[Secrets:] The algorithms used to aggregate labels into usable ImageObjects for Model training.
 \item[Services:] Calls other modules to efficiently compute the most likely set of objects from a set of independent labels.
 \item[Implemented By:] [OrbitWatch]
@@ -629,6 +693,78 @@ to be implemented.
 \item[Type of Module:] [Abstract Object]
 \end{description}
 
+\subsubsection{ModelCreation (Abstract Class) (\mref{modelcreation})}
+\begin{description}
+  \item[Secrets:] 
+    The abstract details of how machine learning (ML) model creation is organized,
+    including any hidden complexities of managing configuration parameters.
+  \item[Services:] 
+    Defines the interface for creating ML models. Specific implementations 
+    (e.g., Convolutional Neural Networks, Support Vector Machines) extend this class 
+    to instantiate the appropriate model structure.
+  \item[Implemented By:] 
+    OrbitWatch
+  \item[Type of Module:] 
+    Abstract Object
+\end{description}
+
+\subsubsection{CNNModelCreation (\mref{cnnmodelcreation})}
+\begin{description}
+  \item[Secrets:] 
+    The underlying architecture for a convolutional neural network model, including
+    details about layer definitions, activation functions, and other internal
+    configurations.
+  \item[Services:] 
+    Accepts layer configurations and constructs a CNN model suitable for training
+    or inference tasks.
+  \item[Implemented By:] 
+    OrbitWatch
+  \item[Type of Module:] 
+    Abstract Object
+\end{description}
+
+\subsubsection{OtherModelCreation (\mref{othermodelcreation})}
+\begin{description}
+  \item[Secrets:] 
+    The hyperparameter configurations and implementation details necessary for
+    creating alternative model types (e.g., Decision Trees, SVMs).
+  \item[Services:] 
+    Allows the instantiation of various ML models by applying specific parameters
+    (such as maximum tree depth or kernel functions) to build a model instance.
+  \item[Implemented By:] 
+    OrbitWatch
+  \item[Type of Module:] 
+    Abstract Object
+\end{description}
+
+\subsubsection{ModelManager (\mref{modelmanager})}
+\begin{description}
+  \item[Secrets:] 
+    The internal logic that governs model lifecycle management (e.g., statuses such
+    as ``Training,'' ``Evaluating,'' or ``Completed'') as well as the way creation and
+    update timestamps are maintained.
+  \item[Services:] 
+    Manages ML models by creating new instances, updating their status, retrieving
+    existing models, and deleting models as needed.
+  \item[Implemented By:] 
+    OrbitWatch
+  \item[Type of Module:] 
+    Abstract Object
+\end{description}
+
+\subsubsection{MLModelDatabase (\mref{mlmodeldatabase})}
+\begin{description}
+  \item[Secrets:] 
+    The database schema, connection details, and query mechanisms for storing and 
+    retrieving ML model metadata and configurations.
+  \item[Services:] 
+    Provides persistent storage for ML model data, supporting operations such as 
+    create, read, update, and delete (CRUD).
+  \item[Implemented By:] 
+    OrbitWatch
+  \item[Type of Module:] 
+    Abstract Data Type
+\end{description}
 
 
 \subsection{Software Decision Module}
@@ -716,6 +852,7 @@ to be implemented.
 \item[Type of Module:] Abstract Object
 \end{description}
 
+
 \subsubsection{Label Confidence Service (\ref{Label Confidence Service})}
 \begin{description}
 \item[Secrets:] The algorithms used to determine confidence in detected ImageObjects.
@@ -762,7 +899,65 @@ to be implemented.
 \item[Services:] Selects an image to show to a given user. 
 \item[Implemented By:] [OrbitWatch]
 \item[Type of Module:] [Abstract Object]
-=======
+\end{description}
+
+\subsubsection{ModelComparision Evaluation (\mref{modelcomparison})}
+\begin{description}
+  \item[Secrets:] 
+    The evaluation metrics and internal comparison algorithms (e.g., accuracy, F1-score)
+    used to contrast multiple ML models.
+  \item[Services:] 
+    Evaluates one or more models against provided test data, calculates a set of
+    performance metrics, and produces a comparison summary or report.
+  \item[Implemented By:] 
+    OrbitWatch
+  \item[Type of Module:] 
+    Abstract Object
+\end{description}
+
+\subsubsection{CrossValidation Evaluation (\mref{crossvalidation})}
+\begin{description}
+  \item[Secrets:] 
+    The logic behind performing K-fold cross-validation (or alternative validation
+    schemes), including how folds are formed and results are averaged.
+  \item[Services:] 
+    Executes cross-validation on a given model and dataset, aggregates the results
+    of each fold, and computes final performance metrics such as mean accuracy,
+    mean precision, etc.
+  \item[Implemented By:] 
+    OrbitWatch
+  \item[Type of Module:] 
+    Abstract Object
+\end{description}
+
+\subsubsection{ModelTrainingService (\mref{modeltrainingservice})}
+\begin{description}
+  \item[Secrets:] 
+    The training algorithms, hyperparameter optimization logic, and internal 
+    routines for monitoring the status of model training.
+  \item[Services:] 
+    Orchestrates the process of training ML models using specified data and 
+    configuration parameters; can also halt training if requested.
+  \item[Implemented By:] 
+    OrbitWatch
+  \item[Type of Module:] 
+    Abstract Object
+\end{description}
+
+\subsubsection{ModelEvaluationService (\mref{modelevaluationservice})}
+\begin{description}
+  \item[Secrets:] 
+    The design and algorithms for evaluating models, combining metrics, and 
+    aggregating results for final output.
+  \item[Services:] 
+    Evaluates a trained model on test data, computes relevant performance metrics,
+    and exposes them for reporting or further analysis.
+  \item[Implemented By:] 
+    OrbitWatch
+  \item[Type of Module:] 
+    Abstract Object
+
+\end{description}
 
 
 \section{Traceability Matrix} \label{SecTM}
@@ -879,21 +1074,171 @@ the modules. It can be seen that the graph is a directed acyclic graph
 system, and modules in the higher level of the hierarchy are essentially simpler
 because they use modules from the lower levels.
 
-\wss{The uses relation is not a data flow diagram.  In the code there will often
-be an import statement in module A when it directly uses module B.  Module B
-provides the services that module A needs.  The code for module A needs to be
-able to see these services (hence the import statement).  Since the uses
-relation is transitive, there is a use relation without an import, but the
-arrows in the diagram typically correspond to the presence of import statement.}
+% \wss{The uses relation is not a data flow diagram.  In the code there will often
+% be an import statement in module A when it directly uses module B.  Module B
+% provides the services that module A needs.  The code for module A needs to be
+% able to see these services (hence the import statement).  Since the uses
+% relation is transitive, there is a use relation without an import, but the
+% arrows in the diagram typically correspond to the presence of import statement.}
 
-\wss{If module A uses module B, the arrow is directed from A to B.}
+% \wss{If module A uses module B, the arrow is directed from A to B.}
 
-\begin{figure}[H]
-\centering
-%\includegraphics[width=0.7\textwidth]{UsesHierarchy.png}
-\caption{Use hierarchy among modules}
-\label{FigUH}
-\end{figure}
+\subsection*{Level 1: Foundational Modules}
+
+\begin{itemize}
+    \item \textbf{Label Database}
+    \begin{itemize}
+        \item \textbf{Secrets:} The storing and retrieving of data.
+        \item \textbf{Services:} Allows connection by a database connector to facilitate the storage and retrieval of data.
+    \end{itemize}
+    \item \textbf{ImageObject Database}
+    \begin{itemize}
+        \item \textbf{Secrets:} The storing and retrieving of data.
+        \item \textbf{Services:} Allows connection by a database connector to facilitate the storage and retrieval of data.
+    \end{itemize}
+    \item \textbf{Labeller Database}
+    \begin{itemize}
+        \item \textbf{Secrets:} The storing and retrieving of data.
+        \item \textbf{Services:} Allows connection by a database connector to facilitate the storage and retrieval of data.
+    \end{itemize}
+\end{itemize}
+
+\subsection*{Level 2: Database Connectors}
+
+\begin{itemize}
+    \item \textbf{Label Database Connector}
+    \begin{itemize}
+        \item \textbf{Uses:} Label Database
+        \item \textbf{Secrets:} The steps to connect to and manipulate a database.
+        \item \textbf{Services:} Connects to a database and executes pushing and fetching of data.
+    \end{itemize}
+    \item \textbf{ImageObject Database Connector}
+    \begin{itemize}
+        \item \textbf{Uses:} ImageObject Database
+        \item \textbf{Secrets:} The steps to connect to and manipulate a database.
+        \item \textbf{Services:} Connects to a database and executes pushing and fetching of data.
+    \end{itemize}
+    \item \textbf{Labeller Database Connector}
+    \begin{itemize}
+        \item \textbf{Uses:} Labeller Database
+        \item \textbf{Secrets:} The steps to connect to and manipulate a database.
+        \item \textbf{Services:} Connects to a database and executes pushing and fetching of data.
+    \end{itemize}
+\end{itemize}
+
+\subsection*{Level 3: Core Services}
+
+\begin{itemize}
+    \item \textbf{Label Server}
+    \begin{itemize}
+        \item \textbf{Uses:} Label Database Connector
+        \item \textbf{Secrets:} The steps to accept and store a label.
+        \item \textbf{Services:} Converts a label JSON object and passes it to be stored in the database.
+    \end{itemize}
+    \item \textbf{Object Extraction Manager}
+    \begin{itemize}
+        \item \textbf{Uses:} Label Confidence Service, Object Extraction Service, Labeller Expertise Calculator
+        \item \textbf{Secrets:} The algorithms used to aggregate labels into usable ImageObjects for model training.
+        \item \textbf{Services:} Calls other modules to efficiently compute the most likely set of objects from a set of independent labels.
+    \end{itemize}
+    \item \textbf{Image Service Manager}
+    \begin{itemize}
+        \item \textbf{Uses:} Image Selection Service, Image Mask Service, Image Prior Analyzer
+        \item \textbf{Secrets:} The algorithms used to select images to be served to a user.
+        \item \textbf{Services:} Calls other modules to select the next images to be served to a user.
+    \end{itemize}
+\end{itemize}
+
+\subsection*{Level 4: Specialized Services}
+
+\begin{itemize}
+    \item \textbf{Label Confidence Service}
+    \begin{itemize}
+        \item \textbf{Secrets:} The algorithms used to determine confidence in detected ImageObjects.
+        \item \textbf{Services:} Calculates the confidence of a detected ImageObject.
+    \end{itemize}
+    \item \textbf{Object Extraction Service}
+    \begin{itemize}
+        \item \textbf{Secrets:} The algorithms used to extract ImageObjects.
+        \item \textbf{Services:} Calculates the most likely ImageObjects from a set of labels and priors.
+    \end{itemize}
+    \item \textbf{Image Prior Analyzer}
+    \begin{itemize}
+        \item \textbf{Secrets:} The algorithms used to calculate ImagePriors.
+        \item \textbf{Services:} Calculates the prior likelihood of a pixel being relevant.
+    \end{itemize}
+    \item \textbf{Labeller Expertise Calculator}
+    \begin{itemize}
+        \item \textbf{Secrets:} The algorithms used to calculate Labeller Expertise.
+        \item \textbf{Services:} Calculates the expertise of a labeller in a given class using previous labels.
+    \end{itemize}
+    \item \textbf{Image Mask Service}
+    \begin{itemize}
+        \item \textbf{Secrets:} The algorithms used to modify a given image.
+        \item \textbf{Services:} Modifies an image to improve labelling accuracy or efficiency.
+    \end{itemize}
+    \item \textbf{Image Selection Service}
+    \begin{itemize}
+        \item \textbf{Secrets:} The algorithms used to select the next image to show a user.
+        \item \textbf{Services:} Selects an image to show to a given user.
+    \end{itemize}
+\end{itemize}
+
+\subsection*{Directed Acyclic Graph (DAG)}
+
+The following hierarchy is represented as a directed acyclic graph, with arrows showing the \textit{uses} relationship:
+
+\begin{itemize}
+    \item \textbf{Foundational Modules} (Label Database, ImageObject Database, Labeller Database)
+    \begin{itemize}
+        \item Used by their respective connectors.
+    \end{itemize}
+    \item \textbf{Database Connectors} (Label Database Connector, ImageObject Database Connector, Labeller Database Connector)
+    \begin{itemize}
+        \item Used by core services like Label Server, Object Extraction Manager, and Image Service Manager.
+    \end{itemize}
+    \item \textbf{Core Services} (Label Server, Object Extraction Manager, Image Service Manager)
+    \begin{itemize}
+        \item Use specialized services to provide advanced functionalities.
+    \end{itemize}
+    \item \textbf{Specialized Services} (Label Confidence Service, Object Extraction Service, Image Prior Analyzer, Labeller Expertise Calculator, Image Mask Service, Image Selection Service)
+    \begin{itemize}
+        \item Provide algorithms and computations needed by the core services.
+    \end{itemize}
+\end{itemize}
+
+\begin{longtable}{|l|l|l|}
+  \hline
+  \textbf{Source Module} & \textbf{Target Module} & \textbf{Relationship} \\ \hline
+  Label Database & Label Database Connector & Uses \\ \hline
+  ImageObject Database & ImageObject Database Connector & Uses \\ \hline
+  Labeller Database & Labeller Database Connector & Uses \\ \hline
+  Label Database Connector & Label Server & Uses \\ \hline
+  ImageObject Database Connector & Object Extraction Manager & Uses \\ \hline
+  Labeller Database Connector & Object Extraction Manager & Uses \\ \hline
+  Label Server & Label Database Connector & Uses \\ \hline
+  Label Server & Label Confidence Service & Uses \\ \hline
+  Object Extraction Manager & Label Confidence Service & Uses \\ \hline
+  Object Extraction Manager & Object Extraction Service & Uses \\ \hline
+  Object Extraction Manager & Labeller Expertise Calculator & Uses \\ \hline
+  Image Service Manager & Image Selection Service & Uses \\ \hline
+  Image Service Manager & Image Mask Service & Uses \\ \hline
+  Image Service Manager & Image Prior Analyzer & Uses \\ \hline
+  Label Confidence Service & N/A & Provides algorithms \\ \hline
+  Object Extraction Service & N/A & Provides algorithms \\ \hline
+  Image Prior Analyzer & N/A & Provides algorithms \\ \hline
+  Labeller Expertise Calculator & N/A & Provides algorithms \\ \hline
+  Image Mask Service & N/A & Provides algorithms \\ \hline
+  Image Selection Service & N/A & Provides algorithms \\ \hline
+  \end{longtable}
+
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{Analysis_Class_Diagram_Model.png}
+    \caption{ML Model}
+    \label{FigUH}
+  \end{figure}
 
 %\section*{References}
 
@@ -955,9 +1300,11 @@ arrows in the diagram typically correspond to the presence of import statement.}
 
 \section{Timeline}
 
-\wss{Schedule of tasks and who is responsible}
-
-\wss{You can point to GitHub if this information is included there}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{timeline.png}
+  \label{FigUH}
+\end{figure}
 
 \bibliographystyle {plainnat}
 \bibliography{../../../refs/References}
