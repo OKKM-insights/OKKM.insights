@@ -141,19 +141,16 @@ adapted here is called design for
 change.
 
 \begin{description}
-\item[\refstepcounter{acnum} \actheacnum \label{acHardware}:] Change in labeling tool(s) used or the introduction of additional labeling tools.
-\item[\refstepcounter{acnum} \actheacnum \label{acInput}:] Change in form parameters for project creation and account registration workflows.
-\item[\refstepcounter{acnum} \actheacnum \label{acPresentation}:] Change in the set and presentation of project statistics displayed to clients.
-\item[\refstepcounter{acnum} \actheacnum \label{acImagePriors}:] Changes in algorithms used to calculate image priors.
-\item[\refstepcounter{acnum} \actheacnum \label{acObjectExtr}:] Changes in algorithms for object extraction from images.
-\item[\refstepcounter{acnum} \actheacnum \label{acExpertLabel}:] Changes in algorithms that update and refine labeller expertise metrics.
-\item[\refstepcounter{acnum} \actheacnum \label{acImageServe}:] Changes in image serving and distribution algorithms.
-\item[\refstepcounter{acnum} \actheacnum \label{acPlanetLabs}:] Change in automated image retrieval methods from the PlanetLabs image provider.
-\item[\refstepcounter{acnum} \actheacnum \label{acImageProvider}:] Change in satellite image providers or addition of multiple providers, requiring adjustments in data ingestion modules.
-\item[\refstepcounter{acnum} \actheacnum \label{acMoneyModel}:] Change in the compensation model or payment distribution logic for labellers and stakeholders.
-\item[\refstepcounter{acnum} \actheacnum \label{acCloud}:] Change in backend hosting services (e.g., switching or integrating additional cloud providers beyond AWS/Azure) affecting deployment modules.
-\item[\refstepcounter{acnum} \actheacnum \label{acConsensus}:] Change in consensus algorithms or user accuracy models used to resolve labeling conflicts, impacting the data validation modules.
-\item[\refstepcounter{acnum} \actheacnum \label{acLegal}:] Change in regulatory compliance or data privacy requirements, necessitating adjustments in data handling and storage modules.
+  \item[\refstepcounter{acnum} \actheacnum \label{acHardware}:] Change in labeling tool(s) used or the introduction of additional labeling tools.
+  \item[\refstepcounter{acnum} \actheacnum \label{acInput}:] Change in form parameters for project creation and account registration workflows.
+  \item[\refstepcounter{acnum} \actheacnum \label{acPresentation}:] Change in the set and presentation of project statistics displayed to clients.
+  \item[\refstepcounter{acnum} \actheacnum \label{acImagePriors}:] Changes in algorithms used to calculate image priors.
+  \item[\refstepcounter{acnum} \actheacnum \label{acObjectExtr}:] Changes in algorithms for object extraction from images.
+  \item[\refstepcounter{acnum} \actheacnum \label{acExpertLabel}:] Changes in algorithms that update and refine labeller expertise metrics.
+  \item[\refstepcounter{acnum} \actheacnum \label{acImageServe}:] Changes in image serving and distribution algorithms.
+  \item[\refstepcounter{acnum} \actheacnum \label{acImageProvider}:] Change in satellite image providers or addition of multiple providers, requiring adjustments in data ingestion modules.
+  \item[\refstepcounter{acnum} \actheacnum \label{acCloud}:] Change in backend hosting services (e.g., switching or integrating additional cloud providers beyond AWS/Azure) affecting deployment modules.
+  \item[\refstepcounter{acnum} \actheacnum \label{acConsensus}:] Change in consensus algorithms or user accuracy models used to resolve labeling conflicts, impacting the data validation modules.
 \end{description}
 
 
@@ -1050,18 +1047,15 @@ SE10 & \mref{accdc}, \mref{ImageObject database connector}, \mref{Labeller datab
 \toprule
 \textbf{AC} & \textbf{Modules}\\
 \midrule
-\acref{acHardware} & \mref{mHH}\\
-\acref{acInput} & \mref{mInput}\\
-\acref{acParams} & \mref{mParams}\\
-\acref{acVerify} & \mref{mVerify}\\
-\acref{acOutput} & \mref{mOutput}\\
-\acref{acVerifyOut} & \mref{mVerifyOut}\\
-\acref{acODEs} & \mref{mODEs}\\
-\acref{acEnergy} & \mref{mEnergy}\\
-\acref{acControl} & \mref{mControl}\\
-\acref{acSeqDS} & \mref{mSeqDS}\\
-\acref{acSolver} & \mref{mSolver}\\
-\acref{acPlot} & \mref{mPlot}\\
+\acref{acHardware} & \mref{lbli} \\
+\acref{acInput} & \mref{pci}, \mref{aci}\\
+\acref{acPresentation} & \mref{ri}, \mref{report} \\
+\acref{acImagePriors} & \mref{Image Prior Analyzer}\\
+\acref{acObjectExtr} & \mref{Object Extraction Service}\\
+\acref{acExpertLabel} & \mref{Labeller Expertise Calculator}\\
+\acref{acImageServe} & \mref{Image Service Manager}\\
+\acref{acImageProvider} & \mref{sirc}\\
+\acref{acConsensus} & \mref{Label Confidence Service}\\
 \bottomrule
 \end{tabular}
 \caption{Trace Between Anticipated Changes and Modules}
