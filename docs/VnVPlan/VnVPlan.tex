@@ -9,6 +9,7 @@
 \usepackage{hyperref}
 \usepackage{enumitem}
 \usepackage{amssymb}
+\usepackage{float}
 
 \newlist{todolist}{itemize}{2}
 \setlist[todolist]{label=$\square$}
@@ -161,46 +162,48 @@ This section describes the team, verification plans for the system design and do
 
 \subsection{Verification and Validation Team}
 When not listed as lead, members of core team will support through team discussion and implementation of feedback.\\
-\begin{center}
-\begin{tabular}{|c|c|l|}
-  \hline
-  \textbf{Name} & \textbf{Role} & \textbf{Responsibilities}\\\hline
-  Mathew Petronilho & Core team & \textbf{SRS} \\
-  & & Lead review of SRS\\
-  & & \textbf{Implementation}\\
-  & & Support review of implementation\\
-  & & Review Implementation for coding \\
-  & & standards, comment quality\\
-  \hline
-  Oleg Glotov & Core team & \textbf{VnV Plan} \\
-  & & Support review of VnV Plan\\
-  & & Review VnV Plan for formatting and \\
-  & & grammar errors\\
-  & & \textbf{Implementation}\\
-  & & Lead review of Implementation\\
-  \hline
-  Kartik Chaudhari & Core team & \textbf{Design} \\
-  & & Support review of Design\\
-  & & Review diagrams and documents for correct \\
-  & & notation, formatting and grammar\\
-  & & \textbf{VnV Plan}\\
-  & & Lead review of VnV Plan\\
-  & & \textbf{Implementation}\\
-  & & Support review of implementation\\
-  \hline
-  Kyle McMaster & Core team & \textbf{SRS} \\
-  & & Check SRS for formatting and grammar errors\\
-  & & Support review of SRS\\
-  & & \textbf{Design}\\
-  & & Lead review of design\\
-  & & Ensure team is following standard design principles\\
-  \hline
-  Dr. Swati Mishra & Project Supervisor & Validate all team docs in structured review\\\hline
-  Capstone Team 10 & Primary Reviewers & Validate all team docs in \\
-  & & async review through Git issues\\
-  \hline
-\end{tabular}
-\end{center}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \textbf{Name} & \textbf{Role} & \textbf{Responsibilities}\\\hline
+      Mathew Petronilho & Core team & \textbf{SRS} \\
+      & & Lead review of SRS\\
+      & & \textbf{Implementation}\\
+      & & Support review of implementation\\
+      & & Review Implementation for coding \\
+      & & standards, comment quality\\
+      \hline
+      Oleg Glotov & Core team & \textbf{VnV Plan} \\
+      & & Support review of VnV Plan\\
+      & & Review VnV Plan for formatting and \\
+      & & grammar errors\\
+      & & \textbf{Implementation}\\
+      & & Lead review of Implementation\\
+      \hline
+      Kartik Chaudhari & Core team & \textbf{Design} \\
+      & & Support review of Design\\
+      & & Review diagrams and documents for correct \\
+      & & notation, formatting and grammar\\
+      & & \textbf{VnV Plan}\\
+      & & Lead review of VnV Plan\\
+      & & \textbf{Implementation}\\
+      & & Support review of implementation\\
+      \hline
+      Kyle McMaster & Core team & \textbf{SRS} \\
+      & & Check SRS for formatting and grammar errors\\
+      & & Support review of SRS\\
+      & & \textbf{Design}\\
+      & & Lead review of design\\
+      & & Ensure team is following standard design principles\\
+      \hline
+      Dr. Swati Mishra & Project Supervisor & Validate all team docs in structured review\\\hline
+      Capstone Team 10 & Primary Reviewers & Validate all team docs in \\
+      & & async review through Git issues\\
+      \hline
+    \end{tabular}
+    \caption{Team Member Roles and Responsibilities}
+\end{table}
 
 % \wss{Your teammates.  Maybe your supervisor.
 %   You should do more than list names.  You should say what each person's role is
@@ -2126,6 +2129,7 @@ How test will be performed: Practice environment utilization will be tracked by 
 \multicolumn{1}{l|}{UD2} &  &  &  & X &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
 \multicolumn{1}{l|}{TR0} &  &  &  & X &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
 \multicolumn{1}{l|}{TR1} &  &  &  &  & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{}
+\\ \caption{Test Case and Requirement Links}
 \end{longtable}
 \normalsize
 
@@ -2303,6 +2307,7 @@ Their values are defined in this section for easy maintenance.
   MAX\_TASK\_TIME & 15 & Minutes & Maximum time it takes a user to complete a task \label{MAX_TASK_TIME} \\ \hline
   MIN\_PRACTICE\_USAGE & 80 & \% & Minimum percent of new users who have used the practice sandbox \label{MIN_PRACTICE_USAGE} \\ \hline
   IMPROVE\_IN\_ACC & 20 & \% & Improvement in accuracy of a user after practicing \label{IMPROVE_IN_ACC} \\ \hline
+  \caption{Symbolic Parameters}
 \end{longtable}
 
 \subsection{Usability Survey Questions}
