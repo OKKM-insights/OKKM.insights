@@ -1263,7 +1263,7 @@ How test will be performed:
     \item Instruct users to complete a simulated labeling task provided in the practice section.
     \item Track the completion rate of simulated tasks to determine if at least \hyperref[MIN_PRACTICE_TASK_COMPLETION]{MIN\_PRACTICE\_TASK\_COMPLETION}\% of users complete a practice task before accessing real data.
     \item After task completion, administer a satisfaction survey to users to gather feedback on their experience with the simulated tasks.
-    \item Analyze survey results to ensure that at least \hyperref[MIN_PRACTICE_TASK_SATISFACTION]{MIN\_PRACTICE\_TASK\_SATISFACTION}\% of users rate their satisfaction with the practice tasks a 4 or higher.
+    \item Analyze survey results to ensure that at least \\ \hyperref[MIN_PRACTICE_TASK_SATISFACTION]{MIN\_PRACTICE\_TASK\_SATISFACTION}\% of users rate their satisfaction with the practice tasks a 4 or higher.
     \item Document any issues or feedback received to identify areas for improvement in the simulated labeling experience.
 \end{enumerate}
 
@@ -1286,7 +1286,7 @@ How test will be performed:
 \begin{enumerate}
     \item Instruct users to perform a set of typical tasks within the platform, ensuring they engage with areas where contextual help pop-ups are available.
     \item Monitor and record instances where contextual help pop-ups appear during user interactions.
-    \item Analyze the survey responses to determine if at least \hyperref[MIN_POPUP_USEFULNESS]{MIN\_POPUP\_USEFULNESS}\% of users rate the contextual help pop-ups a 4 or higher in clarity and helpfulness.
+    \item Analyze the survey responses to determine if at least \\ \hyperref[MIN_POPUP_USEFULNESS]{MIN\_POPUP\_USEFULNESS}\% of users rate the contextual help pop-ups a 4 or higher in clarity and helpfulness.
     \item Collect qualitative feedback to identify any areas where help pop-ups could be improved or where additional help pop-ups may be needed.
 \end{enumerate}
 
@@ -1305,7 +1305,7 @@ How test will be performed:
     \item Observe and record the error messages displayed, ensuring they include clear explanations of what went wrong.
     \item Verify that each error message provides actionable steps for resolution.
     \item After encountering errors, administer a survey asking users to rate their frustration level on a predefined scale and assess whether the error messages were helpful.
-    \item Analyze the survey results to ensure that at least \hyperref[ERRORS_WITH_INSTRUCTIONS]{ERRORS\_WITH\_INSTRUCTIONS}\% of users rated error message clarity a 4 or higher and that the number of users who said they were frustrated due to errors is below \hyperref[FRUSTRATION_RATE]{FRUSTRATION\_RATE}\%.
+    \item Analyze the survey results to ensure that at least \\ \hyperref[ERRORS_WITH_INSTRUCTIONS]{ERRORS\_WITH\_INSTRUCTIONS}\% of users rated error message clarity a 4 or higher and that the number of users who said they were frustrated due to errors is below \hyperref[FRUSTRATION_RATE]{FRUSTRATION\_RATE}\%.
 \end{enumerate}
 
 
@@ -1632,7 +1632,7 @@ How test will be performed:
     \item Develop automated scripts to simulate various types of transactions, including user compensations and client payments.
     \item Monitor and log each transaction to verify successful processing without errors or delays.
     \item Calculate the transaction success rate by dividing the number of successful transactions by the total number of attempted transactions.
-    \item Ensure that the transaction success rate meets or exceeds \hyperref[MIN_TRANSACTION_SUCCESS_RATE]{MIN\_TRANSACTION\_SUCCESS\_RATE}\%.
+    \item Ensure that the transaction success rate meets or exceeds \\ \hyperref[MIN_TRANSACTION_SUCCESS_RATE]{MIN\_TRANSACTION\_SUCCESS\_RATE}\%.
 \end{enumerate}
 
 \item{Multiple Currency Support Validation: T-OE3\\}
@@ -2257,8 +2257,6 @@ How test will be performed:
 \subsection{Traceability Between Test Cases and Modules}
 
 \wss{Provide evidence that all of the modules have been considered.}
-				
-\printbibliography
 
 
 \newpage
@@ -2289,6 +2287,7 @@ Their values are defined in this section for easy maintenance.
   MIN\_PREF\_MATCH & 80 & \% & Minimum percent of label task preference match \label{MIN_PREF_MATCH} \\ \hline
   MIN\_TRAINING\_TRACKER\_USEFULNESS & 80 & \% & Minimum percent of trackers usefulness \label{MIN_TRAINING_TRACKER_USEFULNESS} \\ \hline
   MIN\_PRACTICE\_TASK\_COMPLETION & 85 & \% & Minimum percent of user to complete practice task \label{MIN_PRACTICE_TASK_COMPLETION} \\ \hline
+  MIN\_PRACTICE\_TASK\_SATISFACTION & 80 & \% & Minimum percent of user that are satisfied with practice tasks \label{MIN_PRACTICE_TASK_SATISFACTION} \\ \hline
   MIN\_POPUP\_USEFULNESS & 80 & \% & Minimum percent of users to find popups useful \label{MIN_POPUP_USEFULNESS} \\ \hline
   ERRORS\_WITH\_INSTRUCTIONS & 80 & \% & Percent of errors with follow up instructions \label{ERRORS_WITH_INSTRUCTIONS} \\ \hline
   FRUSTRATION\_RATE & 10 & \% & Frustration rate when encountering errors \label{FRUSTRATION_RATE} \\ \hline
