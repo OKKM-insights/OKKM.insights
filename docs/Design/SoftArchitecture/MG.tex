@@ -284,6 +284,19 @@ Image
   \item [\refstepcounter{mnum} \mthemnum \label{modelevaluationservice}:]
     \textbf{ModelEvaluationService}
 
+\item [\refstepcounter{mnum} \mthemnum \label{pm}:]
+Project Manager
+\item [\refstepcounter{mnum} \mthemnum \label{pcm}:]
+Project Collection Manager
+\item [\refstepcounter{mnum} \mthemnum \label{pdbc}:]
+Project Database Connector
+\item [\refstepcounter{mnum} \mthemnum \label{cidbc}:]
+Core Image Database Connector
+\item [\refstepcounter{mnum} \mthemnum \label{plbsc}:]
+Planet Labs Connector
+\item [\refstepcounter{mnum} \mthemnum \label{rm}:]
+Report Manager
+
 \end{description}
 
 
@@ -975,73 +988,73 @@ requirements and between the modules and the anticipated changes.
 % the table should use mref, the requirements should be named, use something
 % like fref
 \begin{longtable}{p{0.2\textwidth} p{0.6\textwidth}}
-\caption{Trace Between Requirements and Modules} \label{TblRT} \\
-
-\toprule
-\textbf{Req.} & \textbf{Modules} \\
-\midrule
-\endfirsthead
-
-\toprule
-\textbf{Req.} & \textbf{Modules} \\
-\midrule
-\endhead
-
-\midrule
-\multicolumn{2}{r}{\textit{Continued on next page}} \\
-\midrule
-\endfoot
-
-\bottomrule
-\endlastfoot
-
-FR0 & \mref{acc}, \mref{aci}, \mref{accdc}, \mref{accd}, \mref{user}, \mref{client} \\
-FR1 & \mref{ac}, \mref{li}, \mref{at}, \mref{accdc}, \mref{accd}, \mref{user}, \mref{client} \\
-FR2 & \mref{ac}, \mref{at}, \mref{accdc}, \mref{accd}, \mref{auc}, \mref{aui}, \mref{user}, \mref{client} \\
-FR4 &  \\
-FR5 &  \\
-FR6 &  \\
-FR7 &  \\
-FR8 &  \\
-FR9 & \mref{acc}, \mref{aci}, \mref{accdc}, \mref{accd}, \mref{user}, \mref{client} \\
-FR10 & \mref{ac}, \mref{li}, \mref{at}, \mref{accdc}, \mref{accd}, \mref{user}, \mref{labeler} \\
-FR11 & \mref{ac}, \mref{at}, \mref{accdc}, \mref{accd}, \mref{auc}, \mref{aui}, \mref{user}, \mref{client} \\
-FR13 &  \mref{lbli}, \mref{lblc}, \mref{label}, \mref{label server}, \mref{label database}, \mref{label database connector}, \mref{Image Service Manager}, \mref{Image Selection Service}\\
-FR14 &  \mref{ri}, \mref{rc}, \mref{Object Extraction Manager}, \mref{Label Confidence Service}, \mref{Object Extraction Service}, \mref{Image Prior Analyzer}, \mref{Image Mask Service}  \\
-LF0 & \mref{aui}, \mref{li}, \mref{aci}, \mref{siri}, \mref{srfi}, \mref{pci}, \mref{iui}, \mref{ri}, \mref{psi}, \mref{lbli}\\
-LF1 & \mref{aui}, \mref{li}, \mref{aci}, \mref{siri}, \mref{srfi}, \mref{pci}, \mref{iui}, \mref{ri}, \mref{psi}, \mref{lbli}\\
-LF2 & \mref{aui}, \mref{li}, \mref{aci}, \mref{siri}, \mref{srfi}, \mref{pci}, \mref{iui}, \mref{ri}, \mref{psi}, \mref{lbli}\\
-UH0 & \mref{aui}, \mref{li}, \mref{aci}, \mref{siri}, \mref{srfi}, \mref{pci}, \mref{iui}, \mref{ri}, \mref{psi}, \mref{lbli}\\
-UH1 & \mref{aui}, \mref{li}, \mref{aci}, \mref{siri}, \mref{srfi}, \mref{pci}, \mref{iui}, \mref{ri}, \mref{psi}, \mref{lbli}\\
-UH2 & \mref{aui}, \mref{auc} \\
-UH6 & \mref{lbli} \\
-UH7 & \mref{srfi} \\
-UH9 & \mref{lbli} \\
-PR0 & \mref{aci}, \mref{acc}, \mref{client} \\
-PR1 & \mref{aci}, \mref{acc}, \mref{labeler} \\
-PR2 & \mref{ri}, \mref{rc}, \mref{report} \\
-PR3 & \mref{lbli}, \mref{lblc}, \mref{image}, \mref{Image Service Manager}, \mref{Image Selection Service} \\
-PR5 &  \mref{ri}, \mref{rc}, \mref{Object Extraction Manager}, \mref{Label Confidence Service}, \mref{Object Extraction Service}, \mref{Image Prior Analyzer}, \mref{Image Mask Service}\\
-PR6 & Related to all modules \\
-PR7 & Related to all modules \\
-PR8 & \mref{iui}, \mref{siri}, \mref{sirc}, \mref{sirf}, \mref{Image Mask Service}, \mref{Image Service Manager}, \mref{Image Selection Service}, \mref{Image Prior Analyzer}, \mref{ImageObject database}, \mref{ImageObject database connector}, \\
-PR9 & Related to all modules \\
-OE0 & Related to all modules \\
-OE1 & \mref{siri}, \mref{sirc}, \mref{sirf} \\
-OE4 &  \mref{modelcreation}, \mref{cnnmodelcreation}, \mref{othermodelcreation}, \mref{modeltrainingservice}, \mref{modelevaluationservice} \\
-OE5 &  \mref{ImageObject database}, \mref{ImageObject database connector}, \mref{modeltrainingservice}, \mref{modelevaluationservice}, \mref{modelmanager}, \mref{modelcreation}\\
-MR0 & Related to all modules \\
-SE0 & \mref{ac}, \mref{at}, \mref{lbli}, \mref{lblc}, \mref{psi}, \mref{psc} \\
-SE1 & \mref{ac}, \mref{at}, \mref{pci}, \mref{pcc} \\
-SE2 & \mref{aci}, \mref{acc} \\
-SE3 & \mref{aci}, \mref{acc} \\
-SE4 & \mref{srfi} \\
-SE5 & \mref{acc}, \mref{auc}, \mref{pcc}, \mref{Object Extraction Manager}, \mref{Label Confidence Service}, \mref{Object Extraction Service}, \mref{Image Prior Analyzer}, \mref{Image Mask Service}\\
-SE6 &  \\
-SE7 & \mref{accd}, \mref{accdc}, \mref{ImageObject database}, \mref{ImageObject database connector}, \mref{Labeller database connector}, \mref{Labeller database}, \mref{label database connector}, \mref{label database}, \mref{mlmodeldatabase} \\
-SE8 & \mref{auc}, \mref{acc}, \mref{accd} \\
-SE10 & \mref{accdc}, \mref{ImageObject database connector}, \mref{Labeller database connector}, \mref{label database connector} \\
-
+  \caption{Trace Between Requirements and Modules} \label{TblRT} \\
+  
+  \toprule
+  \textbf{Req.} & \textbf{Modules} \\
+  \midrule
+  \endfirsthead
+  
+  \toprule
+  \textbf{Req.} & \textbf{Modules} \\
+  \midrule
+  \endhead
+  
+  \midrule
+  \multicolumn{2}{r}{\textit{Continued on next page}} \\
+  \midrule
+  \endfoot
+  
+  \bottomrule
+  \endlastfoot
+  
+  FR0 & \mref{acc}, \mref{aci}, \mref{accdc}, \mref{accd}, \mref{user}, \mref{client} \\
+  FR1 & \mref{ac}, \mref{li}, \mref{at}, \mref{accdc}, \mref{accd}, \mref{user}, \mref{client} \\
+  FR2 & \mref{ac}, \mref{at}, \mref{accdc}, \mref{accd}, \mref{auc}, \mref{aui}, \mref{user}, \mref{client} \\
+  FR4 &  \mref{pci}, \mref{pcc}, \mref{pm}\\
+  FR5 &  \mref{ri}, \mref{rc}, \mref{rm}, \mref{report}\\
+  FR6 &  \mref{iui}, \mref{pm} \\
+  FR7 &  \mref{siri}, \mref{sirc}, \mref{sirf}, \mref{pm} \\
+  FR8 &  \mref{srfi}, \mref{pm}\\
+  FR9 & \mref{acc}, \mref{aci}, \mref{accdc}, \mref{accd}, \mref{user}, \mref{client} \\
+  FR10 & \mref{ac}, \mref{li}, \mref{at}, \mref{accdc}, \mref{accd}, \mref{user}, \mref{labeler} \\
+  FR11 & \mref{ac}, \mref{at}, \mref{accdc}, \mref{accd}, \mref{auc}, \mref{aui}, \mref{user}, \mref{client} \\
+  FR13 &  \mref{lbli}, \mref{lblc}, \mref{label server}, \mref{label database}, \mref{label database connector}, \mref{Image Service Manager}, \mref{Image Selection Service}\\
+  FR14 &  \mref{ri}, \mref{rc}, \mref{Object Extraction Manager}, \mref{Label Confidence Service}, \mref{Object Extraction Service}, \mref{Image Prior Analyzer}, \mref{Image Mask Service}  \\
+  LF0 & \mref{aui}, \mref{li}, \mref{aci}, \mref{siri}, \mref{srfi}, \mref{pci}, \mref{iui}, \mref{ri}, \mref{psi}, \mref{lbli}\\
+  LF1 & \mref{aui}, \mref{li}, \mref{aci}, \mref{siri}, \mref{srfi}, \mref{pci}, \mref{iui}, \mref{ri}, \mref{psi}, \mref{lbli}\\
+  LF2 & \mref{aui}, \mref{li}, \mref{aci}, \mref{siri}, \mref{srfi}, \mref{pci}, \mref{iui}, \mref{ri}, \mref{psi}, \mref{lbli}\\
+  UH0 & \mref{aui}, \mref{li}, \mref{aci}, \mref{siri}, \mref{srfi}, \mref{pci}, \mref{iui}, \mref{ri}, \mref{psi}, \mref{lbli}\\
+  UH1 & \mref{aui}, \mref{li}, \mref{aci}, \mref{siri}, \mref{srfi}, \mref{pci}, \mref{iui}, \mref{ri}, \mref{psi}, \mref{lbli}\\
+  UH2 & \mref{aui}, \mref{auc} \\
+  UH6 & \mref{lbli} \\
+  UH7 & \mref{srfi} \\
+  UH9 & \mref{lbli} \\
+  PR0 & \mref{aci}, \mref{acc}, \mref{client} \\
+  PR1 & \mref{aci}, \mref{acc}, \mref{labeler} \\
+  PR2 & \mref{ri}, \mref{rc}, \mref{report}, \mref{rm} \\
+  PR3 & \mref{lbli}, \mref{lblc}, \mref{image}, \mref{Image Service Manager}, \mref{Image Selection Service} \\
+  PR5 &  \mref{ri}, \mref{rc}, \mref{Object Extraction Manager}, \mref{Label Confidence Service}, \mref{Object Extraction Service}, \mref{Image Prior Analyzer}, \mref{Image Mask Service}\\
+  PR6 & Related to all modules \\
+  PR7 & Related to all modules \\
+  PR8 & \mref{iui}, \mref{siri}, \mref{sirc}, \mref{sirf}, \mref{Image Mask Service}, \mref{Image Service Manager}, \mref{Image Selection Service}, \mref{Image Prior Analyzer}, \mref{ImageObject database}, \mref{ImageObject database connector} \\
+  PR9 & Related to all modules \\
+  OE0 & Related to all modules \\
+  OE1 & \mref{siri}, \mref{sirc}, \mref{sirf} \\
+  OE4 &  \mref{modelcreation}, \mref{cnnmodelcreation}, \mref{othermodelcreation}, \mref{modeltrainingservice}, \mref{modelevaluationservice} \\
+  OE5 &  \mref{ImageObject database}, \mref{ImageObject database connector}, \mref{modeltrainingservice}, \mref{modelevaluationservice}, \mref{modelmanager}, \mref{modelcreation}\\
+  MR0 & Related to all modules \\
+  SE0 & \mref{ac}, \mref{at}, \mref{lbli}, \mref{lblc}, \mref{psi}, \mref{psc} \\
+  SE1 & \mref{ac}, \mref{at}, \mref{pci}, \mref{pcc} \\
+  SE2 & \mref{aci}, \mref{acc} \\
+  SE3 & \mref{aci}, \mref{acc} \\
+  SE4 & \mref{srfi} \\
+  SE5 & \mref{acc}, \mref{auc}, \mref{pcc}, \mref{Object Extraction Manager}, \mref{Label Confidence Service}, \mref{Object Extraction Service}, \mref{Image Prior Analyzer}, \mref{Image Mask Service}\\
+  SE6 & \mref{pm}, \mref{lblc} \\
+  SE7 & \mref{accd}, \mref{accdc}, \mref{ImageObject database}, \mref{ImageObject database connector}, \mref{Labeller database connector}, \mref{Labeller database}, \mref{label database connector}, \mref{label database}, \mref{mlmodeldatabase} \\
+  SE8 & \mref{auc}, \mref{acc}, \mref{accd} \\
+  SE10 & \mref{accdc}, \mref{ImageObject database connector}, \mref{Labeller database connector}, \mref{label database connector} \\
+  
 \end{longtable}
 
 \begin{table}[H]
