@@ -1,7 +1,7 @@
 ---
-name: Code Change
-about: Document code change in front end, backend, or model repos
-title: [Front End/Backend/Model] - Description
+name: 'Code Change'
+about: 'Document code change in front end, backend, or model repos'
+title: '[Front End/Backend/Model] - Description'
 labels: 
 assignees: ''
 
