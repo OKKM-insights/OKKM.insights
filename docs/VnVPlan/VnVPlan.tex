@@ -9,6 +9,7 @@
 \usepackage{hyperref}
 \usepackage{enumitem}
 \usepackage{amssymb}
+\usepackage{float}
 
 \newlist{todolist}{itemize}{2}
 \setlist[todolist]{label=$\square$}
@@ -79,8 +80,8 @@ Please refer to Section 4 of Software Requirements Specification found \href{htt
 
 \pagenumbering{arabic}
 
-This document is intended to provide a description of the specific validation and verification activites that will be completed throughout the development of the Orbit Watch System.
-The purpose of these activities is to ensure the system requirements agree with stakeholder needs, and to certify the implementation of the system satisifes the stakeholder requirements. This document will
+This document is intended to provide a description of the specific validation and verification activities that will be completed throughout the development of the Orbit Watch System.
+The purpose of these activities is to ensure the system requirements agree with stakeholder needs, and to certify the implementation of the system satisfies the stakeholder requirements. This document will
 start with a review of the system, a description of the testing plan, and a list of tests to be completed.
 
 
@@ -125,7 +126,7 @@ start with a review of the system, a description of the testing plan, and a list
 \begin{itemize}
     \item \textbf{Usability Testing}: This phase involves selecting a group of users, ideally from the target demographic (e.g., professionals in satellite imagery analysis or end-users in agriculture or rescue services). These users interact with the application's interface, performing tasks relevant to the platform's purpose, like labeling images or reviewing AI-generated annotations. They then provide feedback via a structured questionnaire focusing on usability aspects—such as ease of use, intuitiveness, and clarity. This feedback helps refine the user interface to ensure it meets user expectations and requirements.
 
-    \item \textbf{Demonstration Video}: The video will serve as an onboarding tool, guiding users on how to navigate and utilize the platform effectively. It will highlight key features, demonstrate a labeling task from start to finish, and showcase any unique functionalities, such as model-assisted annotations or accuracy checks. The video can be used in training materials or as a quick tutorial accessible directly from the platform to help new users become familiar with the tool's workflow.
+    \item \textbf{Demonstration Video}: The video will serve as an on-boarding tool, guiding users on how to navigate and utilize the platform effectively. It will highlight key features, demonstrate a labeling task from start to finish, and showcase any unique functionalities, such as model-assisted annotations or accuracy checks. The video can be used in training materials or as a quick tutorial accessible directly from the platform to help new users become familiar with the tool's workflow.
 
     \item \textbf{Formal Proof of Convergence for Labeled Images}: This proof aims to establish that labeled images converge toward a standard of accuracy and consistency. This involves statistical or mathematical validation showing that repeated labeling by different users (or with the assistance of AI) leads to a stable and reliable dataset over time. Proving convergence is crucial in ensuring that the labeling quality remains high, even as new users interact with the platform. This might include metrics such as inter-annotator agreement or AI confidence scores, contributing to the credibility and reliability of the labeled dataset.
 \end{itemize}
@@ -139,7 +140,7 @@ The following are BibTeX entries for our documents. Future references are also i
 \begin{itemize}
     \item \textbf{Problem Statement} (\cite{Problem_Statement}): Outlines the core challenges and objectives of the Orbit Watch project, providing context and motivation for development. It helps align our V\&V activities with the original goals and ensures that the software addresses the identified needs.
 
-    \item \textbf{Development Plan} (\cite{Development_Plan}): Details the project timeline, milestones, and resource allocation. It assists in scheduling V\&V activities appropriately within the development lifecycle, ensuring they are integrated at optimal points for maximum effectiveness.
+    \item \textbf{Development Plan} (\cite{Development_Plan}): Details the project timeline, milestones, and resource allocation. It assists in scheduling V\&V activities appropriately within the development life cycle, ensuring they are integrated at optimal points for maximum effectiveness.
     
     \item \textbf{Hazard Analysis} (\cite{Hazard_Analysis}): Identifies, analyzes and proposes mitigation strategies for potential hazards that could occur within the application. The document underscores the importance of proactive risk management in maintaining the platform's reliability, security, and user satisfaction.
 
@@ -161,46 +162,48 @@ This section describes the team, verification plans for the system design and do
 
 \subsection{Verification and Validation Team}
 When not listed as lead, members of core team will support through team discussion and implementation of feedback.\\
-\begin{center}
-\begin{tabular}{|c|c|l|}
-  \hline
-  \textbf{Name} & \textbf{Role} & \textbf{Responsibilities}\\\hline
-  Mathew Petronilho & Core team & \textbf{SRS} \\
-  & & Lead review of SRS\\
-  & & \textbf{Implementation}\\
-  & & Support review of implementation\\
-  & & Review Implementation for coding \\
-  & & standards, comment quality\\
-  \hline
-  Oleg Glotov & Core team & \textbf{VnV Plan} \\
-  & & Support review of VnV Plan\\
-  & & Review VnV Plan for formatting and \\
-  & & grammar errors\\
-  & & \textbf{Implementation}\\
-  & & Lead review of Implementation\\
-  \hline
-  Kartik Chaudhari & Core team & \textbf{Design} \\
-  & & Support review of Design\\
-  & & Review diagrams and documents for correct \\
-  & & notation, formatting and grammar\\
-  & & \textbf{VnV Plan}\\
-  & & Lead review of VnV Plan\\
-  & & \textbf{Implementation}\\
-  & & Support review of implementation\\
-  \hline
-  Kyle McMaster & Core team & \textbf{SRS} \\
-  & & Check SRS for formatting and grammar errors\\
-  & & Support review of SRS\\
-  & & \textbf{Design}\\
-  & & Lead review of design\\
-  & & Ensure team is following standard design principles\\
-  \hline
-  Dr. Swati Mishra & Project Supervisor & Validate all team docs in structured review\\\hline
-  Capstone Team 10 & Primary Reviewers & Validate all team docs in \\
-  & & async review through Git issues\\
-  \hline
-\end{tabular}
-\end{center}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \textbf{Name} & \textbf{Role} & \textbf{Responsibilities}\\\hline
+      Mathew Petronilho & Core team & \textbf{SRS} \\
+      & & Lead review of SRS\\
+      & & \textbf{Implementation}\\
+      & & Support review of implementation\\
+      & & Review Implementation for coding \\
+      & & standards, comment quality\\
+      \hline
+      Oleg Glotov & Core team & \textbf{VnV Plan} \\
+      & & Support review of VnV Plan\\
+      & & Review VnV Plan for formatting and \\
+      & & grammar errors\\
+      & & \textbf{Implementation}\\
+      & & Lead review of Implementation\\
+      \hline
+      Kartik Chaudhari & Core team & \textbf{Design} \\
+      & & Support review of Design\\
+      & & Review diagrams and documents for correct \\
+      & & notation, formatting and grammar\\
+      & & \textbf{VnV Plan}\\
+      & & Lead review of VnV Plan\\
+      & & \textbf{Implementation}\\
+      & & Support review of implementation\\
+      \hline
+      Kyle McMaster & Core team & \textbf{SRS} \\
+      & & Check SRS for formatting and grammar errors\\
+      & & Support review of SRS\\
+      & & \textbf{Design}\\
+      & & Lead review of design\\
+      & & Ensure team is following standard design principles\\
+      \hline
+      Dr. Swati Mishra & Project Supervisor & Validate all team docs in structured review\\\hline
+      Capstone Team 10 & Primary Reviewers & Validate all team docs in \\
+      & & async review through Git issues\\
+      \hline
+    \end{tabular}
+    \caption{Team Member Roles and Responsibilities}
+\end{table}
 
 % \wss{Your teammates.  Maybe your supervisor.
 %   You should do more than list names.  You should say what each person's role is
@@ -217,11 +220,11 @@ The SRS will also be reviewed by our supervisor in a structured review meeting. 
 The following sections are informed by the constraints \& assumptions. Therefore, it is critical that the these are verified first.
 \begin{todolist}
 \item All constraints are correct and necessary
-\item All constraints are unambigious
+\item All constraints are unambiguous
 \item All constraints which should be present are present
 \item All constraints are verifiable
 \item All assumptions are correct and necessary
-\item All assumptions are unambigious
+\item All assumptions are unambiguous
 \item All assumptions which should be present are present
 \item All assumptions are verifiable
 \end{todolist}
@@ -231,13 +234,13 @@ The data model affects how the system will be decomposed in the future design. T
   \item Data model is correct
   \item Data model is complete
   \item Each element of data dictionary is correctly described. There are no extra or missing attributes.
-  \item Elements of data dictionary are unambigious
+  \item Elements of data dictionary are unambiguous
 \end{todolist}
 \textbf{Functional Requirements}\\
 This section describes the functionality of the system. This will be useful for understanding the context of the NFRs.
 \begin{todolist}
 \item All requirements are correct and necessary
-\item All requirements are unambigious
+\item All requirements are unambiguous
 \item All requirements which should be present are present
 \item All requirements are verifiable
 \item All requirements are feasible
@@ -247,7 +250,7 @@ This section describes the functionality of the system. This will be useful for 
 The NFRs have now been properly introduced by the other sections and should now be assessed.
 \begin{todolist}
   \item All requirements are correct and necessary
-  \item All requirements are unambigious
+  \item All requirements are unambiguous
   \item All requirements which should be present are present
   \item All requirements are verifiable
   \item All requirements are feasible
@@ -278,7 +281,7 @@ Each of the sections reviewed should also be monitored for the following criteri
 
 \subsection{Design Verification Plan}
 Upon completion of the System Design, the team will verify the design. This verification will involve reviews from the primary reviewers, in the same manner as described above.
-This again will provide fresh prospective on the design, and help identify any omitted or underexplained information. The verification will continue with a systematic review with The
+This again will provide fresh prospective on the design, and help identify any omitted or under-explained information. The verification will continue with a systematic review with The
 project supervisor using the following checklist:\\\\
 
 \textbf{Class Decomposition}\\
@@ -307,7 +310,7 @@ project supervisor using the following checklist:\\\\
 
 \subsection{Verification and Validation Plan Verification Plan}
 This document must be verified and validated, to ensure the validation and verification of other artifacts is correct. Like other documents, this will include review
-from our primary reviewers, as well as a review with the project supervisor. The review with the project supervisor will be guided by the folllowing checklist:\\
+from our primary reviewers, as well as a review with the project supervisor. The review with the project supervisor will be guided by the following checklist:\\
 
 \textbf{Testing Plan}\\
 \begin{todolist}
@@ -338,9 +341,9 @@ from our primary reviewers, as well as a review with the project supervisor. The
 
 \subsection{Implementation Verification Plan}
 
-As part of the implementation verification plan, the team will conduct a series of static tests. One of which, will be a code walkthrough with members of the team.
+As part of the implementation verification plan, the team will conduct a series of static tests. One of which, will be a code walk through with members of the team.
 Before submitting Rev 0 and Rev 1, the members of the team will schedule time to walk through other members of the team through the code they have written. This will be 
-an opportunity for the team to look for code quality and adherence to standards, correctness, and alignment to the system design. During this walkthrough, we expect that 
+an opportunity for the team to look for code quality and adherence to standards, correctness, and alignment to the system design. During this walk through, we expect that 
 the lead developer of the code being displayed will explain the overall flow and control structures. In doing so, we expect they will find the errors in their own code.\\\\
 The team will also use a suite of tests, which is described in section 4.\\\\
 The team will used static analyzers to verify adherence to coding standards to perform type checking. Please refer to section 7.2.2 and 7.2.3 in the Development Plan found \href{https://github.com/OKKM-insights/OKKM.insights/blob/main/docs/DevelopmentPlan/DevelopmentPlan.pdf}{here}.
@@ -378,7 +381,7 @@ Please refer to section 7.2.2 and 7.2.3 in the Development Plan found \href{http
 \subsection{Software Validation Plan}
   As discussed in section 6.2 of the Problem Statement and Goals, found \href{https://github.com/OKKM-insights/OKKM.insights/blob/main/docs/ProblemStatementAndGoals/ProblemStatement.pdf}{here}, 
   we will validate our software through user testing. More specifically, we will conduct testing of the user interface with peers, who will fill in a survey containing both qualitative and quantitative questions.
-  This survery will be used to track progress on the usability of the software by comparing results collecting during different iterations of the user interface. See the appendix for a sample of the user survey.
+  This survey will be used to track progress on the usability of the software by comparing results collecting during different iterations of the user interface. See the appendix for a sample of the user survey.
 
 % \wss{If there is any external data that can be used for validation, you should
 %   point to it here.  If there are no plans for validation, you should state that
@@ -820,7 +823,7 @@ Please refer to section 7.2.2 and 7.2.3 in the Development Plan found \href{http
         \item \textbf{Expected Result}:
         \begin{itemize}
             \item A new labeler account is created and securely stored.
-            \item Labeler is prompted to complete any additional onboarding steps.
+            \item Labeler is prompted to complete any additional on-boarding steps.
         \end{itemize}
     \end{itemize}
     \item \textbf{Test Case Derivation}:
@@ -1256,11 +1259,11 @@ Input/Condition: New users are prompted to complete at least one simulated label
 
 How test will be performed:
 \begin{enumerate}
-    \item Recruit a representative sample of new users and onboard them to the platform.
+    \item Recruit a representative sample of new users and on-board them to the platform.
     \item Instruct users to complete a simulated labeling task provided in the practice section.
     \item Track the completion rate of simulated tasks to determine if at least \hyperref[MIN_PRACTICE_TASK_COMPLETION]{MIN\_PRACTICE\_TASK\_COMPLETION}\% of users complete a practice task before accessing real data.
     \item After task completion, administer a satisfaction survey to users to gather feedback on their experience with the simulated tasks.
-    \item Analyze survey results to ensure that at least \hyperref[MIN_PRACTICE_TASK_SATISFACTION]{MIN\_PRACTICE\_TASK\_SATISFACTION}\% of users rate their satisfaction with the practice tasks a 4 or higher.
+    \item Analyze survey results to ensure that at least \\ \hyperref[MIN_PRACTICE_TASK_SATISFACTION]{MIN\_PRACTICE\_TASK\_SATISFACTION}\% of users rate their satisfaction with the practice tasks a 4 or higher.
     \item Document any issues or feedback received to identify areas for improvement in the simulated labeling experience.
 \end{enumerate}
 
@@ -1283,7 +1286,7 @@ How test will be performed:
 \begin{enumerate}
     \item Instruct users to perform a set of typical tasks within the platform, ensuring they engage with areas where contextual help pop-ups are available.
     \item Monitor and record instances where contextual help pop-ups appear during user interactions.
-    \item Analyze the survey responses to determine if at least \hyperref[MIN_POPUP_USEFULNESS]{MIN\_POPUP\_USEFULNESS}\% of users rate the contextual help pop-ups a 4 or higher in clarity and helpfulness.
+    \item Analyze the survey responses to determine if at least \\ \hyperref[MIN_POPUP_USEFULNESS]{MIN\_POPUP\_USEFULNESS}\% of users rate the contextual help pop-ups a 4 or higher in clarity and helpfulness.
     \item Collect qualitative feedback to identify any areas where help pop-ups could be improved or where additional help pop-ups may be needed.
 \end{enumerate}
 
@@ -1302,7 +1305,7 @@ How test will be performed:
     \item Observe and record the error messages displayed, ensuring they include clear explanations of what went wrong.
     \item Verify that each error message provides actionable steps for resolution.
     \item After encountering errors, administer a survey asking users to rate their frustration level on a predefined scale and assess whether the error messages were helpful.
-    \item Analyze the survey results to ensure that at least \hyperref[ERRORS_WITH_INSTRUCTIONS]{ERRORS\_WITH\_INSTRUCTIONS}\% of users rated error message clarity a 4 or higher and that the number of users who said they were frustrated due to errors is below \hyperref[FRUSTRATION_RATE]{FRUSTRATION\_RATE}\%.
+    \item Analyze the survey results to ensure that at least \\ \hyperref[ERRORS_WITH_INSTRUCTIONS]{ERRORS\_WITH\_INSTRUCTIONS}\% of users rated error message clarity a 4 or higher and that the number of users who said they were frustrated due to errors is below \hyperref[FRUSTRATION_RATE]{FRUSTRATION\_RATE}\%.
 \end{enumerate}
 
 
@@ -1514,7 +1517,7 @@ How test will be performed:
 \begin{enumerate}
     \item Use load testing tools (e.g., JMeter, Locust) to simulate different numbers of active labelers.
     \item For each load level, generate a set of service requests that need to be processed within the negotiated deadlines.
-    \item Monitor the percentage of service requests completed within the required timeframes.
+    \item Monitor the percentage of service requests completed within the required time frames.
     \item Identify the maximum number of labelers the system can support while maintaining at least \hyperref[MIN_REPORT_RETURN]{MIN\_REPORT\_RETURN}\% of requests meeting the deadlines.
 \end{enumerate}
 
@@ -1629,7 +1632,7 @@ How test will be performed:
     \item Develop automated scripts to simulate various types of transactions, including user compensations and client payments.
     \item Monitor and log each transaction to verify successful processing without errors or delays.
     \item Calculate the transaction success rate by dividing the number of successful transactions by the total number of attempted transactions.
-    \item Ensure that the transaction success rate meets or exceeds \hyperref[MIN_TRANSACTION_SUCCESS_RATE]{MIN\_TRANSACTION\_SUCCESS\_RATE}\%.
+    \item Ensure that the transaction success rate meets or exceeds \\ \hyperref[MIN_TRANSACTION_SUCCESS_RATE]{MIN\_TRANSACTION\_SUCCESS\_RATE}\%.
 \end{enumerate}
 
 \item{Multiple Currency Support Validation: T-OE3\\}
@@ -1684,7 +1687,7 @@ How test will be performed:
     \item Prepare a large labeled dataset consisting of 10,000 images.
     \item Initiate the data transfer from the platform to the ML models using the established pipelines.
     \item Monitor the transfer process to measure the time taken to complete the transfer.
-    \item Verify that the data transfer completes within the specified timeframe.
+    \item Verify that the data transfer completes within the specified time frame.
     \item Execute batch processing of the large dataset through the pipelines and ensure no errors occur during the process.
     \item Repeat the transfer and processing under different load conditions to assess pipeline robustness.
 \end{enumerate}
@@ -2015,7 +2018,7 @@ Type: Manual, Dynamic
 					
 Initial State: Application is deployed with all help features. Tutorials and user documentation have been created.
 					
-Input/Condition: Users attempt to complete a basic labeling task using only the platform’s built-in help resources (help system, quick start guide, tutorials and contextual tooltips).
+Input/Condition: Users attempt to complete a basic labeling task using only the platform’s built-in help resources (help system, quick start guide, tutorials and contextual tool tips).
 					
 Output/Result: At least \hyperref[MIN_USER_HELP_SATISFACTION]{MIN\_USER\_HELP\_SATISFACTION}\% of users who used a help feature rated the feature as 4 or higher for helpfulness in the survey. With the assistance of the help tools, the user was able to perform the task within \hyperref[MAX_TASK_TIME]{MAX\_TASK\_TIME} minutes.
 					
@@ -2126,6 +2129,7 @@ How test will be performed: Practice environment utilization will be tracked by 
 \multicolumn{1}{l|}{UD2} &  &  &  & X &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
 \multicolumn{1}{l|}{TR0} &  &  &  & X &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
 \multicolumn{1}{l|}{TR1} &  &  &  &  & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{}
+\\ \caption{Test Case and Requirement Links}
 \end{longtable}
 \normalsize
 
@@ -2253,8 +2257,6 @@ How test will be performed:
 \subsection{Traceability Between Test Cases and Modules}
 
 \wss{Provide evidence that all of the modules have been considered.}
-				
-\printbibliography
 
 
 \newpage
@@ -2285,6 +2287,7 @@ Their values are defined in this section for easy maintenance.
   MIN\_PREF\_MATCH & 80 & \% & Minimum percent of label task preference match \label{MIN_PREF_MATCH} \\ \hline
   MIN\_TRAINING\_TRACKER\_USEFULNESS & 80 & \% & Minimum percent of trackers usefulness \label{MIN_TRAINING_TRACKER_USEFULNESS} \\ \hline
   MIN\_PRACTICE\_TASK\_COMPLETION & 85 & \% & Minimum percent of user to complete practice task \label{MIN_PRACTICE_TASK_COMPLETION} \\ \hline
+  MIN\_PRACTICE\_TASK\_SATISFACTION & 80 & \% & Minimum percent of user that are satisfied with practice tasks \label{MIN_PRACTICE_TASK_SATISFACTION} \\ \hline
   MIN\_POPUP\_USEFULNESS & 80 & \% & Minimum percent of users to find popups useful \label{MIN_POPUP_USEFULNESS} \\ \hline
   ERRORS\_WITH\_INSTRUCTIONS & 80 & \% & Percent of errors with follow up instructions \label{ERRORS_WITH_INSTRUCTIONS} \\ \hline
   FRUSTRATION\_RATE & 10 & \% & Frustration rate when encountering errors \label{FRUSTRATION_RATE} \\ \hline
@@ -2303,6 +2306,7 @@ Their values are defined in this section for easy maintenance.
   MAX\_TASK\_TIME & 15 & Minutes & Maximum time it takes a user to complete a task \label{MAX_TASK_TIME} \\ \hline
   MIN\_PRACTICE\_USAGE & 80 & \% & Minimum percent of new users who have used the practice sandbox \label{MIN_PRACTICE_USAGE} \\ \hline
   IMPROVE\_IN\_ACC & 20 & \% & Improvement in accuracy of a user after practicing \label{IMPROVE_IN_ACC} \\ \hline
+  \caption{Symbolic Parameters}
 \end{longtable}
 
 \subsection{Usability Survey Questions}
