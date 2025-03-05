@@ -1,5 +1,7 @@
 \documentclass[12pt, titlepage]{article}
 
+\usepackage{graphicx}
+\usepackage{float}
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{hyperref}
@@ -94,6 +96,14 @@ should be highlighted.}
 \section{Trace to Modules}		
 
 \section{Code Coverage Metrics}
+\subsection{Front-end Coverage}
+The coverage results of the front-end unit testing can be seen in Figure~\ref{fig:FE_coverage}. Perfect coverage was not achieved, but we believe our unit tests supplemented with our manual and usability tests provide sufficient coverage of the code.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{FE_coverage.png}
+    \caption{Front-end Unit Testing Coverage Results}
+    \label{fig:FE_coverage}
+\end{figure}
 
 \bibliographystyle{plainnat}
 \bibliography{../../refs/References}
