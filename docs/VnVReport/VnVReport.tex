@@ -1,5 +1,7 @@
 \documentclass[12pt, titlepage]{article}
 
+\usepackage{graphicx}
+\usepackage{float}
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{hyperref}
@@ -79,6 +81,134 @@ This document ...
 This section will not be appropriate for every project.
 
 \section{Unit Testing}
+\subsection{Front-end}
+Please refer to the tests folder in the frontend directory found \href{https://github.com/OKKM-insights/frontend/tree/main/tests/__tests__}{here}.
+\subsubsection{Rendering of a Component}
+\begin{itemize}
+    \item Description: A unit test was written for each component to ensure that it renders without error
+    \item Inputs: The component
+    \item Expected Outputs: The component renders 
+    \item Result: Pass
+\end{itemize}
+\subsubsection{Open Pop Up}
+\begin{itemize}
+    \item Description: A unit test was written for each pop up component to ensure the pop up appears when open
+    \item Inputs: open := true
+    \item Expected Outputs: The pop up renders 
+    \item Result: Pass
+\end{itemize}
+\subsubsection{Close Pop Up}
+\begin{itemize}
+    \item Description: A unit test was written for each pop up component to ensure the pop up does not appear when closed
+    \item Inputs: open := false
+    \item Expected Outputs: The pop up does not render 
+    \item Result: Pass
+\end{itemize}
+\subsubsection{Header Logged In}
+\begin{itemize}
+    \item Description: Ensure the header renders the right things when the user is logged in
+    \item Inputs: logged in := true
+    \item Expected Outputs: The header should contain the log out button and profile button
+    \item Result: Pass
+\end{itemize}
+\subsubsection{Header Logged Out}
+\begin{itemize}
+    \item Description: Ensure the header renders the right things when the user is logged out
+    \item Inputs: logged in := false
+    \item Expected Outputs: The header should contain the log in button and register button
+    \item Result: Pass
+\end{itemize}
+\subsubsection{Header Re-directions}
+\begin{itemize}
+    \item Description: Ensure the headers buttons redirect to the expected link
+    \item Inputs: N/A
+    \item Expected Outputs: The header redirects to the login on pressing the login button, register on pressing the register button, home when clicking the logout button, and edit profile information when clicking the profile button 
+    \item Result: Pass
+\end{itemize}
+\subsubsection{Login Success}
+\begin{itemize}
+    \item Description: Ensure the authorization context is set up upon successful login
+    \item Inputs: valid email and password
+    \item Expected Outputs: Login is successful and authorization context is set up
+    \item Result: Pass
+\end{itemize}
+\subsubsection{Login Fail}
+\begin{itemize}
+    \item Description: Ensure error message is displayed on login fail
+    \item Inputs: invalid email and password
+    \item Expected Outputs: Message saying invalid credentials
+    \item Result: Pass
+\end{itemize}
+\subsubsection{New Project Validation}
+\begin{itemize}
+    \item Description: Ensure required inputs are filled and notify the user if not
+    \item Inputs: empty required fields such as name
+    \item Expected Outputs: Message saying what required fields have not been filled in
+    \item Result: Pass
+\end{itemize}
+\subsubsection{New Project Creation Success}
+\begin{itemize}
+    \item Description: Ensure form submission occurs and success pop up is activated when server creates project
+    \item Inputs: Entirely filled out project creation form
+    \item Expected Outputs: Success pop up shown
+    \item Result: Pass
+\end{itemize}
+\subsubsection{New Project Creation Failure}
+\begin{itemize}
+    \item Description: Ensure form submission occurs and failure pop up is activated when a server side error occurs
+    \item Inputs: Entirely filled out project creation form
+    \item Expected Outputs: Failure pop up shown
+    \item Result: Pass
+\end{itemize}
+\subsubsection{Project Section renders all projects}
+\begin{itemize}
+    \item Description: Ensure projects section component renders all projects given to it
+    \item Inputs: A list of projects
+    \item Expected Outputs: Each project has its own project card on the page
+    \item Result: Pass
+\end{itemize}
+\subsubsection{Project Tile Navigation}
+\begin{itemize}
+    \item Description: Ensure project tile redirects to the correct page
+    \item Inputs: tile type
+    \item Expected Outputs: When the tile type is label, it redirects to the label project. When the tile type is client, it redirects to project insights.
+    \item Result: Pass
+\end{itemize}
+\subsubsection{Register Dynamic Password Validation}
+\begin{itemize}
+    \item Description: Ensure the password conditions show as satisfied when given a valid password
+    \item Inputs: A valid password
+    \item Expected Outputs: Password conditions show as satisfied
+    \item Result: Pass
+\end{itemize}
+\subsubsection{Register Success}
+\begin{itemize}
+    \item Description: Ensure the form is submitted, shows a success pop up, and redirect
+    \item Inputs: valid email and password
+    \item Expected Outputs: Success pop up comes up and redirected to the login page
+    \item Result: Pass
+\end{itemize}
+\subsubsection{Register Fail}
+\begin{itemize}
+    \item Description: Ensure the user is notified if the account already exists
+    \item Inputs: duplicate email
+    \item Expected Outputs: Message saying the account already exists
+    \item Result: Pass
+\end{itemize}
+\subsubsection{Update Info Success}
+\begin{itemize}
+    \item Description: Ensure the form is submitted and the new information is now displayed
+    \item Inputs: valid email change
+    \item Expected Outputs: Email on the account information page is updated to the new email
+    \item Result: Pass
+\end{itemize}
+\subsubsection{Update Info Fail}
+\begin{itemize}
+    \item Description: Ensure the user is notified if the account already exists, do not allow update
+    \item Inputs: duplicate email
+    \item Expected Outputs: Message saying the account already exists
+    \item Result: Pass
+\end{itemize}
 
 \section{Changes Due to Testing}
 
