@@ -87,6 +87,22 @@ the supervisor (when one exists) shaped the final product.  In particular
 the feedback from the Rev 0 demo to the supervisor (or to potential users) 
 should be highlighted.}
 
+\subsection{Changes to Front-end}
+Our labeling tool was largely refactored to incorporate the feedback we received from our usability testing. We also considered some of the unit testing outcomes. These changes included:
+\begin{itemize}
+    \item Added clearer visual feedback to all the buttons present in the labeling tool. Also made the currently selected label type more obvious to the user.
+    \item Changed the contextual pop ups to include more detailed descriptions and any short cuts associated with a button.
+    \item Added more details and made steps more granular in the help walk-through of the labeling tool. These additional details should help the user in further understanding what they need to do.
+    \item Changed the text of the main submission buttons so that it was clear what would happen when they were pressed. For example, submit was renamed to "submit labels".
+    \item Fixed a bug where the tool would get stuck if the submit button was pushed when there was no labels made.
+    \item The label button now stays selected after a label is created so the user can seamlessly label multiple objects of the same class without having to reselect it every time.
+    \item A visual gif will be added to show the basic process of creating a label so that it is clear the labels are to be drawn on the image.
+    \item Rather than have tools spread out, they have all been condensed into an easy access toolbar.
+    \item New button was added to reset zoom, contrast, brightness and image position back to its initial state.
+    \item Removed white space.
+    \item Removed help button when the project was complete.
+\end{itemize}
+
 \section{Automated Testing}
 		
 \section{Trace to Requirements}
