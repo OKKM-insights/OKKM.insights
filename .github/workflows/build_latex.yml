@@ -33,6 +33,7 @@ jobs:
         (cd ./docs/projMngmnt && latexmk -pdf Rev0_Team_Contrib.tex)
         (cd ./docs/Design/SoftArchitecture && latexmk -pdf MG.tex)
         (cd ./docs/Design/SoftDetailedDes && latexmk -pdf MIS.tex)
+        (cd ./docs/VnVReport && latexmk -pdf VnVReport.tex)
 
     - name: List files in docs directory
       run: ls -R docs
