@@ -740,6 +740,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \subsubsection*{FR0}
 \label{sec:FR0}
 \begin{itemize}
+  \item \textbf{Priority: High}
   \item \textbf{Description:} The system shall allow Customers to create a new user account.
   \item \textbf{Rationale:} The customers must have an account to request the services provided by the system.
   \item \textbf{Fit Criterion:} Customer is created in and stored in the database.
@@ -748,6 +749,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \subsubsection*{FR1}
 \label{sec:FR1}
 \begin{itemize}
+  \item \textbf{Priority: High}
   \item \textbf{Description:} The system shall allow customers with an existing account to authenticate themselves using the credentials stored by the system.
   \item \textbf{Rationale:} To access privileged information, the system must authenticate customers.
   \item \textbf{Fit Criterion:} Customer can use correct credentials to log in to user account.
@@ -756,6 +758,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \subsubsection*{FR2}
 \label{sec:FR2}
 \begin{itemize}
+  \item \textbf{Priority: Medium}
   \item \textbf{Description:} The system shall allow authenticated Customers to edit their account information.
   \item \textbf{Rationale:} After creating an account, the customers must have the necessary tools to modify the information they have provided.
   \item \textbf{Fit Criterion:} After logging in, customers can modify the stored personal information.
@@ -764,6 +767,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \subsubsection*{FR3}
 \label{sec:FR3}
 \begin{itemize}
+  \item \textbf{Priority: Out of Scope}
   \item \textbf{Description:} The system shall accept payments from authenticated Customers.
   \item \textbf{Rationale:} To request services, the system shall integrate with payment services.
   \item \textbf{Fit Criterion:} After logging in, customers can send a payment to the system.
@@ -772,6 +776,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \subsubsection*{FR4}
 \label{sec:FR4}
 \begin{itemize}
+  \item \textbf{Priority: High}
   \item \textbf{Description:} The system shall accept service requests from authenticated Customers.
   \item \textbf{Rationale:} The system’s key offering is the ability to request services.
   \item \textbf{Fit Criterion:} After logging in, customers can send a service request which is accepted by the system.
@@ -780,6 +785,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \subsubsection*{FR5}
 \label{sec:FR5}
 \begin{itemize}
+  \item \textbf{Priority: High}
   \item \textbf{Description:} The system shall provide reports to authenticated customers when a service request is complete.
   \item \textbf{Rationale:} The system must provide the results of a service request to the users who initiated it.
   \item \textbf{Fit Criterion:} After logging in and after the completion of a service request, customers can receive a service request report.
@@ -788,6 +794,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \subsubsection*{FR6}
 \label{sec:FR6}
 \begin{itemize}
+  \item \textbf{Priority: High}
   \item \textbf{Description:} The system shall allow an authenticated Customer to upload images associated with a service request.
   \item \textbf{Rationale:} If the customer has images to be analyzed, they must have the ability to upload them to the system.
   \item \textbf{Fit Criterion:} After logging in and after the initiation of a service request, customers can add images associated to the service request.
@@ -796,6 +803,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \subsubsection*{FR7}
 \label{sec:FR7}
 \begin{itemize}
+  \item \textbf{Priority: Medium}
   \item \textbf{Description:} The system shall allow a customer to request satellite images for a given geographic area, as designated using a specified geographic coordinate system.
   \item \textbf{Rationale:} If customers do not have images for the area they would like to be analyzed, they can request the system to source them on their behalf. They system may not be able to fulfill the request.
   \item \textbf{Fit Criterion:} After logging in and after the initiation of a service request, customers can request the system to locate images from external providers by providing geographic coordinates.
@@ -804,6 +812,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \subsubsection*{FR8}
 \label{sec:FR8}
 \begin{itemize}
+  \item \textbf{Priority: Medium}
   \item \textbf{Description:} The system shall alert a customer if their service request is not able to be fulfilled.
   \item \textbf{Rationale:} In the event the system is unable to complete a request, it should alert the customer, so they are aware.
   \item \textbf{Fit Criterion:} After logging in and after the initiation of a service request, the customer will get an alert if the request in unable to be fufiled.
@@ -812,6 +821,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \subsubsection*{FR9}
 \label{sec:FR9}
 \begin{itemize}
+  \item \textbf{Priority: High}
   \item \textbf{Description:} The system shall allow Labelers to create a new user account.
   \item \textbf{Rationale:} The Labelers must have an account to request the services provided by the system.
   \item \textbf{Fit Criterion:} Labeler is created in and stored in the database.
@@ -820,6 +830,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \subsubsection*{FR10}
 \label{sec:FR10}
 \begin{itemize}
+  \item \textbf{Priority: High}
   \item \textbf{Description:} The system shall allow Labelers with an existing account to authenticate themselves using the credentials stored by the system.
   \item \textbf{Rationale:} In order to access privileged information, the system must Labelers customers.
 \item \textbf{Fit Criterion:} Labelers can use correct credentials to log in to user account.
@@ -828,6 +839,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \subsubsection*{FR11}
 \label{sec:FR11}
 \begin{itemize}
+  \item \textbf{Priority: Medium}
   \item \textbf{Description:} The system shall allow authenticated Labelers to edit their account information.
   \item \textbf{Rationale:} After creating an account, the Labelers must have the necessary tools to modify the information they have provided.
   \item \textbf{Fit Criterion:} After logging in, Labelers can modify the stored personal information.
@@ -836,6 +848,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \subsubsection*{FR12}
 \label{sec:FR12}
 \begin{itemize}
+  \item \textbf{Priority: Out of Scope}
   \item \textbf{Description:} The system shall allow Labelers to request their accrued earnings be transferred to their provided banking platform.
   \item \textbf{Rationale:} The system must ensure Labelers are compensated for their efforts.
 \item \textbf{Fit Criterion:} After logging in, Labelers can request their earnings be deposited in the account stored in their personal information.
@@ -844,6 +857,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \subsubsection*{FR13}
 \label{sec:FR13}
 \begin{itemize}
+  \item \textbf{Priority: High}
   \item \textbf{Description:} The system shall allow Labelers to annotate images displayed to them with the purpose of collecting annotation data.
   \item \textbf{Rationale:} This is the key service the system provides.
   \item \textbf{Fit Criterion:} Labelers will be able to annotate images.
@@ -852,6 +866,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \subsubsection*{FR14}
 \label{sec:FR14}
 \begin{itemize}
+  \item \textbf{Priority: High}
   \item \textbf{Description:} The system shall combine annotations obtained from authenticated Labelers into a consolidated report.
   \item \textbf{Rationale:} This is the key service the system provides.
   \item \textbf{Fit Criterion:} After a service request has been initaited, and the system has determined the label accuracy is over a certain threshold.
