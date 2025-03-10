@@ -1,0 +1,2389 @@
+\documentclass[12pt, titlepage]{article}
+\usepackage[style=numeric]{biblatex} % We are using biblatex with numeric style sorted alphabetically
+\addbibresource{references.bib}
+
+\usepackage{amsmath} 
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{float}
+
+\newlist{todolist}{itemize}{2}
+\setlist[todolist]{label=$\square$}
+
+\hypersetup{
+    colorlinks,
+    citecolor=blue,
+    filecolor=black,
+    linkcolor=red,
+    urlcolor=blue
+}
+%\usepackage[round]{natbib}
+
+\input{../Comments}
+\input{../Common}
+
+\begin{document}
+
+\title{System Verification and Validation Plan for \progname{}}  
+\author{\authname}
+\date{\today}
+	
+\maketitle
+
+\pagenumbering{roman}
+
+\section*{Revision History}
+
+\begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
+\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
+\midrule
+11/04/2024 & Oleg, Kyle, Kartik, Mathew & Revision 0\\
+\bottomrule
+\end{tabularx}
+
+% ~\\
+% \wss{The intention of the VnV plan is to increase confidence in the software.
+% However, this does not mean listing every verification and validation technique
+% that has ever been devised.  The VnV plan should also be a \textbf{feasible}
+% plan. Execution of the plan should be possible with the time and team available.
+% If the full plan cannot be completed during the time available, it can either be
+% modified to ``fake it'', or a better solution is to add a section describing
+% what work has been completed and what work is still planned for the future.}
+
+% \wss{The VnV plan is typically started after the requirements stage, but before
+% the design stage.  This means that the sections related to unit testing cannot
+% initially be completed.  The sections will be filled in after the design stage
+% is complete.  the final version of the VnV plan should have all sections filled
+% in.}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\section{Symbols, Abbreviations, and Acronyms}
+
+Please refer to Section 4 of Software Requirements Specification found \href{https://github.com/OKKM-insights/OKKM.insights/blob/main/docs/SRS/SRS.pdf}{here}.
+
+
+
+
+
+
+
+\newpage
+
+\pagenumbering{arabic}
+
+This document is intended to provide a description of the specific validation and verification activities that will be completed throughout the development of the Orbit Watch System.
+The purpose of these activities is to ensure the system requirements agree with stakeholder needs, and to certify the implementation of the system satisfies the stakeholder requirements. This document will
+start with a review of the system, a description of the testing plan, and a list of tests to be completed.
+
+
+  \section{General Information}
+
+  \subsection{Summary} \cite{Problem_Statement}
+  
+  Orbit Watch is an online platform developed by OKKM Insights to streamline and simplify satellite imagery data analysis. The software addresses the scarcity of high-quality, labeled satellite imagery datasets tailored for specific use cases across various industries such as disaster response, environmental monitoring, urban planning, and defense. Leveraging an AI-powered crowd-sourcing model, Orbit Watch enables users to label commercially available satellite images. These labeled datasets are then utilized to train custom computer vision models, enhancing accuracy and efficiency in image analysis. The platform offers a paid service for identifying objects within satellite images and distributes earnings to users who contribute to the labeling efforts.
+  
+  \subsection{Objectives} \cite{Problem_Statement}
+  
+  The primary objectives of the Verification and Validation (V\&V) plan for Orbit Watch are:
+  
+  \begin{itemize}
+      \item \textbf{Ensure High Data Accuracy}: Build confidence in the software's correctness by verifying that the system achieves high classification accuracy for objects reported in the images. This is crucial for extracting useful information and providing value to stakeholders.
+      \item \textbf{Validate System Reliability and Accessibility}: Confirm that the system is reliable with minimal downtime and is accessible remotely for both purchasers and labelers, ensuring flexibility and efficiency in usage.
+      \item \textbf{Ensure Data Confidentiality and Secure Access}: Implement robust authentication mechanisms and encryption protocols to protect sensitive satellite image data and user information, ensuring access is restricted to authorized users only.
+  \end{itemize}
+  
+  The following objectives are out of scope for this V\&V plan:
+  
+  \begin{itemize}
+      \item \textbf{Verification of External Components}: We will not verify external libraries or services used for image acquisition, payment processing, or AI algorithms. It is assumed that these components have been adequately verified by their respective development teams.
+      \item \textbf{Stretch Goals}: Objectives related to automatic data labeling and multi-source integration are considered stretch goals and will not be included in the current V\&V efforts due to time and resource constraints.
+  \end{itemize}
+  
+  \subsection{Challenge Level and Extras}\cite{Development_Plan} \cite{Problem_Statement}
+  
+  \, \, \, We aim to classify this project as an advanced level project. \\
+
+  This project can be classified at the \textbf{advanced} challenge level due to several factors:
+  
+  \begin{itemize}
+      \item \textbf{Limited Domain Knowledge}: The team has minimal experience with satellite imagery and computer vision models, requiring additional research and learning to implement effective solutions.
+      \item \textbf{Complex Implementation}: Developing a web application from scratch involves challenges in front-end development, integrating secure payment systems, handling parallel image labeling tasks, and designing consensus algorithms for data accuracy.
+      \item \textbf{Integration of Multiple Components}: The project demands seamless integration of crowd-sourcing models, AI algorithms, payment processing, and user interfaces, increasing the complexity of development and testing.
+  \end{itemize}
+  
+
+\textbf{Extras from the Problem Statement} \cite{Problem_Statement}
+
+\begin{itemize}
+    \item \textbf{Usability Testing}: This phase involves selecting a group of users, ideally from the target demographic (e.g., professionals in satellite imagery analysis or end-users in agriculture or rescue services). These users interact with the application's interface, performing tasks relevant to the platform's purpose, like labeling images or reviewing AI-generated annotations. They then provide feedback via a structured questionnaire focusing on usability aspects—such as ease of use, intuitiveness, and clarity. This feedback helps refine the user interface to ensure it meets user expectations and requirements.
+
+    \item \textbf{Demonstration Video}: The video will serve as an on-boarding tool, guiding users on how to navigate and utilize the platform effectively. It will highlight key features, demonstrate a labeling task from start to finish, and showcase any unique functionalities, such as model-assisted annotations or accuracy checks. The video can be used in training materials or as a quick tutorial accessible directly from the platform to help new users become familiar with the tool's workflow.
+
+    \item \textbf{Formal Proof of Convergence for Labeled Images}: This proof aims to establish that labeled images converge toward a standard of accuracy and consistency. This involves statistical or mathematical validation showing that repeated labeling by different users (or with the assistance of AI) leads to a stable and reliable dataset over time. Proving convergence is crucial in ensuring that the labeling quality remains high, even as new users interact with the platform. This might include metrics such as inter-annotator agreement or AI confidence scores, contributing to the credibility and reliability of the labeled dataset.
+\end{itemize}
+  
+\subsection{Relevant Documentation}
+
+\bigskip
+
+The following are BibTeX entries for our documents. Future references are also included in this sample. By referencing these documents, we ensure that our V\&V efforts are comprehensive and aligned with the project's goals and requirements. Each document provides specific insights that help us design effective verification and validation activities:
+
+\begin{itemize}
+    \item \textbf{Problem Statement} (\cite{Problem_Statement}): Outlines the core challenges and objectives of the Orbit Watch project, providing context and motivation for development. It helps align our V\&V activities with the original goals and ensures that the software addresses the identified needs.
+
+    \item \textbf{Development Plan} (\cite{Development_Plan}): Details the project timeline, milestones, and resource allocation. It assists in scheduling V\&V activities appropriately within the development life cycle, ensuring they are integrated at optimal points for maximum effectiveness.
+    
+    \item \textbf{Hazard Analysis} (\cite{Hazard_Analysis}): Identifies, analyzes and proposes mitigation strategies for potential hazards that could occur within the application. The document underscores the importance of proactive risk management in maintaining the platform's reliability, security, and user satisfaction.
+
+    \item \textbf{Software Requirements Specification (SRS)} (\cite{SRS}): Defines all functional and non-functional requirements of Orbit Watch. It serves as the foundation for developing test cases to verify that the software meets all specified requirements and performs as intended.
+
+    \item \textbf{Module Guide (MG)} (\cite{MG}): Provides an overview of the system's modular architecture, including the decomposition into modules and their relationships. This information is vital for planning integration testing and ensuring that the modules interact correctly.
+
+    \item \textbf{Module Interface Specification (MIS)} (\cite{MIS}): Details the interfaces for each module, specifying input and output parameters. This is essential for verifying that modules communicate correctly and adhere to their specified interfaces, which is critical for system reliability.
+
+    \item \textbf{Verification and Validation Plan (V\&V Plan)} (\cite{VnV}): Outlines the strategies, methodologies, and resources allocated for the V\&V activities. It guides our testing efforts and ensures that all aspects of the system are adequately verified and validated according to the project's objectives.
+\end{itemize}
+
+By utilizing these documents, our V\&V efforts are thorough and focused on delivering a reliable and accurate platform for satellite imagery analysis.
+
+
+\section{Plan}
+
+This section describes the team, verification plans for the system design and documentation, use of automated testing tools, and the validation plan of the software following implementation.
+
+\subsection{Verification and Validation Team}
+When not listed as lead, members of core team will support through team discussion and implementation of feedback.\\
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|l|}
+      \hline
+      \textbf{Name} & \textbf{Role} & \textbf{Responsibilities}\\\hline
+      Mathew Petronilho & Core team & \textbf{SRS} \\
+      & & Lead review of SRS\\
+      & & \textbf{Implementation}\\
+      & & Support review of implementation\\
+      & & Review Implementation for coding \\
+      & & standards, comment quality\\
+      \hline
+      Oleg Glotov & Core team & \textbf{VnV Plan} \\
+      & & Support review of VnV Plan\\
+      & & Review VnV Plan for formatting and \\
+      & & grammar errors\\
+      & & \textbf{Implementation}\\
+      & & Lead review of Implementation\\
+      \hline
+      Kartik Chaudhari & Core team & \textbf{Design} \\
+      & & Support review of Design\\
+      & & Review diagrams and documents for correct \\
+      & & notation, formatting and grammar\\
+      & & \textbf{VnV Plan}\\
+      & & Lead review of VnV Plan\\
+      & & \textbf{Implementation}\\
+      & & Support review of implementation\\
+      \hline
+      Kyle McMaster & Core team & \textbf{SRS} \\
+      & & Check SRS for formatting and grammar errors\\
+      & & Support review of SRS\\
+      & & \textbf{Design}\\
+      & & Lead review of design\\
+      & & Ensure team is following standard design principles\\
+      \hline
+      Dr. Swati Mishra & Project Supervisor & Validate all team docs in structured review\\\hline
+      Capstone Team 10 & Primary Reviewers & Validate all team docs in \\
+      & & async review through Git issues\\
+      \hline
+    \end{tabular}
+    \caption{Team Member Roles and Responsibilities}
+\end{table}
+
+% \wss{Your teammates.  Maybe your supervisor.
+%   You should do more than list names.  You should say what each person's role is
+%   for the project's verification.  A table is a good way to summarize this information.}
+
+\subsection{SRS Verification Plan}
+
+The SRS will be verified through several channels. First, the document will be reviewed by another capstone team. This will help the team identify issues
+which are obscured to the team, due to the additional time they have spent thinking about the project. We expect this feedback to generally consist of 
+omitted definitions or unstated assumptions. Since the team is more familiar with the project, it is likely that we have some information which is obvious 
+to the team, but is necessary to define for others. The team will collect feedback from our primary reviewers in the issue tracker.\\
+The SRS will also be reviewed by our supervisor in a structured review meeting. The team will guide the review with the following checklist:\\\\
+\textbf{Constraints \& Assumptions}\\
+The following sections are informed by the constraints \& assumptions. Therefore, it is critical that the these are verified first.
+\begin{todolist}
+\item All constraints are correct and necessary
+\item All constraints are unambiguous
+\item All constraints which should be present are present
+\item All constraints are verifiable
+\item All assumptions are correct and necessary
+\item All assumptions are unambiguous
+\item All assumptions which should be present are present
+\item All assumptions are verifiable
+\end{todolist}
+\textbf{Data Model}\\
+The data model affects how the system will be decomposed in the future design. This in turn affects the requirements, so it should be verified next.
+\begin{todolist}
+  \item Data model is correct
+  \item Data model is complete
+  \item Each element of data dictionary is correctly described. There are no extra or missing attributes.
+  \item Elements of data dictionary are unambiguous
+\end{todolist}
+\textbf{Functional Requirements}\\
+This section describes the functionality of the system. This will be useful for understanding the context of the NFRs.
+\begin{todolist}
+\item All requirements are correct and necessary
+\item All requirements are unambiguous
+\item All requirements which should be present are present
+\item All requirements are verifiable
+\item All requirements are feasible
+\item All requirements are traceable
+\end{todolist}
+\textbf{Non-Functional Requirements}\\
+The NFRs have now been properly introduced by the other sections and should now be assessed.
+\begin{todolist}
+  \item All requirements are correct and necessary
+  \item All requirements are unambiguous
+  \item All requirements which should be present are present
+  \item All requirements are verifiable
+  \item All requirements are feasible
+  \item All requirements are traceable
+  \end{todolist}
+\textbf{General}\\
+Each of the sections reviewed should also be monitored for the following criteria.
+\begin{todolist}
+  \item Document contains properly formatted title, table of contents, references and all necessary sections
+  \item Tables and figures are correctly formatted
+  \item No grammar errors are present
+  \item Each required section is present
+  \item All requirements are feasible
+  \end{todolist}
+
+
+% \wss{List any approaches you intend to use for SRS verification.  This may
+%   include ad hoc feedback from reviewers, like your classmates (like your
+%   primary reviewer), or you may plan for something more rigorous/systematic.}
+
+% \wss{If you have a supervisor for the project, you shouldn't just say they will
+% read over the SRS.  You should explain your structured approach to the review.
+% Will you have a meeting?  What will you present?  What questions will you ask?
+% Will you give them instructions for a task-based inspection?  Will you use your
+% issue tracker?}
+
+% \wss{Maybe create an SRS checklist?}
+
+\subsection{Design Verification Plan}
+Upon completion of the System Design, the team will verify the design. This verification will involve reviews from the primary reviewers, in the same manner as described above.
+This again will provide fresh prospective on the design, and help identify any omitted or under-explained information. The verification will continue with a systematic review with The
+project supervisor using the following checklist:\\\\
+
+\textbf{Class Decomposition}\\
+\begin{todolist}
+  \item All functional requirements are covered by some subset of classes/subsystems, that is no requirement is left uncovered
+  \item All non-functional requirements are covered by some subset of classes/subsystems, that is no requirement is left uncovered
+  \item All classes are correctly sized. That is, each class should be concerned with one purpose
+  \item When appropriate, interfaces and abstract classes are used
+  \item All class attributes are complete and necessary
+  \item When appropriate, design patterns are used to improve design clarity
+  \item Function permissions are appropriate for all classes
+  \item Classes cannot be simplified without degrading the understandability of the system
+  \end{todolist}
+  \textbf{General}\\
+\begin{todolist}
+  \item The types of all attributes are listed
+  \item The argument and return types of all functions are listed
+  \item Correct notation is used to describe class relationships
+  \item Class diagram is legible
+  \end{todolist}
+% \wss{Plans for design verification}
+
+% \wss{The review will include reviews by your classmates}
+
+% \wss{Create a checklists?}
+
+\subsection{Verification and Validation Plan Verification Plan}
+This document must be verified and validated, to ensure the validation and verification of other artifacts is correct. Like other documents, this will include review
+from our primary reviewers, as well as a review with the project supervisor. The review with the project supervisor will be guided by the following checklist:\\
+
+\textbf{Testing Plan}\\
+\begin{todolist}
+  \item Testing plan includes a checklist for each artifact
+  \item Checklist items are unambiguous
+  \item Checklist contains all necessary items
+  \item Checklist does not contain unnecessary items
+  \item Plan includes review from multiple parties
+  \item Plan includes method for collecting feedback on artifacts
+  \item Plan is verifiable
+  \end{todolist}
+\textbf{Tests}\\
+\begin{todolist}
+  \item All functional requirements are covered by one or more tests\\
+  \item All non-functional requirements are covered by one or more tests\\
+  \item All `units' are sufficiently covered by one or more tests\\
+  \item Tests are unambiguous
+  \item Tests are verifiable
+  \item Tests are repeatable
+  \end{todolist}
+
+% \wss{The verification and validation plan is an artifact that should also be
+% verified.  Techniques for this include review and mutation testing.}
+
+% \wss{The review will include reviews by your classmates}
+
+% \wss{Create a checklists?}
+
+\subsection{Implementation Verification Plan}
+
+As part of the implementation verification plan, the team will conduct a series of static tests. One of which, will be a code walk through with members of the team.
+Before submitting Rev 0 and Rev 1, the members of the team will schedule time to walk through other members of the team through the code they have written. This will be 
+an opportunity for the team to look for code quality and adherence to standards, correctness, and alignment to the system design. During this walk through, we expect that 
+the lead developer of the code being displayed will explain the overall flow and control structures. In doing so, we expect they will find the errors in their own code.\\\\
+The team will also use a suite of tests, which is described in section 4.\\\\
+The team will used static analyzers to verify adherence to coding standards to perform type checking. Please refer to section 7.2.2 and 7.2.3 in the Development Plan found \href{https://github.com/OKKM-insights/OKKM.insights/blob/main/docs/DevelopmentPlan/DevelopmentPlan.pdf}{here}.
+
+% \wss{You should at least point to the tests listed in this document and the unit
+%   testing plan.}
+
+% \wss{In this section you would also give any details of any plans for static
+%   verification of the implementation.  Potential techniques include code
+%   walkthroughs, code inspection, static analyzers, etc.}
+
+% \wss{The final class presentation in CAS 741 could be used as a code
+% walkthrough.  There is also a possibility of using the final presentation (in
+% CAS741) for a partial usability survey.}
+
+\subsection{Automated Testing and Verification Tools}
+
+Please refer to section 7.2.2 and 7.2.3 in the Development Plan found \href{https://github.com/OKKM-insights/OKKM.insights/blob/main/docs/DevelopmentPlan/DevelopmentPlan.pdf}{here}.
+
+% \wss{What tools are you using for automated testing.  Likely a unit testing
+%   framework and maybe a profiling tool, like ValGrind.  Other possible tools
+%   include a static analyzer, make, continuous integration tools, test coverage
+%   tools, etc.  Explain your plans for summarizing code coverage metrics.
+%   Linters are another important class of tools.  For the programming language
+%   you select, you should look at the available linters.  There may also be tools
+%   that verify that coding standards have been respected, like flake9 for
+%   Python.}
+
+% \wss{If you have already done this in the development plan, you can point to
+% that document.}
+
+% \wss{The details of this section will likely evolve as you get closer to the
+%   implementation.}
+
+\subsection{Software Validation Plan}
+  As discussed in section 6.2 of the Problem Statement and Goals, found \href{https://github.com/OKKM-insights/OKKM.insights/blob/main/docs/ProblemStatementAndGoals/ProblemStatement.pdf}{here}, 
+  we will validate our software through user testing. More specifically, we will conduct testing of the user interface with peers, who will fill in a survey containing both qualitative and quantitative questions.
+  This survey will be used to track progress on the usability of the software by comparing results collecting during different iterations of the user interface. See the appendix for a sample of the user survey.
+
+% \wss{If there is any external data that can be used for validation, you should
+%   point to it here.  If there are no plans for validation, you should state that
+%   here.}
+
+% \wss{You might want to use review sessions with the stakeholder to check that
+% the requirements document captures the right requirements.  Maybe task based
+% inspection?}
+
+% \wss{For those capstone teams with an external supervisor, the Rev 0 demo should 
+% be used as an opportunity to validate the requirements.  You should plan on 
+% demonstrating your project to your supervisor shortly after the scheduled Rev 0 demo.  
+% The feedback from your supervisor will be very useful for improving your project.}
+
+% \wss{For teams without an external supervisor, user testing can serve the same purpose 
+% as a Rev 0 demo for the supervisor.}
+
+% \wss{This section might reference back to the SRS verification section.}
+
+\section{System Tests}
+
+% \wss{There should be text between all headings, even if it is just a roadmap of
+% the contents of the subsections.}
+
+\subsection{Tests for Functional Requirements}
+
+\section*{FR0: Customer Account Creation Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: T-FR0
+    \item \textbf{Control}: \textbf{Automated}
+    \item \textbf{Initial State}: The system is accessible, and no user account currently exists for the test user.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Customer provides valid personal information:
+        \begin{itemize}
+            \item \textbf{Name}: ``Alice Smith''
+            \item \textbf{Email}: \texttt{alice.smith@example.com}
+            \item \textbf{Password}: ``StrongPassword!2021''
+        \end{itemize}
+        \item Customer agrees to the system's privacy policy.
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item A new user account is created.
+            \item Account information is securely stored in the database.
+            \item The customer is redirected to the login page with a success message.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Based on the requirement that customers must have an account to access system services. This test verifies that with valid input and acceptance of terms, the account creation process is successfully executed and persists data appropriately.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Automated Test Script Execution}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Navigate to the account creation page using a testing tool like Selenium WebDriver.
+            \item \textbf{Step 2}: Fill in the registration form fields with the provided valid data.
+            \item \textbf{Step 3}: Check the agreement box for the privacy policy.
+            \item \textbf{Step 4}: Submit the registration form.
+            \item \textbf{Step 5}: Verify that the response indicates successful account creation (e.g., success message displayed).
+            \item \textbf{Step 6}: Confirm redirection to the login page.
+            \item \textbf{Step 7}: Query the database to verify that a new user record exists with the email \texttt{alice.smith@example.com}.
+            \item \textbf{Step 8}: Ensure the password is hashed and not stored in plain text.
+        \end{enumerate}
+        \item \textbf{Cleanup}:
+        \begin{itemize}
+            \item After verification, delete the test user account from the database to maintain a clean state for future tests.
+        \end{itemize}
+    \end{itemize}
+\end{enumerate}
+\section*{FR1: Customer Authentication Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: T-FR1
+    \item \textbf{Control}: \textbf{Automated}
+    \item \textbf{Initial State}: An existing user account with the following credentials:
+    \begin{itemize}
+        \item \textbf{Email}: \texttt{user.test@example.com}
+        \item \textbf{Password}: ``TestPass\#123''
+    \end{itemize}
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Customer enters the correct login credentials:
+        \begin{itemize}
+            \item \textbf{Email}: \texttt{user.test@example.com}
+            \item \textbf{Password}: ``TestPass\#123''
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item Customer is successfully authenticated.
+            \item Access to privileged information (e.g., user dashboard) is granted.
+            \item A session token or cookie is established for the user session.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Ensures that only authenticated customers can access the system, satisfying security requirements.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Automated Test Script Execution}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Navigate to the login page.
+            \item \textbf{Step 2}: Input the correct email and password.
+            \item \textbf{Step 3}: Submit the login form.
+            \item \textbf{Step 4}: Verify redirection to the user dashboard or home page.
+            \item \textbf{Step 5}: Check for the presence of privileged information on the page.
+            \item \textbf{Step 6}: Verify that a session token or authentication cookie has been set.
+            \item \textbf{Negative Test}:
+            \begin{enumerate}
+                \item \textbf{Step 7}: Attempt to access the dashboard with incorrect credentials to ensure access is denied.
+            \end{enumerate}
+        \end{enumerate}
+        \item \textbf{Session Validation}:
+        \begin{enumerate}
+            \item \textbf{Step 8}: Use the session token to access a secure API endpoint to confirm authentication persistence.
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
+\section*{FR2: Customer Account Modification Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: T-FR2
+    \item \textbf{Control}: \textbf{Manual}
+    \item \textbf{Initial State}: Customer is logged in and has access to their account information page.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Customer updates personal information fields:
+        \begin{itemize}
+            \item \textbf{Address}: ``123 New Street, Cityville''
+            \item \textbf{Phone Number}: ``555-1234''
+            \item \textbf{Profile Picture}: Uploads a new image file.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item Updated personal information is saved and reflected in the database.
+            \item The user receives a confirmation message indicating successful update.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Confirms that authenticated customers can modify their information, maintaining data accuracy and relevance.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Manual Steps}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Log in to the customer account.
+            \item \textbf{Step 2}: Navigate to the account settings or profile page.
+            \item \textbf{Step 3}: Change the address and phone number to the new values.
+            \item \textbf{Step 4}: Upload a new profile picture.
+            \item \textbf{Step 5}: Save the changes.
+            \item \textbf{Step 6}: Verify that the changes are displayed correctly on the profile page.
+            \item \textbf{Step 7}: Check the database to ensure the new information is updated.
+            \item \textbf{Step 8}: Log out and log back in to confirm that the changes persist.
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
+\section*{FR3: Payment Processing Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: T-FR3
+    \item \textbf{Control}: \textbf{Automated}
+    \item \textbf{Initial State}: Customer is logged in and ready to make a payment for a service request.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Valid payment information:
+        \begin{itemize}
+            \item \textbf{Credit Card Number}: ``4111 1111 1111 1111'' (Test Visa number)
+            \item \textbf{Expiry Date}: ``12/25''
+            \item \textbf{CVV}: ``123''
+            \item \textbf{Billing Address}: Matches the address on file.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item Payment is processed successfully.
+            \item A confirmation receipt is generated and emailed to the customer.
+            \item The service request status is updated to ``Paid'' or equivalent.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Verifies payment integration, ensuring that authenticated customers can complete transactions securely.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Automated Test Script Execution}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Navigate to the payment page for the pending service request.
+            \item \textbf{Step 2}: Input the valid payment details.
+            \item \textbf{Step 3}: Submit the payment form.
+            \item \textbf{Step 4}: Mock the payment gateway response if using a sandbox environment.
+            \item \textbf{Step 5}: Verify that the system displays a payment success message.
+            \item \textbf{Step 6}: Check that a confirmation receipt is generated and sent to the customer's email.
+            \item \textbf{Step 7}: Verify that the service request status is updated appropriately in the database.
+        \end{enumerate}
+        \item \textbf{Security Verification}:
+        \begin{enumerate}
+            \item \textbf{Step 8}: Ensure that sensitive payment information is not stored in plain text and complies with PCI DSS standards.
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
+\section*{FR4: Service Request Submission Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: T-FR4
+    \item \textbf{Control}: \textbf{Manual}
+    \item \textbf{Initial State}: Customer is logged in and has a confirmed payment.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Customer fills out the service request form with necessary details:
+        \begin{itemize}
+            \item \textbf{Service Type}: ``Image Analysis''
+            \item \textbf{Description}: ``Analysis of satellite images for deforestation.''
+            \item \textbf{Preferred Completion Date}: ``2023-12-31''
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item Service request is accepted and logged in the system.
+            \item Customer receives a confirmation message and request ID.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Ensures that the system accepts valid requests from authenticated customers.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Manual Steps}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Navigate to the new service request page.
+            \item \textbf{Step 2}: Fill in the form with the input data.
+            \item \textbf{Step 3}: Submit the form.
+            \item \textbf{Step 4}: Verify that a confirmation message with a unique request ID is displayed.
+            \item \textbf{Step 5}: Check the database to confirm that the service request is logged with correct details.
+            \item \textbf{Step 6}: Ensure that the service request appears in the customer's list of active requests.
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
+\section*{FR5: Service Report Delivery Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: T-FR5
+    \item \textbf{Control}: \textbf{Automated}
+    \item \textbf{Initial State}: Customer is logged in and has a completed service request.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Customer navigates to the ``My Reports'' section after being notified of service completion.
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item The service report is available for viewing and download.
+            \item Report contents are accurate and correspond to the service request.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Confirms that customers receive reports on completed services, fulfilling the system’s purpose.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Automated Test Script Execution}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Simulate the completion of a service request in the system (can be mocked or set up in a test environment).
+            \item \textbf{Step 2}: Log in as the customer.
+            \item \textbf{Step 3}: Navigate to the ``My Reports'' or equivalent section.
+            \item \textbf{Step 4}: Verify that the completed service report is listed.
+            \item \textbf{Step 5}: Open the report and check that it loads correctly.
+            \item \textbf{Step 6}: Validate that the report content matches the expected output based on the service provided.
+            \item \textbf{Step 7}: Attempt to download the report and ensure the file is intact and accessible.
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
+\section*{FR6: Image Upload Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: T-FR6
+    \item \textbf{Control}: \textbf{Manual}
+    \item \textbf{Initial State}: Customer is logged in with an active service request requiring image uploads.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Customer uploads multiple image files:
+        \begin{itemize}
+            \item \texttt{Image1.jpg}: 2\,MB
+            \item \texttt{Image2.png}: 3\,MB
+            \item \texttt{Image3.tif}: 5\,MB
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item All images are successfully uploaded and stored.
+            \item Images are correctly linked to the specific service request.
+            \item Customer receives an upload success message.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Ensures that customers can upload images for requested services, fulfilling the fit criterion.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Manual Steps}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Navigate to the image upload section of the active service request.
+            \item \textbf{Step 2}: Select the image files for upload.
+            \item \textbf{Step 3}: Initiate the upload process.
+            \item \textbf{Step 4}: Monitor progress indicators for each file.
+            \item \textbf{Step 5}: Verify that a success message is displayed after upload completion.
+            \item \textbf{Step 6}: Check the service request details to ensure images are listed.
+            \item \textbf{Step 7}: Confirm that the images are stored in the correct directory or database location.
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
+\section*{FR7: Satellite Image Request Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: T-FR7
+    \item \textbf{Control}: \textbf{Automated}
+    \item \textbf{Initial State}: Customer is logged in with an active service request that requires satellite images.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Geographic coordinates:
+        \begin{itemize}
+            \item \textbf{Latitude}: $37.7749^\circ$ N
+            \item \textbf{Longitude}: $122.4194^\circ$ W (San Francisco, CA)
+            \item \textbf{Date Range}: ``2023-01-01'' to ``2023-01-31''
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item The system retrieves and stores satellite images corresponding to the provided coordinates and date range.
+            \item Customer is notified of successful retrieval.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Confirms the system can source images using specified geographical data, aiding in analysis.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Automated Test Script Execution}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Input the geographic coordinates and date range into the request form.
+            \item \textbf{Step 2}: Submit the request.
+            \item \textbf{Step 3}: Mock the satellite data provider's API response if necessary.
+            \item \textbf{Step 4}: Verify that the system processes the input without errors.
+            \item \textbf{Step 5}: Check that the images are retrieved and stored in the system.
+            \item \textbf{Step 6}: Confirm that the images are linked to the correct service request.
+            \item \textbf{Step 7}: Validate that the customer receives a notification or confirmation message.
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
+\section*{FR8: Service Request Failure Alert Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: T-FR8
+    \item \textbf{Control}: \textbf{Manual}
+    \item \textbf{Initial State}: Customer has initiated a service request that cannot be fulfilled due to invalid parameters.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Service request with unfulfillable criteria:
+        \begin{itemize}
+            \item \textbf{Service Type}: ``Image Analysis''
+            \item \textbf{Geographic Coordinates}: Invalid coordinates (e.g., Latitude: $95^\circ$ N)
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item Customer receives an alert indicating that the service request cannot be processed.
+            \item An explanation of the failure is provided.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Ensures customers are promptly notified when requests cannot be processed, enhancing user experience.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Manual Steps}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Attempt to submit the service request with invalid coordinates.
+            \item \textbf{Step 2}: Observe the system's response.
+            \item \textbf{Step 3}: Verify that an alert or error message is displayed to the customer.
+            \item \textbf{Step 4}: Ensure the message clearly explains the reason for failure.
+            \item \textbf{Step 5}: Check that no service request is logged in the system for the invalid input.
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
+\section*{FR9: Labeler Account Creation Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: T-FR9
+    \item \textbf{Control}: \textbf{Automated}
+    \item \textbf{Initial State}: No labeler account exists for the test user in the system.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Labeler provides required account information:
+        \begin{itemize}
+            \item \textbf{Name}: ``Bob Labeler''
+            \item \textbf{Email}: \texttt{bob.labeler@example.com}
+            \item \textbf{Password}: ``LabelerPass789!''
+            \item \textbf{Expertise Area}: ``Satellite Image Annotation''
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item A new labeler account is created and securely stored.
+            \item Labeler is prompted to complete any additional on-boarding steps.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Ensures labelers can create accounts to access the system, which is essential for workflow.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Automated Test Script Execution}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Navigate to the labeler registration page.
+            \item \textbf{Step 2}: Fill in the registration form with the input data.
+            \item \textbf{Step 3}: Submit the form.
+            \item \textbf{Step 4}: Verify that a success message is displayed.
+            \item \textbf{Step 5}: Check the database to ensure the new labeler account exists with the correct details.
+            \item \textbf{Step 6}: Confirm that the password is stored securely (hashed).
+        \end{enumerate}
+        \item \textbf{Cleanup}:
+        \begin{itemize}
+            \item After verification, delete the test labeler account from the database to maintain a clean state for future tests.
+        \end{itemize}
+    \end{itemize}
+\end{enumerate}
+
+\section*{FR10: Labeler Authentication Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: T-FR10
+    \item \textbf{Control}: \textbf{Automated}
+    \item \textbf{Initial State}: Labeler account exists with credentials:
+    \begin{itemize}
+        \item \textbf{Email}: \texttt{labeler.test@example.com}
+        \item \textbf{Password}: ``LabelerSecure!2022''
+    \end{itemize}
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Labeler enters correct login credentials.
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item Labeler is authenticated successfully.
+            \item Access to the labeler dashboard is granted.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Confirms authentication mechanisms for labelers, maintaining system security.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Automated Test Script Execution}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Navigate to the labeler login page.
+            \item \textbf{Step 2}: Input the correct credentials.
+            \item \textbf{Step 3}: Submit the login form.
+            \item \textbf{Step 4}: Verify redirection to the labeler dashboard.
+            \item \textbf{Step 5}: Check for access to labeler-specific features and data.
+            \item \textbf{Negative Test}:
+            \begin{enumerate}
+                \item \textbf{Step 6}: Attempt login with incorrect credentials to ensure authentication fails appropriately.
+            \end{enumerate}
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
+\section*{FR11: Labeler Account Modification Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: T-FR11
+    \item \textbf{Control}: \textbf{Manual}
+    \item \textbf{Initial State}: Labeler is logged in and on the account settings page.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Update personal information:
+        \begin{itemize}
+            \item \textbf{Expertise Area}: Add ``Aerial Photography Annotation''
+            \item \textbf{Contact Number}: ``555-6789''
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item Personal information is updated and stored in the database.
+            \item Labeler receives a confirmation of successful update.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Ensures labelers can maintain current information, which is crucial for assignment matching.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Manual Steps}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Navigate to account settings.
+            \item \textbf{Step 2}: Modify the expertise area and contact number.
+            \item \textbf{Step 3}: Save the changes.
+            \item \textbf{Step 4}: Verify that the updated information is displayed.
+            \item \textbf{Step 5}: Check the database for updated records.
+            \item \textbf{Step 6}: Log out and log back in to confirm persistence.
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
+\section*{FR12: Labeler Earnings Transfer Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: T-FR12
+    \item \textbf{Control}: \textbf{Automated}
+    \item \textbf{Initial State}: Labeler is logged in with available earnings exceeding the minimum transfer threshold.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Transfer request to linked banking platform:
+        \begin{itemize}
+            \item \textbf{Amount}: Total available earnings.
+            \item \textbf{Bank Account Details}: Pre-verified and linked.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item Earnings are transferred successfully.
+            \item Transaction record is created.
+            \item Labeler receives confirmation and updated earnings balance.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Ensures labelers are compensated accurately and promptly, critical for system trust.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Automated Test Script Execution}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Navigate to the earnings or wallet section.
+            \item \textbf{Step 2}: Initiate a transfer request for the total available amount.
+            \item \textbf{Step 3}: Mock the banking API response if necessary.
+            \item \textbf{Step 4}: Verify that the system processes the transfer without errors.
+            \item \textbf{Step 5}: Confirm that the earnings balance is updated to reflect the transfer.
+            \item \textbf{Step 6}: Check that a transaction record is logged in the database.
+            \item \textbf{Step 7}: Validate that a confirmation message or email is sent to the labeler.
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
+\section*{FR13: Image Annotation Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: T-FR13
+    \item \textbf{Control}: \textbf{Manual}
+    \item \textbf{Initial State}: Labeler is logged in with images assigned for annotation.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Labeler annotates an image using the provided tools:
+        \begin{itemize}
+            \item Draws bounding boxes around objects.
+            \item Adds classification labels to each object.
+            \item Saves the annotation.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item Annotated image is stored in the system.
+            \item Annotation data is correctly linked to the image and service request.
+            \item Labeler receives confirmation of successful submission.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Confirms annotation capabilities, essential for image analysis services.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Manual Steps}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Access the image annotation interface.
+            \item \textbf{Step 2}: Use annotation tools to mark objects.
+            \item \textbf{Step 3}: Assign appropriate labels to each annotation.
+            \item \textbf{Step 4}: Save and submit the annotations.
+            \item \textbf{Step 5}: Verify that a confirmation is received.
+            \item \textbf{Step 6}: Check the database to ensure annotations are stored correctly.
+            \item \textbf{Step 7}: Attempt to re-access the annotated image to confirm annotations persist.
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
+\section*{FR14: Consolidated Annotation Report Test}
+
+\begin{enumerate}
+    \item \textbf{Test ID}: T-FR14
+    \item \textbf{Control}: \textbf{Automated}
+    \item \textbf{Initial State}: All required labeler annotations are complete for a service request.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item System triggers consolidation process for annotations.
+    \end{itemize}
+    \item \textbf{Output}:
+    \begin{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item Consolidated report is generated if label accuracy meets the predefined threshold.
+            \item Report is stored and made accessible to the customer.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Test Case Derivation}:
+    \begin{itemize}
+        \item Verifies that the system consolidates annotations accurately, ensuring quality results for customers.
+    \end{itemize}
+    \item \textbf{How Test Will Be Performed}:
+    \begin{itemize}
+        \item \textbf{Automated Test Script Execution}:
+        \begin{enumerate}
+            \item \textbf{Step 1}: Simulate completion of all annotations for a service request.
+            \item \textbf{Step 2}: Initiate the consolidation process (this may be automatic upon annotation completion).
+            \item \textbf{Step 3}: Verify that the system calculates label accuracy and compares it against the threshold.
+            \item \textbf{Step 4}: Confirm that if the accuracy meets or exceeds the threshold, the report is generated.
+            \item \textbf{Step 5}: Check that the report contains consolidated data from all annotations.
+            \item \textbf{Step 6}: Ensure the report is stored and accessible to the customer linked to the service request.
+            \item \textbf{Step 7}: Validate that notifications are sent to the customer about the report availability.
+        \end{enumerate}
+        \item \textbf{Edge Case Testing}:
+        \begin{enumerate}
+            \item \textbf{Step 8}: Repeat the test with annotations that do not meet the accuracy threshold to verify that the report is not generated and appropriate actions are taken (e.g., re-annotation request).
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Tests for Nonfunctional Requirements}
+
+% \wss{The nonfunctional requirements for accuracy will likely just reference the
+%   appropriate functional tests from above.  The test cases should mention
+%   reporting the relative error for these tests.  Not all projects will
+%   necessarily have nonfunctional requirements related to accuracy.}
+
+% \wss{For some nonfunctional tests, you won't be setting a target threshold for
+% passing the test, but rather describing the experiment you will do to measure
+% the quality for different inputs.  For instance, you could measure speed versus
+% the problem size.  The output of the test isn't pass/fail, but rather a summary
+% table or graph.}
+
+% \wss{Tests related to usability could include conducting a usability test and
+%   survey.  The survey will be in the Appendix.}
+
+% \wss{Static tests, review, inspections, and walkthroughs, will not follow the
+% format for the tests given below.}
+
+% \wss{If you introduce static tests in your plan, you need to provide details.
+% How will they be done?  In cases like code (or document) walkthroughs, who will
+% be involved? Be specific.}
+
+% NFRs 10---------------------------------------------------------
+\subsubsection{Look and Feel Tests}
+% 10.1
+\paragraph{Appearance Tests}
+\begin{enumerate}
+\item{Responsive Layout Validation: T-LF0\\}
+
+Type: Manual, Usability
+
+Initial State: Users access the application on devices with screen resolutions ranging from 1024$\times$768 pixels to 1920$\times$1080 pixels.
+
+Input/Condition: The application is displayed on various screen sizes within the specified range to verify adaptability and layout consistency.
+
+How test will be performed:
+\begin{enumerate}
+    \item Select a representative set of screen resolutions within the range 1024$\times$768 to 1920$\times$1080 pixels (e.g., 1024$\times$768, 1366$\times$768, 1440$\times$900, 1600$\times$900, 1920$\times$1080).
+    \item Use physical devices or browser developer tools to simulate each selected screen resolution.
+    \item Verify that all visual elements (buttons, text, images, menus) are fully visible and do not exceed screen boundaries.
+    \item Ensure that the layout remains uncluttered, with appropriate spacing and alignment across different screen sizes.
+\end{enumerate}
+
+\item{Interactive Elements Feedback Validation: T-LF1\\}
+
+Type: Manual, Usability
+
+Initial State: Interactive elements (e.g., buttons, links) are present within the application interface.
+
+Input/Condition: Users interact with various interactive elements to verify that visual feedback is provided appropriately.
+
+How test will be performed:
+\begin{enumerate}
+    \item Identify all interactive elements within the application, including buttons, links, and menu items.
+    \item For each interactive element, perform the following interactions: hover, click, and focus (if applicable).
+    \item Observe and document the visual feedback provided for each interaction, such as color changes, animations, or shadows.
+    \item Ensure that every interactive element provides at least one form of visual feedback as specified in the fit criterion.
+\end{enumerate}
+
+\end{enumerate}
+
+
+% 10.2
+\paragraph{Style Tests}
+\begin{enumerate}
+\item{Unified Visual Design Validation: T-LF2\\}
+
+Type: Manual, Usability
+
+Initial State: The application interface displays all components (buttons, menus, text fields, images, etc.) with the unified visual design specifications.
+
+Input/Condition: Users or testers navigate through the application to assess the consistency of font type, sizing, color, and background tones across all components.
+
+How test will be performed:
+\begin{enumerate}
+    \item Review the application's style guide or design specifications to understand the expected visual standards.
+    \item Navigate through each section of the application, observing the font type, size, color, and background tones used in various components.
+    \item Compare each observed element against the style guide to ensure consistency.
+    \item Utilize browser developer tools or design inspection tools to verify CSS properties related to fonts and colors.
+\end{enumerate}
+
+\end{enumerate}
+
+
+% NFRs 11---------------------------------------------------------
+\subsubsection{Usability and Humanity Requirements}
+% 11.1
+\paragraph{Ease of Use Tests}
+\begin{enumerate}
+
+\item{Navigation Menu Usability Test: T-UH0\\}
+
+Type: Manual, Usability
+
+Initial State: Users have access to the platform's main interface with a well-organized navigation menu.
+
+Input/Condition: Users are asked to locate and access various main features (e.g., labeling tasks, settings, help, account details) using the navigation menu.
+
+How test will be performed:
+\begin{enumerate}
+    \item Prepare a set of tasks where users must navigate to specific main features (e.g., "Find the labeling tasks section", "Access account details").
+    \item Instruct users to perform each task using the navigation menu, counting the number of clicks required to reach the target feature.
+    \item Record whether each task is completed within 3 clicks.
+    \item Calculate the percentage of tasks where users were able to navigate to the target feature within 3 clicks.
+    \item Ensure that at least \hyperref[MIN_USER_USABILITY_METRIC]{MIN\_USER\_USABILITY\_METRIC}\% of the tasks meet the success criterion.
+    \item Analyze any tasks that exceed the 3-click limit to identify navigation issues.
+\end{enumerate}
+
+\item{Consistency of UI Elements Validation: T-UH1\\}
+
+Type: Manual, Usability
+
+Initial State: The application interface displays all UI elements (buttons, forms, etc.) following the platform’s visual style guidelines.
+
+Input/Condition: Users navigate through different pages of the application, interacting with various UI elements to assess consistency.
+
+How test will be performed:
+\begin{enumerate}
+    \item Review the application's style guide or design specifications to identify the expected consistent styles for UI elements.
+    \item Identify all recurring interactive elements (e.g., buttons, forms, menus) across different pages of the application.
+    \item Instruct users to perform the tasks, observing whether they recognize and correctly use the UI elements based on their consistency.
+    \item Calculate the percentage of users who correctly recognized and used the recurring interface elements across different pages.
+    \item Ensure that at least \hyperref[MIN_USER_USABILITY_METRIC]{MIN\_USER\_USABILITY\_METRIC}\% of users meet the recognition and correct usage criterion.
+\end{enumerate}
+
+\end{enumerate}
+
+% 11.2
+\paragraph{Personalization and Internationalization Tests}
+\begin{enumerate}
+
+\item{Task Preference Matching Validation: T-UH2\\}
+
+Type: Manual, Usability
+
+Initial State: Users have access to their profile settings where they can set preferences for specific types of labeling tasks (e.g., agricultural, urban).
+
+Input/Condition: Users configure their task preferences in their profile settings and begin receiving assigned tasks over a defined period.
+
+How test will be performed: 
+\begin{enumerate}
+    \item Select a representative sample of users and have them set their task preferences in their profiles.
+    \item Over a set period (e.g., two weeks), track the labeling tasks assigned to these users.
+    \item Analyze the assigned tasks to determine the percentage that matches the users' specified preferences.
+    \item Verify that at least \hyperref[MIN_PREF_MATCH]{MIN\_PREF\_MATCH}\% of the assigned tasks align with the users' preferences.
+\end{enumerate}
+
+\item{Localized Format Validation: T-UH3\\}
+
+Type: Manual, Dynamic
+
+Initial State: Users have access to their profile settings where they can set or have their location automatically detected for date, time, and currency preferences.
+
+Input/Condition: Users either allow the application to detect their location automatically or manually set their preferred locale settings for date, time, and currency.
+
+How test will be performed:
+\begin{enumerate}
+    \item Select a diverse set of users from different geographical locations with varying locale settings.
+    \item For each user, ensure that their location is either correctly detected by the application or manually set their preferred locale settings in their profile.
+    \item Navigate to sections of the application where date, time, and currency are displayed (e.g., task deadlines, earnings reports).
+    \item Verify that the date formats (e.g., DD/MM/YYYY vs. MM/DD/YYYY), time formats (e.g., 24-hour vs. 12-hour), and currency symbols and formats (e.g., \$, €, ¥) align with the user's locale or manual settings.
+    \item Repeat the process after changing the user's locale settings to different regions to ensure the formats update accordingly.
+    \item Document any discrepancies where the formats do not match the expected locale settings.
+    \item Aggregate the results to ensure that all tested instances correctly display localized formats based on user settings.
+\end{enumerate}
+
+\end{enumerate}
+
+% 11.3
+\paragraph{Learning Tests}
+\begin{enumerate}
+
+\item{Progress Tracker Effectiveness Test: T-UH4\\}
+
+Type: Manual, Usability
+
+Initial State: The application includes a fully functional progress tracker that displays completed and pending tutorials and training tasks.
+
+Input/Condition: Users complete a series of tutorials and training tasks within the platform.
+
+How test will be performed:
+\begin{enumerate}
+    \item Select a representative sample of users who will undergo the tutorials and training tasks.
+    \item Instruct users to navigate to the progress tracker before, during, and after completing the tutorials.
+    \item Ensure that the progress tracker accurately displays the status of each learning module, indicating which are completed and which are pending.
+    \item After users have completed the training, administer a post-training survey asking them to rate the helpfulness of the progress tracker.
+    \item Analyze the survey responses to determine the percentage of users who find the progress tracker helpful.
+    \item Verify that at least \hyperref[MIN_TRAINING_TRACKER_USEFULNESS]{MIN\_TRAINING\_TRACKER\_USEFULNESS}\% of the surveyed users rate the progress tracker a 4 or higher on helpfulness.
+    \item Collect additional qualitative feedback to identify any issues or areas for improvement in the progress tracking feature.
+\end{enumerate}
+
+\item{Simulated Labeling Task Validation: T-UH5\\}
+
+Type: Manual, Usability
+
+Initial State: The platform provides a dedicated section for simulated labeling tasks that do not affect actual datasets.
+
+Input/Condition: New users are prompted to complete at least one simulated labeling task before accessing real labeling tasks.
+
+How test will be performed:
+\begin{enumerate}
+    \item Recruit a representative sample of new users and on-board them to the platform.
+    \item Instruct users to complete a simulated labeling task provided in the practice section.
+    \item Track the completion rate of simulated tasks to determine if at least \hyperref[MIN_PRACTICE_TASK_COMPLETION]{MIN\_PRACTICE\_TASK\_COMPLETION}\% of users complete a practice task before accessing real data.
+    \item After task completion, administer a satisfaction survey to users to gather feedback on their experience with the simulated tasks.
+    \item Analyze survey results to ensure that at least \\ \hyperref[MIN_PRACTICE_TASK_SATISFACTION]{MIN\_PRACTICE\_TASK\_SATISFACTION}\% of users rate their satisfaction with the practice tasks a 4 or higher.
+    \item Document any issues or feedback received to identify areas for improvement in the simulated labeling experience.
+\end{enumerate}
+
+
+\end{enumerate}
+
+% 11.4
+\paragraph{Understandability and Politeness Tests}
+\begin{enumerate}
+
+\item{Contextual Help Pop-Up Effectiveness: T-UH6\\}
+
+Type: Manual, Usability
+
+Initial State: The platform includes contextual help pop-ups integrated throughout various features and task interfaces.
+
+Input/Condition: Users interact with different features and tasks, triggering contextual help pop-ups as needed.
+
+How test will be performed:
+\begin{enumerate}
+    \item Instruct users to perform a set of typical tasks within the platform, ensuring they engage with areas where contextual help pop-ups are available.
+    \item Monitor and record instances where contextual help pop-ups appear during user interactions.
+    \item Analyze the survey responses to determine if at least \\ \hyperref[MIN_POPUP_USEFULNESS]{MIN\_POPUP\_USEFULNESS}\% of users rate the contextual help pop-ups a 4 or higher in clarity and helpfulness.
+    \item Collect qualitative feedback to identify any areas where help pop-ups could be improved or where additional help pop-ups may be needed.
+\end{enumerate}
+
+\item{Error Message Effectiveness Test: T-UH7\\}
+
+Type: Manual, Usability
+
+Initial State: The platform is fully functional and capable of generating error messages in response to various user actions and system failures.
+
+Input/Condition: Users perform actions that intentionally trigger different types of errors (e.g., invalid input, network issues, unauthorized access).
+
+How test will be performed:
+\begin{enumerate}
+    \item Identify and document common error scenarios within the platform.
+    \item Instruct users to perform tasks that will trigger each identified error scenario.
+    \item Observe and record the error messages displayed, ensuring they include clear explanations of what went wrong.
+    \item Verify that each error message provides actionable steps for resolution.
+    \item After encountering errors, administer a survey asking users to rate their frustration level on a predefined scale and assess whether the error messages were helpful.
+    \item Analyze the survey results to ensure that at least \\ \hyperref[ERRORS_WITH_INSTRUCTIONS]{ERRORS\_WITH\_INSTRUCTIONS}\% of users rated error message clarity a 4 or higher and that the number of users who said they were frustrated due to errors is below \hyperref[FRUSTRATION_RATE]{FRUSTRATION\_RATE}\%.
+\end{enumerate}
+
+
+\end{enumerate}
+
+% 11.5
+\paragraph{Accessibility Requirements}
+\begin{enumerate}
+
+\item{Accessibility Options Validation: T-UH8\\}
+
+Type: Manual, Usability
+
+Initial State: Users have access to the platform's settings or preferences section where they can adjust text size and select different color themes.
+
+Input/Condition: Users adjust the text size up to 200\% and choose among at least three different color themes (e.g., light, dark, high contrast) to improve readability based on their preferences.
+
+How test will be performed:
+\begin{enumerate}
+    \item Verify that the settings or preferences section includes options for adjusting text size and selecting color themes.
+    \item Select each available color theme (e.g., light, dark, high contrast) and observe the changes in the application's appearance.
+    \item Adjust the text size incrementally up to 200\%, ensuring that all text remains readable and that no content is cut off or overlaps.
+    \item Navigate through various sections and features of the application with each color theme and text size setting to ensure that functionality is not compromised.
+    \item Test the adjustments on different devices and screen resolutions to confirm consistency and responsiveness.
+    \item Document any instances where text size adjustments cause loss of content or functionality, or where color themes do not apply uniformly across the platform.
+    \item Compile the results to verify that all color themes are available and that text size can be increased up to 200\% without any loss of content or functionality.
+\end{enumerate}
+
+\item{Keyboard Shortcuts Accessibility Validation: T-UH9\\}
+
+Type: Manual, Usability
+
+Initial State: Users have access to the platform with all core actions available through both mouse and keyboard interactions.
+
+Input/Condition: Users are instructed to perform essential actions using only keyboard shortcuts to assess accessibility and efficiency.
+
+How test will be performed:
+\begin{enumerate}
+    \item Identify all core actions within the platform (e.g., navigating between tasks, submitting labels) and ensure each has an assigned keyboard shortcut.
+    \item Create a comprehensive list of these keyboard shortcuts for reference during testing.
+    \item Recruit a representative sample of users, including power users and those with limited mobility, for usability testing.
+    \item Instruct users to perform a series of tasks using only keyboard navigation, utilizing the provided shortcuts.
+    \item Track the completion rate of each action to determine if users can access and perform at least \hyperref[MIN_ACTIONS_WITH_KEYBOARD]{MIN\_ACTIONS\_WITH\_KEYBOARD}\% of the core actions via keyboard.
+    \item Observe and document any difficulties or barriers users encounter while using keyboard shortcuts.
+\end{enumerate}
+\end{enumerate}
+
+
+
+
+
+% NFRs 12---------------------------------------------------------
+\subsubsection{Performance Requirements}
+% 12.1
+\paragraph{Speed and Latency Tests}
+\begin{enumerate}
+
+\item{New User Account Processing Time Validation: T-PR0\\}
+
+Type: Manual, Performance
+
+Initial State: The system is ready to accept new user account creation requests.
+
+Input/Condition: A set of new user account creation requests are submitted, and their processing times are tracked.
+
+How test will be performed:
+\begin{enumerate}
+    \item Define a representative sample size of new user account creation requests to be submitted (e.g., 100 requests).
+    \item Submit each account creation request to the system, ensuring that the requests are made under typical operating conditions.
+    \item Calculate the processing time for each request by determining the difference between the submission and completion timestamps.
+    \item Analyze the processing times to calculate the percentage of requests processed within 15 minutes (0.25 hours).
+    \item Verify that at least \hyperref[MIN_ACCOUNT_CREATION_SUCCESS]{MIN\_ACCOUNT\_CREATION\_SUCCESS}\% of the requests are processed within the 15-minute threshold.
+    \item Additionally, confirm that all requests are processed within the 48-hour limit.
+    \item Document any instances where processing times exceed the specified limits and investigate potential causes.
+\end{enumerate}
+
+\item{Service Request Completion Time Validation: T-PR1\\}
+
+Type: Manual, Performance
+
+Initial State: The system is ready to accept service requests from Customers, with negotiated time limits defined for each request.
+
+Input/Condition: A set of service requests are submitted with specific negotiated time limits, and their completion times are tracked.
+
+How test will be performed:
+\begin{enumerate}
+    \item Define a representative sample size of service requests to be submitted (e.g., 100 requests), each with a predefined negotiated time limit, $t_{serviceRequestTimeLimit}$.
+    \item Submit each service request to the system under typical operating conditions, ensuring that the negotiated time limits vary to reflect real-world scenarios.
+    \item Calculate the completion time for each request by determining the difference between the submission and completion timestamps.
+    \item Analyze the completion times to calculate the percentage of requests processed within the negotiated time limit, $t_{serviceRequestTime} < t_{serviceRequestTimeLimit}$.
+    \item Verify that at least \hyperref[MIN_REPORT_RETURN]{MIN\_REPORT\_RETURN}\% of the requests are completed within the negotiated time limit.
+    \item Additionally, confirm that all requests are completed within the extended time limit of $t_{serviceRequestTimeLimit} + 48$ hours.
+\end{enumerate}
+
+\item{Next Image Serving Time Validation: T-PR2\\}
+
+Type: Automated, Performance
+
+Initial State: Labelers are logged into the platform with a queue of images available for labeling.
+
+Input/Condition: Labelers request the next image to label while images are available in the queue.
+
+How test will be performed:
+\begin{enumerate}
+    \item Ensure the labeling queue has a sufficient number of images available for testing.
+    \item Set up automated performance testing tools or scripts to simulate multiple labelers requesting the next image simultaneously.
+    \item For each image request, calculate the time difference between the request and image display for each instance.
+    \item Verify that for all instances where a next image is available, the serving time does not exceed \hyperref[MAX_IMAGE_DISPLAY_TIME]{MAX\_IMAGE\_DISPLAY\_TIME} seconds.
+    \item Identify and document any instances where the serving time exceeds the \hyperref[MAX_IMAGE_DISPLAY_TIME]{MAX\_IMAGE\_DISPLAY\_TIME}-second threshold.
+    \item Analyze the collected data to ensure that the system meets the fit criterion.
+\end{enumerate}
+
+\item{Payout Processing Time Validation: T-PR3\\}
+
+Type: Manual, Performance
+
+Initial State: Labelers have earned payouts and have submitted payout requests through the system.
+
+Input/Condition: Payout requests are made by labelers, and the system processes these requests to deliver payments.
+
+How test will be performed:
+\begin{enumerate}
+    \item Define a representative sample size of payout requests to be processed (e.g., 100 requests).
+    \item Ensure that the system is configured to handle payout requests under typical operating conditions.
+    \item Submit each payout request through the system, recording the timestamp when each request is made.
+    \item Calculate the payout delay for each request.
+    \item Analyze the payout delays to verify that all requests are processed within 7 business days.
+    \item Identify and document any instances where payout delays exceed 7 business days to investigate potential bottlenecks or issues in the payout process.
+\end{enumerate}
+
+\end{enumerate}
+
+% 12.3
+\paragraph{Precision or Accuracy Tests}
+\begin{enumerate}
+
+\item{Label Accuracy Validation: T-PR4\\}
+
+Type: Automated, Quality Assurance
+
+Initial State: The system has access to a dataset of objects \( O \) with known true classifications \( LTrue \).
+
+Input/Condition: The system processes and labels each object in \( O \), producing guessed classifications \( LGuess \).
+
+How test will be performed:
+\begin{enumerate}
+    \item Compile a representative sample of objects \( O \) with their true classifications \( LTrue(o) \).
+    \item Input each object \( o \in O \) into the system to obtain the system-generated labels \( LGuess(o) \).
+    \item Compare each \( LGuess(o) \) with the corresponding \( LTrue(o) \) to determine correctness.
+    \item Calculate the label accuracy by dividing the number of correctly labeled objects by the total number of objects:
+    \[
+    \text{Accuracy} = \frac{|\{ o \in O \mid LGuess(o) = LTrue(o) \}|}{|O|}
+    \]
+    \item Verify that the calculated accuracy is at least \hyperref[MIN_LABEL_ACCURACY]{MIN\_LABEL\_ACCURACY}\%:
+    \[
+    \text{Accuracy} \geq \hyperref[MIN_LABEL_ACCURACY]{MIN\_LABEL\_ACCURACY}\%
+    \]
+    \item Generate a report summarizing the accuracy results, including any discrepancies and potential areas for improvement.
+    \item If the accuracy meets or exceeds \hyperref[MIN_LABEL_ACCURACY]{MIN\_LABEL\_ACCURACY}\%, the system satisfies the fit criterion. If not, investigate and address factors contributing to lower accuracy.
+\end{enumerate}
+
+
+\end{enumerate}
+
+% 12.4
+\paragraph{Robustness or Fault-Tolerance Tests}
+\begin{enumerate}
+
+\item{System Uptime Validation: T-PR5\\}
+
+Type: Automated, Performance
+
+Initial State: The system is fully operational and connected to uptime monitoring tools.
+
+Input/Condition: The system operates continuously under normal conditions over a defined monitoring period.
+
+How test will be performed:
+\begin{enumerate}
+    \item Implement and configure uptime monitoring tools (e.g., Pingdom, Nagios, or AWS CloudWatch) to continuously track the system's availability.
+    \item Define the monitoring period (e.g., one calendar month) to collect sufficient uptime and downtime data.
+    \item Ensure that all critical system components and services are included in the monitoring setup.
+    \item Collect and log uptime and downtime events throughout the monitoring period.
+    \item Calculate the uptime percentage using the formula:
+    \[
+    \text{Uptime Percentage} = \frac{t_{\text{uptime}}}{t_{\text{uptime}} + t_{\text{downtime}}} \times 100\%
+    \]
+    \item Verify that the calculated uptime percentage exceeds \hyperref[MIN_UPTIME]{MIN\_UPTIME}\%:
+    \[
+    \text{Uptime Percentage} > \hyperref[MIN_UPTIME]{MIN\_UPTIME}\%
+    \]
+    \item Identify and document any instances of downtime, including their duration and underlying causes.
+\end{enumerate}
+
+\end{enumerate}
+
+% 12.5
+\paragraph{Capacity Tests}
+\begin{enumerate}
+
+\item{Labeler Capacity Validation: T-PR6\\}
+
+Type: Automated, Performance
+
+Initial State: The system has a baseline number of active labelers and pending service requests.
+
+Input/Condition: Simulate varying numbers of labelers to ensure all service request deadlines are met as per NFR-PR2.
+
+How test will be performed:
+\begin{enumerate}
+    \item Use load testing tools (e.g., JMeter, Locust) to simulate different numbers of active labelers.
+    \item For each load level, generate a set of service requests that need to be processed within the negotiated deadlines.
+    \item Monitor the percentage of service requests completed within the required time frames.
+    \item Identify the maximum number of labelers the system can support while maintaining at least \hyperref[MIN_REPORT_RETURN]{MIN\_REPORT\_RETURN}\% of requests meeting the deadlines.
+\end{enumerate}
+
+\item{Large Image File Handling Validation: T-PR7\\}
+
+Type: Automated, Performance
+
+Initial State: The system is configured with sufficient storage capacity and is ready to accept image file uploads.
+
+Input/Condition: Image files up to 50 GB in size are uploaded and processed by the system.
+
+How test will be performed:
+\begin{enumerate}
+    \item Prepare a set of image files, each up to 50 GB in size.
+    \item Use automated scripts to upload each large image file to the system.
+    \item Monitor the system for any crashes or failures during the upload and storage process.
+    \item Verify that each image file is successfully stored without errors.
+    \item Initiate processing tasks on the stored image files.
+    \item Ensure that processing completes successfully without system crashes or failures.
+    \item Compile the results to confirm that the system can handle image files up to 50 GB without crashing or failing.
+\end{enumerate}
+
+\end{enumerate}
+
+% 12.6
+\paragraph{Scalability or Extensibility Tests}
+\begin{enumerate}
+
+\item{Scalability Validation: T-PR8\\}
+
+Type: Automated, Performance
+
+Initial State: The system is configured for scaling operations with monitoring tools in place.
+
+Input/Condition: Simulate the required labeler capacity as specified in NFR-PR7 to test the system's ability to scale accordingly.
+
+How test will be performed:
+\begin{enumerate}
+    \item Utilize load testing tools (e.g., JMeter, Locust) to simulate the number of labelers required to meet the capacity defined in NFR-PR7.
+    \item Gradually increase the number of simulated labelers while monitoring system performance metrics such as response time, CPU usage, memory consumption, and network throughput.
+    \item Ensure that the system dynamically scales resources (e.g., adding more servers or allocating more memory) to handle the increased load without performance degradation.
+    \item Verify that all service request deadlines defined in NFR-PR7 are consistently met under the simulated load.
+    \item Identify and document any performance bottlenecks or scaling issues encountered during the test.
+    \item Compile the results to confirm that the system can scale to meet the required capacity as specified in NFR-PR7.
+\end{enumerate}
+
+\end{enumerate}
+
+
+
+
+
+% NFRs 13---------------------------------------------------------
+\subsubsection{Operational and Environmental}
+% 13.2
+\paragraph{Wider Environmental Tests}
+\begin{enumerate}
+
+\item{Energy Efficiency Validation: T-OE0\\}
+
+Type: Automated, Performance
+
+Initial State: The system is running on cloud infrastructure with existing server management configurations.
+
+Input/Condition: Implement energy-efficient practices in cloud usage and server management, then measure energy consumption before and after optimization.
+
+How test will be performed:
+\begin{enumerate}
+    \item Establish baseline energy consumption by monitoring current cloud infrastructure and server operations using energy monitoring tools.
+    \item Identify and implement energy-efficient practices such as optimizing server utilization, enabling power-saving modes, and selecting energy-efficient instance types.
+    \item Collect energy consumption data for a defined period (e.g., one month) after implementing the optimizations.
+    \item Compare the post-optimization energy consumption data against the baseline measurements.
+    \item Calculate the percentage reduction in energy usage to verify that it meets or exceeds the \hyperref[ENERGY_REDUCTION_TARGET]{ENERGY\_REDUCTION\_TARGET}\% target.
+    \item Identify any deviations or unexpected increases in energy consumption and investigate potential causes.
+\end{enumerate}
+
+\end{enumerate}
+
+% 13.3
+\paragraph{Adjacent System Interfacing Tests}
+\begin{enumerate}
+
+\item{API and Data Format Integration Validation: T-OE1\\}
+
+Type: Automated, Integration
+
+Initial State: The system is configured with API access credentials for at least two major satellite data providers.
+
+Input/Condition: The system attempts to automatically acquire and integrate satellite images from the specified providers using their standardized APIs and data formats.
+
+How test will be performed:
+\begin{enumerate}
+    \item Identify two major satellite data providers and obtain their API documentation and access credentials.
+    \item Configure the system to connect to each provider's API, ensuring support for their standardized data formats.
+    \item Develop and execute automated scripts to initiate data acquisition from each provider.
+    \item Monitor the system for successful ingestion of satellite images without manual intervention.
+    \item Verify that the acquired data is correctly formatted, stored, and integrated into the platform's datasets.
+\end{enumerate}
+
+
+\item{Payment Processor Integration Validation: T-OE2\\}
+
+Type: Automated, Integration
+
+Initial State: The system is configured with API access credentials for reliable and secure payment processors (e.g., Stripe, PayPal).
+
+Input/Condition: Users and clients perform financial transactions through the integrated payment gateways.
+
+How test will be performed:
+\begin{enumerate}
+    \item Identify and obtain API documentation and access credentials for at least two major payment processors.
+    \item Develop automated scripts to simulate various types of transactions, including user compensations and client payments.
+    \item Monitor and log each transaction to verify successful processing without errors or delays.
+    \item Calculate the transaction success rate by dividing the number of successful transactions by the total number of attempted transactions.
+    \item Ensure that the transaction success rate meets or exceeds \\ \hyperref[MIN_TRANSACTION_SUCCESS_RATE]{MIN\_TRANSACTION\_SUCCESS\_RATE}\%.
+\end{enumerate}
+
+\item{Multiple Currency Support Validation: T-OE3\\}
+
+Type: Automated, Integration
+
+Initial State: The system is configured to support multiple currencies, including USD, EUR, GBP, and INR.
+
+Input/Condition: Users perform transactions in each supported currency to verify correct processing.
+
+How test will be performed:
+\begin{enumerate}
+    \item Configure the system with exchange rates for USD, EUR, GBP, and INR.
+    \item Develop automated scripts to simulate transactions in each currency.
+    \item Execute the scripts and verify:
+    \begin{itemize}
+        \item Accurate currency conversion.
+        \item Correct display of currency symbols and values.
+        \item Proper recording of transactions with the correct currency.
+    \end{itemize}
+    \item Ensure all transactions are processed without errors.
+\end{enumerate}
+
+\item{Machine Learning Framework Compatibility Validation: T-OE4\\}
+
+Type: Automated, Integration
+
+Initial State: The system is configured with machine learning frameworks such as TensorFlow, PyTorch, and scikit-learn installed.
+
+Input/Condition: Users train and deploy models using each framework to verify compatibility.
+
+How test will be performed:
+\begin{enumerate}
+    \item Install TensorFlow, PyTorch, and scikit-learn on the system.
+    \item Develop or use existing sample models compatible with each framework.
+    \item Train each sample model using the respective framework.
+    \item Deploy the trained models to the production environment.
+    \item Verify that training and deployment processes complete without errors.
+    \item Ensure that the deployed models function correctly within the platform.
+\end{enumerate}
+
+\item{Data Pipeline Efficiency Validation: T-OE5\\}
+
+Type: Automated, Performance
+
+Initial State: The system has established data pipelines for transferring labeled datasets between the platform and ML models.
+
+Input/Condition: Large labeled datasets (e.g., 10,000 images) are transferred through the data pipelines.
+
+How test will be performed:
+\begin{enumerate}
+    \item Prepare a large labeled dataset consisting of 10,000 images.
+    \item Initiate the data transfer from the platform to the ML models using the established pipelines.
+    \item Monitor the transfer process to measure the time taken to complete the transfer.
+    \item Verify that the data transfer completes within the specified time frame.
+    \item Execute batch processing of the large dataset through the pipelines and ensure no errors occur during the process.
+    \item Repeat the transfer and processing under different load conditions to assess pipeline robustness.
+\end{enumerate}
+
+
+\end{enumerate}
+
+% 13.4
+\paragraph{Productization Tests}
+\begin{enumerate}
+
+\item{Web Browser Accessibility Validation: T-OE6\\}
+
+Type: Manual, Usability
+
+Initial State: Users have access to the platform's web URL.
+
+Input/Condition: Users attempt to access and use the platform via various supported web browsers without installing any software.
+
+How test will be performed:
+\begin{enumerate}
+    \item Identify supported web browsers (e.g., Chrome, Firefox, Safari, Edge).
+    \item Using each browser, navigate to the platform's web URL.
+    \item Verify that the platform loads correctly without prompting for any software installations.
+    \item Perform key tasks (e.g., login, label images, access settings) to ensure full functionality is available through the browser.
+    \item Confirm that all users can access and use the platform solely through their web browsers without additional installations.
+\end{enumerate}
+
+\end{enumerate}
+
+% 13.5
+\paragraph{Release Tests}
+
+\begin{enumerate}
+
+\item{Road Map Consistency: T-OE7\\}
+
+Type: Manual, Static
+					
+Initial State: Application has a release road map that is publicly accessible.
+					
+Input/Condition: Team member conducts a review.
+					
+Output/Result: At least \hyperref[MIN_ON_TIME_MILESTONE]{MIN\_ON\_TIME\_MILESTONE}\% of the listed milestones have been met on time.
+					
+How test will be performed: The team member looks over the road map and cross references the completion date of milestones to the dates listed in the road map.
+
+\item{Beta Testing: T-OE8\\}
+
+Type: Dynamic, Exploratory
+					
+Initial State: Beta version of application is deployed and accessible
+					
+Input/Condition: At least \hyperref[BETA_TESTERS]{BETA\_TESTERS} beta testers are provided access to use the application.
+					
+Output/Result: Feedback on any bugs, navigation issues, or aesthetic problems is provided. Less than \hyperref[MAX_BUGS_FOUND]{MAX\_BUGS\_FOUND} bugs are found.
+					
+How test will be performed: Testers will be recruited and identified. They will be from fields of interest that include scientists, labelers, and domain experts. Then, the beta testing environment will be set up and the url will be distributed to the testers along with any other set up resources. Specific tasks are provided for testers to complete that focus on the annotation tools, sign up process and project creation. Feedback will be collected through direct comments from the tester.
+
+\item{Regression Testing: T-OE9\\}
+
+Type: Dynamic, Automated
+					
+Initial State: Application is deployed.
+					
+Input/Condition: Run regression test suite, consisting of unit tests.
+					
+Output/Result: All regression tests are passed.
+					
+How test will be performed: An automated script with regression tests will run when updates are made to the production build.
+
+\end{enumerate}
+
+\subsubsection{Maintainability and Support}
+		
+\paragraph{Maintenance Tests}
+
+\begin{enumerate}
+
+\item{Ease of Change: T-MS0\\}
+
+Type: Manual, Static
+					
+Initial State: Application's source repository contains complete documentation.
+					
+Input/Condition: Competent software developer who has not previously worked on the app reviews documentation and attempts to perform tasks.
+					
+Output/Result: The developer can easily make a minor update to a specified part of the application.
+					
+How test will be performed: Give the developer time to read through the documentation. Give them a maintenance task, such as updating the size of the title font to 20px. Observe them and document how long it takes them and if they encountered any troubles.
+\end{enumerate}
+
+\subsubsection{Security}
+		
+\paragraph{Access Tests}
+
+\begin{enumerate}
+
+\item{Logged Out Permissions: T-SE0\\}
+
+Type: Manual, Dynamic, White-box
+					
+Initial State: Application is deployed.
+					
+Input/Condition: Tester who is not signed in tries to access application paths for project creation and image labeling (Ex. /projects or /label).
+					
+Output/Result: The tester is denied access to these paths and is told to sign in.
+					
+How test will be performed: On the deployed application, the tester will visit all possible paths as a logged out user.
+
+\item{Labeler Permissions: T-SE1\\}
+
+Type: Manual, Dynamic, White-box
+					
+Initial State: Application is deployed.
+					
+Input/Condition: Tester who is signed in as a labeler tries to access application paths for project creation.
+					
+Output/Result: The tester is denied access to these paths. However, the tester has access to paths related to image labeling.
+					
+How test will be performed: On the deployed application, the tester will visit all possible paths as a labeler.
+
+\item{Invalid Email Format: T-SE2\\}
+
+Type: Automatic, Dynamic
+					
+Initial State: Front-end registration page is created and integrated with the database.
+					
+Input/Condition: Email with invalid format, such as an empty string or a string missing '@', is entered.
+					
+Output/Result: Application rejects email and tells the user that the email format is wrong.
+					
+How test will be performed: A unit test will be performed where the input is entered into the email section of the registration form.
+
+\item{Duplicate Email: T-SE3\\}
+
+Type: Automatic, Dynamic
+					
+Initial State: Front-end registration page is created and integrated with the database.
+					
+Input/Condition: Email that is already in database is entered.
+					
+Output/Result: Application rejects email and tells the user that the email is in use.
+					
+How test will be performed: A unit test will be performed where the input is entered into the email section of the registration form.
+
+\item{Invalid Password Format: T-SE4\\}
+
+Type: Automatic, Dynamic
+					
+Initial State: Front-end registration page is created and integrated with the database.
+					
+Input/Condition: Password with invalid format, such as an empty string or a string with no numbers, is entered.
+					
+Output/Result: Application rejects password and tells the user what requirements they have not met.
+					
+How test will be performed: A unit test will be performed where the input is entered into the password section of the registration form.
+
+\item{System Error: T-SE5\\}
+
+Type: Manual, Dynamic
+					
+Initial State: Application is deployed.
+					
+Input/Condition: Purposely invoke a system failure, and attempt to perform an action such as a label submission.
+					
+Output/Result: Application provides an error message on the user interface. The database has not changed in anyway.
+					
+How test will be performed: Go on to the application, start a labeling task, purposely disconnect from the internet, and try to submit a labeled image.
+
+\end{enumerate}
+
+\paragraph{Integrity Tests}
+
+\begin{enumerate}
+
+\item{Duplicate Entries: T-SE6\\}
+
+Type: Manual, Dynamic
+					
+Initial State: Database is deployed.
+					
+Input/Condition: Duplicate database entry is inserted into the database.
+					
+Output/Result: Database has only one of the inputted entry and the duplicate has been removed.
+					
+How test will be performed: Attempt to insert the same entry twice into the database through the database UI.
+
+\end{enumerate}
+
+\paragraph{Privacy Tests}
+
+\begin{enumerate}
+
+\item{Encrypted User Data: T-SE7\\}
+
+Type: Manual, Dynamic
+					
+Initial State: Application is deployed.
+					
+Input/Condition: Tester registers an account.
+					
+Output/Result: All sensitive user data that is stored in the database is encrypted.
+					
+How test will be performed: Tester will create a new account, then check the corresponding user entry in the database and see if the sensitive information is encrypted.
+
+\item{Encrypted Payments: T-SE8\\}
+
+Type: Manual, Dynamic
+					
+Initial State: Application is deployed.
+					
+Input/Condition: Tester enters sample payment details to pay for a labeling project that has been created.
+					
+Output/Result: These details are encrypted and can not be read through packet analyzers. The amount in the request can not be modified by an adversary.
+					
+How test will be performed: Tester will enter sample payment details, and submit their payment. Using a packet analyzer (such as Wireshark), packets from this request will be looked at to ensure all information is encrypted.
+
+\end{enumerate}
+
+\paragraph{Immunity Tests}
+
+\begin{enumerate}
+
+\item{SQL Injection: T-SE9\\}
+
+Type: Manual, Dynamic
+					
+Initial State: Application is deployed.
+					
+Input/Condition: A malicious SQL statement is entered into a text field.
+					
+Output/Result: The system raises an error telling the user that it is invalid.
+					
+How test will be performed: Tester will enter a SQL statement such as "\{valid email\}'--" into an input such as the email input. This example has the potential to bypass a password check by commenting out the rest of the SQL query. The tester will check that when this statement is entered, the system gives feedback that it is invalid.
+
+\end{enumerate}
+
+\subsubsection{Cultural}
+		
+\paragraph{Language Tests}
+
+\begin{enumerate}
+
+\item{Support of Different Languages: T-CU0\\}
+
+Type: Manual, Dynamic
+					
+Initial State: Application is deployed.
+					
+Input/Condition: Tester selects a language from a list of available languages.
+					
+Output/Result: All text on the website is translated and displayed in the selected language.
+					
+How test will be performed: Tester will check that the language selection list is accessible, and that the most popular languages are included. When a language is selected, the tester will check that the translation has been applied and there is no untranslated or gibberish text. This can be checked for each language.
+\end{enumerate}
+
+\subsubsection{Compliance}
+
+\paragraph{Financial Tests}
+
+\begin{enumerate}
+
+    \item{Compliant Payment Process: T-CO0\\}
+
+    Type: Manual, Static
+                        
+    Initial State: Application is deployed.
+                        
+    Input/Condition: A security organization that has been qualified by the PCI Security Standards Council, known as a Qualified Security Assessor (QSA), assesses the application.
+                        
+    Output/Result: They determine that it meets the PCI-DSS standard.
+                        
+    How test will be performed: A QSA will be found and contacted to perform an assessment. All the details of qualified QSA companies can be found \href{https://listings.pcisecuritystandards.org/assessors_and_solutions/qualified_security_assessors}{here}. 
+    This meeting will be arranged before the application is publicly released. The QSA will be shown all parts of the application that deal will financial transactions and will be able to make a determination on if it meets the standard.
+
+\end{enumerate}
+		
+\paragraph{Legal Tests}
+
+\begin{enumerate}
+
+\item{System Availability: T-CO1\\}
+
+Type: Manual, Dynamic
+					
+Initial State: Application is deployed.
+					
+Input/Condition: Tester changes country they are accessing the application from using a tool such as a VPN.
+					
+Output/Result: Application is blocked in countries facing economic sanctions by the Government of Canada.
+					
+How test will be performed: A list of the countries facing economic sanctions by Canada will be compiled. Then, the tester will simulate that they are accessing the application from these countries, and ensure it is unreachable.
+
+\item{Taxes: T-CO2\\}
+
+Type: Manual, Dynamic
+					
+Initial State: Application is deployed.
+					
+Input/Condition: Tester redeems a cash balance.
+					
+Output/Result: If the cash balance exceeds a threshold, a tax form will be issued.
+					
+How test will be performed: Tester creates a test account with an account balance over the threshold. When they withdraw, they check that a tax form has been emailed to the email associated with the account. The tax form should reflect the withdrawal balance.
+
+\item{Project Availability: T-CO3\\}
+
+Type: Manual, Dynamic
+					
+Initial State: Application is deployed.
+					
+Input/Condition: Tester changes country they are accessing the application from using a tool such as a VPN.
+					
+Output/Result: Specific project is not shown.
+					
+How test will be performed: A project will be specified to only be distributed in a specific country. Then, the tester will simulate that they are accessing the application from other countries, and ensure the project does not show up.
+
+\end{enumerate}
+
+\subsubsection{User Documentation and Training}
+
+\begin{enumerate}
+
+\item{Helpfulness of User Aids: T-UDT0\\}
+
+Type: Manual, Dynamic
+					
+Initial State: Application is deployed with all help features. Tutorials and user documentation have been created.
+					
+Input/Condition: Users attempt to complete a basic labeling task using only the platform’s built-in help resources (help system, quick start guide, tutorials and contextual tool tips).
+					
+Output/Result: At least \hyperref[MIN_USER_HELP_SATISFACTION]{MIN\_USER\_HELP\_SATISFACTION}\% of users who used a help feature rated the feature as 4 or higher for helpfulness in the survey. With the assistance of the help tools, the user was able to perform the task within \hyperref[MAX_TASK_TIME]{MAX\_TASK\_TIME} minutes.
+					
+How test will be performed: The purpose of the platform will be explained to the users and the built-in help features will be shown. Then, the labeling task will be given to them. Time to complete task is observed and the help tools they use are recorded. Participants will then fill out a usability survey, which can be viewed in the appendix.
+
+\item{Usefulness of Sandbox: T-UDT1\\}
+
+Type: Automatic, Dynamic
+					
+Initial State: Application is deployed with all help features. Tutorials and user documentation has been created.
+					
+Input/Condition: A new user has accessed the platform.
+					
+Output/Result: At least \hyperref[MIN_PRACTICE_USAGE]{MIN\_PRACTICE\_USAGE}\% of new users utilize the practice environment, with self-assessment scores indicating an average improvement of \hyperref[IMPROVE_IN_ACC]{IMPROVE\_IN\_ACC}\% in labeling accuracy over their first three attempts.
+					
+How test will be performed: Practice environment utilization will be tracked by the application. Improvement in accuracy will also be tracked. If the metrics meet or succeed our thresholds, then we can conclude the sandbox is useful.
+\end{enumerate}
+
+\subsection{Traceability Between Test Cases and Requirements}
+
+\setlength\LTleft{-3cm}
+\tiny
+\begin{longtable}{lcccclllllclcccc}
+\multicolumn{1}{l|}{FR \#} & \multicolumn{15}{c}{Test Case} \\ \hline
+\endfirsthead
+%
+\endhead
+%
+\multicolumn{1}{l|}{} & T-FR0 & T-FR1 & T-FR2 & T-FR3 & \multicolumn{1}{c}{T-FR4} & \multicolumn{1}{c}{T-FR5} & \multicolumn{1}{c}{T-FR6} & \multicolumn{1}{c}{T-FR7} & \multicolumn{1}{c}{T-FR8} & T-FR9 & \multicolumn{1}{c}{T-FR10} & T-FR11 & T-FR12 & T-FR13 & T-FR14 \\
+\multicolumn{1}{l|}{FR0} & X &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  &  &  &  &  &  \\
+\multicolumn{1}{l|}{FR1} &  & X &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  &  &  &  &  &  \\
+\multicolumn{1}{l|}{FR2} &  &  & X &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  &  &  &  &  &  \\
+\multicolumn{1}{l|}{FR3} &  &  &  & X & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  &  &  &  &  &  \\
+\multicolumn{1}{l|}{FR4} &  &  &  &  & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  &  &  &  &  &  \\
+\multicolumn{1}{l|}{FR5} &  &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  &  &  &  &  &  \\
+\multicolumn{1}{l|}{FR6} &  &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  &  &  &  &  &  \\
+\multicolumn{1}{l|}{FR7} &  &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} &  &  &  &  &  &  \\
+\multicolumn{1}{l|}{FR8} &  &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} &  &  &  &  &  &  \\
+\multicolumn{1}{l|}{FR9} &  &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & X &  &  &  &  &  \\
+\multicolumn{1}{l|}{FR10} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  &  &  & \multicolumn{1}{c}{X} &  &  &  &  \\
+\multicolumn{1}{l|}{FR11} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  &  &  &  & X &  &  &  \\
+\multicolumn{1}{l|}{FR12} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  &  &  &  &  & X &  &  \\
+\multicolumn{1}{l|}{FR13} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  &  &  &  &  &  & X &  \\
+\multicolumn{1}{l|}{FR14} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  &  &  &  &  &  &  & X \\
+ & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{NFR \#} & \multicolumn{15}{c}{Test Case} \\ \hline
+\multicolumn{1}{l|}{} & T-LF0 & T-LF1 & T-LF2 & T-UH0 & \multicolumn{1}{c}{T-UH1} & \multicolumn{1}{c}{T-UH2} & \multicolumn{1}{c}{T-UH3} & \multicolumn{1}{c}{T-UH4} & \multicolumn{1}{c}{T-UH5} & T-UH6 & \multicolumn{1}{c}{T-UH7} & T-UH8 & T-UH9 & T-PR0 & T-PR1 \\
+\multicolumn{1}{l|}{LF0} & X &  &  &  & \multicolumn{1}{c}{} &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{LF1} &  & X &  &  & \multicolumn{1}{c}{} &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{LF2} &  &  & X &  & \multicolumn{1}{c}{} &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{UH0} &  &  &  & X & \multicolumn{1}{c}{} &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{UH1} &  &  &  &  & \multicolumn{1}{c}{X} &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{UH2} &  &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{UH3} &  &  &  &  & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{X} &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{UH4} &  &  &  &  & \multicolumn{1}{c}{} &  &  & \multicolumn{1}{c}{X} &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{UH5} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  & \multicolumn{1}{c}{X} &  & \multicolumn{1}{c}{} &  &  &  &  \\
+\multicolumn{1}{l|}{UH6} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  & \multicolumn{1}{c}{} & X & \multicolumn{1}{c}{} &  &  &  &  \\
+\multicolumn{1}{l|}{UH7} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{X} &  &  &  &  \\
+\multicolumn{1}{l|}{UH8} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} & X &  &  &  \\
+\multicolumn{1}{l|}{UH9} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} &  & X &  &  \\
+\multicolumn{1}{l|}{PR0} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} &  &  & X &  \\
+\multicolumn{1}{l|}{PR1} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} &  &  & X &  \\
+\multicolumn{1}{l|}{PR2} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & X \\
+ & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{NFR \#} & \multicolumn{15}{c}{Test Case} \\ \hline
+\multicolumn{1}{l|}{} & T-PR2 & T-PR3 & T-PR4 & T-PR5 & \multicolumn{1}{c}{T-PR6} & \multicolumn{1}{c}{T-PR7} & \multicolumn{1}{c}{T-PR8} & \multicolumn{1}{c}{T-OE0} & \multicolumn{1}{c}{T-OE1} & T-OE2 & \multicolumn{1}{c}{T-OE3} & T-OE4 & T-OE5 & T-OE6 & T-OE7 \\
+\multicolumn{1}{l|}{PR3} & X &  &  &  &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{PR4} &  & X &  &  &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{PR5} &  &  & X &  &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{PR6} &  &  &  & X &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{PR7} &  &  &  &  & \multicolumn{1}{c}{X} &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{PR8} &  &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{PR9} &  &  &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{OE0} &  &  &  &  &  &  &  & \multicolumn{1}{c}{X} &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{OE1} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  & \multicolumn{1}{c}{X} &  & \multicolumn{1}{c}{} &  &  &  &  \\
+\multicolumn{1}{l|}{OE2} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  & \multicolumn{1}{c}{} & X & \multicolumn{1}{c}{} &  &  &  &  \\
+\multicolumn{1}{l|}{OE3} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{X} &  &  &  &  \\
+\multicolumn{1}{l|}{OE4} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} & X &  &  &  \\
+\multicolumn{1}{l|}{OE5} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} &  & X &  &  \\
+\multicolumn{1}{l|}{OE6} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} &  &  & X &  \\
+\multicolumn{1}{l|}{OE7} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  & X \\
+ & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{NFR \#} & \multicolumn{15}{c}{Test Case} \\ \hline
+\multicolumn{1}{l|}{} & T-OE8 & T-OE9 & T-MS0 & T-SE0 & \multicolumn{1}{c}{T-SE1} & \multicolumn{1}{c}{T-SE2} & \multicolumn{1}{c}{T-SE3} & \multicolumn{1}{c}{T-SE4} & \multicolumn{1}{c}{T-SE5} & T-SE6 & \multicolumn{1}{c}{T-SE7} & T-SE8 & T-SE9 & T-CU0 & T-CO0 \\
+\multicolumn{1}{l|}{OE8} & X & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{OE9} &  & X &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} &  &  &  &  \\
+\multicolumn{1}{l|}{MR0} &  &  & X &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} &  &  &  &  \\
+\multicolumn{1}{l|}{SE0} &  &  &  & X & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} &  &  &  &  \\
+\multicolumn{1}{l|}{SE1} &  &  &  &  & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} &  &  &  &  \\
+\multicolumn{1}{l|}{SE2} &  &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} &  &  &  &  \\
+\multicolumn{1}{l|}{SE3} &  &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} &  &  &  &  \\
+\multicolumn{1}{l|}{SE4} &  &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} &  & \multicolumn{1}{c}{} &  &  &  &  \\
+\multicolumn{1}{l|}{SE5} &  &  &  &  & \multicolumn{1}{c}{} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} &  & \multicolumn{1}{c}{} &  &  &  &  \\
+\multicolumn{1}{l|}{SE6} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  & \multicolumn{1}{c}{X} &  & \multicolumn{1}{c}{} &  &  &  &  \\
+\multicolumn{1}{l|}{SE7} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  &  & X & \multicolumn{1}{c}{} &  &  &  &  \\
+\multicolumn{1}{l|}{SE8} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  &  &  & \multicolumn{1}{c}{X} &  &  &  &  \\
+\multicolumn{1}{l|}{SE9} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  &  &  & \multicolumn{1}{c}{} & X &  &  & X \\
+\multicolumn{1}{l|}{SE10} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  &  &  & \multicolumn{1}{c}{} &  & X &  &  \\
+\multicolumn{1}{l|}{CU0} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & X & \multicolumn{1}{l}{} \\
+ & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{NFR \#} & \multicolumn{15}{c}{Test Case} \\ \hline
+\multicolumn{1}{l|}{} & \multicolumn{1}{l}{T-C01} & \multicolumn{1}{l}{T-C02} & \multicolumn{1}{l}{T-C03} & \multicolumn{1}{l}{T-UDT0} & T-UDT1 &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{CO0} & X & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{CO1} &  & X &  &  &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{CO2} &  &  & X &  &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{UD0} &  &  &  & X &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{UD1} &  &  &  & X &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{UD2} &  &  &  & X &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{TR0} &  &  &  & X &  &  &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+\multicolumn{1}{l|}{TR1} &  &  &  &  & \multicolumn{1}{c}{X} & \multicolumn{1}{c}{} &  &  &  & \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{}
+\\ \caption{Test Case and Requirement Links}
+\end{longtable}
+\normalsize
+
+\section{Unit Test Description}
+
+\wss{This section should not be filled in until after the MIS (detailed design
+  document) has been completed.}
+
+\wss{Reference your MIS (detailed design document) and explain your overall
+philosophy for test case selection.}  
+
+\wss{To save space and time, it may be an option to provide less detail in this section.  
+For the unit tests you can potentially layout your testing strategy here.  That is, you 
+can explain how tests will be selected for each module.  For instance, your test building 
+approach could be test cases for each access program, including one test for normal behaviour 
+and as many tests as needed for edge cases.  Rather than create the details of the input 
+and output here, you could point to the unit testing code.  For this to work, you code 
+needs to be well-documented, with meaningful names for all of the tests.}
+
+\subsection{Unit Testing Scope}
+
+\wss{What modules are outside of the scope.  If there are modules that are
+  developed by someone else, then you would say here if you aren't planning on
+  verifying them.  There may also be modules that are part of your software, but
+  have a lower priority for verification than others.  If this is the case,
+  explain your rationale for the ranking of module importance.}
+
+\subsection{Tests for Functional Requirements}
+
+\wss{Most of the verification will be through automated unit testing.  If
+  appropriate specific modules can be verified by a non-testing based
+  technique.  That can also be documented in this section.}
+
+\subsubsection{Module 1}
+
+\wss{Include a blurb here to explain why the subsections below cover the module.
+  References to the MIS would be good.  You will want tests from a black box
+  perspective and from a white box perspective.  Explain to the reader how the
+  tests were selected.}
+
+\begin{enumerate}
+
+\item{test-id1\\}
+
+Type: \wss{Functional, Dynamic, Manual, Automatic, Static etc. Most will
+  be automatic}
+					
+Initial State: 
+					
+Input: 
+					
+Output: \wss{The expected result for the given inputs}
+
+Test Case Derivation: \wss{Justify the expected value given in the Output field}
+
+How test will be performed: 
+					
+\item{test-id2\\}
+
+Type: \wss{Functional, Dynamic, Manual, Automatic, Static etc. Most will
+  be automatic}
+					
+Initial State: 
+					
+Input: 
+					
+Output: \wss{The expected result for the given inputs}
+
+Test Case Derivation: \wss{Justify the expected value given in the Output field}
+
+How test will be performed: 
+
+\item{...\\}
+    
+\end{enumerate}
+
+\subsubsection{Module 2}
+
+...
+
+\subsection{Tests for Nonfunctional Requirements}
+
+\wss{If there is a module that needs to be independently assessed for
+  performance, those test cases can go here.  In some projects, planning for
+  nonfunctional tests of units will not be that relevant.}
+
+\wss{These tests may involve collecting performance data from previously
+  mentioned functional tests.}
+
+\subsubsection{Module ?}
+		
+\begin{enumerate}
+
+\item{test-id1\\}
+
+Type: \wss{Functional, Dynamic, Manual, Automatic, Static etc. Most will
+  be automatic}
+					
+Initial State: 
+					
+Input/Condition: 
+					
+Output/Result: 
+					
+How test will be performed: 
+					
+\item{test-id2\\}
+
+Type: Functional, Dynamic, Manual, Static etc.
+					
+Initial State: 
+					
+Input: 
+					
+Output: 
+					
+How test will be performed: 
+
+\end{enumerate}
+
+\subsubsection{Module ?}
+
+...
+
+\subsection{Traceability Between Test Cases and Modules}
+
+\wss{Provide evidence that all of the modules have been considered.}
+
+
+\newpage
+
+\section{Appendix}
+
+\subsection{Symbolic Parameters}
+
+The definition of the test cases will call for SYMBOLIC\_CONSTANTS.
+Their values are defined in this section for easy maintenance.
+
+
+
+\begin{longtable}{|l|l|l|p{4cm}|}
+  \hline
+  \textbf{Parameter} & \textbf{Value} & \textbf{Unit} & \textbf{Description} \\ \hline
+  \endfirsthead
+
+  \hline
+  \textbf{Parameter} & \textbf{Value} & \textbf{Unit} & \textbf{Description} \\ \hline
+  \endhead
+
+  \hline
+  \endfoot
+
+  \hline
+  MIN\_USER\_USABILITY\_METRIC & 90 & \% & Minimum percent of users that satisfy usability requirements \label{MIN_USER_USABILITY_METRIC} \\ \hline
+  MIN\_PREF\_MATCH & 80 & \% & Minimum percent of label task preference match \label{MIN_PREF_MATCH} \\ \hline
+  MIN\_TRAINING\_TRACKER\_USEFULNESS & 80 & \% & Minimum percent of trackers usefulness \label{MIN_TRAINING_TRACKER_USEFULNESS} \\ \hline
+  MIN\_PRACTICE\_TASK\_COMPLETION & 85 & \% & Minimum percent of user to complete practice task \label{MIN_PRACTICE_TASK_COMPLETION} \\ \hline
+  MIN\_PRACTICE\_TASK\_SATISFACTION & 80 & \% & Minimum percent of user that are satisfied with practice tasks \label{MIN_PRACTICE_TASK_SATISFACTION} \\ \hline
+  MIN\_POPUP\_USEFULNESS & 80 & \% & Minimum percent of users to find popups useful \label{MIN_POPUP_USEFULNESS} \\ \hline
+  ERRORS\_WITH\_INSTRUCTIONS & 80 & \% & Percent of errors with follow up instructions \label{ERRORS_WITH_INSTRUCTIONS} \\ \hline
+  FRUSTRATION\_RATE & 10 & \% & Frustration rate when encountering errors \label{FRUSTRATION_RATE} \\ \hline
+  MIN\_ACTIONS\_WITH\_KEYBOARD & 95 & \% & Minimum percent of actions available with keyboard inputs \label{MIN_ACTIONS_WITH_KEYBOARD} \\ \hline
+  MIN\_ACCOUNT\_CREATION\_SUCCESS & 90 & \% & Minimum percent of accounts created successfully within 48 hours \label{MIN_ACCOUNT_CREATION_SUCCESS} \\ \hline
+  MIN\_REPORT\_RETURN & 90 & \% & Minimum percent of reports returned to customer within time frame \label{MIN_REPORT_RETURN} \\ \hline
+  MAX\_IMAGE\_DISPLAY\_TIME & 10 & Minutes & Maximum time to display image to labeller \label{MAX_IMAGE_DISPLAY_TIME} \\ \hline
+  MIN\_LABEL\_ACCURACY & 75 & \% & Minimum percent of label accuracy \label{MIN_LABEL_ACCURACY} \\ \hline
+  MIN\_UPTIME & 80 & \% & Minimum percent of system uptime \label{MIN_UPTIME} \\ \hline
+  ENERGY\_REDUCTION\_TARGET & 20 & \% & Minimum percent of achieved energy reduction \label{ENERGY_REDUCTION_TARGET} \\ \hline
+  MIN\_TRANSACTION\_SUCCESS\_RATE & 99.5 & \% & Minimum percent of successful transactions \label{MIN_TRANSACTION_SUCCESS_RATE} \\ \hline
+  MIN\_ON\_TIME\_MILESTONE & 80 & \% & Minimum percent of milestones that have been met on time \label{MIN_ON_TIME_MILESTONE} \\ \hline
+  BETA\_TESTERS & 50 & People & Number of beta testers \label{BETA_TESTERS} \\ \hline
+  MAX\_BUGS\_FOUND & 10 & Bugs & Number of software bugs found \label{MAX_BUGS_FOUND} \\ \hline
+  MIN\_USER\_HELP\_SATISFACTION & 80 & \% & Minimum percent of users satisfied with help feature \label{MIN_USER_HELP_SATISFACTION} \\ \hline
+  MAX\_TASK\_TIME & 15 & Minutes & Maximum time it takes a user to complete a task \label{MAX_TASK_TIME} \\ \hline
+  MIN\_PRACTICE\_USAGE & 80 & \% & Minimum percent of new users who have used the practice sandbox \label{MIN_PRACTICE_USAGE} \\ \hline
+  IMPROVE\_IN\_ACC & 20 & \% & Improvement in accuracy of a user after practicing \label{IMPROVE_IN_ACC} \\ \hline
+  \caption{Symbolic Parameters}
+\end{longtable}
+
+\subsection{Usability Survey Questions}
+\begin{enumerate}
+    \item On a scale of 1 to 5, how would you rate the readability of text at this screen size? 
+    \item On a scale of 1 to 5, how clear was the visual feedback when interacting with buttons and other interactive elements?
+    \item On a scale of 1 to 5, how consistent do you find the visual design across different sections of the application?
+    \item On a scale of 1 to 5, how intuitive did you find the navigation menu?
+    \item On a scale of 1 to 5, how consistent did you find the style of buttons and forms across different pages of the application?
+    \item On a scale of 1 to 5, how satisfied are you with the alignment of your assigned tasks to your preferences?
+    \item On a scale of 1 to 5, how helpful do you find the progress tracker in monitoring your training progress?
+    \item On a scale of 1 to 5, how satisfied are you with the simulated labeling tasks provided for practice?
+    \item On a scale of 1 to 5, how clear and understandable did you find the contextual help pop-ups?
+    \item On a scale of 1 to 5, how clear and actionable were the error messages you encountered?
+    \item When faced with an error, did you feel frustrated? Yes/No/I did not experience an error
+    \item On a scale of 1 to 5, how easy was it to adjust the text size to your preference?
+    \item On a scale of 1 to 5, how satisfied are you with the available color themes for improving readability?
+    \item On a scale of 1 to 5, how easy was it to access the platform through your web browser? 
+    \item Did you use the help system to aid in completing your task? Yes/No
+    \item If you answered yes, please rate how useful it was in helping you accomplish your task: 1 (Not Useful) - 5 (Very Useful)
+    \item Did you use the quick start guide to aid in completing your task? Yes/No
+    \item If you answered yes, please rate the clarity and helpfulness of it: 1 (Not Helpful) - 5 (Very Helpful)
+    \item Did you notice the tool-tips or pop-ups providing contextual help as you worked? Yes/No
+    \item If you answered yes, please rate the clarity and usefulness of the in-app help indicators: 1 (Not Helpful) - 5 (Very Helpful)
+\end{enumerate}
+
+\newpage{}
+\section*{Appendix --- Reflection}
+
+\wss{This section is not required for CAS 741}
+
+The information in this section will be used to evaluate the team members on the
+graduate attribute of Lifelong Learning.
+
+\input{../Reflection.tex}
+
+\begin{enumerate}
+    \item What went well while writing this deliverable? 
+    \\
+    
+    While working on this deliverable, we found that several things went particularly well for our team. From the very beginning, we laid out a clear plan and divided the tasks based on each person's strengths, which made the workload manageable and played to our individual skills. Getting an early start was a game-changer; it allowed us ample time to really delve into each aspect without feeling rushed. We also benefited from having some spare time due to lighter workloads in our other courses, which we used to do deeper research on each topic. Revisiting our SRS and applying it to our VnV plan challenged us to think critically and solidified our understanding of the project. Our communication was smooth throughout---we checked in regularly and supported each other whenever questions or issues came up. Overall, the combination of good planning, effective collaboration, and the extra time we invested made the process both successful and satisfying.
+    
+    \item What pain points did you experience during this deliverable, and how
+      did you resolve them?
+      \\
+  
+      While working on this deliverable, we did face a few pain points that tested our teamwork and project management skills. One of the main challenges was investigating topics related to our project and tests that we hadn't openly discussed before; this led to some confusion and extra time spent getting everyone on the same page. Maintaining consistency across the entire document was also tricky---different writing styles and interpretations made parts of the doc feel uneven. We encountered build issues as well; some of us had to wait for others' pull requests to merge before we could proceed with our own work, which slowed down our progress. To tackle these problems, we discussed it during our meeting on Monday to openly discuss and clarify the unclear topics, ensuring everyone understood the direction we were heading. We also discussed that why working on documents is extremely important since it's worth a lot of our grade. Ensuring the deliverable met high standards despite any time pressures or setbacks is a key thing we discussed. By addressing these issues head-on, we were able to smooth out the rough patches and keep the project moving forward. \\
+      \smallskip
+      
+      
+    \item What knowledge and skills will the team collectively need to acquire to
+    successfully complete the verification and validation of your project?
+    Examples of possible knowledge and skills include dynamic testing knowledge,
+    static testing knowledge, specific tool usage, Valgrind etc.  You should look to
+    identify at least one item for each team member.\\
+  
+    To successfully verify and validate our project of processing high-definition satellite images for segmentation, our team needs to acquire a few specific skills. One team member plans to deepen his understanding of dynamic testing so he can effectively test his segmentation algorithms under various conditions. One of us will focus on static testing techniques, learning to use tools like Valgrind to identify and fix any code issues or inefficiencies. Another team member is going to get up to speed with image processing tools like OpenCV, which will be crucial for validating our segmentation results. The fourth member will work on performance profiling to ensure our application can handle large HD images smoothly without bogging down. We'll all need to become more familiar with handling and processing large satellite datasets, and possibly learn about machine learning model validation since we will be incorporating AI techniques for most part. By each of us focusing on these areas, we'll collectively cover all the bases needed for thorough verification and validation of our project.
+  
+  
+    \item For each of the knowledge areas and skills identified in the previous
+    question, what are at least two approaches to acquiring the knowledge or
+    mastering the skill?  Of the identified approaches, which will each team
+    member pursue, and why did they make this choice?\\
+  
+    This is the potential list of what each team member might be doing (subject to changes):
+  
+  \begin{itemize}
+      \item Kartik -- Dynamic Testing
+      \item Mathew -- Static Testing
+      \item Kyle -- OpenCV
+      \item Oleg -- Performance Profiling
+  \end{itemize}
+  
+  For dynamic testing, one of us considered enrolling in an online course or jumping straight into writing and running test cases on our code. We chose the hands-on route because some of us learn best by doing, and it lets us contribute directly to the project while improving our skills. The team member focusing on static testing and tools like Valgrind thought about attending a workshop or studying the documentation and applying it themselves. They decided to dive into the documentation and start using Valgrind on our code, preferring self-paced learning and immediate application. Our teammate working with OpenCV weighed taking a formal course versus following online tutorials and building small projects. They opted for the practical approach, believing that working on example projects would help them understand how to apply OpenCV to our needs more effectively. The fourth member, handling performance profiling, considered seeking guidance from a mentor or learning from online resources and applying them directly. They chose to start with online resources to quickly begin identifying and addressing performance issues in our application. Each of us picked the approach that aligns with our learning styles and allows us to make meaningful contributions to the project.
+    
+  \end{enumerate}
+
+\printbibliography % For biblatex
+
+\end{document}
