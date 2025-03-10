@@ -53,7 +53,8 @@
 \toprule {\textbf{Date}} & {\textbf{Authors}} & {\textbf{Version}}\\
 \midrule
 10/09/2024 & Oleg, Kyle, Kartik, Mathew & Revision 0\\
-
+\midrule
+03/08/2025 & Kyle & Revision 1\\
 \bottomrule
 \end{tabularx}
 
@@ -740,6 +741,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \subsubsection*{FR0}
 \label{sec:FR0}
 \begin{itemize}
+  \item \textbf{Priority: High}
   \item \textbf{Description:} The system shall allow Customers to create a new user account.
   \item \textbf{Rationale:} The customers must have an account to request the services provided by the system.
   \item \textbf{Fit Criterion:} Customer is created in and stored in the database.
@@ -748,6 +750,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \subsubsection*{FR1}
 \label{sec:FR1}
 \begin{itemize}
+  \item \textbf{Priority: High}
   \item \textbf{Description:} The system shall allow customers with an existing account to authenticate themselves using the credentials stored by the system.
   \item \textbf{Rationale:} To access privileged information, the system must authenticate customers.
   \item \textbf{Fit Criterion:} Customer can use correct credentials to log in to user account.
@@ -756,6 +759,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \subsubsection*{FR2}
 \label{sec:FR2}
 \begin{itemize}
+  \item \textbf{Priority: Medium}
   \item \textbf{Description:} The system shall allow authenticated Customers to edit their account information.
   \item \textbf{Rationale:} After creating an account, the customers must have the necessary tools to modify the information they have provided.
   \item \textbf{Fit Criterion:} After logging in, customers can modify the stored personal information.
@@ -764,6 +768,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \subsubsection*{FR3}
 \label{sec:FR3}
 \begin{itemize}
+  \item \textbf{Priority: Out of Scope}
   \item \textbf{Description:} The system shall accept payments from authenticated Customers.
   \item \textbf{Rationale:} To request services, the system shall integrate with payment services.
   \item \textbf{Fit Criterion:} After logging in, customers can send a payment to the system.
@@ -772,6 +777,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \subsubsection*{FR4}
 \label{sec:FR4}
 \begin{itemize}
+  \item \textbf{Priority: High}
   \item \textbf{Description:} The system shall accept service requests from authenticated Customers.
   \item \textbf{Rationale:} The system’s key offering is the ability to request services.
   \item \textbf{Fit Criterion:} After logging in, customers can send a service request which is accepted by the system.
@@ -780,6 +786,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \subsubsection*{FR5}
 \label{sec:FR5}
 \begin{itemize}
+  \item \textbf{Priority: High}
   \item \textbf{Description:} The system shall provide reports to authenticated customers when a service request is complete.
   \item \textbf{Rationale:} The system must provide the results of a service request to the users who initiated it.
   \item \textbf{Fit Criterion:} After logging in and after the completion of a service request, customers can receive a service request report.
@@ -788,6 +795,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \subsubsection*{FR6}
 \label{sec:FR6}
 \begin{itemize}
+  \item \textbf{Priority: High}
   \item \textbf{Description:} The system shall allow an authenticated Customer to upload images associated with a service request.
   \item \textbf{Rationale:} If the customer has images to be analyzed, they must have the ability to upload them to the system.
   \item \textbf{Fit Criterion:} After logging in and after the initiation of a service request, customers can add images associated to the service request.
@@ -796,6 +804,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \subsubsection*{FR7}
 \label{sec:FR7}
 \begin{itemize}
+  \item \textbf{Priority: Medium}
   \item \textbf{Description:} The system shall allow a customer to request satellite images for a given geographic area, as designated using a specified geographic coordinate system.
   \item \textbf{Rationale:} If customers do not have images for the area they would like to be analyzed, they can request the system to source them on their behalf. They system may not be able to fulfill the request.
   \item \textbf{Fit Criterion:} After logging in and after the initiation of a service request, customers can request the system to locate images from external providers by providing geographic coordinates.
@@ -804,6 +813,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \subsubsection*{FR8}
 \label{sec:FR8}
 \begin{itemize}
+  \item \textbf{Priority: Medium}
   \item \textbf{Description:} The system shall alert a customer if their service request is not able to be fulfilled.
   \item \textbf{Rationale:} In the event the system is unable to complete a request, it should alert the customer, so they are aware.
   \item \textbf{Fit Criterion:} After logging in and after the initiation of a service request, the customer will get an alert if the request in unable to be fufiled.
@@ -812,6 +822,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \subsubsection*{FR9}
 \label{sec:FR9}
 \begin{itemize}
+  \item \textbf{Priority: High}
   \item \textbf{Description:} The system shall allow Labelers to create a new user account.
   \item \textbf{Rationale:} The Labelers must have an account to request the services provided by the system.
   \item \textbf{Fit Criterion:} Labeler is created in and stored in the database.
@@ -820,6 +831,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \subsubsection*{FR10}
 \label{sec:FR10}
 \begin{itemize}
+  \item \textbf{Priority: High}
   \item \textbf{Description:} The system shall allow Labelers with an existing account to authenticate themselves using the credentials stored by the system.
   \item \textbf{Rationale:} In order to access privileged information, the system must Labelers customers.
 \item \textbf{Fit Criterion:} Labelers can use correct credentials to log in to user account.
@@ -828,6 +840,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \subsubsection*{FR11}
 \label{sec:FR11}
 \begin{itemize}
+  \item \textbf{Priority: Medium}
   \item \textbf{Description:} The system shall allow authenticated Labelers to edit their account information.
   \item \textbf{Rationale:} After creating an account, the Labelers must have the necessary tools to modify the information they have provided.
   \item \textbf{Fit Criterion:} After logging in, Labelers can modify the stored personal information.
@@ -836,6 +849,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \subsubsection*{FR12}
 \label{sec:FR12}
 \begin{itemize}
+  \item \textbf{Priority: Out of Scope}
   \item \textbf{Description:} The system shall allow Labelers to request their accrued earnings be transferred to their provided banking platform.
   \item \textbf{Rationale:} The system must ensure Labelers are compensated for their efforts.
 \item \textbf{Fit Criterion:} After logging in, Labelers can request their earnings be deposited in the account stored in their personal information.
@@ -844,6 +858,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \subsubsection*{FR13}
 \label{sec:FR13}
 \begin{itemize}
+  \item \textbf{Priority: High}
   \item \textbf{Description:} The system shall allow Labelers to annotate images displayed to them with the purpose of collecting annotation data.
   \item \textbf{Rationale:} This is the key service the system provides.
   \item \textbf{Fit Criterion:} Labelers will be able to annotate images.
@@ -852,6 +867,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \subsubsection*{FR14}
 \label{sec:FR14}
 \begin{itemize}
+  \item \textbf{Priority: High}
   \item \textbf{Description:} The system shall combine annotations obtained from authenticated Labelers into a consolidated report.
   \item \textbf{Rationale:} This is the key service the system provides.
   \item \textbf{Fit Criterion:} After a service request has been initaited, and the system has determined the label accuracy is over a certain threshold.
@@ -926,6 +942,7 @@ NFR \# & \multicolumn{15}{c}{Functional Requirement} \\ \hline
 \subsubsection*{NFR-LF0}
 \label{sec:LF0}
 \begin{itemize}
+  \item \textbf{Priority: Medium}
   \item \textbf{Description:} The application shall adapt to various screen sizes, ensuring legibility and an uncluttered layout.
   \item \textbf{Rationale:} Users will have computers with varying screen sizes, so a consistent experience across all these sizes is ideal.
   \item \textbf{Fit Criterion:} Visual elements must not exceed the boundaries of a screen with a size between the range 1024×768 pixels to 1920×1080 pixels.
@@ -933,6 +950,7 @@ NFR \# & \multicolumn{15}{c}{Functional Requirement} \\ \hline
 \subsubsection*{NFR-LF1}
 \label{sec:LF1}
 \begin{itemize}
+  \item \textbf{Priority: Medium}
   \item \textbf{Description:} Interactive elements such as buttons shall provide visual feedback to the user.
   \item \textbf{Rationale:} This will allow users a better understanding of when their actions have been processed by the application.
   \item \textbf{Fit Criterion:} Every interactive element changes colour or displays additional visual cues, such as animations or shadows, to indicate interaction.
@@ -941,6 +959,7 @@ NFR \# & \multicolumn{15}{c}{Functional Requirement} \\ \hline
 \subsubsection*{NFR-LF2}
 \label{sec:LF2}
 \begin{itemize}
+  \item \textbf{Priority: Medium}
   \item \textbf{Description:} The application should maintain a unified visual design across all components.
   \item \textbf{Rationale:} A consistent appearance enhances the application's cohesiveness and conveys a professional aesthetic.
   \item \textbf{Fit Criterion:} Font type, sizing, and colour, along with background tones are all consistent throughout the application.
@@ -955,6 +974,7 @@ NFR \# & \multicolumn{15}{c}{Functional Requirement} \\ \hline
 \subsubsection*{NFR-UH0}
 \label{sec:UH0}
       \begin{itemize}
+        \item \textbf{Priority: High}
           \item \textbf{Description}: The platform will have a well-organized navigation menu, allowing users to quickly find labeling tasks, settings, help, and account details.  
           \item \textbf{Rationale}: An easy-to-navigate platform helps reduce the time taken for users to find what they need, improving the efficiency of labeling tasks and overall user satisfaction.  
           \item \textbf{Fit Criterion}: At least 90\% of users should be able to navigate to any main feature within 3 clicks, as determined by usability testing.
@@ -963,6 +983,7 @@ NFR \# & \multicolumn{15}{c}{Functional Requirement} \\ \hline
 \subsubsection*{NFR-UH1}
 \label{sec:UH1}
       \begin{itemize}
+        \item \textbf{Priority: Medium}
           \item \textbf{Description}: The platform’s buttons, forms, and other UI elements should follow a consistent style and behavior throughout, to ensure a predictable user experience.  
           \item \textbf{Rationale}: Consistency reduces cognitive load and helps users feel comfortable and confident when interacting with the system, as they can easily recognize and understand patterns in the UI.  
           \item \textbf{Fit Criterion}: Consistency will be validated by usability tests where at least 95\% of users recognize and correctly use recurring interface elements across different pages.
@@ -975,6 +996,7 @@ NFR \# & \multicolumn{15}{c}{Functional Requirement} \\ \hline
 \subsubsection*{NFR-UH2} 
 \label{sec:UH2}
         \begin{itemize}
+          \item \textbf{Priority: Low}
             \item \textbf{Description}: Users can set preferences to prioritize specific types of labeling tasks (e.g., agricultural, urban) and receive suggestions aligned with their interests and expertise.  
             \item \textbf{Rationale}: Allowing users to work on tasks of interest or within their expertise can improve task accuracy and user satisfaction, leading to better retention and data quality.  
             \item \textbf{Fit Criterion}: Users should be able to set their task preferences in their profile, with at least 80\% of their assigned tasks matching these preferences over time.
@@ -983,6 +1005,7 @@ NFR \# & \multicolumn{15}{c}{Functional Requirement} \\ \hline
         \subsubsection*{NFR-UH3} 
         \label{sec:UH3}
         \begin{itemize}
+          \item \textbf{Priority: Out of Scope}
             \item \textbf{Description}: The platform should display localized formats for date, time, and currency based on the user's location or preference settings.  
             \item \textbf{Rationale}: Displaying culturally familiar formats enhances user comfort and reduces errors when interpreting critical information like deadlines or earnings.  
             \item \textbf{Fit Criterion}: Date, time, and currency formats should adjust automatically based on the user’s location or manual settings, verified through localized testing.
@@ -995,13 +1018,15 @@ NFR \# & \multicolumn{15}{c}{Functional Requirement} \\ \hline
 \subsubsection*{NFR-UH4} 
 \label{sec:UH4}
         \begin{itemize} 
-            \item \textbf{Description}: Users can track their progress through tutorials and training tasks within the platform, allowing them to see completed and pending learning modules.  
-            \item \textbf{Rationale}: Tracking progress motivates users to complete learning tasks and helps them understand where they stand in terms of mastering platform features.  
-            \item \textbf{Fit Criterion}: A progress tracker will be implemented, and at least 80\% of users should find it helpful, based on post-training feedback surveys.
+          \item \textbf{Priority: High}
+            \item \textbf{Description}: Users can complete a simple tutorial to learn the platform features.  
+            \item \textbf{Rationale}: A tutorial can improve understanding and decrease frustration in users.  
+            \item \textbf{Fit Criterion}: At least 80\% of users should find it helpful, based on post-training feedback surveys.
         \end{itemize}
         \subsubsection*{NFR-UH5} 
         \label{sec:UH5}
         \begin{itemize} 
+          \item \textbf{Priority: Medium}
             \item \textbf{Description}: Provide users with simulated labeling tasks to practice without affecting actual datasets, allowing them to learn through hands-on experience before starting real work.  
             \item \textbf{Rationale}: Practice tasks help users understand the labeling process without pressure, improving their confidence and accuracy before handling real data.  
             \item \textbf{Fit Criterion}: At least 85\% of users should complete at least one practice task before labeling real data, with a satisfaction rate of 90\% based on feedback.
@@ -1014,6 +1039,7 @@ NFR \# & \multicolumn{15}{c}{Functional Requirement} \\ \hline
 \subsubsection*{NFR-UH6} 
 \label{sec:UH6}
         \begin{itemize} 
+          \item \textbf{Priority: Out of Scope}
             \item \textbf{Description}: Contextual help pop-ups should be available throughout the platform, offering brief explanations for various features and guidance on how to complete tasks.  
             \item \textbf{Rationale}: Providing help exactly where users need it reduces confusion and makes it easier for users to understand how to use different parts of the platform without extensive searching.  
             \item \textbf{Fit Criterion}: At least 90\% of users should find the contextual help pop-ups clear and helpful during usability testing.
@@ -1021,6 +1047,7 @@ NFR \# & \multicolumn{15}{c}{Functional Requirement} \\ \hline
         \subsubsection*{NFR-UH7} 
         \label{sec:UH7}
         \begin{itemize} 
+          \item \textbf{Priority: Medium}
             \item \textbf{Description}: Error messages will not only indicate what went wrong but also provide actionable steps to resolve the issue in a friendly, non-blaming tone.  
             \item \textbf{Rationale}: Friendly and constructive error handling reduces user frustration and helps users quickly resolve issues without needing support, improving overall experience.  
             \item \textbf{Fit Criterion}: At least 95\% of errors will be accompanied by actionable instructions, and users should report a low frustration rate ($<$ 10\%) when encountering errors, based on feedback.
@@ -1033,6 +1060,7 @@ NFR \# & \multicolumn{15}{c}{Functional Requirement} \\ \hline
 \subsubsection*{NFR-UH8} 
 \label{sec:UH8}
         \begin{itemize} 
+          \item \textbf{Priority: Out of Scope}
             \item \textbf{Description}: The platform will provide options for users to adjust text size and choose between different color themes (e.g., light, dark, high contrast) to improve readability based on their preferences.  
             \item \textbf{Rationale}: Allowing adjustments for visual elements helps users with low vision, color blindness, or different environmental lighting conditions to comfortably use the platform.  
             \item \textbf{Fit Criterion}: At least three different color themes will be available, and users should be able to increase text size up to 200\% without loss of content or functionality.
@@ -1040,6 +1068,7 @@ NFR \# & \multicolumn{15}{c}{Functional Requirement} \\ \hline
         \subsubsection*{NFR-UH9} 
         \label{sec:UH9}
         \begin{itemize} 
+          \item \textbf{Priority: Medium}
             \item \textbf{Description}: The platform will support keyboard shortcuts for essential actions (e.g., navigating between tasks, submitting labels) to facilitate quick access and improve usability for users who cannot use a mouse.  
             \item \textbf{Rationale}: Keyboard shortcuts provide an alternative way to interact with the system, improving efficiency for power users and ensuring accessibility for users with limited mobility.  
             \item \textbf{Fit Criterion}: All core actions should have keyboard shortcuts available, and usability tests should confirm that at least 95\% of actions are accessible via keyboard navigation.
@@ -1053,6 +1082,7 @@ NFR \# & \multicolumn{15}{c}{Functional Requirement} \\ \hline
 \subsubsection*{NFR-PR0}
 \label{sec:PR0}
 \begin{itemize}
+  \item \textbf{Priority: Medium}
   \item \textbf{Description:} The system shall process new user requests within 15 minutes of a Customer completing the account creation process 90\% of the time, and within 48 hours in all cases. 
   \item \textbf{Rationale:} The user likely has urgent needs if they are signing up to access the system. They must have quick access to the services offered by the system, and authentication is the first step of this process.
   \item \textbf{Fit Criterion:}\\ Let $t_{\text{newCustomerAccount}}$ be the time it takes to process a new Customer account request, in hours.\\ \probP($t_{\text{newCustomerAccount}} < 0.25) \geq .90 \wedge \probP(t_{\text{newCustomerAccount}} < 48) = 1 $
@@ -1062,6 +1092,7 @@ NFR \# & \multicolumn{15}{c}{Functional Requirement} \\ \hline
 \subsubsection*{NFR-PR1}
 \label{sec:PR1}
 \begin{itemize}
+  \item \textbf{Priority: Medium}
   \item \textbf{Description:} The system shall process new user requests within 15 minutes of a Labeler  completing the account creation process 90\% of the time, and within 48 hours in all cases. 
   \item \textbf{Rationale:} To improve engagement from Labelers, there should be minimal delay in getting started.
   \item \textbf{Fit Criterion:}\\ Let $t_{\text{newLabelAccount}}$ be the time it takes to process a new Labeler account request, in hours.\\ \probP($t_{\text{newLabelAccount}} < 0.25) \geq 0.9 \wedge \probP(t_{\text{newLabelAccount}} < 48) = 1 $
@@ -1071,6 +1102,7 @@ NFR \# & \multicolumn{15}{c}{Functional Requirement} \\ \hline
 \subsubsection*{NFR-PR2}
 \label{sec:PR2}
 \begin{itemize}
+  \item \textbf{Priority: High}
   \item \textbf{Description:} The system shall return a complete report of results to the Customer within the negotiated amount of time, 90\% of the time, and within 48 additional hours in all cases.
   \item \textbf{Rationale:} The user is expecting to be able to act on the insights the system provides. To build trust and loyalty, the system must ensure that it is meeting the agreed upon timelines.
   \item \textbf{Fit Criterion:}\\ Let $t_{\text{serviceRequestTime}}$ be the time it takes to complete a service request, in hours.\\
@@ -1081,6 +1113,7 @@ NFR \# & \multicolumn{15}{c}{Functional Requirement} \\ \hline
 \subsubsection*{NFR-PR3}
 \label{sec:PR3}
 \begin{itemize}
+  \item \textbf{Priority: High}
   \item \textbf{Description:} The system shall take no longer than 10 seconds to display the next image to be labeled to a labeler, if there is one available.
   \item \textbf{Rationale:} To reduce friction for labelers, the system must ensure there is no unnecessary delay in preparing the next job. For users exposed to modern media, attention spans can be expected to be less than 10 seconds \href{https://profiletree.com/attention-span-crisis-digital-age-statistics/#:~:text=Studies%20have%20proven%20that%20being,focus%20after%208%20mere%20seconds}{src}.
   \item \textbf{Fit Criterion:}\\ Let $t_{\text{imageServing}}$ be the time it takes to serve the next image, in seconds.\\
@@ -1092,6 +1125,7 @@ NFR \# & \multicolumn{15}{c}{Functional Requirement} \\ \hline
 \subsubsection*{NFR-PR4}
 \label{sec:PR4}
 \begin{itemize}
+  \item \textbf{Priority: Out of Scope}
   \item \textbf{Description:} The system shall deliver earned payouts to labelers within 7 business days of a request being made through the system.
   \item \textbf{Rationale:} The labelers are entitled to their earned income, and there must not be unnecessary delay. 7 days accounts for delays in the platform used to distribute payments.
   \item \textbf{Fit Criterion:}\\ Let $t_{\text{payoutDelay}}$ be the time it takes for a user to receive their payments after a request is received by the system, in days.\\
@@ -1104,6 +1138,7 @@ N/A
 \subsubsection*{NFR-PR5}
 \label{sec:PR5}
 \begin{itemize}
+  \item \textbf{Priority: High}
   \item \textbf{Description:} The system shall report accurate labels 75\% of the time.
   \item \textbf{Rationale:} Average data label accuracy for competitors is greater than 75\% (\href{https://www.researchgate.net/publication/234774537_Data_quality_from_crowdsourcing_A_study_of_annotation_selection_criteria#:~:text=Depending%20on%20the%20number%20of,%5B13%5D%20%5B14%5D%20.}{link}). The system should at a minimum provide the same label accuracy.
   \item \textbf{Fit Criterion:}\\ Let $O$ be the set of objects to label.\\
@@ -1117,6 +1152,7 @@ N/A
 \subsubsection*{NFR-PR6}
 \label{sec:PR6}
 \begin{itemize}
+  \item \textbf{Priority: Low}
   \item \textbf{Description:} The system shall have 97\% uptime. 
   \item \textbf{Rationale:} It is crucial that in emergency response use cases, the system is able to accept and process requests with minimal delay.
   \item \textbf{Fit Criterion:}\\ Let $t_{\text{uptime}}$ be the uptime of the system.\\
@@ -1127,6 +1163,7 @@ N/A
 \subsubsection*{NFR-PR7}
 \label{sec:PR7}
 \begin{itemize}
+  \item \textbf{Priority: Low}
   \item \textbf{Description:} The system shall have the capacity to support enough labelers to meet all service request deadlines.
   \item \textbf{Rationale:} This requirement is critical to satisfy NFR-PR2.
   \item \textbf{Fit Criterion:} See \hyperref[sec:PR2]{NFR-PR2}.
@@ -1135,8 +1172,9 @@ N/A
 \subsubsection*{NFR-PR8}
 \label{sec:PR8}
 \begin{itemize}
+  \item \textbf{Priority: Medium}
   \item \textbf{Description:} The system shall have the capacity to store and process large image files.
-  \item \textbf{Rationale:} This requirement is necessary to obtain information from satelite images, which can be several gigabites in size.
+  \item \textbf{Rationale:} This requirement is necessary to obtain information from satellite images, which can be several gigabites in size.
   \item \textbf{Fit Criterion:} The system will not crash or fail to store when given images files <50 Gb in size.
   \item \textbf{Related:} \hyperref[sec:FR6]{FR6}, \hyperref[sec:FR7]{FR7}
 \end{itemize}
@@ -1144,6 +1182,7 @@ N/A
 \subsubsection*{NFR-PR9}
 \label{sec:PR9}
 \begin{itemize}
+  \item \textbf{Priority: Low}
   \item \textbf{Description:} The system shall be able to scale to meet the capacity specified in NFR-PR7.
   \item \textbf{Rationale:} This requirement is critical to satisfy NFR-PR7.
   \item \textbf{Fit Criterion:} See \hyperref[sec:PR7]{NFR-PR7}.
@@ -1161,6 +1200,7 @@ N/A
 \subsubsection*{NFR-OE0}
 \label{sec:OE0}
 \begin{itemize}
+  \item \textbf{Priority: Out of Scope}
   \item \textbf{Description:} The system shall implement energy-efficient practices in cloud usage and server management.
   \item \textbf{Rationale:} Minimizes the platform’s carbon footprint and promotes sustainability.
   \item \textbf{Fit Criterion:} Cloud infrastructure usage is optimized to reduce energy consumption by at least 20\% compared to baseline measurements.
@@ -1169,6 +1209,7 @@ N/A
 \subsubsection*{NFR-OE1}
 \label{sec:OE1}
 \begin{itemize}
+  \item \textbf{Priority: Low}
   \item \textbf{Description:} The system shall support standardized APIs and data formats for the automatic acquisition and integration of satellite images from third-party providers.
   \item \textbf{Rationale:} Facilitates seamless integration and efficient data handling from satellite data providers.
   \item \textbf{Fit Criterion:} The platform can successfully ingest data from at least two major satellite data providers using their APIs without manual intervention.
@@ -1177,6 +1218,7 @@ N/A
 \subsubsection*{NFR-OE2}
 \label{sec:OE2}
 \begin{itemize}
+  \item \textbf{Priority: Out of Scope}
   \item \textbf{Description:} The system shall integrate with reliable and secure payment processors to handle user compensations and client payments efficiently.
   \item \textbf{Rationale:} Ensures secure and efficient financial transactions, building trust with users and clients.
   \item \textbf{Fit Criterion:} Transactions are processed securely through integrated payment gateways, achieving a transaction success rate of 99.5%.
@@ -1185,6 +1227,7 @@ N/A
 \subsubsection*{NFR-OE3}
 \label{sec:OE3}
 \begin{itemize}
+  \item \textbf{Priority: Out of Scope}
   \item \textbf{Description:} The system shall support multiple currencies to accommodate a global user base and international clients.
   \item \textbf{Rationale:} Enhances the platform’s accessibility and usability for users and clients worldwide.
   \item \textbf{Fit Criterion:} The platform supports at least four major currencies (e.g., USD, EUR, GBP, INR) and correctly processes transactions in each.
@@ -1192,6 +1235,7 @@ N/A
 \subsubsection*{NFR-OE4}
 \label{sec:OE4}
 \begin{itemize}
+  \item \textbf{Priority: Medium}
   \item \textbf{Description:} The system shall be compatible with popular machine learning frameworks to facilitate the training, testing, and deployment of computer vision models.
   \item \textbf{Rationale:} Enables efficient development and integration of ML models for various use cases.
   \item \textbf{Fit Criterion:} The platform can train and deploy models using frameworks like TensorFlow, PyTorch, and scikit-learn without compatibility issues.
@@ -1199,6 +1243,7 @@ N/A
 \subsubsection*{NFR-OE5}
 \label{sec:OE5}
 \begin{itemize}
+  \item \textbf{Priority: Low}
   \item \textbf{Description:} The system shall have efficient data pipelines for transferring labeled datasets between the platform and ML models.
   \item \textbf{Rationale:} Ensures smooth and automated workflows for data handling and model training.
   \item \textbf{Fit Criterion:} Data transfers occur within minutes, and pipelines support batch processing of large datasets (e.g., 10,000 images) without errors.
@@ -1207,6 +1252,7 @@ N/A
 \subsubsection*{NFR-OE6}
 \label{sec:OE6}
 \begin{itemize}
+  \item \textbf{Priority: High}
   \item \textbf{Description:} The system shall be accessible without requiring any installation, operating solely through web browsers.
   \item \textbf{Rationale:} Eliminates the need for users to install software, reducing barriers to entry and simplifying access.
   \item \textbf{Fit Criterion:} Users can access and use the platform by visiting the web URL on any supported browser without needing to download or install additional software.
@@ -1215,6 +1261,7 @@ N/A
 \subsubsection*{NFR-OE7}
 \label{sec:OE7}
 \begin{itemize}
+  \item \textbf{Priority: Medium}
   \item \textbf{Description:} The system shall include a detailed release roadmap outlining timelines, features, and milestones for upcoming releases.
   \item \textbf{Rationale:} Keeps the development team and stakeholders aligned and ensures organized progress.
   \item \textbf{Fit Criterion:} The release roadmap is documented, updated regularly, and adhered to with at least 80\% of milestones achieved on schedule.
@@ -1222,6 +1269,7 @@ N/A
 \subsubsection*{NFR-OE8}
 \label{sec:OE8}
 \begin{itemize}
+  \item \textbf{Priority: Low}
   \item \textbf{Description:} The system shall be showcased to select group of users to gather feedback, identify bugs, and refine features before full-scale deployment.
   \item \textbf{Rationale:} Ensures the platform meets user expectations and operates smoothly upon official release.
   \item \textbf{Fit Criterion:} Testing results in fewer than 10 critical bugs identified and includes actionable feedback from at least 50 labelers, leading to necessary iterative improvements.
@@ -1229,6 +1277,7 @@ N/A
 \subsubsection*{NFR-OE9}
 \label{sec:OE9}
 \begin{itemize}
+  \item \textbf{Priority: Out of Scope}
   \item \textbf{Description:} Each release shall preserve the core functionality of existing features without introducing regressions or deprecations.
   \item \textbf{Rationale:} Ensures continuity and reliability of the platform by preventing new updates from disrupting or breaking previously working features, thereby maintaining user trust and satisfaction.
   \item \textbf{Fit Criterion:} Automated usability testing is performed for each release, and no existing critical features fail post-release. Verification is achieved through passing all regression test cases before deployment.
@@ -1240,7 +1289,8 @@ N/A
 \subsubsection*{NFR-MR0}
 \label{sec:MR0}
 \begin{itemize}
-  \item \textbf{Description:} All maintainance required for the system shall be possible to complete by a competent software developer after reading all of the documentation provided in the source repository.
+  \item \textbf{Priority: Medium}
+  \item \textbf{Description:} All maintenance required for the system shall be possible to complete by a competent software developer after reading all of the documentation provided in the source repository.
   \item \textbf{Rationale:} The system should be well documented, and therefore maintainable after reading said documents.
   \item \textbf{Fit Criterion:} A competent software developer, as determined by the original developers or their agents, can solve problems related to the core of the system, as determined by the 
   features outlined in this document.
@@ -1255,6 +1305,7 @@ N/A
 \subsubsection*{NFR-SE0}
 \label{sec:SE0}
 \begin{itemize}
+  \item \textbf{Priority: High}
   \item \textbf{Description:} The application shall only allow users with labeling access, including labellers, customers, and admins, to view active projects and label images.
   \item \textbf{Rationale:} We do not want random users with no stake in the process to effect the results.
   \item \textbf{Fit Criterion:} Users who have not logged in to the application have no way of viewing projects or labeling images. Users logged in as labellers, customers, or admins have access to these features.
@@ -1263,6 +1314,7 @@ N/A
 \subsubsection*{NFR-SE1}
 \label{sec:SE1}
 \begin{itemize}
+  \item \textbf{Priority: High}
   \item \textbf{Description:} The application shall only allow users with customer access and above to create new image analysis projects.
   \item \textbf{Rationale:} Unidentified users creating projects would be impossible to facilitate. Also, labellers have no need to access project creation. 
   \item \textbf{Fit Criterion:} Users who have not logged in to the application have no way of creating an image analysis project. Users logged in as customers or admins have access to these features.
@@ -1271,6 +1323,7 @@ N/A
 \subsubsection*{NFR-SE2}
 \label{sec:SE2}
 \begin{itemize}
+  \item \textbf{Priority: High}
   \item \textbf{Description:} The application shall validate the email format the user provides when creating an account.
   \item \textbf{Rationale:} We do not want users using invalid or duplicate emails to sign up.
   \item \textbf{Fit Criterion:} Let E represent the set of all email addresses, and let V represent the set of all valid email addresses. A valid email address conforms to the general pattern:\\\\
@@ -1281,6 +1334,7 @@ N/A
 \subsubsection*{NFR-SE3}
 \label{sec:SE3}
 \begin{itemize}
+  \item \textbf{Priority: High}
   \item \textbf{Description:} The application shall validate the password format the user provides when creating an account.
   \item \textbf{Rationale:} We do not want users using weak passwords to sign up.
   \item \textbf{Fit Criterion:} Let P represent the set of all passwords, and let V represent the set of all valid passwords. A valid password has a at least one lowercase, uppercase, number and special character and is a minimum of 8 characters in length:\\\\
@@ -1290,6 +1344,7 @@ N/A
 \subsubsection*{NFR-SE4}
 \label{sec:SE4}
 \begin{itemize}
+  \item \textbf{Priority: Medium}
   \item \textbf{Description:} The system shall, during system failure, notify users trying to make a request of the system failure.
   \item \textbf{Rationale:} The system should provide good warning messages to users to prevent additional frustration.
   \item \textbf{Fit Criterion:} When services are unavailable, the system shall provide an error message to the user making the request of the unavailable service.
@@ -1299,6 +1354,7 @@ N/A
 \subsubsection*{NFR-SE5}
 \label{sec:SE5}
 \begin{itemize}
+  \item \textbf{Priority: Medium}
   \item \textbf{Description:} The application shall prevent incorrect data from being introduced.
   \item \textbf{Rationale:} The database of information should always reflect correct and up to date information.
   \item \textbf{Fit Criterion:} The system must validate user inputs for data accuracy and format before they are saved. Any invalid data must trigger error messages, preventing it from being entered into the database. Users must be required to correct errors before proceeding.
@@ -1306,6 +1362,7 @@ N/A
 \subsubsection*{NFR-SE6}
 \label{sec:SE6}
 \begin{itemize}
+  \item \textbf{Priority: Low}
   \item \textbf{Description:} The application shall prohibit new user actions when user is disconnected from the system.
   \item \textbf{Rationale:} The system should avoid batch updates upon reconnect as to prevent malicious users creating a false package of updates.
   \item \textbf{Fit Criterion:} Upon user disconnect and reconnect, the system will not accept any updates from the user not submitted before the disconnect occured.
@@ -1313,6 +1370,7 @@ N/A
 \subsubsection*{NFR-SE7}
 \label{sec:SE7}
 \begin{itemize}
+  \item \textbf{Priority: Medium}
   \item \textbf{Description:} The system shall reject duplicate entries in database.
   \item \textbf{Rationale:} Each entry to the database should be a unique data piece. If two entries are identical, they must differ by at least the creation time.
   \item \textbf{Fit Criterion:} No two entries in the database shall exist together for longer than 24 hours from their introduction into the database.
@@ -1321,6 +1379,7 @@ N/A
 \subsubsection*{NFR-SE8}
 \label{sec:SE8}
 \begin{itemize}
+  \item \textbf{Priority: Low}
   \item \textbf{Description:} User data will be securely encrypted to protect user’s privacy.
   \item \textbf{Rationale:} This will help to avoid user's being compromised if a data leak occurs.
   \item \textbf{Fit Criterion:} An encryption algorithm is used on sensitive user data such as passwords.
@@ -1328,6 +1387,7 @@ N/A
 \subsubsection*{NFR-SE9}
 \label{sec:SE9}
 \begin{itemize}
+  \item \textbf{Priority: Out of Scope}
   \item \textbf{Description:} The application shall ensure that all payment transactions are processed securely using encryption and comply with relevant security standards, such as PCI-DSS, which helps to protect payment account data (PCI Security Standards Council, 2024).
   \item \textbf{Rationale:} Protecting users' financial information is critical to maintaining trust. Failing to secure payments can lead to data breaches, financial loss, and legal liabilities.
   \item \textbf{Fit Criterion:} All payment transactions must use industry-standard encryption to protect sensitive data. Payment information, such as credit card details, must not be stored locally on the application and must be processed via a secure, PCI-DSS-compliant third-party payment gateway.
@@ -1340,6 +1400,7 @@ N/A
 \subsubsection*{NFR-SE10}
 \label{sec:SE10}
 \begin{itemize}
+  \item \textbf{Priority: Medium}
   \item \textbf{Description:} The application shall use parameterized queries or prepared statements for all database interactions.
   \item \textbf{Rationale:} We want to prevent SQL injection attacks which can lead to unauthorized data access or manipulation.
   \item \textbf{Fit Criterion:} All database queries must be implemented using parameterized queries or prepared statements. Dynamic SQL strings that concatenate user input must not be used in the codebase.
@@ -1350,6 +1411,7 @@ N/A
 \subsubsection*{NFR-CU0}
 \label{sec:CU0}
 \begin{itemize}
+  \item \textbf{Priority: Out of Scope}
   \item \textbf{Description:} The system shall present users with the option to select the most popular language in each country it is deployed in.
   \item \textbf{Rationale:} It is important that the users of the program can understand what is said in each step.
   \item \textbf{Fit Criterion:} A drop down will allow users to select from the list of languages. At a minimum, the most popular language by number of speakers will be available for each country.
@@ -1360,6 +1422,7 @@ N/A
 \subsubsection*{NFR-CO0}
 \label{sec:CO0}
 \begin{itemize}
+  \item \textbf{Priority: Low}
   \item \textbf{Description:} The system shall not be available in any country currently facing economic sanctions by the Government of Canada.
   \item \textbf{Rationale:} Legal requirement to operate.
   \item \textbf{Fit Criterion:} Website must not be reachable in sanctioned countries. Canadian sanctions are outlined in the following legislation: \href{http://laws-lois.justice.gc.ca/eng/acts/U-2/index.html}{United Nation Act}, \href{http://laws-lois.justice.gc.ca/eng/acts/S-14.5/index.html}{Special Economic Measures Act}, and \href{http://laws.justice.gc.ca/eng/acts/J-2.3/}{Justice for Victims of Corrupt Foreign Officials Act}
@@ -1367,6 +1430,7 @@ N/A
 \subsubsection*{NFR-CO1}
 \label{sec:CO1}
 \begin{itemize}
+  \item \textbf{Priority: Low}
   \item \textbf{Description:} The system shall follow Canadian tax code when accepting and paying out earnings.
   \item \textbf{Rationale:} Legal requirement to operate.
   \item \textbf{Fit Criterion:} All relevant tax codes must be satisfied when accepting payment from Customers or paying out earnings to Labelers. Specifically \href{https://www.ontario.ca/laws/statute/90c40}{Ontario Tax Act, 1990} and \href{https://laws-lois.justice.gc.ca/eng/acts/i-3.3/}{Income Tax Act 1985}
@@ -1374,6 +1438,7 @@ N/A
 \subsubsection*{NFR-CO2}
 \label{sec:CO2}
 \begin{itemize}
+  \item \textbf{Priority: Low}
   \item \textbf{Description:} The system shall allow Customers to restrict Labelers from certain regions from labeling the images related to their service request.
   \item \textbf{Rationale:} Customers may be uploading sensitive images, which are inappropriate for international Labelers to view.
   \item \textbf{Fit Criterion:} No restricted image, as identified by the customer, shall be shown to a restricted group.
@@ -1584,6 +1649,7 @@ A detailed budget forecast will be developed, encompassing all the aforementione
         \subsubsection*{NFR-UD0} 
         \label{sec:UD0}
         \begin{itemize} 
+          \item \textbf{Priority: Out of Scope}
             \item \textbf{Description}: A built-in help system with a searchable knowledge base, FAQs, tutorial videos, user forums and step-by-step guides to assist users with common issues or tasks directly within the platform.  
             \item \textbf{Rationale}: An online help system provides quick, on-demand support, improving user experience by minimizing interruptions when seeking assistance.  
             \item \textbf{Fit Criterion}: At least 80\% of users should be able to resolve their issues using the help system without contacting support, as validated by user surveys and support metrics.
@@ -1591,17 +1657,15 @@ A detailed budget forecast will be developed, encompassing all the aforementione
         \subsubsection*{NFR-UD1}
         \label{sec:UD1}
         \begin{itemize} 
+          \item \textbf{Priority: Medium}
             \item \textbf{Description}: A condensed guide offering a quick overview of key platform features and essential workflows to get users started rapidly.  
             \item \textbf{Rationale}: A quick start guide enables new users to become productive immediately without needing to read extensive documentation, improving their onboarding experience.  
             \item \textbf{Fit Criterion}: At least 80\% of new users should report the quick start guide as helpful, and they should be able to complete a basic labeling task within 15 minutes of using it.
         \end{itemize}
         \subsubsection*{NFR-UD2}
         \label{sec:UD2}
-        \begin{itemize} 
-            \item \textbf{Description}: Provide contextual help directly within the platform, such as tooltips and small info pop-ups, offering real-time guidance for features or form fields as users interact with them.  
-            \item \textbf{Rationale}: In-app help reduces the learning curve and provides timely support without requiring users to leave the page or workflow they are on.  
-            \item \textbf{Fit Criterion}: At least 88\% of users should find in-app help intuitive and accurate in providing the necessary support as validated by user surveys.
-        \end{itemize}
+        See \hyperref[sec:UH4]{UH4}
+        
 
 
 \subsection{Training Requirement}
@@ -1609,18 +1673,10 @@ A detailed budget forecast will be developed, encompassing all the aforementione
 
 \subsubsection*{NFR-TR0}
         \label{sec:TR0}
-        \begin{itemize} 
-            \item \textbf{Description}: An onboarding tutorial guiding users through key platform functions interactively, offering tooltips and prompts to familiarize them with core workflows.  
-            \item \textbf{Rationale}: Interactive onboarding accelerates learning, reduces user frustration, and ensures that new users can quickly perform tasks confidently.  
-            \item \textbf{Fit Criterion}: At least 85\% of users should complete the onboarding tutorial successfully within 20 minutes, with a 80\% rate of positive feedback on its effectiveness.
-        \end{itemize}
+        See \hyperref[sec:UH4]{UH4}
         \subsubsection*{NFR-TR1}
         \label{sec:TR1}
-        \begin{itemize} 
-            \item \textbf{Description}: A sandbox environment allowing users to practice labeling tasks without affecting live data, including quizzes and exercises to assess understanding and improve skills.  
-            \item \textbf{Rationale}: A practice environment enables users to build confidence and hone their skills in a low-pressure setting, ensuring they are prepared for real tasks.  
-            \item \textbf{Fit Criterion}: At least 80\% of new users should utilize the practice environment, with self-assessment scores indicating an average improvement of 20\% in labeling accuracy over their first three attempts.
-        \end{itemize}
+        See \hyperref[sec:UH4]{UH5}
 
 
 \section{Undesired Event Handling}
