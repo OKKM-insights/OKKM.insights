@@ -34,6 +34,7 @@ jobs:
         (cd ./docs/Design/SoftArchitecture && latexmk -pdf MG.tex)
         (cd ./docs/Design/SoftDetailedDes && latexmk -pdf MIS.tex)
         (cd ./docs/VnVReport && latexmk -pdf VnVReport.tex)
+        (cd ./docs/Extras/UsabilityReport && latexmk -pdf UsabilityReport.tex)
 
     - name: List files in docs directory
       run: ls -R docs
