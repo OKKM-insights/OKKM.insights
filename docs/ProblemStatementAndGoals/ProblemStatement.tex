@@ -72,24 +72,134 @@ Outputs:
 
 \section{Stakeholders}
 
-1.	Air Rescue Services: These organizations rely on satellite imagery to assist in critical missions like search and rescue. High-quality datasets can enhance their ability to assess disaster zones or monitor large areas efficiently, making response times quicker and saving lives. Satellite images tailored to disaster management, including flood zones or forest fires, are of particular importance to them. \\
-\\
 
-2.	Alternative Financial Data Companies: These companies use satellite data to analyze economic activities and trends. For example, satellite imagery of crop growth can be used to predict agricultural yields, or images of traffic patterns near malls can provide insights into retail performance. High-quality datasets enable these companies to develop more accurate financial models and market predictions. \\
-\\
-
-3.	Farmers and Agricultural Enterprises: Farmers benefit from satellite imagery for precision farming, monitoring crop health, soil conditions, and weather patterns. Access to customized datasets allows them to optimize planting schedules, monitor water usage, and make informed decisions about fertilizer application, improving yield and reducing costs. \\
-\\
-
-4.	Users: These are individuals or entities responsible for labeling the data on the platform. In return for their efforts, they receive compensation. Their primary role is to ensure that the datasets are correctly annotated according to specified requirements, which forms the basis of the models developed. Their work directly impacts the quality and usability of the final product. \\
-\\
-
-5.	End Clients/Customers: These stakeholders include governments, NGOs, private companies, and environmental organizations that pay for access to the labeled datasets and models. They rely on these datasets to make informed decisions in areas like environmental monitoring, urban planning, or defense-related tasks. Their satisfaction depends on the accuracy and reliability of both the data and the models provided. \\
-\\
+\subsection{Customer}
+End Clients/Customers: These stakeholders include governments, NGOs, private companies, and environmental organizations that pay for access to the labeled datasets and models. They rely on these datasets to make informed decisions in areas like environmental monitoring, urban planning, or defense-related tasks. Their satisfaction depends on the accuracy and reliability of both the data and the models provided.
 
 
-Other Stakeholders: Beyond the primary stakeholders, other key groups that benefit from high-quality satellite imagery datasets include defense agencies, which rely on tailored data for surveillance, intelligence, and threat detection to enhance national security. Environmental agencies use satellite data to monitor ecosystems, track deforestation, and respond to climate change. Similarly, urban planners leverage this data to manage land use, plan infrastructure development, and promote sustainable growth in cities. Additionally, disaster relief organizations depend on satellite imagery to assess damage in real-time and prioritize aid during crisis situations, making these datasets crucial for effective disaster response. Another important group includes the image labeling teams, who manually classify and annotate satellite images. Their work is crucial for building accurate datasets, and they benefit from improved tools and clearer guidelines to make the labeling process more efficient. \\
-\\
+\subsubsection{Users (Data Labelers)}
+Data labelers are a core group of users responsible for annotating and classifying raw satellite imagery. Their role is fundamental to the project as they provide the labeled data required to train AI models. Data labelers are essential to the project's workflow, bridging the gap between raw data and actionable insights for stakeholders. Their contributions not only shape the quality of the AI models but also impact the effectiveness of the end clients decision-making processes.
+
+
+\subsection{Other Stakeholders}
+Beyond the primary stakeholders, other key groups that benefit from high-quality satellite imagery datasets include:
+\begin{itemize}
+    \item \textbf{Defense Agencies:} Rely on tailored data for surveillance, intelligence, and threat detection to enhance national security.
+    \item \textbf{Environmental Agencies:} Use satellite data to monitor ecosystems, track deforestation, and respond to climate change.
+    \item \textbf{Urban Planners:} Leverage data to manage land use, plan infrastructure development, and promote sustainable growth in cities.
+    \item \textbf{Disaster Relief Organizations:} Depend on satellite imagery to assess damage in real-time and prioritize aid during crisis situations, making these datasets crucial for effective disaster response.
+    \item \textbf{Image Labeling Teams:} Manually classify and annotate satellite images. Their work is crucial for building accurate datasets, and they benefit from improved tools and clearer guidelines to make the labeling process more efficient.
+    \item \textbf{Alternative Financial Data Companies}: These companies use satellite data to analyze economic activities and trends. For example, satellite imagery of crop growth can be used to predict agricultural yields, or images of traffic patterns near malls can provide insights into retail performance. High-quality datasets enable these companies to develop more accurate financial models and market predictions.
+    \item \textbf{Farmers and Agricultural Enterprises}: Farmers benefit from satellite imagery for precision farming, monitoring crop health, soil conditions, and weather patterns. Access to customized datasets allows them to optimize planting schedules, monitor water usage, and make informed decisions about fertilizer application, improving yield and reducing costs.
+\end{itemize}
+
+\subsection{Intended Audience}
+
+This section outlines the primary, secondary, and tertiary audiences for this document, along with the scope of knowledge assumed and its relevance for onboarding and continued project development.
+
+\subsection{Primary Audience}
+\begin{itemize}
+    \item \textbf{Development Team:} This document is intended for current or future developers and engineers working on the project. It assumes a technical background in areas such as crowdsourcing platforms, satellite image processing, and AI modeling. It provides a foundation for tracking design decisions and assumptions made by the original developers, who possess expertise in data processing, backend development, and labeling systems.
+\end{itemize}
+
+\subsection{Secondary Audience}
+\begin{itemize}
+    \item \textbf{Project Stakeholders:} Stakeholders, including clients, NGOs, or government agencies, may refer to this document to understand technical decisions, product constraints, and the alignment with business goals.
+    \item \textbf{Platform Maintenance Technicians:} The document is relevant for ensuring ongoing maintenance and troubleshooting, offering a detailed understanding of system requirements and operations.
+\end{itemize}
+
+\subsection{Tertiary Audience}
+\begin{itemize}
+    \item \textbf{Future Researchers or Collaborators:} Academics or collaborators interested in extending the platform’s functionality can use this document as a foundation.
+    \item \textbf{QA and Testing Teams:} The functional and non-functional requirements detailed in this document can be utilized for validation and verification processes.
+\end{itemize}
+
+\subsection{Scope of Knowledge Assumed}
+\begin{itemize}
+    \item \textbf{For Developers:} Familiarity with web-based systems, satellite data, and crowdsourcing concepts is assumed.
+    \item \textbf{For Stakeholders:} A non-technical summary ensures usability and alignment with business objectives without requiring in-depth technical knowledge.
+\end{itemize}
+
+\subsection{Relevance for Onboarding}
+This document serves as a foundational resource for onboarding new team members, providing insights into the project’s purpose, requirements, and future scalability. It should be updated regularly and used during project handovers or expansions to ensure continuity and adaptability.
+
+\subsection{Access and Use Cases}
+The intended audience is encouraged to use this document as a reference during:
+\begin{itemize}
+    \item Development and feature additions.
+    \item Maintenance and troubleshooting.
+    \item Stakeholder presentations and updates.
+    \item Testing and quality assurance efforts.
+\end{itemize}
+
+
+\subsection{Hands-On Users of the Project}
+Users: These are individuals or entities responsible for labeling the data on the platform. In return for their efforts, they receive compensation. Their primary role is to ensure that the datasets are correctly annotated according to specified requirements, which forms the basis of the models developed. Their work directly impacts the quality and usability of the final product.
+
+\newpage
+
+\subsection{Personas}
+\begin{itemize}
+    \item \textbf{Independent Data Annotators}
+    \begin{itemize}
+        \item \textbf{Description}: These are freelancers or part-time workers with some technical skills but little formal background in satellite imagery. They are responsible for labeling the satellite images provided on the platform.
+        \item \textbf{Goals}: Complete labeling tasks quickly and accurately to maximize earnings and maintain a good reputation on the platform.
+        \item \textbf{Challenges}: Limited domain knowledge about satellite data, difficulty in understanding complex labeling guidelines, and maintaining speed without sacrificing accuracy.
+        \item \textbf{Needs}: Clear, user-friendly labeling tools, detailed guidelines, examples for training, and a feedback loop to improve their work quality.
+    \end{itemize}
+    \item \textbf{Local Environmental Monitors}
+    \begin{itemize}
+        \item \textbf{Description}: Local organizations or small environmental NGOs that use satellite data to monitor nearby ecosystems, track deforestation, or assess environmental degradation. They rely on affordable, easy-to-access datasets.
+        \item \textbf{Goals}: Obtain accurate data on environmental changes in their local area to support conservation efforts or report on environmental impacts.
+        \item \textbf{Challenges}: Lack of technical expertise in interpreting satellite data, a need for affordable solutions, and a dependence on pre-labeled data for quick analysis.
+        \item \textbf{Needs}: Simplified tools for analyzing labeled satellite data, datasets that are easy to interpret without deep technical knowledge, and support for regional environmental concerns.
+    \end{itemize}
+    \item \textbf{Urban Development Analysts (Small Municipal Teams)}
+    \begin{itemize}
+        \item \textbf{Description}: Small urban planning teams in municipalities, often composed of only a few individuals, who use satellite imagery to plan local infrastructure projects or monitor land usage.
+        \item \textbf{Goals}: Identify areas for potential development, assess land-use changes, and ensure that urban growth aligns with city plans.
+        \item \textbf{Challenges}: Limited resources for purchasing datasets, difficulties in interpreting complex satellite imagery, and a need for user-friendly tools that allow for quick decision-making.
+        \item \textbf{Needs}: Affordable, accurate data, easy-to-navigate analysis tools, and region-specific datasets that provide insights into urban growth and land-use patterns.
+    \end{itemize}
+    \item \textbf{Agricultural Cooperatives}
+    \begin{itemize}
+        \item \textbf{Description}: Small-scale farming groups or agricultural cooperatives that rely on satellite data to monitor crop health, soil conditions, and optimize resource usage.
+        \item \textbf{Goals}: Improve crop yields, manage water and fertilizer usage efficiently, and identify early signs of crop stress.
+        \item \textbf{Challenges}: Limited technical understanding of satellite data, difficulty in accessing real-time data, and a lack of granular, localized data for their specific farming regions.
+        \item \textbf{Needs}: Simple dashboards that show actionable insights (e.g., crop health indicators), labeled data that is relevant to agricultural decision-making, and tools that provide early warning signs of potential issues.
+    \end{itemize}
+    \item \textbf{Disaster Response Volunteers (Local Level)}
+    \begin{itemize}
+        \item \textbf{Description}: Volunteers and small NGOs that assist in post-disaster assessments by using satellite imagery to evaluate damage to infrastructure, land, and homes.
+        \item \textbf{Goals}: Rapidly assess the extent of damage and prioritize areas that need immediate relief and rebuilding efforts.
+        \item \textbf{Challenges}: Limited resources, a lack of expertise in interpreting satellite data, and a dependence on accurate, pre-labeled datasets to understand the scope of the disaster.
+        \item \textbf{Needs}: Simple tools that allow for quick damage assessments, access to accurate and recent satellite images, and region-specific data to support localized relief efforts.
+    \end{itemize}
+    \item \textbf{Platform Maintenance Technicians}
+    \begin{itemize}
+        \item \textbf{Description}: These users are technical support staff responsible for maintaining the functionality of the labeling platform and ensuring the labeling tools run smoothly for annotators.
+        \item \textbf{Goals}: Minimize downtime, provide timely assistance to data labelers, and ensure that the labeling interface is bug-free.
+        \item \textbf{Challenges}: Managing multiple technical issues at once, keeping the platform up-to-date without disrupting users, and ensuring a smooth user experience for data labelers.
+        \item \textbf{Needs}: Access to detailed logs and system diagnostics, tools for quickly identifying and resolving platform issues, and efficient communication channels to address user concerns.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Priorities Assigned to Users}
+The importance of stakeholders can be prioritized based on their reliance on accurate and reliable datasets:
+\begin{itemize}
+    \item \textbf{High Priority:} End Clients/Customers.
+    \item \textbf{Medium Priority:} Air Rescue Services, Alternative Financial Data Companies.
+    \item \textbf{Low Priority:} Urban Planners, Defense Agencies, Environmental Agencies.
+\end{itemize}
+
+\subsection{User Participation}
+Users are integral to the platform as they label data in exchange for compensation. Their active participation is vital for ensuring that the datasets are annotated accurately and in accordance with the required specifications.
+
+\subsection{Maintenance Users and Service Technicians}
+These users are responsible for the upkeep of the platform, ensuring that the labeling tools and data processing pipelines are functioning smoothly. They also assist in troubleshooting any technical issues faced by the users.
+
+\newpage
+
 
 \section{Environment}
 
