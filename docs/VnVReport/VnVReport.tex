@@ -337,128 +337,128 @@ Although this test has not been attempted, the development team has been careful
 
 \item{T-SE0: Logged Out Permissions\\}
 					
-Initial State: Application is deployed.
+\textbf{Initial State}: Application is deployed.
 					
-Input/Condition: Tester who is not signed in tries to access application paths for project creation and image labeling (Ex. /projects or /label).
+\textbf{Input/Condition}: Tester who is not signed in tries to access application paths for project creation and image labeling (Ex. /projects or /label).
 					
-Output/Result: The tester is denied access to these paths and is told to sign in.
+\textbf{Expected Results}: The tester is denied access to these paths and is told to sign in.
 					
-Result: Pass
+\textbf{Result}: Pass
 
 \item{T-SE1: Labeler Permissions\\}
 
 					
-Initial State: Application is deployed.
+\textbf{Initial State}: Application is deployed.
 					
-Input/Condition: Tester who is signed in as a labeler tries to access application paths for project creation.
+\textbf{Input/Condition}: Tester who is signed in as a labeler tries to access application paths for project creation.
 					
-Output/Result: The tester is denied access to these paths. However, the tester has access to paths related to image labeling.
+\textbf{Expected Results}: The tester is denied access to these paths. However, the tester has access to paths related to image labeling.
 					
-Result: Pass
+\textbf{Result}: Pass
 
 \item{T-SE2: Invalid Email Format\\}
 
 					
-Initial State: Front-end registration page is created and integrated with the database.
+\textbf{Initial State}: Front-end registration page is created and integrated with the database.
 					
-Input/Condition: Email with invalid format, such as an empty string or a string missing '@', is entered.
+\textbf{Input/Condition}: Email with invalid format, such as an empty string or a string missing '@', is entered.
 					
-Output/Result: Application rejects email and tells the user that the email format is wrong.
+\textbf{Expected Results}: Application rejects email and tells the user that the email format is wrong.
 					
-Result: Pass
+\textbf{Result}: Pass
 
 \item{T-SE3: Duplicate Email\\}
 
 					
-Initial State: Front-end registration page is created and integrated with the database.
+\textbf{Initial State}: Front-end registration page is created and integrated with the database.
 					
-Input/Condition: Email that is already in database is entered.
+\textbf{Input/Condition}: Email that is already in database is entered.
 					
-Output/Result: Application rejects email and tells the user that the email is in use.
+\textbf{Expected Results}: Application rejects email and tells the user that the email is in use.
 					
-Result: Pass
+\textbf{Result}: Pass
 
 \item{T-SE4: Invalid Password Format\\}
 
 					
-Initial State: Front-end registration page is created and integrated with the database.
+\textbf{Initial State}: Front-end registration page is created and integrated with the database.
 					
-Input/Condition: Password with invalid format, such as an empty string or a string with no numbers, is entered.
+\textbf{Input/Condition}: Password with invalid format, such as an empty string or a string with no numbers, is entered.
 					
-Output/Result: Application rejects password and tells the user what requirements they have not met.
+\textbf{Expected Results}: Application rejects password and tells the user what requirements they have not met.
 					
-Result: Fail
+\textbf{Result}: Fail
 
-Comments: Some passwords which should pass, such as `Password123\#' fail.
+\textbf{Comments}: Some passwords which should pass, such as `Password123\#' fail.
 
 \item{T-SE5: System Error\\}
 
 
 					
-Initial State: Application is deployed.
+\textbf{Initial State}: Application is deployed.
 					
-Input/Condition: Purposely invoke a system failure, and attempt to perform an action such as a label submission.
+\textbf{Input/Condition}: Purposely invoke a system failure, and attempt to perform an action such as a label submission.
 					
-Output/Result: Application provides an error message on the user interface. The database has not changed in anyway.
+\textbf{Expected Results}: Application provides an error message on the user interface. The database has not changed in anyway.
 					
-Result: Pass
+\textbf{Result}: Pass
 
 
 
 \item{T-SE6: Duplicate Entries\\}
 
 					
-Initial State: Database is deployed.
+\textbf{Initial State}: Database is deployed.
 					
-Input/Condition: Duplicate database entry is inserted into the database.
+\textbf{Input/Condition}: Duplicate database entry is inserted into the database.
 					
-Output/Result: Database has only one of the inputted entry and the duplicate has been removed.
+\textbf{Expected Results}: Database has only one of the inputted entry and the duplicate has been removed.
 					
-Result: Fail
+\textbf{Result}: Fail
 
-Comments: Not yet implemented
+\textbf{Comments}: Not yet implemented
 
 
 \item{T-SE7: Encrypted User Data\\}
 
 					
-Initial State: Application is deployed.
+\textbf{Initial State}: Application is deployed.
 					
-Input/Condition: Tester registers an account.
+\textbf{Input/Condition}: Tester registers an account.
 					
-Output/Result: All sensitive user data that is stored in the database is encrypted.
+\textbf{Expected Results}: All sensitive user data that is stored in the database is encrypted.
 					
-Result: Fail
+\textbf{Result}: Fail
 
-Comments: Not yet implemented
+\textbf{Comments}: Not yet implemented
 
 
 \item{T-SE8: Encrypted Payments\\}
 
-Type: Manual, Dynamic
-					
-Initial State: Application is deployed.
-					
-Input/Condition: Tester enters sample payment details to pay for a labeling project that has been created.
-					
-Output/Result: These details are encrypted and can not be read through packet analyzers. The amount in the request can not be modified by an adversary.
-					
-Result: Test not completed
 
-Comments: Requirement is out of scope
+					
+\textbf{Initial State}: Application is deployed.
+					
+\textbf{Input/Condition}: Tester enters sample payment details to pay for a labeling project that has been created.
+					
+\textbf{Expected Results}: These details are encrypted and can not be read through packet analyzers. The amount in the request can not be modified by an adversary.
+					
+\textbf{Result}: Test not completed
+
+\textbf{Comments}: Requirement is out of scope
 
 
 \item{T-SE9: SQL Injection\\}
 
-Type: Manual, Dynamic
+
 					
-Initial State: Application is deployed.
+\textbf{Initial State}: Application is deployed.
 					
-Input/Condition: A malicious SQL statement is entered into a text field.
+\textbf{Input/Condition}: A malicious SQL statement is entered into a text field.
 					
-Output/Result: The system raises an error telling the user that it is invalid.
+\textbf{Expected Results}: The system raises an error telling the user that it is invalid.
 					
-Result: Pass
+\textbf{Result}: Pass
 
 \end{enumerate}
 
