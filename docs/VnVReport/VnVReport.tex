@@ -67,6 +67,364 @@ Date 2 & 1.1 & Notes\\
 This document ...
 
 \section{Functional Requirements Evaluation}
+\subsection{Summary of Tests}
+\begin{tabular}{|c|c|l|}
+    \hline
+    \textbf{Test ID} & \textbf{Status} & \textbf{Notes}\\
+    \hline
+    T-FR0 & Pass & \\
+    T-FR1 & Pass & \\
+    T-FR2 & Pass & Not all fields from test are in user information\\
+    T-FR3 & N/A & Requirement covered is out of scope\\
+    T-FR4 & Pass & Confirmed Payment no longer required\\
+    T-FR5 & Pass & Download not yet supported\\
+    T-FR6 & Fail & Large image files fail to upload\\
+    T-FR7 & Fail & Not yet implemented \\ 
+    T-FR8 & Fail & Not yet implemented \\ 
+    T-FR9 & Pass & \\
+    T-FR10 & Pass & \\
+    T-FR11 & Pass & \\
+    T-FR12 & N/A & Requirement covered is out of scope\\
+    T-FR13 & Pass & \\
+    T-FR14 & Fail & Not yet implemented \\\hline
+\end{tabular}
+
+
+\subsubsection*{T-FR0: Customer Account Creation}
+
+\begin{enumerate}
+    \item \textbf{Initial State}: The system is accessible, and no user account currently exists for the test user.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Customer provides valid personal information:
+        \begin{itemize}
+            \item \textbf{Name}: ``Alice Smith''
+            \item \textbf{Email}: \texttt{alice.smith@example.com}
+            \item \textbf{Password}: ``StrongPassword!2021''
+        \end{itemize}
+        \item Customer agrees to the system's privacy policy.
+    \end{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item A new user account is created.
+            \item Account information is securely stored in the database.
+            \item The customer is redirected to the login page with a success message.
+        \end{itemize}
+        \item \textbf{Result}: Pass
+\end{enumerate}
+\subsubsection*{T-FR1: Customer Authentication}
+
+\begin{enumerate}
+    \item \textbf{Initial State}: An existing user account with the following credentials:
+    \begin{itemize}
+        \item \textbf{Email}: \texttt{user.test@example.com}
+        \item \textbf{Password}: ``TestPass\#123''
+    \end{itemize}
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Customer enters the correct login credentials:
+        \begin{itemize}
+            \item \textbf{Email}: \texttt{user.test@example.com}
+            \item \textbf{Password}: ``TestPass\#123''
+        \end{itemize}
+    \end{itemize}
+
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item Customer is successfully authenticated.
+            \item Access to privileged information (e.g., user dashboard) is granted.
+            \item A session token or cookie is established for the user session.
+        \end{itemize}
+        \item \textbf{Result}: Pass
+\end{enumerate}
+
+\subsubsection*{T-FR2: Customer Account Modification}
+
+\begin{enumerate}
+    \item \textbf{Initial State}: Customer is logged in and has access to their account information page.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Customer updates personal information fields:
+        \begin{itemize}
+            \item \textbf{Address}: ``123 New Street, Cityville''
+            \item \textbf{Phone Number}: ``555-1234''
+            \item \textbf{Profile Picture}: Uploads a new image file.
+        \end{itemize}
+    \end{itemize}
+    
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item Updated personal information is saved and reflected in the database.
+            \item The user receives a confirmation message indicating successful update.
+        \end{itemize}
+        \item \textbf{Result}: Pass
+        \item \textbf{Comments}: Not all fields are used in customer profile. However, functionality remains testable and validated.
+\end{enumerate}
+
+\subsubsection*{T-FR3: Payment Processing}
+
+\begin{enumerate}
+    \item \textbf{Initial State}: Customer is logged in and ready to make a payment for a service request.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Valid payment information:
+        \begin{itemize}
+            \item \textbf{Credit Card Number}: ``4111 1111 1111 1111'' (Test Visa number)
+            \item \textbf{Expiry Date}: ``12/25''
+            \item \textbf{CVV}: ``123''
+            \item \textbf{Billing Address}: Matches the address on file.
+        \end{itemize}
+    \end{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item Payment is processed successfully.
+            \item A confirmation receipt is generated and emailed to the customer.
+            \item The service request status is updated to ``Paid'' or equivalent.
+        \end{itemize}
+        \item \textbf{Result}: Test not completed
+        \item \textbf{Comments}: Requirement is out of scope
+\end{enumerate}
+
+\subsubsection*{T-FR4: Service Request Submission}
+
+\begin{enumerate}
+
+    \item \textbf{Initial State}: Customer is logged in and has a confirmed payment.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Customer fills out the service request form with necessary details:
+        \begin{itemize}
+            \item \textbf{Service Type}: ``Image Analysis''
+            \item \textbf{Description}: ``Analysis of satellite images for deforestation.''
+            \item \textbf{Preferred Completion Date}: ``2023-12-31''
+        \end{itemize}
+    \end{itemize}
+
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item Service request is accepted and logged in the system.
+            \item Customer receives a confirmation message and request ID.
+        \end{itemize}
+        \item \textbf{Result}: Pass
+        \item \textbf{Comments}: Payment is no longer required in initial state.
+\end{enumerate}
+
+\subsubsection*{T-FR5: Service Report Delivery}
+
+\begin{enumerate}
+    
+    \item \textbf{Initial State}: Customer is logged in and has a completed service request.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Customer navigates to the ``My Reports'' section after being notified of service completion.
+    \end{itemize}
+    
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item The service report is available for viewing and download.
+            \item Report contents are accurate and correspond to the service request.
+        \end{itemize}
+        \item \textbf{Result}: Pass
+        \item \textbf{Comments}: Download not yet supported
+\end{enumerate}
+
+\subsubsection*{T-FR6: Image Upload}
+
+\begin{enumerate}
+    \item \textbf{Initial State}: Customer is logged in with an active service request requiring image uploads.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Customer uploads multiple image files:
+        \begin{itemize}
+            \item \texttt{Image1.jpg}: 2\,MB
+            \item \texttt{Image2.png}: 3\,MB
+            \item \texttt{Image3.tif}: 5\,MB
+        \end{itemize}
+    \end{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item All images are successfully uploaded and stored.
+            \item Images are correctly linked to the specific service request.
+            \item Customer receives an upload success message.
+        \end{itemize}
+        \item \textbf{Result}: Fail
+        \item \textbf{Comments}: Large image files do not upload
+\end{enumerate}
+
+\subsubsection*{T-FR7: Satellite Image Request}
+
+\begin{enumerate}
+    \item \textbf{Initial State}: Customer is logged in with an active service request that requires satellite images.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Geographic coordinates:
+        \begin{itemize}
+            \item \textbf{Latitude}: $37.7749^\circ$ N
+            \item \textbf{Longitude}: $122.4194^\circ$ W (San Francisco, CA)
+            \item \textbf{Date Range}: ``2023-01-01'' to ``2023-01-31''
+        \end{itemize}
+    \end{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item The system retrieves and stores satellite images corresponding to the provided coordinates and date range.
+            \item Customer is notified of successful retrieval.
+        \end{itemize}
+        \item \textbf{Result}: Fail
+        \item \textbf{Comments}: Not yet implemented
+\end{enumerate}
+
+\subsubsection*{T-FR8: Service Request Failure Alert}
+
+\begin{enumerate}
+
+    \item \textbf{Initial State}: Customer has initiated a service request that cannot be fulfilled due to invalid parameters.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Service request with unfulfillable criteria:
+        \begin{itemize}
+            \item \textbf{Service Type}: ``Image Analysis''
+            \item \textbf{Geographic Coordinates}: Invalid coordinates (e.g., Latitude: $95^\circ$ N)
+        \end{itemize}
+    \end{itemize}
+    
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item Customer receives an alert indicating that the service request cannot be processed.
+            \item An explanation of the failure is provided.
+        \end{itemize}
+        \item \textbf{Result}: Fail
+        \item \textbf{Comments}: Not yet implemented
+\end{enumerate}
+
+\subsubsection*{T-FR9: Labeler Account Creation}
+
+\begin{enumerate}
+    \item \textbf{Initial State}: No labeler account exists for the test user in the system.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Labeler provides required account information:
+        \begin{itemize}
+            \item \textbf{Name}: ``Bob Labeler''
+            \item \textbf{Email}: \texttt{bob.labeler@example.com}
+            \item \textbf{Password}: ``LabelerPass789!''
+            \item \textbf{Expertise Area}: ``Satellite Image Annotation''
+        \end{itemize}
+    \end{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item A new labeler account is created and securely stored.
+            \item Labeler is prompted to complete any additional on-boarding steps.
+        \end{itemize}
+        \item \textbf{Result}: Pass
+\end{enumerate}
+
+\subsubsection*{T-FR10: Labeler Authentication}
+
+\begin{enumerate}
+    \item \textbf{Initial State}: Labeler account exists with credentials:
+    \begin{itemize}
+        \item \textbf{Email}: \texttt{labeler.test@example.com}
+        \item \textbf{Password}: ``LabelerSecure!2022''
+    \end{itemize}
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Labeler enters correct login credentials.
+    \end{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item Labeler is authenticated successfully.
+            \item Access to the labeler dashboard is granted.
+        \end{itemize}
+        \item \textbf{Result}: Pass
+\end{enumerate}
+
+\subsubsection*{T-FR11: Labeler Account Modification}
+
+\begin{enumerate}
+    \item \textbf{Initial State}: Labeler is logged in and on the account settings page.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Update personal information:
+        \begin{itemize}
+            \item \textbf{Expertise Area}: Add ``Aerial Photography Annotation''
+            \item \textbf{Contact Number}: ``555-6789''
+        \end{itemize}
+    \end{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item Personal information is updated and stored in the database.
+            \item Labeler receives a confirmation of successful update.
+        \end{itemize}
+        \item \textbf{Result}: Pass
+\end{enumerate}
+
+\section*{FR12: Labeler Earnings Transfer Test}
+
+\begin{enumerate}
+    \item \textbf{Initial State}: Labeler is logged in with available earnings exceeding the minimum transfer threshold.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Transfer request to linked banking platform:
+        \begin{itemize}
+            \item \textbf{Amount}: Total available earnings.
+            \item \textbf{Bank Account Details}: Pre-verified and linked.
+        \end{itemize}
+    \end{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item Earnings are transferred successfully.
+            \item Transaction record is created.
+            \item Labeler receives confirmation and updated earnings balance.
+        \end{itemize}
+        \item \textbf{Result}: Test not completed
+        \item \textbf{Comments}: Requirement is out of scope
+\end{enumerate}
+
+\subsubsection*{T-FR13: Image Annotation}
+
+\begin{enumerate}
+    \item \textbf{Initial State}: Labeler is logged in with images assigned for annotation.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item Labeler annotates an image using the provided tools:
+        \begin{itemize}
+            \item Draws bounding boxes around objects.
+            \item Adds classification labels to each object.
+            \item Saves the annotation.
+        \end{itemize}
+    \end{itemize}
+
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item Annotated image is stored in the system.
+            \item Annotation data is correctly linked to the image and service request.
+            \item Labeler receives confirmation of successful submission.
+        \end{itemize}
+        \item \textbf{Result}: Pass
+\end{enumerate}
+
+\subsubsection*{T-FR14: Consolidated Annotation Report}
+
+\begin{enumerate}
+    \item \textbf{Initial State}: All required labeler annotations are complete for a service request.
+    \item \textbf{Input}:
+    \begin{itemize}
+        \item System triggers consolidation process for annotations.
+    \end{itemize}
+        \item \textbf{Expected Result}:
+        \begin{itemize}
+            \item Consolidated report is generated if label accuracy meets the predefined threshold.
+            \item Report is stored and made accessible to the customer.
+        \end{itemize}
+        \item \textbf{Result}: Fail
+        \item \textbf{Comments}: Not yet implemented.
+\end{enumerate}
+
+\subsection{Analysis}
+
+Overall, the validation team is happy with the progress towards satisfying our refined functional requirements. Of the 13 attempted tests, nine were successful. Of the four which were unsuccessful,
+only one failed due to some error related to implementation. The others are expected to fail, as they have yet to be implemented. The unexpected failure is `T-FR6', which has showed that large image files are unable to be uploaded to the 
+project creation portal. The team has been able to trace this error back to our web hosting platform, and are in the process of identifying potential fixes. After this fix, and the implementation of report creation and satellite image requests, we will have demonstrated 100\% functional requirement validation.
 
 \section{Nonfunctional Requirements Evaluation}
 \subsection{Look and Feel}
