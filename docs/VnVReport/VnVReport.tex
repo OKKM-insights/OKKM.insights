@@ -127,7 +127,163 @@ This document ...
 
 \subsection{Performance}
 \subsection{Operational and Environmental}
- TODO
+\subsubsection{Summary of Tests}
+\begin{center}
+    \begin{tabular}{|c|c|l|}
+        \hline
+        \textbf{Test ID} & \textbf{Status} & \textbf{Notes}\\
+        \hline
+        T-OE0 & N/A & Requirement is out of scope\\
+        T-OE1 & Fail & Not yet implemented\\
+        T-OE2 & N/A & Requirement is out of scope \\
+        T-OE3 & N/A & Requirement is out of scope \\
+        T-OE4 & Fail & Not yet implemented \\
+        T-OE5 & Fail & Not yet implemented \\
+        T-OE6 & Pass & \\
+        T-OE7 & Pass & \\
+        T-OE8 & Pass & \\
+        T-OE9 & Pass & \\
+        \hline
+    \end{tabular}
+\end{center}
+\begin{enumerate}
+
+    \item{T-OE0: Energy Efficiency Validation\\}
+    
+    
+    Initial State: The system is running on cloud infrastructure with existing server management configurations.
+    
+    Input/Condition: Implement energy-efficient practices in cloud usage and server management, then measure energy consumption before and after optimization.
+    
+    Expected Result: A statistically significant decrease in energy usage with 5\% sensitivity.
+
+    Result: Test not completed
+
+    Comments: Requirement is out of scope
+    
+    
+    \item{T-OE1: API and Data Format Integration Validation\\}
+    
+    
+    Initial State: The system is configured with API access credentials for at least two major satellite data providers.
+    
+    Input/Condition: The system attempts to automatically acquire and integrate satellite images from the specified providers using their standardized APIs and data formats.
+    
+    Expected Result: System obtains result from API provider.
+
+    Result: Fail
+
+    Comments: Not yet implemented
+    
+    
+    \item{T-OE2: Payment Processor Integration Validation\\}
+    
+    
+    Initial State: The system is configured with API access credentials for reliable and secure payment processors (e.g., Stripe, PayPal).
+    
+    Input/Condition: Users and clients perform financial transactions through the integrated payment gateways.
+    
+    Expected Result: System successfully processes payment
+
+    Result: Test not completed
+
+    Comments: Requirement is out of scope
+    
+    \item{T-OE3: Multiple Currency Support Validation\\}
+    
+    
+    Initial State: The system is configured to support multiple currencies, including USD, EUR, GBP, and INR.
+    
+    Input/Condition: Users perform transactions in each supported currency to verify correct processing.
+    
+    Expected Result: System successfully processes payment with all valid currencies
+
+    Result: Test not completed
+
+    Comments: Requirement is out of scope
+    
+    \item{T-OE4: Machine Learning Framework Compatibility Validation\\}
+    
+    
+    Initial State: The system is configured with machine learning frameworks such as TensorFlow, PyTorch, and scikit-learn installed.
+    
+    Input/Condition: Users train and deploy models using each framework to verify compatibility.
+    
+    Expected Result: System successfully deploys models to each framework
+
+    Result: Fail
+
+    Comments: Not yet implemented
+    
+    \item{T-OE5: Data Pipeline Efficiency Validation\\}
+    
+    Initial State: The system has established data pipelines for transferring labeled datasets between the platform and ML models.
+    
+    Input/Condition: Large labeled datasets (e.g., 10,000 images) are transferred through the data pipelines.
+    
+    Expected Result: Data pipeline can support large datasets
+
+    Result: Fail
+
+    Comments: Not yet implemented
+    
+    
+    
+    \item{T-OE6: Web Browser Accessibility Validation\\}
+    
+    Type: Manual, Usability
+    
+    Initial State: Users have access to the platform's web URL.
+    
+    Input/Condition: Users attempt to access and use the platform via various supported web browsers without installing any software.
+    
+    Expected Results: Users are able to complete all key actions
+
+    Results: Pass
+    
+    
+    \item{T-OE7: Road Map Consistency\\}
+                        
+    Initial State: Application has a release road map that is publicly accessible.
+                        
+    Input/Condition: Team member conducts a review.
+                        
+    Output/Result: At least \hyperref[MIN_ON_TIME_MILESTONE]{MIN\_ON\_TIME\_MILESTONE}\% of the listed milestones have been met on time.
+                        
+    Result: Pass
+
+    
+    \item{Beta Testing: T-OE8\\}
+    
+                        
+    Initial State: Beta version of application is deployed and accessible
+                        
+    Input/Condition: At least \hyperref[BETA_TESTERS]{BETA\_TESTERS} beta testers are provided access to use the application.
+                        
+    Output/Result: Feedback on any bugs, navigation issues, or aesthetic problems is provided. Less than \hyperref[MAX_BUGS_FOUND]{MAX\_BUGS\_FOUND} bugs are found.
+                        
+    Result: Pass
+
+    Comments: Preliminary usability testing has been performed. See usability testing for details.
+    
+    \item{Regression Testing: T-OE9\\}
+    
+                        
+    Initial State: Application is deployed.
+                        
+    Input/Condition: Run regression test suite, consisting of unit tests.
+                        
+    Output/Result: All regression tests are passed.
+                        
+    Result: Pass
+
+    
+    \end{enumerate}
+
+\subsubsection{Analysis}
+When conducting the validation of these requirements, we have identified a weakness of our current implementation. Of the seven attempted tests, only four passed. Of the ones that failed,
+each one is due to a lack of focus from the development team. Now that there is a core structure in the application, we are able to begin addressing additional features, such as high performance data pipelines. 
+
 \subsection{Maintainability and Support}
 TODO
 \subsection{Security}
