@@ -483,6 +483,42 @@ project creation portal. The team has been able to trace this error back to our 
 	Please see usability report, found \href{https://github.com/OKKM-insights/OKKM.insights/blob/main/docs/Extras/UsabilityReport/UsabilityReport.pdf}{here}
 
 \subsection{Performance}
+\begin{longtable}{|c|c|l|}
+    \hline
+    \textbf{Test ID} & \textbf{Status} & \textbf{Notes} \\
+    \hline
+    T-PR0 & Pass & \textit{New User Account Processing Time Validation} \\
+    T-PR1 & Pass & \textit{Service Request Completion Time Validation} \\
+    T-PR2 & Pass & \textit{Next Image Serving Time Validation} \\
+    T-PR3 & Removed & \textit{Payout Processing Time Validation (Out of Scope)} \\
+    \hline
+\end{longtable}
+
+\subsubsection{T-PR0: New User Account Processing Time Validation}
+\textbf{Initial State}: The system is ready to accept new user account creation requests.\\
+\textbf{Input/Condition}: A set of new user account creation requests are submitted, and their processing times are tracked.\\
+\textbf{Expected Result}: At least MIN ACCOUNT CREATION SUCCESS\% of requests are processed within 15 minutes, and all within 48 hours.\\
+\textbf{Result}: \textbf{Pass}
+
+\subsubsection{T-PR1: Service Request Completion Time Validation}
+\textbf{Initial State}: The system is ready to accept service requests with predefined negotiated time limits.\\
+\textbf{Input/Condition}: Service requests are submitted under typical operating conditions.\\
+\textbf{Expected Result}: At least MIN REPORT RETURN\% of requests are completed within the negotiated time limit, and all within an additional 48-hour buffer.\\
+\textbf{Result}: \textbf{Pass}
+
+\subsubsection{T-PR2: Next Image Serving Time Validation}
+\textbf{Initial State}: Labelers are logged in with images available for labeling.\\
+\textbf{Input/Condition}: Labelers request the next image while images are available in the queue.\\
+\textbf{Expected Result}: Image serving time does not exceed MAX IMAGE DISPLAY TIME seconds.\\
+\textbf{Result}: \textbf{Pass}
+
+\subsubsection{T-PR3: Payout Processing Time Validation}
+\textbf{Initial State}: Labelers have earned payouts and submitted payout requests.\\
+\textbf{Input/Condition}: Payout requests are made, and processing times are tracked.\\
+\textbf{Expected Result}: All payout requests are processed within 7 business days.\\
+\textbf{Result}: \textbf{Removed (Out of Scope)}\\
+\textbf{Reason}: Payout processing is handled by third-party financial institutions, making it outside the system’s direct control.
+
 \subsection{Operational and Environmental}
 \subsubsection{Summary of Tests}
 \begin{center}
@@ -826,9 +862,79 @@ all weak passwords are blocked, but some strong passwords are as well. The devel
 
 
 \subsection{Cultural}
-\subsection{Compliance}
-\subsection{User Documentation and Training}
+\begin{longtable}{|c|c|l|}
+    \hline
+    \textbf{Test ID} & \textbf{Status} & \textbf{Notes} \\
+    \hline
+    T-CU0 & Not Achieved & \textit{Support of Different Languages} \\
+    \hline
+\end{longtable}
 
+\subsubsection{T-CU0: Support of Different Languages}
+\textbf{Initial State}: Application is deployed.\\
+\textbf{Input/Condition}: Tester selects a language from a list of available languages.\\
+\textbf{Expected Result}: All text on the website is translated and displayed in the selected language.\\
+\textbf{Result}: \textbf{Not Achieved} (Still needs to be implemented.)
+
+\subsection{Compliance}
+\begin{longtable}{|c|c|l|}
+    \hline
+    \textbf{Test ID} & \textbf{Status} & \textbf{Notes} \\
+    \hline
+    T-CO0 & Removed & \textit{Compliant Payment Process (Out of Scope)} \\
+    T-CO1 & Not Achieved & \textit{System Availability} \\
+    T-CO2 & Removed & \textit{Taxes (Out of Scope)} \\
+    T-CO3 & Planned & \textit{Project Availability} \\
+    \hline
+\end{longtable}
+
+\subsubsection{T-CO0: Compliant Payment Process}
+\textbf{Initial State}: Application is deployed.\\
+\textbf{Input/Condition}: A Qualified Security Assessor (QSA) assesses the application.\\
+\textbf{Expected Result}: The application meets the PCI-DSS standard.\\
+\textbf{Result}: \textbf{Removed (Out of Scope)}\\
+\textbf{Reason}: Payment processing is handled by third-party services, making direct compliance validation unnecessary.
+
+\subsubsection{T-CO1: System Availability}
+\textbf{Initial State}: Application is deployed.\\
+\textbf{Input/Condition}: Tester changes the country of access using a VPN.\\
+\textbf{Expected Result}: The application is blocked in countries facing economic sanctions by the Government of Canada.\\
+\textbf{Result}: \textbf{Not Achieved (To Do)}
+
+\subsubsection{T-CO2: Taxes}
+\textbf{Initial State}: Application is deployed.\\
+\textbf{Input/Condition}: Tester redeems a cash balance exceeding a threshold.\\
+\textbf{Expected Result}: A tax form is issued.\\
+\textbf{Result}: \textbf{Removed (Out of Scope)}\\
+\textbf{Reason}: Since payment processing is out of scope, tax handling was also removed.
+
+\subsubsection{T-CO3: Project Availability}
+\textbf{Initial State}: Application is deployed.\\
+\textbf{Input/Condition}: Tester changes the country of access using a VPN.\\
+\textbf{Expected Result}: The specified project is not shown in restricted countries.\\
+\textbf{Result}: \textbf{Planned (To Be Implemented)}
+
+\subsection{User Documentation and Training}
+\begin{longtable}{|c|c|l|}
+    \hline
+    \textbf{Test ID} & \textbf{Status} & \textbf{Notes} \\
+    \hline
+    T-UDT0 & Pass & \textit{Helpfulness of User Aids} \\
+    T-UDT1 & Pass & \textit{Usefulness of Sandbox} \\
+    \hline
+\end{longtable}
+
+\subsubsection{T-UDT0: Helpfulness of User Aids}
+\textbf{Initial State}: Application is deployed with help features, tutorials, and documentation.\\
+\textbf{Input/Condition}: Users attempt a labeling task using only built-in help resources.\\
+\textbf{Expected Result}: At least MIN USER HELP SATISFACTION\% of users rate the help features as 4 or higher.\\
+\textbf{Result}: \textbf{Pass}
+
+\subsubsection{T-UDT1: Usefulness of Sandbox}
+\textbf{Initial State}: Application is deployed with tutorials and a practice environment.\\
+\textbf{Input/Condition}: A new user accesses the platform.\\
+\textbf{Expected Result}: At least MIN PRACTICE USAGE\% of new users utilize the practice environment, with an average accuracy improvement of IMPROVE IN ACC\% over their first three attempts.\\
+\textbf{Result}: \textbf{Pass}
 
 	
 \section{Comparison to Existing Implementation}	
