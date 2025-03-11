@@ -987,6 +987,76 @@ Our labeling tool was largely refactored to incorporate the feedback we received
     \item Removed white space.
     \item Removed help button when the project was complete.
 \end{itemize}
+\subsection{Changes to Back-end}
+\begin{itemize}
+    \item The image partitioning logic has been refined to ensure consistent sizing, addressing previous inconsistencies that may have impacted usability and accuracy. This improvement enhances the overall structure and presentation of images, leading to a more uniform labeling experience.
+    \item Additionally, a dedicated context area has been introduced within the images, providing labelers with crucial surrounding details to improve object identification. This enhancement not only increases label accuracy but also streamlines the labeling process, making it easier and more intuitive for labelers to complete their tasks efficiently.
+\end{itemize}
+
+\subsection{Potential Changes to Backend}
+\begin{itemize}
+    \item Improve database efficiency by optimizing queries in \texttt{ImageClassMeasureDatabaseConnector}, \texttt{ImageObjectDatabaseConnector}, \texttt{LabelDatabaseConnector}, and \texttt{LabellerDatabaseConnector}, reducing redundant reads/writes.
+    \item Enhance API validation for key endpoints like \texttt{/api/register}, \texttt{/api/login}, and \texttt{/api/create\_project} to ensure required fields are properly validated before processing.
+    \item Handle duplicate entries gracefully in the user registration and labeling processes to prevent integrity constraint violations that currently lead to \texttt{500 INTERNAL SERVER ERROR}.
+    \item Implement better error handling and logging in database connectors to catch SQL errors and provide more useful debugging information.
+    \item Optimize batch insert operations for labeling data, reducing the number of individual database writes by leveraging \texttt{executemany()}.
+    \item Fix multipart form data processing in the \texttt{/api/create\_project} endpoint to correctly parse incoming requests.
+    \item Strengthen authentication security by moving away from simple Base64 encoding of passwords and ensuring proper hashing and verification.
+    \item Improve concurrency handling in database connections to prevent race conditions and transaction issues.
+    \item Refactor update operations for \texttt{/api/update-user/1} to avoid unnecessary database writes when no actual changes are made.
+    \item Streamline API structure by removing redundant endpoints and cleaning up unused code.
+\end{itemize}
+
+\subsection{Changes Due to Testing}
+Based on feedback from our supervisor, we have identified key areas for improvement and are implementing the following enhancements to the model:
+
+\subsubsection{Dynamic Splitting Implementation}
+Initially, the dataset was split using a fixed ratio for training and validation. However, this approach lacked adaptability to variations in dataset size and class distribution. To address this, we are implementing dynamic splitting, which will allow the dataset to be partitioned dynamically based on data characteristics. This enhancement ensures better generalization and minimizes overfitting to a specific split.
+
+\subsubsection{Integration of Segment Anything Model (SAM)}
+As a future enhancement, we are integrating Meta’s Segment Anything Model (SAM) into our pipeline. SAM's advanced segmentation capabilities will improve the accuracy of plane detection, allowing for more precise and automated object localization. The integration process will involve adapting SAM to our dataset and optimizing its performance for our specific use case.
+
+\subsection{Test Case Failures \\& Debugging}
+During our testing process, we encountered several test failures, mainly in our API and database-related test cases. The primary reasons for these failures are as follows:
+
+\subsubsection{Connection Issues with Database}
+\begin{itemize}
+    \item The \texttt{MYSQLImageObjectDatabaseConnector}, \texttt{MYSQLImageClassMeasureDatabaseConnector}, \texttt{MYSQLLabelDatabaseConnector}, and \texttt{MYSQLLabellerDatabaseConnector} failed to establish a database connection.
+    \item The error \texttt{quote\_from\_bytes() expected bytes} suggests that some environment variables (like database credentials) were not loaded properly or were set to \texttt{None}, causing an issue with \texttt{urllib.parse.quote\_plus()}.
+    \item \textbf{Potential Cause:} The \texttt{.env} file might not have been properly loaded, or the credentials might be missing/incorrect.
+\end{itemize}
+
+\subsubsection{API Tests Failing Due to Unexpected Responses}
+\begin{itemize}
+    \item Some API endpoints, like \texttt{/api/register} and \texttt{/api/create\_project}, returned unexpected response codes (\texttt{500} and \texttt{400} instead of \texttt{200}).
+    \item \textbf{Example Errors:}
+    \begin{itemize}
+        \item \textbf{Duplicate Entry Issue:} The \texttt{/api/register} test failed with a \texttt{500 INTERNAL SERVER ERROR} due to a duplicate email entry when inserting into the database.
+        \item \textbf{Invalid Form Data Parsing:} The \texttt{/api/create\_project} test returned \texttt{400 BAD REQUEST}, possibly due to incorrect handling of multipart form data.
+        \item \textbf{User Validation Missing:} The \texttt{/api/register} test expected a \texttt{400 BAD REQUEST} for missing required fields but received \texttt{200 OK} instead, suggesting that backend validation is not enforcing required fields strictly.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Mocking \\& Unit Test Issues}
+\begin{itemize}
+    \item The unit tests that rely on database queries may not have correctly mocked the DB connection.
+    \item In some cases, mocked methods did not return expected results, causing tests to fail when fetching data.
+    \item \textbf{Solution:} We need to properly patch database connections and cursor executions in our unit tests.
+\end{itemize}
+
+\subsubsection{Multipart Form Data Handling Issue in \texttt{/api/create\_project}}
+\begin{itemize}
+    \item The API expects \texttt{multipart/form-data}, but the test case might be sending \texttt{application/json} instead, leading to unexpected behavior.
+\end{itemize}
+
+\subsection{Next Steps to Fix These Issues}
+\begin{itemize}
+    \item Ensure environment variables are correctly loaded to prevent \texttt{NoneType} errors in database connections.
+    \item Improve error handling in API routes to return more meaningful error messages instead of \texttt{500 INTERNAL SERVER ERROR}.
+    \item Refactor API input validation to properly enforce required fields and prevent duplicate entries.
+    \item Fix the multipart form handling in \texttt{/api/create\_project} by ensuring the test case correctly mimics actual user input.
+    \item Enhance unit test mocking to properly simulate database interactions.
+\end{itemize}
 
 \section{Automated Testing}
 Automated testing and linting have been implemented in the frontend and backend repositories, as described in section 7.2 of the \href{https://github.com/OKKM-insights/OKKM.insights/blob/main/docs/DevelopmentPlan/DevelopmentPlan.pdf}{Development Plan}.
