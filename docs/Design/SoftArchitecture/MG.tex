@@ -1323,6 +1323,14 @@ Our platform will center around secure, efficient, and scalable communication pr
     
         \textbf{Statelessness:} The APIs will be stateless, allowing for easier scaling and handling of parallel requests, critical for enabling multiple users to label the same images concurrently.
         
+        \textbf{Additional Security Measures:} 
+
+        \begin{itemize}
+            \item \textbf{Input Validation:} All API endpoints will enforce strict input validation to prevent injection attacks.
+            \item \textbf{Database Encryption:} Sensitive data stored in databases will be encrypted at rest using industry-standard encryption.
+            \item \textbf{Rate Limiting \& Throttling:} To mitigate abuse, API endpoints will implement rate limiting and request throttling.
+        \end{itemize}
+        
     \item Backend Infrastructure and AWS Communication:
 
         \textbf{AWS Hosting:} The backend services will be deployed on AWS, taking advantage of its scalable infrastructure and regional availability to reduce latency and increase reliability.
