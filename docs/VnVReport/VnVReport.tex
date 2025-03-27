@@ -65,26 +65,31 @@ requirements, which allowed the team to focus their efforts on the highest impac
 consulting with our peers and primary reviewers. 
 
 \subsection{Summary of Tests}
-\begin{tabular}{|c|c|l|}
-    \hline
-    \textbf{Test ID} & \textbf{Status} & \textbf{Notes}\\
-    \hline
-    T-FR0 & Pass & \\
-    T-FR1 & Pass & \\
-    T-FR2 & Pass & Not all fields from test are in user information\\
-    T-FR3 & N/A & Requirement covered is out of scope\\
-    T-FR4 & Pass & Confirmed Payment no longer required\\
-    T-FR5 & Pass & Download not yet supported\\
-    T-FR6 & Fail & Large image files fail to upload\\
-    T-FR7 & Fail & Not yet implemented \\ 
-    T-FR8 & Fail & Not yet implemented \\ 
-    T-FR9 & Pass & \\
-    T-FR10 & Pass & \\
-    T-FR11 & Pass & \\
-    T-FR12 & N/A & Requirement covered is out of scope\\
-    T-FR13 & Pass & \\
-    T-FR14 & Fail & Not yet implemented \\\hline
-\end{tabular}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|l|}
+        \hline
+        \textbf{Test ID} & \textbf{Status} & \textbf{Notes}\\
+        \hline
+        T-FR0 & Pass & \\
+        T-FR1 & Pass & \\
+        T-FR2 & Pass & Not all fields from test are in user information\\
+        T-FR3 & N/A & Requirement covered is out of scope\\
+        T-FR4 & Pass & Confirmed Payment no longer required\\
+        T-FR5 & Pass & Download not yet supported\\
+        T-FR6 & Fail & Large image files fail to upload\\
+        T-FR7 & Fail & Not yet implemented \\ 
+        T-FR8 & Fail & Not yet implemented \\ 
+        T-FR9 & Pass & \\
+        T-FR10 & Pass & \\
+        T-FR11 & Pass & \\
+        T-FR12 & N/A & Requirement covered is out of scope\\
+        T-FR13 & Pass & \\
+        T-FR14 & Fail & Not yet implemented \\
+        \hline
+    \end{tabular}
+    \caption{Functional Test Results Summary}
+\end{table}
 
 
 \subsubsection*{T-FR0: Customer Account Creation}
@@ -426,7 +431,9 @@ project creation portal. The team has been able to trace this error back to our 
 \section{Nonfunctional Requirements Evaluation}
 \subsection{Look and Feel}
 \subsubsection{Summary of Tests}
-\begin{center}
+\begin{table}[H]
+    \centering
+    \label{tab:test_results}
     \begin{tabular}{|c|c|l|}
         \hline
         \textbf{Test ID} & \textbf{Status} & \textbf{Notes}\\
@@ -436,7 +443,8 @@ project creation portal. The team has been able to trace this error back to our 
         T-LF2 & Pass & \\
         \hline
     \end{tabular}
-\end{center}
+    \caption{Look and Feel Test Results Summary}
+\end{table}
     
 \begin{enumerate}
     \item{T-LF0: Responsive Layout Validation\\}
@@ -489,6 +497,7 @@ project creation portal. The team has been able to trace this error back to our 
     T-PR2 & Pass & \textit{Next Image Serving Time Validation} \\
     T-PR3 & Removed & \textit{Payout Processing Time Validation (Out of Scope)} \\
     \hline
+    \caption{Performance Test Results}
 \end{longtable}
 
 \subsubsection{T-PR0: New User Account Processing Time Validation}
@@ -520,7 +529,8 @@ project creation portal. The team has been able to trace this error back to our 
 The performance tests show that core system functionalities, such as account processing time, service request completion, and image serving time, have met their expected benchmarks. However, \textbf{payout processing time validation was removed} as it is out of scope due to reliance on third-party financial institutions.
 \subsection{Operational and Environmental}
 \subsubsection{Summary of Tests}
-\begin{center}
+\begin{table}[H]
+    \centering
     \begin{tabular}{|c|c|l|}
         \hline
         \textbf{Test ID} & \textbf{Status} & \textbf{Notes}\\
@@ -537,7 +547,8 @@ The performance tests show that core system functionalities, such as account pro
         T-OE9 & Pass & \\
         \hline
     \end{tabular}
-\end{center}
+    \caption{Operational Test Results Summary}
+\end{table}
 \begin{enumerate}
 
     \item{T-OE0: Energy Efficiency Validation\\}
@@ -677,7 +688,8 @@ each one is due to a lack of focus from the development team. Now that there is 
 
 \subsection{Maintainability and Support}
 \subsubsection{Summary of Tests}
-\begin{center}
+\begin{table}[H]
+    \centering
     \begin{tabular}{|c|c|l|}
         \hline
         \textbf{Test ID} & \textbf{Status} & \textbf{Notes}\\
@@ -685,7 +697,8 @@ each one is due to a lack of focus from the development team. Now that there is 
         T-MS0 & N/A & Test not yet attempted due to project being in early development.\\
         \hline
     \end{tabular}
-\end{center}
+    \caption{Maintainability Test Results Summary}
+\end{table}
 \begin{enumerate}
 
 \item{T-MS0: Ease of Change\\}
@@ -706,7 +719,8 @@ Although this test has not been attempted, the development team has been careful
 
 \subsection{Security}
 \subsubsection{Summary of Tests}
-\begin{center}
+\begin{table}[H]
+    \centering
     \begin{tabular}{|c|c|l|}
         \hline
         \textbf{Test ID} & \textbf{Status} & \textbf{Notes}\\
@@ -723,7 +737,8 @@ Although this test has not been attempted, the development team has been careful
         T-SE9 & Pass & \\ 
         \hline
     \end{tabular}
-\end{center}
+    \caption{Security Test Results Summary}
+\end{table}
 
 
 \begin{enumerate}
@@ -867,6 +882,7 @@ all weak passwords are blocked, but some strong passwords are as well. The devel
     \hline
     T-CU0 & Not Achieved & \textit{Support of Different Languages} \\
     \hline
+    \caption{Cultural Test Results Summary}
 \end{longtable}
 
 \subsubsection{T-CU0: Support of Different Languages}
@@ -888,6 +904,7 @@ The \textbf{support for multiple languages was not achieved}, as translation fea
     T-CO2 & Removed & \textit{Taxes (Out of Scope)} \\
     T-CO3 & Planned & \textit{Project Availability} \\
     \hline
+    \caption{Compliance Test Results Summary}
 \end{longtable}
 
 \subsubsection{T-CO0: Compliant Payment Process}
@@ -927,6 +944,7 @@ The compliance tests highlight \textbf{two removed requirements} (compliant paym
     T-UDT0 & Fail & \textit{Helpfulness of User Aids} \\
     T-UDT1 & Fail & \textit{Usefulness of Sandbox} \\
     \hline
+    \caption{User Training Test Results Summary}
 \end{longtable}
 
 \subsubsection{T-UDT0: Helpfulness of User Aids}
@@ -1105,7 +1123,7 @@ Our labeling tool was largely refactored to incorporate the feedback we received
     \item Additionally, a dedicated context area has been introduced within the images, providing labelers with crucial surrounding details to improve object identification. This enhancement not only increases label accuracy but also streamlines the labeling process, making it easier and more intuitive for labelers to complete their tasks efficiently.
 \end{itemize}
 
-\subsection{Potential Changes to Backend}
+\subsection{Potential Changes to Back-end}
 \begin{itemize}
     \item Improve database efficiency by optimizing queries in \texttt{ImageClassMeasureDatabaseConnector}, \texttt{ImageObjectDatabaseConnector}, \texttt{LabelDatabaseConnector}, and \texttt{LabellerDatabaseConnector}, reducing redundant reads/writes.
     \item Enhance API validation for key endpoints like \texttt{/api/register}, \texttt{/api/login}, and \texttt{/api/create\_project} to ensure required fields are properly validated before processing.
