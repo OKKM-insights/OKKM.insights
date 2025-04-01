@@ -86,12 +86,12 @@ found at \url{https://github.com/OKKM-insights/OKKM.insights/}
 % \wss{You should describe your notation.  You can use what is below as
 %   a starting point.}
 
-The structure of the MIS for modules comes from \citet{HoffmanAndStrooper1995},
-with the addition that template modules have been adapted from
-\cite{GhezziEtAl2003}.  The mathematical notation comes from Chapter 3 of
-\citet{HoffmanAndStrooper1995}.  For instance, the symbol := is used for a
-multiple assignment statement and conditional rules follow the form $(c_1
-\Rightarrow r_1 | c_2 \Rightarrow r_2 | ... | c_n \Rightarrow r_n )$.
+% The structure of the MIS for modules comes from \citet{HoffmanAndStrooper1995},
+% with the addition that template modules have been adapted from
+% \cite{GhezziEtAl2003}.  The mathematical notation comes from Chapter 3 of
+% \citet{HoffmanAndStrooper1995}.  For instance, the symbol := is used for a
+% multiple assignment statement and conditional rules follow the form $(c_1
+% \Rightarrow r_1 | c_2 \Rightarrow r_2 | ... | c_n \Rightarrow r_n )$.
 
 The following table summarizes the primitive data types used by \progname. 
 
@@ -3588,7 +3588,7 @@ None
   \item exception: Let L be the set of valid Labels. Throw ValueError if ($\exists \text{label} \in \text{labels} |: \neg (\text{label} \in \text{L})$)\\
   Let X be the set of valid Labellers. Throw ValueError if ($\exists \text{labeller} \in \text{labellers} |: \neg (\text{labeller} \in \text{X})$)\\
   Let I be the set of valid ImageObjects. Throw ValueError if ($\exists \text{imageobject} \in \text{imageobjects} |: \neg (\text{imageobject} \in \text{I})$)\\
-  \item calculation: confidence = $|\text{Likelihood}-(1-\text{prediction})|$
+  \item calculation: confidence = $ (|\text{Likelihood}-(1-\text{prediction})|) $\\
 \end{itemize}
 
 
@@ -3831,8 +3831,8 @@ None
   Let X be the set of valid Labellers. Throw ValueError if ($\exists \text{labeller} \in \text{labellers} |: \neg (\text{labeller} \in \text{X})$)\\
   Let I be the set of valid ImageObjects. Throw ValueError if ($\exists \text{imageobject} \in \text{imageobjects} |: \neg (\text{imageobject} \in \text{I})$)\\
   Throw ValueError if ($\exists i,j| x = \text{confidence[i][j]} : \neg (x \in \mathbb{R})$)\\
-  \item Formula for Expertise: Each labeller contains a float value alpha and beta. For each pixel $(i,j)$ in an image, if the consensus matches the user prediction:\\$\alpha = \alpha + \frac{confidence[i][j]}{\text{size_of_image}}$\\.
-  If it does not match,\\ $\beta= \beta + \frac{confidence[i][j]}{\text{size_of_image}}$\\
+  \item Formula for Expertise: Each labeller contains a float value alpha and beta. For each pixel $(i,j)$ in an image, if the consensus matches the user prediction:\\ $\alpha = \alpha + \frac{\text{confidence[i][j]}}{\text{size_of_image}}$ \\.
+  If it does not match,\\ $ \beta= \beta + \frac{\text{confidence[i][j]}}{\text{size_of_image}} $ \\
   \end{itemize}
 
 
