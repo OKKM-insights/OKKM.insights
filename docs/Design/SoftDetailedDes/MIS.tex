@@ -55,6 +55,7 @@ urlcolor=cyan          % color of external links
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
 Date January 17th & 1.0 & \\
+Date April 1st & 2.0 & \\
 \bottomrule
 \end{tabularx}
 
@@ -86,12 +87,12 @@ found at \url{https://github.com/OKKM-insights/OKKM.insights/}
 % \wss{You should describe your notation.  You can use what is below as
 %   a starting point.}
 
-% The structure of the MIS for modules comes from \citet{HoffmanAndStrooper1995},
-% with the addition that template modules have been adapted from
-% \cite{GhezziEtAl2003}.  The mathematical notation comes from Chapter 3 of
-% \citet{HoffmanAndStrooper1995}.  For instance, the symbol := is used for a
-% multiple assignment statement and conditional rules follow the form $(c_1
-% \Rightarrow r_1 | c_2 \Rightarrow r_2 | ... | c_n \Rightarrow r_n )$.
+The structure of the MIS for modules comes from \citet{HoffmanAndStrooper1995},
+with the addition that template modules have been adapted from
+\cite{GhezziEtAl2003}.  The mathematical notation comes from Chapter 3 of
+\citet{HoffmanAndStrooper1995}.  For instance, the symbol := is used for a
+multiple assignment statement and conditional rules follow the form $(c_1
+\Rightarrow r_1 | c_2 \Rightarrow r_2 | ... | c_n \Rightarrow r_n )$.
 
 The following table summarizes the primitive data types used by \progname. 
 
@@ -250,7 +251,7 @@ Represents specific objects detected in an image, with attributes like:
     \item \textbf{object\_type}
 \end{itemize}
 
-\subsection*{Label}
+\subsection*{Label}\label{label}
 Represents annotations made by a labeller, linking to specific objects in an image and storing information like:
 \begin{itemize}
     \item \textbf{label\_text}
@@ -357,7 +358,7 @@ The following table is taken directly from the Module Guide document for this pr
   \bottomrule
   \end{tabular}
   \caption{Module Hierarchy}
-  \label{TblMH}
+ \label{TblMH}
   \end{table}
   
 
@@ -365,7 +366,7 @@ The following table is taken directly from the Module Guide document for this pr
 
 ~\newpage 
 
-% \section{MIS of \wss{Module Name}} \label{Module} \wss{Use labels for
+% \section{MIS of \wss{Module Name}}\label{Module} \wss{Use labels for
 %   cross-referencing}
 
 % \wss{You can reference SRS labels, such as R\ref{R_Inputs}.}
@@ -431,15 +432,15 @@ The following table is taken directly from the Module Guide document for this pr
 
 
 % OG
-\section{MIS of Report Manager} \label{rm} 
+\section{MIS of Report Manager}\label{rm} 
     \subsection{Module}
         RM (ReportManager)
 
     \subsection{Uses}
-        LabelDBConnector \ref{label database connector}\\
-        ObjectsOnImageDBConnector \ref{ImageObject database connector}\\
-        RawImageDBConnector \ref{cidbc}\\
-        ProjectDBConnector \ref{pdbc}
+        LabelDBConnector\ref{label database connector}\\
+        ObjectsOnImageDBConnector\ref{ImageObject database connector}\\
+        RawImageDBConnector\ref{cidbc}\\
+        ProjectDBConnector\ref{pdbc}
 
     \subsection{Syntax}
     \subsubsection{Exported Constants}
@@ -475,7 +476,7 @@ The following table is taken directly from the Module Guide document for this pr
 
 
   
-\section{MIS of Account Creation Interface} \label{aci}
+\section{MIS of Account Creation Interface}\label{aci}
 
 \subsection{Module}
 
@@ -483,7 +484,7 @@ Account Creation Interface
 
 \subsection{Uses}
 
-Account Creation Controller \ref{acc}
+Account Creation Controller\ref{acc}
 
 \subsection{Syntax}
 
@@ -531,13 +532,13 @@ None
 
 
 % OG
-\section{MIS of Project Manager} \label{pm} 
+\section{MIS of Project Manager}\label{pm} 
     \subsection{Module}
         PM (ProjectManager)
 
     \subsection{Uses}
-        ProjectCollectionManager \ref{pcm}\\
-        CoreImageDBConnector \ref{cidbc}
+        ProjectCollectionManager\ref{pcm}\\
+        CoreImageDBConnector\ref{cidbc}
 
     \subsection{Syntax}
     \subsubsection{Exported Constants}
@@ -577,12 +578,12 @@ None
         Internal helper methods (e.g., validation, transformations) are not exported.
 
 % OG
-\section{MIS of Project Collection Manager} \label{pcm} 
+\section{MIS of Project Collection Manager}\label{pcm} 
     \subsection{Module}
         PCM (ProjectCollectionManager)
 
     \subsection{Uses}
-        ProjectDBConnector \ref{pdbc}
+        ProjectDBConnector\ref{pdbc}
 
     \subsection{Syntax}
     \subsubsection{Exported Constants}
@@ -618,7 +619,7 @@ None
 
 
 % OG
-\section{MIS of Project Database Connector} \label{pdbc} 
+\section{MIS of Project Database Connector}\label{pdbc} 
     \subsection{Module}
         PDBC (ProjectDBConnector)
 
@@ -670,7 +671,7 @@ None
         Any database query-building or data-mapping helpers remain internal and are not exported.
 
 % OG
-\section{MIS of Core Image Database Connector} \label{cidbc}
+\section{MIS of Core Image Database Connector}\label{cidbc}
     \subsection{Module}
         CIDBC (CoreImageDBConnector)
 
@@ -724,7 +725,7 @@ None
 
 
 
-\section{MIS of Account Database Connector} \label{accdc}
+\section{MIS of Account Database Connector}\label{accdc}
 
 \subsection{Module}
 
@@ -732,7 +733,7 @@ Account Database Connector
 
 \subsection{Uses}
 
-Account Database \ref{accd}
+Account Database\ref{accd}
 
 \subsection{Syntax}
 
@@ -809,7 +810,7 @@ None
 \subsubsection{Local Functions}
 None
 
-\section{MIS of Account Database} \label{accd}
+\section{MIS of Account Database}\label{accd}
 
 \subsection{Module}
 
@@ -888,7 +889,7 @@ None
 \subsubsection{Local Functions}
 None
 
-\section{MIS of Account Update Interface} \label{aui}
+\section{MIS of Account Update Interface}\label{aui}
 
 \subsection{Module}
 
@@ -896,7 +897,7 @@ Account Update Interface
 
 \subsection{Uses}
 
-Account Update Controller \ref{auc}
+Account Update Controller\ref{auc}
 
 \subsection{Syntax}
 
@@ -940,7 +941,7 @@ None
 \subsubsection{Local Functions}
 None
 
-\section{MIS of Login Interface} \label{li}
+\section{MIS of Login Interface}\label{li}
 
 \subsection{Module}
 
@@ -948,7 +949,7 @@ Login Interface
 
 \subsection{Uses}
 
-Authentication Controller \ref{ac}
+Authentication Controller\ref{ac}
 
 \subsection{Syntax}
 
@@ -992,7 +993,7 @@ None
 \subsubsection{Local Functions}
 None
 
-\section{MIS of Access Token} \label{at}
+\section{MIS of Access Token}\label{at}
 
 \subsection{Module}
 
@@ -1047,7 +1048,7 @@ None
 \subsubsection{Local Functions}
 None
 
-\section{MIS of Account Creation Interface} \label{aci}
+\section{MIS of Account Creation Interface}\label{aci}
 
 \subsection{Module}
 
@@ -1055,7 +1056,7 @@ Account Creation Interface
 
 \subsection{Uses}
 
-Account Creation Controller \ref{acc}
+Account Creation Controller\ref{acc}
 
 \subsection{Syntax}
 
@@ -1099,7 +1100,7 @@ None
 \subsubsection{Local Functions}
 None
 
-\section{MIS of Account Database} \label{accd}
+\section{MIS of Account Database}\label{accd}
 
 \subsection{Module}
 
@@ -1178,7 +1179,7 @@ None
 \subsubsection{Local Functions}
 None
 
-\section{MIS of Account Update Interface} \label{aui}
+\section{MIS of Account Update Interface}\label{aui}
 
 \subsection{Module}
 
@@ -1186,7 +1187,7 @@ Account Update Interface
 
 \subsection{Uses}
 
-Account Update Controller \ref{auc}
+Account Update Controller\ref{auc}
 
 \subsection{Syntax}
 
@@ -1230,7 +1231,7 @@ None
 \subsubsection{Local Functions}
 None
 
-\section{MIS of Login Interface} \label{li}
+\section{MIS of Login Interface}\label{li}
 
 \subsection{Module}
 
@@ -1238,7 +1239,7 @@ Login Interface
 
 \subsection{Uses}
 
-Authentication Controller \ref{ac}
+Authentication Controller\ref{ac}
 
 \subsection{Syntax}
 
@@ -1282,7 +1283,7 @@ None
 \subsubsection{Local Functions}
 None
 
-\section{MIS of Access Token} \label{at}
+\section{MIS of Access Token}\label{at}
 
 \subsection{Module}
 
@@ -1337,14 +1338,14 @@ None
 \subsubsection{Local Functions}
 None
 
-\section{MIS of Labeler} \label{labeler}
+\section{MIS of Labeler}\label{labeler}
 
 \subsection{Module}
 
 Labeler
 
 \subsection{Uses}
-Extends User \ref{user}
+Extends User\ref{user}
 
 \subsection{Syntax}
 
@@ -1429,14 +1430,14 @@ None
 \subsubsection{Local Functions}
 None
 
-\section{MIS of Client} \label{client}
+\section{MIS of Client}\label{client}
 
 \subsection{Module}
 
 Client
 
 \subsection{Uses}
-Extends User \ref{user}
+Extends User\ref{user}
 
 \subsection{Syntax}
 
@@ -1508,7 +1509,7 @@ None
 \subsubsection{Local Functions}
 None
 
-\section{MIS of User} \label{user}
+\section{MIS of User}\label{user}
 
 \subsection{Module}
 
@@ -1587,7 +1588,7 @@ None
 \subsubsection{Local Functions}
 None
 
-\section{MIS of Account Creation Controller} \label{acc}
+\section{MIS of Account Creation Controller}\label{acc}
 
 \subsection{Module}
 
@@ -1595,11 +1596,11 @@ Account Creation Controller
 
 \subsection{Uses}
 
-Account Creation Interface \ref{aci}\\
-Account Database \ref{accd} \\
-User \ref{user} \\
-Labeler \ref{labeler} \\
-Client \ref{client}
+Account Creation Interface\ref{aci}\\
+Account Database\ref{accd} \\
+User\ref{user} \\
+Labeler\ref{labeler} \\
+Client\ref{client}
 
 \subsection{Syntax}
 
@@ -1683,7 +1684,7 @@ $ \text{hasRequiredFields}(\text{formData}, \text{userFields}) \land \nonumber
   
 \end{itemize}
 
-\section{MIS of Account Update Controller} \label{auc}
+\section{MIS of Account Update Controller}\label{auc}
 
 \subsection{Module}
 
@@ -1691,9 +1692,9 @@ Account Update Controller
 
 \subsection{Uses}
 
-Account Update Interface \ref{aui}\\
-Account Database \ref{accd} \\
-User \ref{user} \\
+Account Update Interface\ref{aui}\\
+Account Database\ref{accd} \\
+User\ref{user} \\
 
 \subsection{Syntax}
 
@@ -1746,7 +1747,7 @@ Assumes AccountDatabase is operational when calling requestUpdate.
 \subsubsection{Local Functions}
 None
 
-\section{MIS of Authentication Controller} \label{ac}
+\section{MIS of Authentication Controller}\label{ac}
 
 \subsection{Module}
 
@@ -1754,9 +1755,9 @@ Authentication Controller
 
 \subsection{Uses}
 
-Login Interface \ref{li}\\
-Account Database \ref{accd} \\
-Access Token \ref{at} \\
+Login Interface\ref{li}\\
+Account Database\ref{accd} \\
+Access Token\ref{at} \\
 
 \subsection{Syntax}
 
@@ -1803,7 +1804,7 @@ Assumes AccountDatabase is operational when calling validCredentials.
 \subsubsection{Local Functions}
 None
 
-\section{MIS of Satellite Image Request Interface} \label{siri}
+\section{MIS of Satellite Image Request Interface}\label{siri}
 
 \subsection{Module}
 
@@ -1811,7 +1812,7 @@ Satellite Image Request Interface
 
 \subsection{Uses}
 
-Satellite Image Request Controller \ref{sirc}
+Satellite Image Request Controller\ref{sirc}
 
 \subsection{Syntax}
 
@@ -1855,7 +1856,7 @@ None
 \subsubsection{Local Functions}
 None
 
-\section{MIS of Satellite Image Request Controller} \label{sirc}
+\section{MIS of Satellite Image Request Controller}\label{sirc}
 
 \subsection{Module}
 
@@ -1863,8 +1864,8 @@ Satellite Image Request Controller
 
 \subsection{Uses}
 
-Satellite Image Request Interface \ref{siri}\\
-Satellite Image Request \ref{sir} \\
+Satellite Image Request Interface\ref{siri}\\
+Satellite Image Request\ref{sir} \\
 
 \subsection{Syntax}
 
@@ -1911,7 +1912,7 @@ None
     \item calculateCost(imgRequest): out := Use information given to calculate the cost of a request using third party rates
 \end{itemize}
 
-\section{MIS of Satellite Image Request} \label{sir}
+\section{MIS of Satellite Image Request}\label{sir}
 
 \subsection{Module}
 
@@ -1991,7 +1992,7 @@ None
 \subsubsection{Local Functions}
 None
 
-\section{MIS of Project Creation Interface} \label{pci}
+\section{MIS of Project Creation Interface}\label{pci}
 
 \subsection{Module}
 
@@ -1999,7 +2000,7 @@ Project Creation Interface
 
 \subsection{Uses}
 
-Project Creation Controller \ref{pcc}
+Project Creation Controller\ref{pcc}
 
 \subsection{Syntax}
 
@@ -2043,7 +2044,7 @@ None
 \subsubsection{Local Functions}
 None
 
-\section{MIS of Project Creation Controller} \label{pcc}
+\section{MIS of Project Creation Controller}\label{pcc}
 
 \subsection{Module}
 
@@ -2051,9 +2052,9 @@ Project Creation Controller
 
 \subsection{Uses}
 
-Project Manager \ref{pm}\\
-Project Creation Interface \ref{pci}\\
-Project \ref{project} \\
+Project Manager\ref{pm}\\
+Project Creation Interface\ref{pci}\\
+Project\ref{project} \\
 
 \subsection{Syntax}
 
@@ -2101,7 +2102,7 @@ None
     \item calculateEstimatedCost(project): out := Use information given to calculate the estimated cost of a project.
 \end{itemize}
 
-\section{MIS of Project} \label{project}
+\section{MIS of Project}\label{project}
 
 \subsection{Module}
 
@@ -2201,7 +2202,7 @@ None
 \subsubsection{Local Functions}
 None
 
-\section{MIS of Service Request Failure Interface} \label{srfi}
+\section{MIS of Service Request Failure Interface}\label{srfi}
 
 \subsection{Module}
 
@@ -2246,7 +2247,7 @@ None
 \subsubsection{Local Functions}
 None
 
-\section{MIS of Image Upload Interface} \label{iui}
+\section{MIS of Image Upload Interface}\label{iui}
 
 \subsection{Module}
 
@@ -2254,7 +2255,7 @@ Image Upload Interface
 
 \subsection{Uses}
 
-Project Manager \ref{pm}\\
+Project Manager\ref{pm}\\
 
 \subsection{Syntax}
 
@@ -2296,7 +2297,7 @@ None
 \]
 \end{itemize}
 
-\section{MIS of Report Interface} \label{ri}
+\section{MIS of Report Interface}\label{ri}
 
 \subsection{Module}
 
@@ -2304,7 +2305,7 @@ Report Interface
 
 \subsection{Uses}
 
-Report Controller \ref{rc}
+Report Controller\ref{rc}
 
 \subsection{Syntax}
 
@@ -2342,7 +2343,7 @@ None
 \subsubsection{Local Functions}
 None
 
-\section{MIS of Report Controller} \label{rc}
+\section{MIS of Report Controller}\label{rc}
 
 \subsection{Module}
 
@@ -2350,8 +2351,8 @@ Report Controller
 
 \subsection{Uses}
 
-Report Interface \ref{ri}\\
-Report \ref{report} \\
+Report Interface\ref{ri}\\
+Report\ref{report} \\
 
 \subsection{Syntax}
 
@@ -2398,7 +2399,7 @@ None
 \subsubsection{Local Functions}
 None
 
-\section{MIS of Report} \label{report}
+\section{MIS of Report}\label{report}
 
 \subsection{Module}
 
@@ -2480,7 +2481,7 @@ None
 \subsubsection{Local Functions}
 None
 
-\section{MIS of Project Selection Interface} \label{psi}
+\section{MIS of Project Selection Interface}\label{psi}
 
 \subsection{Module}
 
@@ -2488,7 +2489,7 @@ Project Selection Interface
 
 \subsection{Uses}
 
-Project Selection Controller \ref{psc}
+Project Selection Controller\ref{psc}
 
 \subsection{Syntax}
 
@@ -2526,7 +2527,7 @@ None
 \subsubsection{Local Functions}
 None
 
-\section{MIS of Project Selection Controller} \label{psc}
+\section{MIS of Project Selection Controller}\label{psc}
 
 \subsection{Module}
 
@@ -2534,9 +2535,9 @@ Project Selection Controller
 
 \subsection{Uses}
 
-Project Collection Manager \ref{pcm}\\
-Project Selection Interface \ref{psi}\\
-Project \ref{project} \\
+Project Collection Manager\ref{pcm}\\
+Project Selection Interface\ref{psi}\\
+Project\ref{project} \\
 
 \subsection{Syntax}
 
@@ -2583,7 +2584,7 @@ None
 \subsubsection{Local Functions}
 None
 
-\section{MIS of Labeling Interface} \label{li}
+\section{MIS of Labeling Interface}\label{li}
 
 \subsection{Module}
 
@@ -2591,8 +2592,8 @@ Labeling Interface
 
 \subsection{Uses}
 
-Labeling Controller \ref{lc} \\
-Image \ref{image}
+Labeling Controller\ref{lc} \\
+Image\ref{image}
 
 \subsection{Syntax}
 
@@ -2655,7 +2656,7 @@ win := Modify window so that the picture it is showing is projectImages[currentI
 \subsubsection{Local Functions}
 None
 
-\section{MIS of Labeling Controller} \label{lc}
+\section{MIS of Labeling Controller}\label{lc}
 
 \subsection{Module}
 
@@ -2663,8 +2664,8 @@ Labeling Controller
 
 \subsection{Uses}
 
-Labeling Interface \ref{li}\\
-Label \ref{label} \\
+Labeling Interface\ref{li}\\
+Label\ref{label} \\
 
 \subsection{Syntax}
 
@@ -2723,7 +2724,7 @@ None
 \subsubsection{Local Functions}
 None
 
-\section{MIS of Image} \label{image}
+\section{MIS of Image}\label{image}
 
 \subsection{Module}
 
@@ -2808,8 +2809,8 @@ None
   
   \subsection{Uses}
   
-  Labeling Controller \ref{lc}\\
-  Label Database Connector \ref{label database connector}
+  Labeling Controller\ref{lc}\\
+  Label Database Connector\ref{label database connector}
   
   \subsection{Syntax}
 
@@ -2888,7 +2889,7 @@ None
   
   \subsection{Uses}
   
-  Label Database \ref{label database}\\
+  Label Database\ref{label database}\\
 
   
   \subsection{Syntax}
@@ -3079,7 +3080,7 @@ None
   
   \subsection{Uses}
   
-  ImageObject Database \ref{ImageObject database}\\
+  ImageObject Database\ref{ImageObject database}\\
 
   
   \subsection{Syntax}
@@ -3272,7 +3273,7 @@ None
   
   \subsection{Uses}
   
-  Labeller Database \ref{Labeller database}\\
+  Labeller Database\ref{Labeller database}\\
 
   
   \subsection{Syntax}
@@ -3463,13 +3464,13 @@ None
   
   \subsection{Uses}
   
-  ImageObject Database Connector \ref{ImageObject database connector}\\
-  Label Database Connector \ref{label database connector}\\
-  Labeller Database Connector \ref{labeller database connector}\\
-  Image Prior Analyzer \ref{image prior analyzer}\\
-  Label Confidence Service \ref{label confidence service}\\
-  Object Extraction Service \ref{object extraction service}\\
-  Labeller Expertise Calculator \ref{labeller expertise calculator}\\
+  ImageObject Database Connector\ref{ImageObject database connector}\\
+  Label Database Connector\ref{label database connector}\\
+  Labeller Database Connector\ref{labeller database connector}\\
+  Image Prior Analyzer\ref{image prior analyzer}\\
+  Label Confidence Service\ref{label confidence service}\\
+  Object Extraction Service\ref{object extraction service}\\
+  Labeller Expertise Calculator\ref{labeller expertise calculator}\\
 
   \subsection{Syntax}
 
@@ -3871,10 +3872,10 @@ None
   
   \subsection{Uses}
   
-  ImageObject Database Connector \ref{ImageObject database connector}\\
-  Labeller Database Connector \ref{labeller database connector}\\
-  Image Mask Service \ref{image mask service}\\
-  Image Selection Service \ref{image selection service}\\
+  ImageObject Database Connector\ref{ImageObject database connector}\\
+  Labeller Database Connector\ref{labeller database connector}\\
+  Image Mask Service\ref{image mask service}\\
+  Image Selection Service\ref{image selection service}\\
 
   \subsection{Syntax}
 
@@ -4733,7 +4734,7 @@ None
 \subsubsection{6.4.5 Local Functions}
 None
 
-\section{Exception Handling} \label{sec:ExceptionHandling}
+\section{Exception Handling}\label{sec:ExceptionHandling}
 
 The application implements a structured approach to exception handling across both frontend and backend components.
 
@@ -4751,7 +4752,7 @@ On the backend, exceptions are handled at multiple levels—locally in functions
 
 \newpage
 
-\section{Appendix} \label{Appendix}
+\section{Appendix}\label{Appendix}
 
 \newpage{}
 
