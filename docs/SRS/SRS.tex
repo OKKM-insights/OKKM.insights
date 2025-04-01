@@ -139,6 +139,8 @@ involved in the Project}
     \hline
     UC & Unlikely Change \\
     \hline
+    $\probP(x)$ & Probability of $x$\\
+    \hline
     \caption{Naming Conventions and Terminology}
 \end{longtable}
 \newpage
@@ -164,8 +166,8 @@ involved in the Project}
 
 \subsection{Assumptions}
 \begin{itemize}
-    \item \textbf{Labelers Have Reliable Internet Access}: It is assumed that all users participating in labeling have stable and sufficient internet connectivity to access the platform, label data, and interact with the system without major disruptions.
-    \item \textbf{Positive User Experience Will Attract and Retain Labelers}: The platform will rely on the assumption that a smooth user interface, fair compensation, and clear instructions will be enough to attract a substantial user base of labelers and keep them engaged over time.
+    \item \textbf{Labellers Have Reliable Internet Access}: It is assumed that all users participating in labeling have stable and sufficient internet connectivity to access the platform, label data, and interact with the system without major disruptions.
+    \item \textbf{Positive User Experience Will Attract and Retain Labellers}: The platform will rely on the assumption that a smooth user interface, fair compensation, and clear instructions will be enough to attract a substantial user base of labellers and keep them engaged over time.
     \item \textbf{Availability of Suitable Satellite Imagery}: It is assumed that high-resolution, relevant satellite images will be readily available from commercial or open-source providers to populate the platform and support various labeling tasks.
     \item \textbf{Demand for Labeled Data from Clients}: There is an expectation that industries requiring labeled satellite imagery will have a continuous and growing demand for these datasets, ensuring a steady client base for the platform’s services.
     \item \textbf{Legal and Ethical Compliance for Data Use}: It is assumed that the acquisition and labeling of satellite imagery will not face any unforeseen legal or ethical issues, allowing for the data to be processed, shared, and monetized in accordance with existing regulations and ethical standards.
@@ -208,7 +210,7 @@ The division of labour is thoroughly described in the Development plan document.
 \subsection{Specifying a Business Use Case (BUC)}
 To demonstrate the practical application and value proposition of the OKKM Insights platform, it is essential to define specific Business Use Cases (BUCs) that illustrate how different stakeholders will interact with and benefit from the platform.
 \subsubsection{BUC Specification: Disaster Response Data Provisioning}
-A government search and rescue agency receives a distress call reporting a downed airplane in a remote or inaccessible area. This report necessitates immediate action to locate the wreckage, assess the situation, and coordinate rescue operations. The OKKM Insights platform is notified of the incident through an integrated communication channel linked to the SAR agency’s reporting system. The platform automatically acquires the latest satellite images of the reported area from third-party providers and segments the large images into smaller, manageable tiles focused on the incident area. The algorithm then preprocesses and creates a task for data labelers using intelligent task delegation algorithms. Data labelers annotate critical features such as the airplane wreckage, debris fields, potential survivors, and any signs of environmental hazards. Consensus algorithms cross-verify annotations from multiple labelers, ensuring high accuracy and consistency. The platform then generates actionable insights, such as the precise location of the wreckage, extent of debris spread, accessibility of the area, and potential hazards. This data can then be used to train computer vision models using the newly labeled data to enhance the platform’s capability to automatically detect and classify aircraft and related features in satellite images. Finally the platform provides the SAR agency with access to the labeled dataset and the trained models through the platform’s user interface.
+A government search and rescue agency receives a distress call reporting a downed airplane in a remote or inaccessible area. This report necessitates immediate action to locate the wreckage, assess the situation, and coordinate rescue operations. The OKKM Insights platform is notified of the incident through an integrated communication channel linked to the SAR agency’s reporting system. The platform automatically acquires the latest satellite images of the reported area from third-party providers and segments the large images into smaller, manageable tiles focused on the incident area. The algorithm then preprocesses and creates a task for data labellers using intelligent task delegation algorithms. Data labellers annotate critical features such as the airplane wreckage, debris fields, potential survivors, and any signs of environmental hazards. Consensus algorithms cross-verify annotations from multiple labellers, ensuring high accuracy and consistency. The platform then generates actionable insights, such as the precise location of the wreckage, extent of debris spread, accessibility of the area, and potential hazards. This data can then be used to train computer vision models using the newly labeled data to enhance the platform’s capability to automatically detect and classify aircraft and related features in satellite images. Finally the platform provides the SAR agency with access to the labeled dataset and the trained models through the platform’s user interface.
 \newpage
 \section{Business Data Model and Data Dictionary}
 \subsection{Business Data Model}
@@ -225,23 +227,23 @@ A government search and rescue agency receives a distress call reporting a downe
     & & \\
     & & \\
     \hline
-    Labeler &  LabelerID & Class \\ 
+    Labeller &  LabellerID & Class \\ 
     \hline
     Customer &  CustomerID & Class \\ 
     \hline
-    Labeler Payment Details &  LabelerID & Class \\ 
+    Labeller Payment Details &  LabellerID & Class \\ 
     &  Payment Details & \\
     \hline
     Customer Payment Details &  CustomerID & Class \\ 
     &  Payment Details & \\
     \hline
-    Labeler Personal Details &  LabelerID & Class \\ 
+    Labeller Personal Details &  LabellerID & Class \\ 
     &  Personal Details & \\
     \hline
     Customer Personal Details &  CustomerID & Class \\ 
     &  Personal Details & \\
     \hline
-    Historic Accuracy &  LabelerID & Class \\ 
+    Historic Accuracy &  LabellerID & Class \\ 
     &  Object Class & \\
     &  Accuracy & \\
     &  Samples & \\
@@ -255,7 +257,7 @@ A government search and rescue agency receives a distress call reporting a downe
     \hline
     Label &  Labeled Class & Class \\ 
     &  Bounding Box & \\
-    &  Labeler & \\
+    &  Labeller & \\
     &  Label Metadata & \\
     \hline
     Object Class &  Object Class List & Class \\ 
@@ -271,7 +273,7 @@ A government search and rescue agency receives a distress call reporting a downe
   \begin{tabular}{ |c|c|c| } % chktex 44
     \hline
     Task Allocation &  \{Service Request & Data Flow \\ 
-    &  +Available Labelers & \\
+    &  +Available Labellers & \\
     &  +Historic Accuracy & \\
     &  +Object Class & \\
     &  +Request Deadline \} & \\
@@ -331,23 +333,23 @@ The use case diagram depicted below identifies the boundaries between the users 
   \toprule
   \textbf{PUC No} & \textbf{PUC Name} & \textbf{Actor/s} & \textbf{Input \& Output}\\
   \midrule
-  1 & Sign Up & Labelers, Customers & Personal information \& credentials (in), New account (out)\\
+  1 & Sign Up & Labellers, Customers & Personal information \& credentials (in), New account (out)\\
   \midrule
-  2 & Log In & Labelers & Credentials (in)\\
+  2 & Log In & Labellers & Credentials (in)\\
   \midrule
   3 & Customer Log In & Customers & Credentials (in)\\
   \midrule
-  4 & Update User Information & Labelers, Customers & Information to change (in),  Updated information (out)\\
+  4 & Update User Information & Labellers, Customers & Information to change (in),  Updated information (out)\\
    \midrule
-  5 & Annotate Images & Labelers & Image \& annotation (in), Labeled image (out)\\
+  5 & Annotate Images & Labellers & Image \& annotation (in), Labeled image (out)\\
   \midrule
-  6 & Segment Annotation & Labelers & Segmented image \& user selections (in), Image with labeled segments (out)\\
+  6 & Segment Annotation & Labellers & Segmented image \& user selections (in), Image with labeled segments (out)\\
   \midrule
-  7 & Bounding Box Annotation & Labelers & Image \& box annotations (in), Image with labeled boxes (out)\\
+  7 & Bounding Box Annotation & Labellers & Image \& box annotations (in), Image with labeled boxes (out)\\
   \midrule
-  8 & Classification & Labelers & Image \& choices (in), Image labeled with the selected choice (out)\\
+  8 & Classification & Labellers & Image \& choices (in), Image labeled with the selected choice (out)\\
   \midrule
-   9 & Cash Out & Labelers, Financial Institution & Financial information (in), Payment to user (out)\\
+   9 & Cash Out & Labellers, Financial Institution & Financial information (in), Payment to user (out)\\
   \midrule
   10 & View Image Insights & Customers & Request to view insights (in), Image insights (out)\\
   \midrule
@@ -366,7 +368,7 @@ The use case diagram depicted below identifies the boundaries between the users 
 \subsection{Individual Product Use Cases (PUC's)}
 \subsubsection*{PUC0 - Sign Up}
 \label{sec:PUC0}
-\textbf{Primary Actors:} Labelers, Customers\\ 
+\textbf{Primary Actors:} Labellers, Customers\\ 
 \textbf{Precondition:} None\\
 \textbf{Trigger:} User selects create an account\\
 \textbf{Success Scenario:}
@@ -381,16 +383,16 @@ The use case diagram depicted below identifies the boundaries between the users 
 
 \subsubsection*{PUC1 - Log In}
 \label{sec:PUC1}
-\textbf{Primary Actors:} Labelers\\ 
-\textbf{Precondition:} Labeler has signed up for an account\\
-\textbf{Trigger:} Labeler selects log in\\
+\textbf{Primary Actors:} Labellers\\ 
+\textbf{Precondition:} Labeller has signed up for an account\\
+\textbf{Trigger:} Labeller selects log in\\
 \textbf{Success Scenario:}
 \begin{enumerate}
-    \item Labeler enters credentials
+    \item Labeller enters credentials
     \item System verifies all required information has been provided and matches the stored records
-    \item Labeler is redirected to the home page as a logged-in user
+    \item Labeller is redirected to the home page as a logged-in user
 \end{enumerate}
-\textbf{Post-condition:} The labeler has access to their account. All account related information, such as labeling progress, is accurately represented\\
+\textbf{Post-condition:} The labeller has access to their account. All account related information, such as labeling progress, is accurately represented\\
 \textbf{Related:} \hyperref[sec:FR10]{FR10}
 
 \subsubsection*{PUC2 - Customer Log In}
@@ -402,14 +404,14 @@ The use case diagram depicted below identifies the boundaries between the users 
 \begin{enumerate}
     \item Customer enters credentials
     \item System verifies all required information has been provided and matches the stored records
-    \item Customer is redirected to the home page as a logged-in customer, which gives them access to more features than a labeler
+    \item Customer is redirected to the home page as a logged-in customer, which gives them access to more features than a labeller
 \end{enumerate}
 \textbf{Post-condition:} The customer has access to their account and all their current image analysis projects\\
 \textbf{Related:} \hyperref[sec:FR1]{FR1}
 
 \subsubsection*{PUC3 - Update User Information}
 \label{sec:PUC3}
-\textbf{Primary Actors:} Labelers, Customers\\ 
+\textbf{Primary Actors:} Labellers, Customers\\ 
 \textbf{Precondition:} User has logged in\\
 \textbf{Trigger:} User selects update information\\
 \textbf{Success Scenario:}
@@ -424,71 +426,71 @@ The use case diagram depicted below identifies the boundaries between the users 
 
 \subsubsection*{PUC4 - Annotate Satellite Images}
 \label{sec:PUC4}
-\textbf{Primary Actors:} Labelers\\ 
-\textbf{Precondition:} Labeler has logged in\\
-\textbf{Trigger:} Labeler selects a listed project\\
+\textbf{Primary Actors:} Labellers\\ 
+\textbf{Precondition:} Labeller has logged in\\
+\textbf{Trigger:} Labeller selects a listed project\\
 \textbf{Success Scenario:}
 \begin{enumerate}
-    \item A satellite image related to the selected project and a description of what to annotate is shown to the labeler
-    \item The labeler annotates the satellite image to the best of their ability
-    \item The annotated satellite image is submitted by the labeler
-    \item The labeler is rewarded and the satellite image is stored by the system
-    \item If the labeler skips the image rather than submits it, then the annotated image will not be stored by the system and the labeler will not receive a reward
-    \item The next satellite image of the selected project is shown to the labeler and the process repeats
+    \item A satellite image related to the selected project and a description of what to annotate is shown to the labeller
+    \item The labeller annotates the satellite image to the best of their ability
+    \item The annotated satellite image is submitted by the labeller
+    \item The labeller is rewarded and the satellite image is stored by the system
+    \item If the labeller skips the image rather than submits it, then the annotated image will not be stored by the system and the labeller will not receive a reward
+    \item The next satellite image of the selected project is shown to the labeller and the process repeats
 \end{enumerate}
-\textbf{Post-condition:} All submitted annotated satellite images are stored by the system. The labeler's reward balance is updated to reflect their submissions\\
+\textbf{Post-condition:} All submitted annotated satellite images are stored by the system. The labeller's reward balance is updated to reflect their submissions\\
 \textbf{Related:} \hyperref[sec:FR13]{FR13}
 
 \subsubsection*{PUC5 - Segment Annotation}
 \label{sec:PUC5}
-\textbf{Primary Actors:} Labelers\\ 
-\textbf{Precondition:} Labeler has logged in\\
-\textbf{Trigger:} Labeler selects a listed project\\
+\textbf{Primary Actors:} Labellers\\ 
+\textbf{Precondition:} Labeller has logged in\\
+\textbf{Trigger:} Labeller selects a listed project\\
 \textbf{Success Scenario:}
 \begin{enumerate}
-    \item The same as Annotate Images, but the labeler is given a satellite image segmented into different parts and must label each segment to the best of their ability 
+    \item The same as Annotate Images, but the labeller is given a satellite image segmented into different parts and must label each segment to the best of their ability 
 \end{enumerate}
-\textbf{Post-condition:} All submitted annotated satellite images are stored by the system. The labeler's reward balance is updated to reflect their submissions\\
+\textbf{Post-condition:} All submitted annotated satellite images are stored by the system. The labeller's reward balance is updated to reflect their submissions\\
 \textbf{Related:} \hyperref[sec:FR13]{FR13}
 
 \subsubsection*{PUC6 - Bounding Box Annotation}
 \label{sec:PUC6}
-\textbf{Primary Actors:} Labelers\\ 
-\textbf{Precondition:} Labeler has logged in\\
-\textbf{Trigger:} Labeler selects a listed project\\
+\textbf{Primary Actors:} Labellers\\ 
+\textbf{Precondition:} Labeller has logged in\\
+\textbf{Trigger:} Labeller selects a listed project\\
 \textbf{Success Scenario:}
 \begin{enumerate}
-    \item The same as Annotate Images, but the labeler must annotate areas of the satellite image by drawing boxes and providing a label for each box
+    \item The same as Annotate Images, but the labeller must annotate areas of the satellite image by drawing boxes and providing a label for each box
 \end{enumerate}
-\textbf{Post-condition:} All submitted annotated satellite images are stored by the system. The labeler's reward balance is updated to reflect their submissions\\
+\textbf{Post-condition:} All submitted annotated satellite images are stored by the system. The labeller's reward balance is updated to reflect their submissions\\
 \textbf{Related:} \hyperref[sec:FR13]{FR13}
 
 \subsubsection*{PUC7 - Classification}
 \label{sec:PUC7}
-\textbf{Primary Actors:} Labelers\\ 
-\textbf{Precondition:} Labeler has logged in\\
-\textbf{Trigger:} Labeler selects a listed project\\
+\textbf{Primary Actors:} Labellers\\ 
+\textbf{Precondition:} Labeller has logged in\\
+\textbf{Trigger:} Labeller selects a listed project\\
 \textbf{Success Scenario:}
 \begin{enumerate}
-    \item The same as Annotate Images, but the labeler must classify what category a satellite image belongs to given several options
+    \item The same as Annotate Images, but the labeller must classify what category a satellite image belongs to given several options
 \end{enumerate}
-\textbf{Post-condition:} All submitted annotated satellite images are stored by the system. The labeler's reward balance is updated to reflect their submissions\\
+\textbf{Post-condition:} All submitted annotated satellite images are stored by the system. The labeller's reward balance is updated to reflect their submissions\\
 \textbf{Related:} \hyperref[sec:FR13]{FR13}
 
 \subsubsection*{PUC8 - Cash Out}
 \label{sec:PUC8}
-\textbf{Primary Actors:} Labelers\\
+\textbf{Primary Actors:} Labellers\\
 \textbf{Secondary Actor:} Financial Institution\\
-\textbf{Precondition:} Labeler has logged in and their reward balance is at least \$1\\
-\textbf{Trigger:} Labeler selects cash out\\
+\textbf{Precondition:} Labeller has logged in and their reward balance is at least \$1\\
+\textbf{Trigger:} Labeller selects cash out\\
 \textbf{Success Scenario:}
 \begin{enumerate}
-    \item The system retrieves the labeler's payment information
-    \item The labeler confirms it is correct, or updates their information accordingly
-    \item The system sends a payment to the labeler through their financial institution
-    \item The labeler's reward balance is set back to \$0
+    \item The system retrieves the labeller's payment information
+    \item The labeller confirms it is correct, or updates their information accordingly
+    \item The system sends a payment to the labeller through their financial institution
+    \item The labeller's reward balance is set back to \$0
 \end{enumerate}
-\textbf{Post-condition:} The financial account that the labeler provided has gained money equal to the labeler's reward balance\\
+\textbf{Post-condition:} The financial account that the labeller provided has gained money equal to the labeller's reward balance\\
 \textbf{Related:} \hyperref[sec:FR12]{FR12}
 
 \subsubsection*{PUC9 - View Image Insights}
@@ -531,14 +533,14 @@ The use case diagram depicted below identifies the boundaries between the users 
     \item The customer fills out the form and submits it
     \item The system confirms the forms information is valid. It prompts the customer to upload the satellite image dataset to be analyzed
     \item The customer uploads their own satellite images or requests the system to get images for them
-    \item The system asks the customer to provide sample labeled images that can be shared with labelers
+    \item The system asks the customer to provide sample labeled images that can be shared with labellers
     \item The customer uploads sample labeled images
     \item Based on the size and difficulty of the project, the system provides the total cost of the project to the customer
     \item The customer provides their payment details
     \item The system processes the payment
-    \item The system makes the project available to labelers so they can annotate the satellite images
+    \item The system makes the project available to labellers so they can annotate the satellite images
 \end{enumerate}
-\textbf{Post-condition:} The image analysis project has been created and labelers can start annotating the satellite images\\
+\textbf{Post-condition:} The image analysis project has been created and labellers can start annotating the satellite images\\
 \textbf{Related:} \hyperref[sec:FR4]{FR4}
 
 \subsubsection*{PUC12 - Upload Satellite Images}
@@ -683,52 +685,52 @@ The use case diagram depicted below identifies the boundaries between the users 
 \label{sec:FR9}
 \begin{itemize}
   \item \textbf{Priority: High}
-  \item \textbf{Description:} The system shall allow Labelers to create a new user account.
-  \item \textbf{Rationale:} The Labelers must have an account to request the services provided by the system.
-  \item \textbf{Fit Criterion:} Labeler is created in and stored in the database.
+  \item \textbf{Description:} The system shall allow Labellers to create a new user account.
+  \item \textbf{Rationale:} The Labellers must have an account to request the services provided by the system.
+  \item \textbf{Fit Criterion:} Labeller is created in and stored in the database.
   \item \textbf{Related:} \hyperref[sec:PUC0]{PUC0}, \hyperref[sec:PR1]{NFR-PR1}, \hyperref[sec:SE2]{NFR-SE2}, \hyperref[sec:SE3]{NFR-SE3}
 \end{itemize}
 \subsubsection*{FR10}
 \label{sec:FR10}
 \begin{itemize}
   \item \textbf{Priority: High}
-  \item \textbf{Description:} The system shall allow Labelers with an existing account to authenticate themselves using the credentials stored by the system.
-  \item \textbf{Rationale:} In order to access privileged information, the system must Labelers customers.
-\item \textbf{Fit Criterion:} Labelers can use correct credentials to log in to user account.
+  \item \textbf{Description:} The system shall allow Labellers with an existing account to authenticate themselves using the credentials stored by the system.
+  \item \textbf{Rationale:} In order to access privileged information, the system must Labellers customers.
+\item \textbf{Fit Criterion:} Labellers can use correct credentials to log in to user account.
 \item \textbf{Related:} \hyperref[sec:PUC1]{PUC1}, \hyperref[sec:SE0]{NFR-SE0}
 \end{itemize}
 \subsubsection*{FR11}
 \label{sec:FR11}
 \begin{itemize}
   \item \textbf{Priority: Medium}
-  \item \textbf{Description:} The system shall allow authenticated Labelers to edit their account information.
-  \item \textbf{Rationale:} After creating an account, the Labelers must have the necessary tools to modify the information they have provided.
-  \item \textbf{Fit Criterion:} After logging in, Labelers can modify the stored personal information.
+  \item \textbf{Description:} The system shall allow authenticated Labellers to edit their account information.
+  \item \textbf{Rationale:} After creating an account, the Labellers must have the necessary tools to modify the information they have provided.
+  \item \textbf{Fit Criterion:} After logging in, Labellers can modify the stored personal information.
   \item \textbf{Related:}  \hyperref[sec:PUC4]{PUC4}, \hyperref[sec:UH0]{NFR-UH0}
 \end{itemize}
 \subsubsection*{FR12}
 \label{sec:FR12}
 \begin{itemize}
   \item \textbf{Priority: Out of Scope}
-  \item \textbf{Description:} The system shall allow Labelers to request their accrued earnings be transferred to their provided banking platform.
-  \item \textbf{Rationale:} The system must ensure Labelers are compensated for their efforts.
-\item \textbf{Fit Criterion:} After logging in, Labelers can request their earnings be deposited in the account stored in their personal information.
+  \item \textbf{Description:} The system shall allow Labellers to request their accrued earnings be transferred to their provided banking platform.
+  \item \textbf{Rationale:} The system must ensure Labellers are compensated for their efforts.
+\item \textbf{Fit Criterion:} After logging in, Labellers can request their earnings be deposited in the account stored in their personal information.
 \item \textbf{Related:}  \hyperref[sec:PUC8]{PUC8}, \hyperref[sec:PR4]{NFR-PR4}, \hyperref[sec:OE2]{NFR-OE2}, \hyperref[sec:SE9]{NFR-SE9}
 \end{itemize}
 \subsubsection*{FR13}
 \label{sec:FR13}
 \begin{itemize}
   \item \textbf{Priority: High}
-  \item \textbf{Description:} The system shall allow Labelers to annotate images displayed to them with the purpose of collecting annotation data.
+  \item \textbf{Description:} The system shall allow Labellers to annotate images displayed to them with the purpose of collecting annotation data.
   \item \textbf{Rationale:} This is the key service the system provides.
-  \item \textbf{Fit Criterion:} Labelers will be able to annotate images.
+  \item \textbf{Fit Criterion:} Labellers will be able to annotate images.
   \item \textbf{Related:} \hyperref[sec:PUC4]{PUC4}, \hyperref[sec:PUC5]{PUC5}, \hyperref[sec:PUC6]{PUC6}, \hyperref[sec:PUC7]{PUC7}, \hyperref[sec:UH2]{NFR-UH2}, \hyperref[sec:UH9]{NFR-UH9} \hyperref[sec:PR3]{NFR-PR3}, \hyperref[sec:SE0]{NFR-SE0}
 \end{itemize}
 \subsubsection*{FR14}
 \label{sec:FR14}
 \begin{itemize}
   \item \textbf{Priority: High}
-  \item \textbf{Description:} The system shall combine annotations obtained from authenticated Labelers into a consolidated report.
+  \item \textbf{Description:} The system shall combine annotations obtained from authenticated Labellers into a consolidated report.
   \item \textbf{Rationale:} This is the key service the system provides.
   \item \textbf{Fit Criterion:} After a service request has been initaited, and the system has determined the label accuracy is over a certain threshold.
   \item \textbf{Related:} \hyperref[sec:PUC9]{PUC9}, \hyperref[sec:PUC10]{PUC10} \hyperref[sec:PR5]{NFR-PR5}
@@ -953,9 +955,9 @@ NFR \# & \multicolumn{15}{c}{Functional Requirement} \\ \hline
 \label{sec:PR1}
 \begin{itemize}
   \item \textbf{Priority: Medium}
-  \item \textbf{Description:} The system shall process new user requests within 15 minutes of a Labeler  completing the account creation process 90\% of the time, and within 48 hours in all cases. 
-  \item \textbf{Rationale:} To improve engagement from Labelers, there should be minimal delay in getting started.
-  \item \textbf{Fit Criterion:}\\ Let $t_{\text{newLabelAccount}}$ be the time it takes to process a new Labeler account request, in hours.\\ \probP($t_{\text{newLabelAccount}} < 0.25) \geq 0.9 \wedge \probP(t_{\text{newLabelAccount}} < 48) = 1 $
+  \item \textbf{Description:} The system shall process new user requests within 15 minutes of a Labeller  completing the account creation process 90\% of the time, and within 48 hours in all cases. 
+  \item \textbf{Rationale:} To improve engagement from Labellers, there should be minimal delay in getting started.
+  \item \textbf{Fit Criterion:}\\ Let $t_{\text{newLabelAccount}}$ be the time it takes to process a new Labeller account request, in hours.\\ \probP($t_{\text{newLabelAccount}} < 0.25) \geq 0.9 \wedge \probP(t_{\text{newLabelAccount}} < 48) = 1 $
   \item \textbf{Related:} \hyperref[sec:FR9]{FR9}
 \end{itemize}
 
@@ -974,8 +976,8 @@ NFR \# & \multicolumn{15}{c}{Functional Requirement} \\ \hline
 \label{sec:PR3}
 \begin{itemize}
   \item \textbf{Priority: High}
-  \item \textbf{Description:} The system shall take no longer than 10 seconds to display the next image to be labeled to a labeler, if there is one available.
-  \item \textbf{Rationale:} To reduce friction for labelers, the system must ensure there is no unnecessary delay in preparing the next job. For users exposed to modern media, attention spans can be expected to be less than 10 seconds \href{https://profiletree.com/attention-span-crisis-digital-age-statistics/#:~:text=Studies%20have%20proven%20that%20being,focus%20after%208%20mere%20seconds}{src}.
+  \item \textbf{Description:} The system shall take no longer than 10 seconds to display the next image to be labeled to a labeller, if there is one available.
+  \item \textbf{Rationale:} To reduce friction for labellers, the system must ensure there is no unnecessary delay in preparing the next job. For users exposed to modern media, attention spans can be expected to be less than 10 seconds [7].
   \item \textbf{Fit Criterion:}\\ Let $t_{\text{imageServing}}$ be the time it takes to serve the next image, in seconds.\\
   Let $x_{\text{nextImage}}$ equal True if there is a next image available, and False otherwise.\\
   $x_{\text{nextImage}} \Rightarrow t_{\text{imageServing}} \leq 10$
@@ -986,8 +988,8 @@ NFR \# & \multicolumn{15}{c}{Functional Requirement} \\ \hline
 \label{sec:PR4}
 \begin{itemize}
   \item \textbf{Priority: Out of Scope}
-  \item \textbf{Description:} The system shall deliver earned payouts to labelers within 7 business days of a request being made through the system.
-  \item \textbf{Rationale:} The labelers are entitled to their earned income, and there must not be unnecessary delay. 7 days accounts for delays in the platform used to distribute payments.
+  \item \textbf{Description:} The system shall deliver earned payouts to labellers within 7 business days of a request being made through the system.
+  \item \textbf{Rationale:} The labellers are entitled to their earned income, and there must not be unnecessary delay. 7 days accounts for delays in the platform used to distribute payments.
   \item \textbf{Fit Criterion:}\\ Let $t_{\text{payoutDelay}}$ be the time it takes for a user to receive their payments after a request is received by the system, in days.\\
   $t_{\text{payoutDelay}} < 7$
   \item \textbf{Related:} \hyperref[sec:FR12]{FR12}
@@ -1000,11 +1002,11 @@ N/A
 \begin{itemize}
   \item \textbf{Priority: High}
   \item \textbf{Description:} The system shall report accurate labels 75\% of the time.
-  \item \textbf{Rationale:} Average data label accuracy for competitors is greater than 75\% (\href{https://www.researchgate.net/publication/234774537_Data_quality_from_crowdsourcing_A_study_of_annotation_selection_criteria#:~:text=Depending%20on%20the%20number%20of,%5B13%5D%20%5B14%5D%20.}{link}). The system should at a minimum provide the same label accuracy.
+  \item \textbf{Rationale:} Average data label accuracy for competitors is greater than 75\% [8]. The system should at a minimum provide the same label accuracy.
   \item \textbf{Fit Criterion:}\\ Let $O$ be the set of objects to label.\\
   Let $C$ be the set of classes an object in $O$ can be.\\
   Let $L_{\text{True}}: O \rightarrow C $ be a function which maps objects in $O$ to their true classes in $C$.
-  Let $L_{\text{Guess}}: O \rightarrow C $ be the funtion derived from the system which maps objects in $O$ to their assumed classes in $C$.
+  Let $L_{\text{Guess}}: O \rightarrow C $ be the function derived from the system which maps objects in $O$ to their assumed classes in $C$.
   $(\forall o \in O|: \probP(L_{\text{True}}(o) = L_{\text{Guess}}(o))\geq 0.75)$
   \item \textbf{Related:} \hyperref[sec:FR14]{FR14}
 \end{itemize}
@@ -1024,7 +1026,7 @@ N/A
 \label{sec:PR7}
 \begin{itemize}
   \item \textbf{Priority: Low}
-  \item \textbf{Description:} The system shall have the capacity to support enough labelers to meet all service request deadlines.
+  \item \textbf{Description:} The system shall have the capacity to support enough labellers to meet all service request deadlines.
   \item \textbf{Rationale:} This requirement is critical to satisfy NFR-PR2.
   \item \textbf{Fit Criterion:} See \hyperref[sec:PR2]{NFR-PR2}.
   \item \textbf{Related:} \hyperref[sec:FR4]{FR4},  \hyperref[sec:PR2]{NFR-PR2},  \hyperref[sec:PR9]{NFR-PR9}
@@ -1035,7 +1037,7 @@ N/A
   \item \textbf{Priority: Medium}
   \item \textbf{Description:} The system shall have the capacity to store and process large image files.
   \item \textbf{Rationale:} This requirement is necessary to obtain information from satellite images, which can be several gigabites in size.
-  \item \textbf{Fit Criterion:} The system will not crash or fail to store when given images files <50 Gb in size.
+  \item \textbf{Fit Criterion:} The system will not crash or fail to store when given images files $<$50 Gb in size.
   \item \textbf{Related:} \hyperref[sec:FR6]{FR6}, \hyperref[sec:FR7]{FR7}
 \end{itemize}
 \subsection{Scalability or Extensibility Requirements}
@@ -1081,7 +1083,7 @@ N/A
   \item \textbf{Priority: Out of Scope}
   \item \textbf{Description:} The system shall integrate with reliable and secure payment processors to handle user compensations and client payments efficiently.
   \item \textbf{Rationale:} Ensures secure and efficient financial transactions, building trust with users and clients.
-  \item \textbf{Fit Criterion:} Transactions are processed securely through integrated payment gateways, achieving a transaction success rate of 99.5%.
+  \item \textbf{Fit Criterion:} Transactions are processed securely through integrated payment gateways, achieving a transaction success rate of 99.5\%.
   \item \textbf{Related:} \hyperref[sec:FR3]{FR3}, \hyperref[sec:FR12]{FR12}
 \end{itemize}
 \subsubsection*{NFR-OE3}
@@ -1132,13 +1134,13 @@ N/A
   \item \textbf{Priority: Low}
   \item \textbf{Description:} The system shall be showcased to select group of users to gather feedback, identify bugs, and refine features before full-scale deployment.
   \item \textbf{Rationale:} Ensures the platform meets user expectations and operates smoothly upon official release.
-  \item \textbf{Fit Criterion:} Testing results in fewer than 10 critical bugs identified and includes actionable feedback from at least 50 labelers, leading to necessary iterative improvements.
+  \item \textbf{Fit Criterion:} Testing results in fewer than 10 critical bugs identified and includes actionable feedback from at least 50 labellers, leading to necessary iterative improvements.
 \end{itemize}
 \subsubsection*{NFR-OE9}
 \label{sec:OE9}
 \begin{itemize}
   \item \textbf{Priority: Out of Scope}
-  \item \textbf{Description:} Each release shall preserve the core functionality of existing features without introducing regressions or deprecations.
+  \item \textbf{Description:} Each release shall preserve the core functionality of existing features without introducing regressions or deprecation.
   \item \textbf{Rationale:} Ensures continuity and reliability of the platform by preventing new updates from disrupting or breaking previously working features, thereby maintaining user trust and satisfaction.
   \item \textbf{Fit Criterion:} Automated usability testing is performed for each release, and no existing critical features fail post-release. Verification is achieved through passing all regression test cases before deployment.
 \end{itemize}
@@ -1150,7 +1152,7 @@ N/A
 \label{sec:MR0}
 \begin{itemize}
   \item \textbf{Priority: Medium}
-  \item \textbf{Description:} All maintenance required for the system shall be possible to complete by a competent software developer after reading all of the documentation provided in the source repository.
+  \item \textbf{Description:} All maintenance required for the system shall be possible to complete by a competent software developer after reading all the documentation provided in the source repository.
   \item \textbf{Rationale:} The system should be well documented, and therefore maintainable after reading said documents.
   \item \textbf{Fit Criterion:} A competent software developer, as determined by the original developers or their agents, can solve problems related to the core of the system, as determined by the 
   features outlined in this document.
@@ -1225,7 +1227,7 @@ N/A
   \item \textbf{Priority: Low}
   \item \textbf{Description:} The application shall prohibit new user actions when user is disconnected from the system.
   \item \textbf{Rationale:} The system should avoid batch updates upon reconnect as to prevent malicious users creating a false package of updates.
-  \item \textbf{Fit Criterion:} Upon user disconnect and reconnect, the system will not accept any updates from the user not submitted before the disconnect occured.
+  \item \textbf{Fit Criterion:} Upon user disconnect and reconnect, the system will not accept any updates from the user not submitted before the disconnect occurred.
 \end{itemize}
 \subsubsection*{NFR-SE7}
 \label{sec:SE7}
@@ -1293,21 +1295,21 @@ N/A
   \item \textbf{Priority: Low}
   \item \textbf{Description:} The system shall follow Canadian tax code when accepting and paying out earnings.
   \item \textbf{Rationale:} Legal requirement to operate.
-  \item \textbf{Fit Criterion:} All relevant tax codes must be satisfied when accepting payment from Customers or paying out earnings to Labelers. Specifically \href{https://www.ontario.ca/laws/statute/90c40}{Ontario Tax Act, 1990} and \href{https://laws-lois.justice.gc.ca/eng/acts/i-3.3/}{Income Tax Act 1985}
+  \item \textbf{Fit Criterion:} All relevant tax codes must be satisfied when accepting payment from Customers or paying out earnings to Labellers. Specifically \href{https://www.ontario.ca/laws/statute/90c40}{Ontario Tax Act, 1990} and \href{https://laws-lois.justice.gc.ca/eng/acts/i-3.3/}{Income Tax Act 1985}
 \end{itemize}
 \subsubsection*{NFR-CO2}
 \label{sec:CO2}
 \begin{itemize}
   \item \textbf{Priority: Low}
-  \item \textbf{Description:} The system shall allow Customers to restrict Labelers from certain regions from labeling the images related to their service request.
-  \item \textbf{Rationale:} Customers may be uploading sensitive images, which are inappropriate for international Labelers to view.
+  \item \textbf{Description:} The system shall allow Customers to restrict Labellers from certain regions from labeling the images related to their service request.
+  \item \textbf{Rationale:} Customers may be uploading sensitive images, which are inappropriate for international Labellers to view.
   \item \textbf{Fit Criterion:} No restricted image, as identified by the customer, shall be shown to a restricted group.
 \end{itemize}
 \subsection{Standards Compliance Requirements}
 N/A
 
 \section{Open Issues}
-\textbf{Task Assignment Algorithm: }To ensure labelers are engaged as they complete tasks and to obtain the highest quality of information possible, the system must implement an intelligent task allocation system. This system has not yet been determined.
+\textbf{Task Assignment Algorithm: }To ensure labellers are engaged as they complete tasks and to obtain the highest quality of information possible, the system must implement an intelligent task allocation system. This system has not yet been determined.
 \\\textbf{Label Consensus Algorithm: }Similarly, the algorithm for combining multiple user labels into one accurate label has not yet been determined. 
 \\\textbf{Labeling Services Offered: }The system has determined several potential labeling services to be offered by the system, but has not confirmed with certainty what will be included. This will be determined after more research has been completed on the task assignment algorithm.
 
@@ -1423,7 +1425,7 @@ Addressing the initial set of problems may give rise to additional challenges th
     \item \textbf{Verification \& Validation (V\&V) Planning (24-Oct-2024 to 01-Nov-2024)}: Develop a detailed V\&V plan, including test plans and quality assurance measures. This will include setting up testing environments and criteria for ensuring code correctness and reliability.
     \item \textbf{Proof of Concept (01-Nov-2024 to 22-Nov-2024)}: Develop basic functionality for both backend and frontend, demonstrating image processing, API development, and the labeling workflow. Gather feedback to identify areas of improvement.
     \item \textbf{Backend Development (23-Nov-2024 to 05-Jan-2025)}: Focus on developing API endpoints, integrating satellite image data, and ensuring secure and efficient handling of large datasets. Aim to have a functional backend by the end of this phase.
-    \item \textbf{Frontend Development (23-Nov-2024 to 05-Jan-2025)}: Design and implement UI/UX features, integrate backend APIs, and ensure an interactive user experience for both clients and labelers. Aim for a fully functional frontend that complements backend capabilities.
+    \item \textbf{Frontend Development (23-Nov-2024 to 05-Jan-2025)}: Design and implement UI/UX features, integrate backend APIs, and ensure an interactive user experience for both clients and labellers. Aim for a fully functional frontend that complements backend capabilities.
     \item \textbf{Design Document Revision (15-Dec-2024 to 15-Jan-2025)}: Revise the design document to reflect final system architecture, covering database schema, API structure, and AI model integration.
     \item \textbf{Mid-Project Demonstration (03-Feb-2025 to 14-Feb-2025)}: Prepare a functional prototype showcasing the integrated backend, frontend, and APIs. Demonstrate the labeling process, data flow, and key system functionalities.
     \item \textbf{Verification \& Validation (15-Feb-2025 to 07-Mar-2025)}: Test data processing pipelines, system reliability, and user interfaces to ensure accuracy and consistency. Run automated and manual tests for different use cases.
@@ -1450,7 +1452,7 @@ Developing and implementing the requirements for the OKKM Insights platform invo
   \end{enumerate}
 \subsubsection{UI/UX Design}
 \begin{enumerate}
-  \item Investing time into UI/UX design to ensure the platform is intuitive and easy to use for both data labelers and end clients. This includes designing workflows, views, and ensuring responsive design across devices.
+  \item Investing time into UI/UX design to ensure the platform is intuitive and easy to use for both data labellers and end clients. This includes designing workflows, views, and ensuring responsive design across devices.
   \end{enumerate}
   \subsubsection{Testing and Quality Assurance}
 \begin{enumerate}
@@ -1474,7 +1476,7 @@ Developing and implementing the requirements for the OKKM Insights platform invo
   \end{enumerate}
 \subsubsection{Maintenance and Support}
 \begin{enumerate}
-  \item Ongoing maintenance of the platform to ensure uptime, implement updates, and address technical issues. This also includes providing customer support to both data labelers and end clients.
+  \item Ongoing maintenance of the platform to ensure uptime, implement updates, and address technical issues. This also includes providing customer support to both data labellers and end clients.
   \end{enumerate}
 \subsubsection{Security and Compliance}
 \begin{enumerate}
@@ -1484,7 +1486,7 @@ Developing and implementing the requirements for the OKKM Insights platform invo
 \subsection{Marketing and User Acquisition Costs}
 \subsubsection{Promotional Activities}
 \begin{enumerate}
-  \item Marketing efforts to attract both data labelers and end clients to the platform. This includes digital marketing campaigns, partnerships with relevant organizations, and participation in industry events.
+  \item Marketing efforts to attract both data labellers and end clients to the platform. This includes digital marketing campaigns, partnerships with relevant organizations, and participation in industry events.
   \end{enumerate}
 \subsubsection{Onboarding and Training}
 \begin{enumerate}
@@ -1548,23 +1550,23 @@ N/A
 \section{Ideas for Solution}
 
 \begin{itemize} 
-    \item \textbf{AI-Driven Labeling System}: Implement a machine learning model for preliminary image analysis to assist human labelers. This AI system can automatically pre-label sections of satellite images, allowing human labelers to validate or adjust these labels, significantly speeding up the process.
+    \item \textbf{AI-Driven Labeling System}: Implement a machine learning model for preliminary image analysis to assist human labellers. This AI system can automatically pre-label sections of satellite images, allowing human labellers to validate or adjust these labels, significantly speeding up the process.
     
     \item \textbf{Gamification for Crowdsourced Labeling}: Introduce a gamification element to motivate and engage users who are labeling data. This can include earning points, badges, or rewards for completing labeling tasks accurately and efficiently, which can improve data quality and increase participation.
     
     \item \textbf{Intelligent Task Allocation}: Utilize an algorithm that matches labeling tasks with users based on their experience, preferences, and performance history. This ensures that difficult tasks are assigned to more experienced users while simpler tasks are made available to beginners.
     
-    \item \textbf{Real-Time Collaboration and Consensus Model}: Allow multiple labelers to work on the same image in parallel, using a consensus model to determine the most accurate labels. Incorporate a review mechanism to resolve discrepancies and ensure that the final labeled data meets the required quality standards.
+    \item \textbf{Real-Time Collaboration and Consensus Model}: Allow multiple labellers to work on the same image in parallel, using a consensus model to determine the most accurate labels. Incorporate a review mechanism to resolve discrepancies and ensure that the final labeled data meets the required quality standards.
     
-    \item \textbf{Automated Quality Assurance (QA) and Feedback}: Develop a QA system that automatically checks the quality of labeled data by comparing it to known benchmarks or running cross-validation with multiple labelers. Provide labelers with instant feedback to help improve their accuracy over time.
+    \item \textbf{Automated Quality Assurance (QA) and Feedback}: Develop a QA system that automatically checks the quality of labeled data by comparing it to known benchmarks or running cross-validation with multiple labellers. Provide labellers with instant feedback to help improve their accuracy over time.
     
     \item \textbf{Modular Web-Based Platform Architecture}: Build a modular architecture for the platform, separating the frontend, backend, and AI components. This will allow easy updates, scalability, and the ability to add new features or services without disrupting existing functionality.
     
-    \item \textbf{Flexible API for Client and User Integration}: Create an API that allows clients to easily upload satellite imagery, retrieve labeled data, and interact with the system programmatically. Also, provide endpoints for labelers to claim tasks, submit work, and check their progress or earnings.
+    \item \textbf{Flexible API for Client and User Integration}: Create an API that allows clients to easily upload satellite imagery, retrieve labeled data, and interact with the system programmatically. Also, provide endpoints for labellers to claim tasks, submit work, and check their progress or earnings.
     
     \item \textbf{Visualization Dashboard for Data Insights}: Provide clients with a dynamic dashboard that visualizes key insights derived from the labeled satellite imagery. This dashboard can display analytics, progress on labeling tasks, model accuracy, and any actionable insights relevant to the client’s industry.
     
-    \item \textbf{Secure Payment and Compensation System}: Implement a secure and transparent payment system that allows clients to pay for labeled data and compensates labelers based on their contributions. Use automated transaction management to ensure timely and accurate payments to all users.
+    \item \textbf{Secure Payment and Compensation System}: Implement a secure and transparent payment system that allows clients to pay for labeled data and compensates labellers based on their contributions. Use automated transaction management to ensure timely and accurate payments to all users.
     
     \item \textbf{Cross-Platform Compatibility and Accessibility}: Design the platform to be fully accessible across devices (desktop, mobile, tablets) and compliant with accessibility standards (e.g., WCAG). This ensures that a wide range of users, including those with disabilities, can participate in labeling and use the platform effectively.
 \end{itemize}
@@ -1573,12 +1575,14 @@ N/A
 \section*{References}
 \begin{enumerate}
     \item Government of Canada. (2017). \textit{Government of Canada – Justice for Victims of Corrupt Foreign Officials Act}. https://laws.justice.gc.ca/eng/acts/J-2.3/
-    \item Government of Canada. (1992). \textit{Government of Canada – Special Economic Measures Act}. https://laws-lois.justice.gc.ca/eng/acts/S-14.5/index.html
+    \item Government of Canada. (1992). \textit{Government of Canada – Special Economic Measures Act}. https://laws-lois.justice.gc.ca/eng/acts/S-14.5/index.html 
     \item Government of Canada. (1985). \textit{Government of Canada – Income Tax Act (1985)}. https://laws-lois.justice.gc.ca/eng/acts/i-3.3/
     \item Government of Canada. (1985). \textit{Government of Canada – United Nations Act}. https://laws-lois.justice.gc.ca/eng/acts/U-2/index.html
     \item Government of Ontario. (1990). \textit{Government of Ontario – Corporations Tax Act (1990)}. https://www.ontario.ca/laws/statute/90c40
     \item PCI Security Standards Council. (2024, May 13). \textit{PCI Security Standards Council – Protect Payment Data with Industry-driven Security Standards, Training, and Programs}. https://www.pcisecuritystandards.org/standards/pci-dss/
-\end{enumerate}
+    \item M Khaled. (2024). \textit{The Attention Span Crisis in the Digital Age Explained—With Recent Statistics for 2024}. https://profiletree.com/attention-span-crisis-digital-age-statistics/
+    \item Hsueh, P.-Y \& Melville, Prem \& Sindhwani, Vikas. (2009). \textit{Data quality from crowdsourcing: A study of annotation selection criteria}. Proceedings of the NAACL HLT 2009 Workshop on Active Learning for Natural Language Processing. 27-35. 
+  \end{enumerate}
 
 \newpage{}
 \section*{Appendix --- Reflection}
@@ -1641,7 +1645,7 @@ graduate attribute of Lifelong Learning.  Please answer the following questions:
 
 I, Kartik, will primarily pursue \textbf{online courses} to build a strong theoretical foundation in machine learning, supplemented by \textbf{practical projects} to reinforce my learning through application. This combination enables me to understand complex machine learning concepts and apply them effectively to the capstone project, ensuring the team leverages cutting-edge techniques for analyzing satellite imagery.
 
-I, Kyle, am currently enrolled in Fundamentals of Machine Learning, Data-Driven Algorithms for Sequential Decision making, and Mathematical statistics. These courses will supplement the techniques Kartik described to help me learn the background knowledge required for the task allocation part of our project. I forsee that being the biggest challenge, but I am very excited to work on it. While taking these courses, I also have access to the professors, who will likely be willing to discuss issues we run into while designing our algorithms.
+I, Kyle, am currently enrolled in Fundamentals of Machine Learning, Data-Driven Algorithms for Sequential Decision-making, and Mathematical statistics. These courses will supplement the techniques Kartik described to help me learn the background knowledge required for the task allocation part of our project. I forsee that being the biggest challenge, but I am very excited to work on it. While taking these courses, I also have access to the professors, who will likely be willing to discuss issues we run into while designing our algorithms.
 
 I, Mathew, will focus on completing \textbf{online courses} to get a better understanding of the basics of machine learning. Specifically, I plan to follow google's machine learning crash course. This is because it combines video lectures with interactive visuals and practice exercises, which I think is an effective way to quickly gain knowledge on a topic.
 \end{document}
