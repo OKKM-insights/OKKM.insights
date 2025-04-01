@@ -18,7 +18,7 @@
 \usepackage{multirow}
 \usepackage[section]{placeins}
 \usepackage{caption}
-\usepackage{fullpage}
+\usepackage{fullpage} 
 \usepackage{amsfonts}
 
 \hypersetup{
@@ -3588,7 +3588,8 @@ None
   \item exception: Let L be the set of valid Labels. Throw ValueError if ($\exists \text{label} \in \text{labels} |: \neg (\text{label} \in \text{L})$)\\
   Let X be the set of valid Labellers. Throw ValueError if ($\exists \text{labeller} \in \text{labellers} |: \neg (\text{labeller} \in \text{X})$)\\
   Let I be the set of valid ImageObjects. Throw ValueError if ($\exists \text{imageobject} \in \text{imageobjects} |: \neg (\text{imageobject} \in \text{I})$)\\
-  \end{itemize}
+  \item calculation: confidence = $|\text{Likelihood}-(1-\text{prediction})|$
+\end{itemize}
 
 
   
@@ -3608,7 +3609,7 @@ None
   %   explicitly.  Even if they are implemented, they are not exported; they only
   %   have local scope.}
 
-\newpage
+\newpage 
 
 
 % --------------------------------------------------------------------------------------
@@ -3830,6 +3831,8 @@ None
   Let X be the set of valid Labellers. Throw ValueError if ($\exists \text{labeller} \in \text{labellers} |: \neg (\text{labeller} \in \text{X})$)\\
   Let I be the set of valid ImageObjects. Throw ValueError if ($\exists \text{imageobject} \in \text{imageobjects} |: \neg (\text{imageobject} \in \text{I})$)\\
   Throw ValueError if ($\exists i,j| x = \text{confidence[i][j]} : \neg (x \in \mathbb{R})$)\\
+  \item Formula for Expertise: Each labeller contains a float value alpha and beta. For each pixel $(i,j)$ in an image, if the consensus matches the user prediction:\\$\alpha = \alpha + \frac{confidence[i][j]}{\text{size_of_image}}$\\.
+  If it does not match,\\ $\beta= \beta + \frac{confidence[i][j]}{\text{size_of_image}}$\\
   \end{itemize}
 
 
@@ -4171,7 +4174,7 @@ None
 \subsubsection{6.3.1 Exported Constants}
 None
 
-\subsubsection{6.3.2 Exported Access Programs}
+\subsubsection{6.3.2 Exported Access Programs} 
 \begin{center}
 \begin{tabular}{p{3.5cm} p{4.5cm} p{4cm} p{3cm}}
 \hline
