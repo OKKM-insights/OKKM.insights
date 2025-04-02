@@ -3734,7 +3734,7 @@ None
   
   \subsection{Semantics}
   
-  \subsubsection{State Variables}
+  \subsubsection{State Variables} 
   
  None
   
@@ -3832,8 +3832,12 @@ None
   Let X be the set of valid Labellers. Throw ValueError if ($\exists \text{labeller} \in \text{labellers} |: \neg (\text{labeller} \in \text{X})$)\\
   Let I be the set of valid ImageObjects. Throw ValueError if ($\exists \text{imageobject} \in \text{imageobjects} |: \neg (\text{imageobject} \in \text{I})$)\\
   Throw ValueError if ($\exists i,j| x = \text{confidence[i][j]} : \neg (x \in \mathbb{R})$)\\
-  \item Formula for Expertise: Each labeller contains a float value alpha and beta. For each pixel $(i,j)$ in an image, if the consensus matches the user prediction:\\ $\alpha = \alpha + \frac{\text{confidence[i][j]}}{\text{size_of_image}}$ \\.
-  If it does not match,\\ $ \beta= \beta + \frac{\text{confidence[i][j]}}{\text{size_of_image}} $ \\
+  \item Formula for Expertise: Each labeller contains a float value alpha and beta. For each pixel $(i,j)$ in an image, if the consensus matches the user prediction:
+  
+  $\alpha = \alpha + \frac{\text{confidence[i][j]}}{\text{size\_of\_image}}\\$ 
+  If it does not match,
+  
+  $ \beta= \beta + \frac{\text{confidence[i][j]}}{\text{size\_of\_image}}\\ $
   \end{itemize}
 
 
