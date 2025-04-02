@@ -42,6 +42,7 @@
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
 11/04/2024 & Oleg, Kyle, Kartik, Mathew & Revision 0\\
+04/01/2025 & Kyle & Revision 1\\
 \bottomrule
 \end{tabularx}
 
@@ -1467,6 +1468,20 @@ How test will be performed:
     \item If the accuracy meets or exceeds \hyperref[MIN_LABEL_ACCURACY]{MIN\_LABEL\_ACCURACY}\%, the system satisfies the fit criterion. If not, investigate and address factors contributing to lower accuracy.
 \end{enumerate}
 
+\item{Confidence Level Convergence: T-PR4.1\\}
+
+Type: Automated, 
+
+Initial State: The system has access to a dataset of labels.
+
+Input/Condition: The system processes and labels each object in \( O \), producing confidence levels.
+
+How test will be performed:
+\begin{enumerate}
+    \item Compile each new confidence level based on labels provided.
+    \item After 10 new label sets, ensure that the new confidence is greater than the previous confidence.
+\end{enumerate}
+
 
 \end{enumerate}
 
@@ -1778,6 +1793,28 @@ Input/Condition: Competent software developer who has not previously worked on t
 Output/Result: The developer can easily make a minor update to a specified part of the application.
 					
 How test will be performed: Give the developer time to read through the documentation. Give them a maintenance task, such as updating the size of the title font to 20px. Observe them and document how long it takes them and if they encountered any troubles.
+
+\item{Code Quality Checks (backend): T-MS1\\}
+
+Type: Automated, Static
+					
+Initial State: Backend repository has linting checks enabled.
+					
+Input/Condition: New changes to the backend are made.
+					
+Output/Result: Linter gives a score of 8.5/10 or greater to the code base.
+
+\item{Code Quality Checks (frontend): T-MS2\\}
+
+Type: Automated, Static
+					
+Initial State: Frontend repository has linting checks enabled.
+					
+Input/Condition: New changes to the frontend are made.
+					
+Output/Result: Linter gives a score of 8.5/10 or greater to the code base.
+					
+
 \end{enumerate}
 
 \subsubsection{Security}
