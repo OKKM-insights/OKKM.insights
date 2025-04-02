@@ -40,8 +40,10 @@
 \toprule
 \textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
 \midrule
+
 October 25 & Kyle, Kartik, Mathew, Oleg & Rev 0\\
 April 1 & Kyle & Rev 1\\
+
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -49,7 +51,7 @@ April 1 & Kyle & Rev 1\\
 ~\newpage
 
 \tableofcontents
-
+\listoftables
 ~\newpage
 
 \pagenumbering{arabic}
@@ -87,7 +89,7 @@ By acknowledging these potential losses, the Hazard Analysis underscores the imp
 \begin{itemize}
     \item Implement thorough input validation and provide clear feedback to users. 
     Input validation will include restricting input types, using regular expressions to determine that text inputs are of the correct form, and checking that submitted images have at least one label or choice selected. 
-    We will deter bad image labels by linking accuracy of a labeler with their rewards, and giving less weight to the labels of an inaccurate labeler when aggregating labeled images.
+    We will deter bad image labels by linking accuracy of a labeller with their rewards, and giving less weight to the labels of an inaccurate labeller when aggregating labeled images.
     \item Ensure that critical actions like labeling are supported by warnings or confirmations to reduce errors.
     \item Use Content Security Policy (CSP) headers and HTML escaping techniques to prevent XSS attacks.
     \item Secure cookies with \texttt{HttpOnly} and \texttt{Secure} flags and employ strong session management practices.
@@ -109,7 +111,7 @@ By acknowledging these potential losses, the Hazard Analysis underscores the imp
 \subsubsection{Money Service}
 \textbf{Potential Hazards:}
 \begin{itemize}
-    \item \textbf{Payment Failures:} Incorrect payments could cause disputes between the labelers and the platform, leading to operational delays.
+    \item \textbf{Payment Failures:} Incorrect payments could cause disputes between the labellers and the platform, leading to operational delays.
     \item \textbf{Financial Data Breaches:} Weak encryption or improper payment processor integration could expose sensitive financial data.
 \end{itemize}
 \textbf{Mitigations:}
@@ -121,11 +123,11 @@ By acknowledging these potential losses, the Hazard Analysis underscores the imp
 \subsubsection{Task Delegation Service}
 \textbf{Potential Hazards:}
 \begin{itemize}
-    \item \textbf{Task Misallocation:} If tasks are assigned to unqualified labelers, the quality of data labeling could decrease, leading to flawed training data.
+    \item \textbf{Task Misallocation:} If tasks are assigned to unqualified labellers, the quality of data labeling could decrease, leading to flawed training data.
 \end{itemize}
 \textbf{Mitigations:}
 \begin{itemize}
-    \item Employ task delegation algorithms that consider labelers’ accuracy and expertise.
+    \item Employ task delegation algorithms that consider labellers’ accuracy and expertise.
 \end{itemize}
 
 \subsection{Database (DB)}
@@ -144,7 +146,7 @@ By acknowledging these potential losses, the Hazard Analysis underscores the imp
 \subsection{Machine Learning Task Allocation Model}
 \textbf{Potential Hazards:}
 \begin{itemize}
-    \item \textbf{Model Misconfiguration:} The allocation model may incorrectly assign tasks if it misinterprets labeler performance data, leading to inefficiency and low-quality labeled datasets.
+    \item \textbf{Model Misconfiguration:} The allocation model may incorrectly assign tasks if it misinterprets labeller performance data, leading to inefficiency and low-quality labeled datasets.
     \item \textbf{Bias in Task Allocation:} If the model favors certain users, this could introduce biases in the labeling process, affecting data accuracy.
     \item \textbf{Adversarial Attacks:} Machine learning models might be vulnerable to adversarial attacks that can skew the task allocations.
 \end{itemize}
@@ -283,7 +285,7 @@ In developing the OKKM Insights platform, several critical assumptions have to b
   \begin{tabular}[c]{@{}l@{}}Tell the user to log in\\ \\ Deny access if they try to \\ access a \\ page they should not\end{tabular} & 4 & Low &
   SE0,1 &
   H2-2 \\ \hline
-\multirow{4}{*}{\begin{tabular}[c]{@{}l@{}}Labeling \\ Satallite \\ Images\end{tabular}} &
+\multirow{4}{*}{\begin{tabular}[c]{@{}l@{}}Labeling \\ Satellite \\ Images\end{tabular}} &
   \begin{tabular}[c]{@{}l@{}}Internet \\ connection \\ is lost\end{tabular} &
   \begin{tabular}[c]{@{}l@{}}Users can not \\ submit labeled\\ images or \\ navigate the website\end{tabular} &
   \begin{tabular}[c]{@{}l@{}}Internet connection\\ is weak or power\\ is lost\end{tabular} &
@@ -334,14 +336,14 @@ In developing the OKKM Insights platform, several critical assumptions have to b
 \multirow{3}{*}{Data Storage} &
   \begin{tabular}[c]{@{}l@{}}User account is\\ compromised\end{tabular} &
   \begin{tabular}[c]{@{}l@{}}User info is\\ exposed and \\ they will be\\ dissatisfied \\ with the\\ application\end{tabular} &
-  \begin{tabular}[c]{@{}l@{}}Lack of encryption\\ and protection of\\ sensitive infomation\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Lack of encryption\\ and protection of\\ sensitive information\end{tabular} &
   \begin{tabular}[c]{@{}l@{}}User notifies the team \\ of lost reward balance \\ or lost account access\end{tabular} &
-  \begin{tabular}[c]{@{}l@{}}Ensure user passwords are \\ encrpyted when stored\\ \\ Ensure financial transactions \\ are secure\\ \\ Password reset occurs \\ through a trusted \\ source such as email\end{tabular} & 4 & Low &
+  \begin{tabular}[c]{@{}l@{}}Ensure user passwords are \\ encrypted when stored\\ \\ Ensure financial transactions \\ are secure\\ \\ Password reset occurs \\ through a trusted \\ source such as email\end{tabular} & 4 & Low &
    SE8,9 & 
   H5-1 \\ \cline{2-10} 
  &
   \begin{tabular}[c]{@{}l@{}}Duplicate entry \\ occurs\end{tabular} &
-  \begin{tabular}[c]{@{}l@{}}Data inconsistency,\\ unneccesary \\ storage\\ usage, and slower\\ query performance\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Data inconsistency,\\ unnecessary \\ storage\\ usage, and slower\\ query performance\end{tabular} &
   \begin{tabular}[c]{@{}l@{}}Lack of \\ constraints/validation\end{tabular} &
   \begin{tabular}[c]{@{}l@{}}Check the database \\ entries\end{tabular} &
   \begin{tabular}[c]{@{}l@{}}Ensure the database has \\ unique keys\\ \\ Set up a duplicate key \\ procedure on the\\ database\end{tabular} & 2 & Low &
@@ -349,7 +351,7 @@ In developing the OKKM Insights platform, several critical assumptions have to b
   H5-2 \\ \cline{2-10} 
  &
   \begin{tabular}[c]{@{}l@{}}Database is \\ compromised\end{tabular} &
-  \begin{tabular}[c]{@{}l@{}}Data inconsistency,\\ malicous entries, \\ and data leaks\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Data inconsistency,\\ malicious entries, \\ and data leaks\end{tabular} &
   SQL injection &
   Check database entries &
   \begin{tabular}[c]{@{}l@{}}Use parameterized queries\\ \\ Avoid dynamic SQL strings\end{tabular} & 5 & Low &
@@ -413,9 +415,9 @@ before exposing the system to a large pool of users. These requirements are rela
 
 \begin{enumerate}
     \item What went well while writing this deliverable?
-    As a team, we have a lot more experience working with eachother and assigning tasks based on expertise. This showed during this stage of the project. We were able to
+    As a team, we have a lot more experience working with each other and assigning tasks based on expertise. This showed during this stage of the project. We were able to
     assign the tasks that could be completed independently so that our team meeting was focused on brainstorming the parts that would be better to work on together. Truthfully, we 
-    were unable to work much on this deliverable until midway through last week (with the exception of Mathew, who provided the team with the first iteration of the harzard table). If we 
+    were unable to work much on this deliverable until midway through last week (with the exception of Mathew, who provided the team with the first iteration of the hazard table). If we 
     didn't have the experience and trust in each other, it would have been much more stressful to ensure completion of this document.
     
     During this deliverable, we had the opportunity to research topics related to the app’s safety and the threats it may be subjected to. Previously, when writing about hazards, 
@@ -439,7 +441,7 @@ before exposing the system to a large pool of users. These requirements are rela
     the latter ones (ones you thought of while doing the Hazard Analysis), how
     did they come about?
     We were aware of risks to the data integrity before this deliverable. We have been thinking to methods to ensure that users are rewarded for being consistently accurate. Kartik also 
-    made us aware of SQL injection and API vunerabilities, which he had learned about through his internship. Another thing that was raised was that deprecated libraries can cause significant 
+    made us aware of SQL injection and API vulnerabilities, which he had learned about through his internship. Another thing that was raised was that deprecated libraries can cause significant 
     issues and how important it is to use stable versions during the development phase.\\
     One risk that we discovered during this deliverable was around failures for the system to operate as intended, mostly related to API/ internet failures. Mathew first raised this issue, and
     as a team we discussed how the system should respond. We decided that if a client disconnects during a labeling session, we should reject labels sent to us after the disconnection and before
@@ -453,7 +455,7 @@ before exposing the system to a large pool of users. These requirements are rela
     A big risk is privacy. Users trust us to keep their personal information secure. In the past, the only way a malicious agent could collect so much personal data at one time 
     would be to break into a public records building. Now, there are thousands (maybe millions) of possible places they could get it. And they only need to find the one weakest link to break in. 
     It is the responsibility of every software designer to build with security at top of mind. This will ensure that the users are respected and protected.
-    Also, there is a risk of behaviour modification from the use of software. This is harder to plan for, but after the introduction of software such as social media sites, it is unboubtably present.
+    Also, there is a risk of behaviour modification from the use of software. This is harder to plan for, but after the introduction of software such as social media sites, it is undoubtably present.
     Misinformation, social isolation, and low-self image have all been in some way attributed to use of social media. The products we build should enhance the lives of the users they are built for
     and designing a site which exacerbates these symptoms is irresponsible.
 
