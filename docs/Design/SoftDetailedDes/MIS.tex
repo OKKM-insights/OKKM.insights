@@ -549,7 +549,7 @@ None
     \hline\textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
     \hline
         createProject & projectName: String, metadata: Map(String, String) & Project & DatabaseException \\
-        addImageToProject & projectId: String, byte[] & void & DatabaseException \\
+        addImageToProject & projectId: String, byte[] & - & DatabaseException \\
     \hline
     \end{tabular}\end{center}
 
@@ -4252,7 +4252,7 @@ None
 \hline
 trainModel & TrainingData data, ModelConfig modelConfig & TrainingResult & ValueError, ResourceUnavailableError \\
 \hline
-stopTraining & String modelId & void & ModelNotFoundError \\
+stopTraining & String modelId & - & ModelNotFoundError \\
 \hline
 \end{tabular}
 \end{center}
@@ -4396,13 +4396,13 @@ None
 \hline
 \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 \hline
-createModel & ModelParameters params & void & ValueError \\
+createModel & ModelParameters params & - & ValueError \\
 \hline
-updateModelStatus & String modelId, String status & void & ModelNotFoundError \\
+updateModelStatus & String modelId, String status & - & ModelNotFoundError \\
 \hline
 fetchModel & String modelId & MLModel & ModelNotFoundError \\
 \hline
-deleteModel & String modelId & void & ModelNotFoundError \\
+deleteModel & String modelId & - & ModelNotFoundError \\
 \hline
 \end{tabular}
 \end{center}
@@ -4550,13 +4550,13 @@ None
 \hline
 \textbf{Name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\
 \hline
-saveModel & MLModel model & void & DatabaseError \\
+saveModel & MLModel model & - & DatabaseError \\
 \hline
 fetchModel & String modelId & MLModel & ModelNotFoundError, DatabaseError \\
 \hline
-deleteModel & String modelId & void & ModelNotFoundError, DatabaseError \\
+deleteModel & String modelId & - & ModelNotFoundError, DatabaseError \\
 \hline
-updateModel & String modelId, Map<String, Any> updates & void & ModelNotFoundError, DatabaseError \\
+updateModel & String modelId, Map<String, Any> updates & - & ModelNotFoundError, DatabaseError \\
 \hline
 \end{tabular}
 \end{center}
