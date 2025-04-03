@@ -16,129 +16,251 @@
 
 \maketitle
 
-\plt{Reflection is an important component of getting the full benefits from a
-learning experience.  Besides the intrinsic benefits of reflection, this
-document will be used to help the TAs grade how well your team responded to
-feedback.  Therefore, traceability between Revision 0 and Revision 1 is and
-important part of the reflection exercise.  In addition, several CEAB (Canadian
-Engineering Accreditation Board) Learning Outcomes (LOs) will be assessed based
-on your reflections.}
-
 \section{Changes in Response to Feedback}
 
-\plt{Summarize the changes made over the course of the project in response to
-feedback from TAs, the instructor, teammates, other teams, the project
-supervisor (if present), and from user testers.}
-
-\plt{For those teams with an external supervisor, please highlight how the feedback 
-from the supervisor shaped your project.  In particular, you should highlight the 
-supervisor's response to your Rev 0 demonstration to them.}
-
-\plt{Version control can make the summary relatively easy, if you used issues
-and meaningful commits.  If you feedback is in an issue, and you responded in
-the issue tracker, you can point to the issue as part of explaining your
-changes.  If addressing the issue required changes to code or documentation, you
-can point to the specific commit that made the changes.  Although the links are
-helpful for the details, you should include a label for each item of feedback so
-that the reader has an idea of what each item is about without the need to click
-on everything to find out.}
-
-\plt{If you were not organized with your commits, traceability between feedback
-and commits will not be feasible to capture after the fact.  You will instead
-need to spend time writing down a summary of the changes made in response to
-each item of feedback.}
-
-\plt{You should address EVERY item of feedback.  A table or itemized list is
-recommended.  You should record every item of feedback, along with the source of
-that feedback and the change you made in response to that feedback.  The
-response can be a change to your documentation, code, or development process.
-The response can also be the reason why no changes were made in response to the
-feedback.  To make this information manageable, you will record the feedback and
-response separately for each deliverable in the sections that follow.}
-
-\plt{If the feedback is general or incomplete, the TA (or instructor) will not
-be able to grade your response to feedback.  In that case your grade on this
-document, and likely the Revision 1 versions of the other documents will be
-low.} 
-
 \subsection{SRS and Hazard Analysis}
+\begin{longtable}{|p{5cm}|p{1.5cm}|p{2cm}|p{5cm}|}
+\caption{Response to SRS \& HA Feedback} \\
+\hline
+\textbf{Feedback/Concern} & \textbf{Source} & \textbf{Issue Link} & \textbf{Resolution/Action} \\ \hline
+\endfirsthead
+% ... (rest of the header/footer definitions remain the same) ...
+\hline
+\textbf{Feedback/Concern} & \textbf{Source} & \textbf{Issue Link} & \textbf{Resolution/Action} \\ \hline
+\endhead
+\hline \multicolumn{4}{r}{{Continued on next page}} \\ \hline
+\endfoot
+\hline
+\endlastfoot
 
+%
+% Row 1
+POC should be aligned with the end goal of creating a satellite labeling platform & Supervisor & \href{https://github.com/OKKM-insights/OKKM.insights/issues/107}{Issue \#107} & POC changed from where's waldo to satellite images of planes \\ \hline
+% Row 2
+Use previous accuracy results to identify experts & Supervisor & \href{https://github.com/OKKM-insights/OKKM.insights/issues/107}{Issue \#107} & Plans changed to ensure an accuracy tracking system is implemented \\ \hline
+% Row 3
+Requirements should be prioritized & Peer & \href{https://github.com/OKKM-insights/OKKM.insights/issues/118}{Issue \#118} & \href{https://github.com/OKKM-insights/OKKM.insights/pull/350}{PR \#350} \\ \hline
+% Row 4
+Ambiguity in goals & Peer & \href{https://github.com/OKKM-insights/OKKM.insights/issues/119}{Issue \#119} & No changes were made as we felt the specifics were covered in our requirements \\ \hline
+% Row 5
+Repeated problem statement, goals, and stakeholders & Peer & \href{https://github.com/OKKM-insights/OKKM.insights/issues/120}{Issue \#120} & \href{https://github.com/OKKM-insights/OKKM.insights/pull/308}{PR \#308} \\ \hline
+% Row 6
+Missing requirements traceability & Peer & \href{https://github.com/OKKM-insights/OKKM.insights/issues/121}{Issue \#121} & \href{https://github.com/OKKM-insights/OKKM.insights/pull/209}{PR \#209} \\ \hline
+% Row 7
+Add a context diagram & Peer & \href{https://github.com/OKKM-insights/OKKM.insights/issues/123}{Issue \#123} & \href{https://github.com/OKKM-insights/OKKM.insights/pull/225}{PR \#225} \\ \hline
+% Row 8
+Add intended audience section & Peer & \href{https://github.com/OKKM-insights/OKKM.insights/issues/133}{Issue \#133} & \href{https://github.com/OKKM-insights/OKKM.insights/pull/225}{PR \#225} \\ \hline
+% Row 9
+Undesired event handling needed & TA & \href{https://github.com/OKKM-insights/OKKM.insights/issues/213}{Issue \#213} & \href{https://github.com/OKKM-insights/OKKM.insights/pull/311}{PR \#311} \\ \hline
+% Row 10
+Likely changes should be provided & TA & \href{https://github.com/OKKM-insights/OKKM.insights/issues/122}{Issue \#122} & \href{https://github.com/OKKM-insights/OKKM.insights/pull/417}{PR \#417} \\ \hline
+% Row 11
+Document formatting issues & TA & \href{https://github.com/OKKM-insights/OKKM.insights/issues/212}{Issue \#212} & \href{https://github.com/OKKM-insights/OKKM.insights/pull/419}{PR \#419} \\ \hline
+% Row 12
+Clarity about the new security requirements added & Peer & \href{https://github.com/OKKM-insights/OKKM.insights/issues/156}{Issue \#156} & \href{https://github.com/OKKM-insights/OKKM.insights/pull/309}{PR \#309} \\ \hline
+% Row 13
+More specific mitigation strategy for user input errors & Peer & \href{https://github.com/OKKM-insights/OKKM.insights/issues/153}{Issue \#153} & \href{https://github.com/OKKM-insights/OKKM.insights/pull/217}{PR \#217} \\ \hline
+% Row 14
+Include real world examples of similar failures to strengthen justification for mitigation strategies & Peer & \href{https://github.com/OKKM-insights/OKKM.insights/issues/162}{Issue \#162} & We felt this was out of scope for the purpose of our documentation, so it was not implemented \\ \hline
+% Row 15
+Include strategy for handling risks associated with 3rd party libraries going out of date & Peer & \href{https://github.com/OKKM-insights/OKKM.insights/issues/173}{Issue \#173} & Confirmed with the TA that we could assume stable 3rd party libraries would continue to be stable \\ \hline
+% Row 16
+Add meaning of terminology used in the document & Peer & \href{https://github.com/OKKM-insights/OKKM.insights/issues/174}{Issue \#174} & \href{https://github.com/OKKM-insights/OKKM.insights/pull/310}{PR \#310} \\ \hline
+% Row 17
+Add impact scores for each row in the FMEA & Peer & \href{https://github.com/OKKM-insights/OKKM.insights/issues/176}{Issue \#176} & \href{https://github.com/OKKM-insights/OKKM.insights/pull/218}{PR \#218} \\ \hline
+% Row 18
+Specify which hazards to address in which phase & Peer & \href{https://github.com/OKKM-insights/OKKM.insights/issues/157}{Issue \#157} & \href{https://github.com/OKKM-insights/OKKM.insights/pull/418}{PR \#418} \\ \hline
+% Row 19
+Formatting issues such as missing list of tables and table header & TA & \href{https://github.com/OKKM-insights/OKKM.insights/issues/230}{Issue \#230} & \href{https://github.com/OKKM-insights/OKKM.insights/pull/423}{PR \#423} \\ \hline
+\end{longtable}
 \subsection{Design and Design Documentation}
+\begin{longtable}{|p{5cm}|p{1.5cm}|p{2cm}|p{5cm}|}
+\caption{Response to DD Feedback} \\
+\hline
+\textbf{Feedback/Concern} & \textbf{Source} & \textbf{Issue Link} & \textbf{Resolution/Action} \\ \hline
+\endfirsthead
+% ... (rest of the header/footer definitions remain the same) ...
+\hline
+\textbf{Feedback/Concern} & \textbf{Source} & \textbf{Issue Link} & \textbf{Resolution/Action} \\ \hline
+\endhead
+\hline \multicolumn{4}{r}{{Continued on next page}} \\ \hline
+\endfoot
+\hline
+\endlastfoot
 
-\subsection{VnV Plan and Report}
+Missing traceability between some FR and their modules & Peer & \href{https://github.com/OKKM-insights/OKKM.insights/issues/294}{Issue \#294} & \href{https://github.com/OKKM-insights/OKKM.insights/pull/315}{PR \#315} \\ \hline
+% Row 35
+Missing traceability between anticipated changed and modules & Peer & \href{https://github.com/OKKM-insights/OKKM.insights/issues/295}{Issue \#295} & \href{https://github.com/OKKM-insights/OKKM.insights/pull/314}{PR \#314} \\ \hline
+% Row 36
+Module descriptions should be more specific & Peer & \href{https://github.com/OKKM-insights/OKKM.insights/issues/301}{Issue \#301} & We felt the specific were already covered in the MIS \\ \hline
+% Row 37
+Should be a flow of user interfaces & Peer & \href{https://github.com/OKKM-insights/OKKM.insights/issues/302}{Issue \#302} & There was already a diagram included under the interfaces section within the module guide \\ \hline
+% Row 38
+State variables were missing for some modules & Peer & \href{https://github.com/OKKM-insights/OKKM.insights/issues/304}{Issue \#304} & The way we approached it in our design was to not hold the information in state variables, rather we take in inputs through a form and process them \\ \hline
+% Row 39
+Include more details in the timeline & Peer & \href{https://github.com/OKKM-insights/OKKM.insights/issues/296}{Issue \#296} & \href{https://github.com/OKKM-insights/OKKM.insights/pull/428}{PR \#428} \\ \hline
+% Row 40
+The assumption section was too ambiguous & Peer & \href{https://github.com/OKKM-insights/OKKM.insights/issues/297}{Issue \#297} & No changes made as we did not feel they were ambiguous. We asked for an example but no response was given \\ \hline
+% Row 41
+Turn the use hierarchy table into a diagram for better understanding & Peer & \href{https://github.com/OKKM-insights/OKKM.insights/issues/298}{Issue \#298} & \href{https://github.com/OKKM-insights/OKKM.insights/pull/431}{PR \#431} \\ \hline
+% Row 42
+Specify additional security measures such as encryption techniques & Peer & \href{https://github.com/OKKM-insights/OKKM.insights/issues/299}{Issue \#299} & \href{https://github.com/OKKM-insights/OKKM.insights/pull/407}{PR \#407}  \\ \hline
+% Row 43
+Add improvements to increase the accuracy of the data and reliability of labeling & TA & \href{https://github.com/OKKM-insights/OKKM.insights/issues/387}{Issue \#387} & \href{https://github.com/OKKM-insights/OKKM.insights/pull/405}{PR \#405} \\ \hline
+% Row 44
+Include class diagram for all modules & TA & \href{https://github.com/OKKM-insights/OKKM.insights/issues/388}{Issue \#388} & \href{https://github.com/OKKM-insights/OKKM.insights/pull/404}{PR \#404} \\ \hline
+% Row 45
+Formatting including broken links and fonts & TA & \href{https://github.com/OKKM-insights/OKKM.insights/issues/389}{Issue \#389} & \href{https://github.com/OKKM-insights/OKKM.insights/pull/413}{PR \#413} \\ \hline
+% Row 46
+Include how the weighted sum in getExpertise is calculated and how confidence is calculated & TA & \href{https://github.com/OKKM-insights/OKKM.insights/issues/390}{Issue \#390} & \href{https://github.com/OKKM-insights/OKKM.insights/pull/420}{PR \#420} \\ \hline
+% Row 47
+Include general exception handling & TA & \href{https://github.com/OKKM-insights/OKKM.insights/issues/391}{Issue \#391} & \href{https://github.com/OKKM-insights/OKKM.insights/pull/403}{PR \#403} \\ \hline
+\end{longtable}
+\subsection{VnV Plan and Report} \label{subsec:vnv_feedback}
+\begin{longtable}{|p{5cm}|p{1.5cm}|p{2cm}|p{5cm}|}
+\caption{Response to VnV Feedback} \\
+\hline
+\textbf{Feedback/Concern} & \textbf{Source} & \textbf{Issue Link} & \textbf{Resolution/Action} \\ \hline
+\endfirsthead
+% ... (rest of the header/footer definitions remain the same) ...
+\hline
+\textbf{Feedback/Concern} & \textbf{Source} & \textbf{Issue Link} & \textbf{Resolution/Action} \\ \hline
+\endhead
+\hline \multicolumn{4}{r}{{Continued on next page}} \\ \hline
+\endfoot
+\hline
+\endlastfoot
 
+Add an objective related to security of the application & Peer & \href{https://github.com/OKKM-insights/OKKM.insights/issues/192}{Issue \#192} & \href{https://github.com/OKKM-insights/OKKM.insights/pull/225}{PR \#225} \\ \hline
+% Row 22
+All NFR being covered by a module is probably not a feasible check & Peer & \href{https://github.com/OKKM-insights/OKKM.insights/issues/201}{Issue \#201} & \href{https://github.com/OKKM-insights/OKKM.insights/pull/311}{PR \#311} \\ \hline
+% Row 23
+Include a reference to the hazard document when discussing the testing plan & Peer & \href{https://github.com/OKKM-insights/OKKM.insights/issues/202}{Issue \#202} & \href{https://github.com/OKKM-insights/OKKM.insights/pull/215}{PR \#215} \\ \hline
+% Row 24
+More specifics needed on contacting a QSA & Peer & \href{https://github.com/OKKM-insights/OKKM.insights/issues/203}{Issue \#203} & \href{https://github.com/OKKM-insights/OKKM.insights/pull/219}{PR \#219} \\ \hline
+% Row 25
+Clearer link of survey answers to success of usability tests & Peer & \href{https://github.com/OKKM-insights/OKKM.insights/issues/204}{Issue \#204} & \href{https://github.com/OKKM-insights/OKKM.insights/pull/220}{PR \#220} \\ \hline
+% Row 26
+Not feasible to test all possible languages & Peer & \href{https://github.com/OKKM-insights/OKKM.insights/issues/210}{Issue \#210} & Language related requirement was found to be out of scope, so the test was not conducted \\ \hline
+% Row 27
+Use preprocessing to improve the efficiency and bounding box accuracy & Supervisor & \href{https://github.com/OKKM-insights/OKKM.insights/issues/228}{Issue \#228} & \href{https://github.com/OKKM-insights/backend/pull/38}{PR \#38} \\ \hline
+% Row 28
+Look into Meta's SAM and supplement with image meta data & Supervisor & \href{https://github.com/OKKM-insights/OKKM.insights/issues/228}{Issue \#228} & Wanted to pursue this but ultimately did not have the time to do so \\ \hline
+% Row 29
+Split images based on concept density & Supervisor & \href{https://github.com/OKKM-insights/OKKM.insights/issues/228}{Issue \#228} & \href{https://github.com/OKKM-insights/backend/pull/33}{PR \#33} \\ \hline
+% Row 30
+Formatting errors such as table headers, double references, typos & TA & \href{https://github.com/OKKM-insights/OKKM.insights/issues/243}{Issue \#243} & \href{https://github.com/OKKM-insights/OKKM.insights/pull/312}{PR \#312} \\ \hline
+% Row 31
+Add a nothing to label button to the front end for added user clarity & Professor & \href{https://github.com/OKKM-insights/OKKM.insights/issues/238}{Issue \#238} & \href{https://github.com/OKKM-insights/frontend/pull/10}{PR \#10} \\ \hline
+% Row 32
+Responsibilities of each members should be fleshed out more & TA & \href{https://github.com/OKKM-insights/OKKM.insights/issues/244}{Issue \#244} & \href{https://github.com/OKKM-insights/OKKM.insights/pull/425}{PR \#425} \\ \hline
+% Row 33
+Include how convergence will be tested & TA & \href{https://github.com/OKKM-insights/OKKM.insights/issues/245}{Issue \#245} & \href{https://github.com/OKKM-insights/OKKM.insights/pull/424}{PR \#424} \\ \hline
+
+More detailed contextual popups and walkthrough, including a demo gif & Usability Tester & \href{https://github.com/OKKM-insights/OKKM.insights/issues/341}{Issue \#341} & \href{https://github.com/OKKM-insights/frontend/pull/27}{PR \#27} \href{https://github.com/OKKM-insights/frontend/pull/31}{PR \#31} \\ \hline
+% Row 49
+Clearer visual feedback and selection of label type & Usability Tester & \href{https://github.com/OKKM-insights/OKKM.insights/issues/341}{Issue \#341} & \href{https://github.com/OKKM-insights/frontend/pull/27}{PR \#27} \\ \hline
+% Row 50
+Clearer text for buttons to understand what they do & Usability Tester & \href{https://github.com/OKKM-insights/OKKM.insights/issues/341}{Issue \#341} & \href{https://github.com/OKKM-insights/frontend/pull/27}{PR \#27} \\ \hline
+% Row 51
+Bug where tool would get stuck if submit was clicked but no labels were made & Usability Tester & \href{https://github.com/OKKM-insights/OKKM.insights/issues/341}{Issue \#341} & \href{https://github.com/OKKM-insights/frontend/pull/27}{PR \#27} \\ \hline
+% Row 52
+Reselection of label type every time was annoying & Usability Tester & \href{https://github.com/OKKM-insights/OKKM.insights/issues/341}{Issue \#341} & \href{https://github.com/OKKM-insights/frontend/pull/27}{PR \#27} \\ \hline
+% Row 53
+Button to set zoom, contrast, brightness back to original & Usability Tester & \href{https://github.com/OKKM-insights/OKKM.insights/issues/341}{Issue \#341} & \href{https://github.com/OKKM-insights/frontend/pull/27}{PR \#27} \\ \hline
+% Row 54
+Remove white space & Usability Tester & \href{https://github.com/OKKM-insights/OKKM.insights/issues/341}{Issue \#341} & \href{https://github.com/OKKM-insights/frontend/pull/27}{PR \#27} \\ \hline
+% Row 55
+Remove help button upon project completion & Usability Tester & \href{https://github.com/OKKM-insights/OKKM.insights/issues/341}{Issue \#341} & \href{https://github.com/OKKM-insights/frontend/pull/27}{PR \#27} \\ \hline
+% Row 56 (Empty in original)
+Map unit test descriptions to their files & Peer & \href{https://github.com/OKKM-insights/OKKM.insights/issues/376}{Issue \#376} & \href{https://github.com/OKKM-insights/OKKM.insights/pull/414}{PR \#414} \\ \hline
+% Row 57 (Empty in original)
+Broken link to usability report & Peer & \href{https://github.com/OKKM-insights/OKKM.insights/issues/380}{Issue \#380} & Updated action workflow \\ \hline
+% Row 58 (Empty in original)
+Add captions to tables & Peer & \href{https://github.com/OKKM-insights/OKKM.insights/issues/378}{Issue \#378} & \href{https://github.com/OKKM-insights/OKKM.insights/pull/406}{PR \#406} \\ \hline
+Include information about back-end unit tests & Peer & \href{https://github.com/OKKM-insights/OKKM.insights/issues/377}{Issue \#377} & \href{https://github.com/OKKM-insights/OKKM.insights/pull/432}{PR \#432} \\ \hline
+\end{longtable}
 \section{Challenge Level and Extras}
 
 \subsection{Challenge Level}
-
-\plt{State the challenge level (advanced, general, basic) for your project.  Your challenge level should exactly match what is included in your problem statement.  This should be the challenge level agreed on between you and the course instructor.}
+The challenge level of our project is general. We were able to create a solution, but it took additional research and training.
 
 \subsection{Extras}
-
-\plt{Summarize the extras (if any) that were tackled by this project.  Extras
-can include usability testing, code walkthroughs, user documentation, formal
-proof, GenderMag personas, Design Thinking, etc.  Extras should have already
-been approved by the course instructor as included in your problem statement.}
+\begin{itemize}
+  \item Usability Testing (\href{https://github.com/OKKM-insights/OKKM.insights/blob/main/docs/Extras/UsabilityReport/UsabilityReport.pdf}{view here}): Conducted by allowing users to test the application interface and provide feedback to us through a questionnaire
+  \item User Guide (\href{https://github.com/OKKM-insights/OKKM.insights/tree/main/docs/UserGuide}{view here}): Create a guide demonstrating how to use the product and its various features
+\end{itemize}
 
 \section{Design Iteration (LO11 (PrototypeIterate))}
-
-\plt{Explain how you arrived at your final design and implementation.  How did
-the design evolve from the first version to the final version?} 
-
-\plt{Don't just say what you changed, say why you changed it.  The needs of the
-client should be part of the explanation.  For example, if you made changes in
-response to usability testing, explain what the testing found and what changes
-it led to.}
+ The front-end labeling tool began as an open-source tool with pre-built features. When we conducted usability testing, we did not get the results we were looking for in our survey. The specific feedback from the users can be seen in \ref{subsec:vnv_feedback}. The tool was very restrictive with the ways it could be modified and had unchangeable features that hurt usability. As a result, we decided to create an entirely new custom labeling tool from scratch. This allowed us to better address the feedback given to us, and also allows for flexible development in the future if we have any changes or additions we want to make. Specific changes included having clearer visual feedback, adding more steps to the tutorial, submitting labels bug fix, labels staying selected, condensed tool bar, and more detailed text for buttons.
+ \\\\
+ For the back-end, several changes were made through the course of the project. Firstly, the initial consensus engine took 20 minutes to aggregate 200 labels. This was very slow and limited our ability to update confidence measures and efficiently serve images. To solve this, we decided to rewrite our consensus engine so that we could run it on a GPU. This resulted in a 95\% reduction in energy usage and a new run time of just 8 seconds for 200 labels. Another back-end component that was modified was the storage of consensus data. We were initially storing m-by-n rows for each pixel of an m-by-n image. This resulted in slower retrieval and upload times and inefficient use of our database. Our solution was to pivot to a relational pixel-wise storage method, which reduced the rows needed to one row per image. Finally, our preprocessing algorithm started as a very simple method which split the submitted image into 300x300 pixel images. This algorithm resulted in problems with images that could not be split evenly, sometimes causing small strips of an image to be served to the user. We updated the algorithm to dynamically adjust split image size to be based on object complexity, so that each image served has similar complexity regardless of size. We also added an AI preprocessing step where we run the initial image through a model to get initial confidence levels for the objects we are looking for. The initial algorithm suffered from inaccuracy and redundant labels. We updated it to use convolution and pooling to reduce dimensionality. Sliding window detection combined with multi-scale analysis ensures accurate object detection at various sizes. Non-maximum suppression eliminates redundant bounding boxes, improving detection precision. Overlapping bounding boxes are removed based on intersection over union. Batch processing of the models output predictions was implemented to reduce the time it took to populate the database.
 
 \section{Design Decisions (LO12)}
-
-\plt{Reflect and justify your design decisions.  How did limitations,
- assumptions, and constraints influence your decisions?  Discuss each of these
- separately.}
+For our front-end, we decided to implement a responsive user interface that was designed for web browser first usage. This was a direct result of the constraint we outlined relating to our application being compatible with all modern web browsers. Access through a browser also facilitates easier user access, which is needed for a crowdsource based project. This decision made implementation easier as we did not need to worry about designing for other devices such as mobile.
+\\\\
+The decision to switch to a custom-made labeling tool came from the limitations of the existing labeling tool that we were using. This change allows for easier modifications of the code in the future.
+\\\\
+For our back-end, we chose to use a Bayesian interface-based consensus model to best satisfy the accuracy requirements and constraints we set. In scenarios requiring 90\% confidence, our algorithm has higher accuracy and lower cost than alternatives, especially as the number of labeling tasks increase. 
+\\\\
+We chose to use a CNN model over other existing models because CNNs are specifically designed for image analysis. They excel at capturing spatial hierarchies and patterns using convolutional layers, making them ideal for object detection tasks. Other models like traditional ML algorithms (e.g. SVM, Random Forest) lack the ability to directly process image pixels and extract complex visual features. Additionally, CNNs outperform basic models in accuracy and efficiency for large-scale image datasets.
+\\\\
+For database access from our backend, we chose to split database connectors into multiple classes so that different services would be able to reuse them. This led to less code duplication and better code maintainability.
+\\\\
+Due to time constraints we needed to prioritize certain features. We
+needed to make a trade-off between the quality and quantity of features
+in our app. We decided to cut off some features that we were initially hoping to achieve, such as working payments and direct satellite image fetching. Implementing direct feedback on our existing features also took priority as stakeholders were expecting these to be addressed, leaving less time to implement other things.
 
 \section{Economic Considerations (LO23)}
-
-\plt{Is there a market for your product? What would be involved in marketing your 
-product? What is your estimate of the cost to produce a version that you could 
-sell?  What would you charge for your product?  How many units would you have to 
-sell to make money? If your product isn't something that would be sold, like an 
-open source project, how would you go about attracting users?  How many potential 
-users currently exist?}
+There is an existing market for our product, as well labeled datasets are at the core of quality AI models. As the AI industry continues to grow, plenty of people will be looking for datasets to train their models with. Also, manual labeling is slow, inconsistent, and high in cost. Our hybrid AI and crowd-sourcing pipeline significantly reduces time and cost to get a quality dataset.
+\\\\
+Our product would require a heavy marketing campaign as without a substantial user-base our crowd-sourcing platform does not work. Our marketing campaign would be heavily focused on digital marketing through social media posts, forum posts, and online advertisements. There would also be a focus on foreign users, as the reward for labeling would be more substantial for some of them.
+\\\\
+The current monthly cost of running our application is around \$15. This is without having our AI model running in the cloud. We project that a final version of the application could cost closer to \$100 per month considering higher traffic and model deployment.
+\\\\
+The revenue model would be to charge a flat fee based on image size and complexity to clients who want their images labeled. We would take a 20\% cut of this value, and the rest would be distributed to our labelers. They would be paid for every image they label. There is also the opportunity to introduce a subscription model for access to datasets we have already curated.
 
 \section{Reflection on Project Management (LO24)}
-
-\plt{This question focuses on processes and tools used for project management.}
-
 \subsection{How Does Your Project Management Compare to Your Development Plan}
-
-\plt{Did you follow your Development plan, with respect to the team meeting plan, 
-team communication plan, team member roles and workflow plan.  Did you use the 
-technology you planned on using?}
+We adhered to exactly what was set out in our team meeting plan, having weekly meetings to discuss the progress everyone made and go over any outstanding deliverables. With regards to supervisor meetings, our lack of steady progress and a misaligned schedule meant we did not meet with our supervisor as much as we hoped to.
+\\\\
+The team communication plan was also followed well. The team utilized Github issues to track progress and all concerns were communicated in our meetings or through our Teams chat.
+\\\\
+Team roles were followed for the most part, but Oleg took on more responsibility with regard to the deployment of our application than Kartik.
+\\\\
+Regarding our workflow plan, we stopped using the Github project board in the new year as we felt the normal issue tracking was enough. There was also some breaches in the approval process we laid out. There were instances where pull requests were merged without review due to time constraints.
+\\\\
+With regards to our planned technology stack, we ended up using TypeScript instead of JavaScript on the front-end. Also, the database we chose to use was MySql. We never got the chance to make use of Meta's segment anything model, but there is still a possibility for that in the future.
 
 \subsection{What Went Well?}
-
-\plt{What went well for your project management in terms of processes and 
-technology?}
+Our use of CI/CD to generate a pdf file for each of our latex files was very useful, and saved us a lot of time. Our consistent meetings were also helpful to track progress and get everyone's status. We used Github issue tracking regularly which contributed to a healthy work flow and clear responsibilities for each member. We had a very early start on the front-end, which allowed us to reach a stable interface fairly early. This meant that we could focus on changes and tweaks recommended through user feedback. From a technology perspective, integrating our front-end with Vercel was very effective. It allowed us to see what our staged branches would look like in production, and also told us if anything needed to be addressed before pushing to production.
 
 \subsection{What Went Wrong?}
-
-\plt{What went wrong in terms of processes and technology?}
+One of the main problems with our project was that we overestimated what we would actually be able to do. This led to a lot of unnecessary documentation and time spent fleshing out ideas that were never implemented. Another problem we encountered was when our production database was wiped and we did not have any backups for the time period we needed. This resulted in extra time spent redefining tables and populating data. A huge problem in the development of the application and the documentation was the deadline heavy workload. A lot of team contributions were done at the deadline, making it really hard to give any feedback or make iterative improvements.
 
 \subsection{What Would you Do Differently Next Time?}
-
-\plt{What will you do differently for your next project?}
+For the next project, we would look to tighten our scope to just a few key features, rather than list all the features our application could include. Starting too ambitiously led to cutting features due to time constraints, affecting project quality. With regards to data storage, we would ensure that a development database is set up and used in our testing environment so that we avoid wiping out our production data. We can also regularly store backups of the database in case we ever need to revert. Finally, we would look to have more group working sessions. Not only would this force team members to start on their work before the day of the deadline, but it allows for better collaboration as ideas can be shared in real time. We held a meeting like this toward the end of the project and it was very effective.
 
 \section{Reflection on Capstone}
 
-\plt{This question focuses on what you learned during the course of the capstone project.}
-
 \subsection{Which Courses Were Relevant}
-
-\plt{Which of the courses you have taken were relevant for the capstone project?}
-
+\begin{itemize}
+    \item SFWRENG 2AA4: This course gave us a basis in software development, software specification, and testing software.
+    \item SFWRENG 3RA3: This course helped with creating quality requirements for our SRS.
+    \item SFWRENG 3A04: This course helped with creating our design documents and choosing the architecture for our project.
+    \item SFWRENG 3BB4: This course helped with implementing parallel processes in our back-end.
+    \item SFWRENG 4HC3: This course helped us to maximize the usability of our front-end.
+    \item COMPSCI 4ML3: This course helped us create our CNN and consensus models.
+    \item SFWRENG 3DB3: This course helped us to create our relational database design and make use of SQL queries.
+    \item COMPSCI 4SD3, STATS 2D03, STATS 3D03: These courses helped us create our consensus algorithm.
+\end{itemize}
 \subsection{Knowledge/Skills Outside of Courses}
-
-\plt{What skills/knowledge did you need to acquire for your capstone project
-that was outside of the courses you took?}
+\begin{itemize}
+    \item Front-end Development: We needed knowledge on how to create the front-end web application using TypeScript and React.
+    \item Github CI/CD tools: We needed to do extra research to figure out how to set up automatic file generation and regression testing with Github.
+    \item API design: Knowledge about APIs was needed to ensure there was seamless communication between each component of our project.
+    \item GPU Programming: Additional resources were used to understand how we could implement our consensus algorithm to use a GPU.
+    \item Statistics: Understanding of more complex statistics concepts were needed to design our consensus algorithm. This included consulting scientific papers to aid in our implementation.
+\end{itemize}
 
 \end{document}
