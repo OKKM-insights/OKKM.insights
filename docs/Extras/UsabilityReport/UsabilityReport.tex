@@ -36,12 +36,14 @@ Kartik Chaudhari}
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
 10/03/2025 & 1.0  &\\
+03/04/2025 & 2.0  &\\
 \bottomrule
 \end{tabularx}
 
 
 \tableofcontents
 
+\pagenumbering{arabic}
 \section{Preliminary Survey}
 As a first look into the usability of OrbitWatch, we have conducted a preliminary survey of potential users. The objective of this test is to determine areas for improvement between the Rev0 version of the website and Rev1.
 \subsection{Materials}
@@ -77,8 +79,40 @@ This will again lead to frustration and confusion, alienating users.
 
 \subsection{Next Steps}
 We will implement the feedback collected in this first survey to improve the site for Rev1. After changes have been implemented, we will redistribute the survey to the same testers. We are hoping to see an improvement in the rating collected between the first and second survey.
- 
 
-\section{Additional Survey}
+
+\section{Follow-up Survey}
+After making improvements to the user interface, we were interested to see if the changes satisfactorily addressed the concerns from the original design. 
+We are very proud to report that there was a significant improvement in our usability metrics. This section will describe the materials, results, and analysis of the follow-up survey.
+
+\subsection{Materials}
+A copy of the original survey was resent to the same usability testers. This was done to understand the relative improvement over original scores, instead of introducing
+potential variability in `user-rating baselines'. By using the same people, we can more accurately conclude if the UI improved, instead of if the new set of participants rates things more highly on average.
+\subsection{Results}
+In the follow-up survey, we obtained the following results:
+
+\begin{centering}
+\includegraphics[scale=0.7]{chart_2_1.png}\\
+\includegraphics[scale=0.7]{chart_2_2.png}\\
+\includegraphics[scale=0.7]{chart_2_3.png}\\
+\includegraphics[scale=0.7]{chart_2_4.png}\\
+\includegraphics[scale=0.7]{chart_2_5.png}\\
+\end{centering}
+
+Again, the qualitative results will be discussed in the analysis section.
+
+\subsection{Analysis}
+These results provide strong evidence that the changes made to the front end improved the usability of the website. In each survey question, the average score increased.
+One area of focus was on the labelling experience. In contrast to the first iteration, each tester reported a positive experience with the labelling tasks. This is likely attributed to the 
+new, in-house labelling library we developed to address user concerns. One tester commented that ``It is much easier to draw multiple labels now. I don't have to reselect the box each time anymore''.
+We also noticed an improvement in our help tools. On the last survey, two testers used the help tool, and reported an average score of 4/5. In the new design, the help tool was used 3 times with everyone reporting its usefulness to be 5/5.
+In the redesign, we made the help tool more apparent, and made the features it contains more useful. In the last survey, a tester recommended we include a short gif of someone completing a labelling task at the start of the help screen. This, among other changes, are likely the reason for the improved score.
+
+
+One limitation of the study to consider is that each of the testers have had one prior experience with the tool before completing the second survey. This means that they have some knowledge of what to expect, and therefore certain results should not be expected to translate to new users. 
+For example, we would expect the navigation scores to increase, even without changes to the UI as testers become more familiar with the task at hand. In the future, similar studies should be done on a larger pool of first-time users to the site.
+
+
+
 
 \end{document}
